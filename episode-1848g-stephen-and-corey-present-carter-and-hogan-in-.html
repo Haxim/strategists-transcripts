@@ -1052,8 +1052,14 @@
 
     if (eventName === "postmessage:on:progress") {
       const t = Number(data?.progress);
-      if (Number.isFinite(t) && isPlaying) {
+      if (!Number.isFinite(t)) return;
+
+      if (isPlaying) {
+        // Normal playback
         setActiveForTime(t, false);
+      } else {
+        // 🔑 Paused + progress change = user scrubbed
+        setActiveForTime(t, true);
       }
     }
   });
@@ -1086,6 +1092,7 @@
 
 </body>
 </html>
+
 
 
 
