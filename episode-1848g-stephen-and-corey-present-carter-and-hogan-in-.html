@@ -1000,13 +1000,10 @@
   // Highlight logic
   // ----------------------------
   let activeIndex = -1;
-  let isSticky = false;
-  const playerHeight = iframe.getBoundingClientRect().height;
 
   function isInViewport(el) {
     const r = el.getBoundingClientRect();
-    const topLimit = isSticky ? playerHeight + 8 : 0;
-    return r.bottom > topLimit && r.top < window.innerHeight;
+    return r.top >= 0 && r.bottom <= window.innerHeight;
   }
 
   function updateHighlight(t) {
@@ -1078,15 +1075,19 @@
   }, POLL_MS);
 
   // ============================================================
-  // Sticky player (restored snap, no flicker)
+  // ADDITION: Player follows you down the page (RESTORED SNAP)
   // ============================================================
   const placeholder = document.createElement("div");
-  placeholder.style.height = playerHeight + "px";
+  const rect = iframe.getBoundingClientRect();
+  placeholder.style.height = rect.height + "px";
   placeholder.style.display = "none";
   iframe.parentNode.insertBefore(placeholder, iframe);
 
-  const stickPoint = iframe.getBoundingClientRect().top + window.scrollY;
+  // 🔑 FIX: true document Y position of player
+  const stickPoint = rect.top + window.scrollY;
   const UNSTICK_BUFFER = 4;
+
+  let isSticky = false;
 
   function onScroll() {
     const y = window.scrollY;
@@ -1094,7 +1095,7 @@
     if (!isSticky && y > stickPoint + UNSTICK_BUFFER) {
       iframe.style.position = "fixed";
       iframe.style.top = "0";
-      iframe.style.width = iframe.offsetWidth + "px";
+      iframe.style.width = rect.width + "px";
       iframe.style.zIndex = "1000";
       placeholder.style.display = "block";
       isSticky = true;
@@ -1119,11 +1120,8 @@
 
 
 
-
 </body>
 </html>
-
-
 
 
 
