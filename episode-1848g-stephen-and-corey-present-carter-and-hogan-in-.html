@@ -955,7 +955,7 @@
   }
 
   // ----------------------------
-  // Acast time normalization (FIXED)
+  // Acast time normalization
   // ----------------------------
   let durationSec = NaN;
 
@@ -973,17 +973,18 @@
   function normalizeToSeconds(data) {
     if (!data) return NaN;
 
-    // capture duration when available
     const d = extractDuration(data);
     if (Number.isFinite(d) && d > 0) durationSec = d;
 
-    // 🔑 FIX: position is ALWAYS seconds
     const pos = Number(data.position);
     if (Number.isFinite(pos) && pos >= 0) {
+      if (Number.isFinite(durationSec) && durationSec > 0) {
+        if (pos <= 1) return pos * durationSec;
+        if (pos <= 100) return (pos / 100) * durationSec;
+      }
       return pos;
     }
 
-    // progress may be fraction or percent
     const prog = Number(data.progress);
     if (!Number.isFinite(prog) || prog < 0) return NaN;
 
@@ -992,7 +993,7 @@
       if (prog <= 100) return (prog / 100) * durationSec;
     }
 
-    return NaN;
+    return prog;
   }
 
   // ----------------------------
@@ -1040,15 +1041,20 @@
   });
 
   // ----------------------------
-  // Player -> Transcript
+  // Player -> Transcript (polling is authority)
   // ----------------------------
   window.addEventListener("message", e => {
     if (e.origin !== AC_ORIGIN) return;
     const msg = parseMsg(e.data);
     if (!msg?.eventName) return;
 
+    if (msg.eventName === "postmessage:get:progress") {
+      const t = normalizeToSeconds(msg.data);
+      updateHighlight(t);
+      return;
+    }
+
     if (
-      msg.eventName === "postmessage:get:progress" ||
       msg.eventName === "postmessage:on:progress" ||
       msg.eventName === "postmessage:on:seek"
     ) {
@@ -1068,17 +1074,19 @@
     post({ eventName: "postmessage:get:progress" });
   }, POLL_MS);
 
-  // ----------------------------
-  // Sticky player (unchanged)
-  // ----------------------------
+  // ============================================================
+  // ADDITION: Player follows you down the page (RESTORED SNAP)
+  // ============================================================
   const placeholder = document.createElement("div");
   const rect = iframe.getBoundingClientRect();
   placeholder.style.height = rect.height + "px";
   placeholder.style.display = "none";
   iframe.parentNode.insertBefore(placeholder, iframe);
 
+  // 🔑 FIX: true document Y position of player
   const stickPoint = rect.top + window.scrollY;
   const UNSTICK_BUFFER = 4;
+
   let isSticky = false;
 
   function onScroll() {
@@ -1112,11 +1120,8 @@
 
 
 
-
 </body>
 </html>
-
-
 
 
 
