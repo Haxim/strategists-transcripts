@@ -943,9 +943,11 @@
   if (!paras.length) return;
 
   // ----------------------------
-  // Player messaging
+  // Messaging
   // ----------------------------
   let iframeReady = false;
+  let playerPrimed = false;
+  let pendingSeek = null;
 
   iframe.addEventListener("load", () => {
     iframeReady = true;
@@ -964,11 +966,11 @@
   }
 
   // ----------------------------
-  // Transcript highlighting
+  // Highlighting
   // ----------------------------
   let activeEl = null;
 
-  function setActiveForTime(t) {
+  function setActiveForTime(t, forceScroll = false) {
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -977,30 +979,21 @@
     }
 
     const el = paras[idx].el;
-    if (el === activeEl) return;
+    if (el !== activeEl) {
+      activeEl?.classList.remove("active");
+      activeEl = el;
+      el.classList.add("active");
+    }
 
-    if (activeEl) activeEl.classList.remove("active");
-    activeEl = el;
-    el.classList.add("active");
-
-    if (!wrapper?.classList.contains("sticky")) {
+    if (forceScroll && !wrapper?.classList.contains("sticky")) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
   // ----------------------------
-  // State machine
+  // State
   // ----------------------------
-  const state = {
-    mode: "idle",      // idle | playing | playerSeek | textSeek
-    t: 0,
-    lastTick: 0
-  };
-
-  function setTime(t) {
-    state.t = t;
-    setActiveForTime(t);
-  }
+  let isPlaying = false;
 
   // ----------------------------
   // Transcript → player
@@ -1009,11 +1002,16 @@
     el.addEventListener("click", (e) => {
       e.preventDefault?.();
 
-      state.mode = "textSeek";
-      setTime(t);
+      setActiveForTime(t, true);
 
-      post({ eventName: "postmessage:do:seek", data: { position: t } });
-      post({ eventName: "postmessage:do:play" });
+      if (!playerPrimed) {
+        // First interaction: play first, seek later
+        pendingSeek = t;
+        post({ eventName: "postmessage:do:play" });
+      } else {
+        post({ eventName: "postmessage:do:seek", data: { position: t } });
+        post({ eventName: "postmessage:do:play" });
+      }
     });
   });
 
@@ -1028,46 +1026,37 @@
 
     const { eventName, data } = msg;
 
-    switch (eventName) {
-      case "postmessage:on:play":
-        state.mode = "playing";
-        state.lastTick = performance.now();
-        break;
+    if (eventName === "postmessage:on:play") {
+      isPlaying = true;
+      playerPrimed = true;
 
-      case "postmessage:on:pause":
-        state.mode = "idle";
-        break;
-
-      case "postmessage:on:seek": {
-        const t = Number(data?.position);
-        if (!Number.isFinite(t)) return;
-
-        state.mode = "playerSeek";
-        setTime(t);
-        break;
+      if (pendingSeek != null) {
+        post({ eventName: "postmessage:do:seek", data: { position: pendingSeek } });
+        pendingSeek = null;
       }
+      return;
+    }
 
-      case "postmessage:on:progress": {
-        const t = Number(data?.progress);
-        if (!Number.isFinite(t)) return;
+    if (eventName === "postmessage:on:pause") {
+      isPlaying = false;
+      return;
+    }
 
-        // Only trust progress while playing
-        if (state.mode === "playing") {
-          setTime(t);
-        }
-        break;
+    if (eventName === "postmessage:on:seek") {
+      const t = Number(data?.position);
+      if (Number.isFinite(t)) {
+        setActiveForTime(t, true);
+      }
+      return;
+    }
+
+    if (eventName === "postmessage:on:progress") {
+      const t = Number(data?.progress);
+      if (Number.isFinite(t) && isPlaying) {
+        setActiveForTime(t, false);
       }
     }
   });
-
-  // ----------------------------
-  // Safety polling (minimal)
-  // ----------------------------
-  setInterval(() => {
-    if (iframeReady && state.mode === "playing") {
-      post({ eventName: "postmessage:get:progress" });
-    }
-  }, 1500);
 
   // ----------------------------
   // Sticky spacer
@@ -1085,7 +1074,6 @@
     obs.observe(sentinel);
   }
 
-  // Initial highlight
   setActiveForTime(0);
 })();
 </script>
@@ -1095,8 +1083,10 @@
 
 
 
+
 </body>
 </html>
+
 
 
 
