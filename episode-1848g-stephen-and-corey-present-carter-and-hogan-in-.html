@@ -960,7 +960,6 @@
   let durationSec = NaN;
 
   function extractDuration(data) {
-    // Different embeds use different keys; keep this loose.
     const d =
       data?.duration ??
       data?.length ??
@@ -974,31 +973,26 @@
   function normalizeToSeconds(data) {
     if (!data) return NaN;
 
-    // If we get a duration in any payload, store it.
     const d = extractDuration(data);
     if (Number.isFinite(d) && d > 0) durationSec = d;
 
-    // Prefer "position" as the most likely "seconds" field.
     const pos = Number(data.position);
     if (Number.isFinite(pos) && pos >= 0) {
-      // If it looks like a percent/fraction and we have a duration, convert.
       if (Number.isFinite(durationSec) && durationSec > 0) {
-        if (pos <= 1) return pos * durationSec;         // fraction 0..1
-        if (pos <= 100) return (pos / 100) * durationSec; // percent 0..100
+        if (pos <= 1) return pos * durationSec;
+        if (pos <= 100) return (pos / 100) * durationSec;
       }
-      return pos; // assume seconds
+      return pos;
     }
 
-    // Otherwise fall back to progress
     const prog = Number(data.progress);
     if (!Number.isFinite(prog) || prog < 0) return NaN;
 
     if (Number.isFinite(durationSec) && durationSec > 0) {
-      if (prog <= 1) return prog * durationSec;           // fraction 0..1
-      if (prog <= 100) return (prog / 100) * durationSec; // percent 0..100
+      if (prog <= 1) return prog * durationSec;
+      if (prog <= 100) return (prog / 100) * durationSec;
     }
 
-    // Last resort: treat as seconds
     return prog;
   }
 
@@ -1015,7 +1009,6 @@
   function updateHighlight(t) {
     if (!Number.isFinite(t)) return;
 
-    // binary search: last start <= t
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -1031,7 +1024,6 @@
     const el = paras[idx].el;
     el.classList.add("active");
 
-    // Only scroll if it's off-screen (don’t fight the user)
     if (!isInViewport(el)) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
@@ -1044,7 +1036,7 @@
     el.addEventListener("click", () => {
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
-      updateHighlight(t); // immediate feedback
+      updateHighlight(t);
     });
   });
 
@@ -1056,41 +1048,70 @@
     const msg = parseMsg(e.data);
     if (!msg?.eventName) return;
 
-    // Many embeds reply to get:progress with eventName "postmessage:get:progress"
     if (msg.eventName === "postmessage:get:progress") {
       const t = normalizeToSeconds(msg.data);
       updateHighlight(t);
       return;
     }
 
-    // If your embed happens to push progress/seek events, accept them too
-    if (msg.eventName === "postmessage:on:progress" || msg.eventName === "postmessage:on:seek") {
+    if (
+      msg.eventName === "postmessage:on:progress" ||
+      msg.eventName === "postmessage:on:seek"
+    ) {
       const t = normalizeToSeconds(msg.data);
       updateHighlight(t);
       return;
     }
 
-    // Some embeds may respond to get:duration; capture it if so.
     if (msg.eventName === "postmessage:get:duration") {
       const d = extractDuration(msg.data);
       if (Number.isFinite(d) && d > 0) durationSec = d;
     }
   });
 
-  // Ask for duration occasionally (harmless if unsupported).
-  // Then poll progress as the authoritative clock.
   setInterval(() => {
     post({ eventName: "postmessage:get:duration" });
     post({ eventName: "postmessage:get:progress" });
   }, POLL_MS);
 
+  // ============================================================
+  // ADDITION: Player follows you down the page (sticky behavior)
+  // ============================================================
+  const placeholder = document.createElement("div");
+  const rect = iframe.getBoundingClientRect();
+  placeholder.style.height = rect.height + "px";
+  placeholder.style.display = "none";
+  iframe.parentNode.insertBefore(placeholder, iframe);
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        iframe.style.position = "";
+        iframe.style.top = "";
+        iframe.style.width = "";
+        iframe.style.zIndex = "";
+        placeholder.style.display = "none";
+      } else {
+        iframe.style.position = "fixed";
+        iframe.style.top = "0";
+        iframe.style.width = rect.width + "px";
+        iframe.style.zIndex = "1000";
+        placeholder.style.display = "block";
+      }
+    },
+    { threshold: 0 }
+  );
+
+  observer.observe(placeholder);
 })();
 </script>
 
 
 
+
 </body>
 </html>
+
 
 
 
