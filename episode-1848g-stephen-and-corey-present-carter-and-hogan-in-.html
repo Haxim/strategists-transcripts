@@ -970,7 +970,7 @@
   // ----------------------------
   let activeEl = null;
 
-  function setActiveForTime(t, forceScroll = false) {
+  function setActiveForTime(t, forceScroll) {
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -979,6 +979,7 @@
     }
 
     const el = paras[idx].el;
+
     if (el !== activeEl) {
       activeEl?.classList.remove("active");
       activeEl = el;
@@ -994,6 +995,7 @@
   // State
   // ----------------------------
   let isPlaying = false;
+  let lastProgress = null;
 
   // ----------------------------
   // Transcript → player
@@ -1005,7 +1007,7 @@
       setActiveForTime(t, true);
 
       if (!playerPrimed) {
-        // First interaction: play first, seek later
+        // First interaction: must play before seek works
         pendingSeek = t;
         post({ eventName: "postmessage:do:play" });
       } else {
@@ -1016,7 +1018,7 @@
   });
 
   // ----------------------------
-  // Player → transcript
+  // Player → transcript (push events)
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
@@ -1045,6 +1047,7 @@
     if (eventName === "postmessage:on:seek") {
       const t = Number(data?.position);
       if (Number.isFinite(t)) {
+        lastProgress = t;
         setActiveForTime(t, true);
       }
       return;
@@ -1054,14 +1057,48 @@
       const t = Number(data?.progress);
       if (!Number.isFinite(t)) return;
 
+      lastProgress = t;
+
       if (isPlaying) {
-        // Normal playback
         setActiveForTime(t, false);
-      } else {
-        // 🔑 Paused + progress change = user scrubbed
-        setActiveForTime(t, true);
       }
     }
+  });
+
+  // ----------------------------
+  // 🔑 Polling backstop (REQUIRED for scrubbing)
+  // ----------------------------
+  setInterval(() => {
+    if (!iframeReady) return;
+    post({ eventName: "postmessage:get:progress" });
+  }, 400);
+
+  window.addEventListener("message", (e) => {
+    if (e.origin !== AC_ORIGIN) return;
+
+    const msg = parseMsg(e.data);
+    if (msg?.eventName !== "postmessage:get:progress") return;
+
+    const t = Number(msg?.data?.progress);
+    if (!Number.isFinite(t)) return;
+
+    if (lastProgress == null) {
+      lastProgress = t;
+      setActiveForTime(t, true);
+      return;
+    }
+
+    const delta = Math.abs(t - lastProgress);
+
+    if (delta > 0.75) {
+      // Jump = user scrubbed
+      setActiveForTime(t, true);
+    } else if (isPlaying) {
+      // Normal playback advance
+      setActiveForTime(t, false);
+    }
+
+    lastProgress = t;
   });
 
   // ----------------------------
@@ -1080,7 +1117,8 @@
     obs.observe(sentinel);
   }
 
-  setActiveForTime(0);
+  // Initial state
+  setActiveForTime(0, false);
 })();
 </script>
 
@@ -1090,8 +1128,10 @@
 
 
 
+
 </body>
 </html>
+
 
 
 
