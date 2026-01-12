@@ -922,37 +922,32 @@
   </footer>
 
 <script>
-(function () {
+(() => {
   const AC_ORIGIN = "https://embed.acast.com";
+  const POLL_MS = 300;
 
-  const iframe     = document.getElementById("acast-player");
+  const iframe = document.getElementById("acast-player");
   const transcript = document.getElementById("transcript");
-  const wrapper    = document.getElementById("player-wrapper");
-  const sentinel   = document.getElementById("player-sentinel");
 
   if (!iframe || !transcript) return;
 
   // ----------------------------
-  // Transcript parsing
+  // Build transcript index
   // ----------------------------
   const paras = Array.from(transcript.querySelectorAll("p[data-start]"))
-    .map(p => ({ el: p, t: Number(p.dataset.start) }))
+    .map(p => ({
+      el: p,
+      t: Number(p.dataset.start)
+    }))
     .filter(p => Number.isFinite(p.t))
     .sort((a, b) => a.t - b.t);
 
   if (!paras.length) return;
 
   // ----------------------------
-  // Messaging helpers
+  // Utilities
   // ----------------------------
-  let iframeReady = false;
-
-  iframe.addEventListener("load", () => {
-    iframeReady = true;
-  });
-
   function post(msg) {
-    if (!iframeReady) return;
     iframe.contentWindow?.postMessage(JSON.stringify(msg), AC_ORIGIN);
   }
 
@@ -963,123 +958,85 @@
     return data && typeof data === "object" ? data : null;
   }
 
-  function extractTime(data) {
-    if (!data) return NaN;
-    return Number(data.progress ?? data.position);
+  function extractTime(payload) {
+    if (!payload) return NaN;
+    return Number(payload.position ?? payload.progress);
+  }
+
+  function isInViewport(el) {
+    const r = el.getBoundingClientRect();
+    return r.top >= 0 && r.bottom <= window.innerHeight;
   }
 
   // ----------------------------
-  // Highlighting
+  // Highlight logic (single source of truth)
   // ----------------------------
-  let activeEl = null;
+  let activeIndex = -1;
 
-  function setActiveForTime(t, scroll) {
+  function updateHighlight(t) {
     if (!Number.isFinite(t)) return;
 
+    // binary search
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
-      if (paras[mid].t <= t) { idx = mid; lo = mid + 1; }
-      else hi = mid - 1;
+      if (paras[mid].t <= t) {
+        idx = mid;
+        lo = mid + 1;
+      } else {
+        hi = mid - 1;
+      }
     }
 
+    if (idx === activeIndex) return;
+
+    if (activeIndex >= 0) {
+      paras[activeIndex].el.classList.remove("active");
+    }
+
+    activeIndex = idx;
     const el = paras[idx].el;
-    if (el !== activeEl) {
-      activeEl?.classList.remove("active");
-      activeEl = el;
-      el.classList.add("active");
-      if (scroll) el.scrollIntoView({ block: "center", behavior: "smooth" });
+    el.classList.add("active");
+
+    if (!isInViewport(el)) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
-
-  // ----------------------------
-  // State
-  // ----------------------------
-  let isPlaying = false;
-  let lastT = 0;
 
   // ----------------------------
   // Transcript → Player
   // ----------------------------
   paras.forEach(({ el, t }) => {
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      setActiveForTime(t, true);
+    el.addEventListener("click", () => {
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
+      updateHighlight(t); // immediate feedback
     });
   });
 
   // ----------------------------
-  // Player events (ONLY state)
+  // Player → Transcript (polling = authority)
   // ----------------------------
-  window.addEventListener("message", (e) => {
-    if (e.origin !== AC_ORIGIN) return;
-    const msg = parseMsg(e.data);
-    if (!msg?.eventName) return;
-
-    if (msg.eventName === "postmessage:on:play") {
-      isPlaying = true;
-    }
-    if (msg.eventName === "postmessage:on:pause") {
-      isPlaying = false;
-    }
-  });
-
-  // ----------------------------
-  // Authoritative polling loop
-  // ----------------------------
-  setInterval(() => {
-    if (!iframeReady) return;
-    post({ eventName: "postmessage:get:progress" });
-  }, 250);
-
-  // ----------------------------
-  // Poll responses
-  // ----------------------------
-  window.addEventListener("message", (e) => {
+  window.addEventListener("message", e => {
     if (e.origin !== AC_ORIGIN) return;
     const msg = parseMsg(e.data);
     if (!msg) return;
 
-    if (
-      msg.eventName === "postmessage:get:progress" ||
-      msg.eventName === "postmessage:on:progress"
-    ) {
+    if (msg.eventName === "postmessage:get:progress") {
       const t = extractTime(msg.data);
-      if (Number.isFinite(t)) {
-        const jumped = Math.abs(t - lastT) > 1.5;
-        lastT = t;
-        setActiveForTime(t, jumped || !isPlaying);
-      }
+      updateHighlight(t);
     }
   });
 
-  // ----------------------------
-  // Sticky spacer (unchanged)
-  // ----------------------------
-  if (wrapper && sentinel && "IntersectionObserver" in window) {
-    let h = null;
-    const obs = new IntersectionObserver(([e]) => {
-      const sticky = !e.isIntersecting;
-      wrapper.classList.toggle("sticky", sticky);
-      if (sticky && h === null) {
-        h = wrapper.offsetHeight;
-        sentinel.style.height = h + "px";
-      }
-    });
-    obs.observe(sentinel);
-  }
+  setInterval(() => {
+    post({ eventName: "postmessage:get:progress" });
+  }, POLL_MS);
 
-  setActiveForTime(0, false);
 })();
 </script>
-
-
-
-
 </body>
 </html>
+
 
 
 
