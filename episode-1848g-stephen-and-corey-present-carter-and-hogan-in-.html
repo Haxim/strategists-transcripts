@@ -1003,7 +1003,7 @@
 
   let localSeekInFlight = false;
   let playerPrimed = false;
-  let pendingSeekTime = null; // 👈 deferred seek for first interaction
+  let pendingSeekTime = null;
 
   function startClockAt(t) {
     lastKnownTime = t;
@@ -1024,14 +1024,26 @@
   function syncToRemote(t) {
     if (!Number.isFinite(t)) return;
 
-    // Ignore backward jumps unless user initiated seek
+    const delta = Math.abs(t - lastKnownTime);
+
+    // ----------------------------
+    // PLAYER SCRUB (authoritative)
+    // ----------------------------
+    if (!localSeekInFlight && delta > 4.0) {
+      // User scrubbed in Acast UI
+      suppressAutoScroll = false;
+      startClockAt(t);
+      return;
+    }
+
+    // Ignore backward jumps unless we caused them
     if (!localSeekInFlight && t < lastKnownTime - 1.5) return;
 
-    // Ignore bogus reset-to-zero after playback has begun
+    // Ignore bogus reset-to-zero
     if (lastKnownTime > 10 && t < 1) return;
 
-    const drift = Math.abs(t - lastKnownTime);
-    if (drift > 2) {
+    // Gentle drift correction
+    if (delta > 2.0) {
       startClockAt(t);
     } else {
       lastKnownTime = lastKnownTime * 0.7 + t * 0.3;
@@ -1057,15 +1069,12 @@
       suppressAutoScroll = true;
       localSeekInFlight = true;
 
-      // Update highlight immediately
       startClockAt(t);
 
       if (!playerPrimed) {
-        // First interaction: play only, defer seek
         pendingSeekTime = t;
         post({ eventName: "postmessage:do:play" });
       } else {
-        // Normal case
         post({ eventName: "postmessage:do:seek", data: { position: t } });
         post({ eventName: "postmessage:do:play" });
       }
@@ -1092,14 +1101,11 @@
       playerPrimed = true;
       resumeClock();
 
-      // 🔑 Apply deferred seek exactly once
       if (pendingSeekTime != null) {
         const t = pendingSeekTime;
         pendingSeekTime = null;
 
         post({ eventName: "postmessage:do:seek", data: { position: t } });
-
-        // Safety retry for first-play quirk
         setTimeout(() => {
           post({ eventName: "postmessage:do:seek", data: { position: t } });
         }, 200);
@@ -1147,7 +1153,6 @@
     obs.observe(sentinel);
   }
 
-  // Initial highlight
   setActiveForTime(0);
 })();
 </script>
@@ -1155,8 +1160,10 @@
 
 
 
+
 </body>
 </html>
+
 
 
 
