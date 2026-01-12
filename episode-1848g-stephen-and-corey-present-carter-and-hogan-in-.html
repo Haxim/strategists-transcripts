@@ -1044,12 +1044,8 @@
     const msg = parseMsg(e.data);
     if (!msg?.eventName) return;
 
-    if (
-      msg.eventName === "postmessage:get:progress" ||
-      msg.eventName === "postmessage:on:progress" ||
-      msg.eventName === "postmessage:on:seek"
-    ) {
-      const t = normalizeToSeconds(msg.data);
+    const t = normalizeToSeconds(msg.data);
+    if (Number.isFinite(t)) {
       updateHighlight(t);
     }
   });
@@ -1083,6 +1079,7 @@
 
 </body>
 </html>
+
 
 
 
