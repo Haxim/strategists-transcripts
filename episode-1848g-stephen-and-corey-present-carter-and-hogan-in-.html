@@ -955,12 +955,9 @@
   }
 
   // ----------------------------
-  // Player state (CONTENT vs AD)
+  // Duration + robust time inference
   // ----------------------------
-  let mode = "unknown"; // "content" | "ad"
   let durationSec = NaN;
-  let lastProgress = NaN;
-  let lastDuration = NaN;
 
   function extractDuration(data) {
     const d =
@@ -968,29 +965,175 @@
       data?.length ??
       data?.episodeDuration ??
       data?.audioDuration;
-
     const n = Number(d);
     return Number.isFinite(n) ? n : NaN;
   }
 
-  function classify(progress, duration) {
-    if (!Number.isFinite(progress) || !Number.isFinite(duration)) {
-      return "ad";
+  // Content clock calibration:
+  // We'll lock onto whichever transform best matches a known seek target.
+  // transform = { field: "position"|"progress", unit:"seconds"|"fraction"|"percent" }
+  let contentTransform = null;
+
+  // Freeze logic: while in ad/transition, ignore updates.
+  let freezeUntil = 0;
+
+  // We keep last good content time to score candidates + prevent nonsense jumps.
+  let lastContentTime = NaN;
+
+  // When user clicks transcript we set a pending seek target to calibrate units.
+  let pendingSeek = null; // { t:number, expires:number }
+
+  function nowMs() { return Date.now(); }
+
+  function isFinitePos(x) {
+    return Number.isFinite(x) && x >= 0;
+  }
+
+  function buildCandidates(data) {
+    const cands = [];
+    const d = durationSec;
+
+    const pos = Number(data?.position);
+    const prog = Number(data?.progress);
+
+    // helper
+    function add(field, raw, unit, t) {
+      if (!Number.isFinite(t)) return;
+      cands.push({ field, raw, unit, t });
     }
 
-    if (Number.isFinite(lastDuration) && Math.abs(duration - lastDuration) > 1) {
-      return "ad";
+    // position candidates
+    if (isFinitePos(pos)) {
+      add("position", pos, "seconds", pos);
+      if (Number.isFinite(d) && d > 0) {
+        if (pos <= 1) add("position", pos, "fraction", pos * d);
+        if (pos <= 100) add("position", pos, "percent", (pos / 100) * d);
+      }
     }
 
-    if (Number.isFinite(lastProgress) && progress < lastProgress - 0.5) {
-      return "ad";
+    // progress candidates
+    if (isFinitePos(prog)) {
+      add("progress", prog, "seconds", prog);
+      if (Number.isFinite(d) && d > 0) {
+        if (prog <= 1) add("progress", prog, "fraction", prog * d);
+        if (prog <= 100) add("progress", prog, "percent", (prog / 100) * d);
+      }
     }
 
-    if (progress > 1.5) {
-      return "content";
+    return cands;
+  }
+
+  function clamp01(x) {
+    if (!Number.isFinite(x)) return NaN;
+    return Math.max(0, Math.min(1, x));
+  }
+
+  function isPlausibleContentTime(t) {
+    if (!Number.isFinite(t) || t < 0) return false;
+    if (Number.isFinite(durationSec) && durationSec > 0) {
+      // allow a tiny overshoot due to rounding
+      return t <= durationSec + 2;
+    }
+    // if no duration, still accept as long as not insane
+    return t <= 24 * 60 * 60;
+  }
+
+  function pickClosestTo(targetT, cands) {
+    let best = null;
+    let bestScore = Infinity;
+    for (const c of cands) {
+      if (!isPlausibleContentTime(c.t)) continue;
+      const score = Math.abs(c.t - targetT);
+      if (score < bestScore) {
+        bestScore = score;
+        best = c;
+      }
+    }
+    return best;
+  }
+
+  function pickBestForPlayback(cands) {
+    // Prefer candidates that are plausible and close to lastContentTime.
+    // If we don't have lastContentTime yet, prefer the largest plausible time
+    // (because fraction/percent early can otherwise look like tiny seconds).
+    let best = null;
+    let bestScore = Infinity;
+
+    if (!Number.isFinite(lastContentTime)) {
+      let bestT = -1;
+      for (const c of cands) {
+        if (!isPlausibleContentTime(c.t)) continue;
+        if (c.t > bestT) { bestT = c.t; best = c; }
+      }
+      return best;
     }
 
-    return mode;
+    for (const c of cands) {
+      if (!isPlausibleContentTime(c.t)) continue;
+
+      const delta = c.t - lastContentTime;
+
+      // Heavily penalize huge jumps; mild penalty for small backwards drift.
+      let score = Math.abs(delta);
+      if (delta < -0.75) score += 20;        // backwards jump
+      if (Math.abs(delta) > 120) score += 200; // giant jump (likely ad/transition/unit mismatch)
+
+      // Slight preference for using a locked transform if it matches
+      if (contentTransform &&
+          c.field === contentTransform.field &&
+          c.unit === contentTransform.unit) {
+        score -= 5;
+      }
+
+      if (score < bestScore) {
+        bestScore = score;
+        best = c;
+      }
+    }
+
+    return best;
+  }
+
+  function timeFromLockedTransform(data) {
+    if (!contentTransform) return NaN;
+    const raw = Number(data?.[contentTransform.field]);
+    if (!isFinitePos(raw)) return NaN;
+
+    if (contentTransform.unit === "seconds") return raw;
+
+    if (!Number.isFinite(durationSec) || durationSec <= 0) return NaN;
+
+    if (contentTransform.unit === "fraction") return raw * durationSec;
+    if (contentTransform.unit === "percent") return (raw / 100) * durationSec;
+
+    return NaN;
+  }
+
+  function shouldFreezeBecauseAdOrTransition(data, inferredT) {
+    // Hard freeze if duration missing/NaN (seen during transitions / ads).
+    if (!Number.isFinite(durationSec) || durationSec <= 0) return true;
+
+    // If we can't infer a plausible content time, freeze.
+    if (!isPlausibleContentTime(inferredT)) return true;
+
+    // If time would leap wildly while raw values are tiny, that's usually ad mode.
+    if (Number.isFinite(lastContentTime)) {
+      const delta = inferredT - lastContentTime;
+      const prog = Number(data?.progress);
+      const pos  = Number(data?.position);
+
+      const rawSmall =
+        (isFinitePos(prog) && prog <= 1.25) ||
+        (isFinitePos(pos) && pos <= 1.25);
+
+      if (rawSmall && Math.abs(delta) > 60) return true;
+    }
+
+    return false;
+  }
+
+  function enterFreeze(ms = 2500) {
+    freezeUntil = Math.max(freezeUntil, nowMs() + ms);
   }
 
   // ----------------------------
@@ -1031,9 +1174,16 @@
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
-      mode = "content"; // explicit user intent
+      // set pending seek to calibrate transform on the next progress messages
+      pendingSeek = { t, expires: nowMs() + 4000 };
+      // we consider this content intent; also unfreeze immediately
+      freezeUntil = 0;
+
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
+
+      // Optimistic UI update to feel snappy
+      lastContentTime = t;
       updateHighlight(t);
     });
   });
@@ -1046,41 +1196,77 @@
     const msg = parseMsg(e.data);
     if (!msg?.eventName) return;
 
-    if (
-      msg.eventName === "postmessage:get:progress" ||
-      msg.eventName === "postmessage:on:progress" ||
-      msg.eventName === "postmessage:on:seek"
-    ) {
-      const progress = Number(msg.data?.progress);
-      const duration = extractDuration(msg.data);
-
-      if (Number.isFinite(duration)) {
-        durationSec = duration;
+    // Keep duration updated wherever we can
+    const d = extractDuration(msg.data);
+    if (Number.isFinite(d) && d > 0) {
+      // If duration changes significantly, that's likely ad/transition: freeze briefly.
+      if (Number.isFinite(durationSec) && Math.abs(d - durationSec) > 1) {
+        enterFreeze(3000);
+        // Also reset transform because timeline likely changed.
+        contentTransform = null;
       }
+      durationSec = d;
+    } else {
+      // Missing duration during load/ads: freeze.
+      if (
+        msg.eventName === "postmessage:on:load" ||
+        msg.eventName === "postmessage:on:play" ||
+        msg.eventName === "postmessage:on:pause" ||
+        msg.eventName === "postmessage:get:duration"
+      ) {
+        enterFreeze(2000);
+      }
+    }
 
-      const nextMode = classify(progress, durationSec);
-      mode = nextMode;
-
-      lastProgress = progress;
-      lastDuration = durationSec;
-
-      // 🔒 FREEZE transcript during ads
-      if (mode !== "content") return;
-
-      // In content mode, progress === seconds
-      updateHighlight(progress);
+    // Only these events should drive transcript position
+    if (
+      msg.eventName !== "postmessage:get:progress" &&
+      msg.eventName !== "postmessage:on:progress" &&
+      msg.eventName !== "postmessage:on:seek"
+    ) {
       return;
     }
 
-    if (msg.eventName === "postmessage:get:duration") {
-      const d = extractDuration(msg.data);
-      if (Number.isFinite(d)) {
-        durationSec = d;
-        lastDuration = d;
+    // If we are currently frozen (ads), ignore updates entirely
+    if (nowMs() < freezeUntil) return;
+
+    const data = msg.data || {};
+
+    // If we recently sought via transcript click, calibrate which unit/field matches that seek.
+    if (pendingSeek && nowMs() <= pendingSeek.expires && Number.isFinite(durationSec) && durationSec > 0) {
+      const cands = buildCandidates(data);
+      const best = pickClosestTo(pendingSeek.t, cands);
+
+      if (best) {
+        contentTransform = { field: best.field, unit: best.unit };
+        pendingSeek = null;
       }
+      // Even if we didn't lock yet, keep going with inference below.
+    } else if (pendingSeek && nowMs() > pendingSeek.expires) {
+      pendingSeek = null;
     }
+
+    // Try to compute content time
+    let t = timeFromLockedTransform(data);
+
+    if (!Number.isFinite(t)) {
+      const cands = buildCandidates(data);
+      const best = pickBestForPlayback(cands);
+      if (best) t = best.t;
+    }
+
+    // Decide if we should freeze (ad/transition) instead of updating transcript
+    if (shouldFreezeBecauseAdOrTransition(data, t)) {
+      enterFreeze(2500);
+      return;
+    }
+
+    // Update transcript
+    lastContentTime = t;
+    updateHighlight(t);
   });
 
+  // Polling stays the authority (unchanged)
   setInterval(() => {
     post({ eventName: "postmessage:get:duration" });
     post({ eventName: "postmessage:get:progress" });
@@ -1126,13 +1312,9 @@
 </script>
 
 
-
-
-
-
-
 </body>
 </html>
+
 
 
 
