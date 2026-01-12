@@ -955,9 +955,12 @@
   }
 
   // ----------------------------
-  // Acast time normalization
+  // Player state (CONTENT vs AD)
   // ----------------------------
+  let mode = "unknown"; // "content" | "ad"
   let durationSec = NaN;
+  let lastProgress = NaN;
+  let lastDuration = NaN;
 
   function extractDuration(data) {
     const d =
@@ -970,30 +973,24 @@
     return Number.isFinite(n) ? n : NaN;
   }
 
-  function normalizeToSeconds(data) {
-    if (!data) return NaN;
-
-    const d = extractDuration(data);
-    if (Number.isFinite(d) && d > 0) durationSec = d;
-
-    const pos = Number(data.position);
-    if (Number.isFinite(pos) && pos >= 0) {
-      if (Number.isFinite(durationSec) && durationSec > 0) {
-        if (pos <= 1) return pos * durationSec;
-        if (pos <= 100) return (pos / 100) * durationSec;
-      }
-      return pos;
+  function classify(progress, duration) {
+    if (!Number.isFinite(progress) || !Number.isFinite(duration)) {
+      return "ad";
     }
 
-    const prog = Number(data.progress);
-    if (!Number.isFinite(prog) || prog < 0) return NaN;
-
-    if (Number.isFinite(durationSec) && durationSec > 0) {
-      if (prog <= 1) return prog * durationSec;
-      if (prog <= 100) return (prog / 100) * durationSec;
+    if (Number.isFinite(lastDuration) && Math.abs(duration - lastDuration) > 1) {
+      return "ad";
     }
 
-    return prog;
+    if (Number.isFinite(lastProgress) && progress < lastProgress - 0.5) {
+      return "ad";
+    }
+
+    if (progress > 1.5) {
+      return "content";
+    }
+
+    return mode;
   }
 
   // ----------------------------
@@ -1034,6 +1031,7 @@
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
+      mode = "content"; // explicit user intent
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
       updateHighlight(t);
@@ -1041,31 +1039,45 @@
   });
 
   // ----------------------------
-  // Player -> Transcript (polling is authority)
+  // Player -> Transcript
   // ----------------------------
   window.addEventListener("message", e => {
     if (e.origin !== AC_ORIGIN) return;
     const msg = parseMsg(e.data);
     if (!msg?.eventName) return;
 
-    if (msg.eventName === "postmessage:get:progress") {
-      const t = normalizeToSeconds(msg.data);
-      updateHighlight(t);
-      return;
-    }
-
     if (
+      msg.eventName === "postmessage:get:progress" ||
       msg.eventName === "postmessage:on:progress" ||
       msg.eventName === "postmessage:on:seek"
     ) {
-      const t = normalizeToSeconds(msg.data);
-      updateHighlight(t);
+      const progress = Number(msg.data?.progress);
+      const duration = extractDuration(msg.data);
+
+      if (Number.isFinite(duration)) {
+        durationSec = duration;
+      }
+
+      const nextMode = classify(progress, durationSec);
+      mode = nextMode;
+
+      lastProgress = progress;
+      lastDuration = durationSec;
+
+      // 🔒 FREEZE transcript during ads
+      if (mode !== "content") return;
+
+      // In content mode, progress === seconds
+      updateHighlight(progress);
       return;
     }
 
     if (msg.eventName === "postmessage:get:duration") {
       const d = extractDuration(msg.data);
-      if (Number.isFinite(d) && d > 0) durationSec = d;
+      if (Number.isFinite(d)) {
+        durationSec = d;
+        lastDuration = d;
+      }
     }
   });
 
@@ -1074,19 +1086,17 @@
     post({ eventName: "postmessage:get:progress" });
   }, POLL_MS);
 
-  // ============================================================
-  // ADDITION: Player follows you down the page (RESTORED SNAP)
-  // ============================================================
+  // ----------------------------
+  // Sticky player (unchanged)
+  // ----------------------------
   const placeholder = document.createElement("div");
   const rect = iframe.getBoundingClientRect();
   placeholder.style.height = rect.height + "px";
   placeholder.style.display = "none";
   iframe.parentNode.insertBefore(placeholder, iframe);
 
-  // 🔑 FIX: true document Y position of player
   const stickPoint = rect.top + window.scrollY;
   const UNSTICK_BUFFER = 4;
-
   let isSticky = false;
 
   function onScroll() {
@@ -1120,8 +1130,10 @@
 
 
 
+
 </body>
 </html>
+
 
 
 
