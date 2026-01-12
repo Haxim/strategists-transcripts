@@ -1002,7 +1002,8 @@
   let lastTick = performance.now();
 
   let localSeekInFlight = false;
-  let playerPrimed = false; // 👈 THIS IS THE KEY
+  let playerPrimed = false;
+  let pendingSeekTime = null; // 👈 deferred seek for first interaction
 
   function startClockAt(t) {
     lastKnownTime = t;
@@ -1023,8 +1024,10 @@
   function syncToRemote(t) {
     if (!Number.isFinite(t)) return;
 
-    // 🚫 Ignore Acast reset-to-zero unless we explicitly sought
+    // Ignore backward jumps unless user initiated seek
     if (!localSeekInFlight && t < lastKnownTime - 1.5) return;
+
+    // Ignore bogus reset-to-zero after playback has begun
     if (lastKnownTime > 10 && t < 1) return;
 
     const drift = Math.abs(t - lastKnownTime);
@@ -1035,6 +1038,7 @@
     }
   }
 
+  // Advance local clock
   setInterval(() => {
     if (!isPlaying) return;
     const now = performance.now();
@@ -1044,7 +1048,7 @@
   }, 200);
 
   // ----------------------------
-  // Transcript click → PRIME → SEEK
+  // Transcript click → play or seek
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", (ev) => {
@@ -1053,17 +1057,15 @@
       suppressAutoScroll = true;
       localSeekInFlight = true;
 
+      // Update highlight immediately
       startClockAt(t);
 
-      // 🔑 First interaction: prime playback
       if (!playerPrimed) {
+        // First interaction: play only, defer seek
+        pendingSeekTime = t;
         post({ eventName: "postmessage:do:play" });
-
-        setTimeout(() => {
-          post({ eventName: "postmessage:do:seek", data: { position: t } });
-          playerPrimed = true;
-        }, 120);
       } else {
+        // Normal case
         post({ eventName: "postmessage:do:seek", data: { position: t } });
         post({ eventName: "postmessage:do:play" });
       }
@@ -1089,6 +1091,19 @@
     if (eventName === "postmessage:on:play") {
       playerPrimed = true;
       resumeClock();
+
+      // 🔑 Apply deferred seek exactly once
+      if (pendingSeekTime != null) {
+        const t = pendingSeekTime;
+        pendingSeekTime = null;
+
+        post({ eventName: "postmessage:do:seek", data: { position: t } });
+
+        // Safety retry for first-play quirk
+        setTimeout(() => {
+          post({ eventName: "postmessage:do:seek", data: { position: t } });
+        }, 200);
+      }
     }
 
     if (eventName === "postmessage:on:pause") {
@@ -1132,14 +1147,17 @@
     obs.observe(sentinel);
   }
 
+  // Initial highlight
   setActiveForTime(0);
 })();
 </script>
 
 
 
+
 </body>
 </html>
+
 
 
 
