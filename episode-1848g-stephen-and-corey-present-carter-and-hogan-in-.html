@@ -925,17 +925,13 @@
 (() => {
   const AC_ORIGIN = "https://embed.acast.com";
   const POLL_MS = 300;
-  const USER_SCROLL_GRACE_MS = 1500;
 
-  const iframe     = document.getElementById("acast-player");
+  const iframe = document.getElementById("acast-player");
   const transcript = document.getElementById("transcript");
-  const wrapper    = document.getElementById("player-wrapper");
-  const sentinel   = document.getElementById("player-sentinel");
-
   if (!iframe || !transcript) return;
 
   // ----------------------------
-  // Transcript index
+  // Build transcript index
   // ----------------------------
   const paras = Array.from(transcript.querySelectorAll("p[data-start]"))
     .map(p => ({ el: p, t: Number(p.dataset.start) }))
@@ -959,50 +955,67 @@
   }
 
   // ----------------------------
-  // Time normalization
+  // Acast time normalization
   // ----------------------------
   let durationSec = NaN;
+
+  function extractDuration(data) {
+    // Different embeds use different keys; keep this loose.
+    const d =
+      data?.duration ??
+      data?.length ??
+      data?.episodeDuration ??
+      data?.audioDuration;
+
+    const n = Number(d);
+    return Number.isFinite(n) ? n : NaN;
+  }
 
   function normalizeToSeconds(data) {
     if (!data) return NaN;
 
-    if (Number.isFinite(data.duration)) {
-      durationSec = Number(data.duration);
+    // If we get a duration in any payload, store it.
+    const d = extractDuration(data);
+    if (Number.isFinite(d) && d > 0) durationSec = d;
+
+    // Prefer "position" as the most likely "seconds" field.
+    const pos = Number(data.position);
+    if (Number.isFinite(pos) && pos >= 0) {
+      // If it looks like a percent/fraction and we have a duration, convert.
+      if (Number.isFinite(durationSec) && durationSec > 0) {
+        if (pos <= 1) return pos * durationSec;         // fraction 0..1
+        if (pos <= 100) return (pos / 100) * durationSec; // percent 0..100
+      }
+      return pos; // assume seconds
     }
 
-    const raw = Number(data.position ?? data.progress);
-    if (!Number.isFinite(raw)) return NaN;
+    // Otherwise fall back to progress
+    const prog = Number(data.progress);
+    if (!Number.isFinite(prog) || prog < 0) return NaN;
 
     if (Number.isFinite(durationSec) && durationSec > 0) {
-      if (raw <= 1)   return raw * durationSec;          // fraction
-      if (raw <= 100) return (raw / 100) * durationSec;  // percent
+      if (prog <= 1) return prog * durationSec;           // fraction 0..1
+      if (prog <= 100) return (prog / 100) * durationSec; // percent 0..100
     }
 
-    return raw; // assume seconds
+    // Last resort: treat as seconds
+    return prog;
   }
-
-  // ----------------------------
-  // Scroll intent detection
-  // ----------------------------
-  let userScrolling = false;
-  let scrollTimer = null;
-
-  window.addEventListener("scroll", () => {
-    userScrolling = true;
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => {
-      userScrolling = false;
-    }, USER_SCROLL_GRACE_MS);
-  }, { passive: true });
 
   // ----------------------------
   // Highlight logic
   // ----------------------------
   let activeIndex = -1;
 
+  function isInViewport(el) {
+    const r = el.getBoundingClientRect();
+    return r.top >= 0 && r.bottom <= window.innerHeight;
+  }
+
   function updateHighlight(t) {
     if (!Number.isFinite(t)) return;
 
+    // binary search: last start <= t
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -1012,73 +1025,73 @@
 
     if (idx === activeIndex) return;
 
-    if (activeIndex >= 0) {
-      paras[activeIndex].el.classList.remove("active");
-    }
-
+    if (activeIndex >= 0) paras[activeIndex].el.classList.remove("active");
     activeIndex = idx;
+
     const el = paras[idx].el;
     el.classList.add("active");
 
-    if (!userScrolling) {
+    // Only scroll if it's off-screen (don’t fight the user)
+    if (!isInViewport(el)) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
   // ----------------------------
-  // Transcript → Player
+  // Transcript -> Player
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
-      updateHighlight(t);
+      updateHighlight(t); // immediate feedback
     });
   });
 
   // ----------------------------
-  // Player → Transcript (polling)
+  // Player -> Transcript (polling is authority)
   // ----------------------------
   window.addEventListener("message", e => {
     if (e.origin !== AC_ORIGIN) return;
     const msg = parseMsg(e.data);
     if (!msg?.eventName) return;
 
-    const t = normalizeToSeconds(msg.data);
-    if (Number.isFinite(t)) {
+    // Many embeds reply to get:progress with eventName "postmessage:get:progress"
+    if (msg.eventName === "postmessage:get:progress") {
+      const t = normalizeToSeconds(msg.data);
       updateHighlight(t);
+      return;
+    }
+
+    // If your embed happens to push progress/seek events, accept them too
+    if (msg.eventName === "postmessage:on:progress" || msg.eventName === "postmessage:on:seek") {
+      const t = normalizeToSeconds(msg.data);
+      updateHighlight(t);
+      return;
+    }
+
+    // Some embeds may respond to get:duration; capture it if so.
+    if (msg.eventName === "postmessage:get:duration") {
+      const d = extractDuration(msg.data);
+      if (Number.isFinite(d) && d > 0) durationSec = d;
     }
   });
 
+  // Ask for duration occasionally (harmless if unsupported).
+  // Then poll progress as the authoritative clock.
   setInterval(() => {
+    post({ eventName: "postmessage:get:duration" });
     post({ eventName: "postmessage:get:progress" });
   }, POLL_MS);
-
-  // ----------------------------
-  // Sticky player (clean + isolated)
-  // ----------------------------
-  if (wrapper && sentinel && "IntersectionObserver" in window) {
-    let spacerHeight = null;
-
-    const obs = new IntersectionObserver(([entry]) => {
-      const sticky = !entry.isIntersecting;
-      wrapper.classList.toggle("sticky", sticky);
-
-      if (sticky && spacerHeight === null) {
-        spacerHeight = wrapper.offsetHeight;
-        sentinel.style.height = spacerHeight + "px";
-      }
-    });
-
-    obs.observe(sentinel);
-  }
 
 })();
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
