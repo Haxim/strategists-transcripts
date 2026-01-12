@@ -925,15 +925,15 @@
 (function () {
   const AC_ORIGIN = "https://embed.acast.com";
 
-  const iframe = document.getElementById("acast-player");
+  const iframe   = document.getElementById("acast-player");
   const transcript = document.getElementById("transcript");
-  const wrapper = document.getElementById("player-wrapper");
+  const wrapper  = document.getElementById("player-wrapper");
   const sentinel = document.getElementById("player-sentinel");
 
   if (!iframe || !transcript) return;
 
   // ----------------------------
-  // Transcript elements (SORTED!)
+  // Transcript paragraphs (sorted)
   // ----------------------------
   const paras = Array.from(
     transcript.querySelectorAll("p[data-start]")
@@ -942,11 +942,22 @@
   );
 
   // ----------------------------
-  // Messaging helpers
+  // iframe readiness + messaging
   // ----------------------------
+  let iframeReady = false;
+
   function post(msg) {
-    iframe.contentWindow?.postMessage(JSON.stringify(msg), AC_ORIGIN);
+    if (!iframeReady) return;
+    iframe.contentWindow.postMessage(
+      JSON.stringify(msg),
+      AC_ORIGIN
+    );
   }
+
+  iframe.addEventListener("load", () => {
+    iframeReady = true;
+    post({ eventName: "postmessage:do:load" });
+  });
 
   function parseMsg(data) {
     if (!data) return null;
@@ -958,7 +969,7 @@
   }
 
   // ----------------------------
-  // Highlight logic
+  // Highlighting logic
   // ----------------------------
   let activeEl = null;
   let suppressAutoScroll = false;
@@ -988,7 +999,7 @@
   }
 
   // ----------------------------
-  // Local playback clock (KEY FIX)
+  // Local playback clock (authoritative)
   // ----------------------------
   let isPlaying = false;
   let lastKnownTime = 0;
@@ -1005,7 +1016,6 @@
     isPlaying = false;
   }
 
-  // Advance time locally
   setInterval(() => {
     if (!isPlaying) return;
 
@@ -1036,7 +1046,7 @@
   });
 
   // ----------------------------
-  // Player messages (best-effort)
+  // Player messages (best-effort sync)
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
@@ -1046,6 +1056,11 @@
 
     const { eventName, data } = msg;
 
+    if (eventName === "postmessage:on:pause") {
+      stopClock();
+      return;
+    }
+
     if (
       eventName === "postmessage:get:progress" ||
       eventName === "postmessage:on:progress"
@@ -1053,18 +1068,9 @@
       const t = data?.progress ?? data?.position;
       if (t != null) startClock(t);
     }
-
-    if (eventName === "postmessage:on:pause") {
-      stopClock();
-    }
   });
 
-  // ----------------------------
-  // Kick player + initial sync
-  // ----------------------------
-  post({ eventName: "postmessage:do:load" });
-
-  // Occasional resync (harmless if ignored)
+  // Occasional resync (safe even if ignored)
   setInterval(() => {
     post({ eventName: "postmessage:get:progress" });
   }, 5000);
@@ -1086,5 +1092,7 @@
 </script>
 
 
+
 </body>
 </html>
+
