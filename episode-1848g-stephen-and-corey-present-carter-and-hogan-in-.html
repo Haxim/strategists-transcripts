@@ -943,11 +943,9 @@
   if (!paras.length) return;
 
   // ----------------------------
-  // Messaging
+  // Messaging helpers
   // ----------------------------
   let iframeReady = false;
-  let playerPrimed = false;
-  let pendingSeek = null;
 
   iframe.addEventListener("load", () => {
     iframeReady = true;
@@ -966,21 +964,17 @@
   }
 
   function extractTime(data) {
-    return Number(data?.progress ?? data?.position);
+    if (!data) return NaN;
+    return Number(data.progress ?? data.position);
   }
 
   // ----------------------------
-  // Highlighting (monotonic)
+  // Highlighting
   // ----------------------------
   let activeEl = null;
-  let highlightTime = 0; // authoritative highlight clock
 
-  function setActiveForTime(t, { allowBackward = false, scroll = false } = {}) {
+  function setActiveForTime(t, scroll) {
     if (!Number.isFinite(t)) return;
-
-    if (!allowBackward && t < highlightTime) return;
-
-    highlightTime = t;
 
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
@@ -990,88 +984,79 @@
     }
 
     const el = paras[idx].el;
-
     if (el !== activeEl) {
       activeEl?.classList.remove("active");
       activeEl = el;
       el.classList.add("active");
-    }
-
-    if (scroll && !wrapper?.classList.contains("sticky")) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (scroll) el.scrollIntoView({ block: "center", behavior: "smooth" });
     }
   }
 
   // ----------------------------
-  // Transcript → player (explicit intent)
+  // State
+  // ----------------------------
+  let isPlaying = false;
+  let lastT = 0;
+
+  // ----------------------------
+  // Transcript → Player
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", (e) => {
-      e.preventDefault?.();
-
-      // Explicit user intent: backward allowed
-      setActiveForTime(t, { allowBackward: true, scroll: true });
-
-      if (!playerPrimed) {
-        pendingSeek = t;
-        post({ eventName: "postmessage:do:play" });
-      } else {
-        post({ eventName: "postmessage:do:seek", data: { position: t } });
-        post({ eventName: "postmessage:do:play" });
-      }
+      e.preventDefault();
+      setActiveForTime(t, true);
+      post({ eventName: "postmessage:do:seek", data: { position: t } });
+      post({ eventName: "postmessage:do:play" });
     });
   });
 
   // ----------------------------
-  // Player push events (best-effort only)
+  // Player events (ONLY state)
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
-
     const msg = parseMsg(e.data);
     if (!msg?.eventName) return;
 
-    const { eventName, data } = msg;
-
-    if (eventName === "postmessage:on:play") {
-      playerPrimed = true;
-
-      if (pendingSeek != null) {
-        post({ eventName: "postmessage:do:seek", data: { position: pendingSeek } });
-        pendingSeek = null;
-      }
-      return;
+    if (msg.eventName === "postmessage:on:play") {
+      isPlaying = true;
     }
-
-    if (
-      eventName === "postmessage:on:progress" ||
-      eventName === "postmessage:on:seek"
-    ) {
-      const t = extractTime(data);
-      setActiveForTime(t);
+    if (msg.eventName === "postmessage:on:pause") {
+      isPlaying = false;
     }
   });
 
   // ----------------------------
-  // Polling (authoritative for highlighting)
+  // Authoritative polling loop
   // ----------------------------
   setInterval(() => {
     if (!iframeReady) return;
     post({ eventName: "postmessage:get:progress" });
-  }, 500);
+  }, 250);
 
+  // ----------------------------
+  // Poll responses
+  // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
-
     const msg = parseMsg(e.data);
-    if (msg?.eventName !== "postmessage:get:progress") return;
+    if (!msg) return;
 
-    const t = extractTime(msg.data);
-    setActiveForTime(t);
+    if (
+      msg.eventName === "postmessage:get:progress" ||
+      msg.eventName === "postmessage:on:progress"
+    ) {
+      const t = extractTime(msg.data);
+      if (Number.isFinite(t)) {
+        const jumped = Math.abs(t - lastT) > 1.5;
+        lastT = t;
+        setActiveForTime(t, jumped || !isPlaying);
+      }
+    }
   });
 
   // ----------------------------
-  // Sticky spacer
+  // Sticky spacer (unchanged)
   // ----------------------------
   if (wrapper && sentinel && "IntersectionObserver" in window) {
     let h = null;
@@ -1086,15 +1071,16 @@
     obs.observe(sentinel);
   }
 
-  // Initial state
-  setActiveForTime(0, { allowBackward: true });
+  setActiveForTime(0, false);
 })();
 </script>
 
 
 
+
 </body>
 </html>
+
 
 
 
