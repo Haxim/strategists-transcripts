@@ -933,7 +933,7 @@
   if (!iframe || !transcript) return;
 
   // ----------------------------
-  // Collect transcript paragraphs
+  // Transcript parsing
   // ----------------------------
   const paras = Array.from(transcript.querySelectorAll("p[data-start]"))
     .map(p => ({ el: p, t: parseFloat(p.dataset.start) }))
@@ -943,7 +943,7 @@
   if (!paras.length) return;
 
   // ----------------------------
-  // Messaging (wait for iframe load)
+  // Messaging
   // ----------------------------
   let iframeReady = false;
 
@@ -963,8 +963,7 @@
     if (typeof data === "string") {
       try { return JSON.parse(data); } catch { return null; }
     }
-    if (typeof data === "object") return data;
-    return null;
+    return typeof data === "object" ? data : null;
   }
 
   // ----------------------------
@@ -976,7 +975,6 @@
   function setActiveForTime(t) {
     if (!Number.isFinite(t)) return;
 
-    // binary search for last para with start <= t
     let lo = 0, hi = paras.length - 1, ans = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -991,112 +989,94 @@
     activeEl = el;
     activeEl.classList.add("active");
 
-    if (!suppressAutoScroll) {
-      const r = el.getBoundingClientRect();
-      if (r.top < 80 || r.bottom > window.innerHeight - 40) {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+    if (!suppressAutoScroll && !wrapper?.classList.contains("sticky")) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
   // ----------------------------
-  // Local clock + safe syncing
+  // Local clock (authoritative)
   // ----------------------------
   let isPlaying = false;
   let lastKnownTime = 0;
   let lastTick = performance.now();
 
-  // NEW: guard window after a user seek to ignore bogus 0/backwards progress
-  let userSeekLockUntil = 0;
-  let userSeekTarget = 0;
+  let localSeekInFlight = false;
+  let playerPrimed = false; // 👈 THIS IS THE KEY
 
   function startClockAt(t) {
-    if (!Number.isFinite(t)) return;
     lastKnownTime = t;
     lastTick = performance.now();
     isPlaying = true;
-    setActiveForTime(lastKnownTime);
+    setActiveForTime(t);
   }
 
   function resumeClock() {
     lastTick = performance.now();
     isPlaying = true;
-    setActiveForTime(lastKnownTime);
   }
 
   function pauseClock() {
     isPlaying = false;
   }
 
-  // Sync without oscillation:
-  // - Ignore bogus 0-ish values once we're past the beginning
-  // - Only snap if drift is meaningful
   function syncToRemote(t) {
     if (!Number.isFinite(t)) return;
 
-    const now = performance.now();
-
-    // NEW: right after the user clicks a transcript line, Acast may emit 0 or jump backwards.
-    // Ignore remote values that are far from the user's intended seek target during the lock window.
-    if (now < userSeekLockUntil) {
-      // accept if we're near where we tried to seek; reject obvious "reset to 0" / wrong values
-      if (Math.abs(t - userSeekTarget) > 3.0) return;
-    }
-
-    // Existing protection: if we already have time > 10s, ignore remote times that look like a reset
+    // 🚫 Ignore Acast reset-to-zero unless we explicitly sought
+    if (!localSeekInFlight && t < lastKnownTime - 1.5) return;
     if (lastKnownTime > 10 && t < 1) return;
 
     const drift = Math.abs(t - lastKnownTime);
-    if (drift > 2.0) {
+    if (drift > 2) {
       startClockAt(t);
     } else {
-      // small drift: gently steer
-      lastKnownTime = (lastKnownTime * 0.7) + (t * 0.3);
+      lastKnownTime = lastKnownTime * 0.7 + t * 0.3;
     }
   }
 
-  // Advance local time
   setInterval(() => {
     if (!isPlaying) return;
     const now = performance.now();
-    const delta = (now - lastTick) / 1000;
-    lastKnownTime += delta;
+    lastKnownTime += (now - lastTick) / 1000;
     lastTick = now;
     setActiveForTime(lastKnownTime);
   }, 200);
 
   // ----------------------------
-  // Transcript click → seek
+  // Transcript click → PRIME → SEEK
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", (ev) => {
-      // prevent selection / weirdness; does not affect scrolling
-      try { ev.preventDefault(); } catch {}
+      ev.preventDefault?.();
 
       suppressAutoScroll = true;
+      localSeekInFlight = true;
 
-      // Start highlight immediately
       startClockAt(t);
 
-      // NEW: lock remote sync briefly to stop the "first click resets to 0" highlight jump
-      userSeekTarget = t;
-      userSeekLockUntil = performance.now() + 1500; // 1.5s is enough for Acast to settle
+      // 🔑 First interaction: prime playback
+      if (!playerPrimed) {
+        post({ eventName: "postmessage:do:play" });
 
-      // Seek & play (with a retry — Acast sometimes ignores the first seek on first interaction)
-      post({ eventName: "postmessage:do:seek", data: { position: t } });
-      post({ eventName: "postmessage:do:play" });
-
-      // NEW: retry seek shortly after (very important for the “first click” case)
-      setTimeout(() => {
+        setTimeout(() => {
+          post({ eventName: "postmessage:do:seek", data: { position: t } });
+          playerPrimed = true;
+        }, 120);
+      } else {
         post({ eventName: "postmessage:do:seek", data: { position: t } });
-      }, 250);
+        post({ eventName: "postmessage:do:play" });
+      }
 
-      setTimeout(() => { suppressAutoScroll = false; }, 600);
+      setTimeout(() => {
+        suppressAutoScroll = false;
+        localSeekInFlight = false;
+      }, 800);
     });
   });
 
   // ----------------------------
-  // Listen for Acast events
+  // Acast events
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
@@ -1107,46 +1087,60 @@
     const { eventName, data } = msg;
 
     if (eventName === "postmessage:on:play") {
+      playerPrimed = true;
       resumeClock();
-    } else if (eventName === "postmessage:on:pause") {
+    }
+
+    if (eventName === "postmessage:on:pause") {
       pauseClock();
     }
 
-    // Progress signals (if provided by this embed build)
-    if (eventName === "postmessage:on:progress" || eventName === "postmessage:get:progress") {
+    if (
+      eventName === "postmessage:on:progress" ||
+      eventName === "postmessage:get:progress"
+    ) {
       const t = data?.progress ?? data?.position;
       if (t != null) syncToRemote(Number(t));
     }
   });
 
   // ----------------------------
-  // Safe polling: only used to correct drift / handle player seeks
+  // Drift correction polling
   // ----------------------------
   setInterval(() => {
-    if (!iframeReady) return;
-    post({ eventName: "postmessage:get:progress" });
+    if (iframeReady) {
+      post({ eventName: "postmessage:get:progress" });
+    }
   }, 1500);
 
   // ----------------------------
-  // Sticky player (sentinel spacer)
+  // Sticky spacer (stable)
   // ----------------------------
   if (wrapper && sentinel && "IntersectionObserver" in window) {
+    let stickyHeight = null;
+
     const obs = new IntersectionObserver(([entry]) => {
       const sticky = !entry.isIntersecting;
       wrapper.classList.toggle("sticky", sticky);
-      sentinel.style.height = sticky ? (wrapper.offsetHeight + "px") : "1px";
+
+      if (sticky && stickyHeight === null) {
+        stickyHeight = wrapper.offsetHeight;
+        sentinel.style.height = stickyHeight + "px";
+      }
     });
+
     obs.observe(sentinel);
   }
 
-  // Initial highlight at time 0 so user sees *something* immediately.
   setActiveForTime(0);
 })();
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
