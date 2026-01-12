@@ -965,20 +965,22 @@
     return data && typeof data === "object" ? data : null;
   }
 
-  // Extract time from *any* acast payload shape we've seen
   function extractTime(data) {
-    if (!data) return NaN;
-    const v = data.progress ?? data.position;
-    return Number(v);
+    return Number(data?.progress ?? data?.position);
   }
 
   // ----------------------------
-  // Highlighting
+  // Highlighting (monotonic)
   // ----------------------------
   let activeEl = null;
+  let highlightTime = 0; // authoritative highlight clock
 
-  function setActiveForTime(t, forceScroll) {
+  function setActiveForTime(t, { allowBackward = false, scroll = false } = {}) {
     if (!Number.isFinite(t)) return;
+
+    if (!allowBackward && t < highlightTime) return;
+
+    highlightTime = t;
 
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
@@ -995,28 +997,21 @@
       el.classList.add("active");
     }
 
-    if (forceScroll && !wrapper?.classList.contains("sticky")) {
+    if (scroll && !wrapper?.classList.contains("sticky")) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
   // ----------------------------
-  // State
-  // ----------------------------
-  let isPlaying = false;
-  let lastSeenT = 0;
-
-  // ----------------------------
-  // Transcript → player (works for you already)
+  // Transcript → player (explicit intent)
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", (e) => {
       e.preventDefault?.();
 
-      // highlight immediately
-      setActiveForTime(t, true);
+      // Explicit user intent: backward allowed
+      setActiveForTime(t, { allowBackward: true, scroll: true });
 
-      // first interaction: play first, then seek after on:play
       if (!playerPrimed) {
         pendingSeek = t;
         post({ eventName: "postmessage:do:play" });
@@ -1028,7 +1023,7 @@
   });
 
   // ----------------------------
-  // Player events (push)
+  // Player push events (best-effort only)
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
@@ -1039,7 +1034,6 @@
     const { eventName, data } = msg;
 
     if (eventName === "postmessage:on:play") {
-      isPlaying = true;
       playerPrimed = true;
 
       if (pendingSeek != null) {
@@ -1049,39 +1043,32 @@
       return;
     }
 
-    if (eventName === "postmessage:on:pause") {
-      isPlaying = false;
-      return;
-    }
-
-    // If Acast emits seek/progress, use them (but don't depend on them)
-    if (eventName === "postmessage:on:seek" || eventName === "postmessage:on:progress") {
+    if (
+      eventName === "postmessage:on:progress" ||
+      eventName === "postmessage:on:seek"
+    ) {
       const t = extractTime(data);
-      if (Number.isFinite(t)) {
-        lastSeenT = t;
-        // while playing, don't scroll; while paused/seek, scrolling is fine
-        setActiveForTime(t, !isPlaying);
-      }
-      return;
-    }
-
-    // Some embeds reply to get:progress with eventName "postmessage:get:progress"
-    if (eventName === "postmessage:get:progress") {
-      const t = extractTime(data);
-      if (Number.isFinite(t)) {
-        lastSeenT = t;
-        setActiveForTime(t, false);
-      }
+      setActiveForTime(t);
     }
   });
 
   // ----------------------------
-  // Polling: authoritative for highlighting
+  // Polling (authoritative for highlighting)
   // ----------------------------
   setInterval(() => {
     if (!iframeReady) return;
     post({ eventName: "postmessage:get:progress" });
-  }, 350);
+  }, 500);
+
+  window.addEventListener("message", (e) => {
+    if (e.origin !== AC_ORIGIN) return;
+
+    const msg = parseMsg(e.data);
+    if (msg?.eventName !== "postmessage:get:progress") return;
+
+    const t = extractTime(msg.data);
+    setActiveForTime(t);
+  });
 
   // ----------------------------
   // Sticky spacer
@@ -1099,13 +1086,16 @@
     obs.observe(sentinel);
   }
 
-  setActiveForTime(0, false);
+  // Initial state
+  setActiveForTime(0, { allowBackward: true });
 })();
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
