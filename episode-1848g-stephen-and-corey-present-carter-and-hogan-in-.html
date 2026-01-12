@@ -953,67 +953,94 @@
 
   function post(msg) {
     if (!iframeReady) return;
-    iframe.contentWindow?.postMessage(JSON.stringify(msg), AC_ORIGIN);
+    const w = iframe.contentWindow;
+    if (!w) return;
+    w.postMessage(JSON.stringify(msg), AC_ORIGIN);
   }
 
   function parseMsg(data) {
+    if (!data) return null;
     if (typeof data === "string") {
-      try { return JSON.parse(data); } catch {}
+      try { return JSON.parse(data); } catch { return null; }
     }
-    return data && typeof data === "object" ? data : null;
+    return typeof data === "object" ? data : null;
   }
 
   // ----------------------------
   // Highlighting
   // ----------------------------
   let activeEl = null;
+  let suppressAutoScroll = false;
 
   function setActiveForTime(t) {
     if (!Number.isFinite(t)) return;
 
-    let lo = 0, hi = paras.length - 1, idx = 0;
+    let lo = 0, hi = paras.length - 1, ans = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
-      if (paras[mid].t <= t) { idx = mid; lo = mid + 1; }
+      if (paras[mid].t <= t) { ans = mid; lo = mid + 1; }
       else hi = mid - 1;
     }
 
-    const el = paras[idx].el;
+    const el = paras[ans].el;
     if (el === activeEl) return;
 
-    activeEl?.classList.remove("active");
+    if (activeEl) activeEl.classList.remove("active");
     activeEl = el;
-    el.classList.add("active");
+    activeEl.classList.add("active");
 
-    if (!wrapper?.classList.contains("sticky")) {
-      el.scrollIntoView({ block: "center", behavior: "smooth" });
+    if (!suppressAutoScroll && !wrapper?.classList.contains("sticky")) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
   // ----------------------------
-  // Playback state machine
+  // Local clock (authoritative)
   // ----------------------------
-  const STATE_IDLE = 0;
-  const STATE_STARTING = 1;
-  const STATE_PLAYING = 2;
-
-  let state = STATE_IDLE;
-
+  let isPlaying = false;
   let lastKnownTime = 0;
-  let lastTick = 0;
+  let lastTick = performance.now();
 
-  function enterPlayingAt(t) {
-    state = STATE_PLAYING;
+  let localSeekInFlight = false;
+  let playerPrimed = false;
+  let pendingSeekTime = null; // 👈 deferred seek for first interaction
+
+  function startClockAt(t) {
     lastKnownTime = t;
     lastTick = performance.now();
+    isPlaying = true;
     setActiveForTime(t);
   }
 
-  // ----------------------------
-  // Local clock (PLAYING only)
-  // ----------------------------
+  function resumeClock() {
+    lastTick = performance.now();
+    isPlaying = true;
+  }
+
+  function pauseClock() {
+    isPlaying = false;
+  }
+
+  function syncToRemote(t) {
+    if (!Number.isFinite(t)) return;
+
+    // Ignore backward jumps unless user initiated seek
+    if (!localSeekInFlight && t < lastKnownTime - 1.5) return;
+
+    // Ignore bogus reset-to-zero after playback has begun
+    if (lastKnownTime > 10 && t < 1) return;
+
+    const drift = Math.abs(t - lastKnownTime);
+    if (drift > 2) {
+      startClockAt(t);
+    } else {
+      lastKnownTime = lastKnownTime * 0.7 + t * 0.3;
+    }
+  }
+
+  // Advance local clock
   setInterval(() => {
-    if (state !== STATE_PLAYING) return;
+    if (!isPlaying) return;
     const now = performance.now();
     lastKnownTime += (now - lastTick) / 1000;
     lastTick = now;
@@ -1021,18 +1048,32 @@
   }, 200);
 
   // ----------------------------
-  // Transcript click → seek
+  // Transcript click → play or seek
   // ----------------------------
   paras.forEach(({ el, t }) => {
-    el.addEventListener("click", (e) => {
-      e.preventDefault?.();
+    el.addEventListener("click", (ev) => {
+      ev.preventDefault?.();
 
-      state = STATE_STARTING;
-      lastKnownTime = t;
-      setActiveForTime(t);
+      suppressAutoScroll = true;
+      localSeekInFlight = true;
 
-      post({ eventName: "postmessage:do:play" });
-      post({ eventName: "postmessage:do:seek", data: { position: t } });
+      // Update highlight immediately
+      startClockAt(t);
+
+      if (!playerPrimed) {
+        // First interaction: play only, defer seek
+        pendingSeekTime = t;
+        post({ eventName: "postmessage:do:play" });
+      } else {
+        // Normal case
+        post({ eventName: "postmessage:do:seek", data: { position: t } });
+        post({ eventName: "postmessage:do:play" });
+      }
+
+      setTimeout(() => {
+        suppressAutoScroll = false;
+        localSeekInFlight = false;
+      }, 800);
     });
   });
 
@@ -1041,72 +1082,80 @@
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
+
     const msg = parseMsg(e.data);
-    if (!msg) return;
+    if (!msg || !msg.eventName) return;
 
     const { eventName, data } = msg;
-    const t = data?.progress ?? data?.position;
 
     if (eventName === "postmessage:on:play") {
-      state = STATE_STARTING;
-      return;
+      playerPrimed = true;
+      resumeClock();
+
+      // 🔑 Apply deferred seek exactly once
+      if (pendingSeekTime != null) {
+        const t = pendingSeekTime;
+        pendingSeekTime = null;
+
+        post({ eventName: "postmessage:do:seek", data: { position: t } });
+
+        // Safety retry for first-play quirk
+        setTimeout(() => {
+          post({ eventName: "postmessage:do:seek", data: { position: t } });
+        }, 200);
+      }
     }
 
     if (eventName === "postmessage:on:pause") {
-      state = STATE_IDLE;
-      return;
+      pauseClock();
     }
 
     if (
-      (eventName === "postmessage:on:progress" ||
-       eventName === "postmessage:get:progress") &&
-      Number.isFinite(t)
+      eventName === "postmessage:on:progress" ||
+      eventName === "postmessage:get:progress"
     ) {
-      // Ignore garbage at start
-      if (state === STATE_STARTING) {
-        if (t >= 1) enterPlayingAt(t);
-        return;
-      }
-
-      // PLAYING: treat large jumps as scrubs
-      if (state === STATE_PLAYING) {
-        if (Math.abs(t - lastKnownTime) > 3) {
-          enterPlayingAt(t);
-        }
-      }
+      const t = data?.progress ?? data?.position;
+      if (t != null) syncToRemote(Number(t));
     }
   });
 
   // ----------------------------
-  // Poll progress (lightly)
+  // Drift correction polling
   // ----------------------------
   setInterval(() => {
-    if (iframeReady && state !== STATE_IDLE) {
+    if (iframeReady) {
       post({ eventName: "postmessage:get:progress" });
     }
   }, 1500);
 
   // ----------------------------
-  // Sticky spacer
+  // Sticky spacer (stable)
   // ----------------------------
   if (wrapper && sentinel && "IntersectionObserver" in window) {
-    let h = null;
-    new IntersectionObserver(([e]) => {
-      const sticky = !e.isIntersecting;
+    let stickyHeight = null;
+
+    const obs = new IntersectionObserver(([entry]) => {
+      const sticky = !entry.isIntersecting;
       wrapper.classList.toggle("sticky", sticky);
-      if (sticky && h == null) {
-        h = wrapper.offsetHeight;
-        sentinel.style.height = h + "px";
+
+      if (sticky && stickyHeight === null) {
+        stickyHeight = wrapper.offsetHeight;
+        sentinel.style.height = stickyHeight + "px";
       }
-    }).observe(sentinel);
+    });
+
+    obs.observe(sentinel);
   }
 
+  // Initial highlight
   setActiveForTime(0);
 })();
 </script>
 
+
 </body>
 </html>
+
 
 
 
