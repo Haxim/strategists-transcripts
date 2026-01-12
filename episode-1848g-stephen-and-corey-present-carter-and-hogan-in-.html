@@ -943,7 +943,7 @@
   if (!paras.length) return;
 
   // ----------------------------
-  // Messaging helpers
+  // Messaging
   // ----------------------------
   let iframeReady = false;
 
@@ -967,7 +967,7 @@
   }
 
   // ----------------------------
-  // Highlighting + scroll
+  // Highlighting
   // ----------------------------
   let activeEl = null;
   let suppressAutoScroll = false;
@@ -995,23 +995,24 @@
   }
 
   // ----------------------------
-  // Local clock (authoritative)
+  // Local clock
   // ----------------------------
+  let remoteIsPlaying = false;
   let isPlaying = false;
+
   let lastKnownTime = 0;
   let lastTick = performance.now();
 
-  let localSeekInFlight = false;
+  let localSeekInFlight = false;   // transcript-click seeks
   let playerPrimed = false;
   let pendingSeekTime = null;
 
   const PLAYER_SEEK_THRESHOLD = 3; // seconds
 
-  function startClockAt(t) {
+  function setClockAt(t, shouldPlay) {
     lastKnownTime = t;
     lastTick = performance.now();
-    isPlaying = true;
-    suppressAutoScroll = false;
+    isPlaying = !!shouldPlay;
     setActiveForTime(t);
   }
 
@@ -1029,9 +1030,9 @@
 
     const delta = Math.abs(t - lastKnownTime);
 
-    // 🔑 Player-initiated seek (scrub / click)
+    // Big jump = user scrubbed/clicked the player timeline
     if (!localSeekInFlight && delta > PLAYER_SEEK_THRESHOLD) {
-      startClockAt(t);
+      setClockAt(t, remoteIsPlaying);
       return;
     }
 
@@ -1042,7 +1043,7 @@
     lastKnownTime = lastKnownTime * 0.7 + t * 0.3;
   }
 
-  // Advance local clock
+  // Advance local clock when playing
   setInterval(() => {
     if (!isPlaying) return;
     const now = performance.now();
@@ -1061,9 +1062,11 @@
       suppressAutoScroll = true;
       localSeekInFlight = true;
 
-      startClockAt(t);
+      // Highlight immediately + scroll (unless sticky)
+      setClockAt(t, true);
 
       if (!playerPrimed) {
+        // First interaction: play only, defer seek until on:play
         pendingSeekTime = t;
         post({ eventName: "postmessage:do:play" });
       } else {
@@ -1079,7 +1082,7 @@
   });
 
   // ----------------------------
-  // Acast → transcript sync
+  // Acast events
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
@@ -1090,9 +1093,11 @@
     const { eventName, data } = msg;
 
     if (eventName === "postmessage:on:play") {
+      remoteIsPlaying = true;
       playerPrimed = true;
       resumeClock();
 
+      // Apply deferred seek exactly once (first-play quirk)
       if (pendingSeekTime != null) {
         const t = pendingSeekTime;
         pendingSeekTime = null;
@@ -1105,9 +1110,23 @@
     }
 
     if (eventName === "postmessage:on:pause") {
+      remoteIsPlaying = false;
       pauseClock();
     }
 
+    // ✅ Player seek (scrub/click timeline) — THIS is the missing piece.
+    // Docs: do:seek triggers on:seek with { position }. :contentReference[oaicite:1]{index=1}
+    if (eventName === "postmessage:on:seek") {
+      const t = Number(data?.position);
+      if (Number.isFinite(t)) {
+        // Important: do NOT mark localSeekInFlight (this came from player)
+        suppressAutoScroll = false;
+        setClockAt(t, remoteIsPlaying);
+      }
+      return;
+    }
+
+    // Progress events (and polling responses)
     if (
       eventName === "postmessage:on:progress" ||
       eventName === "postmessage:get:progress"
@@ -1127,7 +1146,7 @@
   }, 1500);
 
   // ----------------------------
-  // Sticky spacer
+  // Sticky spacer (stable)
   // ----------------------------
   if (wrapper && sentinel && "IntersectionObserver" in window) {
     let stickyHeight = null;
@@ -1145,15 +1164,17 @@
     obs.observe(sentinel);
   }
 
-  // Initial state
+  // Initial highlight
   setActiveForTime(0);
 })();
 </script>
 
 
 
+
 </body>
 </html>
+
 
 
 
