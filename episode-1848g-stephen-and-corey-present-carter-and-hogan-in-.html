@@ -1075,7 +1075,7 @@
   }, POLL_MS);
 
   // ============================================================
-  // ADDITION: Player follows you down the page (NO FLICKER)
+  // ADDITION: Player follows you down the page (RESTORED SNAP)
   // ============================================================
   const placeholder = document.createElement("div");
   const rect = iframe.getBoundingClientRect();
@@ -1083,7 +1083,8 @@
   placeholder.style.display = "none";
   iframe.parentNode.insertBefore(placeholder, iframe);
 
-  const stickPoint = placeholder.offsetTop;
+  // 🔑 FIX: true document Y position of player
+  const stickPoint = rect.top + window.scrollY;
   const UNSTICK_BUFFER = 4;
 
   let isSticky = false;
@@ -1118,8 +1119,10 @@
 
 
 
+
 </body>
 </html>
+
 
 
 
