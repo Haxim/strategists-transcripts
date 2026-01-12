@@ -943,7 +943,7 @@
   if (!paras.length) return;
 
   // ----------------------------
-  // Messaging (wait for iframe load)
+  // Messaging
   // ----------------------------
   let iframeReady = false;
 
@@ -976,7 +976,6 @@
   function setActiveForTime(t) {
     if (!Number.isFinite(t)) return;
 
-    // binary search for last para with start <= t
     let lo = 0, hi = paras.length - 1, ans = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -991,7 +990,7 @@
     activeEl = el;
     activeEl.classList.add("active");
 
-    if (!suppressAutoScroll) {
+    if (!suppressAutoScroll && !wrapper?.classList.contains("sticky")) {
       const r = el.getBoundingClientRect();
       if (r.top < 80 || r.bottom > window.innerHeight - 40) {
         el.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -1000,14 +999,14 @@
   }
 
   // ----------------------------
-  // Local clock + safe syncing
+  // Local clock (authoritative)
   // ----------------------------
   let isPlaying = false;
   let lastKnownTime = 0;
   let lastTick = performance.now();
 
-  // we only trust remote progress after we see it at least once
-  let gotProgressOnce = false;
+  // CRITICAL: only allow time to go backwards if we initiated a seek
+  let localSeekInFlight = false;
 
   function startClockAt(t) {
     if (!Number.isFinite(t)) return;
@@ -1027,27 +1026,25 @@
     isPlaying = false;
   }
 
-  // Sync without oscillation:
-  // - Ignore bogus 0-ish values once we're past the beginning
-  // - Only snap if drift is meaningful
   function syncToRemote(t) {
     if (!Number.isFinite(t)) return;
 
-    // If we already have time > 10s, ignore remote times that look like a reset
-    if (lastKnownTime > 10 && t < 1) return;
+    // 🚫 Never allow backward jumps unless we caused them
+    if (!localSeekInFlight && t < lastKnownTime - 1.5) return;
 
-    gotProgressOnce = true;
+    // 🚫 Ignore Acast "focus reset" (t ≈ 0) after playback has begun
+    if (lastKnownTime > 10 && t < 1) return;
 
     const drift = Math.abs(t - lastKnownTime);
     if (drift > 2.0) {
       startClockAt(t);
     } else {
-      // small drift: gently steer
+      // gentle correction only
       lastKnownTime = (lastKnownTime * 0.7) + (t * 0.3);
     }
   }
 
-  // Advance local time
+  // Advance local clock
   setInterval(() => {
     if (!isPlaying) return;
     const now = performance.now();
@@ -1062,19 +1059,20 @@
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", (ev) => {
-      // If you have other click handlers, don't jump to top
       ev.preventDefault?.();
 
       suppressAutoScroll = true;
+      localSeekInFlight = true;
 
-      // Start highlight immediately
       startClockAt(t);
 
-      // Seek & play
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
 
-      setTimeout(() => { suppressAutoScroll = false; }, 600);
+      setTimeout(() => {
+        suppressAutoScroll = false;
+        localSeekInFlight = false;
+      }, 1000);
     });
   });
 
@@ -1089,25 +1087,23 @@
 
     const { eventName, data } = msg;
 
-    // If user presses play in the player (without clicking transcript),
-    // start/resume the clock at whatever we currently believe the time is.
     if (eventName === "postmessage:on:play") {
       resumeClock();
     } else if (eventName === "postmessage:on:pause") {
       pauseClock();
     }
 
-    // Progress signals (if provided by this embed build)
-    if (eventName === "postmessage:on:progress" || eventName === "postmessage:get:progress") {
+    if (
+      eventName === "postmessage:on:progress" ||
+      eventName === "postmessage:get:progress"
+    ) {
       const t = data?.progress ?? data?.position;
       if (t != null) syncToRemote(Number(t));
     }
   });
 
   // ----------------------------
-  // Safe polling: only used to correct drift / handle player seeks
-  // - never poll before iframeReady
-  // - never use polling results unless they look sane
+  // Safe polling (drift correction only)
   // ----------------------------
   setInterval(() => {
     if (!iframeReady) return;
@@ -1115,18 +1111,25 @@
   }, 1500);
 
   // ----------------------------
-  // Sticky player (sentinel spacer)
+  // Sticky player (stable spacer)
   // ----------------------------
   if (wrapper && sentinel && "IntersectionObserver" in window) {
+    let stickyHeight = null;
+
     const obs = new IntersectionObserver(([entry]) => {
       const sticky = !entry.isIntersecting;
       wrapper.classList.toggle("sticky", sticky);
-      sentinel.style.height = sticky ? (wrapper.offsetHeight + "px") : "1px";
+
+      if (sticky && stickyHeight === null) {
+        stickyHeight = wrapper.offsetHeight;
+        sentinel.style.height = stickyHeight + "px";
+      }
     });
+
     obs.observe(sentinel);
   }
 
-  // Initial highlight at time 0 so user sees *something* immediately.
+  // Initial highlight
   setActiveForTime(0);
 })();
 </script>
@@ -1135,8 +1138,10 @@
 
 
 
+
 </body>
 </html>
+
 
 
 
