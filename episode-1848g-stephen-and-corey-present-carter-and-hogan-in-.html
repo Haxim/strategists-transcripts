@@ -928,24 +928,20 @@
 
   const iframe = document.getElementById("acast-player");
   const transcript = document.getElementById("transcript");
-
   if (!iframe || !transcript) return;
 
   // ----------------------------
   // Build transcript index
   // ----------------------------
   const paras = Array.from(transcript.querySelectorAll("p[data-start]"))
-    .map(p => ({
-      el: p,
-      t: Number(p.dataset.start)
-    }))
-    .filter(p => Number.isFinite(p.t))
+    .map(p => ({ el: p, t: Number(p.dataset.start) }))
+    .filter(x => Number.isFinite(x.t))
     .sort((a, b) => a.t - b.t);
 
   if (!paras.length) return;
 
   // ----------------------------
-  // Utilities
+  // Messaging helpers
   // ----------------------------
   function post(msg) {
     iframe.contentWindow?.postMessage(JSON.stringify(msg), AC_ORIGIN);
@@ -958,53 +954,91 @@
     return data && typeof data === "object" ? data : null;
   }
 
-  function extractTime(payload) {
-    if (!payload) return NaN;
-    return Number(payload.position ?? payload.progress);
+  // ----------------------------
+  // Acast time normalization
+  // ----------------------------
+  let durationSec = NaN;
+
+  function extractDuration(data) {
+    // Different embeds use different keys; keep this loose.
+    const d =
+      data?.duration ??
+      data?.length ??
+      data?.episodeDuration ??
+      data?.audioDuration;
+
+    const n = Number(d);
+    return Number.isFinite(n) ? n : NaN;
   }
+
+  function normalizeToSeconds(data) {
+    if (!data) return NaN;
+
+    // If we get a duration in any payload, store it.
+    const d = extractDuration(data);
+    if (Number.isFinite(d) && d > 0) durationSec = d;
+
+    // Prefer "position" as the most likely "seconds" field.
+    const pos = Number(data.position);
+    if (Number.isFinite(pos) && pos >= 0) {
+      // If it looks like a percent/fraction and we have a duration, convert.
+      if (Number.isFinite(durationSec) && durationSec > 0) {
+        if (pos <= 1) return pos * durationSec;         // fraction 0..1
+        if (pos <= 100) return (pos / 100) * durationSec; // percent 0..100
+      }
+      return pos; // assume seconds
+    }
+
+    // Otherwise fall back to progress
+    const prog = Number(data.progress);
+    if (!Number.isFinite(prog) || prog < 0) return NaN;
+
+    if (Number.isFinite(durationSec) && durationSec > 0) {
+      if (prog <= 1) return prog * durationSec;           // fraction 0..1
+      if (prog <= 100) return (prog / 100) * durationSec; // percent 0..100
+    }
+
+    // Last resort: treat as seconds
+    return prog;
+  }
+
+  // ----------------------------
+  // Highlight logic
+  // ----------------------------
+  let activeIndex = -1;
 
   function isInViewport(el) {
     const r = el.getBoundingClientRect();
     return r.top >= 0 && r.bottom <= window.innerHeight;
   }
 
-  // ----------------------------
-  // Highlight logic (single source of truth)
-  // ----------------------------
-  let activeIndex = -1;
-
   function updateHighlight(t) {
     if (!Number.isFinite(t)) return;
 
-    // binary search
+    // binary search: last start <= t
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
-      if (paras[mid].t <= t) {
-        idx = mid;
-        lo = mid + 1;
-      } else {
-        hi = mid - 1;
-      }
+      if (paras[mid].t <= t) { idx = mid; lo = mid + 1; }
+      else hi = mid - 1;
     }
 
     if (idx === activeIndex) return;
 
-    if (activeIndex >= 0) {
-      paras[activeIndex].el.classList.remove("active");
-    }
-
+    if (activeIndex >= 0) paras[activeIndex].el.classList.remove("active");
     activeIndex = idx;
+
     const el = paras[idx].el;
     el.classList.add("active");
 
+    // Only scroll if it's off-screen (don’t fight the user)
     if (!isInViewport(el)) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
   // ----------------------------
-  // Transcript → Player
+  // Transcript -> Player
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
@@ -1015,27 +1049,47 @@
   });
 
   // ----------------------------
-  // Player → Transcript (polling = authority)
+  // Player -> Transcript (polling is authority)
   // ----------------------------
   window.addEventListener("message", e => {
     if (e.origin !== AC_ORIGIN) return;
     const msg = parseMsg(e.data);
-    if (!msg) return;
+    if (!msg?.eventName) return;
 
+    // Many embeds reply to get:progress with eventName "postmessage:get:progress"
     if (msg.eventName === "postmessage:get:progress") {
-      const t = extractTime(msg.data);
+      const t = normalizeToSeconds(msg.data);
       updateHighlight(t);
+      return;
+    }
+
+    // If your embed happens to push progress/seek events, accept them too
+    if (msg.eventName === "postmessage:on:progress" || msg.eventName === "postmessage:on:seek") {
+      const t = normalizeToSeconds(msg.data);
+      updateHighlight(t);
+      return;
+    }
+
+    // Some embeds may respond to get:duration; capture it if so.
+    if (msg.eventName === "postmessage:get:duration") {
+      const d = extractDuration(msg.data);
+      if (Number.isFinite(d) && d > 0) durationSec = d;
     }
   });
 
+  // Ask for duration occasionally (harmless if unsupported).
+  // Then poll progress as the authoritative clock.
   setInterval(() => {
+    post({ eventName: "postmessage:get:duration" });
     post({ eventName: "postmessage:get:progress" });
   }, POLL_MS);
 
 })();
 </script>
+
 </body>
 </html>
+
 
 
 
