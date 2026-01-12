@@ -960,15 +960,154 @@
     if (typeof data === "string") {
       try { return JSON.parse(data); } catch {}
     }
-    return data && typeof data === "object" ? data : nul
+    return data && typeof data === "object" ? data : null;
+  }
 
+  // ----------------------------
+  // Highlighting
+  // ----------------------------
+  let activeEl = null;
 
+  function setActiveForTime(t) {
+    if (!Number.isFinite(t)) return;
 
+    let lo = 0, hi = paras.length - 1, idx = 0;
+    while (lo <= hi) {
+      const mid = (lo + hi) >> 1;
+      if (paras[mid].t <= t) { idx = mid; lo = mid + 1; }
+      else hi = mid - 1;
+    }
 
+    const el = paras[idx].el;
+    if (el === activeEl) return;
 
+    activeEl?.classList.remove("active");
+    activeEl = el;
+    el.classList.add("active");
+
+    if (!wrapper?.classList.contains("sticky")) {
+      el.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }
+
+  // ----------------------------
+  // Playback state machine
+  // ----------------------------
+  const STATE_IDLE = 0;
+  const STATE_STARTING = 1;
+  const STATE_PLAYING = 2;
+
+  let state = STATE_IDLE;
+
+  let lastKnownTime = 0;
+  let lastTick = 0;
+
+  function enterPlayingAt(t) {
+    state = STATE_PLAYING;
+    lastKnownTime = t;
+    lastTick = performance.now();
+    setActiveForTime(t);
+  }
+
+  // ----------------------------
+  // Local clock (PLAYING only)
+  // ----------------------------
+  setInterval(() => {
+    if (state !== STATE_PLAYING) return;
+    const now = performance.now();
+    lastKnownTime += (now - lastTick) / 1000;
+    lastTick = now;
+    setActiveForTime(lastKnownTime);
+  }, 200);
+
+  // ----------------------------
+  // Transcript click → seek
+  // ----------------------------
+  paras.forEach(({ el, t }) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault?.();
+
+      state = STATE_STARTING;
+      lastKnownTime = t;
+      setActiveForTime(t);
+
+      post({ eventName: "postmessage:do:play" });
+      post({ eventName: "postmessage:do:seek", data: { position: t } });
+    });
+  });
+
+  // ----------------------------
+  // Acast events
+  // ----------------------------
+  window.addEventListener("message", (e) => {
+    if (e.origin !== AC_ORIGIN) return;
+    const msg = parseMsg(e.data);
+    if (!msg) return;
+
+    const { eventName, data } = msg;
+    const t = data?.progress ?? data?.position;
+
+    if (eventName === "postmessage:on:play") {
+      state = STATE_STARTING;
+      return;
+    }
+
+    if (eventName === "postmessage:on:pause") {
+      state = STATE_IDLE;
+      return;
+    }
+
+    if (
+      (eventName === "postmessage:on:progress" ||
+       eventName === "postmessage:get:progress") &&
+      Number.isFinite(t)
+    ) {
+      // Ignore garbage at start
+      if (state === STATE_STARTING) {
+        if (t >= 1) enterPlayingAt(t);
+        return;
+      }
+
+      // PLAYING: treat large jumps as scrubs
+      if (state === STATE_PLAYING) {
+        if (Math.abs(t - lastKnownTime) > 3) {
+          enterPlayingAt(t);
+        }
+      }
+    }
+  });
+
+  // ----------------------------
+  // Poll progress (lightly)
+  // ----------------------------
+  setInterval(() => {
+    if (iframeReady && state !== STATE_IDLE) {
+      post({ eventName: "postmessage:get:progress" });
+    }
+  }, 1500);
+
+  // ----------------------------
+  // Sticky spacer
+  // ----------------------------
+  if (wrapper && sentinel && "IntersectionObserver" in window) {
+    let h = null;
+    new IntersectionObserver(([e]) => {
+      const sticky = !e.isIntersecting;
+      wrapper.classList.toggle("sticky", sticky);
+      if (sticky && h == null) {
+        h = wrapper.offsetHeight;
+        sentinel.style.height = h + "px";
+      }
+    }).observe(sentinel);
+  }
+
+  setActiveForTime(0);
+})();
+</script>
 
 </body>
 </html>
+
 
 
 
