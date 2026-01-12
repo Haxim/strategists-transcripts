@@ -965,12 +965,21 @@
     return data && typeof data === "object" ? data : null;
   }
 
+  // Extract time from *any* acast payload shape we've seen
+  function extractTime(data) {
+    if (!data) return NaN;
+    const v = data.progress ?? data.position;
+    return Number(v);
+  }
+
   // ----------------------------
   // Highlighting
   // ----------------------------
   let activeEl = null;
 
   function setActiveForTime(t, forceScroll) {
+    if (!Number.isFinite(t)) return;
+
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -995,19 +1004,20 @@
   // State
   // ----------------------------
   let isPlaying = false;
-  let lastProgress = null;
+  let lastSeenT = 0;
 
   // ----------------------------
-  // Transcript → player
+  // Transcript → player (works for you already)
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", (e) => {
       e.preventDefault?.();
 
+      // highlight immediately
       setActiveForTime(t, true);
 
+      // first interaction: play first, then seek after on:play
       if (!playerPrimed) {
-        // First interaction: must play before seek works
         pendingSeek = t;
         post({ eventName: "postmessage:do:play" });
       } else {
@@ -1018,7 +1028,7 @@
   });
 
   // ----------------------------
-  // Player → transcript (push events)
+  // Player events (push)
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
@@ -1044,62 +1054,34 @@
       return;
     }
 
-    if (eventName === "postmessage:on:seek") {
-      const t = Number(data?.position);
+    // If Acast emits seek/progress, use them (but don't depend on them)
+    if (eventName === "postmessage:on:seek" || eventName === "postmessage:on:progress") {
+      const t = extractTime(data);
       if (Number.isFinite(t)) {
-        lastProgress = t;
-        setActiveForTime(t, true);
+        lastSeenT = t;
+        // while playing, don't scroll; while paused/seek, scrolling is fine
+        setActiveForTime(t, !isPlaying);
       }
       return;
     }
 
-    if (eventName === "postmessage:on:progress") {
-      const t = Number(data?.progress);
-      if (!Number.isFinite(t)) return;
-
-      lastProgress = t;
-
-      if (isPlaying) {
+    // Some embeds reply to get:progress with eventName "postmessage:get:progress"
+    if (eventName === "postmessage:get:progress") {
+      const t = extractTime(data);
+      if (Number.isFinite(t)) {
+        lastSeenT = t;
         setActiveForTime(t, false);
       }
     }
   });
 
   // ----------------------------
-  // 🔑 Polling backstop (REQUIRED for scrubbing)
+  // Polling: authoritative for highlighting
   // ----------------------------
   setInterval(() => {
     if (!iframeReady) return;
     post({ eventName: "postmessage:get:progress" });
-  }, 400);
-
-  window.addEventListener("message", (e) => {
-    if (e.origin !== AC_ORIGIN) return;
-
-    const msg = parseMsg(e.data);
-    if (msg?.eventName !== "postmessage:get:progress") return;
-
-    const t = Number(msg?.data?.progress);
-    if (!Number.isFinite(t)) return;
-
-    if (lastProgress == null) {
-      lastProgress = t;
-      setActiveForTime(t, true);
-      return;
-    }
-
-    const delta = Math.abs(t - lastProgress);
-
-    if (delta > 0.75) {
-      // Jump = user scrubbed
-      setActiveForTime(t, true);
-    } else if (isPlaying) {
-      // Normal playback advance
-      setActiveForTime(t, false);
-    }
-
-    lastProgress = t;
-  });
+  }, 350);
 
   // ----------------------------
   // Sticky spacer
@@ -1117,20 +1099,13 @@
     obs.observe(sentinel);
   }
 
-  // Initial state
   setActiveForTime(0, false);
 })();
 </script>
 
-
-
-
-
-
-
-
 </body>
 </html>
+
 
 
 
