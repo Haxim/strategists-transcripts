@@ -925,10 +925,10 @@
 (function () {
   const AC_ORIGIN = "https://embed.acast.com";
 
-  const iframe   = document.getElementById("acast-player");
+  const iframe     = document.getElementById("acast-player");
   const transcript = document.getElementById("transcript");
-  const wrapper  = document.getElementById("player-wrapper");
-  const sentinel = document.getElementById("player-sentinel");
+  const wrapper    = document.getElementById("player-wrapper");
+  const sentinel   = document.getElementById("player-sentinel");
 
   if (!iframe || !transcript) return;
 
@@ -942,34 +942,17 @@
   );
 
   // ----------------------------
-  // iframe readiness + messaging
+  // Messaging helper
   // ----------------------------
-  let iframeReady = false;
-
   function post(msg) {
-    if (!iframeReady) return;
-    iframe.contentWindow.postMessage(
+    iframe.contentWindow?.postMessage(
       JSON.stringify(msg),
       AC_ORIGIN
     );
   }
 
-  iframe.addEventListener("load", () => {
-    iframeReady = true;
-    post({ eventName: "postmessage:do:load" });
-  });
-
-  function parseMsg(data) {
-    if (!data) return null;
-    if (typeof data === "string") {
-      try { return JSON.parse(data); } catch { return null; }
-    }
-    if (typeof data === "object") return data;
-    return null;
-  }
-
   // ----------------------------
-  // Highlighting logic
+  // Highlight logic
   // ----------------------------
   let activeEl = null;
   let suppressAutoScroll = false;
@@ -999,21 +982,17 @@
   }
 
   // ----------------------------
-  // Local playback clock (authoritative)
+  // Local playback clock (ONLY source of truth)
   // ----------------------------
   let isPlaying = false;
   let lastKnownTime = 0;
-  let lastTick = performance.now();
+  let lastTick = 0;
 
   function startClock(t) {
     lastKnownTime = Number(t);
     lastTick = performance.now();
     isPlaying = true;
     setActiveForTime(lastKnownTime);
-  }
-
-  function stopClock() {
-    isPlaying = false;
   }
 
   setInterval(() => {
@@ -1028,7 +1007,7 @@
   }, 250);
 
   // ----------------------------
-  // Transcript click → seek
+  // Transcript click → seek (ONLY sync point)
   // ----------------------------
   paras.forEach(p => {
     p.addEventListener("click", () => {
@@ -1046,34 +1025,22 @@
   });
 
   // ----------------------------
-  // Player messages (best-effort sync)
+  // Pause handling (optional but correct)
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
 
-    const msg = parseMsg(e.data);
-    if (!msg || !msg.eventName) return;
-
-    const { eventName, data } = msg;
-
-    if (eventName === "postmessage:on:pause") {
-      stopClock();
+    let msg;
+    try {
+      msg = typeof e.data === "string" ? JSON.parse(e.data) : e.data;
+    } catch {
       return;
     }
 
-    if (
-      eventName === "postmessage:get:progress" ||
-      eventName === "postmessage:on:progress"
-    ) {
-      const t = data?.progress ?? data?.position;
-      if (t != null) startClock(t);
+    if (msg?.eventName === "postmessage:on:pause") {
+      isPlaying = false;
     }
   });
-
-  // Occasional resync (safe even if ignored)
-  setInterval(() => {
-    post({ eventName: "postmessage:get:progress" });
-  }, 5000);
 
   // ----------------------------
   // Sticky player (sentinel spacer)
@@ -1093,6 +1060,8 @@
 
 
 
+
 </body>
 </html>
+
 
