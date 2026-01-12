@@ -953,209 +953,15 @@
 
   function post(msg) {
     if (!iframeReady) return;
-    const w = iframe.contentWindow;
-    if (!w) return;
-    w.postMessage(JSON.stringify(msg), AC_ORIGIN);
+    iframe.contentWindow?.postMessage(JSON.stringify(msg), AC_ORIGIN);
   }
 
   function parseMsg(data) {
-    if (!data) return null;
     if (typeof data === "string") {
-      try { return JSON.parse(data); } catch { return null; }
+      try { return JSON.parse(data); } catch {}
     }
-    return typeof data === "object" ? data : null;
-  }
+    return data && typeof data === "object" ? data : nul
 
-  // ----------------------------
-  // Highlighting
-  // ----------------------------
-  let activeEl = null;
-  let suppressAutoScroll = false;
-
-  function setActiveForTime(t) {
-    if (!Number.isFinite(t)) return;
-
-    let lo = 0, hi = paras.length - 1, ans = 0;
-    while (lo <= hi) {
-      const mid = (lo + hi) >> 1;
-      if (paras[mid].t <= t) { ans = mid; lo = mid + 1; }
-      else hi = mid - 1;
-    }
-
-    const el = paras[ans].el;
-    if (el === activeEl) return;
-
-    if (activeEl) activeEl.classList.remove("active");
-    activeEl = el;
-    activeEl.classList.add("active");
-
-    if (!suppressAutoScroll && !wrapper?.classList.contains("sticky")) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }
-
-  // ----------------------------
-  // Local clock (authoritative)
-  // ----------------------------
-  let isPlaying = false;
-  let lastKnownTime = 0;
-  let lastTick = performance.now();
-
-  let localSeekInFlight = false;
-  let playerPrimed = false;
-  let pendingSeekTime = null;
-
-  function startClockAt(t) {
-    lastKnownTime = t;
-    lastTick = performance.now();
-    isPlaying = true;
-    setActiveForTime(t);
-  }
-
-  function resumeClock() {
-    lastTick = performance.now();
-    isPlaying = true;
-  }
-
-  function pauseClock() {
-    isPlaying = false;
-  }
-
-  function syncToRemote(t) {
-    if (!Number.isFinite(t)) return;
-
-    const delta = Math.abs(t - lastKnownTime);
-
-    // ----------------------------
-    // PLAYER SCRUB (authoritative)
-    // ----------------------------
-    if (!localSeekInFlight && delta > 4.0) {
-      // User scrubbed in Acast UI
-      suppressAutoScroll = false;
-      startClockAt(t);
-      return;
-    }
-
-    // Ignore backward jumps unless we caused them
-    if (!localSeekInFlight && t < lastKnownTime - 1.5) return;
-
-    // Ignore bogus reset-to-zero
-    if (lastKnownTime > 10 && t < 1) return;
-
-    // Gentle drift correction
-    if (delta > 2.0) {
-      startClockAt(t);
-    } else {
-      lastKnownTime = lastKnownTime * 0.7 + t * 0.3;
-    }
-  }
-
-  // Advance local clock
-  setInterval(() => {
-    if (!isPlaying) return;
-    const now = performance.now();
-    lastKnownTime += (now - lastTick) / 1000;
-    lastTick = now;
-    setActiveForTime(lastKnownTime);
-  }, 200);
-
-  // ----------------------------
-  // Transcript click → play or seek
-  // ----------------------------
-  paras.forEach(({ el, t }) => {
-    el.addEventListener("click", (ev) => {
-      ev.preventDefault?.();
-
-      suppressAutoScroll = true;
-      localSeekInFlight = true;
-
-      startClockAt(t);
-
-      if (!playerPrimed) {
-        pendingSeekTime = t;
-        post({ eventName: "postmessage:do:play" });
-      } else {
-        post({ eventName: "postmessage:do:seek", data: { position: t } });
-        post({ eventName: "postmessage:do:play" });
-      }
-
-      setTimeout(() => {
-        suppressAutoScroll = false;
-        localSeekInFlight = false;
-      }, 800);
-    });
-  });
-
-  // ----------------------------
-  // Acast events
-  // ----------------------------
-  window.addEventListener("message", (e) => {
-    if (e.origin !== AC_ORIGIN) return;
-
-    const msg = parseMsg(e.data);
-    if (!msg || !msg.eventName) return;
-
-    const { eventName, data } = msg;
-
-    if (eventName === "postmessage:on:play") {
-      playerPrimed = true;
-      resumeClock();
-
-      if (pendingSeekTime != null) {
-        const t = pendingSeekTime;
-        pendingSeekTime = null;
-
-        post({ eventName: "postmessage:do:seek", data: { position: t } });
-        setTimeout(() => {
-          post({ eventName: "postmessage:do:seek", data: { position: t } });
-        }, 200);
-      }
-    }
-
-    if (eventName === "postmessage:on:pause") {
-      pauseClock();
-    }
-
-    if (
-      eventName === "postmessage:on:progress" ||
-      eventName === "postmessage:get:progress"
-    ) {
-      const t = data?.progress ?? data?.position;
-      if (t != null) syncToRemote(Number(t));
-    }
-  });
-
-  // ----------------------------
-  // Drift correction polling
-  // ----------------------------
-  setInterval(() => {
-    if (iframeReady) {
-      post({ eventName: "postmessage:get:progress" });
-    }
-  }, 1500);
-
-  // ----------------------------
-  // Sticky spacer (stable)
-  // ----------------------------
-  if (wrapper && sentinel && "IntersectionObserver" in window) {
-    let stickyHeight = null;
-
-    const obs = new IntersectionObserver(([entry]) => {
-      const sticky = !entry.isIntersecting;
-      wrapper.classList.toggle("sticky", sticky);
-
-      if (sticky && stickyHeight === null) {
-        stickyHeight = wrapper.offsetHeight;
-        sentinel.style.height = stickyHeight + "px";
-      }
-    });
-
-    obs.observe(sentinel);
-  }
-
-  setActiveForTime(0);
-})();
-</script>
 
 
 
@@ -1163,6 +969,7 @@
 
 </body>
 </html>
+
 
 
 
