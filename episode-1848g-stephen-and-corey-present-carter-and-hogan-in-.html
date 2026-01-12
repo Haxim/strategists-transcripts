@@ -936,14 +936,14 @@
   // Transcript parsing
   // ----------------------------
   const paras = Array.from(transcript.querySelectorAll("p[data-start]"))
-    .map(p => ({ el: p, t: parseFloat(p.dataset.start) }))
-    .filter(x => Number.isFinite(x.t))
+    .map(p => ({ el: p, t: Number(p.dataset.start) }))
+    .filter(p => Number.isFinite(p.t))
     .sort((a, b) => a.t - b.t);
 
   if (!paras.length) return;
 
   // ----------------------------
-  // Messaging
+  // Player messaging
   // ----------------------------
   let iframeReady = false;
 
@@ -957,22 +957,18 @@
   }
 
   function parseMsg(data) {
-    if (!data) return null;
     if (typeof data === "string") {
-      try { return JSON.parse(data); } catch { return null; }
+      try { return JSON.parse(data); } catch {}
     }
-    return typeof data === "object" ? data : null;
+    return data && typeof data === "object" ? data : null;
   }
 
   // ----------------------------
-  // Highlighting
+  // Transcript highlighting
   // ----------------------------
   let activeEl = null;
-  let suppressAutoScroll = false;
 
-  function setActiveForTime(t, force = false) {
-    if (!Number.isFinite(t)) return;
-
+  function setActiveForTime(t) {
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -981,72 +977,43 @@
     }
 
     const el = paras[idx].el;
-
-    if (!force && el === activeEl) return;
+    if (el === activeEl) return;
 
     if (activeEl) activeEl.classList.remove("active");
     activeEl = el;
-    activeEl.classList.add("active");
+    el.classList.add("active");
 
-    if (!suppressAutoScroll && !wrapper?.classList.contains("sticky")) {
+    if (!wrapper?.classList.contains("sticky")) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
   // ----------------------------
-  // Clock state
+  // State machine
   // ----------------------------
-  let lastKnownTime = 0;
-  let lastTick = performance.now();
-  let isPlaying = false;
-  let remoteIsPlaying = false;
+  const state = {
+    mode: "idle",      // idle | playing | playerSeek | textSeek
+    t: 0,
+    lastTick: 0
+  };
 
-  let localSeekInFlight = false;
-  let playerPrimed = false;
-  let pendingSeekTime = null;
-
-  function setClockAt(t, playState, forceHighlight = false) {
-    lastKnownTime = t;
-    lastTick = performance.now();
-    isPlaying = playState;
-    setActiveForTime(t, forceHighlight);
+  function setTime(t) {
+    state.t = t;
+    setActiveForTime(t);
   }
-
-  // ----------------------------
-  // Local playback tick
-  // ----------------------------
-  setInterval(() => {
-    if (!isPlaying) return;
-    const now = performance.now();
-    lastKnownTime += (now - lastTick) / 1000;
-    lastTick = now;
-    setActiveForTime(lastKnownTime);
-  }, 200);
 
   // ----------------------------
   // Transcript → player
   // ----------------------------
   paras.forEach(({ el, t }) => {
-    el.addEventListener("click", (ev) => {
-      ev.preventDefault?.();
+    el.addEventListener("click", (e) => {
+      e.preventDefault?.();
 
-      suppressAutoScroll = true;
-      localSeekInFlight = true;
+      state.mode = "textSeek";
+      setTime(t);
 
-      setClockAt(t, true, true);
-
-      if (!playerPrimed) {
-        pendingSeekTime = t;
-        post({ eventName: "postmessage:do:play" });
-      } else {
-        post({ eventName: "postmessage:do:seek", data: { position: t } });
-        post({ eventName: "postmessage:do:play" });
-      }
-
-      setTimeout(() => {
-        suppressAutoScroll = false;
-        localSeekInFlight = false;
-      }, 600);
+      post({ eventName: "postmessage:do:seek", data: { position: t } });
+      post({ eventName: "postmessage:do:play" });
     });
   });
 
@@ -1061,53 +1028,43 @@
 
     const { eventName, data } = msg;
 
-    if (eventName === "postmessage:on:play") {
-      remoteIsPlaying = true;
-      isPlaying = true;
-      playerPrimed = true;
+    switch (eventName) {
+      case "postmessage:on:play":
+        state.mode = "playing";
+        state.lastTick = performance.now();
+        break;
 
-      if (pendingSeekTime != null) {
-        const t = pendingSeekTime;
-        pendingSeekTime = null;
-        post({ eventName: "postmessage:do:seek", data: { position: t } });
+      case "postmessage:on:pause":
+        state.mode = "idle";
+        break;
+
+      case "postmessage:on:seek": {
+        const t = Number(data?.position);
+        if (!Number.isFinite(t)) return;
+
+        state.mode = "playerSeek";
+        setTime(t);
+        break;
       }
-      return;
-    }
 
-    if (eventName === "postmessage:on:pause") {
-      remoteIsPlaying = false;
-      isPlaying = false;
-      return;
-    }
+      case "postmessage:on:progress": {
+        const t = Number(data?.progress);
+        if (!Number.isFinite(t)) return;
 
-    // 🔑 THIS IS THE IMPORTANT ONE
-    if (eventName === "postmessage:on:seek") {
-      const t = Number(data?.position);
-      if (Number.isFinite(t)) {
-        suppressAutoScroll = false;
-        localSeekInFlight = false;
-        setClockAt(t, remoteIsPlaying, true); // 👈 force highlight
+        // Only trust progress while playing
+        if (state.mode === "playing") {
+          setTime(t);
+        }
+        break;
       }
-      return;
-    }
-
-    if (
-      eventName === "postmessage:on:progress" ||
-      eventName === "postmessage:get:progress"
-    ) {
-      const t = Number(data?.progress ?? data?.position);
-      if (!Number.isFinite(t)) return;
-      if (localSeekInFlight) return;
-      lastKnownTime = t;
-      setActiveForTime(t);
     }
   });
 
   // ----------------------------
-  // Polling safety net
+  // Safety polling (minimal)
   // ----------------------------
   setInterval(() => {
-    if (iframeReady) {
+    if (iframeReady && state.mode === "playing") {
       post({ eventName: "postmessage:get:progress" });
     }
   }, 1500);
@@ -1128,7 +1085,8 @@
     obs.observe(sentinel);
   }
 
-  setActiveForTime(0, true);
+  // Initial highlight
+  setActiveForTime(0);
 })();
 </script>
 
@@ -1136,8 +1094,10 @@
 
 
 
+
 </body>
 </html>
+
 
 
 
