@@ -943,7 +943,7 @@
   if (!paras.length) return;
 
   // ----------------------------
-  // Messaging
+  // Messaging helpers
   // ----------------------------
   let iframeReady = false;
 
@@ -967,7 +967,7 @@
   }
 
   // ----------------------------
-  // Highlighting
+  // Highlighting + scroll
   // ----------------------------
   let activeEl = null;
   let suppressAutoScroll = false;
@@ -1003,12 +1003,15 @@
 
   let localSeekInFlight = false;
   let playerPrimed = false;
-  let pendingSeekTime = null; // 👈 deferred seek for first interaction
+  let pendingSeekTime = null;
+
+  const PLAYER_SEEK_THRESHOLD = 3; // seconds
 
   function startClockAt(t) {
     lastKnownTime = t;
     lastTick = performance.now();
     isPlaying = true;
+    suppressAutoScroll = false;
     setActiveForTime(t);
   }
 
@@ -1024,18 +1027,19 @@
   function syncToRemote(t) {
     if (!Number.isFinite(t)) return;
 
-    // Ignore backward jumps unless user initiated seek
-    if (!localSeekInFlight && t < lastKnownTime - 1.5) return;
+    const delta = Math.abs(t - lastKnownTime);
+
+    // 🔑 Player-initiated seek (scrub / click)
+    if (!localSeekInFlight && delta > PLAYER_SEEK_THRESHOLD) {
+      startClockAt(t);
+      return;
+    }
 
     // Ignore bogus reset-to-zero after playback has begun
     if (lastKnownTime > 10 && t < 1) return;
 
-    const drift = Math.abs(t - lastKnownTime);
-    if (drift > 2) {
-      startClockAt(t);
-    } else {
-      lastKnownTime = lastKnownTime * 0.7 + t * 0.3;
-    }
+    // Gentle drift correction
+    lastKnownTime = lastKnownTime * 0.7 + t * 0.3;
   }
 
   // Advance local clock
@@ -1048,7 +1052,7 @@
   }, 200);
 
   // ----------------------------
-  // Transcript click → play or seek
+  // Transcript click → seek player
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", (ev) => {
@@ -1057,15 +1061,12 @@
       suppressAutoScroll = true;
       localSeekInFlight = true;
 
-      // Update highlight immediately
       startClockAt(t);
 
       if (!playerPrimed) {
-        // First interaction: play only, defer seek
         pendingSeekTime = t;
         post({ eventName: "postmessage:do:play" });
       } else {
-        // Normal case
         post({ eventName: "postmessage:do:seek", data: { position: t } });
         post({ eventName: "postmessage:do:play" });
       }
@@ -1078,7 +1079,7 @@
   });
 
   // ----------------------------
-  // Acast events
+  // Acast → transcript sync
   // ----------------------------
   window.addEventListener("message", (e) => {
     if (e.origin !== AC_ORIGIN) return;
@@ -1092,14 +1093,11 @@
       playerPrimed = true;
       resumeClock();
 
-      // 🔑 Apply deferred seek exactly once
       if (pendingSeekTime != null) {
         const t = pendingSeekTime;
         pendingSeekTime = null;
 
         post({ eventName: "postmessage:do:seek", data: { position: t } });
-
-        // Safety retry for first-play quirk
         setTimeout(() => {
           post({ eventName: "postmessage:do:seek", data: { position: t } });
         }, 200);
@@ -1129,7 +1127,7 @@
   }, 1500);
 
   // ----------------------------
-  // Sticky spacer (stable)
+  // Sticky spacer
   // ----------------------------
   if (wrapper && sentinel && "IntersectionObserver" in window) {
     let stickyHeight = null;
@@ -1147,14 +1145,16 @@
     obs.observe(sentinel);
   }
 
-  // Initial highlight
+  // Initial state
   setActiveForTime(0);
 })();
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
