@@ -1075,7 +1075,7 @@
   }, POLL_MS);
 
   // ============================================================
-  // ADDITION: Player follows you down the page (sticky behavior)
+  // ADDITION: Player follows you down the page (NO FLICKER)
   // ============================================================
   const placeholder = document.createElement("div");
   const rect = iframe.getBoundingClientRect();
@@ -1083,37 +1083,44 @@
   placeholder.style.display = "none";
   iframe.parentNode.insertBefore(placeholder, iframe);
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        iframe.style.position = "";
-        iframe.style.top = "";
-        iframe.style.width = "";
-        iframe.style.zIndex = "";
-        placeholder.style.display = "none";
-      } else {
-        iframe.style.position = "fixed";
-        iframe.style.top = "0";
-        iframe.style.width = rect.width + "px";
-        iframe.style.zIndex = "1000";
-        placeholder.style.display = "block";
-      }
-    },
-    {
-      threshold: 0,
-      rootMargin: "-1px 0px 0px 0px"
-    }
-  );
+  const stickPoint = placeholder.offsetTop;
+  const UNSTICK_BUFFER = 4;
 
-  observer.observe(placeholder);
+  let isSticky = false;
+
+  function onScroll() {
+    const y = window.scrollY;
+
+    if (!isSticky && y > stickPoint + UNSTICK_BUFFER) {
+      iframe.style.position = "fixed";
+      iframe.style.top = "0";
+      iframe.style.width = rect.width + "px";
+      iframe.style.zIndex = "1000";
+      placeholder.style.display = "block";
+      isSticky = true;
+    }
+
+    if (isSticky && y < stickPoint - UNSTICK_BUFFER) {
+      iframe.style.position = "";
+      iframe.style.top = "";
+      iframe.style.width = "";
+      iframe.style.zIndex = "";
+      placeholder.style.display = "none";
+      isSticky = false;
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
 })();
 </script>
 
 
 
 
+
 </body>
 </html>
+
 
 
 
