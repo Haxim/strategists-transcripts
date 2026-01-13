@@ -926,9 +926,6 @@
   const AC_ORIGIN = "https://embed.acast.com";
   const POLL_MS = 300;
 
-  // 🔒 Prevent unit calibration on ambiguous early timestamps
-  const CALIBRATION_MIN_SECONDS = 8;
-
   const iframe = document.getElementById("acast-player");
   const transcript = document.getElementById("transcript");
   if (!iframe || !transcript) return;
@@ -942,6 +939,9 @@
     .sort((a, b) => a.t - b.t);
 
   if (!paras.length) return;
+
+  // 🔒 Hard gate: earliest real content time
+  const FIRST_CONTENT_TIME = paras[0].t;
 
   // ----------------------------
   // Messaging helpers
@@ -958,9 +958,10 @@
   }
 
   // ----------------------------
-  // Duration + robust time inference
+  // Duration + time inference
   // ----------------------------
   let durationSec = NaN;
+  let lastContentTime = NaN;
 
   function extractDuration(data) {
     const d =
@@ -971,13 +972,6 @@
     const n = Number(d);
     return Number.isFinite(n) ? n : NaN;
   }
-
-  let contentTransform = null;
-  let freezeUntil = 0;
-  let lastContentTime = NaN;
-  let pendingSeek = null;
-
-  function nowMs() { return Date.now(); }
 
   function isFinitePos(x) {
     return Number.isFinite(x) && x >= 0;
@@ -990,109 +984,46 @@
     const pos = Number(data?.position);
     const prog = Number(data?.progress);
 
-    function add(field, raw, unit, t) {
-      if (!Number.isFinite(t)) return;
-      cands.push({ field, raw, unit, t });
+    function add(t) {
+      if (Number.isFinite(t)) cands.push(t);
     }
 
     if (isFinitePos(pos)) {
-      add("position", pos, "seconds", pos);
-      if (Number.isFinite(d) && d > 0) {
-        if (pos <= 1) add("position", pos, "fraction", pos * d);
-        if (pos <= 100) add("position", pos, "percent", (pos / 100) * d);
+      add(pos);
+      if (Number.isFinite(d)) {
+        if (pos <= 1) add(pos * d);
+        if (pos <= 100) add((pos / 100) * d);
       }
     }
 
     if (isFinitePos(prog)) {
-      add("progress", prog, "seconds", prog);
-      if (Number.isFinite(d) && d > 0) {
-        if (prog <= 1) add("progress", prog, "fraction", prog * d);
-        if (prog <= 100) add("progress", prog, "percent", (prog / 100) * d);
+      add(prog);
+      if (Number.isFinite(d)) {
+        if (prog <= 1) add(prog * d);
+        if (prog <= 100) add((prog / 100) * d);
       }
     }
 
     return cands;
   }
 
-  function isPlausibleContentTime(t) {
-    if (!Number.isFinite(t) || t < 0) return false;
-    if (Number.isFinite(durationSec) && durationSec > 0) {
-      return t <= durationSec + 2;
-    }
-    return t <= 24 * 60 * 60;
-  }
-
-  function pickClosestTo(targetT, cands) {
-    let best = null;
-    let bestScore = Infinity;
-    for (const c of cands) {
-      if (!isPlausibleContentTime(c.t)) continue;
-      const score = Math.abs(c.t - targetT);
-      if (score < bestScore) {
-        bestScore = score;
-        best = c;
-      }
-    }
-    return best;
-  }
-
-  function pickBestForPlayback(cands) {
-    let best = null;
-    let bestScore = Infinity;
-
+  function pickBestTime(cands) {
     if (!Number.isFinite(lastContentTime)) {
-      let bestT = -1;
-      for (const c of cands) {
-        if (!isPlausibleContentTime(c.t)) continue;
-        if (c.t > bestT) { bestT = c.t; best = c; }
-      }
-      return best;
+      return Math.min(...cands);
     }
 
-    for (const c of cands) {
-      if (!isPlausibleContentTime(c.t)) continue;
+    let best = null;
+    let bestScore = Infinity;
 
-      // 🛑 Prevent early-timeline snap-back
-      if (lastContentTime < 5 && c.t < lastContentTime) continue;
-
-      const delta = c.t - lastContentTime;
-      let score = Math.abs(delta);
-      if (delta < -0.75) score += 20;
-      if (Math.abs(delta) > 120) score += 200;
-
-      if (
-        contentTransform &&
-        c.field === contentTransform.field &&
-        c.unit === contentTransform.unit
-      ) {
-        score -= 5;
-      }
-
+    for (const t of cands) {
+      const score = Math.abs(t - lastContentTime);
       if (score < bestScore) {
         bestScore = score;
-        best = c;
+        best = t;
       }
     }
 
     return best;
-  }
-
-  function timeFromLockedTransform(data) {
-    if (!contentTransform) return NaN;
-    const raw = Number(data?.[contentTransform.field]);
-    if (!isFinitePos(raw)) return NaN;
-
-    if (contentTransform.unit === "seconds") return raw;
-    if (!Number.isFinite(durationSec) || durationSec <= 0) return NaN;
-
-    if (contentTransform.unit === "fraction") return raw * durationSec;
-    if (contentTransform.unit === "percent") return (raw / 100) * durationSec;
-
-    return NaN;
-  }
-
-  function enterFreeze(ms = 2500) {
-    freezeUntil = Math.max(freezeUntil, nowMs() + ms);
   }
 
   // ----------------------------
@@ -1114,9 +1045,10 @@
 
     if (activeIndex >= 0) paras[activeIndex].el.classList.remove("active");
     activeIndex = idx;
-    paras[idx].el.classList.add("active");
 
-    paras[idx].el.scrollIntoView({ behavior: "smooth", block: "center" });
+    const el = paras[idx].el;
+    el.classList.add("active");
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   // ----------------------------
@@ -1124,9 +1056,6 @@
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
-      pendingSeek = { t, expires: nowMs() + 4000 };
-      freezeUntil = 0;
-
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
 
@@ -1152,34 +1081,13 @@
       msg.eventName !== "postmessage:on:seek"
     ) return;
 
-    if (nowMs() < freezeUntil) return;
+    const cands = buildCandidates(msg.data || {});
+    if (!cands.length) return;
 
-    const data = msg.data || {};
+    const t = pickBestTime(cands);
 
-    // 🔒 Only calibrate if seek is far enough into the episode
-    if (
-      pendingSeek &&
-      pendingSeek.t >= CALIBRATION_MIN_SECONDS &&
-      nowMs() <= pendingSeek.expires &&
-      Number.isFinite(durationSec) &&
-      durationSec > 0
-    ) {
-      const best = pickClosestTo(pendingSeek.t, buildCandidates(data));
-      if (best) {
-        contentTransform = { field: best.field, unit: best.unit };
-        pendingSeek = null;
-      }
-    } else if (pendingSeek && nowMs() > pendingSeek.expires) {
-      pendingSeek = null;
-    }
-
-    let t = timeFromLockedTransform(data);
-    if (!Number.isFinite(t)) {
-      const best = pickBestForPlayback(buildCandidates(data));
-      if (best) t = best.t;
-    }
-
-    if (!isPlausibleContentTime(t)) return;
+    // 🔒 HARD GATE — ignore pre-content garbage forever
+    if (t < FIRST_CONTENT_TIME) return;
 
     lastContentTime = t;
     updateHighlight(t);
@@ -1195,6 +1103,7 @@
 
 </body>
 </html>
+
 
 
 
