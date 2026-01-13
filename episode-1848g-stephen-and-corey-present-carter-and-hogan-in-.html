@@ -947,6 +947,7 @@
   // ----------------------------
   let durationSec = NaN;
   let lastContentTime = NaN;
+  let following = false;
 
   // ----------------------------
   // Messaging helpers
@@ -1009,23 +1010,14 @@
     return cands;
   }
 
-  function pickBestTime(cands) {
-    if (!Number.isFinite(lastContentTime)) {
-      return Math.min(...cands);
-    }
+  function pickTime(cands) {
+    if (!cands.length) return NaN;
 
-    let best = null;
-    let bestScore = Infinity;
+    // Before following: pick the smallest plausible time
+    if (!following) return Math.min(...cands);
 
-    for (const t of cands) {
-      const score = Math.abs(t - lastContentTime);
-      if (score < bestScore) {
-        bestScore = score;
-        best = t;
-      }
-    }
-
-    return best;
+    // Once following: always move forward
+    return Math.max(...cands);
   }
 
   // ----------------------------
@@ -1056,6 +1048,7 @@
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
+      following = true;
       lastContentTime = t;
 
       post({ eventName: "postmessage:do:seek", data: { position: t } });
@@ -1085,19 +1078,22 @@
     const cands = buildCandidates(msg.data || {});
     if (!cands.length) return;
 
-    const t = pickBestTime(cands);
+    const t = pickTime(cands);
 
-    // Phase 0: ignore pre-roll / garbage
+    // Ignore preroll garbage
     if (t < FIRST_CONTENT_TIME) return;
 
-    // Phase 1: first real content tick → seed clock
-    if (!Number.isFinite(lastContentTime)) {
+    // First real content tick
+    if (!following) {
+      following = true;
       lastContentTime = t;
       updateHighlight(t);
       return;
     }
 
-    // Phase 2: normal following
+    // Normal following
+    if (t <= lastContentTime) return;
+
     lastContentTime = t;
     updateHighlight(t);
   });
@@ -1109,11 +1105,9 @@
 })();
 </script>
 
-
-
-
 </body>
 </html>
+
 
 
 
