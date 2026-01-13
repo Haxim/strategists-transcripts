@@ -1097,11 +1097,22 @@
       return;
     }
 
-    lastContent
+    lastContentTime = t;
+    updateHighlight(t);
+  });
+
+  setInterval(() => {
+    post({ eventName: "postmessage:get:duration" });
+    post({ eventName: "postmessage:get:progress" });
+  }, POLL_MS);
+})();
+</script>
+
 
 
 </body>
 </html>
+
 
 
 
