@@ -940,8 +940,15 @@
 
   if (!paras.length) return;
 
-  // 🔒 Hard gate: earliest real content time
+  // Earliest real spoken content
   const FIRST_CONTENT_TIME = paras[0].t;
+
+  // ----------------------------
+  // State
+  // ----------------------------
+  let durationSec = NaN;
+  let lastContentTime = NaN;
+  let hasEnteredTranscript = false;
 
   // ----------------------------
   // Messaging helpers
@@ -956,12 +963,6 @@
     }
     return data && typeof data === "object" ? data : null;
   }
-
-  // ----------------------------
-  // Duration + time inference
-  // ----------------------------
-  let durationSec = NaN;
-  let lastContentTime = NaN;
 
   function extractDuration(data) {
     const d =
@@ -1032,8 +1033,6 @@
   let activeIndex = -1;
 
   function updateHighlight(t) {
-    if (!Number.isFinite(t)) return;
-
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -1056,10 +1055,12 @@
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
+      hasEnteredTranscript = true;
+      lastContentTime = t;
+
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
 
-      lastContentTime = t;
       updateHighlight(t);
     });
   });
@@ -1086,23 +1087,22 @@
 
     const t = pickBestTime(cands);
 
-    // 🔒 HARD GATE — ignore pre-content garbage forever
+    // 🔒 Ignore pre-content garbage
     if (t < FIRST_CONTENT_TIME) return;
 
-    lastContentTime = t;
-    updateHighlight(t);
-  });
+    // 🔑 First clean entry into transcript-following mode
+    if (!hasEnteredTranscript) {
+      hasEnteredTranscript = true;
+      updateHighlight(FIRST_CONTENT_TIME);
+      return;
+    }
 
-  setInterval(() => {
-    post({ eventName: "postmessage:get:duration" });
-    post({ eventName: "postmessage:get:progress" });
-  }, POLL_MS);
-})();
-</script>
+    lastContent
 
 
 </body>
 </html>
+
 
 
 
