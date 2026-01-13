@@ -940,7 +940,6 @@
 
   if (!paras.length) return;
 
-  // Earliest real spoken content
   const FIRST_CONTENT_TIME = paras[0].t;
 
   // ----------------------------
@@ -948,7 +947,6 @@
   // ----------------------------
   let durationSec = NaN;
   let lastContentTime = NaN;
-  let hasEnteredTranscript = false;
 
   // ----------------------------
   // Messaging helpers
@@ -978,6 +976,9 @@
     return Number.isFinite(x) && x >= 0;
   }
 
+  // ----------------------------
+  // Time inference
+  // ----------------------------
   function buildCandidates(data) {
     const cands = [];
     const d = durationSec;
@@ -1055,7 +1056,6 @@
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
-      hasEnteredTranscript = true;
       lastContentTime = t;
 
       post({ eventName: "postmessage:do:seek", data: { position: t } });
@@ -1087,16 +1087,17 @@
 
     const t = pickBestTime(cands);
 
-    // 🔒 Ignore pre-content garbage
+    // Phase 0: ignore pre-roll / garbage
     if (t < FIRST_CONTENT_TIME) return;
 
-    // 🔑 First clean entry into transcript-following mode
-    if (!hasEnteredTranscript) {
-      hasEnteredTranscript = true;
-      updateHighlight(FIRST_CONTENT_TIME);
+    // Phase 1: first real content tick → seed clock
+    if (!Number.isFinite(lastContentTime)) {
+      lastContentTime = t;
+      updateHighlight(t);
       return;
     }
 
+    // Phase 2: normal following
     lastContentTime = t;
     updateHighlight(t);
   });
@@ -1110,8 +1111,10 @@
 
 
 
+
 </body>
 </html>
+
 
 
 
