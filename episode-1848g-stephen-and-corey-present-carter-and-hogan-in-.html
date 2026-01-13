@@ -940,14 +940,8 @@
 
   if (!paras.length) return;
 
+  // 🔒 Hard gate: earliest real content time
   const FIRST_CONTENT_TIME = paras[0].t;
-
-  // ----------------------------
-  // State
-  // ----------------------------
-  let durationSec = NaN;
-  let lastContentTime = NaN;
-  let following = false;
 
   // ----------------------------
   // Messaging helpers
@@ -963,6 +957,12 @@
     return data && typeof data === "object" ? data : null;
   }
 
+  // ----------------------------
+  // Duration + time inference
+  // ----------------------------
+  let durationSec = NaN;
+  let lastContentTime = NaN;
+
   function extractDuration(data) {
     const d =
       data?.duration ??
@@ -977,9 +977,6 @@
     return Number.isFinite(x) && x >= 0;
   }
 
-  // ----------------------------
-  // Time inference
-  // ----------------------------
   function buildCandidates(data) {
     const cands = [];
     const d = durationSec;
@@ -1010,14 +1007,23 @@
     return cands;
   }
 
-  function pickTime(cands) {
-    if (!cands.length) return NaN;
+  function pickBestTime(cands) {
+    if (!Number.isFinite(lastContentTime)) {
+      return Math.min(...cands);
+    }
 
-    // Before following: pick the smallest plausible time
-    if (!following) return Math.min(...cands);
+    let best = null;
+    let bestScore = Infinity;
 
-    // Once following: always move forward
-    return Math.max(...cands);
+    for (const t of cands) {
+      const score = Math.abs(t - lastContentTime);
+      if (score < bestScore) {
+        bestScore = score;
+        best = t;
+      }
+    }
+
+    return best;
   }
 
   // ----------------------------
@@ -1026,6 +1032,8 @@
   let activeIndex = -1;
 
   function updateHighlight(t) {
+    if (!Number.isFinite(t)) return;
+
     let lo = 0, hi = paras.length - 1, idx = 0;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
@@ -1048,12 +1056,10 @@
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
-      following = true;
-      lastContentTime = t;
-
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
 
+      lastContentTime = t;
       updateHighlight(t);
     });
   });
@@ -1078,21 +1084,10 @@
     const cands = buildCandidates(msg.data || {});
     if (!cands.length) return;
 
-    const t = pickTime(cands);
+    const t = pickBestTime(cands);
 
-    // Ignore preroll garbage
+    // 🔒 HARD GATE — ignore pre-content garbage forever
     if (t < FIRST_CONTENT_TIME) return;
-
-    // First real content tick
-    if (!following) {
-      following = true;
-      lastContentTime = t;
-      updateHighlight(t);
-      return;
-    }
-
-    // Normal following
-    if (t <= lastContentTime) return;
 
     lastContentTime = t;
     updateHighlight(t);
@@ -1105,8 +1100,10 @@
 })();
 </script>
 
+
 </body>
 </html>
+
 
 
 
