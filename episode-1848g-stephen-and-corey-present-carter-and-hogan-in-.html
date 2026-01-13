@@ -926,6 +926,9 @@
   const AC_ORIGIN = "https://embed.acast.com";
   const POLL_MS = 300;
 
+  // 🔒 Prevent unit calibration on ambiguous early timestamps
+  const CALIBRATION_MIN_SECONDS = 8;
+
   const iframe = document.getElementById("acast-player");
   const transcript = document.getElementById("transcript");
   if (!iframe || !transcript) return;
@@ -969,19 +972,10 @@
     return Number.isFinite(n) ? n : NaN;
   }
 
-  // Content clock calibration:
-  // We'll lock onto whichever transform best matches a known seek target.
-  // transform = { field: "position"|"progress", unit:"seconds"|"fraction"|"percent" }
   let contentTransform = null;
-
-  // Freeze logic: while in ad/transition, ignore updates.
   let freezeUntil = 0;
-
-  // We keep last good content time to score candidates + prevent nonsense jumps.
   let lastContentTime = NaN;
-
-  // When user clicks transcript we set a pending seek target to calibrate units.
-  let pendingSeek = null; // { t:number, expires:number }
+  let pendingSeek = null;
 
   function nowMs() { return Date.now(); }
 
@@ -996,13 +990,11 @@
     const pos = Number(data?.position);
     const prog = Number(data?.progress);
 
-    // helper
     function add(field, raw, unit, t) {
       if (!Number.isFinite(t)) return;
       cands.push({ field, raw, unit, t });
     }
 
-    // position candidates
     if (isFinitePos(pos)) {
       add("position", pos, "seconds", pos);
       if (Number.isFinite(d) && d > 0) {
@@ -1011,7 +1003,6 @@
       }
     }
 
-    // progress candidates
     if (isFinitePos(prog)) {
       add("progress", prog, "seconds", prog);
       if (Number.isFinite(d) && d > 0) {
@@ -1023,18 +1014,11 @@
     return cands;
   }
 
-  function clamp01(x) {
-    if (!Number.isFinite(x)) return NaN;
-    return Math.max(0, Math.min(1, x));
-  }
-
   function isPlausibleContentTime(t) {
     if (!Number.isFinite(t) || t < 0) return false;
     if (Number.isFinite(durationSec) && durationSec > 0) {
-      // allow a tiny overshoot due to rounding
       return t <= durationSec + 2;
     }
-    // if no duration, still accept as long as not insane
     return t <= 24 * 60 * 60;
   }
 
@@ -1053,9 +1037,6 @@
   }
 
   function pickBestForPlayback(cands) {
-    // Prefer candidates that are plausible and close to lastContentTime.
-    // If we don't have lastContentTime yet, prefer the largest plausible time
-    // (because fraction/percent early can otherwise look like tiny seconds).
     let best = null;
     let bestScore = Infinity;
 
@@ -1071,17 +1052,19 @@
     for (const c of cands) {
       if (!isPlausibleContentTime(c.t)) continue;
 
+      // 🛑 Prevent early-timeline snap-back
+      if (lastContentTime < 5 && c.t < lastContentTime) continue;
+
       const delta = c.t - lastContentTime;
-
-      // Heavily penalize huge jumps; mild penalty for small backwards drift.
       let score = Math.abs(delta);
-      if (delta < -0.75) score += 20;        // backwards jump
-      if (Math.abs(delta) > 120) score += 200; // giant jump (likely ad/transition/unit mismatch)
+      if (delta < -0.75) score += 20;
+      if (Math.abs(delta) > 120) score += 200;
 
-      // Slight preference for using a locked transform if it matches
-      if (contentTransform &&
-          c.field === contentTransform.field &&
-          c.unit === contentTransform.unit) {
+      if (
+        contentTransform &&
+        c.field === contentTransform.field &&
+        c.unit === contentTransform.unit
+      ) {
         score -= 5;
       }
 
@@ -1100,36 +1083,12 @@
     if (!isFinitePos(raw)) return NaN;
 
     if (contentTransform.unit === "seconds") return raw;
-
     if (!Number.isFinite(durationSec) || durationSec <= 0) return NaN;
 
     if (contentTransform.unit === "fraction") return raw * durationSec;
     if (contentTransform.unit === "percent") return (raw / 100) * durationSec;
 
     return NaN;
-  }
-
-  function shouldFreezeBecauseAdOrTransition(data, inferredT) {
-    // Hard freeze if duration missing/NaN (seen during transitions / ads).
-    if (!Number.isFinite(durationSec) || durationSec <= 0) return true;
-
-    // If we can't infer a plausible content time, freeze.
-    if (!isPlausibleContentTime(inferredT)) return true;
-
-    // If time would leap wildly while raw values are tiny, that's usually ad mode.
-    if (Number.isFinite(lastContentTime)) {
-      const delta = inferredT - lastContentTime;
-      const prog = Number(data?.progress);
-      const pos  = Number(data?.position);
-
-      const rawSmall =
-        (isFinitePos(prog) && prog <= 1.25) ||
-        (isFinitePos(pos) && pos <= 1.25);
-
-      if (rawSmall && Math.abs(delta) > 60) return true;
-    }
-
-    return false;
   }
 
   function enterFreeze(ms = 2500) {
@@ -1140,11 +1099,6 @@
   // Highlight logic
   // ----------------------------
   let activeIndex = -1;
-
-  function isInViewport(el) {
-    const r = el.getBoundingClientRect();
-    return r.top >= 0 && r.bottom <= window.innerHeight;
-  }
 
   function updateHighlight(t) {
     if (!Number.isFinite(t)) return;
@@ -1160,160 +1114,89 @@
 
     if (activeIndex >= 0) paras[activeIndex].el.classList.remove("active");
     activeIndex = idx;
+    paras[idx].el.classList.add("active");
 
-    const el = paras[idx].el;
-    el.classList.add("active");
-
-    if (!isInViewport(el)) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    paras[idx].el.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   // ----------------------------
-  // Transcript -> Player
+  // Transcript → Player
   // ----------------------------
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
-      // set pending seek to calibrate transform on the next progress messages
       pendingSeek = { t, expires: nowMs() + 4000 };
-      // we consider this content intent; also unfreeze immediately
       freezeUntil = 0;
 
       post({ eventName: "postmessage:do:seek", data: { position: t } });
       post({ eventName: "postmessage:do:play" });
 
-      // Optimistic UI update to feel snappy
       lastContentTime = t;
       updateHighlight(t);
     });
   });
 
   // ----------------------------
-  // Player -> Transcript
+  // Player → Transcript
   // ----------------------------
   window.addEventListener("message", e => {
     if (e.origin !== AC_ORIGIN) return;
     const msg = parseMsg(e.data);
     if (!msg?.eventName) return;
 
-    // Keep duration updated wherever we can
     const d = extractDuration(msg.data);
-    if (Number.isFinite(d) && d > 0) {
-      // If duration changes significantly, that's likely ad/transition: freeze briefly.
-      if (Number.isFinite(durationSec) && Math.abs(d - durationSec) > 1) {
-        enterFreeze(3000);
-        // Also reset transform because timeline likely changed.
-        contentTransform = null;
-      }
-      durationSec = d;
-    } else {
-      // Missing duration during load/ads: freeze.
-      if (
-        msg.eventName === "postmessage:on:load" ||
-        msg.eventName === "postmessage:on:play" ||
-        msg.eventName === "postmessage:on:pause" ||
-        msg.eventName === "postmessage:get:duration"
-      ) {
-        enterFreeze(2000);
-      }
-    }
+    if (Number.isFinite(d) && d > 0) durationSec = d;
 
-    // Only these events should drive transcript position
     if (
       msg.eventName !== "postmessage:get:progress" &&
       msg.eventName !== "postmessage:on:progress" &&
       msg.eventName !== "postmessage:on:seek"
-    ) {
-      return;
-    }
+    ) return;
 
-    // If we are currently frozen (ads), ignore updates entirely
     if (nowMs() < freezeUntil) return;
 
     const data = msg.data || {};
 
-    // If we recently sought via transcript click, calibrate which unit/field matches that seek.
-    if (pendingSeek && nowMs() <= pendingSeek.expires && Number.isFinite(durationSec) && durationSec > 0) {
-      const cands = buildCandidates(data);
-      const best = pickClosestTo(pendingSeek.t, cands);
-
+    // 🔒 Only calibrate if seek is far enough into the episode
+    if (
+      pendingSeek &&
+      pendingSeek.t >= CALIBRATION_MIN_SECONDS &&
+      nowMs() <= pendingSeek.expires &&
+      Number.isFinite(durationSec) &&
+      durationSec > 0
+    ) {
+      const best = pickClosestTo(pendingSeek.t, buildCandidates(data));
       if (best) {
         contentTransform = { field: best.field, unit: best.unit };
         pendingSeek = null;
       }
-      // Even if we didn't lock yet, keep going with inference below.
     } else if (pendingSeek && nowMs() > pendingSeek.expires) {
       pendingSeek = null;
     }
 
-    // Try to compute content time
     let t = timeFromLockedTransform(data);
-
     if (!Number.isFinite(t)) {
-      const cands = buildCandidates(data);
-      const best = pickBestForPlayback(cands);
+      const best = pickBestForPlayback(buildCandidates(data));
       if (best) t = best.t;
     }
 
-    // Decide if we should freeze (ad/transition) instead of updating transcript
-    if (shouldFreezeBecauseAdOrTransition(data, t)) {
-      enterFreeze(2500);
-      return;
-    }
+    if (!isPlausibleContentTime(t)) return;
 
-    // Update transcript
     lastContentTime = t;
     updateHighlight(t);
   });
 
-  // Polling stays the authority (unchanged)
   setInterval(() => {
     post({ eventName: "postmessage:get:duration" });
     post({ eventName: "postmessage:get:progress" });
   }, POLL_MS);
-
-  // ----------------------------
-  // Sticky player (unchanged)
-  // ----------------------------
-  const placeholder = document.createElement("div");
-  const rect = iframe.getBoundingClientRect();
-  placeholder.style.height = rect.height + "px";
-  placeholder.style.display = "none";
-  iframe.parentNode.insertBefore(placeholder, iframe);
-
-  const stickPoint = rect.top + window.scrollY;
-  const UNSTICK_BUFFER = 4;
-  let isSticky = false;
-
-  function onScroll() {
-    const y = window.scrollY;
-
-    if (!isSticky && y > stickPoint + UNSTICK_BUFFER) {
-      iframe.style.position = "fixed";
-      iframe.style.top = "0";
-      iframe.style.width = rect.width + "px";
-      iframe.style.zIndex = "1000";
-      placeholder.style.display = "block";
-      isSticky = true;
-    }
-
-    if (isSticky && y < stickPoint - UNSTICK_BUFFER) {
-      iframe.style.position = "";
-      iframe.style.top = "";
-      iframe.style.width = "";
-      iframe.style.zIndex = "";
-      placeholder.style.display = "none";
-      isSticky = false;
-    }
-  }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
 })();
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
