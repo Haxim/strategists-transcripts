@@ -986,6 +986,19 @@
   }
 
   // ----------------------------
+  // Build transcript index
+  // ----------------------------
+  const paras = Array.from(transcript.querySelectorAll("p[data-start]"))
+    .map(p => ({ el: p, t: Number(p.dataset.start) }))
+    .filter(x => Number.isFinite(x.t))
+    .sort((a, b) => a.t - b.t);
+
+  if (!paras.length) return;
+
+  // 🔒 Hard gate: earliest real content time
+  const FIRST_CONTENT_TIME = paras[0].t;
+
+  // ----------------------------
   // Messaging helpers
   // ----------------------------
   function post(msg) {
@@ -1145,7 +1158,6 @@
 
 </body>
 </html>
-
 
 
 
