@@ -931,17 +931,59 @@
   if (!iframe || !transcript) return;
 
   // ----------------------------
-  // Build transcript index
+  // Sticky player
   // ----------------------------
-  const paras = Array.from(transcript.querySelectorAll("p[data-start]"))
-    .map(p => ({ el: p, t: Number(p.dataset.start) }))
-    .filter(x => Number.isFinite(x.t))
-    .sort((a, b) => a.t - b.t);
+  const wrapper = document.getElementById("player-wrapper");
+  const sentinel = document.getElementById("player-sentinel");
 
-  if (!paras.length) return;
+  function setStickyPadding(isSticky) {
+    if (!wrapper) return;
+    document.body.classList.toggle("has-sticky-player", isSticky);
+    document.body.style.paddingTop = isSticky ? `${wrapper.offsetHeight}px` : "";
+  }
 
-  // 🔒 Hard gate: earliest real content time
-  const FIRST_CONTENT_TIME = paras[0].t;
+  if (wrapper && sentinel) {
+    let isSticky = false;
+    let sentinelTop = 0;
+    let ticking = false;
+
+    const updateSentinelTop = () => {
+      sentinelTop = sentinel.getBoundingClientRect().top + window.scrollY;
+    };
+
+    const updateSticky = () => {
+      const shouldStick = window.scrollY > sentinelTop;
+      if (shouldStick === isSticky) return;
+      isSticky = shouldStick;
+      wrapper.classList.toggle("sticky", isSticky);
+      setStickyPadding(isSticky);
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        updateSticky();
+        ticking = false;
+      });
+    };
+
+    updateSentinelTop();
+    updateSticky();
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", () => {
+      updateSentinelTop();
+      updateSticky();
+    });
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (isSticky) {
+        setStickyPadding(true);
+      }
+    });
+    resizeObserver.observe(wrapper);
+  }
 
   // ----------------------------
   // Messaging helpers
@@ -1103,6 +1145,7 @@
 
 </body>
 </html>
+
 
 
 
