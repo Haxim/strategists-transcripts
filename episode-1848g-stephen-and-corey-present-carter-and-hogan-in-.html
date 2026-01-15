@@ -112,15 +112,6 @@
 </head>
 
 <body>
-  <header class="site">
-    <a href="/">
-      <img src="/hero.png" alt="The Strategists" onerror="this.style.display='none'">
-    </a>
-    <div>
-      <div><a href="/"><strong>The Strategists</strong></a></div>
-      <div class="sub">Interactive transcripts + audio</div>
-    </div>
-  </header>
 
   <div class="container">
     <h1>Episode 1848G: Stephen and Corey present Carter and Hogan in “S--t on a stick”</h1>
@@ -962,7 +953,7 @@
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
-      window.requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
         updateSticky();
         ticking = false;
       });
@@ -977,12 +968,9 @@
       updateSticky();
     });
 
-    const resizeObserver = new ResizeObserver(() => {
-      if (isSticky) {
-        setStickyPadding(true);
-      }
-    });
-    resizeObserver.observe(wrapper);
+    new ResizeObserver(() => {
+      if (isSticky) setStickyPadding(true);
+    }).observe(wrapper);
   }
 
   // ----------------------------
@@ -995,7 +983,6 @@
 
   if (!paras.length) return;
 
-  // 🔒 Hard gate: earliest real content time
   const FIRST_CONTENT_TIME = paras[0].t;
 
   // ----------------------------
@@ -1107,13 +1094,18 @@
   }
 
   // ----------------------------
-  // Transcript → Player
+  // Transcript → Player (UPDATED)
   // ----------------------------
+  let pendingSeek = null;
+
+  function requestSeek(t) {
+    pendingSeek = t;
+    post({ eventName: "postmessage:get:isplaying" });
+  }
+
   paras.forEach(({ el, t }) => {
     el.addEventListener("click", () => {
-      post({ eventName: "postmessage:do:seek", data: { position: t } });
-      post({ eventName: "postmessage:do:play" });
-
+      requestSeek(t);
       lastContentTime = t;
       updateHighlight(t);
     });
@@ -1130,6 +1122,43 @@
     const d = extractDuration(msg.data);
     if (Number.isFinite(d) && d > 0) durationSec = d;
 
+    // --- isPlaying response ---
+    if (msg.eventName === "postmessage:get:isplaying") {
+      if (!Number.isFinite(pendingSeek)) return;
+
+      if (msg.data?.isPlaying) {
+        post({
+          eventName: "postmessage:do:seek",
+          data: { position: pendingSeek }
+        });
+        pendingSeek = null;
+      } else {
+        post({ eventName: "postmessage:do:play" });
+      }
+      return;
+    }
+
+    // --- playback started ---
+    if (msg.eventName === "postmessage:on:play") {
+      // Case 1: transcript click initiated play
+      if (Number.isFinite(pendingSeek)) {
+        post({
+          eventName: "postmessage:do:seek",
+          data: { position: pendingSeek }
+        });
+        pendingSeek = null;
+        return;
+      }
+
+      // Case 2: user pressed play on the player (no prior seek)
+      if (!Number.isFinite(lastContentTime)) {
+        lastContentTime = FIRST_CONTENT_TIME;
+        updateHighlight(FIRST_CONTENT_TIME);
+      }
+
+      return;
+    }
+
     if (
       msg.eventName !== "postmessage:get:progress" &&
       msg.eventName !== "postmessage:on:progress" &&
@@ -1141,7 +1170,6 @@
 
     const t = pickBestTime(cands);
 
-    // 🔒 HARD GATE — ignore pre-content garbage forever
     if (t < FIRST_CONTENT_TIME) return;
 
     lastContentTime = t;
@@ -1154,6 +1182,7 @@
   }, POLL_MS);
 })();
 </script>
+
 
 
 </body>
