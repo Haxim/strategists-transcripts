@@ -14,10 +14,7 @@ PER_PAGE = 50
 
 SITE_TITLE = "The Strategists"
 
-# Canonical archive URL (episodes + transcripts are the same thing)
 ARCHIVE_URL = "https://episodes.thestrategists.ca"
-
-# Brand / distribution
 MAIN_SITE_URL = "https://www.thestrategists.ca"
 APPLE_PODCASTS_URL = "https://apple.co/4ol8kJD"
 PATREON_URL = "https://www.patreon.com/strategistspod"
@@ -135,78 +132,138 @@ def render_index_page(episodes, page, total_pages):
   </script>
 
   <style>
+    :root {{
+      --brand: #0b57d0;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --card-bg: #fafafa;
+      --page-bg: #f9fafb;
+    }}
+
     body {{
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
       color: #111;
-      background: #fff;
+      background: var(--page-bg);
     }}
+
+    header.hero {{
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+    }}
+
     header.hero img {{
       width: 100%;
       max-height: 260px;
       object-fit: contain;
       display: block;
     }}
+
     .top-nav {{
       max-width: 960px;
       margin: 0 auto;
-      padding: .75rem 1rem 1rem;
+      padding: .75rem 1rem 1.25rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
       font-size: .95rem;
     }}
+
     .top-nav a {{
-      color: #0b57d0;
+      color: var(--brand);
       font-weight: 500;
       text-decoration: none;
     }}
+
+    .top-nav a:hover {{
+      text-decoration: underline;
+    }}
+
     header.intro {{
       max-width: 960px;
       margin: 0 auto;
-      padding: 2.5rem 1rem;
+      padding: 2rem 1rem 1.5rem;
     }}
+
+    h1 {{
+      font-size: 2rem;
+      margin-bottom: .75rem;
+    }}
+
     .seo-intro {{
       max-width: 720px;
-      margin-top: 1rem;
       font-size: 1.05rem;
       line-height: 1.6;
       color: #444;
     }}
+
     main {{
       max-width: 960px;
       margin: 0 auto;
-      padding: 2.5rem 1rem;
+      padding: 2rem 1rem 2.5rem;
+      background: #fff;
+      border-radius: 16px;
     }}
+
+    h2 {{
+      margin-bottom: 1.25rem;
+    }}
+
     .episode {{
       padding: 1.5rem;
-      margin-bottom: 1.25rem;
-      border: 1px solid #e5e7eb;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
       border-radius: 14px;
-      background: #fafafa;
+      background: var(--card-bg);
+      transition: transform .15s ease, box-shadow .15s ease;
     }}
+
+    .episode:hover {{
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    }}
+
     .episode-title {{
       font-size: 1.15rem;
       font-weight: 600;
-      color: #0b57d0;
+      color: var(--brand);
       text-decoration: none;
     }}
+
+    .episode-title:hover {{
+      text-decoration: underline;
+    }}
+
     .date {{
       font-size: .9rem;
-      color: #666;
+      color: var(--muted);
       margin-top: .35rem;
     }}
+
     .desc {{
       margin-top: .75rem;
       font-size: .95rem;
       line-height: 1.55;
       color: #333;
     }}
+
     nav.pagination {{
       display: flex;
       justify-content: space-between;
       margin-top: 2.5rem;
     }}
+
+    nav.pagination a {{
+      color: var(--brand);
+      font-weight: 500;
+      text-decoration: none;
+    }}
+
+    nav.pagination a:hover {{
+      text-decoration: underline;
+    }}
+
     footer {{
       max-width: 960px;
       margin: 3rem auto 2rem;
