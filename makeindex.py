@@ -63,6 +63,7 @@ def extract_description(text: str) -> str | None:
 
     return desc
 
+
 # ------------------------------------------------------------
 # HTML rendering
 # ------------------------------------------------------------
@@ -85,7 +86,7 @@ def render_index_page(episodes, page, total_pages):
 
     prev_link = ""
     next_link = ""
-    prev_url = None
+    prev_url = ""
 
     if page > 1:
         prev_url = "/" if page == 2 else f"/page/{page - 1}/"
@@ -97,7 +98,7 @@ def render_index_page(episodes, page, total_pages):
     canonical = f"{ARCHIVE_URL}/" if page == 1 else f"{ARCHIVE_URL}/page/{page}/"
 
     rel_links = []
-    if page > 1 and prev_url:
+    if page > 1:
         rel_links.append(f'<link rel="prev" href="{ARCHIVE_URL}{prev_url}">')
     if page < total_pages:
         rel_links.append(f'<link rel="next" href="{ARCHIVE_URL}/page/{page + 1}/">')
@@ -133,14 +134,14 @@ def render_index_page(episodes, page, total_pages):
   }}
   </script>
 
-  <!-- Match the main site's typography (Assistant) -->
+  <!-- Typographic vibe closer to the main site -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root {{
-      /* Pulled from your uploaded site (accent 1 / accent 2) */
+      /* Strategists brand accents */
       --color-base-text: 18, 18, 18;
       --color-base-background-1: 255, 255, 255;
       --color-base-background-2: 243, 243, 243;
@@ -159,7 +160,7 @@ def render_index_page(episodes, page, total_pages):
     body {{
       margin: 0;
       font-family: Assistant, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text-muted);
+      color: rgba(var(--color-base-text), 0.92);
       background: rgb(var(--color-base-background-1));
     }}
 
@@ -185,7 +186,7 @@ def render_index_page(episodes, page, total_pages):
       display: block;
     }}
 
-    /* Nav: closer to your main site feel (muted ink, underline-offset hover) */
+    /* Nav */
     .site-nav {{
       border-top: 1px solid var(--border-softer);
       background: rgb(var(--color-base-background-1));
@@ -204,13 +205,13 @@ def render_index_page(episodes, page, total_pages):
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0; /* Dawn style: items rely on padding, not gap */
+      gap: 0;
     }}
 
     .nav-list a {{
       display: inline-block;
       padding: 1.05rem 1.2rem;
-      color: var(--text-muted);
+      color: rgba(var(--color-base-text), 0.78);
       text-decoration: none;
       letter-spacing: 0.06rem;
       font-weight: 400;
@@ -226,7 +227,7 @@ def render_index_page(episodes, page, total_pages):
       transition: text-decoration-color 120ms ease;
       text-decoration: underline;
       text-underline-offset: 0.3rem;
-      text-decoration-color: transparent; /* looks “designed” not default */
+      text-decoration-color: transparent;
     }}
 
     .nav-list a:hover span {{
@@ -239,7 +240,7 @@ def render_index_page(episodes, page, total_pages):
       border-radius: 6px;
     }}
 
-    /* Intro block */
+    /* Intro */
     header.intro {{
       padding: 2.5rem 0 1.5rem;
     }}
@@ -258,7 +259,7 @@ def render_index_page(episodes, page, total_pages):
       margin: 0;
       font-size: 1.1rem;
       line-height: 1.65;
-      color: var(--text-muted);
+      color: rgba(var(--color-base-text), 0.75);
     }}
 
     /* Main */
@@ -274,35 +275,62 @@ def render_index_page(episodes, page, total_pages):
       font-weight: 400;
     }}
 
-    /* Cards: less “rounded app cards”, more clean/flat Dawn-ish blocks */
-    .episode-card {{
-      padding: 1.4rem 0;
-      border-top: 1px solid var(--border-soft);
+    /* Card grid */
+    .episode-grid {{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }}
-    .episode-card:first-of-type {{
-      border-top: 1px solid var(--border-soft);
+
+    @media screen and (min-width: 750px) {{
+      .episode-grid {{
+        gap: 1.25rem;
+      }}
+    }}
+
+    /* Two columns on big screens */
+    @media screen and (min-width: 1000px) {{
+      .episode-grid {{
+        grid-template-columns: 1fr 1fr;
+      }}
+    }}
+
+    /* Card-like episodes */
+    .episode-card {{
+      padding: 1.25rem 1.25rem;
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      background: rgb(var(--color-base-background-1));
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+    }}
+
+    .episode-card:hover {{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      border-color: rgba(var(--color-base-text), 0.14);
     }}
 
     .episode-title {{
       display: inline-block;
       color: rgb(var(--color-base-accent-1));
-      text-decoration: underline;
-      text-underline-offset: 0.3rem;
-      text-decoration-color: transparent;
+      text-decoration: none;
       font-weight: 600;
       letter-spacing: 0.02rem;
       font-size: 1.2rem;
       line-height: 1.35;
     }}
+
     .episode-title:hover {{
       color: rgb(var(--color-base-accent-2));
-      text-decoration-color: currentColor;
+      text-decoration: underline;
+      text-underline-offset: 0.3rem;
     }}
 
     .episode-meta {{
-      margin-top: .35rem;
+      margin-top: .45rem;
       font-size: 0.95rem;
-      color: var(--text-faint);
+      color: rgba(var(--color-base-text), 0.60);
     }}
 
     .episode-desc {{
@@ -310,7 +338,7 @@ def render_index_page(episodes, page, total_pages):
       max-width: 90rem;
       font-size: 1rem;
       line-height: 1.6;
-      color: var(--text-muted);
+      color: rgba(var(--color-base-text), 0.75);
     }}
 
     /* Pagination */
@@ -320,7 +348,7 @@ def render_index_page(episodes, page, total_pages):
       align-items: center;
       margin-top: 2.25rem;
       padding-top: 1.5rem;
-      border-top: 1px solid var(--border-soft);
+      border-top: 1px solid var(--border-softer);
     }}
 
     .pager-link {{
@@ -341,7 +369,7 @@ def render_index_page(episodes, page, total_pages):
       margin: 3rem 0 2rem;
       padding-top: 1.5rem;
       border-top: 1px solid var(--border-softer);
-      color: var(--text-faint);
+      color: rgba(var(--color-base-text), 0.60);
       font-size: 0.95rem;
       text-align: center;
     }}
@@ -393,7 +421,10 @@ def render_index_page(episodes, page, total_pages):
 
   <main>
     <h2 class="section-title">Episodes</h2>
-    {''.join(cards)}
+    <div class="episode-grid">
+      {''.join(cards)}
+    </div>
+
     <nav class="pagination" aria-label="Pagination">
       <div>{prev_link}</div>
       <div>{next_link}</div>
@@ -414,6 +445,7 @@ def render_index_page(episodes, page, total_pages):
 </html>
 """
 
+
 # ------------------------------------------------------------
 # Sitemap generation
 # ------------------------------------------------------------
@@ -426,6 +458,7 @@ def write_sitemap(urls):
 
     tree = ET.ElementTree(urlset)
     tree.write(HTML_DIR / "sitemap.xml", encoding="utf-8", xml_declaration=True)
+
 
 # ------------------------------------------------------------
 # Main
