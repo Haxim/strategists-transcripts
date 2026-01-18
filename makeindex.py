@@ -14,7 +14,10 @@ PER_PAGE = 50
 
 SITE_TITLE = "The Strategists"
 
+# Canonical archive URL (episodes + transcripts are the same thing)
 ARCHIVE_URL = "https://episodes.thestrategists.ca"
+
+# Brand / distribution
 MAIN_SITE_URL = "https://www.thestrategists.ca"
 APPLE_PODCASTS_URL = "https://apple.co/4ol8kJD"
 PATREON_URL = "https://www.patreon.com/strategistspod"
@@ -68,34 +71,33 @@ def render_index_page(episodes, page, total_pages):
     for ep in episodes:
         cards.append(
             f"""
-            <article class="episode">
+            <article class="episode-card">
               <a class="episode-title" href="/{ep['slug']}.html">
                 {html.escape(ep['title'])}
               </a>
-              <div class="date">{ep['published_human']}</div>
-              {f'<p class="desc">{html.escape(ep["description"])}</p>' if ep.get("description") else ""}
+              <div class="episode-meta">
+                <span class="episode-date">{ep['published_human']}</span>
+              </div>
+              {f'<p class="episode-desc">{html.escape(ep["description"])}</p>' if ep.get("description") else ""}
             </article>
             """
         )
 
     prev_link = ""
     next_link = ""
+    prev_url = None
 
     if page > 1:
         prev_url = "/" if page == 2 else f"/page/{page - 1}/"
-        prev_link = f'<a href="{prev_url}">← Newer</a>'
+        prev_link = f'<a class="pager-link" href="{prev_url}">← Newer</a>'
 
     if page < total_pages:
-        next_link = f'<a href="/page/{page + 1}/">Older →</a>'
+        next_link = f'<a class="pager-link" href="/page/{page + 1}/">Older →</a>'
 
-    canonical = (
-        f"{ARCHIVE_URL}/"
-        if page == 1
-        else f"{ARCHIVE_URL}/page/{page}/"
-    )
+    canonical = f"{ARCHIVE_URL}/" if page == 1 else f"{ARCHIVE_URL}/page/{page}/"
 
     rel_links = []
-    if page > 1:
+    if page > 1 and prev_url:
         rel_links.append(f'<link rel="prev" href="{ARCHIVE_URL}{prev_url}">')
     if page < total_pages:
         rel_links.append(f'<link rel="next" href="{ARCHIVE_URL}/page/{page + 1}/">')
@@ -131,146 +133,229 @@ def render_index_page(episodes, page, total_pages):
   }}
   </script>
 
+  <!-- Match the main site's typography (Assistant) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     :root {{
-      --brand: #0b57d0;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --card-bg: #fafafa;
-      --page-bg: #f9fafb;
+      /* Pulled from your uploaded site (accent 1 / accent 2) */
+      --color-base-text: 18, 18, 18;
+      --color-base-background-1: 255, 255, 255;
+      --color-base-background-2: 243, 243, 243;
+      --color-base-accent-1: 35, 46, 65;   /* #232e41 */
+      --color-base-accent-2: 217, 82, 46;  /* #d7522f */
+
+      --page-width: 120rem;
+      --border-soft: rgba(var(--color-base-text), 0.10);
+      --border-softer: rgba(var(--color-base-text), 0.08);
+      --text-muted: rgba(var(--color-base-text), 0.75);
+      --text-faint: rgba(var(--color-base-text), 0.60);
     }}
+
+    * {{ box-sizing: border-box; }}
 
     body {{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
-      color: #111;
-      background: var(--page-bg);
+      font-family: Assistant, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-muted);
+      background: rgb(var(--color-base-background-1));
     }}
 
+    /* Dawn-ish page width container */
+    .page-width {{
+      max-width: var(--page-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }}
+    @media screen and (min-width: 750px) {{
+      .page-width {{ padding: 0 5rem; }}
+    }}
+
+    /* Hero */
     header.hero {{
-      background: #f8fafc;
-      border-bottom: 1px solid var(--border);
+      background: rgb(var(--color-base-background-1));
+      border-bottom: 1px solid var(--border-softer);
     }}
-
     header.hero img {{
       width: 100%;
-      max-height: 260px;
+      max-height: 240px;
       object-fit: contain;
       display: block;
     }}
 
-    .top-nav {{
-      max-width: 960px;
-      margin: 0 auto;
-      padding: .75rem 1rem 1.25rem;
+    /* Nav: closer to your main site feel (muted ink, underline-offset hover) */
+    .site-nav {{
+      border-top: 1px solid var(--border-softer);
+      background: rgb(var(--color-base-background-1));
+    }}
+
+    .nav-row {{
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.5rem;
-      font-size: .95rem;
     }}
 
-    .top-nav a {{
-      color: var(--brand);
-      font-weight: 500;
+    .nav-list {{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0; /* Dawn style: items rely on padding, not gap */
+    }}
+
+    .nav-list a {{
+      display: inline-block;
+      padding: 1.05rem 1.2rem;
+      color: var(--text-muted);
       text-decoration: none;
+      letter-spacing: 0.06rem;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1;
     }}
 
-    .top-nav a:hover {{
+    .nav-list a:hover {{
+      color: rgb(var(--color-base-text));
+    }}
+
+    .nav-list a span {{
+      transition: text-decoration-color 120ms ease;
       text-decoration: underline;
+      text-underline-offset: 0.3rem;
+      text-decoration-color: transparent; /* looks “designed” not default */
     }}
 
+    .nav-list a:hover span {{
+      text-decoration-color: currentColor;
+    }}
+
+    .nav-list a:focus-visible {{
+      outline: 2px solid rgba(var(--color-base-accent-2), 0.55);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }}
+
+    /* Intro block */
     header.intro {{
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2rem 1rem 1.5rem;
+      padding: 2.5rem 0 1.5rem;
     }}
 
-    h1 {{
+    header.intro h1 {{
+      margin: 0 0 .75rem;
+      color: rgb(var(--color-base-text));
+      font-weight: 400;
+      letter-spacing: 0.06rem;
       font-size: 2rem;
-      margin-bottom: .75rem;
+      line-height: 1.15;
     }}
 
     .seo-intro {{
-      max-width: 720px;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: #444;
+      max-width: 82rem;
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: var(--text-muted);
     }}
 
+    /* Main */
     main {{
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2rem 1rem 2.5rem;
-      background: #fff;
-      border-radius: 16px;
+      padding: 1.5rem 0 3rem;
     }}
 
-    h2 {{
-      margin-bottom: 1.25rem;
+    .section-title {{
+      margin: 0 0 1.25rem;
+      font-size: 1.4rem;
+      letter-spacing: 0.06rem;
+      color: rgb(var(--color-base-text));
+      font-weight: 400;
     }}
 
-    .episode {{
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--card-bg);
-      transition: transform .15s ease, box-shadow .15s ease;
+    /* Cards: less “rounded app cards”, more clean/flat Dawn-ish blocks */
+    .episode-card {{
+      padding: 1.4rem 0;
+      border-top: 1px solid var(--border-soft);
     }}
-
-    .episode:hover {{
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    .episode-card:first-of-type {{
+      border-top: 1px solid var(--border-soft);
     }}
 
     .episode-title {{
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--brand);
-      text-decoration: none;
-    }}
-
-    .episode-title:hover {{
+      display: inline-block;
+      color: rgb(var(--color-base-accent-1));
       text-decoration: underline;
+      text-underline-offset: 0.3rem;
+      text-decoration-color: transparent;
+      font-weight: 600;
+      letter-spacing: 0.02rem;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }}
+    .episode-title:hover {{
+      color: rgb(var(--color-base-accent-2));
+      text-decoration-color: currentColor;
     }}
 
-    .date {{
-      font-size: .9rem;
-      color: var(--muted);
+    .episode-meta {{
       margin-top: .35rem;
+      font-size: 0.95rem;
+      color: var(--text-faint);
     }}
 
-    .desc {{
-      margin-top: .75rem;
-      font-size: .95rem;
-      line-height: 1.55;
-      color: #333;
+    .episode-desc {{
+      margin: .75rem 0 0;
+      max-width: 90rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
     }}
 
+    /* Pagination */
     nav.pagination {{
       display: flex;
       justify-content: space-between;
-      margin-top: 2.5rem;
+      align-items: center;
+      margin-top: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-soft);
     }}
 
-    nav.pagination a {{
-      color: var(--brand);
-      font-weight: 500;
-      text-decoration: none;
-    }}
-
-    nav.pagination a:hover {{
+    .pager-link {{
+      color: rgb(var(--color-base-accent-1));
       text-decoration: underline;
+      text-underline-offset: 0.3rem;
+      text-decoration-color: transparent;
+      font-weight: 600;
+      letter-spacing: 0.02rem;
+    }}
+    .pager-link:hover {{
+      color: rgb(var(--color-base-accent-2));
+      text-decoration-color: currentColor;
     }}
 
+    /* Footer */
     footer {{
-      max-width: 960px;
-      margin: 3rem auto 2rem;
-      padding: 0 1rem;
+      margin: 3rem 0 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-softer);
+      color: var(--text-faint);
+      font-size: 0.95rem;
       text-align: center;
-      color: #666;
-      font-size: .9rem;
+    }}
+
+    footer a {{
+      color: rgb(var(--color-base-accent-1));
+      text-decoration: underline;
+      text-underline-offset: 0.3rem;
+      text-decoration-color: transparent;
+      font-weight: 600;
+    }}
+    footer a:hover {{
+      color: rgb(var(--color-base-accent-2));
+      text-decoration-color: currentColor;
     }}
   </style>
 </head>
@@ -281,40 +366,49 @@ def render_index_page(episodes, page, total_pages):
   <a href="{MAIN_SITE_URL}">
     <img src="{HERO_SRC}" alt="The Strategists">
   </a>
-  <nav class="top-nav">
-    <a href="{MAIN_SITE_URL}">Home</a>
-    <a href="{ARCHIVE_URL}">Episodes</a>
-    <a href="{APPLE_PODCASTS_URL}">Apple Podcasts</a>
-    <a href="{PATREON_URL}">Patreon</a>
-  </nav>
+
+  <div class="site-nav">
+    <div class="page-width nav-row">
+      <nav aria-label="Primary">
+        <ul class="nav-list" role="list">
+          <li><a href="{MAIN_SITE_URL}"><span>Home</span></a></li>
+          <li><a href="{ARCHIVE_URL}"><span>Episodes</span></a></li>
+          <li><a href="{APPLE_PODCASTS_URL}"><span>Apple Podcasts</span></a></li>
+          <li><a href="{PATREON_URL}"><span>Patreon</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </header>
 
-<header class="intro">
-  <h1>Canadian & Alberta Politics Podcast Transcripts</h1>
-  <p class="seo-intro">
-    The Strategists is a Canadian politics podcast focused on Alberta politics,
-    federal campaigns, elections, and political strategy. This archive contains
-    full episode transcripts covering Canadian public affairs and political analysis.
-  </p>
-</header>
+<div class="page-width">
+  <header class="intro">
+    <h1>Canadian & Alberta Politics Podcast Transcripts</h1>
+    <p class="seo-intro">
+      The Strategists is a Canadian politics podcast focused on Alberta politics,
+      federal campaigns, elections, and political strategy. This archive contains
+      full episode transcripts covering Canadian public affairs and political analysis.
+    </p>
+  </header>
 
-<main>
-  <h2>Canadian & Alberta Politics Podcast Episodes</h2>
-  {''.join(cards)}
-  <nav class="pagination">
-    {prev_link}
-    {next_link}
-  </nav>
-</main>
+  <main>
+    <h2 class="section-title">Episodes</h2>
+    {''.join(cards)}
+    <nav class="pagination" aria-label="Pagination">
+      <div>{prev_link}</div>
+      <div>{next_link}</div>
+    </nav>
+  </main>
 
-<footer>
-  <p>
-    <a href="{MAIN_SITE_URL}">TheStrategists.ca</a> ·
-    <a href="{ARCHIVE_URL}">Episodes</a> ·
-    <a href="{APPLE_PODCASTS_URL}">Apple Podcasts</a> ·
-    <a href="{PATREON_URL}">Patreon</a>
-  </p>
-</footer>
+  <footer>
+    <p>
+      <a href="{MAIN_SITE_URL}">TheStrategists.ca</a> ·
+      <a href="{ARCHIVE_URL}">Episodes</a> ·
+      <a href="{APPLE_PODCASTS_URL}">Apple Podcasts</a> ·
+      <a href="{PATREON_URL}">Patreon</a>
+    </p>
+  </footer>
+</div>
 
 </body>
 </html>
