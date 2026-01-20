@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Episode Out Now – The Strategists</title>
+
+  <!-- Basic SEO / Social -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="New Episode Out Now – The Strategists" />
+  <meta property="og:description" content="Listen to the latest episode of The Strategists." />
+
+  <style>
+    :root {
+      --orange: #d7522f;
+      --navy: #232e41;
+      --bg-dark: #0f141c;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -20%, rgba(215,82,47,0.35), transparent 60%),
+                  radial-gradient(1000px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
+                  linear-gradient(160deg, #121826, #0b0f16);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 560px;
+      background: rgba(15,20,28,0.85);
+      border-radius: 24px;
+      padding: 40px 32px 36px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      animation: floatIn 0.6s ease-out;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .episode-number {
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    .description {
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+
+    .buttons {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(215,82,47,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(215,82,47,0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      opacity: 0.6;
+      margin-top: 8px;
+    }
+
+    .footer a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 420px) {
+      h1 { font-size: 28px; }
+      .card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="card">
+    <div class="badge">NEW EPISODE OUT NOW</div>
+
+    <!-- EDIT THESE -->
+    <h1>The New World Order Starts Without Washington</h1>
+    <div class="episode-number">Episode 1903</div>
+    <p class="description">
+      Stephen Carter and Shannon Phillips unpack Carney, China, NATO, and what it means when Washington can’t be trusted.
+    </p>
+
+    <div class="buttons">
+      <!-- DROP IN LINKS -->
+      <a class="btn btn-primary" href="https://podcasts.apple.com/ca/podcast/episode-1903-a-new-world-order-whether-we-like-it-or-not/id1514440943?i=1000745807007" target="_blank">🎧 Listen on Apple Podcasts</a>
+      <a class="btn btn-secondary" href="https://open.spotify.com/episode/5bo4UNUDtvE1A3bqwRn8cJ?si=TUbwedMtRe2CZ6CjMmKynA" target="_blank">🎧 Listen on Spotify</a>
+      <a class="btn btn-secondary" href="https://shows.acast.com/strategistspod/episodes/episode-1903-a-new-world-order-whether-we-like-it-or-not" target="_blank">▶️ Listen on Web</a>
+    </div>
+
+    <div class="footer">
+      <a href="/">Browse all episodes</a>
+    </div>
+  </main>
+
+</body>
+</html>
