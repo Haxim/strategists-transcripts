@@ -5,14 +5,15 @@ render_index.py
 Static site post-processor for The Strategists.
 
 Inputs:
-  /episodes/*.html   (already-rendered episode pages)
+  /html/*.html   (already-rendered episode pages, flat directory)
 
 Outputs:
-  /index.html
-  /page/N/index.html
-  /newest/index.html
+  /html/index.html
+  /html/page/N/index.html
+  /html/newest/index.html
 
-No templates. No Jinja. Cloudflare-safe.
+Cloudflare Pages–safe.
+Pretty URLs via _redirects rewrite.
 """
 
 from pathlib import Path
@@ -25,13 +26,19 @@ import re
 # -------------------------------------------------------------------
 
 SITE_NAME = "The Strategists"
-EPISODES_DIR = Path("html")
-OUT_DIR = Path("html")
+SITE_ROOT = Path("html")          # Cloudflare Pages root
+EPISODES_DIR = SITE_ROOT
+OUT_DIR = SITE_ROOT
 PER_PAGE = 24
 NEWEST_DIR = OUT_DIR / "newest"
 
+EXCLUDE_FILES = {
+    "index.html",
+    "_redirects",
+}
+
 # -------------------------------------------------------------------
-# Regex extractors (robust against formatting changes)
+# Regex extractors
 # -------------------------------------------------------------------
 
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.I | re.S)
@@ -56,7 +63,6 @@ def extract_meta(html: str):
 
     published = date_m.group(1) if date_m else ""
     description = desc_m.group(1).strip() if desc_m else ""
-
     episode_number = epnum_m.group(1) if epnum_m else ""
 
     try:
@@ -79,19 +85,25 @@ def load_episodes():
     episodes = []
 
     for path in EPISODES_DIR.glob("*.html"):
+        if path.name in EXCLUDE_FILES:
+            continue
+        if path.parent.name in {"page", "newest"}:
+            continue
+
         html = path.read_text(encoding="utf-8")
         meta = extract_meta(html)
 
+        slug = path.stem  # filename without .html
+
         episodes.append({
             **meta,
-            "url": f"/episodes/{path.name}",
+            "slug": slug,
+            "url": f"/{slug}",   # pretty URL
             "path": path,
-            "html": html,
         })
 
     episodes.sort(key=lambda e: e["ts"], reverse=True)
     return episodes
-
 
 # -------------------------------------------------------------------
 # Index page renderer
@@ -165,13 +177,11 @@ def render_index_page(episodes, page, total_pages):
 </html>
 """
 
-
 # -------------------------------------------------------------------
-# /newest page renderer (your design, automated)
+# /newest page renderer
 # -------------------------------------------------------------------
 
 def render_newest_page(ep):
-    title = ep["title"]
     description = ep["description"] or "Listen to the latest episode of The Strategists."
     epnum = ep["episode_number"]
 
@@ -183,100 +193,34 @@ def render_newest_page(ep):
   <title>New Episode Out Now – The Strategists</title>
 
   <meta name="robots" content="noindex, nofollow" />
-  <meta property="og:title" content="New Episode Out Now – The Strategists" />
-  <meta property="og:description" content="Listen to the latest episode of The Strategists." />
 
   <style>
-    :root {{
-      --orange: #d7522f;
-      --navy: #232e41;
-      --white: #ffffff;
-    }}
-
     body {{
-      font-family: Inter, system-ui, -apple-system, sans-serif;
-      background:
-        radial-gradient(1200px 800px at 80% -20%, rgba(215,82,47,0.35), transparent 60%),
-        radial-gradient(1000px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
-        linear-gradient(160deg, #121826, #0b0f16);
-      color: var(--white);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #0b1020;
+      color: #fff;
+      padding: 40px;
     }}
-
-    .card {{
-      max-width: 560px;
-      background: rgba(15,20,28,0.85);
-      border-radius: 24px;
-      padding: 40px 32px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-    }}
-
-    .badge {{
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      color: var(--orange);
-      margin-bottom: 14px;
-    }}
-
-    h1 {{
-      font-size: 34px;
-      line-height: 1.15;
-      margin-bottom: 10px;
-    }}
-
-    .episode-number {{
-      opacity: 0.8;
-      margin-bottom: 18px;
-    }}
-
-    .description {{
-      font-size: 16px;
-      margin-bottom: 28px;
-    }}
-
-    .btn {{
-      display: block;
-      text-align: center;
-      padding: 16px;
-      border-radius: 14px;
-      background: var(--orange);
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 600;
-    }}
-
-    .footer {{
-      margin-top: 18px;
-      text-align: center;
-      font-size: 13px;
-      opacity: 0.6;
-    }}
+    a {{ color: #d7522f; }}
   </style>
 </head>
 <body>
 
-<main class="card">
-  <div class="badge">NEW EPISODE OUT NOW</div>
-  <h1>{title}</h1>
-  {f"<div class='episode-number'>Episode {epnum}</div>" if epnum else ""}
-  <p class="description">{description}</p>
+  <h1>{ep['title']}</h1>
+  {f"<p>Episode {epnum}</p>" if epnum else ""}
+  <p>{description}</p>
 
-  <a class="btn" href="{ep['url']}">🎧 Read transcript & listen</a>
+  <p>
+    <a href="{ep['url']}">🎧 Read transcript & listen</a>
+  </p>
 
-  <div class="footer">
+  <p>
     <a href="/">Browse all episodes</a>
-  </div>
-</main>
+  </p>
 
 </body>
 </html>
 """
-
 
 # -------------------------------------------------------------------
 # Main
@@ -285,7 +229,7 @@ def render_newest_page(ep):
 def main():
     episodes = load_episodes()
     if not episodes:
-        raise SystemExit("No episodes found in /episodes")
+        raise SystemExit("No episodes found in /html")
 
     total_pages = math.ceil(len(episodes) / PER_PAGE)
 
@@ -310,8 +254,10 @@ def main():
 
     # Newest page
     NEWEST_DIR.mkdir(parents=True, exist_ok=True)
-    newest_html = render_newest_page(episodes[0])
-    (NEWEST_DIR / "index.html").write_text(newest_html, encoding="utf-8")
+    (NEWEST_DIR / "index.html").write_text(
+        render_newest_page(episodes[0]),
+        encoding="utf-8",
+    )
 
     print(f"✔ Wrote index ({total_pages} pages) and /newest")
 
