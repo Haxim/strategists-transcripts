@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/134382052.mp3?sig=YVVnvO-NXUg_6KfGx3nvSsBvmrSQlbv5pF7kPTR_5-A%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/6879bfe5b3ed2deb17f86f87"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -453,7 +519,7 @@
 </div>
 <div class="turn" data-start="54">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:54</span>
   </div>
   <div class="said">I have no thoughts on Coldplaygate whatsoever. Why are</div>
@@ -463,7 +529,21 @@
     <span class="speaker">Zain</span>
     <span class="ts">0:58</span>
   </div>
-  <div class="said">we blaming Coldplay? This is Yes, this gate. By the way, did you guys see the apology letter or the lack of apology letter? It is probably... We should pick that apart. this show, how many have we done? We&#x27;ve probably done, over the history of this show, I&#x27;d say a dozen. At least. This might be the worst I&#x27;ve ever seen. The first part, for those who haven&#x27;t read it, let me give you a quick synopsis. It starts off fine, boilerplate. And by fine, I mean it&#x27;s fucking fine. It wasn&#x27;t good. I need to be a better man. But then, okay, paragraph three and paragraph four, you&#x27;re not expecting what&#x27;s coming. Paragraph three, without my consent, these musicians put me on the screen. Paragraph four, he fucking quotes Coldplay to end the letter. my God. It is the worst thing I have ever seen, Carter.</div>
+  <div class="said">we blaming Coldplay? This is</div>
+</div>
+<div class="turn" data-start="65">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:05</span>
+  </div>
+  <div class="said">Yes, this gate. By the way, did you guys see the apology letter or the lack of apology letter? It is probably... We should pick that apart. this show, how many have we done? We&#x27;ve probably done, over the history of this show, I&#x27;d say a dozen. At least. This might be the worst I&#x27;ve ever seen. The first part, for those who haven&#x27;t read it, let me give you a quick synopsis. It starts off fine, boilerplate. And by fine, I mean it&#x27;s fucking fine. It wasn&#x27;t good. I need to be a better man. But then, okay, paragraph three and paragraph four, you&#x27;re not expecting what&#x27;s coming. Paragraph three, without my consent, these musicians put me on the screen. Paragraph four, he fucking quotes Coldplay to end the letter.</div>
+</div>
+<div class="turn" data-start="111">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:51</span>
+  </div>
+  <div class="said">my God. It is the worst thing I have ever seen, Carter.</div>
 </div>
 <div class="turn" data-start="116">
   <div class="who">
@@ -488,7 +568,7 @@
 </div>
 <div class="turn" data-start="138">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:18</span>
   </div>
   <div class="said">mean, Randy Dawson would have held him up</div>
@@ -502,7 +582,7 @@
 </div>
 <div class="turn" data-start="145">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:25</span>
   </div>
   <div class="said">insurance situation on this show? I&#x27;m just saying that if I was a CEO that was trapped in that, I would have probably hired Randy Dawson.</div>
@@ -575,7 +655,21 @@
     <span class="speaker">Zain</span>
     <span class="ts">3:17</span>
   </div>
-  <div class="said">But which Coldplay song would you have ended with? Which Coldplay song quote would you have ended with? Here&#x27;s what people are missing, Carter. They think we&#x27;re done with lastmealatswiss.ca, but we&#x27;re not. Shannon, just stay with us for a second. So there&#x27;s been a lot of feedback, none of it positive, all about our competition, Carter. Our write-in show about, I&#x27;m just going to call it our summer contest. Oh, yeah. This is the Strategist Summer Contest. We are trying to figure out how many last meals have been had at Swiss Chalet. And the problem is we&#x27;ve gotten some really good sourced responses. Carter, do you want to tell them or should I tell them what the issue is? Oh, I think it&#x27;s up to you. Okay. The issue is we actually don&#x27;t know the number. So stage two, for anyone that has submitted, you have to actually now prove that your math is correct</div>
+  <div class="said">But which Coldplay song would you have ended with? Which Coldplay song quote would you have ended with?</div>
+</div>
+<div class="turn" data-start="204">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:24</span>
+  </div>
+  <div class="said">Here&#x27;s what people are missing, Carter. They think we&#x27;re done with lastmealatswiss.ca, but we&#x27;re not. Shannon,</div>
+</div>
+<div class="turn" data-start="212">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:32</span>
+  </div>
+  <div class="said">just stay with us for a second. So there&#x27;s been a lot of feedback, none of it positive, all about our competition, Carter. Our write-in show about, I&#x27;m just going to call it our summer contest. Oh, yeah. This is the Strategist Summer Contest. We are trying to figure out how many last meals have been had at Swiss Chalet. And the problem is we&#x27;ve gotten some really good sourced responses. Carter, do you want to tell them or should I tell them what the issue is? Oh, I think it&#x27;s up to you. Okay. The issue is we actually don&#x27;t know the number. So stage two, for anyone that has submitted, you have to actually now prove that your math is correct</div>
 </div>
 <div class="turn" data-start="249">
   <div class="who">
@@ -621,7 +715,7 @@
 </div>
 <div class="turn" data-start="282">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:42</span>
   </div>
   <div class="said">would like to talk about politics this is political if</div>
@@ -635,7 +729,7 @@
 </div>
 <div class="turn" data-start="289">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:49</span>
   </div>
   <div class="said">it&#x27;ll be political all right if we all get our asses sued by swish la how</div>
@@ -649,7 +743,7 @@
 </div>
 <div class="turn" data-start="299">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:59</span>
   </div>
   <div class="said">oh i would say zero no</div>
@@ -701,11 +795,18 @@
     <span class="speaker">Zain</span>
     <span class="ts">5:48</span>
   </div>
-  <div class="said">I think it was pretty good Thank Let&#x27;s move on to our first Our first segment Which dumpster fire would you want to solve? Stephen Carter, Shannon Phillips Phillips, there&#x27;s a few dumpster fires, a varying degree. And I want you to rank them first for me, and we&#x27;ll dive into each of them in our own special strategist way. But I&#x27;ll ask you, which one of these political dumpster fires of the past week is the worst for a particular political figure in our country or province? And as a operative strategist, former elected official, person who knows this space, people who know this space, which one would you want to work on? Does that make sense? Yep. Right? So we&#x27;ve got the Alberta Next panels, which are going splendidly thus far in Alberta. That, of course, is paired alongside the survey scandal of Daniel Smith, where they have to kind of go back and edit some surveys. You&#x27;ve got Mark Carney and C5, which is now facing some Indigenous backlash after his one-day meeting today. We can dive into that. We&#x27;ve got this by-election for Pierre Pauliev, which is, it&#x27;s straightforward, but it&#x27;s not as straightforward as you think. You&#x27;ve got this independent candidate who&#x27;s starting to make some noise, give some media interviews, etc. And finally, you have Pierre Pauliev in the line of fire again with his buddies in Ontario trying to fuck him over by having their convention on the exact same day as his leadership review. Did I get that last part right? Their convention on their leadership review. Is that correct? Yeah</div>
+  <div class="said">I think it was pretty good Thank Let&#x27;s move on to our first Our first segment Which dumpster fire would you want to solve? Stephen Carter, Shannon Phillips Phillips, there&#x27;s a few dumpster fires, a varying degree. And I want you to rank them first for me, and we&#x27;ll dive into each of them in our own special strategist way. But I&#x27;ll ask you, which one of these political dumpster fires of the past week is the worst for a particular political figure in our country or province? And as a operative strategist, former elected official, person who knows this space, people who know this space, which one would you want to work on? Does that make sense? Yep. Right? So we&#x27;ve got the Alberta Next panels, which are going splendidly thus far in Alberta. That, of course, is paired alongside the survey scandal of Daniel Smith, where they have to kind of go back and edit some surveys. You&#x27;ve got Mark Carney and C5, which is now facing some Indigenous backlash after his one-day meeting today. We can dive into that. We&#x27;ve got this by-election for Pierre Pauliev, which is, it&#x27;s</div>
+</div>
+<div class="turn" data-start="423">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">7:03</span>
+  </div>
+  <div class="said">straightforward, but it&#x27;s not as straightforward as you think. You&#x27;ve got this independent candidate who&#x27;s starting to make some noise, give some media interviews, etc. And finally, you have Pierre Pauliev in the line of fire again with his buddies in Ontario trying to fuck him over by having their convention on the exact same day as his leadership review. Did I get that last part right? Their convention on their leadership review. Is that correct? Yeah</div>
 </div>
 <div class="turn" data-start="448">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">7:28</span>
   </div>
   <div class="said">It&#x27;s so delicious. I just, you know, I want to just put it in a bowl and spoon it up. It is</div>
@@ -754,7 +855,7 @@
 </div>
 <div class="turn" data-start="511">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:31</span>
   </div>
   <div class="said">Oh, I think in terms of it being a problem, actually, like a foundational problem for the party in question. Yeah. Oh, interesting. Scandal. And the, not only do I just want to contradict Carter, you know, sort of recreationally, but I also, I think</div>
@@ -768,7 +869,7 @@
 </div>
 <div class="turn" data-start="536">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:56</span>
   </div>
   <div class="said">Street. He&#x27;ll be fine.</div>
@@ -782,7 +883,7 @@
 </div>
 <div class="turn" data-start="546">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">9:06</span>
   </div>
   <div class="said">Ontario PCs putting their convention at the same time as Pierre&#x27;s leadership review. Not because it&#x27;s going to necessarily change that many humans going to Calgary as opposed to the PC party. But it shows a, like, generally speaking, when Conservatives are successful, the big blue machine out of Ontario is powering the Conservative Party of Canada to a great extent. A</div>
@@ -796,10 +897,17 @@
 </div>
 <div class="turn" data-start="574">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">9:34</span>
   </div>
-  <div class="said">brain trust, a lot of the organizers cut their teeth there. You know, a lot of folks came out of the Harris years and then went across the country and federally and worked for, right? Right. And that is a is a big place with a lot of political horsepower. And to show the depths of the animosity that way, like it&#x27;s just it&#x27;s just a giant, big foam metal thing, middle finger. Right. To the federal party. And as Alberta New Democrat, I can tell you that having unhelpful relationships with the federal party is, you know, unhelpful at the end of the day. Having somebody trying to, you know, basically kick your feet out from under you every two minutes. It might not be a short-term problem, but you bet your ass it&#x27;s a long-term problem. them</div>
+  <div class="said">brain trust, a lot of the organizers cut their teeth there. You know, a lot of folks came out of the Harris years and then went across the country and federally and worked for, right? Right. And that is a is a big place with a lot of political horsepower. And to show the depths of the animosity that way, like it&#x27;s just it&#x27;s just a giant, big foam metal thing, middle finger. Right. To the federal party. And as</div>
+</div>
+<div class="turn" data-start="607">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">10:07</span>
+  </div>
+  <div class="said">Alberta New Democrat, I can tell you that having unhelpful relationships with the federal party is, you know, unhelpful at the end of the day. Having somebody trying to, you know, basically kick your feet out from under you every two minutes. It might not be a short-term problem, but you bet your ass it&#x27;s a long-term problem. them</div>
 </div>
 <div class="turn" data-start="630">
   <div class="who">
@@ -824,7 +932,7 @@
 </div>
 <div class="turn" data-start="664">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">11:04</span>
   </div>
   <div class="said">Probably that one. I&#x27;ve lost track. We have Alberta NAC&#x27;s by-election. Oh</div>
@@ -876,7 +984,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">12:19</span>
   </div>
-  <div class="said">ford in the past has criticized Polyev&#x27;s campaign as being political malpractice for losing the strong public lead that he had. Carter, walk me through what&#x27;s at play here. We&#x27;ve been flirting with the Ford wants his job for a long time. But at some point, it may not even be replacement. It could simply just be displacement. Get rid of the guy as much as it&#x27;s like, you know, the two-step prong. Because we always think of Ford wants his job. It&#x27;s a two-step process, displace and replace we might just be simply being like let&#x27;s create optionality let&#x27;s just displace and then see whatever the fuck happens next could it be as simple as that in your mind</div>
+  <div class="said">ford in the past has criticized Polyev&#x27;s campaign as being political malpractice for losing the strong public lead that he had. Carter, walk me through what&#x27;s at play here. We&#x27;ve been flirting with the Ford wants his job for a long time. But at some point, it may not even be replacement. It could simply just be displacement.</div>
+</div>
+<div class="turn" data-start="759">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:39</span>
+  </div>
+  <div class="said">Get rid of the guy as much as it&#x27;s like, you know, the two-step prong. Because we always think of Ford wants his job. It&#x27;s a two-step process, displace and replace we might just be simply being like let&#x27;s create optionality let&#x27;s just displace and then see whatever the fuck happens next could it be as simple as that in your mind</div>
 </div>
 <div class="turn" data-start="775">
   <div class="who">
@@ -901,10 +1016,31 @@
 </div>
 <div class="turn" data-start="820">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">13:40</span>
   </div>
-  <div class="said">i can phone him up if i have a flat tire no that ain&#x27;t pure uh look um there is clear clear animosity between these two political organizations now. It is an interesting problem to solve, because it&#x27;s, it does seem like it&#x27;s a bunch of dudes just, you know, backstabbing each other. And it might be as simple as, you know, neither of us are going to win the next election if we continue to do this to each other. I do not think that Doug Ford wants to run federally. People always think that federal politics is some sort of promotion, but it is not when you are running the province of Ontario. Doug Ford is happy to be the mayor of Ontario. He is happy to be running Canada&#x27;s largest economy. He&#x27;s happy to have the relationships with the United States that he does, to be in this problem-solving space with the looming tariffs and so on. There is no way on God&#x27;s green earth that he would want to go and be the official opposition leader. And it&#x27;s just, it&#x27;s not, it&#x27;s not his style. It&#x27;s not his, you know, it&#x27;s not his bailiwick at all. So I would be very, very shocked if that&#x27;s the motivation. There might be people around Ford that he thinks would be better for the job. I&#x27;m sure there are now that we&#x27;re a year into them</div>
+  <div class="said">i can phone him up if i have a flat tire no that ain&#x27;t pure uh look um there is clear clear animosity between these two political organizations now. It is an interesting problem to solve, because it&#x27;s, it does seem like it&#x27;s a bunch of dudes just, you know, backstabbing each other. And it might be as simple as, you know, neither of us are going to win the next election if we continue to do this to each other.</div>
+</div>
+<div class="turn" data-start="848">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">14:08</span>
+  </div>
+  <div class="said">I do not think that Doug Ford wants to run federally. People always think that federal politics is some sort of promotion, but it is not when you are running the province of Ontario.</div>
+</div>
+<div class="turn" data-start="858">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">14:18</span>
+  </div>
+  <div class="said">Doug Ford is happy to be the mayor of Ontario. He is happy to be running Canada&#x27;s largest economy. He&#x27;s happy to have the relationships with the United States that he does, to be in this problem-solving space with the looming tariffs and so on. There is no way on God&#x27;s green earth that he would want to go and be the official opposition leader. And it&#x27;s just, it&#x27;s not, it&#x27;s not his style. It&#x27;s not his, you know, it&#x27;s not his bailiwick at all.</div>
+</div>
+<div class="turn" data-start="890">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">14:50</span>
+  </div>
+  <div class="said">So I would be very, very shocked if that&#x27;s the motivation. There might be people around Ford that he thinks would be better for the job. I&#x27;m sure there are now that we&#x27;re a year into them</div>
 </div>
 <div class="turn" data-start="902">
   <div class="who">
@@ -915,28 +1051,77 @@
 </div>
 <div class="turn" data-start="903">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">15:03</span>
   </div>
-  <div class="said">But I also think that Doug Ford is a super transactional kind of politician. politician and he doesn&#x27;t like it when people are just like so crazily partisan you know he liked having a good relationship with christopher freeland he you know i i called her his friend uh publicly and he did not like that hyper hyper partisanship um that was coming out of paliaver you know and those criticisms of him being a liberal just because he you know had a transactional uh uh sort of friendship with someone at the federal level Doug Ford is a much more of an old school conservative. Palliova is a new conservative. And by which I mean, there are no facts. There is just a partisan fight to the death. And there&#x27;s no sort of shared sense of the public interest or the public good in any way, shape or form. There is just burn it all down. Use whatever you need to use to do it. But it is. And it&#x27;s, you know, the worst of of Trumpism, urbanism, all of these sort of, you know, far right movements that have now become mainstream.</div>
+  <div class="said">But I also think that Doug Ford is a super transactional kind of politician. politician and he doesn&#x27;t like it when people are just like so crazily partisan you know he liked having a good relationship with christopher freeland he you know i i called her his friend uh publicly and he did not like that hyper hyper partisanship um that was coming out of paliaver you know and those criticisms of him being a liberal just because he you know had a transactional uh uh sort of friendship with someone at the federal level Doug Ford is a much more of an old school conservative.</div>
+</div>
+<div class="turn" data-start="940">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">15:40</span>
+  </div>
+  <div class="said">Palliova is a new conservative. And by which I mean, there are no facts. There is just a partisan fight to the death. And there&#x27;s no sort of shared sense of the public interest or the public good in any way, shape or form. There is just burn it all down. Use whatever you need to use to do it. But it is. And it&#x27;s, you know, the worst of of Trumpism, urbanism, all of these sort of, you know, far right movements that have now become mainstream.</div>
 </div>
 <div class="turn" data-start="974">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">16:14</span>
   </div>
-  <div class="said">Carter, you know, when when Polly have lost that last election because it was so close, I think many people were like, well, you know, this was this was not the liberal majority that that that was being predicted. Pierre made massive gains in the 905. He looked like, you know, someone who was at least on the path of trying to make some changes, acknowledging some mistakes. And then when the weeks went by and no one really came with a shiv to try to take his job when the body was still warm, so to speak, I thought it was over. Am I wrong? Did I misread this? Like, I guess what I&#x27;m trying to say in a very long-winded way is I&#x27;m not as certain about January as I was six weeks ago for Pierre Polyev. Are you in the same camp as me?</div>
+  <div class="said">Carter, you know, when when Polly have lost that last election because it was so close, I think many people were like, well, you know, this was this was not the liberal majority that that that was being predicted. Pierre made massive gains in the 905. He looked like, you know, someone who was at least on the path of trying to make some changes, acknowledging some mistakes. And then when the weeks went by and no one really came with a shiv to try to take his job when the body was still warm, so to speak, I thought it was over.</div>
+</div>
+<div class="turn" data-start="1007">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:47</span>
+  </div>
+  <div class="said">Am I wrong? Did I misread this? Like, I guess what I&#x27;m trying to say in a very long-winded way is I&#x27;m not as certain about January as I was six weeks ago for Pierre Polyev. Are you in the same camp as me?</div>
 </div>
 <div class="turn" data-start="1019">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">16:59</span>
   </div>
-  <div class="said">Oh, yeah. I mean, I&#x27;m not at all convinced that Pierre Polyev survives the leadership review, nor am I convinced that he doesn&#x27;t survive the leadership review. First of all, what is a survivable number? Jason Kenney&#x27;s tried to reset what the number looks like. You know, is it going to be 66 percent? Is it going to be 56 know, if it&#x27;s if it&#x27;s 82, if 86, 88, then then he survives no problem. But there&#x27;s a big gray zone now, a much, much bigger gray zone than there used to be when Joe Clark decided that 66 wasn&#x27;t going to quite cut it. That is a big question mark for Pierre. Will he survive it? But the other part of this is who wants it? Right. And I think that there&#x27;s a lot of people who want it. Doug Ford may not be the person, but I&#x27;m quite certain that there&#x27;s someone in someone&#x27;s orbit that is currently plotting and trying to figure out how they would make sure that Pierre Polyev doesn&#x27;t get the number that they want. And there&#x27;s a really believable story as to why he shouldn&#x27;t get the leadership review. First of all, the ruthlessness of the Conservative Party has been well noted. This is not a party that tolerates losing. It doesn&#x27;t matter if you did pretty well, if you almost got there. The leaders are taken out at a regular basis because there&#x27;s just so many different factions within the Conservative Party that there is almost no way that a faction isn&#x27;t plotting against the others, similar to Chrétien versus Martin back in the day for the Liberals.</div>
+  <div class="said">Oh, yeah. I mean, I&#x27;m not at all convinced that Pierre Polyev survives the leadership review, nor am I convinced that he doesn&#x27;t survive the leadership review. First of all, what is a survivable number? Jason Kenney&#x27;s tried to reset what the number looks like. You know, is it going to be 66 percent? Is it going to be 56</div>
+</div>
+<div class="turn" data-start="1038">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:18</span>
+  </div>
+  <div class="said">know, if it&#x27;s if it&#x27;s 82, if 86, 88, then then he survives no problem. But there&#x27;s a big gray zone now, a much, much bigger gray zone than there used to be when Joe Clark decided that 66 wasn&#x27;t going to quite cut it.</div>
+</div>
+<div class="turn" data-start="1053">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:33</span>
+  </div>
+  <div class="said">That is a big question mark for Pierre. Will he survive it?</div>
+</div>
+<div class="turn" data-start="1059">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:39</span>
+  </div>
+  <div class="said">But the other part of this is who wants it? Right.</div>
+</div>
+<div class="turn" data-start="1063">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:43</span>
+  </div>
+  <div class="said">And I think that there&#x27;s a lot of people who want it. Doug Ford may not be the person, but I&#x27;m quite certain that there&#x27;s someone in someone&#x27;s orbit that is currently plotting and trying to figure out how they would make sure that Pierre Polyev doesn&#x27;t get the number that they want. And there&#x27;s a really believable story as to why he shouldn&#x27;t get the leadership review. First of all, the ruthlessness of the Conservative Party has been well noted. This is not a party that tolerates losing. It</div>
+</div>
+<div class="turn" data-start="1091">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">18:11</span>
+  </div>
+  <div class="said">doesn&#x27;t matter if you did pretty well, if you almost got there. The leaders are taken out at a regular basis because there&#x27;s just so many different factions within the Conservative Party that there is almost no way that a faction isn&#x27;t plotting against the others, similar to Chrétien versus Martin back in the day for the Liberals.</div>
 </div>
 <div class="turn" data-start="1121">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">18:41</span>
   </div>
   <div class="said">there&#x27;s only really three ways that a leader gets taken out membership caucus events right like you know some unsavory activity or whatever and you have to</div>
@@ -950,17 +1135,45 @@
 </div>
 <div class="turn" data-start="1132">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">18:52</span>
   </div>
-  <div class="said">yeah there&#x27;s three ways um i remain we added third way fairly convinced that he&#x27;ll probably be okay through january because uh the caucus is uh uh you know going to simply essentially be the coalition partner uh to the liberals through the fall uh session um and they will be sort of moving some of the uh you know the power brokers will be moving themselves around a little bit but it&#x27;s it&#x27;s too soon uh likely to organize for january uh so there&#x27;s the caucus there&#x27;s the party members uh and those are the people who were showing up at pierce rallies and fainting like they were at a revival meeting right uh generally speaking they&#x27;re going going to do there he&#x27;s he&#x27;s okay there right um uh and so that&#x27;s those two um events you know if we go into a more trumpy time with 35 or those kinds of uh that you know it may become increasingly clear to the caucus probably not the party that he&#x27;s not the man for the hour i think he survives january regardless very likely uh i mean i could revise my opinion starting in, you know, October, November, like, let&#x27;s get back to it. But that&#x27;s a six month window, right? What&#x27;s not clear to me at all is if he lasts two years, right? It took them, I think, 14 months to punt O&#x27;Toole, I want to say, or a little bit shorter, maybe it was 14 months to punt Scheer. So it&#x27;s not going to happen right away, even if it does happen, right? It&#x27;s not going to happen at, you know, E plus 10. It&#x27;s just not. Unless it&#x27;s, you know, devastating, stating, right? Losses. It&#x27;s going to happen over the course of a couple of sessions, persistently low numbers, and then one of two things has to happen. Party has to mobilize or caucus. I did say when we talked about this before that I thought that his challenge would come from the right and from the more fringy, you know, that kind of world. Given this stuff off with the Ford people, I&#x27;m not as convinced of that anymore. And, I mean, it could still come from Lulu Wright, right, and the people who are unmoored from reality. It could still come from there. But it may come from the more Chamber of Commerce conservatives that find a home in the Doug Ford PC party, who are seeing the success of a Carney government and thinking, I want some of that, too. let&#x27;s talk about the Carney</div>
+  <div class="said">yeah there&#x27;s three ways um i remain we added third way fairly convinced that he&#x27;ll probably be okay through january because uh the caucus is uh uh you know going to simply essentially be the coalition partner uh to the liberals through the fall uh session um and they will be sort of moving some of the uh you know the power brokers will be moving themselves around a little bit but it&#x27;s it&#x27;s too soon uh likely to organize for january uh so there&#x27;s the caucus there&#x27;s the party members uh and those are the people who were showing up at pierce rallies and fainting like they were at a revival meeting right uh generally speaking they&#x27;re going going to do there he&#x27;s he&#x27;s okay there right um uh and so that&#x27;s those two um events you know if we go into a more trumpy time with 35 or those kinds of uh that you know it may become increasingly clear to the caucus probably not the party that he&#x27;s not the man for the hour i think he survives january regardless very likely uh i mean i could revise my opinion starting in, you know, October, November, like, let&#x27;s get back to it. But that&#x27;s a six month window, right? What&#x27;s not clear to me at all is if he lasts two years, right?</div>
+</div>
+<div class="turn" data-start="1210">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">20:10</span>
+  </div>
+  <div class="said">It took them, I think, 14 months to punt O&#x27;Toole, I want to say, or a little bit shorter, maybe it was 14 months to punt Scheer. So it&#x27;s not going to happen right away, even if it does happen, right? It&#x27;s not going to happen at, you know, E plus 10. It&#x27;s just not. Unless it&#x27;s, you know, devastating, stating, right? Losses. It&#x27;s going to happen over the course of a couple of sessions, persistently low numbers, and then one of two things has to happen. Party has to mobilize or caucus. I did say when we talked about this before that I thought that his challenge would come from the right and from the more fringy, you know, that kind of world.</div>
+</div>
+<div class="turn" data-start="1251">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">20:51</span>
+  </div>
+  <div class="said">Given this stuff off with the Ford people, I&#x27;m not as convinced of that anymore. And, I mean, it could still come from Lulu Wright, right, and the people who are unmoored from reality. It could still come from there. But it may come from the more Chamber of Commerce conservatives that find a home in the Doug Ford PC party, who are seeing the success of a Carney government and thinking, I want some of that, too. let&#x27;s talk about the Carney</div>
 </div>
 <div class="turn" data-start="1281">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">21:21</span>
   </div>
-  <div class="said">situation here, because usually you would think that the the other party in the situation, in this case, the governing party, would not really have an impact or an influence. And you guys may still answer that that is the case, say that the Carney government&#x27;s not going to have an influence on this. However, Carter, let me let me put it bluntly. Carney&#x27;s gotten more conservative. This right. He&#x27;s asking for massive cuts, which we can talk about 15 percent over three years. You know, he&#x27;s pushing aggressively, spending a lot of political capital on pipeline and building infrastructure. It&#x27;s not like he stopped that. He&#x27;s actually plowing through more aggressively. There&#x27;s even conservative political columnists calling a progressive conservative or a conservative progressive sort of thing. Is there a Carney impact here? Like in the sense of the home that this guy is also building, could that actually have maybe marginal, maybe not so marginal, maybe none? I&#x27;m just to posit the theory. Could that have an impact on what it looks like for Pierre and who shows up to oust him um good or bad uh come january in terms of what the new liberal machine or what the new carney liberal machine looks like in terms of being a lot more historically conservative than we&#x27;ve seen in the in the last decade certainly i</div>
+  <div class="said">situation here, because usually you would think that the the other party in the situation, in this case, the governing party, would not really have an impact or an influence. And you guys may still answer that that is the case, say that the Carney government&#x27;s not going to have an influence on this. However, Carter, let me let me put it bluntly. Carney&#x27;s gotten more conservative.</div>
+</div>
+<div class="turn" data-start="1299">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">21:39</span>
+  </div>
+  <div class="said">This right. He&#x27;s asking for massive cuts, which we can talk about 15 percent over three years. You know, he&#x27;s pushing aggressively, spending a lot of political capital on pipeline and building infrastructure. It&#x27;s not like he stopped that. He&#x27;s actually plowing through more aggressively. There&#x27;s even conservative political columnists calling a progressive conservative or a conservative progressive sort of thing.</div>
+</div>
+<div class="turn" data-start="1319">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">21:59</span>
+  </div>
+  <div class="said">Is there a Carney impact here? Like in the sense of the home that this guy is also building, could that actually have maybe marginal, maybe not so marginal, maybe none? I&#x27;m just to posit the theory. Could that have an impact on what it looks like for Pierre and who shows up to oust him um good or bad uh come january in terms of what the new liberal machine or what the new carney liberal machine looks like in terms of being a lot more historically conservative than we&#x27;ve seen in the in the last decade certainly i</div>
 </div>
 <div class="turn" data-start="1347">
   <div class="who">
@@ -981,7 +1194,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">22:41</span>
   </div>
-  <div class="said">but um i would suggest that That Prime Minister Carney has a far more impact, not because of him being a progressive conservative prime minister, but because he&#x27;s a popular prime The popularity, the approval ratings, the, you know, we would prefer to have Mr. Carney as prime minister over Pierre Polyev. Ultimately, that&#x27;s what the members are going to look at. The members want to see victory and they&#x27;re going to look at it and say, do we have someone here who can rebound? And they don&#x27;t seem to give a lot of, you know, a lot of opportunity to people to rebound. You know, it&#x27;s it&#x27;s one and done. And that seems to be the nature of it.</div>
+  <div class="said">but um i would suggest that That Prime Minister Carney has a far more impact, not because of him being a progressive conservative prime minister, but because he&#x27;s a popular prime The popularity, the approval ratings, the, you know, we would prefer to have Mr. Carney as prime minister over Pierre Polyev.</div>
+</div>
+<div class="turn" data-start="1384">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">23:04</span>
+  </div>
+  <div class="said">Ultimately, that&#x27;s what the members are going to look at. The members want to see victory and they&#x27;re going to look at it and say, do we have someone here who can rebound? And they don&#x27;t seem to give a lot of, you know, a lot of opportunity to people to rebound. You know, it&#x27;s it&#x27;s one and done. And that seems to be the nature of it.</div>
 </div>
 <div class="turn" data-start="1404">
   <div class="who">
@@ -992,7 +1212,7 @@
 </div>
 <div class="turn" data-start="1409">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">23:29</span>
   </div>
   <div class="said">Oh, I mean, it&#x27;s just that they continue to get buried in the polls, people are going to look for an alternative. And it&#x27;s not just that he doesn&#x27;t have a seat. It&#x27;s not just that he wasn&#x27;t in parliament. It&#x27;s, it&#x27;s, it&#x27;s, you know, is he the man for the moment. And a lot of the terrain that Mr. Carney is opening up for criticism is actually New Democrat terrain, which, and, you know, we have there.</div>
@@ -1006,10 +1226,17 @@
 </div>
 <div class="turn" data-start="1432">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">23:52</span>
   </div>
-  <div class="said">Yeah. So, you know, that too might sort of like, what are they left with? You know, they were screaming today about the public safety minister not, you know, personally being a public safety officer in a correctional facility, right, and preventing a stabbing. You know, they were just screeching off topic. Meanwhile, you know, you&#x27;ve got half a million unemployed people in southwest Ontario. Like, it just is not commensurate with, you know, the moment at all. And if that kind of stuff continues, Canadians are going to be like, I don&#x27;t even know what you&#x27;re talking about. And then there will be a push to move him up. Now, the unpopularity is one thing. It&#x27;s where the push comes from that is super curious to me. And that&#x27;s where, like, yeah, a few weeks ago, I would have said to you, no uncertain terms. It&#x27;s coming from the right. If anybody can organize it, it&#x27;s them. I&#x27;m not so certain anymore.</div>
+  <div class="said">Yeah. So, you know, that too might sort of like, what are they left with? You know, they were screaming today about the public safety minister not, you know, personally being a public safety officer in a correctional facility, right, and preventing a stabbing. You know, they were just screeching off topic. Meanwhile, you know, you&#x27;ve got half a million unemployed people in southwest Ontario. Like, it just is not commensurate with, you know, the moment at all. And if that kind of stuff continues, Canadians are going to be like, I don&#x27;t even know what you&#x27;re talking about. And then there will be a push to move him up. Now, the unpopularity is one thing. It&#x27;s where the push comes from that is super curious to me.</div>
+</div>
+<div class="turn" data-start="1474">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">24:34</span>
+  </div>
+  <div class="said">And that&#x27;s where, like, yeah, a few weeks ago, I would have said to you, no uncertain terms. It&#x27;s coming from the right. If anybody can organize it, it&#x27;s them. I&#x27;m not so certain anymore.</div>
 </div>
 <div class="turn" data-start="1483">
   <div class="who">
@@ -1020,7 +1247,7 @@
 </div>
 <div class="turn" data-start="1512">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">25:12</span>
   </div>
   <div class="said">jamil giovanni busted out with a temporary foreign worker and the temporary foreign worker program petitioned like right after the election</div>
@@ -1034,7 +1261,7 @@
 </div>
 <div class="turn" data-start="1520">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">25:20</span>
   </div>
   <div class="said">and uh we</div>
@@ -1051,14 +1278,35 @@
     <span class="speaker">Zain</span>
     <span class="ts">25:23</span>
   </div>
-  <div class="said">this yeah and also is same dude giovanni not getting his um what many thought would be an obvious sort of shadow ministry carter let&#x27;s move it to alberta because i do want to go to carney and i do want to kind of knock off some of the other things i have mentioned here um talk to me about the inevitability of this going the way it has thus far and then i want to talk about from a strategist perspective what the fix to the alberta next panels looks like from steven carter&#x27;s perspective The train has left the station. So redesigning the program is not on the table per se, but what would the midstream adjustment look like? So talk to me about, was this inevitable? And then talk to me about the strategic adjustment that you would be making, Carter</div>
+  <div class="said">this yeah and also is same dude giovanni not getting his um what many thought would be an obvious sort of shadow ministry carter let&#x27;s move it to alberta because i do want to go to carney and i do want to kind of knock off some of the other things i have mentioned here um talk to me about the inevitability of this going the way it has thus far and then i want to talk about from a strategist perspective what the fix to the alberta next panels looks like from steven carter&#x27;s perspective The train has left the station. So redesigning the program is not on the table per se, but what would the midstream adjustment look like? So talk to me about, was this inevitable?</div>
+</div>
+<div class="turn" data-start="1560">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">26:00</span>
+  </div>
+  <div class="said">And then talk to me about the strategic adjustment that you would be making, Carter</div>
 </div>
 <div class="turn" data-start="1565">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">26:05</span>
   </div>
-  <div class="said">So we did a budget choice exercise with the provincial government. And one of the things that we did early on is we wanted to create some sort of a benchmarking because we were certain that it would be taken over by either the left or the right, but we wanted to make sure that we had a benchmark. So we did a 2 000 or 3,000 person sample size in order to create a benchmark. Danielle Smith needs to create a fucking benchmark. This thing is being taken off by, what are they calling them, the bratty children in the room. And the people in the room, the people responding to her online survey are people who are the disaffected. they are not necessarily well they are not at all representative of the general population and we were terrified of that when we did the budget choice exercise because if you do an exercise of public consultation and it suddenly goes the way of are you fucking kidding me crazy then how do you get back to sanity when it comes time to write the report you&#x27;re not going to be able to ask trevor tomb to write with sanity because trevor tomb is going to be stuck there saying well if i&#x27;m writing what people actually said rather than what&#x27;s actually true true then i have to write this crazy ass report and that was you know that&#x27;s where things were going to go wrong that&#x27;s where they&#x27;ve gone wrong right now and i just don&#x27;t know that she&#x27;s even thought about getting a benchmark and trying to figure out how to bring this back to reality</div>
+  <div class="said">So we did a budget choice exercise with the provincial government.</div>
+</div>
+<div class="turn" data-start="1569">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">26:09</span>
+  </div>
+  <div class="said">And one of the things that we did early on is we wanted to create some sort of a benchmarking because we were certain that it would be taken over by either the left or the right, but we wanted to make sure that we had a benchmark. So we did a 2</div>
+</div>
+<div class="turn" data-start="1582">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">26:22</span>
+  </div>
+  <div class="said">000 or 3,000 person sample size in order to create a benchmark. Danielle Smith needs to create a fucking benchmark. This thing is being taken off by, what are they calling them, the bratty children in the room. And the people in the room, the people responding to her online survey are people who are the disaffected. they are not necessarily well they are not at all representative of the general population and we were terrified of that when we did the budget choice exercise because if you do an exercise of public consultation and it suddenly goes the way of are you fucking kidding me crazy then how do you get back to sanity when it comes time to write the report you&#x27;re not going to be able to ask trevor tomb to write with sanity because trevor tomb is going to be stuck there saying well if i&#x27;m writing what people actually said rather than what&#x27;s actually true true then i have to write this crazy ass report and that was you know that&#x27;s where things were going to go wrong that&#x27;s where they&#x27;ve gone wrong right now and i just don&#x27;t know that she&#x27;s even thought about getting a benchmark and trying to figure out how to bring this back to reality</div>
 </div>
 <div class="turn" data-start="1652">
   <div class="who">
@@ -1069,10 +1317,17 @@
 </div>
 <div class="turn" data-start="1682">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">28:02</span>
   </div>
-  <div class="said">Has it gone off the rails? Is there a problem? point here is not to find consensus. It&#x27;s not to arm people with facts. It&#x27;s not to issue a report. It&#x27;s not to do any of those things that are in the public interest, regardless of one&#x27;s partisanship. It&#x27;s not. It is to create an alternate reality for your, essentially, your separatist agenda. agenda and so you know they are by all accounts at least it&#x27;s been reported and i don&#x27;t know if it was independently verified but they are uh sending invite invites out to ucp membership list before uh and letting them register before general public again i want to caveat that because i don&#x27;t know if it was independently verified by two sources all those things</div>
+  <div class="said">Has it gone off the rails? Is there a problem? point here is not to find consensus. It&#x27;s not to arm people with facts. It&#x27;s not to issue a report. It&#x27;s not to do any of those things that are in the public interest, regardless of one&#x27;s partisanship. It&#x27;s not. It is to create an alternate reality for your, essentially, your separatist agenda. agenda and so you</div>
+</div>
+<div class="turn" data-start="1709">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">28:29</span>
+  </div>
+  <div class="said">know they are by all accounts at least it&#x27;s been reported and i don&#x27;t know if it was independently verified but they are uh sending invite invites out to ucp membership list before uh and letting them register before general public again i want to caveat that because i don&#x27;t know if it was independently verified by two sources all those things</div>
 </div>
 <div class="turn" data-start="1728">
   <div class="who">
@@ -1083,7 +1338,7 @@
 </div>
 <div class="turn" data-start="1734">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">28:54</span>
   </div>
   <div class="said">But I mean, so you&#x27;ve got like also who&#x27;s showing up in mid-July. You&#x27;re going to get some pretty highly motivated partisans and but and then a smattering of, you know, well-informed folks who, you know, retired that lovely woman, the retired CPA who got up there and talked facts about the about the Canada pension plan the other night. I saw her clip. But the point here is not to resolve anything. It is to continue</div>
@@ -1097,10 +1352,17 @@
 </div>
 <div class="turn" data-start="1761">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">29:21</span>
   </div>
-  <div class="said">Bolster, yeah. And to provide some cover for it. And the only cover that matters is people screaming in the streets and on the internet. This is not, from Daniel Smith&#x27;s perspective, a tire fire at all for her. For Trevor Toome, I should hope it&#x27;s a tire fire. And he leaves as soon as he can because reputationally, this is an absolute, it&#x27;s a mess. And he is the one person up there. The one person whose literal job description and employment contract explicitly says in it for, let&#x27;s be clear, hundreds of years because he has tenure that he can say no to government. He could have said no to this and he still can and he should because he last night he was correcting some folks on some erroneous statements. The Sherwood Park one. messy and it like dumps her numbers down a little bit and like reinforces the separatist thing like over like august</div>
+  <div class="said">Bolster, yeah. And to provide some cover for it. And the only cover that matters is people screaming in the streets and on the internet. This is not, from Daniel Smith&#x27;s perspective, a tire fire at all for her. For Trevor Toome, I should hope it&#x27;s a tire fire. And he leaves as soon as he can because reputationally, this is an absolute, it&#x27;s a mess. And he is the one person up there. The one person whose literal job description and employment contract explicitly says in it for, let&#x27;s be clear, hundreds of years because he has tenure that he can say no to government. He could have said no to this and he still can and he should because he last night he was correcting some folks on some erroneous statements.</div>
+</div>
+<div class="turn" data-start="1817">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">30:17</span>
+  </div>
+  <div class="said">The Sherwood Park one. messy and it like dumps her numbers down a little bit and like reinforces the separatist thing like over like august</div>
 </div>
 <div class="turn" data-start="1847">
   <div class="who">
@@ -1111,7 +1373,7 @@
 </div>
 <div class="turn" data-start="1850">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">30:50</span>
   </div>
   <div class="said">she can distance herself from that even at that point so yeah we heard albertans and now we&#x27;ll focus on something else</div>
@@ -1160,7 +1422,7 @@
 </div>
 <div class="turn" data-start="1951">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">32:31</span>
   </div>
   <div class="said">well and i think they have I like to be fair to the NDP you know they why</div>
@@ -1174,7 +1436,7 @@
 </div>
 <div class="turn" data-start="1956">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">32:36</span>
   </div>
   <div class="said">have launched you know they&#x27;re they&#x27;re sort of they&#x27;re better together nice branding tight message they&#x27;ve got some town halls so I mean it</div>
@@ -1188,7 +1450,7 @@
 </div>
 <div class="turn" data-start="1966">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">32:46</span>
   </div>
   <div class="said">well I mean they&#x27;re doing that response to these ones yeah</div>
@@ -1202,7 +1464,7 @@
 </div>
 <div class="turn" data-start="1970">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">32:50</span>
   </div>
   <div class="said">well I mean as long as you&#x27;re</div>
@@ -1216,7 +1478,7 @@
 </div>
 <div class="turn" data-start="1973">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">32:53</span>
   </div>
   <div class="said">right but you have to</div>
@@ -1230,10 +1492,17 @@
 </div>
 <div class="turn" data-start="1976">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">32:56</span>
   </div>
-  <div class="said">don&#x27;t like and I will also say that the CPP town Fountain Halls were enormously successful when we did them in response to this, you know, ridiculous propaganda exercise when they threw $8 million at Albertans around the Alberta pension plan and it blew up spectacularly in their faces. So, you know, I think they have to do something in response. And this is one way that they can kind of engage their membership as well. So and, you know, sort of and we&#x27;ll test Carter&#x27;s theory of whether Gen Pop is down with this or not, based on some of what the New Democrats do and what kind of, you know, soil they can till. That is why the New Democrats probably need to round out this Better Together campaign, which I really liked and I think is effective, with some other ways that people can plug in, survey stuff, whatever, right, to kind of slipstream behind the government&#x27;s bullshit process and demonstrate a, you know, a more good faith approach to hearing people out.</div>
+  <div class="said">don&#x27;t like and I will also say that the CPP town Fountain Halls were enormously successful when we did them in response to this, you know, ridiculous propaganda exercise when they threw $8 million at Albertans around the Alberta pension plan and it blew up spectacularly in their faces.</div>
+</div>
+<div class="turn" data-start="1992">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">33:12</span>
+  </div>
+  <div class="said">So, you know, I think they have to do something in response. And this is one way that they can kind of engage their membership as well. So and, you know, sort of and we&#x27;ll test Carter&#x27;s theory of whether Gen Pop is down with this or not, based on some of what the New Democrats do and what kind of, you know, soil they can till. That is why the New Democrats probably need to round out this Better Together campaign, which I really liked and I think is effective, with some other ways that people can plug in, survey stuff, whatever, right, to kind of slipstream behind the government&#x27;s bullshit process and demonstrate a, you know, a more good faith approach to hearing people out.</div>
 </div>
 <div class="turn" data-start="2038">
   <div class="who">
@@ -1244,7 +1513,7 @@
 </div>
 <div class="turn" data-start="2055">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:15</span>
   </div>
   <div class="said">i i would say if if what you want to do is validate your position that uh there&#x27;s a lot of separatism out there uh and uh we just need a better deal for Because it&#x27;s the only card you have because your health care system is on fire because you&#x27;re perpetually at war with your education system. You&#x27;re going into a bunch of labor disruption. So you&#x27;re going to want a nice distraction and something that can continue to raise the kind of money that the UCP has been raising, which is significant.</div>
@@ -1286,7 +1555,7 @@
 </div>
 <div class="turn" data-start="2179">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">36:19</span>
   </div>
   <div class="said">Yeah, it&#x27;s nothing. Anybody who thinks the independent is going to do much beyond the usual, you know, 10, 15, whatever, is spending too much time on threads.</div>
@@ -1300,10 +1569,17 @@
 </div>
 <div class="turn" data-start="2235">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">37:15</span>
   </div>
-  <div class="said">We haven&#x27;t seen it in the numbers yet. So, you know, there&#x27;s a lot of chatter about that. But look at his numbers. And his numbers are extraordinary. And so I would argue that, you know, C5 and even the request for cuts, nothing&#x27;s actually happened yet. No one has had a reduced service because of a decision that was made as a result of a budget the past No one yet has seen a large project. No one has had any environmental assessment or other rules waived. And so, in fact, no one&#x27;s even seen the first, you know, project or two move through the major projects office, which is in any case not probably going to be set up until after the summer is over. So, the honeymoon continues right now, and there&#x27;s a bit of chatter, I would say, you know, coming from the left. But because he hasn&#x27;t done anything yet, to Carter&#x27;s point about Gen Pop, Gen Pop isn&#x27;t seeing the problem yet. The material conditions of their lives or the presence of government in their lives has not changed yet. once it does then i think we&#x27;ll uh we&#x27;ll see because he really did get elected on kind of a you know and all things to all people right uh so rubber will meet the road uh and it will can uh depend on how uh effective the new democrats are in scooping some of that up as well</div>
+  <div class="said">We haven&#x27;t seen it in the numbers yet. So, you know, there&#x27;s a lot of chatter about that. But look at his numbers. And his numbers are extraordinary. And so I would argue that, you know, C5 and even the request for cuts, nothing&#x27;s actually happened yet. No one has had a reduced service because of a decision that was made as a result of a budget the past No one yet has seen a large project. No one has had any environmental assessment or other rules waived. And so, in fact, no one&#x27;s even seen the first, you know, project or two move through the major projects office, which is in any case not probably going to be set up until after the summer is over. So, the honeymoon continues right now, and there&#x27;s a bit of chatter, I would say, you know, coming from the left. But because he hasn&#x27;t done anything yet, to Carter&#x27;s point about Gen Pop, Gen Pop isn&#x27;t seeing the problem yet. The material conditions of their lives or the presence of government in their lives has not changed yet.</div>
+</div>
+<div class="turn" data-start="2298">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">38:18</span>
+  </div>
+  <div class="said">once it does then i think we&#x27;ll uh we&#x27;ll see because he really did get elected on kind of a you know and all things to all people right uh so rubber will meet the road uh and it will can uh depend on how uh effective the new democrats are in scooping some of that up as well</div>
 </div>
 <div class="turn" data-start="2316">
   <div class="who">
@@ -1342,10 +1618,17 @@
 </div>
 <div class="turn" data-start="2383">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">39:43</span>
   </div>
-  <div class="said">Absolutely. Both within the Liberal Party of Canada caucus, if their numbers start to slide a little bit, because they exist there too. And it could very well really help the New Democrats raise some money and get through this really tough time. And so it is there. But right now, we don&#x27;t have that because the New Democrats are leaderless. The race hasn&#x27;t started yet, And so pushback is going to have to come from, well, kind of three places. The LPC caucus not happening in the first few months of a mandate, or even as we saw with the Trudeau government, even in the last few months of a mandate, it was still pretty thin in terms of caucus actually finding a spine and a brain. um second of all uh it can come from civil society and from labor uh and basically from the street and so i i think that&#x27;s the the most likely scenario right now uh once they start making decisions in the fall and i would say more likely in spring of 26 is when you&#x27;re going to see uh rubber meat road just given how much time it takes to do things and so on uh and we haven&#x27;t seen uh out of uh some of the indigenous activity a lot of like blockade or other stuff happening yet it&#x27;s in summer when that those sorts of things happen we we haven&#x27;t seen a lot of it coming out of ring of fire and northern ontario where it could uh that&#x27;s not to say it won&#x27;t um that&#x27;ll That&#x27;ll be the first places where the where the indigenous street, if you will, probably starts to move. And that will far precede whatever is happening in the House of Commons.</div>
+  <div class="said">Absolutely. Both within the Liberal Party of Canada caucus, if their numbers start to slide a little bit, because they exist there too. And it could very well really help the New Democrats raise some money and get through this really tough time. And so it is there. But right now, we don&#x27;t have that because the New Democrats are leaderless. The race hasn&#x27;t started yet, And so pushback is going to have to come from, well, kind of three places. The LPC caucus not happening in the first few months of a mandate, or even as we saw with the Trudeau government, even in the last few months of a mandate, it was still pretty thin in terms of caucus actually finding a spine and a brain. um</div>
+</div>
+<div class="turn" data-start="2432">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">40:32</span>
+  </div>
+  <div class="said">second of all uh it can come from civil society and from labor uh and basically from the street and so i i think that&#x27;s the the most likely scenario right now uh once they start making decisions in the fall and i would say more likely in spring of 26 is when you&#x27;re going to see uh rubber meat road just given how much time it takes to do things and so on uh and we haven&#x27;t seen uh out of uh some of the indigenous activity a lot of like blockade or other stuff happening yet it&#x27;s in summer when that those sorts of things happen we we haven&#x27;t seen a lot of it coming out of ring of fire and northern ontario where it could uh that&#x27;s not to say it won&#x27;t um that&#x27;ll That&#x27;ll be the first places where the where the indigenous street, if you will, probably starts to move. And that will far precede whatever is happening in the House of Commons.</div>
 </div>
 <div class="turn" data-start="2493">
   <div class="who">
@@ -1363,7 +1646,7 @@
 </div>
 <div class="turn" data-start="2593">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">43:13</span>
   </div>
   <div class="said">Everything that Carter&#x27;s just said is true, but I am super in on this strategy just because what the hell else is Polyev ever going to talk about? You know, if it&#x27;s not this, then he&#x27;s what, like, screaming at the public safety minister because he didn&#x27;t personally prevent a stabbing at a jail? Like, I mean, the kind of small ball... You think</div>
@@ -1377,7 +1660,7 @@
 </div>
 <div class="turn" data-start="2612">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">43:32</span>
   </div>
   <div class="said">were talking about? Well, otherwise, it&#x27;s just small ball bullshit. It&#x27;s all</div>
@@ -1391,7 +1674,7 @@
 </div>
 <div class="turn" data-start="2618">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">43:38</span>
   </div>
   <div class="said">meaning for... It&#x27;s not the gift that keeps on giving is the issue. It&#x27;s not the issue today. And Canadians, yes, they understand</div>
@@ -1405,7 +1688,7 @@
 </div>
 <div class="turn" data-start="2626">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">43:46</span>
   </div>
   <div class="said">But the fact is, is that, you know, you&#x27;ve got a treasure trove of name brand companies and you can, you know, spin up a yarn of self-dealing. And it&#x27;s not today that it&#x27;s the Achilles heel of the Liberal Party of Canada is self-dealing and, you know, perceptions particularly having to do with, you know, kind of central Canada, Laurentian elites, all of that. it&#x27;s something and when you&#x27;ve got nothing uh having something that you can build a narrative off of yeah for sure it&#x27;s</div>
@@ -1426,7 +1709,7 @@
 </div>
 <div class="turn" data-start="2674">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">44:34</span>
   </div>
   <div class="said">leader your job is to criticize the government and find no</div>
@@ -1461,7 +1744,7 @@
 </div>
 <div class="turn" data-start="2705">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">45:05</span>
   </div>
   <div class="said">He does have an asset. It&#x27;s called a defined benefit pension that&#x27;s one of the most generous. It probably is the most generous in the country. Yeah, but he argues against it. That&#x27;s all he gets.</div>

@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/130573091.mp3?sig=GUqjx53vQCWhY5Ikg1ErlvtswhDcY30Iz-HNaYqRZgk%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/683e79aa708e9fc9b4818d82"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -432,7 +498,7 @@
           
           <div class="turn" data-start="2">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:02</span>
   </div>
   <div class="said">This is a strategist episode 1873. My name is Zain Velji with me as always Shannon Phillips and Stephen Carter. What&#x27;s going on? I&#x27;m sitting on a hotel bed</div>
@@ -446,10 +512,24 @@
 </div>
 <div class="turn" data-start="19">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:19</span>
   </div>
-  <div class="said">Well, okay, so there&#x27;s two stories here. Number one, I only spend a certain amount of hotel rooms and whatever that gets me that gets me in this case, it gets me no desk and sitting on a bed. number two i forgot that they have something called the ultra basic fare carter and i have accidentally booked that on my trip which is meant that i had no room for the microphone i told you i forgot it wasn&#x27;t that i forgot it was a choice between underwear and socks or the microphone at this point let me show you let me show you what i&#x27;m traveling with it&#x27;s sitting over there it&#x27;s a backpack okay now could i pay an extra for the carry-on no turns out i couldn&#x27;t have that&#x27;s actually not a thing they let you do airlines are fucking nuts carter that&#x27;s all that&#x27;s all that&#x27;s all i&#x27;m saying</div>
+  <div class="said">Well, okay, so there&#x27;s two stories here. Number one,</div>
+</div>
+<div class="turn" data-start="22">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:22</span>
+  </div>
+  <div class="said">I only spend a certain amount of hotel rooms and whatever that gets me that gets me in this case, it gets me no desk and sitting on a bed. number two i</div>
+</div>
+<div class="turn" data-start="31">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:31</span>
+  </div>
+  <div class="said">forgot that they have something called the ultra basic fare carter and i have accidentally booked that on my trip which is meant that i had no room for the microphone i told you i forgot it wasn&#x27;t that i forgot it was a choice between underwear and socks or the microphone at this point let me show you let me show you what i&#x27;m traveling with it&#x27;s sitting over there it&#x27;s a backpack okay now could i pay an extra for the carry-on no turns out i couldn&#x27;t have that&#x27;s actually not a thing they let you do airlines are fucking nuts carter that&#x27;s all that&#x27;s all that&#x27;s all i&#x27;m saying</div>
 </div>
 <div class="turn" data-start="61">
   <div class="who">
@@ -460,63 +540,63 @@
 </div>
 <div class="turn" data-start="65">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:05</span>
   </div>
   <div class="said">it was not at least flair would treat me better as a as a long-time sponsor of the show in which the ghost of cory hogan is now saying not a sponsor yeah say that sadly it&#x27;s almost like</div>
 </div>
 <div class="turn" data-start="78">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:18</span>
   </div>
   <div class="said">sad about it that</div>
 </div>
 <div class="turn" data-start="79">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:19</span>
   </div>
   <div class="said">was not the Tell me when you want it. Shannon, what&#x27;s going on? What are you up to?</div>
 </div>
 <div class="turn" data-start="84">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:24</span>
   </div>
   <div class="said">Oh, I&#x27;m in Lethbridge, which is nice. I&#x27;m never home these days, but I&#x27;m home today. And one of my kids, I hope there&#x27;s no noise in the background, just came in from his rifle safety course, because that&#x27;s the kind of operation we&#x27;re running around here.</div>
 </div>
 <div class="turn" data-start="101">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:41</span>
   </div>
   <div class="said">Sounds very Lethbridge. Yeah. Sounds very Lethbridge</div>
 </div>
 <div class="turn" data-start="104">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:44</span>
   </div>
   <div class="said">Yeah, yeah. Because he gets ready</div>
 </div>
 <div class="turn" data-start="106">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:46</span>
   </div>
   <div class="said">the Civil War. Yeah,</div>
 </div>
 <div class="turn" data-start="107">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:47</span>
   </div>
   <div class="said">even the new Democrats are heavily armed, yes</div>
 </div>
 <div class="turn" data-start="110">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:50</span>
   </div>
   <div class="said">Well, your southern locale is probably one of the first municipalities to be attacked as the Americans rush up, so it&#x27;s pretty strategic. I like it. That combined with Carter&#x27;s bunker planning</div>
@@ -530,7 +610,7 @@
 </div>
 <div class="turn" data-start="125">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:05</span>
   </div>
   <div class="said">Well, you have to buy Canadian now</div>
@@ -544,28 +624,42 @@
 </div>
 <div class="turn" data-start="132">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:12</span>
   </div>
   <div class="said">don&#x27;t invite me i&#x27;m i&#x27;m very useless i have very few post-apocalyptic skills i i i think you could probably do better carter i what would i be doing i don&#x27;t know crocheting in the corner like i i&#x27;m no good to you there someone</div>
 </div>
 <div class="turn" data-start="145">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:25</span>
   </div>
   <div class="said">don&#x27;t don&#x27;t fucking invite me i&#x27;d rather be doing what i love which is traveling this country on the ultra basic fare backpack the backpack it&#x27;s like backpacking europe except not even nearly as enjoyable uh let&#x27;s move it on to our first segment our first segment kumbaya my lord shannon it is all love it the ffm ffmm fmm fmm the first minister&#x27;s meeting has concluded at least the first tranche of the conversations that are public in saskatoon and it is all love doug ford coming out and saying that this is the best meeting that they have had in years oh it doesn&#x27;t matter that there&#x27;s no guarantees and no specific projects on the list even though and despite Shannon, we were promised a list. Talk to me about what your takeaway here is, at least from the communication you see from the premiers, that you see from the prime minister, there was a high bar here, was the high bar met?</div>
 </div>
 <div class="turn" data-start="199">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">3:19</span>
   </div>
-  <div class="said">Yes. The dividing line in Canadian politics, the axis of disagreement is federalism, right? Daniel Smith can&#x27;t do politics of grievance on specific groups. Even the furthest reaches of the right in this country can&#x27;t exploit the politics of grievance to other specific groups of people, recently arrived immigrants or anyone else. It doesn&#x27;t fly in Canadian politics. What flies is othering on the basis of region. That is what Canada is built on. And any time that you can rise above that, even for a moment, even to set the tone or the agenda of a government and, you know, in a honeymoon phase, that is a good day. And you could tell that no premier saw political advantage in bursting that bubble today. When you watch them all parade out doing their little power politics hits and their little press conferences, every single one of them were effusive and kind of ready to give the federal government a chance. It doesn&#x27;t matter that there&#x27;s no specific list as a matter of public policy, as a matter of the public interest. I&#x27;m glad there isn&#x27;t a specific list, because I&#x27;m looking for some due diligence here. Not to get too far down the rabbit hole of the policy aspects of this. But I mean, I don&#x27;t want people, you know, signing off on a bunch of white elephants and spending a bunch of money where they shouldn&#x27;t on projects that may or may not have, you know, social or political support, as well as, you know, support from the financial side. So I think this was an unmitigated success, a rare one in Canadian politics. And we should take those wins where we can get them.</div>
+  <div class="said">Yes. The dividing line in Canadian politics, the axis of disagreement is federalism, right?</div>
+</div>
+<div class="turn" data-start="208">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">3:28</span>
+  </div>
+  <div class="said">Daniel Smith can&#x27;t do politics of grievance on specific groups. Even the furthest reaches of the right in this country can&#x27;t exploit the politics of grievance to other specific groups of people, recently arrived immigrants or anyone else. It doesn&#x27;t fly in Canadian politics. What flies is</div>
+</div>
+<div class="turn" data-start="227">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">3:47</span>
+  </div>
+  <div class="said">othering on the basis of region. That is what Canada is built on. And any time that you can rise above that, even for a moment, even to set the tone or the agenda of a government and, you know, in a honeymoon phase, that is a good day. And you could tell that no premier saw political advantage in bursting that bubble today. When you watch them all parade out doing their little power politics hits and their little press conferences, every single one of them were effusive and kind of ready to give the federal government a chance. It doesn&#x27;t matter that there&#x27;s no specific list as a matter of public policy, as a matter of the public interest. I&#x27;m glad there isn&#x27;t a specific list, because I&#x27;m looking for some due diligence here. Not to get too far down the rabbit hole of the policy aspects of this. But I mean, I don&#x27;t want people, you know, signing off on a bunch of white elephants and spending a bunch of money where they shouldn&#x27;t on projects that may or may not have, you know, social or political support, as well as, you know, support from the financial side. So I think this was an unmitigated success, a rare one in Canadian politics. And we should take those wins where we can get them.</div>
 </div>
 <div class="turn" data-start="304">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">5:04</span>
   </div>
   <div class="said">Connor, same question to you. And then I&#x27;ve got a follow up around, are we absorbing as a Canadian public any of this and what that can do, what that can actually mean for Carmi&#x27;s chances of telling a winning story, even though he&#x27;s having winning meetings and winning projects? I&#x27;m assuming your answer, but give it to me rather than me assuming it. What was did this meet the bar today</div>
@@ -579,28 +673,35 @@
 </div>
 <div class="turn" data-start="389">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">6:29</span>
   </div>
   <div class="said">oh i&#x27;m not saying that it&#x27;s not that that it&#x27;s gone that&#x27;s what you said that&#x27;s what you said it&#x27;s absolutely not what you said no i was listening i was paying attention the tradition of being wrong about a lot of things uh no for sure it&#x27;s it is gone uh or it is uh we&#x27;ve got some grace today i would say uh it&#x27;s It&#x27;s coming back. You already heard Daniel Smith sort of saying it is. What was it? Necessary, but not sufficient precondition. Right.</div>
 </div>
 <div class="turn" data-start="420">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">7:00</span>
   </div>
   <div class="said">Shannon, talk to me about the question Carter refuses to answer because he probably isn&#x27;t up to it, which is what is the cost of us not absorbing everything Carney is doing? he&#x27;s trying to tell a very specific story as an extension of the election around who the protagonists are why we&#x27;re doing what we&#x27;re doing and who the antagonists are and does this fit that storyline for you and is this happening too fast perhaps for the general public to consume all of this to understand what&#x27;s happening here why we&#x27;re doing certain things or do you think they&#x27;re just providing him grace to do whatever for however long undetermined amount of time</div>
 </div>
 <div class="turn" data-start="459">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">7:39</span>
   </div>
-  <div class="said">well the public wants a economic response to an economic threat uh so in as much as they&#x27;re getting anything and and stuff like this does punch through right it&#x27;s not like the usual cut and thread of politics of what&#x27;s going on in the house or question period or what have you uh it&#x27;s a much different uh type of uh media story right because it involves all of the premiers and it and and if anything punches through it&#x27;s that carney wants to build stuff which is actually kind of what he said right And if you were to go out and ask man on the street, that&#x27;s very likely what they would say, I guess he wants to build stuff, we&#x27;ll see how it goes. That&#x27;s what you&#x27;d get from your average Albertan, I&#x27;m quite certain. So, in that sense, you know, job done on this day. Going forward, the price, though, to your actual question, the price that gets paid going forward is that there are a lot of, there&#x27;s a lot of politics between here and there in terms of whatever projects we&#x27;re talking about, whatever regulatory processes we&#x27;re pulling out of the way with whatever legislation he ends up tabling. And the extent to which people aren&#x27;t kind of understanding that there are trade-offs there is the extent that the dragons are just around the corner, right, of changing up the environmental rules, of even circumventing some of our Section 35 responsibilities. I don&#x27;t know how they&#x27;re going to do that, but I&#x27;m talking about the Indigenous consultation pieces. Some of this is coming, and there are conflicts to come. And if the public&#x27;s not kind of tracking the drumbeat on this, all of a sudden we&#x27;re going to be into conflicts around specific proposals, projects in specific geographic spaces, and the public&#x27;s not going to have a lot of context for that.</div>
+  <div class="said">well the public wants a economic response to an economic threat uh so in as much as they&#x27;re getting anything and and stuff like this does punch through right it&#x27;s not like the usual cut and thread of politics of what&#x27;s going on in the house or question period or what have you uh it&#x27;s a much different uh type of uh media story right because it involves all of the premiers and it and and if anything punches through it&#x27;s that carney wants to build stuff which is actually kind of what he said right And if you were to go out and ask man on the street, that&#x27;s very likely what they would say, I guess he wants to build stuff, we&#x27;ll see how it goes. That&#x27;s what you&#x27;d get from your average Albertan, I&#x27;m quite certain. So, in that sense, you know, job done on this day. Going forward, the price, though, to your actual question, the price that gets paid going forward is that there are a lot of, there&#x27;s a lot of politics between here and there in terms of whatever</div>
+</div>
+<div class="turn" data-start="517">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">8:37</span>
+  </div>
+  <div class="said">projects we&#x27;re talking about, whatever regulatory processes we&#x27;re pulling out of the way with whatever legislation he ends up tabling. And the extent to which people aren&#x27;t kind of understanding that there are trade-offs there is the extent that the dragons are just around the corner, right, of changing up the environmental rules, of even circumventing some of our Section 35 responsibilities. I don&#x27;t know how they&#x27;re going to do that, but I&#x27;m talking about the Indigenous consultation pieces. Some of this is coming, and there are conflicts to come. And if the public&#x27;s not kind of tracking the drumbeat on this, all of a sudden we&#x27;re going to be into conflicts around specific proposals, projects in specific geographic spaces, and the public&#x27;s not going to have a lot of context for that.</div>
 </div>
 <div class="turn" data-start="565">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">9:25</span>
   </div>
   <div class="said">Carter, you&#x27;re having a call tonight with Andrew Scheer and Pierre Palliev, because of course they&#x27;ve got two people leading that universe now. And they&#x27;re saying, okay, we&#x27;re not jumping in today. It doesn&#x27;t seem right. None of the premiers are jumping in today. This is not something to oppose. But Carter, help us find the soft tissue here between what Carney&#x27;s putting out right now and where this could go. Help us see around the corner. Channon&#x27;s saying here that this is eventually going to fray. Danielle&#x27;s going to do her thing. Help us see around the corner what opportunities exist for us to get ourselves into the narrative, into the story. This is an economic file that historically conservatives have been leading. He&#x27;s stealing our ideas. Yes, he&#x27;s on a honeymoon phase, but we need to be relevant. What would you tell them right now</div>
@@ -614,7 +715,7 @@
 </div>
 <div class="turn" data-start="659">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">10:59</span>
   </div>
   <div class="said">Well, let me ask you the question this way, because I&#x27;m glad you mentioned 72 hours as a relatively arbitrary period of time, but I think an important one between now and Thursday. day how does carney then flash freeze the sentiment of today kumbaya love you know doug ford called him santa claus today and how does he extend the shelf life on that how are you if you&#x27;re mark connie take today package it and keep doling it out at least that vibe and feeling for as long as you can</div>
@@ -624,11 +725,25 @@
     <span class="speaker">Carter</span>
     <span class="ts">11:28</span>
   </div>
-  <div class="said">break it into as many little parts as humanly possible and dole out those as little parts in measurable increments across the longest possible timeline. Well, I mean, it&#x27;s interesting. I wrote a policy over the weekend. I didn&#x27;t write a policy. I helped edit a policy. And the policy has five big points, and each of those five big points has five little points. So that&#x27;s 25 individual points that we can roll out over the course of a campaign. campaign. This needs to be approached in the exact same fashion. You know, each one of these projects is actually 25 little points. 25 little points rolled out over 25 weeks gives you a communication strategy, especially when you couple that with three projects, two projects, two projects and a couple and some budget initiatives, two projects and some social services initiatives. You know, like there&#x27;s a lot of things that the Trudeau government, we must remember, the staggering complaint that we had about the trudeau government was that they were awful at communications we continue we we made that complaint for what seven years a minimum at</div>
+  <div class="said">break it into as many little parts as humanly possible and dole out those as little parts in measurable increments across the longest possible timeline.</div>
+</div>
+<div class="turn" data-start="700">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:40</span>
+  </div>
+  <div class="said">Well, I mean, it&#x27;s interesting. I wrote a policy over the weekend. I didn&#x27;t write a policy. I helped edit a policy. And the policy has five big points, and each of those five big points has five little points. So that&#x27;s 25 individual points that we can roll out over the course of a campaign. campaign.</div>
+</div>
+<div class="turn" data-start="719">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:59</span>
+  </div>
+  <div class="said">This needs to be approached in the exact same fashion. You know, each one of these projects is actually 25 little points. 25 little points rolled out over 25 weeks gives you a communication strategy, especially when you couple that with three projects, two projects, two projects and a couple and some budget initiatives, two projects and some social services initiatives. You know, like there&#x27;s a lot of things that the Trudeau government, we must remember, the staggering complaint that we had about the trudeau government was that they were awful at communications we continue we we made that complaint for what seven years a minimum at</div>
 </div>
 <div class="turn" data-start="754">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">12:34</span>
   </div>
   <div class="said">least seven years</div>
@@ -642,14 +757,14 @@
 </div>
 <div class="turn" data-start="772">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">12:52</span>
   </div>
   <div class="said">Shannon, same question for you. How does he flash freeze and extend the honeymoon, of course, but extend the feelings from today around coordination, working together for as long as possible?</div>
 </div>
 <div class="turn" data-start="785">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">13:05</span>
   </div>
   <div class="said">Well, some of it has to be real, right? And, you know, like show results is something that, you know, is always the communication is advice. But what does that look like when you&#x27;re, you know, you can&#x27;t be just kind of standing behind behind the podium the podium is prison right because that was part of the the knock on trudeau is they would just they would do like straight podium politics it was all driving towards the announcement and there was nothing happening behind that announcement or as a uh as a knock on to it right and and oftentimes they were they were announcing policies or initiatives that took forever to kind of roll out you never found out what actually happened to them or they were so uh chicken scratch there were too many sub bullets to the bullet uh that it was you know know, just some minister standing up talking about $750,000 for a sewer pipe, right? Like it didn&#x27;t really connect in to people, what people expect their government to be doing. So, you know, you need to find that balance. I would say that there are some projects that are more ready to go than others. I heard Susan Holt, for example, Premier of New Brunswick, talking about the Port of st john uh that sounded a lot more i mean who knows but uh it sounded a lot more ready to go than you know as yet notional uh east west linear infrastructure for either bitumen or even natural gas uh and uh you know she was saying it was 275 million dollar project well that&#x27;s a lot less than uh you know what i have heard uh oil pipelines tens of</div>
@@ -663,14 +778,21 @@
 </div>
 <div class="turn" data-start="878">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">14:38</span>
   </div>
-  <div class="said">50 billion or More, more, right? And for sure it would be more. The same group of people that valued TMX at 8 and became 34. So the point here is that they do need to be able to demonstrate that. And then the next, the other thing they need to do, and this is also to the point about Polyavra and that other guy, the American, Scheer, um it is uh um unemployment right in southern ontario uh in particular uh those numbers are ticking up people are feeling like there have been major layoffs uh happening and so if i were uh polyavra i would be pivoting to that tale of woe fairly soon uh to kind of get Get off the big nation building stuff where you&#x27;re not going to compete and onto a terrain where you can and start to shore up some of those private sector unionized workers, some of those seats that they won Kitchener elsewhere in southern Ontario. So that&#x27;s for them. am but if i was carny i would also be pivoting a little bit from the clouds down to the ground i had to you know actually demonstrate like no like we&#x27;re still in a crisis here people and i am the man for the crisis i&#x27;m not just the man for the dreams on how to get out of it but how to deal with people&#x27;s material reality right here right now</div>
+  <div class="said">50 billion or More, more, right? And for sure it would be more. The same group of people that valued TMX at 8 and became 34. So the point here is that they do need to be able to demonstrate that. And then the next, the other thing they need to do, and this is also to the point about Polyavra and that other guy, the American, Scheer, um it is uh um</div>
+</div>
+<div class="turn" data-start="904">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">15:04</span>
+  </div>
+  <div class="said">unemployment right in southern ontario uh in particular uh those numbers are ticking up people are feeling like there have been major layoffs uh happening and so if i were uh polyavra i would be pivoting to that tale of woe fairly soon uh to kind of get Get off the big nation building stuff where you&#x27;re not going to compete and onto a terrain where you can and start to shore up some of those private sector unionized workers, some of those seats that they won Kitchener elsewhere in southern Ontario. So that&#x27;s for them. am but if i was carny i would also be pivoting a little bit from the clouds down to the ground i had to you know actually demonstrate like no like we&#x27;re still in a crisis here people and i am the man for the crisis i&#x27;m not just the man for the dreams on how to get out of it but how to deal with people&#x27;s material reality right here right now</div>
 </div>
 <div class="turn" data-start="962">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">16:02</span>
   </div>
   <div class="said">i think that&#x27;s such an important point right around the the guy who could take opportunity of the moment to get things we haven&#x27;t been able able to get done for a long time on a generational level while also somehow being the same guy that&#x27;s able to be acutely you know responsive to the to the moment in people&#x27;s jobs can we talk about the list for a second sure and carter can i start with you because i think i&#x27;ve got shannon&#x27;s take already around at least from a policy perspective shannon so to be fair with you i want to add fair to you i want to come back to you on this in a sec the political cost to carney for not having a concrete list. Shannon talked to me about the policy cost and what the prudent thing would be to do from a policy perspective, but the political cost for Carney who promised a list, but we didn&#x27;t get a list today</div>
@@ -684,21 +806,21 @@
 </div>
 <div class="turn" data-start="1087">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">18:07</span>
   </div>
   <div class="said">The political cost for not having a list today, even though one was promised to us.</div>
 </div>
 <div class="turn" data-start="1093">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">18:13</span>
   </div>
   <div class="said">I think it&#x27;s better. And to this point about, you know, having a bit of a drumbeat of announcements, uh there&#x27;s nothing bigger than oh we&#x27;ve got another nation building uh project right and you can then uh keep the drumbeat alive i think that&#x27;s a really important piece and to carter&#x27;s point i mean they&#x27;re as soon as you sort of show your hand your cards uh that&#x27;s when the lawyers get to work um that&#x27;s and so um and then you get conflict right and and he doesn&#x27;t want that right Right now, he doesn&#x27;t have that. He had like one of the most rare days in Canadian politics today when he didn&#x27;t have that. So he&#x27;s</div>
 </div>
 <div class="turn" data-start="1133">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">18:53</span>
   </div>
   <div class="said">going to want more of that. I agree with you in terms of the rarity of the day. But with your two minds, though, help me help Carney when he has to release that list in the sense of what does it look</div>
@@ -712,35 +834,35 @@
 </div>
 <div class="turn" data-start="1147">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">19:07</span>
   </div>
   <div class="said">the school gymnasium coach, you know, or like the drama auditions, just like putting it on the court board here? The 10 people who made the cut? Is it every the first of every month he announces a nation building project? project like is it one project as at a time is it</div>
 </div>
 <div class="turn" data-start="1159">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">19:19</span>
   </div>
   <div class="said">i think it&#x27;s one at a time one or two right and and okay help me</div>
 </div>
 <div class="turn" data-start="1163">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">19:23</span>
   </div>
   <div class="said">help me graph this</div>
 </div>
 <div class="turn" data-start="1164">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">19:24</span>
   </div>
   <div class="said">we&#x27;ve done the due diligence these ones are ready to rock and roll off we go uh and more to come he said as much today in his presser he said you know this is an ongoing process it&#x27;s not like you know they&#x27;ve sent in their list and now the the provinces and now there&#x27;s a gate that comes down or something and that was his uh that was his phrasing so uh There will be more. Provinces should act that way and they should continue. They should be doing their due diligence. I have seen some stuff out there that, you know, makes my eyebrows go up a little bit. And there&#x27;s, you know, a lot of people that are just seeing, you know, sugarplum fairies and dropping free money bags. And that is not good for Canadians. And there are very few, you know, PMs that I would trust to actually, you know, want to do some due diligence on this. A former central banker, I mean, even the lefty in me is kind of glad for that due diligence on this stuff. But I would just be moving it. I think they will have to, by necessity, move them out one or two at a time. But that&#x27;s exactly what they should do. you</div>
 </div>
 <div class="turn" data-start="1229">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">20:29</span>
   </div>
   <div class="said">think that&#x27;s also just to get you clear on get your take clear on this you think that&#x27;s also the optimal political thing to do absolutely it&#x27;s a carter where you at with this</div>
@@ -750,14 +872,28 @@
     <span class="speaker">Carter</span>
     <span class="ts">20:37</span>
   </div>
-  <div class="said">totally i think as soon as you throw up a list that has a finite end people are going to lose their shit the beauty of one at a time is that there&#x27;s no finite rolling admission right there&#x27;s another one just down the road and maybe there comes a time when you have to say we&#x27;re all done right but we&#x27;re all done it could happen uh in two years three years four years five years It really depends on the economy. It depends on what the size and scope of these investments look like, how they&#x27;re financed, and how other governments are responding to them. But at the end of the day, one more coming down, don&#x27;t worry, your project&#x27;s next, is what I want you to think, Zane. I want you to think, don&#x27;t worry, your project&#x27;s next. So if you&#x27;ve got this, if you&#x27;re really excited, really excited for high speed rail in Alberta, it could be next. It could be the next nation building project that&#x27;s going to be built right after, you know, high speed rail in Eastern Canada.</div>
+  <div class="said">totally i think as soon as you throw up a list that has a finite end people are going to lose their shit the beauty of one at a time is that there&#x27;s no finite rolling admission right there&#x27;s another one just down the road and maybe there comes a time when you have to say we&#x27;re all done right but we&#x27;re all done it could happen uh in two years three years four years five years It really depends on the economy. It depends on what the size and scope of these investments look like, how they&#x27;re financed, and how other governments are responding to them. But at the end of the day,</div>
+</div>
+<div class="turn" data-start="1273">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:13</span>
+  </div>
+  <div class="said">one more coming down, don&#x27;t worry, your project&#x27;s next, is what I want you to think, Zane. I want you to think, don&#x27;t worry, your project&#x27;s next. So if you&#x27;ve got this, if you&#x27;re really excited, really excited for high speed rail in Alberta, it could be next. It could be the next nation building project that&#x27;s going to be built right after, you know, high speed rail in Eastern Canada.</div>
 </div>
 <div class="turn" data-start="1298">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">21:38</span>
   </div>
-  <div class="said">Right, right, right. Talk to me about two things here. Carter, what would demonstrate a quick win for him? There&#x27;s obviously going to be strategy in choosing what&#x27;s the first couple of things, right? Right. So if you guys are both whispering into Carney&#x27;s ear around how you choose the first couple of things policy wise, for sure, but also strategy wise, do they need to be cheap? Do they need to be quick turnaround? Do they need to be geographic focused? How does he communicate that it is doing the job that he is set out to do? Because project number nine might be two years away, for example. Right. Like if we&#x27;re if we&#x27;re talking about the breadth of consultations, et cetera, and maybe I&#x27;m even being too bullish. So how are you kind of navigating the comms and the choices of the first couple so that they create the broader story and point that you&#x27;re trying to make?</div>
+  <div class="said">Right, right, right. Talk to me about two things here. Carter, what would demonstrate a quick win for him? There&#x27;s obviously going to be strategy in choosing what&#x27;s the first couple of things, right? Right. So if you guys are both whispering into Carney&#x27;s ear around how you choose the first couple of things policy wise, for sure, but also strategy wise, do they need to be cheap? Do they need to be quick turnaround? Do they need to be geographic focused? How does he communicate that it is doing the job that he is set out to do? Because project number nine might be two years away, for</div>
+</div>
+<div class="turn" data-start="1332">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">22:12</span>
+  </div>
+  <div class="said">example. Right. Like if we&#x27;re if we&#x27;re talking about the breadth of consultations, et cetera, and maybe I&#x27;m even being too bullish. So how are you kind of navigating the comms and the choices of the first couple so that they create the broader story and point that you&#x27;re trying to make?</div>
 </div>
 <div class="turn" data-start="1349">
   <div class="who">
@@ -768,14 +904,14 @@
 </div>
 <div class="turn" data-start="1390">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">23:10</span>
   </div>
   <div class="said">Shane, what do you think? What is the definition of a political quick win here in your mind?</div>
 </div>
 <div class="turn" data-start="1394">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">23:14</span>
   </div>
   <div class="said">Sure. I&#x27;m not sure what shovel ready means. And, you know, there&#x27;s all kinds of jokes on, you know, people have been on the receiving end of lobbying for large projects. I will tell you that, like, everything is shovel ready. And I can&#x27;t tell you how many times I had heard that. And it&#x27;s probably not real. Everything</div>
@@ -789,45 +925,59 @@
 </div>
 <div class="turn" data-start="1418">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">23:38</span>
   </div>
   <div class="said">Phillips. No. Well, hold on. Before</div>
 </div>
 <div class="turn" data-start="1420">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">23:40</span>
   </div>
   <div class="said">you get there, can you talk to me about your experience with that? Being on the other end of like being lobbied things that people say are shovel ready? Like, was it just like, would your team have to do due diligence on that</div>
 </div>
 <div class="turn" data-start="1430">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">23:50</span>
   </div>
   <div class="said">Well, the GOA would. I mean, the GOA would. But even for, you know, flood mitigation, this kind of stuff, right, which, you know, was funded out of my department, you know, you get all kinds of representations from municipalities of, you know, things are ready to go. They were demonstrably not ready to go. But so, you know, that stuff happens. It happens through all kind of government procurement infrastructure projects. I&#x27;m sure it happens to munis as well, right? They get the same kind of representations. And then you have private sector proponents for various projects who come in and say, oh, you know, my factory widget making is going to employ, you know, untold thousands of people and bring in untold millions of tax revenue and what have you. And it&#x27;s shovel ready. It is also not. But that&#x27;s fine. That happens all the time. Right. Which is why that level of due diligence is really important. And if it is actually ready to go, then or even if it&#x27;s close, and this is where like, I, I given a bit of confidence that a guy who was, you know, the chair of Brookfield, I will have some sense on how projects are financed and managed. But I also think there needs to be some, there&#x27;s, there&#x27;s got to be regional politics here to keep his friends on side. I&#x27;m glad you</div>
 </div>
 <div class="turn" data-start="1512">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">25:12</span>
   </div>
   <div class="said">said that. I&#x27;m surprised Carter didn&#x27;t, but I&#x27;m glad you said that</div>
 </div>
 <div class="turn" data-start="1514">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">25:14</span>
   </div>
-  <div class="said">I mean, let&#x27;s just look at the rank politics here. You gained a bunch of seats in British Columbia. And you&#x27;ve got a more tenuous coalition to hold together in British Columbia for the Liberal Party of Canada than you have elsewhere. You have to get back some of that more working class, blue-collar vote in southern Ontario. Okay. And you need to have an affordability pitch there. Maybe it&#x27;s not a nation building project in Brampton, maybe it&#x27;s more housing there, but I&#x27;d also be doing some polling on what people are looking for in those areas. And you also have to hold together a Quebec coalition. If you&#x27;re going to go stomping through the environment, you&#x27;re going to find PDQ that the BQ is going to start eating your lunch, right? Right. So you have to think about those regional dynamics. But I would say because of that, you&#x27;re going to want to look at British Columbia and southern Ontario as two spots where if you&#x27;ve got something, move it.</div>
+  <div class="said">I mean, let&#x27;s just look at the rank politics here. You gained a bunch of seats in British Columbia.</div>
+</div>
+<div class="turn" data-start="1520">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">25:20</span>
+  </div>
+  <div class="said">And you&#x27;ve got a more tenuous coalition to hold together in British Columbia for the Liberal Party of Canada than you have elsewhere. You have to get back some of that more working class, blue-collar vote in southern Ontario. Okay. And you need to have an affordability pitch there. Maybe it&#x27;s not a nation building project in Brampton, maybe it&#x27;s more housing there, but I&#x27;d also be doing some polling on what people are looking for in those areas. And you also have to hold together a Quebec coalition. If you&#x27;re going to go stomping through the environment, you&#x27;re going to find PDQ that the BQ is going to start eating your lunch, right? Right. So you have to think about those regional dynamics. But I would say because of that, you&#x27;re going to want to look at British Columbia and southern Ontario as two spots where if you&#x27;ve got something, move it.</div>
 </div>
 <div class="turn" data-start="1572">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">26:12</span>
   </div>
-  <div class="said">I want to get back to the regional politics in a second. it and this is related but you know one of shannon&#x27;s comments carter really kind of hit home for me in much we&#x27;re relying on the pm himself and his skill set to like champion a lot of this shit like the fact that shannon just brings up oh well this is a this is the guy who&#x27;s got the brookfield you know experience like he&#x27;ll be able to understand the financing on each project it&#x27;s It&#x27;s like we&#x27;re asking the prime minister of this country to bring those skills at a very, you know, like specific level of detail to be able to green light projects. Like we&#x27;re not even talking about committees or task forces or departments.</div>
+  <div class="said">I want to get back to the regional politics in a second. it and this is related but you know one of shannon&#x27;s comments carter really kind of hit home for me in</div>
+</div>
+<div class="turn" data-start="1583">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">26:23</span>
+  </div>
+  <div class="said">much we&#x27;re relying on the pm himself and his skill set to like champion a lot of this shit like the fact that shannon just brings up oh well this is a this is the guy who&#x27;s got the brookfield you know experience like he&#x27;ll be able to understand the financing on each project it&#x27;s It&#x27;s like we&#x27;re asking the prime minister of this country to bring those skills at a very, you know, like specific level of detail to be able to green light projects. Like we&#x27;re not even talking about committees or task forces or departments.</div>
 </div>
 <div class="turn" data-start="1615">
   <div class="who">
@@ -838,7 +988,7 @@
 </div>
 <div class="turn" data-start="1617">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">26:57</span>
   </div>
   <div class="said">lead this without wearing all of the downside risk? We&#x27;re almost pretending like there&#x27;s none here. There is a lot. right shannon&#x27;s mentioned at some point we&#x27;ll get back onto the regular script where mo and smith will be disgruntled southern you know southern ontario will be fickle right bc will will go be perhaps back to their more core environmental roots like things will reset so how does carney lead this without wearing this like is there something he can do around ensuring the provinces are now responsible and he&#x27;s the gatekeeper of finances or has he set this self up from a a political perspective that it&#x27;s</div>
@@ -848,46 +998,74 @@
     <span class="speaker">Carter</span>
     <span class="ts">27:30</span>
   </div>
-  <div class="said">it&#x27;s him and only him you&#x27;re describing risk and reward you&#x27;re describing risk and reward and the the risk is for carney that he has to wear it the reward is that carney gets to wear it if you want to have the if you want to have the bouquet placed around your neck as the champion of the world uh as i often am um then you have to be willing to undertake the risk if you&#x27;re not willing to undertake the risk then you&#x27;re not going to get that reward and i I think that this is where Trudeau often found himself, you know, playing in little tiny fields on little tiny issues because he was unwilling to take that risk. So for me, that&#x27;s a benefit, not a negative. Yes, there is a risk attached to it. Yes, there is a reward attached to it. Which one of those is going to happen? I don&#x27;t know. It feels like we&#x27;re tracking towards reward, but we don&#x27;t know. That&#x27;s the beauty of politics. politics um you have to choose to do what you think is right and then you will get either rewarded or destroyed by it i don&#x27;t know if shannon has any experience with the carbon tax or anything like that but you know sometimes she does stuff sometimes you you win and other times you lose absolutely</div>
+  <div class="said">it&#x27;s him and only him you&#x27;re describing risk and reward you&#x27;re describing risk and reward and the the risk is for carney that he has to wear it the reward is that carney gets to wear it if you want to have the if you want to have the bouquet placed around your neck as the champion of the world uh as i often am um then you have to be willing to undertake the risk if you&#x27;re not willing to undertake the risk then you&#x27;re not going to get that reward and i I think that this is where Trudeau often found himself, you know, playing in little tiny fields on little tiny issues because he was unwilling to take that risk. So for</div>
+</div>
+<div class="turn" data-start="1690">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">28:10</span>
+  </div>
+  <div class="said">me, that&#x27;s a benefit, not a negative. Yes, there is a risk attached to it. Yes, there is a reward attached to it. Which one of those is going to happen? I don&#x27;t know. It feels like we&#x27;re tracking towards reward, but we don&#x27;t know. That&#x27;s the beauty of politics. politics um you have to choose to do what you think is right and then you will get either rewarded or destroyed by it i don&#x27;t know if shannon has any experience with the carbon tax or anything like that but you know sometimes she does stuff sometimes you you win and other times you lose absolutely</div>
 </div>
 <div class="turn" data-start="1724">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">28:44</span>
   </div>
   <div class="said">absolutely i i mean and he has had set very very high expectations uh and uh that can be a very dangerous thing and he&#x27;s decided he&#x27;s going to take the dangerous path uh because the The other option is to keep running things like Trudeau did, which is sometimes it took them four or five years to get through a consultation process on something they cared about. And that just made more opportunity for people to go to war on it. I&#x27;m thinking here of the emissions cap legislation, the electricity regs. You know, these were the emissions cap in particular. I want to say it was three or four years of consult, right, from sort of idea to, like, not even execution. And so, you know, people did get tired of that at various levels, and not just, you know, in Alberta or on the so-called right or whatever the case may be. It just it took them a long time to do anything. You know, I&#x27;m thinking here of like Long-Term Care Act, some of these things. I remember sitting listening to a Liberal MP tell me privately, well, we just need more time so that we can do that. And I&#x27;m like, you promised it in the 2021 platform. So and here we are in late 2024. Right. It just took them forever. ever uh and you know that that&#x27;s uh just dithering around you know talking in governmentitis uh people see through that they don&#x27;t like it so uh he&#x27;s going to take some chances there are going to be failures on this uh there will be uh the odd project that goes wildly off the rails uh but canadians also have a fairly high tolerance for that uh tmx was originally budgeted at 8 billion It came in at $34. If you were to go and do a poll tomorrow, I don&#x27;t think you would find opposition to it in Alberta or British Columbia. Churchill Falls is another one, went billions of dollars over, both projects as far as I know. Just, you know, like a massive overspend by the federal government. These things happen. happen. And Canadians, if they see a benefit, not only are they okay with it, they have an appetite for it. They&#x27;re like, fine.</div>
 </div>
 <div class="turn" data-start="1865">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">31:05</span>
   </div>
-  <div class="said">want to stick with you, Shannon, on this. One of the reasons I&#x27;m sitting on a bed in Toronto in a hotel room is because I&#x27;m here for a board meeting for the Samara Centre for Democracy. And one of my board colleagues asked this really interesting question to our fellow board members. And I want to phrase it here, which is, do you think, as a former minister yourself, having an understanding of the public service, so right sizes for the Ottawa conversation, do you feel like the public service can keep up to his ambitions, or at least his rhetorical promises that he&#x27;s put out? Let&#x27;s say Carney wants to go quick. Let&#x27;s say Carney finds premiers who want to go quick. Let&#x27;s say Carney finds cabinet and a PMO that wants to go quick. The one aspect we haven&#x27;t necessarily dug into is, can the public service actually allow him to go quick can they you know and and and this is not to deride the public service in any way but it&#x27;s really to ask a question of they&#x27;re tooled to not in some ways um so how do you see that portion of it if everything aligns if the stars are aligning and it&#x27;s kumbaya as i&#x27;ve said three times today with the premiers and he&#x27;s got a chief of staff which he just announced today well regarded celebrated chief of staff people like great pick, right? If all that&#x27;s going well, we rarely talk about this, but in this case, the public service. Can the public service allow him to go quick? Your thoughts?</div>
+  <div class="said">want to stick with you, Shannon, on this. One of the reasons I&#x27;m sitting on a bed in Toronto in a hotel room is because I&#x27;m here for a board meeting for the Samara Centre for Democracy. And one of my board colleagues asked this really interesting question to our fellow board members. And I want to phrase it here, which is, do</div>
+</div>
+<div class="turn" data-start="1882">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">31:22</span>
+  </div>
+  <div class="said">you think, as a former minister yourself, having an understanding of the public service, so right sizes for the Ottawa conversation, do you feel like the public service can keep up to his ambitions, or at least his rhetorical promises that he&#x27;s put out? Let&#x27;s say Carney wants to go quick. Let&#x27;s say Carney finds premiers who want to go quick. Let&#x27;s say Carney finds cabinet and a PMO that wants to go quick. The one aspect we haven&#x27;t necessarily dug into is, can the public service actually allow him to go quick can they you know and and and this</div>
+</div>
+<div class="turn" data-start="1913">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">31:53</span>
+  </div>
+  <div class="said">is not to deride the public service in any way but it&#x27;s really to ask a question of they&#x27;re tooled to not in some ways um so how do you see that portion of it if everything aligns if the stars are aligning and it&#x27;s kumbaya as i&#x27;ve said three times today with the premiers and he&#x27;s got a chief of staff which he just announced today well regarded celebrated chief of staff people like great pick, right? If all that&#x27;s going well, we rarely talk about this, but in this case, the public service. Can the public service allow him to go quick? Your thoughts?</div>
 </div>
 <div class="turn" data-start="1943">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">32:23</span>
   </div>
-  <div class="said">They have to, or they will be restructured and moved. He is someone who has also worked in the public service in finance and holds a quick and efficient public service, like for example, Whitehall in the United Kingdom in high regard. So we&#x27;ll see. There will be a level of tension there. There&#x27;s no question because, to your point, Zane, as my Deputy Minister Eric Denhoff used to say, well, you know, Minister, doing nothing is a perfectly legitimate public service response to whatever your query is. that can pervade the civil service sometimes. You know, he was being, he was telling a joke, but it had</div>
+  <div class="said">They have to, or they will be restructured and moved. He is someone who has also worked in the public service in finance and holds a quick and efficient public service, like for example, Whitehall in the United Kingdom in high regard. So we&#x27;ll see. There will be a level of tension there. There&#x27;s no question because, to your point, Zane, as my Deputy Minister Eric Denhoff used to say, well, you know, Minister, doing nothing is a perfectly legitimate public service response to whatever your query is.</div>
+</div>
+<div class="turn" data-start="1981">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">33:01</span>
+  </div>
+  <div class="said">that can pervade the civil service sometimes. You know, he was being, he was telling a joke, but it had</div>
 </div>
 <div class="turn" data-start="1990">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">33:10</span>
   </div>
   <div class="said">Doing nothing as in getting out of your way? Or doing nothing, as in, like</div>
 </div>
 <div class="turn" data-start="1994">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">33:14</span>
   </div>
   <div class="said">you may request it. You would like some advice on what to do, and we&#x27;re going to give you option A, which is to do nothing. right. And so, you know, some of that is there. I think that is an open question, because Mr. Carney has also indicated a significant operational budget review, and identifying some savings of, you know, $20 billion. That is significant. significant so um there will be some tension there um but this will be the summer when they are not going to Muskoka uh and uh it is time for them to demonstrate their work I think</div>
 </div>
 <div class="turn" data-start="2032">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">33:52</span>
   </div>
   <div class="said">Carter Carter can the public service keep up in Ottawa establishment keep up</div>
@@ -897,11 +1075,18 @@
     <span class="speaker">Carter</span>
     <span class="ts">33:56</span>
   </div>
-  <div class="said">yeah you&#x27;re not going to move the entire public service at the same time either you&#x27;re going to move certain areas a lot um so you know as you move through your infrastructures your transportations negotiations, those departments are going to get hammered, as is finance. But not every department&#x27;s, I mean, not every department&#x27;s going to be moving at the same pace. And that enables you to move some bureaucrats around as people succeed or fail in the environment. I remember, you know, when we, when as chief of staff, we would have different moments when different deputies would have to step up. And that was just the reason. What</div>
+  <div class="said">yeah you&#x27;re not going to move the entire public service at the same time either you&#x27;re going to move certain areas a lot um so you know as you move through your infrastructures your transportations negotiations, those departments are going to get hammered, as is finance. But not every department&#x27;s, I mean, not</div>
+</div>
+<div class="turn" data-start="2055">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:15</span>
+  </div>
+  <div class="said">every department&#x27;s going to be moving at the same pace. And that enables you to move some bureaucrats around as people succeed or fail in the environment. I remember, you know, when we, when as chief of staff, we would have different moments when different deputies would have to step up. And that was just the reason. What</div>
 </div>
 <div class="turn" data-start="2075">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:35</span>
   </div>
   <div class="said">government was that, Carter? Carter</div>
@@ -915,7 +1100,7 @@
 </div>
 <div class="turn" data-start="2079">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">34:39</span>
   </div>
   <div class="said">It was fathers against what? Fathers against</div>
@@ -929,7 +1114,7 @@
 </div>
 <div class="turn" data-start="2094">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">34:54</span>
   </div>
   <div class="said">turned out to be a great premier</div>
@@ -943,7 +1128,7 @@
 </div>
 <div class="turn" data-start="2097">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">34:57</span>
   </div>
   <div class="said">I loved those 15 minutes.</div>
@@ -957,21 +1142,21 @@
 </div>
 <div class="turn" data-start="2103">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:03</span>
   </div>
   <div class="said">Job well done. Anyway, moving on.</div>
 </div>
 <div class="turn" data-start="2106">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">35:06</span>
   </div>
   <div class="said">Shannon which provinces which province which region which group is kind of at the greatest risk right now like when you look at the board we&#x27;re still sticking with the nation building project stuff right that&#x27;s been the key like is there someone that you&#x27;re like I don&#x27;t like their position that they&#x27;ve either are going to be forced in or they have to take go along to get along I don&#x27;t like where they stood on certain things so I&#x27;m asking it in a broader sense not to guide you to an answer but you know in certain things if you&#x27;re playing a finite game and this you could say is a finite game we just you know with rolling admissions we don&#x27;t know when that will look like but who&#x27;s like kind of looking a bit shaky already who&#x27;s going to be you know uh you know in in a position where you&#x27;re not necessarily keen to be them right now um</div>
 </div>
 <div class="turn" data-start="2151">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:51</span>
   </div>
   <div class="said">um we can do a bit of process of elimination the atlantic canadian premiers are in very good shape with a lot of their because a lot of what they are looking for is electricity infrastructure so that they were all very very happy today when i watched their interviews and for good reason um and uh certainly they do need some export uh diversification and again the types of investments that mr carney is looking at making and what they actually need it actually aligns pretty well um if you move across i i dug forward i mean it&#x27;s ontario they&#x27;re going to get with their amazing things quebec might be in a bit of a spot right because there&#x27;s a tension obviously there will be tension uh and mr legault is going into an election within whatever it is a year a year and a half uh so there&#x27;s that that might you know not exactly go along the track that people want it to wab is obviously you know premier jesus he&#x27;s fine uh he&#x27;s in good shape uh and scott moe will do whatever danielle does uh because he just you know is kind of slip streaming behind her and he&#x27;s just hoping that he doesn&#x27;t get thrown overboard</div>
@@ -985,21 +1170,35 @@
 </div>
 <div class="turn" data-start="2232">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">37:12</span>
   </div>
   <div class="said">asking a question i wasn&#x27;t sure where you were going until you went right for the fucking temples but But OK.</div>
 </div>
 <div class="turn" data-start="2239">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">37:19</span>
   </div>
-  <div class="said">Yeah. And then, I mean, I think the most vulnerable of anyone, I mean, the guy in the Yukon is going into an election. So, you know, he&#x27;s going to have to I can&#x27;t. Anyway, he&#x27;s going to have to show some some movement there. And Mr. Eby is probably on the most knife&#x27;s edge. As soon as Daniel Smith starts talking about Northern Gateway, oh boy, does that start inflicting, putting, basically starting to, you know, push into an old bruise for the BCNDP, for the province. And they&#x27;ve just gone through their own fast track legislation conversation. They had to go back and rewrite a little bit on it. I think they mostly got through it because the government&#x27;s really quite popular right now, far more popular than when they won the election in barely in October. But Gateway can revive the Green Party that have had pretty much, you know, like, yeah, they&#x27;d pretty much disappeared. So it can. The good news is, at least for Evie right now, number one, he is extremely popular right now. And the government&#x27;s approach to the response to Trump is really popular. even the fast track legislation doesn&#x27;t appear to have really like rattled them too much it maybe rattled their internal coalition a little bit but it hasn&#x27;t rattled their numbers and obviously their opposition is in total disarray so i mean that situation is not going to change anytime soon but his internal coalition dynamics are going to become much more difficult if that&#x27;s the project that daniel smith keeps putting in the window every two minutes which is why i also said there has to be something in the first instance from carney maybe it&#x27;s lng related uh maybe it&#x27;s some other uh energy related project uh that he can basically uh say we&#x27;re doing this</div>
+  <div class="said">Yeah. And then, I mean, I think the most vulnerable of anyone, I mean, the guy in the Yukon is going into an election. So, you know, he&#x27;s going to have to I can&#x27;t. Anyway, he&#x27;s going to have to show some some movement there. And Mr. Eby is probably on the most knife&#x27;s edge. As soon as Daniel Smith starts talking about Northern Gateway, oh boy, does that start inflicting, putting, basically starting to, you know, push into an old bruise for the BCNDP, for the province. And they&#x27;ve just gone through their own fast track legislation conversation. They had to go back and rewrite a little bit on it. I think they mostly got through it because the government&#x27;s really quite popular right now, far more popular than when they won the election in barely in October.</div>
+</div>
+<div class="turn" data-start="2292">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">38:12</span>
+  </div>
+  <div class="said">But Gateway can revive the Green Party that have had pretty much, you know, like, yeah, they&#x27;d pretty much disappeared. So it can. The good news is, at least for Evie right now, number one, he is extremely popular right now. And the government&#x27;s approach to the response to Trump is really popular. even the fast track legislation doesn&#x27;t appear to have really like rattled them too much it maybe rattled their internal coalition a little bit but it hasn&#x27;t rattled their numbers and</div>
+</div>
+<div class="turn" data-start="2319">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">38:39</span>
+  </div>
+  <div class="said">obviously their opposition is in total disarray so i mean that situation is not going to change anytime soon but his internal coalition dynamics are going to become much more difficult if that&#x27;s the project that daniel smith keeps putting in the window every two minutes which is why i also said there has to be something in the first instance from carney maybe it&#x27;s lng related uh maybe it&#x27;s some other uh energy related project uh that he can basically uh say we&#x27;re doing this</div>
 </div>
 <div class="turn" data-start="2351">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">39:11</span>
   </div>
   <div class="said">to offset car to offset yeah for for eb that&#x27;s that&#x27;s smart i like that carter do you agree with shannon&#x27;s assessment or or do you kind of have a different take around who&#x27;s not in the greatest position right now at least from a regional lens</div>
@@ -1013,21 +1212,21 @@
 </div>
 <div class="turn" data-start="2444">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">40:44</span>
   </div>
   <div class="said">ccus there is that right if there is a final investment decision then that&#x27;s a lot of did you just acronym me sorry it&#x27;s acronym f</div>
 </div>
 <div class="turn" data-start="2454">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">40:54</span>
   </div>
   <div class="said">f m f m f m yeah yeah</div>
 </div>
 <div class="turn" data-start="2458">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">40:58</span>
   </div>
   <div class="said">c c u s the the carbon capture uh that&#x27;s fine you know i&#x27;m in if it ever happens capture let&#x27;s but i the reason why i i i glossed over mo and smith is because whatever happens they win right if things if things move forward okay great it&#x27;s It&#x27;s because we, you know, we fought for our provinces. If things don&#x27;t move forward or if things do, they will just move the goalposts to something else for the endless grievance train, right? And if it&#x27;s, oh, okay, we&#x27;ve got pipeline stuff happening, well, then I&#x27;m going to turn my attention to the industrial carbon price. I&#x27;m going to turn my attention to some other thing, the equalization formula. Again, I don&#x27;t see a situation in which that disadvantages her because at some point there will be disagreement with Carney and she will be happy.</div>
@@ -1041,7 +1240,7 @@
 </div>
 <div class="turn" data-start="2512">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">41:52</span>
   </div>
   <div class="said">mistake. The public interest takes a bit of a</div>
@@ -1055,7 +1254,7 @@
 </div>
 <div class="turn" data-start="2518">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">41:58</span>
   </div>
   <div class="said">She was thinking too connivingly and too Machiavellian. And Carter, you, as always, just save the public. You always are about the people. I&#x27;m always about</div>
@@ -1069,7 +1268,7 @@
 </div>
 <div class="turn" data-start="2532">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">42:12</span>
   </div>
   <div class="said">That&#x27;s what I sense. From you? I used to bring Ernest this to the show. Now I just bring... I</div>
@@ -1083,7 +1282,7 @@
 </div>
 <div class="turn" data-start="2539">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">42:19</span>
   </div>
   <div class="said">bring anymore. I&#x27;m late. I&#x27;m unprepared. I don&#x27;t have a mic. Let&#x27;s move it on to our under and our lightning round. Stephen Carter, we do this for you despite the fact that you really don&#x27;t seem to enjoy it. You really don&#x27;t seem to</div>
@@ -1097,7 +1296,7 @@
 </div>
 <div class="turn" data-start="2555">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">42:35</span>
   </div>
   <div class="said">Carter, tell me this. One major risk. Outlining for me strategic political risk for Mark Carney between now as we record June 2nd and july 1st july 1st is a big date on the carney calendar that he circled you know we&#x27;ve had a hour-long nearly hour-long conversation about uh the nation building project it doesn&#x27;t have to be about that but give me one key carney risk that you could whisper into his ear i&#x27;d be like make sure about this sir between now and july 1</div>
@@ -1111,49 +1310,49 @@
 </div>
 <div class="turn" data-start="2605">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">43:25</span>
   </div>
   <div class="said">chenna july 1 mark carney what&#x27;s the risk between now and then</div>
 </div>
 <div class="turn" data-start="2609">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">43:29</span>
   </div>
   <div class="said">big indigenous protests start uh either out of british columbia or uh Another place where, or what Ontario is doing up in with their legislation having to do with the Ring of Fire erupts, you know, at Queen&#x27;s Park and there&#x27;s a spillover effect into, you know, onto the lawn of Parliament. Or there&#x27;s a big AFN push of some kind, right? They&#x27;ve already been a little bit tapping. You mean on the</div>
 </div>
 <div class="turn" data-start="2637">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">43:57</span>
   </div>
   <div class="said">heels of a project being selected? No, or</div>
 </div>
 <div class="turn" data-start="2640">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">44:00</span>
   </div>
   <div class="said">just in general. To prevent. No, in general. Because we&#x27;ve already seen some nervousness and some trepidation. So if you start to see some of those pieces move, even within the next two or three weeks, that is a huge risk.</div>
 </div>
 <div class="turn" data-start="2655">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">44:15</span>
   </div>
   <div class="said">Shannon, let&#x27;s stick with you for this next one. Risk for Pierre and the Conservatives between now and that same time period, now and July 1st. Obviously, they&#x27;re opposition. Carter says they need to give it some time. He said that time is Thursday, so I&#x27;m going to extend the clock. Between now and July 1, what&#x27;s our risk for the Conservatives? is?</div>
 </div>
 <div class="turn" data-start="2673">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">44:33</span>
   </div>
   <div class="said">Internal problems, because they can always, you know, if their high watermark was 41 on election day, depending how things, you know, settle out over the next two or three years, that might be enough for a majority. So the actual public support right now is a lot less important than people starting to snipe at each other. And so the internal caucus and party dynamics are</div>
 </div>
 <div class="turn" data-start="2698">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">44:58</span>
   </div>
   <div class="said">the most important thing for Mr. Polayev. Carter, what&#x27;s between Angela and Mike?</div>
@@ -1167,7 +1366,7 @@
 </div>
 <div class="turn" data-start="2708">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">45:08</span>
   </div>
   <div class="said">I&#x27;m so glad we do this for you, especially when you pay so much attention. Stephen let me end here. Let me start with you on this final question. Overrated or underrated, the selection of the first project, what it is, is that overrated or underrated in the grand political scheme of things in your mind?</div>
@@ -1181,7 +1380,7 @@
 </div>
 <div class="turn" data-start="2756">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">45:56</span>
   </div>
   <div class="said">Does that perfect project, mid-size, exciting, shows progress? Like, does this unicorn of a project that&#x27;s shovel-ready, that, like, has already met thresholds on consultation? I&#x27;m just giving you random shit, but you know what I&#x27;m trying to say</div>
@@ -1195,14 +1394,14 @@
 </div>
 <div class="turn" data-start="2776">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">46:16</span>
   </div>
   <div class="said">Oh, it&#x27;s overrated. Underrated. Overrated or underrated? The first project choice.</div>
 </div>
 <div class="turn" data-start="2780">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">46:20</span>
   </div>
   <div class="said">Overrated, because it&#x27;s not going to happen as one. one uh there will be either more than one or there will be a process of some kind right like here&#x27;s the criteria and who&#x27;s here&#x27;s who meets these criteria and then we&#x27;ll go on to other criteria or uh some other uh staging of it i just don&#x27;t think they&#x27;re gonna be like here&#x27;s one thing</div>
@@ -1216,35 +1415,35 @@
 </div>
 <div class="turn" data-start="2815">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">46:55</span>
   </div>
   <div class="said">Yeah, no, it&#x27;s not being received well by her and there&#x27;s a bit of me inside that&#x27;s dying while you do it. I&#x27;m</div>
 </div>
 <div class="turn" data-start="2821">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">47:01</span>
   </div>
   <div class="said">okay with it and here&#x27;s why. It&#x27;s always important to admit that you&#x27;re wrong in this business. No, but he</div>
 </div>
 <div class="turn" data-start="2828">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">47:08</span>
   </div>
   <div class="said">actually doesn&#x27;t mean you&#x27;re wrong. That&#x27;s why, yeah, never</div>
 </div>
 <div class="turn" data-start="2830">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">47:10</span>
   </div>
   <div class="said">mind. I know, I&#x27;m being earnest. I&#x27;m being earnest. Oh, I like the earnestness.</div>
 </div>
 <div class="turn" data-start="2835">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Zain</span>
     <span class="ts">47:15</span>
   </div>
   <div class="said">We&#x27;re going to leave it there. That&#x27;s a wrap on episode 1873 of The Strategist. My name is Zane Velgey. With me, as always, We&#x27;re Shannon Phillips, Stephen Carter, and we shall see you next time.</div>

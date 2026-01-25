@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/129433199.mp3?sig=hPWgkDh4s0osjxgAAXmya2352FWAGSFtZ1OXkw0gYzc%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/682c88aaf5721925a0d740b0"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -799,14 +865,28 @@
     <span class="speaker">Annalise</span>
     <span class="ts">5:12</span>
   </div>
-  <div class="said">segment&#x27;s called headlines. So I&#x27;m going to read you some headlines. This is just the past couple of weeks. This is what&#x27;s going on in Alberta. And then we&#x27;re going to dig into it. So Alberta Premier Premier Daniel Smith defends breaking up health minister role into four portfolios. Alberta Premier Daniel Smith defends promise of a potential referendum on separation. Premier Daniel Smith demands for Ottawa has Canadians divided. Report. Daniel Smith fumes over Mark Carney&#x27;s cabinet choices. Quote, innuendo and slander. Alberta legislature erupts after questions about Premier Smith&#x27;s husband. Quote, playing with fire. Former Alberta Premier Jason Kenney weighs in on Separation Talk. Here&#x27;s one that was just published this evening. Former Chief of Staff to Alberta Premier lived in home owned by Sam Morash&#x27;s sister. A lot going on in Alberta. Carter, how do you, like, you live here. How do you explain everything that is happening in our province for those that don&#x27;t have the capacity to keep up or maybe don&#x27;t live here or maybe don&#x27;t know where to start caring? What is happening in Alberta these days?</div>
+  <div class="said">segment&#x27;s called headlines. So I&#x27;m going to read you some headlines. This is just the past couple of weeks. This is what&#x27;s going on in Alberta. And then we&#x27;re going to dig into it. So Alberta Premier Premier Daniel Smith defends breaking up health minister role into four portfolios. Alberta Premier Daniel Smith defends promise of a potential referendum on separation. Premier Daniel Smith demands for Ottawa has Canadians divided. Report. Daniel Smith fumes over Mark Carney&#x27;s cabinet choices. Quote, innuendo and slander. Alberta legislature erupts after questions about Premier Smith&#x27;s husband.</div>
+</div>
+<div class="turn" data-start="347">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">5:47</span>
+  </div>
+  <div class="said">Quote, playing with fire. Former Alberta Premier Jason Kenney weighs in on Separation Talk. Here&#x27;s one that was just published this evening. Former Chief of Staff to Alberta Premier lived in home owned by Sam Morash&#x27;s sister. A lot going on in Alberta. Carter, how do you, like, you live here. How do you explain everything that is happening in our province for those that don&#x27;t have the capacity to keep up or maybe don&#x27;t live here or maybe don&#x27;t know where to start caring? What is happening in Alberta these days?</div>
 </div>
 <div class="turn" data-start="383">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">6:23</span>
   </div>
-  <div class="said">Well, everything&#x27;s on fire. Everything&#x27;s on fire. And, you know, you have some normal fires, fires that you could predict. That would be the health care fire, right? The health care file has been a shit show under Danielle Smith. You know, doctors are saying that the system is coming apart at the seams. And I will tell you that the system is very big and very difficult to manage. It&#x27;s not designed to succeed, really. It&#x27;s designed to fail on many levels. But the doctors and nurses and other staff that work at the hospitals and in the health care system hold it together. But now that they&#x27;ve got four ministers, I&#x27;m not sure how they&#x27;re going to continue to hold it together. other. But that&#x27;s a relatively normal state of affairs for Alberta. Ralph Klein tried to do it with his infamous Bill 13. You know, we tried to reinvent healthcare in 2011, 2012. We being the Allison Redford government, Ed Stelmack struggled with healthcare. You know, even Jason Kenney, who suffered through the pandemic, was struggling with healthcare. So healthcare is a normal problem. But then we have two abnormal</div>
+  <div class="said">Well, everything&#x27;s on fire. Everything&#x27;s on fire. And, you know, you have some normal fires, fires that you could predict. That would be the health care fire, right? The health care file has been a shit show under Danielle Smith. You know, doctors are saying that the system is coming apart at the seams. And I will tell you that the system is very big and very difficult to manage. It&#x27;s not designed to succeed, really. It&#x27;s designed to fail on many levels. But the doctors and nurses and other staff that work at the hospitals and in the health care system hold it together. But now that they&#x27;ve got four ministers, I&#x27;m not sure how they&#x27;re going to continue to hold it together. other. But that&#x27;s a relatively normal state of affairs for Alberta. Ralph Klein tried to do it with his infamous Bill 13. You know, we tried to reinvent healthcare in 2011, 2012.</div>
+</div>
+<div class="turn" data-start="441">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">7:21</span>
+  </div>
+  <div class="said">We being the Allison Redford government, Ed Stelmack struggled with healthcare. You know, even Jason Kenney, who suffered through the pandemic, was struggling with healthcare. So healthcare is a normal problem. But then we have two abnormal</div>
 </div>
 <div class="turn" data-start="460">
   <div class="who">
@@ -820,7 +900,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">7:42</span>
   </div>
-  <div class="said">Well, we have two abnormal problems. The first one is corruption. People would say that the PCs were corrupt, but you could never prove that the PCs were corrupt. You never had, for example, a chief of staff living in a $1.5 million home owned by someone that was getting billions of dollars in contracts from the government that wouldn&#x27;t have happened uh because we&#x27;re too smart for that uh too smart to get caught uh doing something that fucking stupid um you know and i don&#x27;t know i mean i mean charges haven&#x27;t been laid there&#x27;s been no uh there&#x27;s been no official word i mean and uh you know um smith is marshall smith has offered has threatened lawsuits against Against those who have defamed him. I think there is a lawsuit. Yeah. So I think there is a lawsuit against the Globe and Mail</div>
+  <div class="said">Well, we have two abnormal problems. The first one is corruption. People would say that the PCs were corrupt, but you could never prove that the PCs were corrupt. You never had, for example, a chief of staff living in a $1.5 million home owned by someone that was getting billions of dollars in contracts from the government that</div>
+</div>
+<div class="turn" data-start="484">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:04</span>
+  </div>
+  <div class="said">wouldn&#x27;t have happened uh because we&#x27;re too smart for that uh too smart to get caught uh doing something that fucking stupid um you know and i don&#x27;t know i mean i mean charges haven&#x27;t been laid there&#x27;s been no uh there&#x27;s been no official word i mean and uh you know um smith is marshall smith has offered has threatened lawsuits against Against those who have defamed him. I think there is a lawsuit. Yeah. So I think there is a lawsuit against the Globe and Mail</div>
 </div>
 <div class="turn" data-start="514">
   <div class="who">
@@ -848,7 +935,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">8:42</span>
   </div>
-  <div class="said">me on track. Corey&#x27;s not here to stop me from being. Yeah. Yeah. But I will say this. Don&#x27;t get a suit, Connor. The corruption kickback scheme that has been outlined in the Globe and Mail over the last couple of months is not a normal problem. problem it is a problem that is is is created by hubris and uh this kind of sense that well they were corrupt so we can be corrupt too i think that uh you know we have a lot more to find out as to the reality of this situation who else was involved how much did they know um you know everybody what i have said from the beginning is that everybody who showed up in one of those private boxes is going to be as guilty as the people who took any any like marshall smith allegedly taking this um this home to live in uh that is a spectacularly stupid thing to do um and i think that they will you know everybody who is uh everybody&#x27;s going to be painted with the same brush uh with the most corrupt person whoever that may be and i don&#x27;t think it&#x27;s premier smith for the record for the record i think it was not you know i don&#x27;t think it&#x27;s danielle who was corrupt um i i think though that this corruption uh goes deep and it then ties into you know whereas was daniel smith&#x27;s husband um setting up meetings for rail transport you know that was shouted down in the house in the in the legislature i&#x27;d love to see what happens of that as we as we move forward um and then there&#x27;s the the the headlines that are self-imposed that are self-created the the the nightmare that was created by smith deciding that she was going to make it easier to hold a separation referendum uh we had just passed uh the referendum legislation in her first term if you will um that referendum legislation made it challenging to get a a referendum up off the ground it&#x27;s not not challenging now it&#x27;s still challenging to get I think it&#x27;s 177,000 signatures, Annalise. Correct me if I&#x27;m wrong</div>
+  <div class="said">me on track. Corey&#x27;s not here to stop me from being. Yeah. Yeah. But I will say this. Don&#x27;t get a suit, Connor. The corruption kickback scheme that has been outlined in the Globe and Mail over the last couple of months is not a normal problem. problem it is a problem that is is is created by hubris and uh this kind of sense that well they were corrupt so we can be corrupt too i think that uh you know we have a lot more to find out as to the reality of this situation who else was involved how much did they know um you know everybody what i have said from the beginning is that everybody who showed up in one of those private boxes is going to be as guilty as the people who took any any like marshall smith allegedly taking this um this home to live in uh that is a spectacularly stupid thing to do um and i think that they will you know everybody who is uh everybody&#x27;s going to be painted with the same brush uh with the most corrupt person whoever that may be and i don&#x27;t think it&#x27;s premier smith for the record for the record i think it was not you know i don&#x27;t think it&#x27;s danielle who was corrupt um i i think though that this corruption uh goes deep and it then ties into you know whereas was daniel smith&#x27;s husband um setting up meetings for rail transport you know</div>
+</div>
+<div class="turn" data-start="605">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">10:05</span>
+  </div>
+  <div class="said">that was shouted down in the house in the in the legislature i&#x27;d love to see what happens of that as we as we move forward um and then there&#x27;s the the the headlines that are self-imposed that are self-created the the the nightmare that was created by smith deciding that she was going to make it easier to hold a separation referendum uh we had just passed uh the referendum legislation in her first term if you will um that referendum legislation made it challenging to get a a referendum up off the ground it&#x27;s not not challenging now it&#x27;s still challenging to get I think it&#x27;s 177,000 signatures, Annalise. Correct me if I&#x27;m wrong</div>
 </div>
 <div class="turn" data-start="646">
   <div class="who">
@@ -897,7 +991,14 @@
     <span class="speaker">Annalise</span>
     <span class="ts">11:49</span>
   </div>
-  <div class="said">i just want to several different things here right we&#x27;ve got the separation we&#x27;ve got the health care stuff we&#x27;ve got um the cabinet shuffle that just happened on friday lots lots going on in terms of the scandal Scandal. I don&#x27;t know if some people, different names for it, but in terms of scandal, I just want to read you a Jared Wesley. I think this is a blue sky that was sent to me. Him trying to condense that into like a sentence where people understand because there&#x27;s a lot going on. This has been several months. So he says, Premier Smith&#x27;s former chief of staff allegedly pressured health officials to cut half a billion dollars in contracts to a businessman whose sister was his landlord and who bought them all luxury NHL tickets, and they fired the person ready to reveal it. Do you think it&#x27;s, like, is that, in terms of the communications on this and getting people to care when there&#x27;s so much going on, is that as simple as it is?</div>
+  <div class="said">i just want to several different things here right we&#x27;ve got the separation we&#x27;ve got the health care stuff we&#x27;ve got um the cabinet shuffle that just happened on friday lots lots going on in terms of the scandal Scandal. I don&#x27;t know if some people, different names for it, but in terms of scandal, I just want to read you a Jared Wesley. I think this is a blue sky that was sent to me. Him trying to condense that into like a sentence where people understand because there&#x27;s a lot going on. This has been several months. So he says, Premier Smith&#x27;s former chief of staff allegedly pressured health officials to cut half a billion dollars in contracts to a businessman whose sister was his landlord and who bought them all luxury NHL tickets, and they fired the person ready to reveal it.</div>
+</div>
+<div class="turn" data-start="751">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">12:31</span>
+  </div>
+  <div class="said">Do you think it&#x27;s, like, is that, in terms of the communications on this and getting people to care when there&#x27;s so much going on, is that as simple as it is?</div>
 </div>
 <div class="turn" data-start="763">
   <div class="who">
@@ -918,7 +1019,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">13:27</span>
   </div>
-  <div class="said">little infographic would be fantastic, right? Basically saying here&#x27;s the person who got the money, number one. So here&#x27;s the person who got the money. Number two, here are the people who are with that person in the boxes. Here&#x27;s the guy who was renting the house or staying in the house. I&#x27;m not sure what the rental agreement was. But now that you&#x27;re starting to see this, a really simple infographic, because it really is that simple. We gave this guy hundreds of millions of dollars or whatever the number was. And this is also the guy behind the Tylenol scandal, right? The children&#x27;s Tylenol scandal where he got $75 million. We used to</div>
+  <div class="said">little infographic would be fantastic, right? Basically saying here&#x27;s the person who got the money, number</div>
+</div>
+<div class="turn" data-start="814">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:34</span>
+  </div>
+  <div class="said">one. So here&#x27;s the person who got the money. Number two, here are the people who are with that person in the boxes. Here&#x27;s the guy who was renting the house or staying in the house. I&#x27;m not sure what the rental agreement was. But now that you&#x27;re starting to see this, a really simple infographic, because it really is that simple. We gave this guy hundreds of millions of dollars or whatever the number was. And this is also the guy behind the Tylenol scandal, right? The children&#x27;s Tylenol scandal where he got $75 million. We used to</div>
 </div>
 <div class="turn" data-start="849">
   <div class="who">
@@ -960,7 +1068,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">15:01</span>
   </div>
-  <div class="said">It&#x27;s infinitely more difficult to survive a $30,000 scandal than it is to survive a $300 million scandal. Because They don&#x27;t understand the scope of the money and the money itself. They&#x27;ve never been involved in a deal like that. They don&#x27;t understand how it would even relate to their lives. We can try and make it relate to their lives, but they&#x27;re not paying enough attention. But when something&#x27;s $30,000, like the no meat committee that we dealt with in 2011. Tell us about that. The no-meet committee was essentially, back in the day, you got compensated for attending committee meetings as part of your MLA salary. So when you would sit on a number of different committees, those committees were part of your pay. and one of the committees was uh i think it was on electoral reform or something along those those lines election readiness something like that and it didn&#x27;t meet it didn&#x27;t meet for 18 months 24 months and everybody who was on the committee still got paid so everybody got a thousand dollars extra a month some people wound up with 20 25 30 thousand dollars in ill-gotten gains. Um, so we had, you know, we had to get everybody to refund the money and it still didn&#x27;t matter. Even though people gave the money back, the, the fact that you were getting money for some, for nothing, $30 000, $15,000, $25,000, whatever the amount was, you were getting money for nothing. So what, what Well, ultimately, uh, you know, MLA like arno dirksen lost his job uh we lost a lot of seats in the election we it was part of why we almost lost in 2012 uh we went from a high of almost 80 you know anticipating up to 80 seats in the legislature to uh dropping down to almost losing uh and danielle smith had she not brought the lake of fire forward for us uh would have won that election um so so you think you think the</div>
+  <div class="said">It&#x27;s infinitely more difficult to survive a $30,000 scandal than it is to survive a $300 million scandal. Because They don&#x27;t understand the scope of the money and the money itself. They&#x27;ve never been involved in a deal like that. They don&#x27;t understand how it would even relate to their lives. We can try and make it relate to their lives, but they&#x27;re not paying enough attention. But when something&#x27;s $30,000, like the no meat committee that we dealt with in 2011. Tell us about that. The no-meet committee was essentially, back in the day, you got compensated for attending committee meetings as part of your MLA salary. So when you would sit on a number of different committees, those committees were part of your pay. and one of the committees was uh i think it was on electoral reform or something along those those lines election readiness something like that and it didn&#x27;t meet it didn&#x27;t meet for 18 months 24 months and everybody who was on the committee still got paid so everybody got a thousand dollars extra a month some people wound up with 20 25 30 thousand dollars in ill-gotten gains. Um, so we had, you know, we had to get everybody to refund the money and it still didn&#x27;t matter. Even though people gave the money back, the, the fact that you were getting money for some, for nothing, $30 000, $15,000, $25,000, whatever the amount was, you were getting money for nothing. So what, what</div>
+</div>
+<div class="turn" data-start="996">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">16:36</span>
+  </div>
+  <div class="said">Well, ultimately, uh, you know, MLA like arno dirksen lost his job uh we lost a lot of seats in the election we it was part of why we almost lost in 2012 uh we went from a high of almost 80 you know anticipating up to 80 seats in the legislature to uh dropping down to almost losing uh and danielle smith had she not brought the lake of fire forward for us uh would have won that election um so so you think you think the</div>
 </div>
 <div class="turn" data-start="1022">
   <div class="who">
@@ -988,7 +1103,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">17:39</span>
   </div>
-  <div class="said">Yeah, I mean, taking care of someone&#x27;s lodging is extremely difficult. When Alison was even staying at the Fairmont McDonald, the Hotel McDonald, that was very difficult to manage because people can&#x27;t stay at the Fairmont McDonald. Hell, we even did a retreat at the Jasper Park Lodge in the shoulder season. It cost us no more than being at any other hotel with a conference room, but because it was seen to be a luxury, you know, destination. I don&#x27;t know if you&#x27;ve ever been to the Jasper Park Lodge in the shoulder season. Tell me about it, Carter. There&#x27;s nothing there. There&#x27;s nothing to do. There&#x27;s no one staying at the hotel, and it cost us, I think it was 90 bucks or 100 bucks a night. But people knew that it was a luxury location and there was a little mini uprising. So do you</div>
+  <div class="said">Yeah, I mean, taking care of someone&#x27;s lodging is extremely difficult. When Alison was even staying at the Fairmont McDonald, the Hotel McDonald, that was very difficult to manage because people can&#x27;t stay at the Fairmont McDonald. Hell, we even did a retreat at the Jasper Park Lodge in the shoulder season. It cost us no more than being at any other hotel</div>
+</div>
+<div class="turn" data-start="1085">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">18:05</span>
+  </div>
+  <div class="said">with a conference room, but because it was seen to be a luxury, you know, destination. I don&#x27;t know if you&#x27;ve ever been to the Jasper Park Lodge in the shoulder season. Tell me about it, Carter. There&#x27;s nothing there. There&#x27;s nothing to do. There&#x27;s no one staying at the hotel, and it cost us, I think it was 90 bucks or 100 bucks a night. But people knew that it was a luxury location and there was a little mini uprising. So do you</div>
 </div>
 <div class="turn" data-start="1116">
   <div class="who">
@@ -1002,7 +1124,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">18:56</span>
   </div>
-  <div class="said">think so. I think it&#x27;s easy to understand. Unfortunately, it&#x27;s happened, or fortunately, for the Daniel Smith government. It&#x27;s to a chief of staff who&#x27;s no longer with the government. So if the chief of staff was still in the office, there&#x27;d be calls for resignation, there&#x27;d be calls for him being fired. but because he&#x27;s already left it&#x27;s uh it&#x27;s difficult to put you know a real political value on this um i do think that it&#x27;s going to be make it it&#x27;s going to make it harder because there&#x27;s no fucking way that danielle smith didn&#x27;t know what her chief of staff&#x27;s living arrangements were um i think it&#x27;s just impossible to imagine it&#x27;s</div>
+  <div class="said">think so. I think it&#x27;s easy to understand. Unfortunately, it&#x27;s happened, or fortunately, for the Daniel Smith government. It&#x27;s to a chief of staff who&#x27;s no longer with the government.</div>
+</div>
+<div class="turn" data-start="1147">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">19:07</span>
+  </div>
+  <div class="said">So if the chief of staff was still in the office, there&#x27;d be calls for resignation, there&#x27;d be calls for him being fired. but because he&#x27;s already left it&#x27;s uh it&#x27;s difficult to put you know a real political value on this um i do think that it&#x27;s going to be make it it&#x27;s going to make it harder because there&#x27;s no fucking way that danielle smith didn&#x27;t know what her chief of staff&#x27;s living arrangements were um i think it&#x27;s just impossible to imagine it&#x27;s</div>
 </div>
 <div class="turn" data-start="1175">
   <div class="who">
@@ -1324,7 +1453,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">28:34</span>
   </div>
-  <div class="said">Yeah, I mean, so what are there, 40-some-odd MLAs in the UCP caucus? It fluctuates depending on who&#x27;s being kicked in and who&#x27;s kicked out or who&#x27;s not. I think that those that aren&#x27;t in the 18 that want to separate need to say, I&#x27;m pro-Canada. I&#x27;m staying in Canada. This is going to be a referendum question. And if it comes down to it, I&#x27;m going to campaign for Alberta to stay as part of Canada. I want to see cabinet ministers do that. I want to see backbenchers do that. I want to see people who are affiliated with these governments, who, you know, the political operatives who have worked with them, I want them to say that they want Alberta to stay as part of Canada. Because right now, Danielle Smith is owning the microphone. And you know who else I want to say Alberta should stay a part of Canada? Every single fucking person who sees Danielle Smith at an event this year at Stampede needs to walk up to her and say, what the fuck are you doing with separation?</div>
+  <div class="said">Yeah, I mean, so what are there, 40-some-odd MLAs in the UCP caucus? It fluctuates depending on who&#x27;s being kicked in and who&#x27;s kicked out or who&#x27;s not. I think that those that aren&#x27;t in the 18 that want to separate need to say, I&#x27;m pro-Canada. I&#x27;m staying in Canada. This is going to be a referendum question. And if it comes down to it, I&#x27;m going to campaign for Alberta to stay as part of Canada. I want to see cabinet ministers do that. I want to see backbenchers do that. I want to see people who are affiliated</div>
+</div>
+<div class="turn" data-start="1750">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">29:10</span>
+  </div>
+  <div class="said">with these governments, who, you know, the political operatives who have worked with them, I want them to say that they want Alberta to stay as part of Canada. Because right now, Danielle Smith is owning the microphone. And you know who else I want to say Alberta should stay a part of Canada? Every single fucking person who sees Danielle Smith at an event this year at Stampede needs to walk up to her and say, what the fuck are you doing with separation?</div>
 </div>
 <div class="turn" data-start="1775">
   <div class="who">
@@ -1506,7 +1642,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">36:04</span>
   </div>
-  <div class="said">well i mean not only that there&#x27;s there&#x27;s an overlap right there&#x27;s an overlap in some of the spaces uh of the of the ridings yeah so you know there&#x27;s not a huge overlap it&#x27;s not like they They are the same riding by any stretch of the imagination. But there is some overlap. And I would think that this is an opportunity for Pierre Pauliev to fight for Canada, stand for Canada. If he wants to say that there are some legitimate grievances, that&#x27;s fine. But the way to solve it is not to threaten to leave. That&#x27;s the way he should be tackling it. Do you think I don&#x27;t know. I&#x27;m not even sure that we&#x27;re going to see him in Battle River. know I don&#x27;t think that he&#x27;s he needs to show up so if you don&#x27;t need to show up you you know what&#x27;s the point he&#x27;s going to win that one by a gajillion points um you know it&#x27;s it&#x27;s going to be it&#x27;s going to be fairly significant I think so</div>
+  <div class="said">well i mean not only that there&#x27;s there&#x27;s an overlap right there&#x27;s an overlap in some of the spaces uh of the of the ridings yeah so you know there&#x27;s not a huge overlap it&#x27;s not like they They are the same riding by any stretch of the imagination. But there is some overlap. And I would think that this is an opportunity for Pierre Pauliev to fight for Canada, stand for Canada. If he wants to say that there are some legitimate grievances, that&#x27;s fine. But the way to solve it is not to threaten to leave. That&#x27;s the way he should be tackling it. Do you think I don&#x27;t know. I&#x27;m not even sure that we&#x27;re going to see him in Battle River.</div>
+</div>
+<div class="turn" data-start="2206">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">36:46</span>
+  </div>
+  <div class="said">know I don&#x27;t think that he&#x27;s he needs to show up so if you don&#x27;t need to show up you you know what&#x27;s the point he&#x27;s going to win that one by a gajillion points um you know it&#x27;s it&#x27;s going to be it&#x27;s going to be fairly significant I think so</div>
 </div>
 <div class="turn" data-start="2223">
   <div class="who">
@@ -1702,7 +1845,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">41:57</span>
   </div>
-  <div class="said">i want people in stampede to walk right up to the premier and say what the hell are you doing okay all right why are you playing with this fire i wanted i was thinking of uh because last year we did a big round set of rounds well with brian teason uh and uh i did all you know a million stampede events a million and every one of them i think i saw daniel smith and except the ndp breakfast. But the truth of the matter is that no one confronted her. No one asked her the hard question. I think that some people need to stand up to her and say, what are you doing with separation? What are you doing? if you&#x27;re going to let her into your event, then you&#x27;ve got to at least ask the question.</div>
+  <div class="said">i want people in stampede to walk right up to the premier and say what the hell are you doing okay all right why are you playing with this fire i wanted i was thinking of uh because last year we did a big round set of rounds well with brian teason uh and uh i did all you know a million stampede events a million and every one of them i think i saw daniel smith and except the ndp breakfast. But the truth of the matter is that no one confronted her. No one asked her the hard question. I think that some people need to stand up to her and say, what are you doing with separation? What are you doing?</div>
+</div>
+<div class="turn" data-start="2557">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">42:37</span>
+  </div>
+  <div class="said">if you&#x27;re going to let her into your event, then you&#x27;ve got to at least ask the question.</div>
 </div>
 <div class="turn" data-start="2562">
   <div class="who">

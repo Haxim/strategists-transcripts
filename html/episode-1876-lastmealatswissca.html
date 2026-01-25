@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/132141760.mp3?sig=nxsUmruxJ-ZWLoWkI0u76c02ugfPw8_fvVne-bbeovU%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/6859d3304a2d8b8b514e4a59"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -1121,7 +1187,21 @@
     <span class="speaker">Zain</span>
     <span class="ts">10:11</span>
   </div>
-  <div class="said">I&#x27;ve not read these in advance. Westriff Center did a good episode on something. I&#x27;m not reading that. What outrageous claims could NDP make that would cause the UCB conservatives to light their hair on fire? Basically, anytime Smith starts a sentence, it&#x27;s, would you believe? Okay. How about this? There is a few questions around the NDP. Touch on that. But I do like this question. Why does it seem like the NDP are doing such a bad job of holding Smith to account? We&#x27;re seeing more stride in opposition from a former cabinet minister than Nenshi. Okay. There&#x27;s that statement. But then the question is, what can opposition forces beyond the NDP do? And maybe we can start there and work back to the NDP because it is by-election night. Is that fair? So why does it seem like that forces beyond the official opposition and others are also having an issue? And maybe I can expand the scope. Why does it feel like this seems to be a thing beyond Alberta as well, Carter, that we&#x27;re having a tough time opposing conservatives? We&#x27;ve had some time to soak in what the first hundred days of Trump have looked like. We&#x27;ve had the last couple of years of Danielle Smith. Give me your starting thoughts here and I&#x27;ll kind of add to the pile</div>
+  <div class="said">I&#x27;ve not read these in advance. Westriff Center did a good episode on something. I&#x27;m not reading that. What outrageous claims could NDP make that would cause the UCB conservatives to light their hair on fire? Basically, anytime Smith starts a sentence, it&#x27;s, would you believe? Okay. How about this? There is a few questions around the NDP.</div>
+</div>
+<div class="turn" data-start="628">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">10:28</span>
+  </div>
+  <div class="said">Touch on that. But I do like this question. Why does it seem like the NDP are doing such a bad job of holding Smith to account? We&#x27;re seeing more stride in opposition from a former cabinet minister than Nenshi. Okay. There&#x27;s that statement. But then the question is, what can opposition forces beyond the NDP do? And maybe we can start there and work back to the NDP because it is by-election night. Is that fair? So why does it seem like that forces beyond the official opposition and others are also having an issue? And maybe I can expand the scope. Why does it feel like this seems to be a thing beyond Alberta as well, Carter, that we&#x27;re having a tough time opposing conservatives? We&#x27;ve had some time to soak in what the first hundred days of Trump have looked like. We&#x27;ve had the last couple of years of Danielle Smith.</div>
+</div>
+<div class="turn" data-start="675">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">11:15</span>
+  </div>
+  <div class="said">Give me your starting thoughts here and I&#x27;ll kind of add to the pile</div>
 </div>
 <div class="turn" data-start="678">
   <div class="who">
@@ -1142,7 +1222,35 @@
     <span class="speaker">Carter</span>
     <span class="ts">11:27</span>
   </div>
-  <div class="said">That was one time, and that was a moment in time, if you will. An early election call, a tremendously unpopular previous premier, a tremendously unpopular premier at the time saying things like, look in the mirror. They basically gave away the election to the NDP. And then really it was up in the air whether it would go to the Wild Rose or the NDP. And I think it was, you know, I&#x27;ve covered 32 different times that I think that it was Jim Prentice himself when he chose to look at Rachel Notley and focus his attention on Rachel Notley in the debate. They gave that that particular outcome. But we didn&#x27;t have a history of a groundswell prior to that election. No one walked into that election saying, you know what, the opposition really have it this time. People were thinking, oh, Jim Prentiss, he&#x27;s calling the election. He must know something that we don&#x27;t know. Everybody was thinking that except the Strategist podcast, which is one of the reasons we started the podcast. We had 526 episodes in the can on the Zune exclusive. Yes, we did. Including</div>
+  <div class="said">That was one time, and that was a moment in time, if you will.</div>
+</div>
+<div class="turn" data-start="694">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:34</span>
+  </div>
+  <div class="said">An early election call, a tremendously unpopular previous premier, a tremendously unpopular premier at the time saying things like, look in the mirror. They basically gave away the election to the NDP. And then really</div>
+</div>
+<div class="turn" data-start="709">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:49</span>
+  </div>
+  <div class="said">it was up in the air whether it would go to the Wild Rose or the NDP.</div>
+</div>
+<div class="turn" data-start="714">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:54</span>
+  </div>
+  <div class="said">And I think it was, you know, I&#x27;ve covered 32 different times that I think that it was Jim Prentice himself when he chose to look at Rachel Notley and focus his attention on Rachel Notley in the debate. They</div>
+</div>
+<div class="turn" data-start="725">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">12:05</span>
+  </div>
+  <div class="said">gave that that particular outcome. But we didn&#x27;t have a history of a groundswell prior to that election. No one walked into that election saying, you know what, the opposition really have it this time. People were thinking, oh, Jim Prentiss, he&#x27;s calling the election. He must know something that we don&#x27;t know. Everybody was thinking that except the Strategist podcast, which is one of the reasons we started the podcast. We had 526 episodes in the can on the Zune exclusive. Yes, we did. Including</div>
 </div>
 <div class="turn" data-start="759">
   <div class="who">
@@ -1156,7 +1264,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">12:40</span>
   </div>
-  <div class="said">Yeah, and then we brought it, we brought it public, much to the chagrin of Chester, who was still angry about it. But we brought it public as a result of the NDP looking like they were going to be the ones to, you know, to win and us, us trying to force that, you know, narrative, because we were the only ones talking about it. nonetheless zane um we don&#x27;t have a history of opposition from the general population uh it&#x27;s certainly not the same way we would see ontario the same way we would see quebec same way we would even see british columbia um that history doesn&#x27;t exist uh our organizations our organizational strength is weak in that particular area because a lot of people are told if you don&#x27;t support the government then just keep your mouth shut yeah right and and this is a keep your mouth shut you know what did ralph klein say shoot shovel you and stay quiet wasn&#x27;t i can&#x27;t remember what it was but basically shoot shovel and shut up um that that&#x27;s what he said when when we had mad cow disease and that seems to be the mantra of of alberta um just keep your mouth shut and and everything else will work itself out.</div>
+  <div class="said">Yeah, and then we brought it, we brought it public, much to the chagrin of Chester, who was still angry about it. But we brought it public as a result of the NDP looking like they were going to be the ones to, you know, to win and us, us trying to force that, you know, narrative, because we were the only ones talking about it. nonetheless</div>
+</div>
+<div class="turn" data-start="782">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:02</span>
+  </div>
+  <div class="said">zane um we don&#x27;t have a history of opposition from the general population uh it&#x27;s certainly not the same way we would see ontario the same way we would see quebec same way we would even see british columbia um that history doesn&#x27;t exist uh our organizations our organizational strength is weak in that particular area because a lot of people are told if you don&#x27;t support the government then just keep your mouth shut yeah right and and this is a keep your mouth shut you know what did ralph klein say shoot shovel you and stay quiet wasn&#x27;t i can&#x27;t remember what it was but basically shoot shovel and shut up um that that&#x27;s what he said when when we had mad cow disease and that seems to be the mantra of of alberta um just keep your mouth shut and and everything else will work itself out.</div>
 </div>
 <div class="turn" data-start="835">
   <div class="who">
@@ -1184,7 +1299,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">14:30</span>
   </div>
-  <div class="said">I think that we have a hyper-engaged population of about 30% of the population. 20% is UCP-leaning or conservative, and 10% is progressive-leaning. But it is a relatively small group of hyper-engaged. And even then, I&#x27;ve expanded hyper-engaged to basically include people who think about politics once in a while. Then we have the unengaged, who are by definition not tied to any ideology. And then we have the less engaged, and they&#x27;re in the middle, and they&#x27;ll move back and forth as required. But they&#x27;re less engaged, and their less engagement goes really far. They&#x27;re not going to get engaged enough to mount a protest against something in Alberta. We would see, like, what&#x27;s the biggest protest we&#x27;ve seen in Alberta? couple thousand? 15,000? Not even 15,000. 5,000 people, maybe? I mean, someone should probably go to largestprotestinalberta.ca and put in what their guess in the largest protest is</div>
+  <div class="said">I think that we have a hyper-engaged population of about 30% of the population. 20% is UCP-leaning or conservative, and 10% is progressive-leaning. But it is a relatively small group of hyper-engaged. And even then, I&#x27;ve expanded hyper-engaged to basically include people who think about politics once in a while. Then we have the unengaged, who are by definition not tied to any ideology. And then we have the less engaged, and they&#x27;re in the middle, and they&#x27;ll move back and forth as required. But they&#x27;re less engaged, and their less engagement goes really far. They&#x27;re not going to get engaged enough to mount a protest against something in Alberta. We would see, like, what&#x27;s the biggest protest we&#x27;ve seen in Alberta?</div>
+</div>
+<div class="turn" data-start="923">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">15:23</span>
+  </div>
+  <div class="said">couple thousand? 15,000? Not even 15,000. 5,000 people, maybe? I mean, someone should probably go to largestprotestinalberta.ca and put in what their guess in the largest protest is</div>
 </div>
 <div class="turn" data-start="938">
   <div class="who">
@@ -1219,14 +1341,28 @@
     <span class="speaker">Zain</span>
     <span class="ts">16:42</span>
   </div>
-  <div class="said">phrase it just as we kind of bat this around. Do you feel like one of the things is that people have a fatigue towards things they can oppose, A, because they&#x27;re happening so quickly, and the timeline of their sort of active moment, especially when it seems inevitable that they will happen or pass, is just so narrow trans rights or certain labor union sort of asks for example so that the time horizon because they&#x27;re just going to there&#x27;s a post-secondary we didn&#x27;t really even get to the collective progressive spirit in this province didn&#x27;t even get to absorb understand protest by the time it was done you know what i mean yeah and and i think so that that that&#x27;s one part of it but the other part is like the alternatives the lack of solutions promised versus just opposing Do you feel like there&#x27;s a there there that advocacy groups need to think about, even if they&#x27;re opposing government legislation or stances, that they may need to start thinking about what gives people hope beyond just standing up and saying no to something, which is proposing an alternative or a solution? Or do you feel like that&#x27;s not actually how you diagnose the issue or how you propose a strategic shift in some way</div>
+  <div class="said">phrase it just as we kind of bat this around. Do you feel like one of the things is that people have a fatigue towards things they can oppose, A, because they&#x27;re happening so quickly, and the timeline of their sort of active moment, especially when it seems inevitable that they will happen or pass, is just so narrow trans rights or certain labor union sort of asks for example so that the time horizon because they&#x27;re just going to there&#x27;s a post-secondary we didn&#x27;t really even get to the collective progressive spirit in this province didn&#x27;t even get to absorb understand protest by the time it was done you</div>
+</div>
+<div class="turn" data-start="1039">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">17:19</span>
+  </div>
+  <div class="said">know what i mean yeah and and i think so that that that&#x27;s one part of it but the other part is like the alternatives the lack of solutions promised versus just opposing Do you feel like there&#x27;s a there there that advocacy groups need to think about, even if they&#x27;re opposing government legislation or stances, that they may need to start thinking about what gives people hope beyond just standing up and saying no to something, which is proposing an alternative or a solution? Or do you feel like that&#x27;s not actually how you diagnose the issue or how you propose a strategic shift in some way</div>
 </div>
 <div class="turn" data-start="1072">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">17:52</span>
   </div>
-  <div class="said">I think the strategic idea needs to be presented in a fashion that reflects the selfishness of the voter. And I think that oftentimes when we talk about trans rights, and please don&#x27;t paint me as anti-trans, that would be very upsetting for me. Trans rights is not an everyone situation, right? LGBTQ is not an everyone situation. situation um you know most or most issues aren&#x27;t in every one organization i think i&#x27;ve talked about the calgary floods before um the calgary floods happen and and hundred thousand people are displaced you know we have a we have a massive flood massive damage every community service is stretched to the actual absolute limits i go to the home depot up in west hills and i&#x27;m picking up you know stuff that i&#x27;m going to need to go and inspect my house um to make sure that it&#x27;s you know it hasn&#x27;t been damaged in the floods and uh because we were evacuated we were taken out of our homes um and uh people are buying flowers bedding flowers right people are are plant doing their planters they&#x27;re they&#x27;re trying to make sure that their house looks pretty like what the fuck right Right. Like one hundred thousand people out of one point two million were just were displaced. One out of every 12 people had were impacted by this. But the 11 out of 12 people didn&#x27;t give a fuck. And it didn&#x27;t impact them. It didn&#x27;t change their lives. And they were still making sure that their bedding flowers were, you know, put in nicely so that their house would look pretty. You know, they were just fresh rain. So you&#x27;re allowed to plant. I don&#x27;t know. I mean, this this is you&#x27;ve got to you&#x27;ve got to instill something to the to the selfishness of the of the people. And it&#x27;s selfishness or is it hope, Carter? No. Like this is what I&#x27;m. No, it&#x27;s not hope. No. I mean, everybody. I mean, hope has been used. We&#x27;ve seen Barack Obama and Bill Clinton both use some variant of hope. But we&#x27;ve also seen lots of people fail on hope. What do you think ambition</div>
+  <div class="said">I think the strategic idea needs to be presented in a fashion that reflects the selfishness of the voter. And I think that oftentimes when we talk about trans rights, and please don&#x27;t paint me as anti-trans, that would be very upsetting for me. Trans rights is not an everyone situation, right? LGBTQ is not an everyone situation. situation um you know most or most issues aren&#x27;t in every one organization i think i&#x27;ve talked about the calgary floods before um the calgary floods happen and and hundred thousand people are displaced you know we have a we have a massive flood massive damage every community service is stretched to the actual absolute limits i go to the home depot up in west hills and i&#x27;m picking up you know stuff that i&#x27;m going to need to go and inspect my house um to make sure that it&#x27;s you know it hasn&#x27;t been damaged in the floods and uh because we were evacuated we were taken out of our homes um and uh people are buying flowers bedding flowers right people are are plant doing their planters they&#x27;re they&#x27;re trying to make sure that their house looks pretty like what the fuck right Right. Like one hundred thousand people out of one point two million were just were displaced. One out of every 12 people had were impacted by this. But the 11 out of 12 people didn&#x27;t give a fuck. And it didn&#x27;t impact them. It didn&#x27;t change their lives. And they were still making sure that their bedding flowers were, you know, put in nicely so that their house would look pretty. You know, they were just fresh rain. So you&#x27;re allowed to plant. I don&#x27;t know. I mean, this this is you&#x27;ve got to you&#x27;ve got to instill something to the to the selfishness</div>
+</div>
+<div class="turn" data-start="1179">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">19:39</span>
+  </div>
+  <div class="said">of the of the people. And it&#x27;s selfishness or is it hope, Carter? No. Like this is what I&#x27;m. No, it&#x27;s not hope. No. I mean, everybody. I mean, hope has been used. We&#x27;ve seen Barack Obama and Bill Clinton both use some variant of hope. But we&#x27;ve also seen lots of people fail on hope. What do you think ambition</div>
 </div>
 <div class="turn" data-start="1197">
   <div class="who">
@@ -1268,21 +1404,42 @@
     <span class="speaker">Carter</span>
     <span class="ts">20:59</span>
   </div>
-  <div class="said">Or it&#x27;s just the ebb and flow of a pendulum. You think so? I absolutely think so. I think that when you take a historical look on this type of thing, you see great strides forward, followed by sometimes micro steps backwards and sometimes significant steps backwards. You see the introduction of the freedom of the press, the removal of propaganda and control control of the federal government in the 1940s to the openness of the 1950s, and that is then met with the McCarthy era. So, you know, like little steps, little steps forward, little steps backward. You know, it takes decades for Reagan&#x27;s changes to the Broadcast Standards Act to really really destroy television news, radio news, radio, television as we know it, ultimately leading to the nightmare that we&#x27;re in now. I mean, I&#x27;m not sure, Zane, that we can say that this is anything but the normal ebb and flow of a step forward and two steps back, sometimes two steps forward, one step back. back uh this feels like um these right you know the it&#x27;s a smaller subset that&#x27;s been attacked but it which doesn&#x27;t in any way shape or mind make it better but the win is the the two steps forward one step back i think is where we are right now i</div>
+  <div class="said">Or it&#x27;s just the ebb and flow of a pendulum. You think so? I absolutely think so. I think that when you take a historical look on this type of thing, you see great strides forward, followed by sometimes micro steps backwards and sometimes significant steps backwards. You see the introduction of the freedom of the press, the removal of propaganda and control control of the federal government in the 1940s to the openness of the 1950s, and that is then met with the McCarthy era. So, you know, like little steps, little steps forward, little steps backward. You know, it takes decades for Reagan&#x27;s changes to the Broadcast Standards Act to really really destroy</div>
+</div>
+<div class="turn" data-start="1309">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:49</span>
+  </div>
+  <div class="said">television news, radio news, radio, television as we know it, ultimately leading to the nightmare that we&#x27;re in now. I mean, I&#x27;m not sure, Zane, that we can say that this is anything but the normal ebb and flow of a step forward and two steps back, sometimes two steps forward, one step back. back uh this feels like um these right you know the it&#x27;s a smaller subset that&#x27;s been attacked but it which doesn&#x27;t in any way shape or mind make it better but the win is the the two steps forward one step back i think is where we are right now i</div>
 </div>
 <div class="turn" data-start="1352">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">22:32</span>
   </div>
-  <div class="said">tend to disagree with that i think i think some of the ways that some progressive things have been sold in recent years have have tried to capture progress quickly, which is never a bad thing if you&#x27;re bringing folks along. But I feel like a lot of the backslide we are currently experiencing on a number of issues, diversity issues, trans rights, et cetera, is maybe because, in part, not to say that those that want to backslide it do not have nefarious agendas. Some of them certainly seem to. But in part, it&#x27;s because I don&#x27;t think enough people were brought along and felt like they had had a stake in the issue, or they had an understanding of the, they&#x27;re almost kind of told that this is a new reality. And I think any political movement that, movements, plural, that says this is the new reality without, you know, bringing folks along, has that risk of folks kind of saying, okay, once the backslide gets here, maybe that backslide was more representative of my views, or because I wasn&#x27;t brought along on the original decision, I&#x27;m going going to naturally kind of go along with the backslide. I think that&#x27;s good progress that as in banks looks like. I&#x27;m not saying that&#x27;s the problem that ails the NDP, to be clear. But I do think that is a broader sort of Western democracy issue that many are feeling right now, which is, we seem to have made great progress, even if you look at the last five years on the issue of diversity, equity and inclusion as a construct. Great progress in the first two years after 2020. And then like a tremendous backslide starting with what happened in the US there on and after i think that&#x27;s a good representative example of things people felt like they had to do versus things people felt like they were bought into and were pushing something for for for some success</div>
+  <div class="said">tend to disagree with that i think i think some of the ways that some progressive things have been sold in recent years have have tried to capture progress quickly, which is never a bad thing if you&#x27;re bringing folks along. But I feel like a lot of the backslide we are currently experiencing on a number of issues, diversity issues, trans rights, et cetera, is maybe because, in part, not to say that those that want to backslide it do not have nefarious agendas. Some of them certainly seem to. But in part, it&#x27;s because I don&#x27;t think enough people were brought along and felt like they had had a stake in the issue, or they had an understanding of the, they&#x27;re almost kind of told that this is a new reality. And I think any political movement that, movements, plural, that says this is the new reality without, you know, bringing folks along, has that risk of folks kind of saying, okay, once the backslide gets here, maybe that backslide was more representative of my views, or because I wasn&#x27;t brought along on the original decision, I&#x27;m going going to naturally kind of go along with the backslide. I think that&#x27;s good progress that as in banks looks like. I&#x27;m not saying that&#x27;s the problem that ails the NDP, to be clear. But I do think that is a broader sort of Western democracy issue that many are feeling right now, which is, we seem to have made great progress, even if you look at the last five years on the issue of diversity, equity and inclusion as a construct. Great progress in the first two years after 2020. And then like a tremendous backslide starting with what</div>
+</div>
+<div class="turn" data-start="1438">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">23:58</span>
+  </div>
+  <div class="said">happened in the US there on and after i think that&#x27;s a good representative example of things people felt like they had to do versus things people felt like they were bought into and were pushing something for for for some success</div>
 </div>
 <div class="turn" data-start="1449">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">24:09</span>
   </div>
-  <div class="said">i think you&#x27;re giving people too much credit i think that people do not pay attention the way that you&#x27;re describing it um i think that uh the greatest challenge for any opposition party any government any any uh social advocacy group is uh getting people to give a fuck for longer 15 or 20 minutes. And as soon as it starts to feel like it disadvantages them or that they&#x27;re not part of the majority, they slide backwards. I mean, and this is the this is the challenge is that a large portion of people are making their decision not because they have a strongly held position on it, but because they are part of the majority and they want to be on the side that wins. wins um you know i i i&#x27;ve seen that in virtually every election that i&#x27;ve worked on you know people go oh who&#x27;s the winner gonna be who&#x27;s winning right like that and and that becomes one of the biggest motivators right go back to 2015 looks like rachel notley was the one who was threatening um jim prentice ergo everybody moves to rachel notley viability more more More than viability, it&#x27;s about who&#x27;s the winner because I want to be on the side of the winner. That&#x27;s how shallow the decision-making is.</div>
+  <div class="said">i think you&#x27;re giving people too much credit i think that people do not pay attention the way that you&#x27;re describing it um i think that uh the greatest challenge for any opposition party any government any any uh social advocacy group is uh getting people to give a fuck for longer 15 or 20 minutes. And as soon as it starts to feel like it disadvantages them or that they&#x27;re not part of the majority, they slide backwards. I mean, and this is the this is the challenge is that a large portion of people are making their decision not because they have a strongly held position on it, but because they are part of the majority and they want to be on the side that wins. wins</div>
+</div>
+<div class="turn" data-start="1489">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">24:49</span>
+  </div>
+  <div class="said">um you know i i i&#x27;ve seen that in virtually every election that i&#x27;ve worked on you know people go oh who&#x27;s the winner gonna be who&#x27;s winning right like that and and that becomes one of the biggest motivators right go back to 2015 looks like rachel notley was the one who was threatening um jim prentice ergo everybody moves to rachel notley viability more more More than viability, it&#x27;s about who&#x27;s the winner because I want to be on the side of the winner. That&#x27;s how shallow the decision-making is.</div>
 </div>
 <div class="turn" data-start="1523">
   <div class="who">
@@ -1317,7 +1474,21 @@
     <span class="speaker">Zain</span>
     <span class="ts">25:42</span>
   </div>
-  <div class="said">A lot of propositional messaging. messaging, a lot of working class messaging, trying to re-own that overall sort of narrative. I think it&#x27;s a fascinating example. I want to move on though to tonight, Carter. Let&#x27;s use tonight and tomorrow as a reset point for the NDP, not a reset, but like a new chapter because Naheed Nenshi will get a seat in the legislature based on the election outcome of Edmonton Strathcona, which we know. There&#x27;s a by-election in Olds, which the Alberta Republican Party is playing in, and then there&#x27;s Is this bellwether, lack thereof? Don&#x27;t know if it&#x27;s going to be close. Don&#x27;t know if it&#x27;s going to be an NDP outright re-secure with decent margins as they won last time in Edmonton-Ellersley. What do you think the impacts of tonight are for the NDP? And then flash forward for the NDP for me in terms of what you feel like they need to do if tonight, tomorrow is considered to be a new act for them</div>
+  <div class="said">A lot of propositional messaging. messaging, a lot of working class messaging, trying to re-own that overall sort of narrative. I think it&#x27;s a fascinating example. I want to move on though to tonight, Carter. Let&#x27;s use tonight and tomorrow as a reset point for the NDP,</div>
+</div>
+<div class="turn" data-start="1559">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">25:59</span>
+  </div>
+  <div class="said">not a reset, but like a new chapter because Naheed Nenshi will get a seat in the legislature based on the election outcome of Edmonton Strathcona, which we know.</div>
+</div>
+<div class="turn" data-start="1567">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">26:07</span>
+  </div>
+  <div class="said">There&#x27;s a by-election in Olds, which the Alberta Republican Party is playing in, and then there&#x27;s Is this bellwether, lack thereof? Don&#x27;t know if it&#x27;s going to be close. Don&#x27;t know if it&#x27;s going to be an NDP outright re-secure with decent margins as they won last time in Edmonton-Ellersley. What do you think the impacts of tonight are for the NDP? And then flash forward for the NDP for me in terms of what you feel like they need to do if tonight, tomorrow is considered to be a new act for them</div>
 </div>
 <div class="turn" data-start="1594">
   <div class="who">
@@ -1548,7 +1719,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">32:21</span>
   </div>
-  <div class="said">I think that if they win, Ellerslie, they got to talk about themselves as the natural opposition to the separatist movement. They are the real opposition to the separatist movement. They cannot believe how much this has been stoked by Danielle Smith and how quickly it&#x27;s happened. They are Captain Canada. You know, they are the ones wrapping themselves in the Canadian and the Alberta flags. They&#x27;re the ones who are going to make sure that the Alberta Republicans are not a force in the next election in 2027. That needs to be their talking points. They need to make sure that they&#x27;re strong and that they come down to the Calgary Stampede with significant presence and significant activity so that everybody sees everybody everywhere. There&#x27;s been an ongoing complaint of where&#x27;s Nahid. He needs to be, in fairness to him, he is very good at Stampede. He will be highly, highly visible during Stampede. He knows how to do 100, 150 events in 14 days. he&#x27;s great at it. So he needs to just do out with the rest of that team. Yeah.</div>
+  <div class="said">I think that if they win, Ellerslie, they got to talk about themselves as the natural opposition to the separatist movement. They are the real opposition to the separatist movement. They cannot believe how much this has been stoked by Danielle Smith and how quickly it&#x27;s happened. They are Captain Canada. You know, they are the ones wrapping themselves in the Canadian and the Alberta flags. They&#x27;re the ones who are going to make sure that the Alberta Republicans are not a force in the next election in 2027. That needs to be their talking points. They need to make sure that they&#x27;re strong and that they come down to the Calgary Stampede with significant presence and significant activity so that everybody sees everybody everywhere. There&#x27;s been an ongoing complaint of where&#x27;s Nahid. He needs to be, in fairness to him, he is very good at Stampede. He will be highly, highly visible during Stampede. He knows how to do 100, 150 events in 14 days. he&#x27;s great at it. So he needs to just do</div>
+</div>
+<div class="turn" data-start="2008">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">33:28</span>
+  </div>
+  <div class="said">out with the rest of that team. Yeah.</div>
 </div>
 <div class="turn" data-start="2010">
   <div class="who">
@@ -1562,7 +1740,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">33:54</span>
   </div>
-  <div class="said">Yeah, because they&#x27;ll be weaker. They&#x27;ll be weaker. They won&#x27;t be able to stand up and say, we are the ones who can stand up and pound our chests, say that we are the ones who can oppose the separatist movement. The truth of the matter is that they will be weakened. So they need to, in that particular case, they need to say, we are going to undertake a significant significant um re-evaluation of our positions a significant re-evaluation of how we&#x27;re communicating with uh with calgarians and edmontonians and the people of alberta and we&#x27;re going to come back in uh six weeks at the beginning of august or the uh middle of august and we&#x27;re going to have a a strong we&#x27;re going to begin ndp 2.0 under nahed nenshi</div>
+  <div class="said">Yeah, because they&#x27;ll be weaker. They&#x27;ll be weaker. They won&#x27;t be able to stand up and say, we are the ones who can stand up and pound our chests, say that we are the ones who can oppose the separatist movement. The truth of the matter is that they will be weakened.</div>
+</div>
+<div class="turn" data-start="2053">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:13</span>
+  </div>
+  <div class="said">So they need to, in that particular case, they need to say, we are going to undertake a significant significant um re-evaluation of our positions a significant re-evaluation of how we&#x27;re communicating with uh with calgarians and edmontonians and the people of alberta and we&#x27;re going to come back in uh six weeks at the beginning of august or the uh middle of august and we&#x27;re going to have a a strong we&#x27;re going to begin ndp 2.0 under nahed nenshi</div>
 </div>
 <div class="turn" data-start="2089">
   <div class="who">
@@ -1765,14 +1950,28 @@
     <span class="speaker">Zain</span>
     <span class="ts">38:05</span>
   </div>
-  <div class="said">you know i&#x27;m going to put these two together because i like these questions this is a good question uh is there an effective way to pressure elected mla from stepping away from their party line and i&#x27;m going to tag in a second question here what would it take for peter guthrie to be an effective disruptor you could see how those are related right uh so so maybe and let&#x27;s let&#x27;s focus on the first part first which is and i&#x27;m assuming Assuming this means government MLA, although this person has not said that, but they do have a follow-up, which is if you speak to them in person, meet and greet, and have only a couple of minutes times, what&#x27;s the move? It&#x27;s actually a good Stampede question, right? You run into a bunch of these folks during Stampede. How do you get them to have sympathy and then go as far as stepping away from their party line? That&#x27;s the question that is asked here. think I know where you&#x27;re going to go, but I&#x27;m going to give you a shot at it anyways.</div>
+  <div class="said">you know i&#x27;m going to put these two together because i like these questions this is a good question uh is there an effective way to pressure elected mla from stepping away from their party line and i&#x27;m going to tag in a second question here what would it take for peter guthrie to be an effective disruptor you could see how those are related right uh so so maybe and let&#x27;s let&#x27;s focus on the first part first which is and i&#x27;m assuming Assuming this means government MLA, although this person has not said that, but they do have a follow-up, which is if you speak to them in person, meet and greet, and have only a couple of minutes times, what&#x27;s the move? It&#x27;s actually a good Stampede question, right? You run into a bunch of these folks during Stampede. How do you get them to have sympathy and then go as far as stepping away from their party line? That&#x27;s the question that is asked here.</div>
+</div>
+<div class="turn" data-start="2331">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">38:51</span>
+  </div>
+  <div class="said">think I know where you&#x27;re going to go, but I&#x27;m going to give you a shot at it anyways.</div>
 </div>
 <div class="turn" data-start="2334">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">38:54</span>
   </div>
-  <div class="said">Assume sympathy with the individual. So you start off with, I know you&#x27;re in a difficult spot. Yep. I know that you and I have agreed on lots of different things. And so immediately you&#x27;re bringing them over to your side. Yes. And I have one question for you. How is it that you&#x27;re able to stand with Danielle in the face of blank, the coal mining, in the face of the- Trans rights. In the face of- Cosec funding or whatever. The separatist question. question another the alberta pension plan um whatever the situation whatever you want to do but you have to start off by bringing them over to your side to begin with okay you know uh who should we pick on searle turton right our good friend sir good friend comes down and i say searle we have agreed on so many different things how do you stand how do you and with Danielle when it comes to the question of separation</div>
+  <div class="said">Assume sympathy with the individual. So you start off with, I know you&#x27;re in a difficult spot. Yep. I know that you and I have agreed on lots of different things. And so immediately you&#x27;re bringing them over to your side. Yes. And I have one question for you. How is it that you&#x27;re able to stand with Danielle in the face of blank, the coal mining, in the face of the- Trans rights. In the face of- Cosec funding or whatever. The separatist question. question another</div>
+</div>
+<div class="turn" data-start="2367">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:27</span>
+  </div>
+  <div class="said">the alberta pension plan um whatever the situation whatever you want to do but you have to start off by bringing them over to your side to begin with okay you know uh who should we pick on searle turton right our good friend sir good friend comes down and i say searle we have agreed on so many different things how do you stand how do you and with Danielle when it comes to the question of separation</div>
 </div>
 <div class="turn" data-start="2395">
   <div class="who">
@@ -1919,7 +2118,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">42:49</span>
   </div>
-  <div class="said">is just like real real realtor realtor with the with the real don&#x27;t forget the copyright and the trademark there yeah they&#x27;re not happy when you don&#x27;t use that carter um if man everything Everything else has been overshadowing municipal or the anticipation of municipal. For a long time, we were talking about the overlap of federal on municipal, provincial referendum on municipal, provincial referendum potentially tagged on, election provincially over municipal. We just talked about that, right? So municipal is always kind of like the last thing to kind of get anyone&#x27;s attention. We&#x27;re in June, and I feel like the punch through that is required has not happened yet for some of the candidates that need to punch through. Name names. Like candidates you may be working with, Carter. Just some of those people. Chicken That being said, that being said, I, like you, agree that six weeks is a long time. I think this retail cycle is going to be really important for these candidates. They&#x27;re going to have to come out of this retail cycle between July, Stampede, Folkfest. Is that August still? Mid-August</div>
+  <div class="said">is just like real real realtor realtor with the with the real don&#x27;t forget the copyright and the trademark there yeah they&#x27;re not happy when you don&#x27;t use that carter um if man everything Everything else has been overshadowing municipal or the anticipation of municipal. For a long time, we were talking about the overlap of federal on municipal, provincial referendum on municipal, provincial referendum potentially tagged on, election provincially over municipal. We just talked about that, right? So municipal is always kind of like the last thing to kind of get anyone&#x27;s attention. We&#x27;re</div>
+</div>
+<div class="turn" data-start="2602">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">43:22</span>
+  </div>
+  <div class="said">in June, and I feel like the punch through that is required has not happened yet for some of the candidates that need to punch through. Name names. Like candidates you may be working with, Carter. Just some of those people. Chicken That being said, that being said, I, like you, agree that six weeks is a long time. I think this retail cycle is going to be really important for these candidates. They&#x27;re going to have to come out of this retail cycle between July, Stampede, Folkfest. Is that August still? Mid-August</div>
 </div>
 <div class="turn" data-start="2632">
   <div class="who">
@@ -1933,7 +2139,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">43:53</span>
   </div>
-  <div class="said">so let&#x27;s use that five-week period, which I believe is like five to six weeks, your number. That&#x27;s going to be huge for these people to define themselves, to understand what they stand for. I go back to my point of ambition and what these folks need to describe, because if that doesn&#x27;t happen, it becomes a Jyoti Gandak, Jeremy Farkas re-election, where for the political insiders, there&#x27;s been a bit of evolution in terms of what people feel about those two characters, which I think is interesting. But for the secondary and the tertiary class of Calgary citizens, it&#x27;s a rematch again where conservatism is in favor and he holds the mantle there. That&#x27;s my on the sidelines minimal attention thought process. You understand this more intimately. You probably know the dynamics between first, second, third, what percentage it takes to win. I also believe this will be one of those elections where the winner may have 29% to 36% in terms of what they get in terms of vote share to win, because that&#x27;s going to be a few people who can carve out 12% to 15% homes. And maybe they were thinking that they could carve out 30% to 40% homes, but their ceiling is 12% to 15%, either as a byproduct of performance, name recognition,</div>
+  <div class="said">so let&#x27;s use that five-week period, which I believe is like five to six weeks, your number. That&#x27;s going to be huge for these people to define themselves, to understand what they stand for. I go back to my point of ambition and what these folks need to describe, because if that doesn&#x27;t happen, it becomes a Jyoti Gandak, Jeremy Farkas re-election, where for the political insiders, there&#x27;s been a bit of evolution in terms of what people feel about those two characters, which I think is interesting. But for the secondary and the tertiary class of Calgary citizens, it&#x27;s a rematch again where conservatism is in favor and he holds the mantle there. That&#x27;s my on the sidelines minimal attention thought</div>
+</div>
+<div class="turn" data-start="2674">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">44:34</span>
+  </div>
+  <div class="said">process. You understand this more intimately. You probably know the dynamics between first, second, third, what percentage it takes to win. I also believe this will be one of those elections where the winner may have 29% to 36% in terms of what they get in terms of vote share to win, because that&#x27;s going to be a few people who can carve out 12% to 15% homes. And maybe they were thinking that they could carve out 30% to 40% homes, but their ceiling is 12% to 15%, either as a byproduct of performance, name recognition,</div>
 </div>
 <div class="turn" data-start="2706">
   <div class="who">
@@ -1961,7 +2174,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">45:46</span>
   </div>
-  <div class="said">I think this might play either strategically or lucky for him. I&#x27;m not sure I want to decide just yet because I haven&#x27;t seen it. Where with the political class, enough people have forgiven him, and there isn&#x27;t an exciting progressive that&#x27;s punching through just yet on paper. So they go with Farkas because it&#x27;s like, Like, has he fundamentally changed? I&#x27;m willing to take a shot. He&#x27;s also a machine at the one-on-one game, at the keeping in touch with everyone game, which I think has helped a lot of the political organizing class feel more comfortable with Farkas. And then I think he takes advantage of the fact that many of the people in the second and third ring still feel like he&#x27;s a conservative or, if branded with a bit more negativity, conservative enough. That&#x27;s how I look at it. I don&#x27;t have the numbers you have. I don&#x27;t have any of the poll, but it becomes a realtor election. The second and third ring know Jeremy Farkas, and the one name I haven&#x27;t mentioned is our sitting Mayor Jyoti Gondek, who I&#x27;ve got a lot of time and respect for, but it seems like from at least some of the polling, is going to be competitive enough, but might not have the same chance that she did last time. But that&#x27;s where I kind of see this race going. It&#x27;s like, I&#x27;m not saying it&#x27;s Farkas for the taking, but if those things align where enough progressives have forgiven him on the organizing side and the political side, and enough people still view him as conservative enough and we&#x27;re in a moment of more conservatism or at least more moderation than some of the things that gondek sold um during the last sort of months of her race around progressive hopes right if i&#x27;m being honest like you sold progressive hopes carter and i bought i was one of those customers who said yup like relatively last minute if this is the choice i&#x27;m going with gondek this is easy um if that doesn&#x27;t exist to the level and Farkas might be able to do a bit of like capture in that in that way that could be quite fascinating</div>
+  <div class="said">I think this might play either strategically or lucky for him. I&#x27;m not sure I want to decide just yet because I haven&#x27;t seen it. Where with the political class, enough people have forgiven him, and there isn&#x27;t an exciting progressive that&#x27;s punching through just yet on paper. So they go with Farkas because it&#x27;s like, Like, has he fundamentally changed? I&#x27;m willing to take a shot. He&#x27;s also a machine at the one-on-one game, at the keeping in touch with everyone game, which I think has helped a lot of the political organizing class feel more comfortable with Farkas. And then I think he takes advantage of the fact that many of the people in the second and third ring still feel like he&#x27;s a conservative or, if branded with a bit more negativity, conservative enough. That&#x27;s how I look at it. I don&#x27;t have the numbers you have. I don&#x27;t have any of the poll, but it becomes a realtor election. The second and third ring know Jeremy Farkas, and the one name I haven&#x27;t mentioned is our sitting Mayor Jyoti Gondek, who I&#x27;ve got a lot of time and respect for, but it seems like from at least some of the polling, is going to be competitive enough, but might not have the same chance that she did last time. But that&#x27;s where I kind of see this race going. It&#x27;s like, I&#x27;m not saying it&#x27;s Farkas for the taking, but if those things align where enough progressives have forgiven him on the organizing side and the political side, and enough people still view him as conservative enough and</div>
+</div>
+<div class="turn" data-start="2820">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">47:00</span>
+  </div>
+  <div class="said">we&#x27;re in a moment of more conservatism or at least more moderation than some of the things that gondek sold um during the last sort of months of her race around progressive hopes right if i&#x27;m being honest like you sold progressive hopes carter and i bought i was one of those customers who said yup like relatively last minute if this is the choice i&#x27;m going with gondek this is easy um if that doesn&#x27;t exist to the level and Farkas might be able to do a bit of like capture in that in that way that could be quite fascinating</div>
 </div>
 <div class="turn" data-start="2848">
   <div class="who">
@@ -2101,7 +2321,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">49:57</span>
   </div>
-  <div class="said">there&#x27;s simultaneously too much and not enough because none of it&#x27;s been bundled is how i look at it yeah it&#x27;s like a lot of raw ingredients uh carter over under our lightning round lightning yeah yeah There&#x27;s just one question here, which is, first of all, a reminder, lastmealatswiss.ca. That&#x27;s where you can go to give us your actuarially analysis of how many people have had their last meal. We&#x27;ll use today as a stopper, June 23rd, 2025, up until today. How many people in this country have had their last meal at Swiss Chalet? Carter, I&#x27;m going to let you work this out on Mike here. Give it to us from top of the dome, Stephen Carter.</div>
+  <div class="said">there&#x27;s simultaneously too much and not enough because none of it&#x27;s been bundled is how i look at it yeah it&#x27;s like a lot of raw ingredients uh carter over under our lightning round lightning yeah yeah There&#x27;s just one question here, which is, first of all, a reminder, lastmealatswiss.ca. That&#x27;s where you can go to give us your actuarially</div>
+</div>
+<div class="turn" data-start="3021">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">50:21</span>
+  </div>
+  <div class="said">analysis of how many people have had their last meal. We&#x27;ll use today as a stopper, June 23rd, 2025, up until today. How many people in this country have had their last meal at Swiss Chalet? Carter, I&#x27;m going to let you work this out on Mike here. Give it to us from top of the dome, Stephen Carter.</div>
 </div>
 <div class="turn" data-start="3041">
   <div class="who">

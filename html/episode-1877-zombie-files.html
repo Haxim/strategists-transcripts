@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/133394549.mp3?sig=BbwxYD8FLeeQO_tCHBEmAZwvdfQ3K6pbFpY4ksKc7f8%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/68686636f4d7f416bfb0c454"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -453,7 +519,7 @@
 </div>
 <div class="turn" data-start="17">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:17</span>
   </div>
   <div class="said">Oh, yeah. And you know, I had a really great interaction the other day with Tony at Mount Equipment Company, who said that he was enjoying hearing me on The Strategist when I was doing my return. So shout out to Tony</div>
@@ -481,7 +547,7 @@
 </div>
 <div class="turn" data-start="43">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:43</span>
   </div>
   <div class="said">I don&#x27;t know his last name. I didn&#x27;t ask. I didn&#x27;t pry to that level of detail, you guys</div>
@@ -509,7 +575,7 @@
 </div>
 <div class="turn" data-start="77">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:17</span>
   </div>
   <div class="said">it. It&#x27;s not a co-op Well, it got bought out. It was this whole thing. So, yeah. Now it&#x27;s a company. Is this a socialist death note? It&#x27;s still MEC, you know, but</div>
@@ -523,7 +589,7 @@
 </div>
 <div class="turn" data-start="94">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:34</span>
   </div>
   <div class="said">But Tony&#x27;s still there. He&#x27;s a really good guy</div>
@@ -537,7 +603,7 @@
 </div>
 <div class="turn" data-start="99">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:39</span>
   </div>
   <div class="said">days? I didn&#x27;t... Again, I did not pry as to his employment history. You kind of left things out</div>
@@ -551,7 +617,7 @@
 </div>
 <div class="turn" data-start="105">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:45</span>
   </div>
   <div class="said">should know more. A former politician. This small talk really went nowhere. Well, he was really excited about the strategist, so I was happy to talk about</div>
@@ -572,7 +638,7 @@
 </div>
 <div class="turn" data-start="120">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:00</span>
   </div>
   <div class="said">you say? No, I said I was surprised that anyone was listening to your show.</div>
@@ -586,10 +652,17 @@
 </div>
 <div class="turn" data-start="129">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:09</span>
   </div>
-  <div class="said">also mentioned? No, we didn&#x27;t get into that level of detail. Okay. You know, it was funny though, because I used to joke all the time. People would say to me, oh, people must, you know, like recognize you. And I was like, no, absolutely not. Outside of Lethbridge, nobody has any idea. Knows who you are. Sure. Because nobody knows who ministers are. That is a fantastic arrangement. But the only place where this was not true was the environment minister for the province was anytime I would go to a mountain equipment co-op at the time, people come up to me and want to talk to me about the environment. And it happened again, even 10 years post-ministerial life. So there you go. The climbers and the mountain bikers and the people interested in the outdoors are still interested in the outdoors</div>
+  <div class="said">also mentioned? No, we didn&#x27;t get into that level of detail. Okay. You know, it was funny though, because I used to joke all the time. People would say to me, oh, people must, you know, like recognize you. And I was like, no, absolutely not. Outside of Lethbridge, nobody has any idea. Knows who you are. Sure. Because nobody knows who ministers are. That is a fantastic arrangement. But the only place where this was not true was the environment minister for the province was anytime I would go to a mountain equipment co-op at the time, people come up to me and want to talk to me about the environment. And it happened again, even 10 years post-ministerial life. So there you go.</div>
+</div>
+<div class="turn" data-start="161">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">2:41</span>
+  </div>
+  <div class="said">The climbers and the mountain bikers and the people interested in the outdoors are still interested in the outdoors</div>
 </div>
 <div class="turn" data-start="167">
   <div class="who">
@@ -607,10 +680,17 @@
 </div>
 <div class="turn" data-start="207">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">3:27</span>
   </div>
-  <div class="said">You are absolutely not right. They are high heels for men. They are extremely uncomfortable. I would usually wear them on the first day because I&#x27;m not a high heels gal myself. I&#x27;m a cowboy boots gal. Normally, all you Calgary people are not wearing them in your daily life, so they&#x27;re not broken in. It&#x27;s part of the costume. Costume. It&#x27;s part of the costume. That&#x27;s the whole point. The whole thing, the whole costume part of Stampede is silly and ridiculous. So while I enjoy them as an element of, you know, sort of like men having to know what it&#x27;s like to wear uncomfortable footwear, I don&#x27;t really wish it on a nice man such as Corey. And you can still pull off your cosplay without your high heels.</div>
+  <div class="said">You are absolutely not right. They are high heels for men. They are extremely uncomfortable. I would usually wear them on the first day because I&#x27;m not a high heels gal myself. I&#x27;m a cowboy boots gal. Normally, all you Calgary people are not wearing them in your daily life, so they&#x27;re not broken in. It&#x27;s part of the costume. Costume.</div>
+</div>
+<div class="turn" data-start="226">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">3:46</span>
+  </div>
+  <div class="said">It&#x27;s part of the costume. That&#x27;s the whole point. The whole thing, the whole costume part of Stampede is silly and ridiculous. So while I enjoy them as an element of, you know, sort of like men having to know what it&#x27;s like to wear uncomfortable footwear, I don&#x27;t really wish it on a nice man such as Corey. And you can still pull off your cosplay without your high heels.</div>
 </div>
 <div class="turn" data-start="249">
   <div class="who">
@@ -684,7 +764,7 @@
 </div>
 <div class="turn" data-start="293">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:53</span>
   </div>
   <div class="said">times I&#x27;ve seen him. Like, you have to actually, like, mail it in on some level. You don&#x27;t have to wear the high heels, but you should actually have a hat or a good shirt. A good belt buckle would make up for it. He has a good belt</div>
@@ -698,7 +778,7 @@
 </div>
 <div class="turn" data-start="306">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">5:06</span>
   </div>
   <div class="said">have a good belt buckle. All right. If you&#x27;ve got a nice dinner plate happening, then I think you&#x27;re good. Okay, so here&#x27;s what I&#x27;m</div>
@@ -726,7 +806,7 @@
 </div>
 <div class="turn" data-start="338">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">5:38</span>
   </div>
   <div class="said">fashion police the whole thing, but I just don&#x27;t think you have to wear high heels.</div>
@@ -782,7 +862,7 @@
 </div>
 <div class="turn" data-start="404">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">6:44</span>
   </div>
   <div class="said">Yeah, with no cowboy boots. Now, look, I think we are right on a couple of different levels. Number one, he captured attention. Number two, he&#x27;s got all the right aesthetics, right? And his social media reflects how people want to consume information these days. Number three, you don&#x27;t have to copy, you know, the policy offers, but you do have to have something that speaks to people and they need to be somewhat substantive he did that as well uh and uh he&#x27;s also handled i think the attacks on him which are only going to get worse uh and more completely banana pants like the the the nonsense that showed up in the new york times yesterday i i i think um he&#x27;s he&#x27;s pushed them back in an effective way um um like the uh woman sarah i can&#x27;t remember her last name who was the first trans legislator out of delaware same sort of idea on uh how to you know use your superpowers to jujitsu the bad guy&#x27;s coming at you and he&#x27;s done a good job of that</div>
@@ -810,7 +890,7 @@
 </div>
 <div class="turn" data-start="499">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:19</span>
   </div>
   <div class="said">I actually don&#x27;t know the premise of this particular thing, but I reject the premise</div>
@@ -820,11 +900,18 @@
     <span class="speaker">Zain</span>
     <span class="ts">8:22</span>
   </div>
-  <div class="said">Okay, well, fantastic. Thank you. It&#x27;s not possible. Here&#x27;s what we&#x27;re going to do. I am going to run you through a series because it&#x27;s been a while since we&#x27;ve chatted. There&#x27;s a series of things that have happened in Alberta. We&#x27;ve had by-elections come and go. I kind of faintly recall you guys gave some predictions for by-elections. Oh, how&#x27;d we do? I don&#x27;t know. We&#x27;ll talk about that in a second. We&#x27;ve had the resurgence, perhaps, of the Progressive Conservative Party. We&#x27;ve had the Alberta Next panel. We now have a sovereignty referendum question, kind of. We&#x27;ll talk about that. We also have our first chief of the new independent agency police service. Let&#x27;s talk about all those things. And I will ask you, and I&#x27;ll give you the story, which I kind of teased, and then I&#x27;ll ask you for a particular character, political party, individual, is this fine? Is this fabulous? Or is this fucked? And Shannon, as I always say, there&#x27;s no better way to get started than to get started. And let&#x27;s start with this. Let&#x27;s start with the by-election results. results three provincial by-elections are now concluding including the high-profile alberta ndp leader naid nenshi he&#x27;s now in edmonton strathcona 82 percent of the vote check the ndpl also uh held on to edmonton ellerslie though with a reduced margin and the ucp retain old disbury three hills amid a split opposition that including strong showing from the alberta republican party although i will say not that strong 20 to 30 percent showing carter that you and i had speculated about when we chatted last time so shannon the character and let&#x27;s just make look at the Alberta NDP. They win two, they lose one. Fine, fabulous, or fucked as it relates to the by-election outcomes for the Alberta NDP?</div>
+  <div class="said">Okay, well, fantastic. Thank you. It&#x27;s not possible. Here&#x27;s what we&#x27;re going to do. I am going to run you through a series because it&#x27;s been a while since we&#x27;ve chatted. There&#x27;s a series of things that have happened in Alberta. We&#x27;ve had by-elections come and go. I kind of faintly recall you guys gave some predictions for by-elections. Oh, how&#x27;d we do? I don&#x27;t know. We&#x27;ll talk about that in a second. We&#x27;ve had the resurgence, perhaps, of the Progressive Conservative Party. We&#x27;ve had the Alberta Next panel. We now have a sovereignty referendum question, kind of. We&#x27;ll talk about that. We also have our first chief of the new independent agency police service. Let&#x27;s talk about all those things. And I will ask you, and I&#x27;ll give you the story, which I kind of teased, and then I&#x27;ll ask you for a particular character, political party, individual, is this fine? Is this fabulous? Or is this fucked? And Shannon, as I always say, there&#x27;s no better way to get started than to get started. And let&#x27;s start with this. Let&#x27;s start with the by-election results. results three provincial by-elections are now concluding including the high-profile alberta ndp leader naid nenshi he&#x27;s now in edmonton strathcona 82 percent of the vote check the ndpl also uh held on to edmonton ellerslie though with a reduced margin and the ucp retain old disbury three hills amid a split opposition that including strong showing from the alberta republican party although i will say not that strong 20 to 30 percent showing carter that you and i had speculated about when we chatted last time so shannon the character and let&#x27;s just make look at the Alberta NDP. They win two, they lose one.</div>
+</div>
+<div class="turn" data-start="588">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">9:48</span>
+  </div>
+  <div class="said">Fine, fabulous, or fucked as it relates to the by-election outcomes for the Alberta NDP?</div>
 </div>
 <div class="turn" data-start="595">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">9:55</span>
   </div>
   <div class="said">I think it&#x27;s fine. I mean, it doesn&#x27;t quite cross over the threshold into fabulous, but it is fine. And what it tells you is that through a change of leadership, through all of these, you know, different, you know, changes in the Alberta a political landscape that uh the new democrats are fine uh in uh in edmonton at least right now and uh that it showed you that uh you know when the organization and the ground game gets turned up in a place like ellerslie where you know let&#x27;s all be honest not a whole lot had been going on there uh since well forever um and so uh i</div>
@@ -838,7 +925,7 @@
 </div>
 <div class="turn" data-start="637">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">10:37</span>
   </div>
   <div class="said">oh there wasn&#x27;t a whole lot going on there uh and so</div>
@@ -852,7 +939,7 @@
 </div>
 <div class="turn" data-start="649">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">10:49</span>
   </div>
   <div class="said">very uh vibrant place and</div>
@@ -866,10 +953,24 @@
 </div>
 <div class="turn" data-start="654">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">10:54</span>
   </div>
-  <div class="said">in uh uh in millwoods and elsewhere but let&#x27;s face it you know the uh the organized organizationally it wasn&#x27;t exactly you know uh uh tight in in ellerslie prior uh but it showed that the new democrats when they activate that ground game there it is and it&#x27;s uh they were able to deliver they were um able to you know like push back on a lot of the naysaying that and you know frankly i was a little nervous i i said on this podcast i don&#x27;t know if they&#x27;re five points down or five points up and you can&#x27;t tell and they just had a federal election exercise size, where the Conservatives did very well, and in the same kind of neighbourhood where Armageddon, so he was expected to do really well, and he didn&#x27;t. So there were reasons to be a bit tetchy there. And it was fine, right? The reduced margin, I think, is fine. It&#x27;s a by-election. It&#x27;s fine. And the same margin in Edmonton-Strathcona is also fine. In other words, when the electorate was introduced to Nahed in Edmonton, when people switched switched on to the fact that there was a by-election because most people are normal and they didn&#x27;t probably realize that the official opposition leader didn&#x27;t have a seat yet and all these other machinations right they&#x27;re not us uh when they when they switched on they were like oh yes of course and they went and did the thing so everything is fine as for old stittsbury i also think that that is an indication of fine for the alberta ndp because essentially what they the points they put on the board were the same points they put in the 2023 uh where there was a a decent growth in the outside of Edmonton and Calgary ridings, not enough, obviously, to be anything near a threat, but reasonable, and reasonable to, you know, buoy the base to maybe find yourself candidates and activated folks in school board elections or support, you know, really active women in municipal elections, this kind of stuff, right? This is the kind of thing that the party party wants to put out there and do and it accomplished so fine is it i don&#x27;t know what fabulous would be in this context right like i don&#x27;t know maybe a an overwhelming landslide in ellerslie which is probably not going to happen in a some kind of suburban riding or um really tamping down that separatist vote and eating more into the the ucp and olds but like also it&#x27;s a june by election like what are you going to do so uh no it&#x27;s great carter</div>
+  <div class="said">in uh uh in millwoods and elsewhere but let&#x27;s face it you know the uh the organized organizationally it wasn&#x27;t exactly you know uh uh tight in in ellerslie prior uh but it showed that the new democrats when they activate that ground game there it is and it&#x27;s uh they were able to deliver they were um able to you know like push back on a lot of the naysaying that and you know frankly i was a little nervous i i said on this podcast i don&#x27;t know if they&#x27;re five points down or five points up and you can&#x27;t tell and they just had a federal election exercise size, where the Conservatives did very well, and in the same kind of neighbourhood where Armageddon, so he was expected to do really well, and he didn&#x27;t. So there were reasons to be a bit tetchy there. And it was fine, right? The reduced margin, I think, is fine. It&#x27;s a by-election. It&#x27;s fine. And the same margin in Edmonton-Strathcona is also fine. In other words, when the electorate was introduced to Nahed in Edmonton, when people switched switched on to the fact that there was a by-election because most people are normal and they didn&#x27;t probably</div>
+</div>
+<div class="turn" data-start="719">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">11:59</span>
+  </div>
+  <div class="said">realize that the official opposition leader didn&#x27;t have a seat yet and all these other machinations right they&#x27;re not us uh when they when they switched on they were like oh yes of course and they went and did the thing so everything is fine as for old stittsbury i also think that that is an indication of fine for the alberta ndp because essentially what they the points they put on the board were the same points they put in the 2023 uh where there was a a decent growth in the outside of Edmonton and Calgary ridings, not enough, obviously, to be anything near a threat, but reasonable, and reasonable to, you know, buoy the base to maybe find yourself candidates and activated folks in school board elections or support, you know, really active women in municipal elections, this kind of stuff, right? This is the kind of thing that the party party wants to put out there and do and it accomplished so fine is it i don&#x27;t know what fabulous would be in this context right like i don&#x27;t know maybe a an overwhelming landslide in ellerslie which is probably not going to happen in a some kind of suburban riding or</div>
+</div>
+<div class="turn" data-start="787">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">13:07</span>
+  </div>
+  <div class="said">um really tamping down that separatist vote and eating more into the the ucp and olds but like also it&#x27;s a june by election like what are you going to do so uh no it&#x27;s great carter</div>
 </div>
 <div class="turn" data-start="799">
   <div class="who">
@@ -883,7 +984,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">13:25</span>
   </div>
-  <div class="said">I mean, Shannon&#x27;s just being weak. This is fabulous for the NDP. The NDP were rumored to be losing Ellerslie. They did not lose Ellerslie. They came in second in Old Stittsbury Three Hills. I mean, that is an achievement when the Alberta Republicans were rumored to be doing exceptionally well. um so overall i mean and and then she won his seat uh and gets to go in this is a fabulous showing for the ndp this it doesn&#x27;t get any better than this and and there was a rumor of a uh potential you know fall election provincially that i think has gone away because things have gone so well for the ndp in in these elections i i was uh very impressed with how it all ultimately turned out not necessarily how the process necessarily unfolded but the outcome if</div>
+  <div class="said">I mean, Shannon&#x27;s just being weak. This is fabulous for the NDP. The NDP were rumored to be losing Ellerslie. They did not lose Ellerslie. They came in second in Old Stittsbury Three Hills. I mean, that is an achievement when the Alberta Republicans were rumored to be doing exceptionally well. um so</div>
+</div>
+<div class="turn" data-start="829">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:49</span>
+  </div>
+  <div class="said">overall i mean and and then she won his seat uh and gets to go in this is a fabulous showing for the ndp this it doesn&#x27;t get any better than this and and there was a rumor of a uh potential you know fall election provincially that i think has gone away because things have gone so well for the ndp in in these elections i i was uh very impressed with how it all ultimately turned out not necessarily how the process necessarily unfolded but the outcome if</div>
 </div>
 <div class="turn" data-start="861">
   <div class="who">
@@ -901,7 +1009,7 @@
 </div>
 <div class="turn" data-start="882">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">14:42</span>
   </div>
   <div class="said">well i&#x27;ll tell you who&#x27;s wrong it was carter in the last episode when he was predicting you know like oh it could be doom and ellerslie and like people who don&#x27;t know what they&#x27;re talking about we&#x27;re predicting that because that would have meant a 24 point drop for the new democrats in edmonton and even in polling where</div>
@@ -915,7 +1023,7 @@
 </div>
 <div class="turn" data-start="902">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">15:02</span>
   </div>
   <div class="said">it&#x27;s not a 24 point drop so this was just people grafting something else some other narrative onto what was likely going to happen in edmonton</div>
@@ -957,7 +1065,7 @@
 </div>
 <div class="turn" data-start="959">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">15:59</span>
   </div>
   <div class="said">think they&#x27;re kind of fucked. If they can&#x27;t organize there there, in the hotbed of this sort of separatist activity, not for the last five years, but quite literally for the last almost 50, right? When was that Western Canada concept guy elected in a by-election in the early 80s? So, you know, if you can&#x27;t pull it off there, then you are not pulling it off. When all of your so-called organizational resources that we were all supposed to be quaking in our cowboy boots about uh i are not is is not there uh there was no there there and by all accounts you know these guys are all you know backstabbing and fighting with each other and you know relitigating whatever conspiracy theory du jour uh so no i think they&#x27;re probably fucked um but they might not be fucked for long it really depends on how they can uh raise money and uh um oh</div>
@@ -971,7 +1079,7 @@
 </div>
 <div class="turn" data-start="1013">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">16:53</span>
   </div>
   <div class="said">oh but fuck right now for this</div>
@@ -1027,17 +1135,31 @@
 </div>
 <div class="turn" data-start="1123">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">18:43</span>
   </div>
-  <div class="said">I would want to see how the question is asked and who&#x27;s asking it. Because honestly, like, some of this is in the framing of it, whether how people are going to respond to it. I do think a lot of people still think of it as a threat or as a leverage point into Carter&#x27;s point, then they&#x27;re going to find their, their champion in Daniel Smith. And they&#x27;re going to park it there. So there&#x27;s two caveats there. The only thing I will note is on the socials, you do see a lot of AI-generated content. If you go into those right-wing spaces, there&#x27;s a ton of separatist content, right? And so there&#x27;s money behind it. If it actually becomes organized money, I become a little bit more concerned. I&#x27;m not particularly right now. and because they also don&#x27;t have one one question or one grievance really they&#x27;re kind of all over the place right like and people who went to the town halls that the candidate cam davies had for the republican party in that by-election you know most of it was people you know being cranky about covid five years hence and so there&#x27;s still a lot of that garbage there and as long as they&#x27;re stuck in the mud there and not just putting forward one coherent this is the thing that i want and danielle won&#x27;t get me and that&#x27;s why we have to separate uh i i think it gets uh sort of mired in you know the sort of david parker weird world of you know people uh doing turf wars and worried about the world economic forum and all that</div>
+  <div class="said">I would want to see how the question is asked and who&#x27;s asking it. Because honestly, like, some of this is in the framing of it, whether how people are going to respond to it. I do think a lot of people still think of it as a threat or as a leverage point into Carter&#x27;s point, then they&#x27;re going to find their, their champion in Daniel Smith. And they&#x27;re going to park it there. So there&#x27;s two caveats there. The only thing I will note is on the socials, you do see a lot of AI-generated content. If you go into those right-wing spaces, there&#x27;s a ton of separatist content, right? And so there&#x27;s money behind it. If it actually becomes organized money, I become a little bit more concerned. I&#x27;m not particularly right now.</div>
+</div>
+<div class="turn" data-start="1176">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">19:36</span>
+  </div>
+  <div class="said">and because they also don&#x27;t have one one question or one grievance really they&#x27;re kind of all over the place right like and people who went to the town halls that the candidate cam davies had for the republican party in that by-election you know most of it was people you know being cranky about covid five years hence and so there&#x27;s still a lot of that garbage there and as long as they&#x27;re stuck in the mud there and not just putting forward one coherent this is the thing that i want and danielle won&#x27;t get me and that&#x27;s why we have to separate uh i i think it gets uh sort of mired in you know the sort of david parker weird world of you know people uh doing turf wars and worried about the world economic forum and all that</div>
 </div>
 <div class="turn" data-start="1222">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">20:22</span>
   </div>
-  <div class="said">carter i&#x27;m moving on okay character it&#x27;s the ucp and danielle&#x27;s in the situation the issue the issue is the resurgence of the progressive conservative party. UCP MLA&#x27;s former Peter Guthrie, Scott Sinclair, both ejected from the caucus, are criticizing Smith&#x27;s leadership, have historically. They&#x27;re now planning to revive the progressive conservative party. Their move aims to offer an alternative to what they describe as a divisive two-party system, challenge the UCP from the center-right. That&#x27;s what they say. So, which is why I&#x27;ve positioned the character as being the UCP. Is this fine for the UCP? Is this fabulous or are they fucked? Assuming these guys are successful in any three of these scenarios. Fine, fabulous, or fucked? The resurgent PCs under these two gents</div>
+  <div class="said">carter i&#x27;m moving on okay character it&#x27;s the ucp and danielle&#x27;s in the situation the issue the issue is the resurgence of the progressive conservative party. UCP MLA&#x27;s former Peter Guthrie, Scott Sinclair, both ejected from the caucus, are criticizing Smith&#x27;s leadership, have historically. They&#x27;re now planning to revive the progressive conservative party.</div>
+</div>
+<div class="turn" data-start="1244">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">20:44</span>
+  </div>
+  <div class="said">Their move aims to offer an alternative to what they describe as a divisive two-party system, challenge the UCP from the center-right. That&#x27;s what they say. So, which is why I&#x27;ve positioned the character as being the UCP. Is this fine for the UCP? Is this fabulous or are they fucked? Assuming these guys are successful in any three of these scenarios. Fine, fabulous, or fucked? The resurgent PCs under these two gents</div>
 </div>
 <div class="turn" data-start="1268">
   <div class="who">
@@ -1069,10 +1191,17 @@
 </div>
 <div class="turn" data-start="1393">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">23:13</span>
   </div>
-  <div class="said">Well, I think, first of all, it&#x27;s fine because they need a ruling from Elections Alberta. And the legislation was written that people couldn&#x27;t use the names of the legacy parties to avoid confusion, as Daniela put it in her press conference. But yeah, they explicitly did that, that nobody could resurrect those party names. And it&#x27;s in our elections legislation. So best of luck to them on that. Number two, you know, if they wanted to get official party status, I don&#x27;t think they&#x27;re going to get that out of the UCP without two more. It is smart for them as those two independents, though, to have a party name associated with them. I just don&#x27;t think it&#x27;s going to be PCAA.</div>
+  <div class="said">Well, I think, first of all, it&#x27;s fine because they need a ruling from Elections Alberta. And the legislation was written that people couldn&#x27;t use the names of the legacy parties to avoid confusion, as Daniela put it in her press conference. But yeah, they explicitly did that, that nobody could resurrect those party names. And it&#x27;s in our elections legislation. So best of luck to them on that. Number two, you know, if they wanted to get official party status, I don&#x27;t think they&#x27;re going to get that out of the UCP without two more.</div>
+</div>
+<div class="turn" data-start="1428">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">23:48</span>
+  </div>
+  <div class="said">It is smart for them as those two independents, though, to have a party name associated with them. I just don&#x27;t think it&#x27;s going to be PCAA.</div>
 </div>
 <div class="turn" data-start="1436">
   <div class="who">
@@ -1083,7 +1212,7 @@
 </div>
 <div class="turn" data-start="1444">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">24:04</span>
   </div>
   <div class="said">I think it&#x27;s the NDP, probably on balance. Hmm. Well, take 2019 when you had a united right. But you had the Alberta party that I can&#x27;t remember what their province wide tally was, but I know what they put up on the board in Lethbridge West, it was nine points.</div>
@@ -1097,10 +1226,17 @@
 </div>
 <div class="turn" data-start="1468">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">24:28</span>
   </div>
-  <div class="said">I won by 226 votes in that election. Fast forward to 2023 and I&#x27;m standing on people&#x27;s doorsteps and they go, I&#x27;ve always been a conservative, but I cannot vote for Danielle Smith for X, Y, and Z reasons. So I&#x27;m going with you this time. I used to be on, you know, the guy that you beats riding association or whatever. And I left the PCs and I parked it with the UCP for a couple of turns here. And now I&#x27;m out. Right. Right. It does give a release valve for those middle of the road voters that are the accessible voter pool in Calgary in particular. And so if there is an off ramp, I mean, the good news is, is that I think Nenshi can can occupy more of that lane maybe than than Notley could have just because of her historic ties to that, you know, really orange brand. Yeah. I still think that it gives enough people to go, oh, I&#x27;m allergic to the alphabet. I couldn&#x27;t possibly vote for the NDP, but I&#x27;m going to go back to a conservative alternative if they get any wind in their sails.</div>
+  <div class="said">I won by 226 votes in that election. Fast forward to 2023 and I&#x27;m standing on people&#x27;s doorsteps and they go, I&#x27;ve always been a conservative, but I cannot vote for Danielle Smith for X, Y, and Z reasons. So I&#x27;m going with you this time. I used to be on, you know, the guy that you beats riding association or whatever. And I left the PCs and I parked it with the UCP for a couple of turns here. And now I&#x27;m out. Right. Right. It does give a release valve for those middle of the road voters that are the accessible voter pool in Calgary in</div>
+</div>
+<div class="turn" data-start="1502">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">25:02</span>
+  </div>
+  <div class="said">particular. And so if there is an off ramp, I mean, the good news is, is that I think Nenshi can can occupy more of that lane maybe than than Notley could have just because of her historic ties to that, you know, really orange brand. Yeah. I still think that it gives enough people to go, oh, I&#x27;m allergic to the alphabet. I couldn&#x27;t possibly vote for the NDP, but I&#x27;m going to go back to a conservative alternative if they get any wind in their sails.</div>
 </div>
 <div class="turn" data-start="1537">
   <div class="who">
@@ -1114,7 +1250,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">25:46</span>
   </div>
-  <div class="said">Well, I think so. I think one could go back to 2015 and say, well, ultimately the NDP won because there was two parties on the right that split the quote unquote right vote. But we know that vote split&#x27;s not a real thing, that everybody starts from zero and they have to work their way up. And I think that the party that would be most likely still to form a majority government or even a minority government would be the UCP over the NDP. So I do think that this hurts the NDP more. In the long run, there&#x27;s a lot of water under the bridge. And I don&#x27;t think that everybody who votes NDP is naturally an NDP voter. Whereas I do think that most of the people who are voting for the UCP at this stage are naturally a UCP voter.</div>
+  <div class="said">Well, I think so. I think one could go back to 2015 and say, well, ultimately the NDP won because there was two parties on the right that split the quote unquote right vote. But we know that vote split&#x27;s not a real thing, that everybody starts from zero and they have to work their way up. And I think that the party that would be most likely still to form a majority government or even a minority government would be the UCP over the NDP. So I do think that this hurts the NDP more.</div>
+</div>
+<div class="turn" data-start="1574">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">26:14</span>
+  </div>
+  <div class="said">In the long run, there&#x27;s a lot of water under the bridge. And I don&#x27;t think that everybody who votes NDP is naturally an NDP voter. Whereas I do think that most of the people who are voting for the UCP at this stage are naturally a UCP voter.</div>
 </div>
 <div class="turn" data-start="1589">
   <div class="who">
@@ -1128,7 +1271,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">26:55</span>
   </div>
-  <div class="said">i mean i if i were the ucp i&#x27;d i think it&#x27;d be fine um i think it would be great to talk about the liberals and call the pcs the the liberals um you know the middle of the road uh centrist party and and uh equate them to the liberals but um the ucp seems to want to have its cake and eat it too they they want to be the they you know the rumor of a of an election they&#x27;ve got got a majority government. They don&#x27;t need an election to continue to govern, but they just want to have more. They want to have more power, more ability to do things, more structure, and that means eliminating democratic opportunities.</div>
+  <div class="said">i mean i if i were the ucp i&#x27;d i think it&#x27;d be fine um i think it would be great to talk about the liberals and call the pcs the the liberals um you know the middle of the road uh centrist party and and uh equate them to the liberals but um the ucp seems to want to have its cake and eat it too they they want to be the they you know the rumor of a of an election they&#x27;ve got got a majority government. They</div>
+</div>
+<div class="turn" data-start="1640">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">27:20</span>
+  </div>
+  <div class="said">don&#x27;t need an election to continue to govern, but they just want to have more. They want to have more power, more ability to do things, more structure, and that means eliminating democratic opportunities.</div>
 </div>
 <div class="turn" data-start="1655">
   <div class="who">
@@ -1139,10 +1289,17 @@
 </div>
 <div class="turn" data-start="1669">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">27:49</span>
   </div>
-  <div class="said">I don&#x27;t think they need to. I don&#x27;t think it&#x27;s going to amount to anything anyway. The fact of the matter is, is that the use of the name is probably dead in the water. Non-starter. And the two MLAs that are, you know, kind of founding it are not exactly setting the world on fire, right? mean, they&#x27;re fine, but they&#x27;re not fabulous. So in my view, you know, like they&#x27;re just fine. And the reasons for leaving were extremely disparate and not really grounded in, you know, anything particularly ideological. I mean, Scott Sinclair was like, I didn&#x27;t get money for my highway, right? Like, I&#x27;m out, can&#x27;t support this budget. Like, it was a bit silly. And for Guthrie, I think it was a bit more substantive. But I mean, there&#x27;s no policy differences on, you know, like austerity versus, you know, robust health and public education system for him. You know, there&#x27;s not those big differences. So in the absence of some compelling leader figure, I think that&#x27;s not really going anywhere. And the UCP don&#x27;t have to concern themselves with it.</div>
+  <div class="said">I don&#x27;t think they need to. I don&#x27;t think it&#x27;s going to amount to anything anyway. The fact of the matter is, is that the use of the name is probably dead in the water. Non-starter. And the two MLAs that are, you know, kind of founding it are not exactly setting the world on fire, right?</div>
+</div>
+<div class="turn" data-start="1687">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">28:07</span>
+  </div>
+  <div class="said">mean, they&#x27;re fine, but they&#x27;re not fabulous. So in my view, you know, like they&#x27;re just fine. And the reasons for leaving were extremely disparate and not really grounded in, you know, anything particularly ideological. I mean, Scott Sinclair was like, I didn&#x27;t get money for my highway, right? Like, I&#x27;m out, can&#x27;t support this budget. Like, it was a bit silly. And for Guthrie, I think it was a bit more substantive. But I mean, there&#x27;s no policy differences on, you know, like austerity versus, you know, robust health and public education system for him. You know, there&#x27;s not those big differences. So in the absence of some compelling leader figure, I think that&#x27;s not really going anywhere. And the UCP don&#x27;t have to concern themselves with it.</div>
 </div>
 <div class="turn" data-start="1734">
   <div class="who">
@@ -1153,7 +1310,7 @@
 </div>
 <div class="turn" data-start="1795">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">29:55</span>
   </div>
   <div class="said">It&#x27;s fabulous. This allows her to, you know, get out there, talk to people, really take the temperature on the ground of how much separatist sort of fervor is gripping the landscape out in the hills. She is able to, you know, just do retail politics, which she&#x27;s quite write good at. And they can decide what they&#x27;re going to do with it all in an offer to the electorate and if they have to do anything. All of this is just zombie file after zombie file. What wasn&#x27;t contained in the initial offerings of the Reform Party back in the 1980s was contained within the various panels and other study exercises that have been undertaken by Ralph Klein onward, and things that have been serially rejected by Albertans, police service, CPP, that kind of stuff. So I think it&#x27;s smart of her to do it because they can do their, you know, have a little a la carte menu of the things that they actually want to do, if anything, at the end. And she&#x27;s been able to rope in a couple of credible people and stick this, make them them wear some of this, right? Which is maybe unfortunate for them, but they&#x27;re being well used by her.</div>
@@ -1198,7 +1355,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">32:53</span>
   </div>
-  <div class="said">You&#x27;re asking equalization to do a tremendous lift in that case. We&#x27;ve already had the panel on equalization. One will remember that Stephen Harper was the one who brought in the current formula. Oh, Stephen Harper, the renowned separatist. um but this is this is the the challenges of the of the file is that you can&#x27;t take you can&#x27;t make something that is bigger than the hole in this particular case and that&#x27;s why i think it&#x27;s she&#x27;s absolutely fucked she&#x27;s trying too hard to force people into her positioning and ultimately it&#x27;s going to be there&#x27;s going to be a rebound effect i&#x27;m hoping that we get multiple questions</div>
+  <div class="said">You&#x27;re asking equalization to do a tremendous lift in that case. We&#x27;ve already had the panel on equalization. One will remember that Stephen Harper was the one who brought in the current formula. Oh, Stephen</div>
+</div>
+<div class="turn" data-start="1987">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">33:07</span>
+  </div>
+  <div class="said">Harper, the renowned separatist. um but this is this is the the challenges of the of the file is that you can&#x27;t take you can&#x27;t make something that is bigger than the hole in this particular case and that&#x27;s why i think it&#x27;s she&#x27;s absolutely fucked she&#x27;s trying too hard to force people into her positioning and ultimately it&#x27;s going to be there&#x27;s going to be a rebound effect i&#x27;m hoping that we get multiple questions</div>
 </div>
 <div class="turn" data-start="2013">
   <div class="who">
@@ -1216,7 +1380,7 @@
 </div>
 <div class="turn" data-start="2035">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">33:55</span>
   </div>
   <div class="said">shit on any of these topics in Okotoks, Alberta. It&#x27;s going to go just</div>
@@ -1230,7 +1394,7 @@
 </div>
 <div class="turn" data-start="2047">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:07</span>
   </div>
   <div class="said">the wind and the sails of the separatists is coming from those places</div>
@@ -1244,7 +1408,7 @@
 </div>
 <div class="turn" data-start="2078">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:38</span>
   </div>
   <div class="said">it was pre-scripted</div>
@@ -1272,7 +1436,7 @@
 </div>
 <div class="turn" data-start="2121">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:21</span>
   </div>
   <div class="said">because she loves that right she&#x27;s been talking about oh it&#x27;s it&#x27;s as bad as i&#x27;ve ever seen it she&#x27;s trying to change</div>
@@ -1286,10 +1450,24 @@
 </div>
 <div class="turn" data-start="2131">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:31</span>
   </div>
-  <div class="said">Sure. But what she&#x27;s doing is she&#x27;s both taking the temperature. She&#x27;s, you know, kind of getting out there and going, okay, here&#x27;s what the temperature is, but she&#x27;s also playing around with the thermostat. She&#x27;s And it allows her to use public money to do that and also make her caucus happy, because there&#x27;s caucus out there in the hinterland who are probably getting an earful on this stuff. So, you know, when the premier comes, she hears people out. It allows them a bit of an arrow to the balloon as well, because some of this is caucus management. That&#x27;s what the coal town hall for her was as well. Right. When the premier shows up and and, you know, either accepts the criticism or pushes back on it or or, you know, hears people out. It&#x27;s it&#x27;s received well by local MLAs. I put it that way. So she&#x27;s doing that. But she also there was some polling. It was it was done by Janet Brown and it was leaked out by the government. It was exclusive to the government of Alberta, and it was a couple of months ago, and it essentially showed a turning up of the dial, even on the zombie files that are otherwise quite unpopular, like CPP. Even Alberta Police Service was the only one that didn&#x27;t have sort of like into majority territory. And so what she&#x27;s doing is going out to, A, seeing if that is real or if she can make it more real. And there was a series of questions, equalization, all those zombies. Right. And they were, they did this. So they&#x27;ve used our public money to do some of that temperature taking. And now she wants to go out and play with the thermostat. And if she, you know, gets another kick at the can to, you know, use this to further grievances with Ottawa, all the better, but not necessary right now. That&#x27;ll come later.</div>
+  <div class="said">Sure. But what she&#x27;s doing is she&#x27;s both taking the temperature. She&#x27;s, you know, kind of getting out there and going, okay, here&#x27;s what the temperature is, but she&#x27;s also playing around with the thermostat. She&#x27;s</div>
+</div>
+<div class="turn" data-start="2142">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">35:42</span>
+  </div>
+  <div class="said">And it allows her to use public money to do that and also make her caucus happy, because there&#x27;s caucus out there in the hinterland who are probably getting an earful on this stuff. So, you know, when the premier comes, she hears people out. It allows them a bit of an arrow to the balloon as well, because some of this is caucus management. That&#x27;s what the coal town hall for her was as well. Right. When the premier shows up and and, you know, either accepts the criticism or pushes back on it or or, you know, hears people out. It&#x27;s it&#x27;s received well by local MLAs. I put it that way. So she&#x27;s doing that. But she also there was some polling. It was it was done by Janet Brown and it was leaked out by the government. It was exclusive to the government of Alberta, and it was a couple of months ago, and it essentially showed a turning up of the dial, even on the zombie files that are otherwise quite unpopular, like CPP. Even Alberta Police Service was the only one that didn&#x27;t have sort of like into majority territory. And so what she&#x27;s doing is going out to, A, seeing if that is real or if she can make it more real.</div>
+</div>
+<div class="turn" data-start="2211">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">36:51</span>
+  </div>
+  <div class="said">And there was a series of questions, equalization, all those zombies. Right. And they were, they did this. So they&#x27;ve used our public money to do some of that temperature taking. And now she wants to go out and play with the thermostat. And if she, you know, gets another kick at the can to, you know, use this to further grievances with Ottawa, all the better, but not necessary right now. That&#x27;ll come later.</div>
 </div>
 <div class="turn" data-start="2236">
   <div class="who">
@@ -1373,7 +1551,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">38:34</span>
   </div>
-  <div class="said">I literally was told today that there are board members on UCP boards that are very pro-separatist and they are trying to keep these people in line. And the way that they&#x27;re trying to keep these people in line is to play the game. And they&#x27;re playing this game and this game is ultimately something that cannot succeed. It will not succeed. And it might be the only way that the NDP under Nahid Nenshi get lucky enough to win the election because Nahid right now isn&#x27;t building himself up an army to oppose the UCP, but an army may form to oppose this separation nonsense that Danielle Smith is playing with. she&#x27;s playing with fire she&#x27;s turning up the thermostat in an already hot room and it&#x27;s going to catch on fire and that&#x27;s where the that&#x27;s why it&#x27;s fucked in my opinion and why i&#x27;ve turned my mind again and shannon was completely fucking wrong okay</div>
+  <div class="said">I literally was told today that there are board members on UCP boards that are very pro-separatist and they are trying to keep these people in line. And the way that they&#x27;re trying to keep these people in line is to play the game. And they&#x27;re playing this game and this game is ultimately something that cannot succeed. It will not succeed. And it might be the only way that the NDP under Nahid Nenshi get</div>
+</div>
+<div class="turn" data-start="2340">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:00</span>
+  </div>
+  <div class="said">lucky enough to win the election because Nahid right now isn&#x27;t building himself up an army to oppose the UCP, but an army may form to oppose this separation nonsense that Danielle Smith is playing with. she&#x27;s playing with fire she&#x27;s turning up the thermostat in an already hot room and it&#x27;s going to catch on fire and that&#x27;s where the that&#x27;s why it&#x27;s fucked in my opinion and why i&#x27;ve turned my mind again and shannon was completely fucking wrong okay</div>
 </div>
 <div class="turn" data-start="2371">
   <div class="who">
@@ -1408,11 +1593,18 @@
     <span class="speaker">Zain</span>
     <span class="ts">39:54</span>
   </div>
-  <div class="said">Shannon, Mr. Thomas Lukaszek, he has had this idea for this question, this referendum question as part of Forever Canada. He filed this question, which is a pro-Canada, I always get this confused, so you guys are going to help me out, right? Right. This pro-Canada referendum question, which is, do you agree that Alberta should remain in Canada? That petition question was now approved on June 20th, just before Canada Day. And now he must he must collect signatures that take effect on July 1st, must collect nearly 294,000 signatures within 90 days. Rather than the lower threshold that has been applied that the premier has made way for the separatists to kind of do their question. And Lukaszek is now got there first, got his question approved. Now is to collect signatures to put this on a ballot. OK, is that is that is that is the fact based correct from what you two understand so far? As it relates to Daniel Smith in the UCP, is the fact that Lukaszek is here with this question fine in the way he&#x27;s trying to do it and his steps ahead, as we&#x27;ve explained in broad terms? Is this fabulous? Shannon, this is a goldmine for spin. This is great. Or is this fucked? Oh, my God, real danger to whatever her agenda is. And I&#x27;ve been speculating here what her agenda is. Fine, fabulous, or fucked, as it relates to what Lukaszek, he&#x27;s up to, and this broader Forever Canada movement, which I&#x27;ll call for from now on, what they&#x27;re up to with their referendum question.</div>
+  <div class="said">Shannon, Mr. Thomas Lukaszek, he has had this idea for this question, this referendum question as part of Forever Canada. He filed this question, which is a pro-Canada, I always get this confused, so you guys are going to help me out, right? Right. This pro-Canada referendum question, which is, do you agree that Alberta should remain in Canada? That petition question was now approved on June 20th, just before Canada Day. And now he must he must collect signatures that take effect on July 1st, must collect nearly 294,000 signatures within 90 days. Rather than the lower threshold that has been applied that the premier has made way for the separatists to kind of do their question. And Lukaszek is now got there first, got his question approved. Now is to collect signatures to put this on a ballot. OK, is that is that is that is the fact based correct from what you two understand so far?</div>
+</div>
+<div class="turn" data-start="2451">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">40:51</span>
+  </div>
+  <div class="said">As it relates to Daniel Smith in the UCP, is the fact that Lukaszek is here with this question fine in the way he&#x27;s trying to do it and his steps ahead, as we&#x27;ve explained in broad terms? Is this fabulous? Shannon, this is a goldmine for spin. This is great. Or is this fucked? Oh, my God, real danger to whatever her agenda is. And I&#x27;ve been speculating here what her agenda is. Fine, fabulous, or fucked, as it relates to what Lukaszek, he&#x27;s up to, and this broader Forever Canada movement, which I&#x27;ll call for from now on, what they&#x27;re up to with their referendum question.</div>
 </div>
 <div class="turn" data-start="2481">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">41:21</span>
   </div>
   <div class="said">It&#x27;s fine on a Likert scale that goes further over to Fabulous for Thomas Lukasik and further over to Fox for Danielle Smith. I think getting to that 293 or four or whatever it is, is going to be nigh on impossible</div>
@@ -1426,10 +1618,17 @@
 </div>
 <div class="turn" data-start="2504">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">41:44</span>
   </div>
-  <div class="said">so i i but it will uh i provide momentum it will be a counterweight it will give people something to do and a reason to go uh to these stupid town halls that she&#x27;s having across the province uh it&#x27;ll give you know it will give civil society something to do it&#x27;ll give uh the raging grannies a piece of paper to sign when they show up uh and so i think that uh is is bad for smith It also does give a bit of a gift to the New Democrats. It&#x27;s a great way to go around canvassing this to be collecting signatures, I would be, because otherwise, why are you standing on my door, right? Like for a lot of voters, they&#x27;re like, usually you should have something for voters to do when you show up there as an incumbent. incumbent uh and so i i think it&#x27;s good for them uh and it also places i think uh the ndp leader uh in a place that of authenticity for him right</div>
+  <div class="said">so i i but it will uh i provide momentum it will be a counterweight it will give people something to do and a reason to go uh to these stupid town halls that she&#x27;s having across the province uh it&#x27;ll give you know it will give civil society something to do it&#x27;ll give uh the raging grannies a piece of paper to sign when they show up uh and so i think that uh is is bad for smith It also does give a bit of a gift to the New Democrats. It&#x27;s a great way to go around canvassing this</div>
+</div>
+<div class="turn" data-start="2540">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">42:20</span>
+  </div>
+  <div class="said">to be collecting signatures, I would be, because otherwise, why are you standing on my door, right? Like for a lot of voters, they&#x27;re like, usually you should have something for voters to do when you show up there as an incumbent. incumbent uh and so i i think it&#x27;s good for them uh and it also places i think uh the ndp leader uh in a place that of authenticity for him right</div>
 </div>
 <div class="turn" data-start="2562">
   <div class="who">
@@ -1440,7 +1639,7 @@
 </div>
 <div class="turn" data-start="2565">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">42:45</span>
   </div>
   <div class="said">very good on the captain canada stuff uh and so uh it provides an organizing sort of uh ethos principle reason for being uh over the summer and a counterweight to uh these the silver to next stuff</div>
@@ -1457,7 +1656,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">43:14</span>
   </div>
-  <div class="said">i think it&#x27;s fucked for them i think that they&#x27;re really screwed if you&#x27;re the ucp because the the uh the question isn&#x27;t going to get 293 000 signatures uh there&#x27;s just no way we were talking talking about $177,000 as being nearly impossible. $293,000 just is ridiculously hard. And I believe the legislation prohibits another question from being circulated for six months or 18 months. On months, 18 months. I can&#x27;t remember what the numbers are specifically, but it does prohibit it. Now, one could make the case, and I suspect the UCP will, will, or the separatists will, that because the legislation changed, this means that the timer should start again. So they&#x27;ll submit their question under the second timer. But I think that they&#x27;re really going to have a hard time getting this question through. And ultimately, it&#x27;s going to remove it from the citizens part of the referendum. However, it doesn&#x27;t necessarily stop the province from doing it. So the UCP is now going to have to bring the question themselves. themselves and now that there&#x27;s been a positive framing of the question i suspect the ucp will have to bring the positive framing of the question so they&#x27;re a bit fucked um because i i still believe that danielle smith wants to turn us into a u.s state uh this is my new it&#x27;s my new theory</div>
+  <div class="said">i think it&#x27;s fucked for them i think that they&#x27;re really screwed if you&#x27;re the ucp because the the uh the question isn&#x27;t going to get 293 000 signatures uh there&#x27;s just no way we were talking talking about $177,000 as being nearly impossible. $293,000 just is ridiculously hard. And I believe the legislation prohibits another question from being circulated for six months or 18 months. On</div>
+</div>
+<div class="turn" data-start="2626">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">43:46</span>
+  </div>
+  <div class="said">months, 18 months. I can&#x27;t remember what the numbers are specifically, but it does prohibit it. Now, one could make the case, and I suspect the UCP will, will, or the separatists will, that because the legislation changed, this means that the timer should start again. So they&#x27;ll submit their question under the second timer. But I think that they&#x27;re really going to have a hard time getting this question through. And ultimately, it&#x27;s going to remove it from the citizens part of the referendum. However, it doesn&#x27;t necessarily stop the province from doing it. So the UCP is now going to have to bring the question themselves. themselves and now that there&#x27;s been a positive framing of the question i suspect the ucp will have to bring the positive framing of the question so they&#x27;re a bit fucked um because i i still believe that danielle smith wants to turn us into a u.s state uh this is my new it&#x27;s my new theory</div>
 </div>
 <div class="turn" data-start="2680">
   <div class="who">
@@ -1468,7 +1674,7 @@
 </div>
 <div class="turn" data-start="2699">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">44:59</span>
   </div>
   <div class="said">maker on this is Elections Alberta with judicial review, as I understand it</div>
@@ -1482,7 +1688,7 @@
 </div>
 <div class="turn" data-start="2706">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">45:06</span>
   </div>
   <div class="said">Alberta, in my experience anyway, I mean, at this point, you know, has been gutted of most of its teeth. So, you know, they may just do what the government wants, and then somebody&#x27;s going to have to have the resources to put it to judicial review. view. So they might just rule in a way that is contrary to the public interest and no one will do anything or care.</div>
@@ -1492,7 +1698,21 @@
     <span class="speaker">Zain</span>
     <span class="ts">45:27</span>
   </div>
-  <div class="said">Let&#x27;s focus back in on this Forever Canada process. you&#x27;ve been around campaigns. You&#x27;ve been around what timelines on campaigns look like. This is now clock started. This is a campaign. Give me a sense of what the most realistic landing spot for this group looks like in 90, flash forward 90 days from now. And you don&#x27;t have, there&#x27;s obviously the binary do they or do they not get the signatures but there&#x27;s other elements of successful and sometimes unsuccessful campaigns on outcomes that build tremendous community resources power potential etc so give me a sense of paint me a picture of 90 days from now what&#x27;s the what&#x27;s the high watermark in terms of what this group could accomplish if they do things well</div>
+  <div class="said">Let&#x27;s focus back in on this Forever Canada process.</div>
+</div>
+<div class="turn" data-start="2731">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">45:31</span>
+  </div>
+  <div class="said">you&#x27;ve been around campaigns. You&#x27;ve been around what timelines on campaigns look like. This is now clock started. This is a campaign.</div>
+</div>
+<div class="turn" data-start="2739">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">45:39</span>
+  </div>
+  <div class="said">Give me a sense of what the most realistic landing spot for this group looks like in 90, flash forward 90 days from now. And you don&#x27;t have, there&#x27;s obviously the binary do they or do they not get the signatures but there&#x27;s other elements of successful and sometimes unsuccessful campaigns on outcomes that build tremendous community resources power potential etc so give me a sense of paint me a picture of 90 days from now what&#x27;s the what&#x27;s the high watermark in terms of what this group could accomplish if they do things well</div>
 </div>
 <div class="turn" data-start="2766">
   <div class="who">
@@ -1538,10 +1758,17 @@
 </div>
 <div class="turn" data-start="2860">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">47:40</span>
   </div>
-  <div class="said">Yeah, I mean, in my head was 50. If the Recall Gondek people collected 60, and you would be driving through Calgary and you&#x27;d see them sitting at the side of the road with a little sandwich board, right? There were some organizational resources behind those signatures. They were in mall parking lots and all that kind of thing. um so uh yeah 50 or 60 uh probably 90 days is very short period of time particularly in summer so you&#x27;re going to have to do most of it in september when people are around and paying more attention and even then i think volunteers are going to find that as soon as they&#x27;re going to door to door or standing in mall parking lots or whatever the case may be you&#x27;re going to be standing there explaining to people what the hell you&#x27;re doing there because like the information environment is such that people actually don&#x27;t know a lot about this and without advertising money behind it that&#x27;s again another problem sorry carter go ahead i</div>
+  <div class="said">Yeah, I mean, in my head was 50. If the Recall Gondek people collected 60, and you would be driving through Calgary and you&#x27;d see them sitting at the side of the road with a little sandwich board, right? There were some organizational resources behind those signatures. They were in mall parking lots and all that kind of thing. um</div>
+</div>
+<div class="turn" data-start="2880">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">48:00</span>
+  </div>
+  <div class="said">so uh yeah 50 or 60 uh probably 90 days is very short period of time particularly in summer so you&#x27;re going to have to do most of it in september when people are around and paying more attention and even then i think volunteers are going to find that as soon as they&#x27;re going to door to door or standing in mall parking lots or whatever the case may be you&#x27;re going to be standing there explaining to people what the hell you&#x27;re doing there because like the information environment is such that people actually don&#x27;t know a lot about this and without advertising money behind it that&#x27;s again another problem sorry carter go ahead i</div>
 </div>
 <div class="turn" data-start="2912">
   <div class="who">
@@ -1566,7 +1793,7 @@
 </div>
 <div class="turn" data-start="2946">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">49:06</span>
   </div>
   <div class="said">that&#x27;s the mall parking lots yeah it&#x27;s where you&#x27;re gonna have to do this there&#x27;s</div>
@@ -1601,7 +1828,7 @@
 </div>
 <div class="turn" data-start="2977">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">49:37</span>
   </div>
   <div class="said">no i saw that part um uh and And is it an Alberta number</div>
@@ -1615,7 +1842,7 @@
 </div>
 <div class="turn" data-start="2992">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">49:52</span>
   </div>
   <div class="said">have to have had the big one, right? When you go home kind of thing</div>
@@ -1629,7 +1856,7 @@
 </div>
 <div class="turn" data-start="2997">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">49:57</span>
   </div>
   <div class="said">many individuals? Oh, I&#x27;d say about a thousand. Oh,</div>
@@ -1643,10 +1870,17 @@
 </div>
 <div class="turn" data-start="3063">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">51:03</span>
   </div>
-  <div class="said">uh i would say that if you&#x27;re the business council it&#x27;s much harder than if you&#x27;re independent academic and if you&#x27;re an academic you can say no and do uh say no all the time to all kinds of things uh and so i think there&#x27;s a distinction there um i do think that there is also a distinction though in having a speaking role or not um and uh you know invalidating things And so that&#x27;s the distinction I would make for that as well. And, you know, that can make it tough to be, seem to be validating some of the ideas that were in that Alberta Next survey, which are pretty far offside mainstream opinion for anyone.</div>
+  <div class="said">uh i would say that if you&#x27;re the business council it&#x27;s much harder than if you&#x27;re independent academic and if you&#x27;re an academic you can say no and do uh say no all the time to all kinds of things uh and so i think there&#x27;s a distinction there um i do think that there is also a distinction though in having a speaking role or not um and uh you know invalidating things And so that&#x27;s the distinction I would make for that as well. And, you know, that can make it tough to be, seem</div>
+</div>
+<div class="turn" data-start="3097">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">51:37</span>
+  </div>
+  <div class="said">to be validating some of the ideas that were in that Alberta Next survey, which are pretty far offside mainstream opinion for anyone.</div>
 </div>
 <div class="turn" data-start="3106">
   <div class="who">
@@ -1688,7 +1922,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">52:18</span>
   </div>
-  <div class="said">be with here in this conversation? This is bullshit. I mean, the president of Whitecap Resources is going to be, you know, is going to come across as a come out with with, you know, a reasonable position on how Ottawa has impacted his industry. Like it&#x27;s are you fucking kidding me? This is bullshit. And and the people who want to be taken seriously. I ran into Trevor Toome yesterday and I apologized to him profusely for calling him a shill. anyway she&#x27;s a total fucking shill for being on this panel i&#x27;m that you know it&#x27;s it&#x27;s very upsetting to me that people that i have respect for uh would actually take this position and it will be disqualifying in the future the way that you know steve allen used to be someone that was respected and then he&#x27;s he served at the whim of danielle smith to write the report that she&#x27;s already wanted from the beginning and that&#x27;s what this panel is you know trevor tomb is trying to to pretend that he&#x27;s actually going to be able to listen to the to the input it&#x27;s bullshit he&#x27;s going to be he&#x27;s going to have an overweighted with rural and um you know if you&#x27;re really reflecting what the population&#x27;s saying the population is going to be absolutely skewed this is the problem with engagement you don&#x27;t get the full fucking population you get the wackadoodles the 20 of the population that already has believing in conspiracy theories he&#x27;s going to to get the anti-vax crowd that&#x27;s who he&#x27;s going to get at this fucking panel what&#x27;s he going to do well they don&#x27;t believe in vaccinations but they do believe in an alberta police force fuck off hey</div>
+  <div class="said">be with here in this conversation? This is bullshit. I mean, the president of Whitecap Resources is going to be, you know, is going to come across as a come out with with, you know, a reasonable position on how Ottawa has impacted his industry. Like it&#x27;s are you fucking kidding me? This is bullshit. And and the people who want to be taken seriously. I ran into Trevor Toome yesterday and I apologized to him profusely for calling him a shill. anyway she&#x27;s a total fucking shill for being on this panel i&#x27;m that you know it&#x27;s it&#x27;s very upsetting to me that people that i have respect for uh would actually take this position and it will be disqualifying in the future the way that you know steve allen used to be someone that was respected and then he&#x27;s he served at the whim of danielle smith to write the report that she&#x27;s already wanted from the beginning and that&#x27;s what this panel is you know trevor tomb is trying to to pretend that he&#x27;s actually going to be able to listen to the to the input it&#x27;s bullshit he&#x27;s going to be he&#x27;s going to have an overweighted with rural and um you</div>
+</div>
+<div class="turn" data-start="3208">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">53:28</span>
+  </div>
+  <div class="said">know if you&#x27;re really reflecting what the population&#x27;s saying the population is going to be absolutely skewed this is the problem with engagement you don&#x27;t get the full fucking population you get the wackadoodles the 20 of the population that already has believing in conspiracy theories he&#x27;s going to to get the anti-vax crowd that&#x27;s who he&#x27;s going to get at this fucking panel what&#x27;s he going to do well they don&#x27;t believe in vaccinations but they do believe in an alberta police force fuck off hey</div>
 </div>
 <div class="turn" data-start="3237">
   <div class="who">
@@ -1783,7 +2024,7 @@
 </div>
 <div class="turn" data-start="3361">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">56:01</span>
   </div>
   <div class="said">It&#x27;s the first year in 10 years that I don&#x27;t have to do Stampede and I&#x27;m not going to. And it is glorious. I cannot tell you how glorious it is. And I&#x27;m not doing any of it and proudly so. So but it is important to note that Carter is wrong on this because you don&#x27;t have to do the traveling cocktail party after a couple of these things. You can stop into one or two of them and then you can leave that behind. You don&#x27;t need to be looking, sitting there at two in the afternoon, watching the same, you know, vice president government relations get shit faced at</div>
@@ -1797,10 +2038,17 @@
 </div>
 <div class="turn" data-start="3402">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">56:42</span>
   </div>
-  <div class="said">don&#x27;t have to do it. after you do a couple of them you should just leave and uh in my view the best tactics were once we got away from that glorified pedal bar that is uh those those um those the lobbyist circuit right they are just uh appalling uh after a little while just all these you know gr people getting shit faced at two in the afternoon on a wednesday it&#x27;s stupid and it&#x27;s not work and uh Nobody should subject themselves to it. Instead, what the New Democrats started doing a few years back that I thought was really smart was they started doing local, you know, out in the great beyond. So one at Killarney, one at the Glenmore Reservoir, one, you know, wherever, right up at Confederation Park, you name it, of community events with MLAs or candidates or, you know, writing association people. And it was a reason for the MLAs to go out and canvass and say, hey, I&#x27;m having a thing, right? And there&#x27;s food and sometimes it&#x27;s morning and sometimes it&#x27;s afternoon. noon um and uh because stampede is a time of of uh the community engaging in calgary in neighborhoods not necessarily down on stephen avenue and on the stampede grounds and in the associated uh bars where the you know you go eat canapes and and watch uh uh business people you know wear costumes and get drunk um and so there&#x27;s much more to stampede than that and embedding oneself and community is a really important thing to do. Number two, fundraising. If all those drunk people are going to be there at 2 o&#x27;clock in the afternoon, you can charge them $350 to come to an event in the evening. That is the best use of your time during Stampede. Wow.</div>
+  <div class="said">don&#x27;t have to do it. after you do a couple of them you should just leave and uh in my view the best tactics were once we got away from that glorified pedal bar that is uh those those um those the lobbyist circuit right they are just uh appalling uh after a little while just all these you know gr people getting shit faced at two in the afternoon on a wednesday it&#x27;s stupid and it&#x27;s not work and uh Nobody should subject themselves to it. Instead, what the New Democrats started doing a few years back that I thought was really smart was they started doing local, you know, out in the great beyond. So one at Killarney, one at the Glenmore Reservoir, one, you know, wherever, right up at Confederation Park, you name it, of community events with MLAs or candidates or, you know, writing association people. And it was a reason for the MLAs to go out and canvass and say, hey, I&#x27;m having a thing, right? And there&#x27;s food and sometimes it&#x27;s morning and sometimes it&#x27;s afternoon. noon um and uh because stampede is a time of of uh the community engaging in calgary in neighborhoods not necessarily down on</div>
+</div>
+<div class="turn" data-start="3475">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">57:55</span>
+  </div>
+  <div class="said">stephen avenue and on the stampede grounds and in the associated uh bars where the you know you go eat canapes and and watch uh uh business people you know wear costumes and get drunk um and so there&#x27;s much more to stampede than that and embedding oneself and community is a really important thing to do. Number two, fundraising. If all those drunk people are going to be there at 2 o&#x27;clock in the afternoon, you can charge them $350 to come to an event in the evening. That is the best use of your time during Stampede. Wow.</div>
 </div>
 <div class="turn" data-start="3503">
   <div class="who">
@@ -1832,7 +2080,7 @@
 </div>
 <div class="turn" data-start="3541">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">59:01</span>
   </div>
   <div class="said">yeah. That&#x27;s why I said go do two or three of them and then get the hell out. Because, you know, it is good to make connections with these people to give out your phone number to say, yeah, absolutely, I would take that meeting. Because some of those, you know, meetings are important. And some of those folks are important. A lot of business does get done at Stampede. But there is a threshold. And after that, it is diminishing returns. turns um and so do one or two of them or three or four and stack them up and get out uh was my view on it because after a while you know and as the week goes on people get a little bit looser and drunker and that is i used to say to people i&#x27;m like no i&#x27;m not having a drink at two o&#x27;clock in the afternoon on a wednesday i don&#x27;t drink at work i don&#x27;t know what you&#x27;re doing um like it got so your personal</div>
@@ -1853,7 +2101,7 @@
 </div>
 <div class="turn" data-start="3598">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">59:58</span>
   </div>
   <div class="said">asshole to me. I just found it to be, you know, like if we&#x27;re at work, then we&#x27;re at work. And if we&#x27;re not, then we&#x27;re not. But there is value in obviously some of that relationship building. And let&#x27;s face it, those happen at those lobbyists. That&#x27;s interesting</div>
@@ -1867,7 +2115,7 @@
 </div>
 <div class="turn" data-start="3618">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:00:18</span>
   </div>
   <div class="said">and then I would go do community stuff after that. And I would spend my time, you know, know at those breakfasts were like you know working the the the lineup talking to people there like normies right not uh some vpgr uh for some midstream company um but uh i would go and help uh you know calgary mlas and like let&#x27;s go do things or you know work the crowd there like in other words like talk to voters uh people who vote</div>
@@ -1888,7 +2136,7 @@
 </div>
 <div class="turn" data-start="3659">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:00:59</span>
   </div>
   <div class="said">which is what like an uncritical slavish devotion to Stampede</div>

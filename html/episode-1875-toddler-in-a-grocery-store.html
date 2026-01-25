@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/131628903.mp3?sig=O13dCTYhPqvqoOgLMP9APcx3Kc3V2UbVCf8ol3Qwm-o%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/6850a0599692e2d8d727469a"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -432,7 +498,7 @@
           
           <div class="turn" data-start="2">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:02</span>
   </div>
   <div class="said">This is a strategist episode 1875 my name is Zain Velji with me as always Shannon Phillips and Stephen Carter. Carter how are you? Oh my god</div>
@@ -446,7 +512,7 @@
 </div>
 <div class="turn" data-start="20">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:20</span>
   </div>
   <div class="said">shit. Almost got it. Okay I&#x27;m gonna give you a second take go ahead try again. Fuck what</div>
@@ -460,7 +526,7 @@
 </div>
 <div class="turn" data-start="26">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:26</span>
   </div>
   <div class="said">No you you you Lamar Kendrick. You know someone who would not have fucked that up? Holy shit. Shannon Phillips. Shannon Phillips would not have fucked that up.</div>
@@ -474,14 +540,14 @@
 </div>
 <div class="turn" data-start="43">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:43</span>
   </div>
   <div class="said">did not receive the briefing note. I would have read it with excitement and relish. I did not enjoy the one tweet I had to read on this. However, if there was an actual briefing note on it, that would have been more exciting to read to kind of really get into the background. Let me give you the</div>
 </div>
 <div class="turn" data-start="60">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:00</span>
   </div>
   <div class="said">These are two fragile men. Yes. And then there&#x27;s Kendrick Lamar. Okay. That&#x27;s what&#x27;s happened.</div>
@@ -495,7 +561,7 @@
 </div>
 <div class="turn" data-start="70">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:10</span>
   </div>
   <div class="said">folded so much quicker than I thought he would. It was embarrassing by Jagmeet Singh. I do love Jagmeet. But, Shannon, welcome. I&#x27;m part of the Jagmeet Singh fan club. Carter is well known to this and I&#x27;m probably Jagmeet Singh&#x27;s last</div>
@@ -509,7 +575,7 @@
 </div>
 <div class="turn" data-start="88">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:28</span>
   </div>
   <div class="said">this was a fucking dumbass move by Chuck Meetsick. I do not know what the hell he was thinking. To go to a concert?</div>
@@ -523,7 +589,7 @@
 </div>
 <div class="turn" data-start="95">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:35</span>
   </div>
   <div class="said">go to a fucking concert. I agree with you completely. Go to</div>
@@ -537,14 +603,14 @@
 </div>
 <div class="turn" data-start="111">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:51</span>
   </div>
   <div class="said">I agree. agree uh he can go wherever he wants uh and i don&#x27;t think he has to answer to anyone especially now that he&#x27;s a private citizen there were other private citizens there like get over yourself drake get</div>
 </div>
 <div class="turn" data-start="125">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:05</span>
   </div>
   <div class="said">yourself that&#x27;s interesting yeah so there is something interesting about this which is jagmeet singh&#x27;s cultural cachet was always greater than his political uh upside carter gravitas yeah yeah like the fact that like drake and jagmeet singh know one another Now, there&#x27;s actually quite interesting from a Canadian cultural perspective. I find that to be quite interesting. So what does someone like Jagmeet Singh have to do when he obviously is no longer a political face, but transitioned? I&#x27;m almost asking you celebrity PR, Carter</div>
@@ -558,7 +624,7 @@
 </div>
 <div class="turn" data-start="155">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:35</span>
   </div>
   <div class="said">Jagmeet Singh almost is on like a celebrity PR track now, isn&#x27;t he?</div>
@@ -572,31 +638,59 @@
 </div>
 <div class="turn" data-start="183">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">3:03</span>
   </div>
   <div class="said">okay. It hurts. But, you know, if Jagmeet Singh is going to have another little round of 15 Minutes of Fame, Then he should use it for fundraising purposes to clean up the debt that he left the party and the existential threat that he left to the federal NDP and the future of social democracy in this country. How about we take that seriously, not the Kendrick Drake feud? Like, come on down to earth, buddy. There&#x27;s a big old debt there. Figure it out and set the party up for success, which is something you never did in the time that you were leader of it.</div>
 </div>
 <div class="turn" data-start="216">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">3:36</span>
   </div>
-  <div class="said">Here&#x27;s what I like. I like that she added is taking it in this direction. I was just coming in with a nice sort of like, you know, let&#x27;s all lay our tentacles into Jagmeet Singh for a few minutes. But now I have a serious question for you. And it&#x27;s back to you, Shannon. Does the former leader have a actual responsibility to clear this debt? Talk to me from like a party perspective, because many people do not know this, and you could probably explain it greater than I do, but I&#x27;ll give you the simplified version. The NDP have a building that they borrow against to raise money. And I think they&#x27;re the only political party on the federal scene that does so and does that, the boring of the money leverage against the building. So this is an interesting sort of situation where what happens when a leader leaves? What have you historically seen? What do you think both the actual and moral responsibility for someone like Jagmeet Singh is in that regard?</div>
+  <div class="said">Here&#x27;s what I like. I like that she added is taking it in this direction. I was just coming in with a nice sort of like, you know, let&#x27;s all lay our tentacles into Jagmeet Singh for a few minutes. But now I have a serious question for you. And it&#x27;s back to you, Shannon. Does the former leader have a actual responsibility to clear this debt? Talk to me from like a party perspective, because many people do not know this, and you could probably explain it greater than I do, but I&#x27;ll give you the simplified version. The NDP have a building that they borrow against to raise money.</div>
+</div>
+<div class="turn" data-start="244">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:04</span>
+  </div>
+  <div class="said">And I think they&#x27;re the only political party on the federal scene that does so and does that, the boring of the money leverage against the building. So this is an interesting sort of situation where what happens when a leader leaves? What have you historically seen? What do you think both the actual and moral responsibility for someone like Jagmeet Singh is in that regard?</div>
 </div>
 <div class="turn" data-start="265">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:25</span>
   </div>
-  <div class="said">Well, the federal party has never been left in a state like this, not even when they lost party status in 1993 to my recollection of it, although I joined the party around 97. But I was on the federal council in the late 90s, early 2000s and, you know, in in the days when we had like 20 seats. So I saw their finances at that time. And I was around as well for when the party bought or essentially Labour bought the building for the party before the new election finance rules came into place that that that Kretchen brought in right in 2003 before the 2004 election. So that was the genesis of that. Steele and others pooled some, because in the olden times, Labour used to guarantee that loan, right, in some way, shape or form, because they could. Oh, wasn&#x27;t aware of that. Oh, that&#x27;s interesting. Yeah. And so when the legislation took that out, then Labour, before the legislation came in, Labour bought the building. Yeah. And then the party, and that was essentially what, there were a couple of different things that came out of that legislation that helped the party build in the latent years. Number one was it allowed individual riding associations to do their own receipting and their own fundraising. And so you didn&#x27;t have to necessarily do a revenue share or anything. So you were just amassing money in individual riding. So a Nathan Cullen, a Jack Layton, an Olivia Chow, these kinds of seats, then, you know, Brian Massey grew up over time, right? Because they could establish their own fundraising base. So that was what that legislation did for the party. And the other thing it did was it allowed them to borrow. But to your question, what responsibility does Jagmeet Singh have? I&#x27;m not really sure if I can sort of reach back to it like a history time on when a leader had that kind of responsibility, because no leader has left the party in this kind of dire straits ever. Never. And so if he has an ability to help them get out of it, he should try because he set a really bad precedent here. And he has authored a lot of it.</div>
+  <div class="said">Well, the federal party has never been left in a state like this, not even when they lost party status in 1993 to my recollection of it, although I joined the party around 97. But I was on the federal council in the late 90s, early 2000s and, you know, in in the days when we had like 20 seats. So I saw their finances at that time. And I was around as well for when the party bought or essentially Labour bought the building for the party before the new election finance rules came into place that that that Kretchen brought in right in 2003 before the 2004 election. So that was the genesis of that. Steele and others pooled some, because in the olden times, Labour used to guarantee that loan, right,</div>
+</div>
+<div class="turn" data-start="309">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">5:09</span>
+  </div>
+  <div class="said">in some way, shape or form, because they could. Oh, wasn&#x27;t aware of that. Oh, that&#x27;s interesting. Yeah. And so when the legislation took that out, then Labour, before the legislation came in, Labour bought the building. Yeah.</div>
+</div>
+<div class="turn" data-start="320">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">5:20</span>
+  </div>
+  <div class="said">And then the party, and that was essentially what, there were a couple of different things that came out of that legislation that helped the party build in the latent years. Number one was it allowed individual riding associations to do their own receipting and their own fundraising. And so you didn&#x27;t have to necessarily do a revenue share or anything. So you were just amassing money in individual riding. So a Nathan Cullen, a Jack Layton, an Olivia Chow, these kinds of seats, then, you know, Brian Massey grew up over time, right? Because they could establish their own fundraising base. So that was what that legislation did for the party. And the other thing it did was it allowed them to borrow. But to your question, what responsibility does Jagmeet Singh have? I&#x27;m not really sure if I can sort of reach back to it like a history time on when a leader had that kind of responsibility, because no leader has left the party in this kind of dire straits ever. Never. And so if he has an ability to help them get out of it, he should try because he set a really bad precedent here. And he has authored a lot of it.</div>
 </div>
 <div class="turn" data-start="393">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">6:33</span>
   </div>
-  <div class="said">Carter, obviously, was not planning to go here, but now I find this a very interesting line of inquiry. Oh, great. I&#x27;m well prepared for it. As someone who&#x27;s advised politicians and as a... No, but as a political practitioner, Commissioner, what responsibility would you have tasked with your principal, Jagmeet Singh, to clear the party&#x27;s debt? Or would you have said, do you do your nominal bit? Do you participate at all? This is behind you. How do you even think about these things? We often talk about leadership campaigns, which are, of course, associated with your name and you ran for leadership. And we talked about the toxicity of leadership debts. This is interesting because it&#x27;s a party that no longer has official party status, that has this ability to borrow, that did do that borrowing. It&#x27;s got a long history and tenure. It&#x27;s a very interesting situation. What responsibility do you hold Jagmeet Singh to from a practical practitioner&#x27;s perspective?</div>
+  <div class="said">Carter, obviously, was not planning to go here, but now I find this a very interesting line of inquiry. Oh, great. I&#x27;m well prepared for it. As someone who&#x27;s advised politicians and as a... No,</div>
+</div>
+<div class="turn" data-start="403">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">6:43</span>
+  </div>
+  <div class="said">but as a political practitioner, Commissioner, what responsibility would you have tasked with your principal, Jagmeet Singh, to clear the party&#x27;s debt? Or would you have said, do you do your nominal bit? Do you participate at all? This is behind you. How do you even think about these things? We often talk about leadership campaigns, which are, of course, associated with your name and you ran for leadership. And we talked about the toxicity of leadership debts. This is interesting because it&#x27;s a party that no longer has official party status, that has this ability to borrow, that did do that borrowing. It&#x27;s got a long history and tenure. It&#x27;s a very interesting situation. What responsibility do you hold Jagmeet Singh to from a practical practitioner&#x27;s perspective?</div>
 </div>
 <div class="turn" data-start="441">
   <div class="who">
@@ -607,24 +701,38 @@
 </div>
 <div class="turn" data-start="502">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">8:22</span>
   </div>
   <div class="said">Can I talk about Jagmeet for a second, though? Shannon, maybe over to you. Do you feel like someone who leaves a party in this sort of lurch, has this impact them in their future career prospects or even in a brand way? Or have we in In politics, just consider this one of the elements of politics where this doesn&#x27;t dog you. You get to just move on with your life. What do you think?</div>
 </div>
 <div class="turn" data-start="520">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:40</span>
   </div>
-  <div class="said">Oh, I mean, I think it would depend on what he wants to do. But generally speaking, you know, my working thesis is always that people don&#x27;t really understand politics. And to the extent they do, they don&#x27;t really care how it all works. And so he&#x27;ll probably go off into the private sector or go and practice law or do something else. I think, you know, I&#x27;m sure he&#x27;s got a number of things that he can do. He is a talented guy in certain respects. He just wasn&#x27;t particularly talented at leading the federal NDP and creating one party, in my view, for the country. So he&#x27;ll do that. I don&#x27;t think it really matters. But for people like me who would like a relevant federal NDP, my heart has broken for the last decade watching what has gone on with the federal NDP. And now with the opportunities and openings that they have that they won&#x27;t be able to necessarily take, am I pissed about it? Hell yeah, I am. It&#x27;s a good thing I can&#x27;t hire him because I wouldn&#x27;t.</div>
+  <div class="said">Oh, I mean, I think it would depend on what he wants to do. But generally speaking, you know, my working thesis is always that people don&#x27;t really understand politics. And to the extent they do, they don&#x27;t really care how it all works. And so he&#x27;ll probably go off into the private sector or go and practice law or do something else. I think, you know, I&#x27;m sure he&#x27;s got a number of things that he can do. He is a talented guy in certain respects. He just wasn&#x27;t particularly talented at leading the federal NDP and creating one party, in my view, for the country. So he&#x27;ll do that. I don&#x27;t think it really matters. But for people like me who would like a relevant federal NDP, my heart has</div>
+</div>
+<div class="turn" data-start="565">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">9:25</span>
+  </div>
+  <div class="said">broken for the last decade watching what has gone on with the federal NDP. And now with the opportunities and openings that they have that they won&#x27;t be able to necessarily take, am I pissed about it? Hell yeah, I am. It&#x27;s a good thing I can&#x27;t hire him because I wouldn&#x27;t.</div>
 </div>
 <div class="turn" data-start="583">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">9:43</span>
   </div>
-  <div class="said">Carter, let&#x27;s use that transition of heartbreaks and let&#x27;s go from heartbreaks for the last decade to hearts potentially breaking for conservatives in January. because it has just come out a couple hours ago that Pierre Polyev is going to be facing a leadership review at the party&#x27;s, and these are sources speaking to the Globe and Mail, at the party&#x27;s national convention in January of 2026. Carter, this was well-rumored to be something that happens in the spring, potentially, for Pierre Polyev. It&#x27;s now been moved up to January. This is also a time where Pierre Polyev doesn&#x27;t have a seat. It&#x27;s also a time where Pierre Polyev seems to be, at least reported by The Hill Times, making phone calls to do a campaign debrief post-mortem start this help or hinder pierre pauliev&#x27;s chances to stay on as leader the timeline moving up to january start here with me</div>
+  <div class="said">Carter, let&#x27;s use that transition of heartbreaks and let&#x27;s go from heartbreaks for the last decade to hearts potentially breaking for conservatives in January. because it has just come out a couple hours ago that Pierre Polyev is going to be facing a leadership review at the party&#x27;s, and these are sources speaking to the Globe and Mail, at the party&#x27;s national convention in January of 2026. Carter, this was well-rumored to be something that happens in the spring, potentially, for Pierre Polyev. It&#x27;s now been moved up to January. This is also a time where Pierre Polyev doesn&#x27;t have a seat. It&#x27;s also a time where Pierre Polyev seems</div>
+</div>
+<div class="turn" data-start="619">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">10:19</span>
+  </div>
+  <div class="said">to be, at least reported by The Hill Times, making phone calls to do a campaign debrief post-mortem start this help or hinder pierre pauliev&#x27;s chances to stay on as leader the timeline moving up to january start here with me</div>
 </div>
 <div class="turn" data-start="635">
   <div class="who">
@@ -635,7 +743,7 @@
 </div>
 <div class="turn" data-start="648">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">10:48</span>
   </div>
   <div class="said">show his last time his</div>
@@ -645,25 +753,46 @@
     <span class="speaker">Carter</span>
     <span class="ts">10:50</span>
   </div>
-  <div class="said">legs and to actually achieve something might be better for him. On the other hand, January, I&#x27;m not 100% certain, but I believe it&#x27;s those in the room who get the vote on the leadership review. Maybe not everybody wants to travel in January. Maybe it&#x27;s a smaller crew. Maybe it becomes the diehards who want to see him stay. He may be able to influence that more effectively. I think it&#x27;s a bit of a push. I think, frankly, if you&#x27;re going to face these leadership reviews after every election, and I&#x27;m not sure I&#x27;m a fan, I&#x27;m not sure that this is the best way to run a party, but this is the way we&#x27;ve all chosen to run a party at this stage. If you&#x27;re going to have the leadership review, personally, I think the faster after the election, the better for the party, just to get it behind them. him. But I worry for I worry for young Pierre. I worry. I worry that he&#x27;s facing off against something that he may may not be able to control</div>
+  <div class="said">legs and to actually achieve something might be better for him. On the other hand, January, I&#x27;m not 100% certain, but I believe it&#x27;s those in the room who get the vote on the leadership review. Maybe not everybody wants to travel in January. Maybe it&#x27;s a smaller crew. Maybe it becomes the diehards who want to see him stay. He may be able to influence that more effectively.</div>
+</div>
+<div class="turn" data-start="675">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:15</span>
+  </div>
+  <div class="said">I think it&#x27;s a bit of a push. I think, frankly, if you&#x27;re going to face these leadership reviews after every election, and I&#x27;m not sure I&#x27;m a fan, I&#x27;m not sure that this is the best way to run a party, but this is the way we&#x27;ve all chosen to run a party at this stage. If you&#x27;re going to have the leadership review, personally, I think the faster after the election, the better for the party, just to get it behind them. him. But I worry for I worry for young Pierre. I worry. I worry that he&#x27;s facing off against something that he may may not be able to control</div>
 </div>
 <div class="turn" data-start="708">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">11:48</span>
   </div>
-  <div class="said">I&#x27;m glad you mentioned earlier, because that&#x27;s where my instinct would be at. He seemed to be riding a pretty decent wave on the heels of the election to kind of say, listen, we didn&#x27;t get there, but we got really fucking close. The narrative was on his side that he didn&#x27;t fully tank this thing, especially considering where they were going to be with the majority government that was going to be piled against him. but and so i agree with the sentiment of close but now we&#x27;re in this weird period it&#x27;s not a year from now or like march which let&#x27;s just i&#x27;ll use that as roughly like a year from now right like nine months from now but it&#x27;s january and it&#x27;s january shannon so i&#x27;m like you know there&#x27;s also something to be said january like a beginning of a new year people looking for renewal people potentially thinking about things maybe slightly differently it&#x27;s cold as fuck uh in calgary so i&#x27;m kind of curious where is your head at if you&#x27;re if you&#x27;re a pure polyev now that you&#x27;ve had this This date moved up on you by a couple of months.</div>
+  <div class="said">I&#x27;m glad you mentioned earlier, because that&#x27;s where my instinct would be at. He seemed to be riding a pretty decent wave on the heels of the election to kind of say, listen, we didn&#x27;t get there, but we got really fucking close. The narrative was on his side that he didn&#x27;t fully tank this thing, especially considering where they were going to be with the majority government that was going to be piled against him.</div>
+</div>
+<div class="turn" data-start="729">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:09</span>
+  </div>
+  <div class="said">but and so i agree with the sentiment of close but now we&#x27;re in this weird period it&#x27;s not a year from now or like march which let&#x27;s just i&#x27;ll use that as roughly like a year from now right like nine months from now but it&#x27;s january and it&#x27;s january shannon so i&#x27;m like you know there&#x27;s also something to be said january like a beginning of a new year people looking for renewal people potentially thinking about things maybe slightly differently it&#x27;s cold as fuck uh in calgary so i&#x27;m kind of curious where is your head at if you&#x27;re if you&#x27;re a pure polyev now that you&#x27;ve had this This date moved up on you by a couple of months.</div>
 </div>
 <div class="turn" data-start="758">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">12:38</span>
   </div>
-  <div class="said">January in Calgary, importantly. Yeah, of course. So you have a good opportunity to fill that room for the people who are going to vote nicely for you, who maybe just worked on the campaign, on the by-election, who are your ride or dies out of Alberta. They&#x27;re not folks out of BC who might be butthurt that they didn&#x27;t have the breakthrough that they wanted. They&#x27;re not going to be folks from Atlantic Canada who are butthurt that they didn&#x27;t have the breakthrough that was expected. it back even five months ago. And so I think it&#x27;s easier for them to do it earlier. It basically means that you campaign through the summer, through your by-election and through your barbecue circuit. You get back into the House, you score a few points off the budget and other things and show that you still are in fight and form. It&#x27;s not long enough for anything to fester are either on the party side or the caucus side. As I said last time, when, you know, looking at his really crappy numbers, and they are really bad. There&#x27;s been a couple of data sets come out now. Beyond Nano, since the They&#x27;re not good. Ain&#x27;t good over there. Now, caucus is probably going to be the last people to cotton on to this, right? Caucuses being what they are, oftentimes they&#x27;re the last people you can hold a gun to their head and they wouldn&#x27;t be able to tell you what percentage of popular vote you got in the last election. This is what electeds are like. Having been one, I know how blissfully unaware we, they are. But I do think that it doesn&#x27;t give anything time to steamroll and to fester because the party is still on his side. They kind of still don&#x27;t know what to do or make of it. And it won&#x27;t be enough time for factions to kind of bubble up in caucus. I think that&#x27;s probably the idea of January over spring. Carter, what do you think of that?</div>
+  <div class="said">January in Calgary, importantly. Yeah, of course. So you have a good opportunity to fill that room for the people who are going to vote nicely for you, who maybe just worked on the campaign, on the by-election, who are your ride or dies out of Alberta. They&#x27;re not folks out of BC who might be butthurt that they didn&#x27;t have the breakthrough that they wanted. They&#x27;re not going to be folks from Atlantic Canada who are butthurt that they didn&#x27;t have the breakthrough that was expected. it back even five months ago. And so I think it&#x27;s easier for them to do it earlier. It basically means that you campaign through the summer, through your by-election and through your barbecue circuit. You get back into the House, you score a few points off the budget and other things and show that you still are in fight and form. It&#x27;s not long enough for anything to fester are either on the party side or the caucus side. As I said last time, when, you know, looking at his really crappy numbers, and they are really bad. There&#x27;s been a couple of data sets come out now. Beyond Nano, since the</div>
+</div>
+<div class="turn" data-start="823">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">13:43</span>
+  </div>
+  <div class="said">They&#x27;re not good. Ain&#x27;t good over there. Now, caucus is probably going to be the last people to cotton on to this, right? Caucuses being what they are, oftentimes they&#x27;re the last people you can hold a gun to their head and they wouldn&#x27;t be able to tell you what percentage of popular vote you got in the last election. This is what electeds are like. Having been one, I know how blissfully unaware we, they are. But I do think that it doesn&#x27;t give anything time to steamroll and to fester because the party is still on his side. They kind of still don&#x27;t know what to do or make of it. And it won&#x27;t be enough time for factions to kind of bubble up in caucus. I think that&#x27;s probably the idea of January over spring. Carter, what do you think of that?</div>
 </div>
 <div class="turn" data-start="865">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">14:25</span>
   </div>
   <div class="said">What do you think of that? I agree with the Calgary part. I&#x27;m not sure I entirely buy that there&#x27;s not enough time for allowing something to fester or for an alternative, even if not perfect or even as good enough as Pierre Pallievre, to present itself. Do you agree with Shannon or do you feel like there is a bit of daylight here if someone wanted to do shit?</div>
@@ -677,7 +806,7 @@
 </div>
 <div class="turn" data-start="906">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">15:06</span>
   </div>
   <div class="said">Or let me throw another name out there, Jason Kenney. Jason</div>
@@ -687,32 +816,46 @@
     <span class="speaker">Carter</span>
     <span class="ts">15:09</span>
   </div>
-  <div class="said">Kenney. The Jason Kenney. You know, these things could all happen. I mean, we&#x27;re not sure. I&#x27;m not sure that any location would have been good. I&#x27;m not sure that any time would be good, because I think that unlike the New Democrats, who have long had this, let&#x27;s give our party leaders a couple, three, four chances at the, you grabbing the brass ring, the Conservative Party is one and done. That is their methodology. That&#x27;s the way that they think. And I don&#x27;t think that Pierre Polyev&#x27;s performance, as good as it was, is going to necessarily be enough to stand in the face of the performance as bad as it potentially could be. Because it is equally as bad. It&#x27;s not great for the good folks in Pierre Polyev&#x27;s camp. This is just, I just don&#x27;t know that he&#x27;s going to be able to rebound through the fall. And my bet would always be on the Conservatives, you know, tossing their leader. It&#x27;s the same way that they, I think if Jagmeet Singh didn&#x27;t resign, I&#x27;m not sure the NDP get rid of him because they just are so politically inept. Not you, Shannon, but</div>
+  <div class="said">Kenney. The Jason Kenney. You know, these things could all happen. I mean, we&#x27;re not sure. I&#x27;m not sure that any location would have been good. I&#x27;m not sure that any time would be good, because I think that unlike the New Democrats, who have long had this, let&#x27;s give our party leaders a couple, three, four chances at the, you grabbing the brass ring, the Conservative Party is one and done. That is their methodology. That&#x27;s the way that they think. And I don&#x27;t think that Pierre Polyev&#x27;s performance, as good as it was, is going to necessarily be enough to stand in the face of the performance as bad as it potentially could be. Because it is equally as bad. It&#x27;s not great for the good</div>
+</div>
+<div class="turn" data-start="962">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">16:02</span>
+  </div>
+  <div class="said">folks in Pierre Polyev&#x27;s camp. This is just, I just don&#x27;t know that he&#x27;s going to be able to rebound through the fall. And my bet would always be on the Conservatives, you know, tossing their leader. It&#x27;s the same way that they, I think if Jagmeet Singh didn&#x27;t resign, I&#x27;m not sure the NDP get rid of him because they just are so politically inept. Not you, Shannon, but</div>
 </div>
 <div class="turn" data-start="986">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">16:26</span>
   </div>
   <div class="said">A lot of people just walked away from the federal party. But this is where on the Pueblo thing, I mean, the reason why I sort of tend towards he might be OK and he might be able to skate it through if he doesn&#x27;t let it fester too long is because you have seen the Conservative Party successfully peddle the narrative. And maybe it&#x27;s a fiction. I don&#x27;t know that they actually kind of won the last campaign.</div>
 </div>
 <div class="turn" data-start="1011">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">16:51</span>
   </div>
   <div class="said">done that well enough to</div>
 </div>
 <div class="turn" data-start="1013">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">16:53</span>
   </div>
-  <div class="said">Exactly. Yeah, exactly. I mean, and so to Carter&#x27;s point, you know, it&#x27;s true that they do like to stab each other in the back, the front, everywhere else. But it would seem to me that they&#x27;ve got that. He still got the membership, right? At least for now, because he catered to the ones that might be the fastest to throw him overboard. The kind of like the further right ones, right? The more conspiratorial ones. He never really pissed them off, right? Right. He never went, you know, like, oh, you&#x27;re a globalist, W.E.F. guy or whatever. They never got really the chance to throw him overboard on that stuff or even vaccine or whatever else might have come up. So and he didn&#x27;t even piss them off on Trump, which arguably might have bought him some points on the other side. Fair. So it would seem to me that he still got them. They&#x27;re not very mobilizable against him in Calgary. Not yet, unless somebody comes from the right at him. which could happen</div>
+  <div class="said">Exactly. Yeah, exactly. I mean, and so to Carter&#x27;s point, you know, it&#x27;s true that they do like to stab each other in the back, the front, everywhere else. But it would seem to me that they&#x27;ve got that. He still got the membership, right? At least for now, because he catered to the ones that might be the fastest to throw him overboard. The kind of like the further right ones, right? The more conspiratorial ones. He never really pissed them off, right? Right. He never went, you know, like, oh, you&#x27;re a globalist, W.E.F. guy or whatever. They never got really the chance to throw him overboard on that stuff or even vaccine or whatever else might have come up.</div>
+</div>
+<div class="turn" data-start="1053">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">17:33</span>
+  </div>
+  <div class="said">So and he didn&#x27;t even piss them off on Trump, which arguably might have bought him some points on the other side. Fair. So it would seem to me that he still got them. They&#x27;re not very mobilizable against him in Calgary. Not yet, unless somebody comes from the right at him. which could happen</div>
 </div>
 <div class="turn" data-start="1072">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">17:52</span>
   </div>
   <div class="said">i&#x27;m glad you mentioned this because i almost want to put you guys on two separate teams carter your team create fucking chaos for pierre that&#x27;s what i want you to be for a second and shannon okay i want you to be on on team secure pierre future right so as as a former elected i want you to think about what you would do over the course of this summer this is dovetailing off the reporting by the hill times that&#x27;s saying pierre polyev&#x27;s doing one-on-one calls with with former candidates caucus members being like where did we go wrong What&#x27;s going on? What do you think? But I want to start with Carter on this. Carter, if your job was to sow chaos and potentially propose an alternative between now and two milestones that we know, we roughly know, his by-election and now January, give me a game plan, roughly, around what you&#x27;d be doing, what you&#x27;d be doing this summer, what you&#x27;d be doing tail end of summer, what you&#x27;d be doing early fall right now, Carter, if you wanted to propose the weakening of Pierre Polyev and potentially an alternative. Then I&#x27;ll come to you, Shannon</div>
@@ -726,7 +869,7 @@
 </div>
 <div class="turn" data-start="1141">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">19:01</span>
   </div>
   <div class="said">something like that? Safest one. It&#x27;s something like an 80-20 split. I&#x27;ll look it up. 82,</div>
@@ -736,11 +879,18 @@
     <span class="speaker">Carter</span>
     <span class="ts">19:05</span>
   </div>
-  <div class="said">Yeah, so it&#x27;s got to be, you know, he&#x27;s got to get over 80%, right? Like in a by-election, that should be the minimum that he is achieving. I would set that as a, as a primary outcome. If he&#x27;s, if he&#x27;s going to show real strength, he has to get over 80%. If he doesn&#x27;t get over 80%, then we are seeing the law, you know, he&#x27;s not as popular. Um, so that&#x27;s, that&#x27;d be the first thing I would set. The second thing I would set is that he&#x27;s got to perform well on the barbecue circuit. And this is not a guy who traditionally performs well on the barbecue circuit. He is better in the house of commons doing the theatrical than he is in the uh in in people&#x27;s uh front front rooms doing barbecue circuit during the barbecue circuit meeting the the gen pop he that&#x27;s not his strength but i would i would expect i would set an expectation that it&#x27;s going to have to be his strength you know how does he perform at the stampede how does he perform across canada during the the course of the summer? Is he getting out there? Is he being seen or is he, you retreating into prep for House of Commons, which is what he really loves and what he really wants to be. I&#x27;d set those two expectations right off the bat. And the third expectation I would set is that his House of Commons performance is just costed We know he&#x27;s going to be great. We know he&#x27;s going to be great. He&#x27;s going to be the best leader possible in the House of Commons. Unfortunately, that doesn&#x27;t win elections. Tom Mulcair performed wonderfully in the House of Commons. And look where he is today. Punditry on radio stations. Poor Tom. Poor little Tommy</div>
+  <div class="said">Yeah, so it&#x27;s got to be, you know, he&#x27;s got to get over 80%, right? Like in a by-election, that should be the minimum that he is achieving. I would set that as a, as a primary outcome. If he&#x27;s, if he&#x27;s going to show real strength, he has to get over 80%. If he doesn&#x27;t get over 80%, then we are seeing the law, you know, he&#x27;s not as popular. Um, so that&#x27;s, that&#x27;d be the first thing I would set. The second thing I would set is that he&#x27;s got to perform well on the barbecue circuit. And this is not a guy who traditionally performs well on the barbecue circuit. He is better in the house of commons doing the theatrical than he is in the uh in in people&#x27;s uh front front rooms doing barbecue circuit during the barbecue circuit meeting the the gen pop he that&#x27;s not his strength but i would i would expect i would set an expectation that it&#x27;s going to have to be his strength you know how does he perform at the stampede how does he perform across canada during the the course of the summer? Is he getting out there? Is he being seen or is he, you retreating into prep for House of Commons, which is what he really loves and what he really wants to be. I&#x27;d set those two expectations right off the bat. And the third expectation I would set is that his House of Commons performance is just costed We know he&#x27;s going to be great. We know he&#x27;s going to be great. He&#x27;s going to be the best leader possible in the House of Commons. Unfortunately, that doesn&#x27;t win elections. Tom Mulcair performed wonderfully in the House of Commons. And look where he is today.</div>
+</div>
+<div class="turn" data-start="1243">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">20:43</span>
+  </div>
+  <div class="said">Punditry on radio stations. Poor Tom. Poor little Tommy</div>
 </div>
 <div class="turn" data-start="1247">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">20:47</span>
   </div>
   <div class="said">Carter, before I go to Shannon on this in terms of her helping Pierre save his leadership, how would you do this you said you&#x27;d set these marks in the in the sand you&#x27;d set these lines would it be as a a separate group would you would you how would you suggest these things become socialized and then become markers that we all all being the the very small niche political class follow and say yes box checked box not checked how do you ensure that these things become socially validated KPIs that were all like, okay, like I see there&#x27;s a there there. How do you do that?</div>
@@ -750,39 +900,74 @@
     <span class="speaker">Carter</span>
     <span class="ts">21:23</span>
   </div>
-  <div class="said">Unnamed conservative insiders who look like they are pro-Polyev rather So they&#x27;d come out and say- Leaked the media. Yeah, they&#x27;d leak it to the media and say, you know what, Pierre Polyev is going to get 85% in Battle River. There is no way that he&#x27;s not going to perform to 85%. His ability to win in in Alberta is unparalleled. He&#x27;s going to do an amazing job. Not only that, he&#x27;s going to work the entire barbecue circuit. He has to work the entire barbecue circuit. He&#x27;s going to do a great job on that. I just would just set false high expectations for him that I know he can&#x27;t meet by making it look like I&#x27;m on his side.</div>
+  <div class="said">Unnamed conservative insiders who look like they are pro-Polyev rather So they&#x27;d come out and say- Leaked the media.</div>
+</div>
+<div class="turn" data-start="1294">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:34</span>
+  </div>
+  <div class="said">Yeah, they&#x27;d leak it to the media and say, you know what, Pierre Polyev is going to get 85% in Battle River. There is no way that he&#x27;s not going to perform to 85%. His ability to win in in Alberta is unparalleled. He&#x27;s going to do an amazing job. Not only that, he&#x27;s going to work the entire barbecue circuit. He has to work the entire barbecue circuit. He&#x27;s going to do a great job on that. I just would just set false high expectations for him that I know he can&#x27;t meet by making it look like I&#x27;m on his side.</div>
 </div>
 <div class="turn" data-start="1326">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">22:06</span>
   </div>
   <div class="said">It&#x27;s almost like you&#x27;ve done this before, Carter. Shannon, what does he need to do what does he need to do this summer? He&#x27;s making these individualized phone calls. Is that sufficient? Is that even a good start? Is that even a good move for Pierre Poliev as he tries to get his seat back, get a seat back, I should be clear, and save his leadership now with the timeline of January?</div>
 </div>
 <div class="turn" data-start="1348">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">22:28</span>
   </div>
-  <div class="said">Oh, 100%. It&#x27;s a good move. Everybody likes to be asked for their advice and what they think, especially, you know, after an election outcome. I think for sure that&#x27;s a good idea. And I think he should be focusing on places that generally have a large and active membership and tend to send people to these review exercises. So obviously the Alberta members who have lots of membership in their ridings, I&#x27;d be talking to them in particular. And I&#x27;d probably, in addition to my stampede work, I would be doing some specific things with the biggest Alberta ridings where there&#x27;s a large membership base. I&#x27;d probably do the same in Saskatchewan around the same time. um and i might even do some small group stuff on on debrief uh and i would go around and get a sense of what are the top uh two things that you can show that you have uh appropriately gotten the right message or or pivoted quote unquote which was the knock on him through the campaign so i would do that and then i would do those things so if that&#x27;s firing jenny and tossing her overboard then that&#x27;s what it is uh or uh other things that uh you know ways to humanize him or taking a run at Trump or if you know the polling data and the debrief shows it you know like taking a it really depends on what the the polling shows right like do people want him to take a run at the the further right do people want him to dig in on the further right and that&#x27;s what your your debrief your conversations and some of your polling is going to tell you and then I would look like I&#x27;m taking action in September or September October whatever that looks like and going to the House, having done some things that are like, turn the page, and I&#x27;m a new guy now. And I&#x27;m sure that&#x27;ll mean throwing Jenny overboard in some way. Because it doesn&#x27;t seem like she has a whole lot of allies anywhere in the operation. And whatever else the data shows that you need to do. I would certainly be making a lot of those individual phone calls, though. There&#x27;s no No substitute for that in your caucus and listening to your caucus.</div>
+  <div class="said">Oh, 100%. It&#x27;s a good move. Everybody likes to be asked for their advice and what they think, especially, you know, after an election outcome. I think for sure that&#x27;s a good idea. And I think he should be focusing on places that generally have a large and active membership and tend to send people to these review exercises. So obviously the Alberta members who have lots of membership in their ridings, I&#x27;d be talking to them in particular. And I&#x27;d probably, in addition to my stampede work, I would be doing some specific things with the biggest Alberta ridings where there&#x27;s a large membership base. I&#x27;d probably do the same in Saskatchewan around the same time. um</div>
+</div>
+<div class="turn" data-start="1388">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">23:08</span>
+  </div>
+  <div class="said">and i might even do some small group stuff on on debrief uh and i would go around and get a sense of what are the top uh two things that you can show that you have uh appropriately gotten the right message or or pivoted quote unquote which was the knock on him through the campaign so i would do that and then i would do those things so if that&#x27;s firing jenny and tossing her overboard then that&#x27;s what it is uh or uh other things that uh you know ways to humanize him or taking a run at Trump or if you know the polling data and the debrief shows it you know like taking a it really depends on what the the polling shows right like do people want him to take a run at the the further right do people want him to dig in on the further right and that&#x27;s what your your debrief your conversations and some of your polling is going to tell you and then I would look like I&#x27;m taking action in September or September October whatever that looks like and going to the House, having done some things that are like, turn the page, and I&#x27;m a new guy now.</div>
+</div>
+<div class="turn" data-start="1449">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">24:09</span>
+  </div>
+  <div class="said">And I&#x27;m sure that&#x27;ll mean throwing Jenny overboard in some way. Because it doesn&#x27;t seem like she has a whole lot of allies anywhere in the operation. And whatever else the data shows that you need to do. I would certainly be making a lot of those individual phone calls, though. There&#x27;s no No substitute for that in your caucus and listening to your caucus.</div>
 </div>
 <div class="turn" data-start="1475">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">24:35</span>
   </div>
-  <div class="said">Carter, I want to pick up on that point because I agree with Shannon. I think we&#x27;ve said it many times on this podcast that there is no substitute to that exercise of the individualized phone call. However, tell me if I&#x27;m wrong about this, that on the heels of a loss, there could be this element that it showcases vulnerability and potentially even weakness. weakness especially with the other side that I&#x27;m getting you to run which is the expectation side which is it can show it can show humbling it can show genuine curiosity it can show all the things that it does which is those calls but it can also show weakness am I wrong in suggesting that that could be a greater force here than all the other upside that comes with that individualized phone call well</div>
+  <div class="said">Carter, I want to pick up on that point because I agree with Shannon. I think we&#x27;ve said it many times on this podcast that there is no substitute to that exercise of the individualized phone call. However, tell</div>
+</div>
+<div class="turn" data-start="1488">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">24:48</span>
+  </div>
+  <div class="said">me if I&#x27;m wrong about this, that on the heels of a loss, there could be this element that it showcases vulnerability and potentially even weakness. weakness especially with the other side that I&#x27;m getting you to run which is the expectation side which is it can show it can show humbling it can show genuine curiosity it can show all the things that it does which is those calls but it can also show weakness am I wrong in suggesting that that could be a greater force here than all the other upside that comes with that individualized phone call</div>
 </div>
 <div class="turn" data-start="1520">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">25:20</span>
   </div>
-  <div class="said">well I think that an individual phone call works wonders but it works less good less well Well, if another person calls you right afterwards, if Doug Ford was to pick up the phone and start doing his own individual calls and say, did you hear from the leader? He must be desperate, you know, or were you satisfied with his responses? Like if Doug Ford was working the telephones or Jason Kenney was working the telephones against him, then your telephone, your initial telephone call is kind of met on the field of battle and has less in terms of actual impact. impact. This will be interesting to see if Doug Ford, Jason Kenney, and decide that they&#x27;re going to try and do an open opposition Pierre Polyev. Sorry, I had a little stutter there. Couldn&#x27;t spit out the word Pierre Polyev. Very embarrassing. Very embarrassing.</div>
+  <div class="said">well I think that an individual phone call works wonders but it works less good less well Well, if another person calls you right afterwards, if Doug Ford was to pick up the phone and start doing his own individual calls and say, did you hear from the leader? He must be desperate, you know, or were you satisfied with his responses? Like if Doug Ford was working the telephones or Jason Kenney was working the telephones against him, then your telephone, your initial telephone call is kind of met on the field of battle and has less in terms of actual impact. impact. This will be interesting to see if Doug Ford, Jason Kenney, and</div>
+</div>
+<div class="turn" data-start="1565">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">26:05</span>
+  </div>
+  <div class="said">decide that they&#x27;re going to try and do an open opposition Pierre Polyev. Sorry, I had a little stutter there. Couldn&#x27;t spit out the word Pierre Polyev. Very embarrassing. Very embarrassing.</div>
 </div>
 <div class="turn" data-start="1580">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">26:20</span>
   </div>
   <div class="said">I know it&#x27;s historically been a struggle for you. Carter, final thoughts on this. Give me final final thoughts on this from from the perspective of um pierre polliev anything you would add to what shannon&#x27;s list is and shannon i&#x27;m going to get you to do the vice versa for a second anything you would add to add to so uh further chaos to the anti-polliev universe that we&#x27;re trying to create so that you know he potentially loses the job carter first word to you then shannon i&#x27;ll finish off with you on this</div>
@@ -796,35 +981,56 @@
 </div>
 <div class="turn" data-start="1635">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">27:15</span>
   </div>
   <div class="said">shannon i i see you nodding and agreeing to that i&#x27;ll ask you the question on carter&#x27;s lane which which is anything you would do to disadvantage Paulieva over the summer season between now and, let&#x27;s say, obviously the by-election, but even extending into January?</div>
 </div>
 <div class="turn" data-start="1648">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">27:28</span>
   </div>
-  <div class="said">Oh, I&#x27;d be coming at him from the right as much and as often as I could because that&#x27;s where the vulnerability is. It&#x27;s not coming from Doug Ford. Doug Ford is happy being mayor of Ontario until they take him out of there in a pine box, right? Like, he&#x27;s not going anywhere. The challenge to Pierre Paulieva is not coming from the centre-right. It&#x27;s not coming from the Chamber of Commerce Conservatives. It&#x27;s what we&#x27;re used to in Alberta. It&#x27;s coming from the Lulu&#x27;s on the right. And so, yeah, I would be finding one or two of those to just start like creating just an absolute gong show. But Carter&#x27;s right that they&#x27;ve got more money than really anyone. And, you know, Pierre Polyover could really and shore himself up with the membership on digital ad. And he might have to if somebody comes at him from the right. Right</div>
+  <div class="said">Oh, I&#x27;d be coming at him from the right as much and as often as I could because that&#x27;s where the vulnerability is. It&#x27;s not coming from Doug Ford. Doug Ford is happy being mayor of Ontario until they take him out of there in a pine box, right? Like, he&#x27;s not going anywhere. The challenge to Pierre Paulieva is not coming from the centre-right. It&#x27;s not coming from the Chamber of Commerce Conservatives. It&#x27;s what we&#x27;re used to in Alberta. It&#x27;s coming from the Lulu&#x27;s on the right. And so, yeah, I would be finding one or two of those to just start like creating just an absolute gong show. But Carter&#x27;s right that they&#x27;ve got more money than really anyone. And, you know, Pierre Polyover could really and</div>
+</div>
+<div class="turn" data-start="1689">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">28:09</span>
+  </div>
+  <div class="said">shore himself up with the membership on digital ad. And he might have to if somebody comes at him from the right. Right</div>
 </div>
 <div class="turn" data-start="1696">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">28:16</span>
   </div>
-  <div class="said">Can I ask you guys this? And this is leaning into the provincial side a bit more, but do you feel like the current situation we have with separatism in Alberta, could that metastasize to an operation on the federal level in any meaningful way? We&#x27;ve always talked about it metastasizing into a splinter of the right provincially, but I&#x27;m curious what role and impact, especially now that we&#x27;re tripling down in Alberta, right? Like Polly is running in an Alberta seat. This is going to be an Alberta convention in January. You&#x27;re probably calling a lot of Alberta ridings. Do you see the separatism force metastasizing at all federally, not just provincially? Anyone want to take that first?</div>
+  <div class="said">Can I ask you guys this? And this is leaning into the provincial side a bit more, but do you feel like the current situation we have with separatism in Alberta, could that metastasize to an operation on the federal level in any meaningful way? We&#x27;ve always talked about it metastasizing into a splinter of the right provincially, but I&#x27;m curious what role and impact, especially now that we&#x27;re tripling down in Alberta, right? Like Polly is running in an Alberta seat. This is going to be an Alberta convention in January. You&#x27;re probably calling a lot of Alberta ridings. Do you see the separatism force metastasizing at all federally,</div>
+</div>
+<div class="turn" data-start="1729">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">28:49</span>
+  </div>
+  <div class="said">not just provincially? Anyone want to take that first?</div>
 </div>
 <div class="turn" data-start="1731">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">28:51</span>
   </div>
-  <div class="said">Well, it very well could. I mean, we will recall that that was the Reform Party, essentially. You know, when we essentially had two big brokerage parties and the New Democrats were kind of sidelined after the 88 and certainly after the, well, I mean, in the 93, that was when a bunch of Reform Partiers took seats from the New Democrats, right? And so we&#x27;ve seen some some of this movie before, in terms of when the two, when the blue and the red become really big tent brokerage parties, there are factions that get left out. And that&#x27;s what led to the creation of the Reform Party. Now, the issue with Polly Everett is that his Alberta caucus, and certainly his Saskatchewan, and that kind of caucus, they&#x27;re very, very docile, right? There&#x27;s There&#x27;s not a whole lot of people storming their barricades among that membership. There might be Kenan Bextie&#x27;s father is now a Bow River member of parliament. There&#x27;s some elements that might bubble up there. But historically, the Alberta caucus in particular is pretty somnolent, put it that way.</div>
+  <div class="said">Well, it very well could. I mean, we will recall that that was the Reform Party, essentially. You know, when we essentially had two big brokerage parties and the New Democrats were kind of sidelined after the 88 and certainly after the, well, I mean, in the 93, that was when a bunch of Reform Partiers took seats from the New Democrats, right? And so we&#x27;ve seen some some of this movie before, in terms of when the two, when the blue and the red become really big tent brokerage parties, there are factions that get left out. And that&#x27;s what led to the creation of the Reform Party. Now, the issue with Polly Everett is that his Alberta caucus, and certainly his Saskatchewan, and that kind of caucus, they&#x27;re very, very docile, right?</div>
+</div>
+<div class="turn" data-start="1776">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">29:36</span>
+  </div>
+  <div class="said">There&#x27;s There&#x27;s not a whole lot of people storming their barricades among that membership. There might be Kenan Bextie&#x27;s father is now a Bow River member of parliament. There&#x27;s some elements that might bubble up there. But historically, the Alberta caucus in particular is pretty somnolent, put it that way.</div>
 </div>
 <div class="turn" data-start="1803">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">30:03</span>
   </div>
   <div class="said">we&#x27;re recording here</div>
@@ -838,7 +1044,7 @@
 </div>
 <div class="turn" data-start="1809">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">30:09</span>
   </div>
   <div class="said">Yeah. We&#x27;re going to give it all three spellings that you think it is. So go ahead. Yeah, I can&#x27;t. I have no idea.</div>
@@ -852,7 +1058,7 @@
 </div>
 <div class="turn" data-start="1815">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">30:15</span>
   </div>
   <div class="said">idea. I am the brown person administering a spelling bee. It&#x27;s good. I should be able to spell it. My people should be able to spell it. Your</div>
@@ -866,38 +1072,80 @@
 </div>
 <div class="turn" data-start="1824">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">30:24</span>
   </div>
-  <div class="said">Yeah. Carter, let&#x27;s talk about that G7. We record you on Monday, Monday afternoon. Carney&#x27;s at the G7. He had a bilateral with Trump this morning. A lot of other fucking people showed up. I&#x27;m going to read you a quote. While conceding he&#x27;s a terrorist person who likes the relative simplicity of imposing broad-based tariffs on goods from other countries to raise revenue and try to bring back jobs to the U.S., Trump said Carney has come forward with a different concept, and it&#x27;s one some people like, and we&#x27;re going to see if we can get to the bottom of it today. Quote, I think Mark has a more complex idea, but it&#x27;s still very good. Unquote, Trump said of some sort of trade pitch that Carney has made to the Americans, a proposal that is yet to be made public. I think we&#x27;re going to accomplish a lot, quote unquote, from Trump at the end there. Carter, expectations were high. It wasn&#x27;t that just Carney just wanted to host the G7. That was what was given to him. It seems like he wanted to now convene the G7 and be something at the G7. Talk to me about where we&#x27;re at. We&#x27;re obviously reacting to this in real time, but that quote is fascinating to me, which is why I pulled it out. Which is Trump praising an alternative proposal by Carney at the G7 with a lot of observer observer countries, or whatever you&#x27;d call them, added to the mix. What do you think is happening to the expectations game in real time of one Mr. Mark Carney, Prime Minister of Canada?</div>
+  <div class="said">Yeah. Carter, let&#x27;s talk about that G7. We record you on Monday, Monday afternoon.</div>
+</div>
+<div class="turn" data-start="1830">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">30:30</span>
+  </div>
+  <div class="said">Carney&#x27;s at the G7. He had a bilateral with Trump this morning. A lot of other fucking people showed up. I&#x27;m going to read you a quote. While conceding he&#x27;s a terrorist person who likes the relative simplicity of imposing broad-based tariffs on goods from other countries to raise revenue and try to bring back jobs to the U.S., Trump said Carney has come forward with a different concept, and it&#x27;s one some people like, and we&#x27;re going to see if we can get to the bottom of it today. Quote, I think Mark has a more complex idea, but it&#x27;s still very good. Unquote, Trump said of some sort of trade pitch that Carney has made to the Americans, a proposal that is yet to be made public. I think we&#x27;re going to accomplish a lot, quote unquote, from Trump at the end there. Carter, expectations were high. It wasn&#x27;t that just Carney just wanted to host the G7. That was what was given to him. It seems like he wanted to now convene the G7 and be something at the G7.</div>
+</div>
+<div class="turn" data-start="1878">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">31:18</span>
+  </div>
+  <div class="said">Talk to me about where we&#x27;re at. We&#x27;re obviously reacting to this in real time, but that quote is fascinating to me, which is why I pulled it out. Which is Trump praising an alternative proposal by Carney at the G7 with a lot of observer observer countries, or whatever you&#x27;d call them, added to the mix. What do you think is happening to the expectations game in real time of one Mr. Mark Carney, Prime Minister of Canada?</div>
 </div>
 <div class="turn" data-start="1897">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">31:37</span>
   </div>
-  <div class="said">I have said from the beginning that Mark Carney has a better relationship with Donald Trump because Mark Carney comes from the same class, if you will. A self-made man, made millions of dollars from Northwest Territories who comes out and gets a scholarship to Harvard and suddenly makes all the money. I think that Trump has respect for people with money in a way that he doesn&#x27;t have respect for other levels of politicians. So I think that, you know, Mark Carney coming in and saying, I may not be a billionaire, but a hundred, a hundred millionaire, you know, that that brings a lot of of credibility to the table. And Mark Carney is taking advantage of that credibility. I would love to be able to see what the proposals are, because those proposals, you know, one of the I think that, you know, Donald Trump&#x27;s proposals have been written on the back of a napkin and crayon. And I&#x27;m quite certain that Mark Carney&#x27;s Mark Carney&#x27;s are probably a lot more like stained glass that you color in paint by number, you know, because he needs to communicate with Donald Trump and make sure that Donald Trump actually understands what is the proposal that&#x27;s being made. and feels like it&#x27;s akin or relationship or close to the proposal that he&#x27;s made. I would love to be able to see it. I&#x27;m very impressed with how Mark Carney is managing the G7 overall. And I think that this is going to be an absolute highlight, whether it actually translates to the voters or not. But I think that this is, you know, for the watchers, this has been amazing to this point. You know, here we are halfway through day one, but still. Still very, very impressive.</div>
+  <div class="said">I have said from the beginning that Mark Carney has a better relationship with Donald Trump because Mark Carney comes from the same class, if you will. A self-made man, made millions of dollars from Northwest Territories who comes out and gets a scholarship to Harvard and suddenly makes all the money. I think that Trump has respect for people with money in a way that he doesn&#x27;t have respect for other levels of politicians. So I think that, you know, Mark Carney coming in and saying, I may not be a billionaire, but a hundred, a hundred millionaire, you know, that that brings a lot of of credibility to the table. And Mark Carney is taking advantage of that credibility. I would love to be able to see what the proposals are, because those proposals, you know, one of the I think that, you know, Donald Trump&#x27;s proposals have been written on the back of a napkin and crayon. And</div>
+</div>
+<div class="turn" data-start="1953">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">32:33</span>
+  </div>
+  <div class="said">I&#x27;m quite certain that Mark Carney&#x27;s Mark Carney&#x27;s are probably a lot more like stained glass that you color in paint by number, you know, because he needs to communicate with Donald Trump and make sure that Donald Trump actually understands what is the proposal that&#x27;s being made. and feels like it&#x27;s akin or relationship or close to the</div>
+</div>
+<div class="turn" data-start="1975">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">32:55</span>
+  </div>
+  <div class="said">proposal that he&#x27;s made. I would love to be able to see it. I&#x27;m very impressed with how Mark Carney is managing the G7 overall. And I think that this is going to be an absolute highlight, whether it actually translates to the voters or not. But I think that this is, you know, for the watchers, this has been amazing to this point. You know, here we are halfway through day one, but still. Still very, very impressive.</div>
 </div>
 <div class="turn" data-start="2001">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">33:21</span>
   </div>
   <div class="said">It is interesting. And I&#x27;m going to ask you the same question, Shannon. What has this done to the expectations game? And I&#x27;ll tag on the answer Carter gave me that I didn&#x27;t ask, which is, what are you now thinking of, Mark Carney, as you sit here halfway through, a little bit more than halfway through day one of the G7 in Kananaskis?</div>
 </div>
 <div class="turn" data-start="2017">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">33:37</span>
   </div>
-  <div class="said">Well, I mean, quite frankly, I don&#x27;t know yet. This is like taking a toddler to the grocery store, right? Like you&#x27;re halfway through. Is it going well? Yeah, OK, it is so far. But, you know, the full-blown meltdown could still happen. in the middle of the chip aisle. You never know. And so I don&#x27;t think that we should get ahead of ourselves here. He&#x27;s doing his best. And clearly what&#x27;s happening on the tariff side is he has put something before Trump that weaves in some of the national security stuff, some of the defense spending stuff, and uses that as leverage or a trade-off against baking in an ongoing tariff, because we know that that&#x27;s Trump&#x27;s bias. He&#x27;s already done it with the UK, and he&#x27;s trying to do it with the whole world and he essentially said this morning you know everyone has our deal right because we&#x27;ll just write them a letter and tell them that that that here&#x27;s your across the board tariff for the rest of time that&#x27;s the trade deal if you don&#x27;t make a deal with us right and so i we know that&#x27;s the default and so what carney is doing is putting something in front of him that does not bake in and across the board or even auto or steel specific tariff for the rest of time in a way that really rewrites the terms of kuzma that is what he is i you know without having seen anything that&#x27;s what he&#x27;s trying to do uh and and i don&#x27;t think they could get it over the line for the g7 because there was too much in there that that baked in a fundamental rewrite of access to markets for us and so now we&#x27;re going to go into this place where he&#x27;s just trying to leverage the defense stuff and some of the procurement maybe uh some of that against you know if we do this then you will not tariff us on that is is my hunch i that&#x27;s that&#x27;s what my gut is of where this is going um and he&#x27;s he&#x27;s playing it out beautifully so far and and i have read some reporting that you know they tried to structure it in a way that would make uh the toddler happy as well right so in in smaller chunks of time because he doesn&#x27;t like the everyone going around the horn seven people he doesn&#x27;t like having to sit through a lot of that because it annoys him so they&#x27;ve they&#x27;ve structured even today in a way that doesn&#x27;t make him too too tired. He gets his nap, his blankie, his snack, and they can kind of manage any meltdowns that might happen. It really does put me in mind of back in the day, managing two little boys in the grocery store.</div>
+  <div class="said">Well, I mean, quite frankly, I don&#x27;t know yet. This is like taking a toddler to the grocery store, right? Like you&#x27;re halfway through. Is it going well? Yeah, OK, it is so far. But, you know, the full-blown meltdown could still happen. in the middle of the chip aisle. You never know. And so I don&#x27;t think that we should get ahead of ourselves here. He&#x27;s doing his best. And clearly what&#x27;s happening on the tariff side is he has put something before Trump that weaves in some of the national security stuff, some</div>
+</div>
+<div class="turn" data-start="2045">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">34:05</span>
+  </div>
+  <div class="said">of the defense spending stuff, and uses that as leverage or a trade-off against baking in an ongoing tariff, because we know that that&#x27;s Trump&#x27;s bias. He&#x27;s already done it with the UK, and he&#x27;s trying to do it with the whole world and he essentially said this morning you know everyone has our deal right because we&#x27;ll just write them a letter and tell them that that that here&#x27;s your across the board tariff for the rest of time that&#x27;s the trade deal if you don&#x27;t make a deal with us right and so i we know that&#x27;s the default and so what carney is doing is putting something in front of him that does not bake in and across the board or even auto or steel specific tariff for the rest of time in a way that really rewrites the terms of kuzma that is what he is i you know without having seen anything that&#x27;s what he&#x27;s trying to do uh and and i don&#x27;t think they could get it over the line for the g7 because there was too much in there that that baked in a fundamental rewrite of access to markets for us and so now we&#x27;re going to go into this place where he&#x27;s just trying to leverage the defense stuff and some of the procurement maybe uh some of that against you know if we do this then you will not tariff us on that is is my hunch i that&#x27;s that&#x27;s what my gut is of where this is going um and he&#x27;s he&#x27;s playing it out beautifully so far and and i have read some reporting that you know they tried to structure it in a way that would make uh the toddler happy as well right so in in smaller chunks of time because he doesn&#x27;t like the everyone going around the horn seven people he doesn&#x27;t like having to sit through a lot of that because it annoys him so they&#x27;ve they&#x27;ve structured even today in a way that doesn&#x27;t make him too too tired. He gets his nap, his blankie, his snack, and they can kind of manage any meltdowns that might happen. It really does put me in mind of back in the day, managing two little boys in the grocery store.</div>
 </div>
 <div class="turn" data-start="2154">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">35:54</span>
   </div>
-  <div class="said">think it&#x27;s a very fascinating analogy, and I think probably an apt one. Carter, here&#x27;s the thing. A better, more perfect deal end of summer or a good enough deal today at the G7, today, tomorrow, right? Which would you take as someone advising Carney for the domestic political implications? Good enough deal this week? Mic drop? Or would you take a better deal, more negotiation, more hand-wringing over the summer down the road? I know you&#x27;ve talked about that he probably has the summer, should he need it. But I&#x27;m curious where we sit now and the pieces we see on the board, what you as a practitioner would take as a strategist would take today?</div>
+  <div class="said">think it&#x27;s a very fascinating analogy, and I think probably an apt one. Carter, here&#x27;s the thing.</div>
+</div>
+<div class="turn" data-start="2161">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">36:01</span>
+  </div>
+  <div class="said">A better, more perfect deal end of summer or a good enough deal today at the G7, today, tomorrow, right? Which would you take as someone advising Carney for the domestic political implications? Good enough deal this week? Mic drop? Or would you take a better deal, more negotiation, more hand-wringing over the summer down the road? I know you&#x27;ve talked about that he probably has the summer, should he need it. But I&#x27;m curious where we sit now and the pieces we see on the board, what you as a practitioner would take as a strategist would take today?</div>
 </div>
 <div class="turn" data-start="2199">
   <div class="who">
@@ -908,7 +1156,7 @@
 </div>
 <div class="turn" data-start="2221">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">37:01</span>
   </div>
   <div class="said">be the devil. He said that in his quote and in multiple quotes</div>
@@ -922,17 +1170,24 @@
 </div>
 <div class="turn" data-start="2264">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">37:44</span>
   </div>
   <div class="said">Shannon, would you take good enough today? The Starmer has actually taken good enough yesterday, and he&#x27;s paying a bit of a political consequence. So I am curious, you know, there is the home field advantage of the G7. There&#x27;s the current political moment. This would certainly be a mic drop of being able to convene, host and do all those things. But there is the political ramifications of down the line of what you have made your populace live with and how that kind of ultimately lands with people. How would you be thinking about this</div>
 </div>
 <div class="turn" data-start="2292">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">38:12</span>
   </div>
-  <div class="said">I would be thinking of it purely in terms of what it means for the Canadian economy and what it means for unemployment in the industrial base of the country. And so I would take the risk of later because we know Taco, right? We absolutely know that he can back down. He&#x27;s probably stronger politically today than he is tomorrow, than he is the day after that, the day after that. uh and uh so i i would i the risks that carter identifies are absolutely real but i would not want to bake in an across the board tariff or some kind of uh forever situation on auto and steel and aluminum uh that moves too far outside the bounds of the canada u.s uh mexico agreement i just i just wouldn&#x27;t uh he&#x27;s too he&#x27;s too He&#x27;s too weak in the future, and we almost know that for sure, politically</div>
+  <div class="said">I would be thinking of it purely in terms of what it means for the Canadian economy and what it means for unemployment in the industrial base of the country. And so I would take the risk of later because we know Taco, right? We absolutely know that he can back down. He&#x27;s probably stronger politically today than he is tomorrow, than he is the day after that, the day after that. uh</div>
+</div>
+<div class="turn" data-start="2317">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">38:37</span>
+  </div>
+  <div class="said">and uh so i i would i the risks that carter identifies are absolutely real but i would not want to bake in an across the board tariff or some kind of uh forever situation on auto and steel and aluminum uh that moves too far outside the bounds of the canada u.s uh mexico agreement i just i just wouldn&#x27;t uh he&#x27;s too he&#x27;s too He&#x27;s too weak in the future, and we almost know that for sure, politically</div>
 </div>
 <div class="turn" data-start="2351">
   <div class="who">
@@ -943,7 +1198,7 @@
 </div>
 <div class="turn" data-start="2361">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">39:21</span>
   </div>
   <div class="said">We&#x27;re going to use that and move on to our final segment, our over, under, and our lightning round. Stephen Carter, as you know, regardless of time of day, we do this for you. Thank you. This segment is for you. Here&#x27;s my question for you. First one. I&#x27;ll ask Shannon in a moment. 24 hours until the G7&#x27;s over, for lack of a better term. I think it is, actually, 24 hours or so. Advice for Carney over the next 24 hours, what would they be?</div>
@@ -957,7 +1212,7 @@
 </div>
 <div class="turn" data-start="2413">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">40:13</span>
   </div>
   <div class="said">Give me one second on this, Shannon, before I come to you. Explain more to me about why it&#x27;s looking so good. Like, is it just the photos? Because you mentioned that twice. So I want to dig into this a bit more. Like, what is giving you the keep doing what you&#x27;re doing, Carney? Like, is it the reporting? Is it the photo? Like, give me the package, Carter. What are you buying at such great quantities that you&#x27;re loving right now</div>
@@ -967,39 +1222,74 @@
     <span class="speaker">Carter</span>
     <span class="ts">40:31</span>
   </div>
-  <div class="said">The one-on-one photographs, the stuff that&#x27;s coming out with Starmer taking photographs of the G7 site, the interactions with Donald Trump, the one-on-one nature of this G7 to this point, the way that it looks like Mark Carney is everywhere talking to everyone all at once. That to me is really driving the agenda. And it&#x27;s the photographic video intensive outcome of all of this. I&#x27;m not sure that the man sat down for 48 hours, but he doesn&#x27;t need to. He just needs to get out and and have as many meetings as humanly possible and have those photographs taken. And the Canadian people will be like, that looks pretty great. And the backdrop is phenomenal. It is one of the most beautiful places on earth, and it looks like one of the most beautiful places on earth.</div>
+  <div class="said">The one-on-one photographs, the stuff that&#x27;s coming out with Starmer taking photographs of the G7 site, the interactions with Donald Trump, the one-on-one nature of this G7 to this point, the way that it looks like Mark Carney is everywhere talking to everyone all at once. That to me is really driving the agenda. And it&#x27;s the photographic video intensive outcome of all of this. I&#x27;m not sure that the man sat down for 48 hours, but he doesn&#x27;t need to. He just needs to get out and and have as many meetings as humanly possible and have those photographs taken. And the Canadian people will be like, that</div>
+</div>
+<div class="turn" data-start="2479">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">41:19</span>
+  </div>
+  <div class="said">looks pretty great. And the backdrop is phenomenal. It is one of the most beautiful places on earth, and it looks like one of the most beautiful places on earth.</div>
 </div>
 <div class="turn" data-start="2488">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">41:28</span>
   </div>
   <div class="said">I think that&#x27;s such an important point, both the geography, but I also love your point about actually hosting. Hosting is not just providing the space for facilitation. We&#x27;ve seen any good house party, the host introduces people to one another, is the person who knows the guest list the best, is the person who can circulate, is the person that can make introductions. And I think to that point you just made, Carter, Carney seems to be doing quite well. Now, I might be overreaching, you and I might be overreaching, which is why we have Shannon. Shannon, advice you&#x27;d be giving to Carney over the next 24, what would they be?</div>
 </div>
 <div class="turn" data-start="2517">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">41:57</span>
   </div>
-  <div class="said">Oh, I think they&#x27;ve played this pretty beautifully. Like, I guess we&#x27;re all Carney-pilled in some ways. But I&#x27;m finding a hard way to find fault with this, right? I mean, we&#x27;ll see what comes out of the communique and we&#x27;ll see what happens in the next 24 hours on the Israel-Iran conflict, because it could just kind of sort of pull the whole thing off in a different direction and even cause conflict in the attendees. It could possibly. But what he&#x27;s done is he&#x27;s recreated essentially the big countries of the G20 at the G7. He&#x27;s provided some of those opportunities for Canada to look like a leader on the world stage. And despite the fact that when Trudeau became prime minister in 15, the whole thing was Canada is back on the world stage. age, we were not necessarily, I think, because of the defense piece, considered to be the player that even Australia is. With a smaller population and, you know, for geopolitical reasons, Australia has become sort of more important on the world stage, right? China and relationship with Southeast Asia and so on. And so watching that happen, kind of going back to some of that, you know, So Pearson era kind of leadership is something that I think a lot of Canadians, particularly the Canadians that elected Mark Carney because they were, you know, old people, are really looking for. And he is giving them what they want there and what they voted for. So I don&#x27;t think there necessarily needs to be a tariff deal as long as as Trump is like saying like sort of nice mumbles like he already did. and some of the bilat stuff, you know, that can go out and become headlines in their own right that don&#x27;t even maybe have to do with Canadians. If the Aussies conclude some sort of deal with somebody or, you know, Brazil does some trade stuff, it kind of places us within to take our rightful place, I think, and as more of a player than we have been historically. And that is only a good thing, I think, as we go into some more turbulent global times</div>
+  <div class="said">Oh, I think they&#x27;ve played this pretty beautifully. Like, I guess we&#x27;re all Carney-pilled in some ways. But I&#x27;m finding a hard way to find fault with this, right? I mean, we&#x27;ll see what comes out of the communique and we&#x27;ll see what happens in the next 24 hours on the Israel-Iran conflict, because it could just kind of sort of pull the whole thing off in a different direction and even cause conflict in the attendees. It could possibly. But what he&#x27;s done is he&#x27;s recreated essentially the big countries of the G20 at the G7. He&#x27;s provided some of those opportunities for Canada to look like a leader on the world stage. And despite the fact that when Trudeau became prime minister in 15, the whole thing was Canada is back on the world stage. age, we</div>
+</div>
+<div class="turn" data-start="2562">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">42:42</span>
+  </div>
+  <div class="said">were not necessarily, I think, because of the defense piece, considered to be the player that even Australia is. With a smaller population and, you know, for geopolitical reasons, Australia has become sort of more important on the world stage, right? China and relationship</div>
+</div>
+<div class="turn" data-start="2580">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">43:00</span>
+  </div>
+  <div class="said">with Southeast Asia and so on.</div>
+</div>
+<div class="turn" data-start="2582">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">43:02</span>
+  </div>
+  <div class="said">And so watching that happen, kind of going back to some of that, you know, So Pearson era kind of leadership is something that I think a lot of Canadians, particularly the Canadians that elected Mark Carney because they were, you know, old people, are really looking for. And he is giving them what they want there and what they voted for. So I don&#x27;t think there necessarily needs to be a tariff deal as long as as Trump is like saying like sort of nice mumbles like he already did. and some of the bilat stuff, you know, that can go out and become headlines in their own right that don&#x27;t even maybe have to do with Canadians. If the Aussies conclude some sort of deal with somebody or, you know, Brazil does some trade stuff, it kind of places us within to take our rightful place, I think, and as more of a player than we have been historically. And that is only a good thing, I think, as we go into some more turbulent global times</div>
 </div>
 <div class="turn" data-start="2641">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">44:01</span>
   </div>
   <div class="said">Two more questions. Shannon, I&#x27;ll start with you again on this one. Overrated or underrated, the Carney commitment for the 2% on the NATO defense spending, what overrated or underrated in your mind? Of course, we&#x27;re saying this with the still active and alive G7, which I&#x27;ve mentioned multiple times, but on its own, overrated or underrated?</div>
 </div>
 <div class="turn" data-start="2659">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">44:19</span>
   </div>
-  <div class="said">Well, people don&#x27;t really care. So, you know, the polling data, the reason why Canada has never done it is because the polling data puts that pretty low on the billion dollars. Yeah, it&#x27;s not just expensive. It will displace a lot of programs when Canadians go, oh, yes, we need to tighten our belts. We should displace programs. And then when it&#x27;s the stuff that comes into their bank account, they get mad, right? Because I don&#x27;t think people quite get the extent to which that child tax benefit is a massive amount of money every month. month. And, you know, the seniors benefits are quite generous in this country compared to many other countries, indexed to inflation, all the rest of it. You know, there&#x27;s a bunch of different ways in which the government of Canada supports our daily lives. And then there&#x27;s the health and social transfers on top of that that supports our provinces. So the fiscal situation becomes extremely tight for something that people only theoretically actually want. Right. So there are risks and downsides to doing this once you start cutting things like employment, social development, Canada programs, once you start cutting Indigenous services or, you know, seniors benefits of various kinds, workforce development, stuff of various kinds, even border or passport services or you name it, the kind of stuff, CRA that the government of Canada does. I still think there are risks in in doing it. He&#x27;s made the commitments. I have no earthly idea how he&#x27;s going to get $9 billion extra out the door this year. leave that to them.</div>
+  <div class="said">Well, people don&#x27;t really care. So, you know, the polling data, the reason why Canada has never done it is because the polling data puts that pretty low on the billion dollars. Yeah, it&#x27;s not just expensive. It will displace a lot of programs when Canadians go, oh, yes, we need to tighten our belts. We should displace programs. And then when it&#x27;s the stuff that comes into their bank account, they get mad, right? Because I don&#x27;t think people quite get the extent to which that child tax benefit is a massive amount of money every month. month. And, you know, the seniors benefits are quite generous in this country compared to many other countries, indexed to inflation, all the rest of it. You know, there&#x27;s a bunch of different ways in which the government of Canada supports our daily lives. And then there&#x27;s the health and social transfers on top of that that supports our provinces. So the fiscal situation becomes extremely tight for something that people only theoretically actually want. Right. So there are risks and downsides to doing this once you start cutting things like employment, social development, Canada programs, once you start cutting Indigenous services or, you know, seniors benefits of various kinds, workforce development, stuff of various kinds, even border or passport services or you name it, the kind of stuff, CRA that the government of Canada does. I still think there are risks in in doing it. He&#x27;s made the commitments. I have no earthly idea how he&#x27;s going to get $9 billion extra out the door this year.</div>
+</div>
+<div class="turn" data-start="2749">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">45:49</span>
+  </div>
+  <div class="said">leave that to them.</div>
 </div>
 <div class="turn" data-start="2750">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">45:50</span>
   </div>
   <div class="said">Carter, overrated or underrated, the 2% commitment?</div>
@@ -1013,7 +1303,7 @@
 </div>
 <div class="turn" data-start="2786">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">46:26</span>
   </div>
   <div class="said">That&#x27;s what matters, Carter. It&#x27;s something</div>
@@ -1027,21 +1317,21 @@
 </div>
 <div class="turn" data-start="2789">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">46:29</span>
   </div>
   <div class="said">Final question, I&#x27;m going to start with you. Yes or no? No. By the end of tomorrow, do we have a Canada-US trade deal? Shannon, by the end of tomorrow, Tomorrow, G7 officially wrapping up. Do we have a trade deal?</div>
 </div>
 <div class="turn" data-start="2803">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">46:43</span>
   </div>
   <div class="said">Canadians have briefed on background that probably not. So unless they&#x27;re really trying to set expectations, I&#x27;d say no.</div>
 </div>
 <div class="turn" data-start="2811">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Zain</span>
     <span class="ts">46:51</span>
   </div>
   <div class="said">We&#x27;re going to leave it there. That&#x27;s a wrap on episode 1875 of The Strategist. My name is Zane Velji with me as always. Shannon Phillips, Stephen Carter, and we shall see you next time.</div>
