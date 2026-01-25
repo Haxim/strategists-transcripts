@@ -31,7 +31,7 @@ PER_PAGE = 24
 NEWEST_DIR = OUT_DIR / "newest"
 
 # -------------------------------------------------------------------
-# Regex extractors (robust against formatting changes)
+# Regex extractors
 # -------------------------------------------------------------------
 
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.I | re.S)
@@ -56,7 +56,6 @@ def extract_meta(html: str):
 
     published = date_m.group(1) if date_m else ""
     description = desc_m.group(1).strip() if desc_m else ""
-
     episode_number = epnum_m.group(1) if epnum_m else ""
 
     try:
@@ -91,7 +90,6 @@ def load_episodes():
 
     episodes.sort(key=lambda e: e["ts"], reverse=True)
     return episodes
-
 
 # -------------------------------------------------------------------
 # Index page renderer
@@ -165,6 +163,9 @@ def render_index_page(episodes, page, total_pages):
 </html>
 """
 
+# -------------------------------------------------------------------
+# /newest page renderer (exact design, automated)
+# -------------------------------------------------------------------
 
 def render_newest_page(ep):
     title = ep["title"]
@@ -172,27 +173,6 @@ def render_newest_page(ep):
         "Listen to the latest episode of The Strategists."
     )
     epnum = ep["episode_number"]
-
-    # OPTIONAL: if you later parse these from episode HTML
-    apple = ep.get("apple_url")
-    spotify = ep.get("spotify_url")
-    youtube = ep.get("youtube_url")
-    web = ep.get("acast_url") or ep["url"]
-
-    def btn(label, url, primary=False):
-        if not url:
-            return ""
-        cls = "btn btn-primary" if primary else "btn btn-secondary"
-        return f'<a class="{cls}" href="{url}" target="_blank">{label}</a>'
-
-    buttons = "\n".join(
-        b for b in [
-            btn("🎧 Listen on Apple Podcasts", apple, primary=True),
-            btn("🎧 Listen on Spotify", spotify),
-            btn("▶️ Watch / Listen on YouTube", youtube),
-            btn("▶️ Listen on Web", web),
-        ] if b
-    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -206,7 +186,133 @@ def render_newest_page(ep):
   <meta property="og:description" content="Listen to the latest episode of The Strategists." />
 
   <style>
-    /* (UNCHANGED: paste your exact CSS block here verbatim) */
+    :root {{
+      --orange: #d7522f;
+      --navy: #232e41;
+      --bg-dark: #0f141c;
+      --white: #ffffff;
+    }}
+
+    * {{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }}
+
+    body {{
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(215,82,47,0.35), transparent 60%),
+        radial-gradient(1000px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
+        linear-gradient(160deg, #121826, #0b0f16);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }}
+
+    .card {{
+      width: 100%;
+      max-width: 560px;
+      background: rgba(15,20,28,0.85);
+      border-radius: 24px;
+      padding: 40px 32px 36px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      animation: floatIn 0.6s ease-out;
+    }}
+
+    @keyframes floatIn {{
+      from {{ opacity: 0; transform: translateY(12px) scale(0.98); }}
+      to {{ opacity: 1; transform: translateY(0) scale(1); }}
+    }}
+
+    .badge {{
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }}
+
+    h1 {{
+      font-size: 34px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }}
+
+    .episode-number {{
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }}
+
+    .description {{
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }}
+
+    .buttons {{
+      display: grid;
+      gap: 14px;
+      margin-bottom: 20px;
+    }}
+
+    .btn {{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }}
+
+    .btn-primary {{
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(215,82,47,0.35);
+    }}
+
+    .btn-primary:hover {{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(215,82,47,0.45);
+    }}
+
+    .btn-secondary {{
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+    }}
+
+    .btn-secondary:hover {{
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-1px);
+    }}
+
+    .footer {{
+      text-align: center;
+      font-size: 13px;
+      opacity: 0.6;
+      margin-top: 8px;
+    }}
+
+    .footer a {{
+      color: inherit;
+      text-decoration: underline;
+    }}
+
+    @media (max-width: 420px) {{
+      h1 {{ font-size: 28px; }}
+      .card {{ padding: 32px 24px; }}
+    }}
   </style>
 </head>
 <body>
@@ -220,7 +326,7 @@ def render_newest_page(ep):
     <p class="description">{description}</p>
 
     <div class="buttons">
-      {buttons}
+      <a class="btn btn-primary" href="{ep['url']}">🎧 Read transcript & listen</a>
     </div>
 
     <div class="footer">
@@ -231,8 +337,6 @@ def render_newest_page(ep):
 </body>
 </html>
 """
-
-
 
 # -------------------------------------------------------------------
 # Main
