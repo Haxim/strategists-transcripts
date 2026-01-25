@@ -15,8 +15,7 @@
 
 
 
-
-
+  
   <meta name="description" content="Check the Orthodox Boxing Day deals, lower your expectations accordingly, and get ready as The Strategists unpack the year that was in the Flair Airlines* Better Late Than Never Holiday Spectacular. Stephen Carter, Shannon Phillips, and Annalise Klingbeil try to make sense of the last year in politics. From delayed responses and rare perfect landings to middle-seat nightmares, political rebirths and obituaries, Zain Velji keeps everybody in line.*not our sponsor" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   
@@ -27,9 +26,9 @@
   <meta property="og:description" content="Check the Orthodox Boxing Day deals, lower your expectations accordingly, and get ready as The Strategists unpack the year that was in the Flair Airlines* Better Late Than Never Holiday Spectacular. Stephen Carter, Shannon Phillips, and Annalise Klingbeil try to make sense of the last year in politics. From delayed responses and rare perfect landings to middle-seat nightmares, political rebirths and obituaries, Zain Velji keeps everybody in line.*not our sponsor" />
   
   <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="2026-01-09T05:46:28Z" />
-
   
+  
+    
     <meta property="og:image" content="/assets/og-default.png" />
     <meta name="twitter:image" content="/assets/og-default.png" />
   
@@ -46,7 +45,7 @@
     "name": "Episode 1901: Holiday Spectacular",
     "description": "Check the Orthodox Boxing Day deals, lower your expectations accordingly, and get ready as The Strategists unpack the year that was in the Flair Airlines* Better Late Than Never Holiday Spectacular. Stephen Carter, Shannon Phillips, and Annalise Klingbeil try to make sense of the last year in politics. From delayed responses and rare perfect landings to middle-seat nightmares, political rebirths and obituaries, Zain Velji keeps everybody in line.*not our sponsor",
     
-    "datePublished": "2026-01-09T05:46:28Z",
+    
     
     "partOfSeries": {
       "@type": "PodcastSeries",
@@ -83,14 +82,2605 @@
 
   
   <style>
-    /* ⬇⬇⬇ YOUR ENTIRE STYLE BLOCK IS UNCHANGED ⬇⬇⬇ */
-    /* (exactly as you provided; omitted here for brevity in explanation,
-       but included in your pasted version above) */
+    :root{
+      --brand: #d7522f;
+      --accent: #232e41;
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --muted2: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --shadow2: 0 8px 22px rgba(0,0,0,.28);
+      --radius: 18px;
+      --radius2: 12px;
+      --maxw: 1100px;
+      --pad: clamp(16px, 3vw, 26px);
+      --sticky-shadow: 0 10px 28px rgba(0,0,0,.35);
+      --topbar-h: 58px;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #fbfbfd;
+        --panel: rgba(0,0,0,0.04);
+        --panel-2: rgba(0,0,0,0.06);
+        --text: rgba(0,0,0,0.92);
+        --muted: rgba(0,0,0,0.68);
+        --muted2: rgba(0,0,0,0.52);
+        --line: rgba(0,0,0,0.10);
+        --shadow: 0 16px 40px rgba(0,0,0,.12);
+        --shadow2: 0 8px 22px rgba(0,0,0,.10);
+        --sticky-shadow: 0 10px 28px rgba(0,0,0,.12);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.55;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% -10%, rgba(215,82,47,.32), transparent 60%),
+        radial-gradient(1000px 600px at 100% 0%, rgba(35,46,65,.50), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg));
+      background-attachment: fixed;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      min-width: 0;
+    }
+    .brand img{ width: 34px; height: 34px; object-fit: contain; }
+    .brand .name{ font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+    .brand .tag{ font-size: 13px; color: var(--muted2); white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
+
+    .navlinks{ display:flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .chip{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .chip strong{ color: var(--text); font-weight: 650; }
+    .chip:hover{ background: var(--panel-2); text-decoration:none; }
+
+    /* Hero */
+    .hero{ padding: 26px 0 12px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      background: color-mix(in oklab, var(--panel) 90%, transparent);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main{ padding: 20px; }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3.2vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .meta{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      align-items:center;
+    }
+    .meta .dot{ opacity: .55; }
+
+    .desc{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .desc p{ margin: 0.6rem 0; }
+    .desc a{ color: var(--text); text-decoration: underline; text-decoration-color: color-mix(in oklab, var(--brand) 70%, transparent); }
+
+    .cta{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 650;
+      font-size: 14px;
+      box-shadow: var(--shadow2);
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover{ background: var(--panel-2); text-decoration:none; }
+    .btn.primary{
+      background: linear-gradient(90deg, color-mix(in oklab, var(--brand) 75%, black), color-mix(in oklab, var(--accent) 70%, black));
+      border-color: color-mix(in oklab, var(--brand) 40%, var(--line));
+    }
+
+    /* Side card */
+    .hero-side{ padding: 16px; }
+    .hero-side h3{ margin: 0 0 10px; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--muted2); }
+    .kv{ display:grid; grid-template-columns: 1fr; gap: 10px; }
+    .kv .row{
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .kv .k{ color: var(--muted2); }
+    .kv .v{ color: var(--text); font-weight: 650; }
+
+    /* Player */
+    #player-sentinel{ height: 1px; }
+    #player-wrapper{ margin: 14px 0 0; }
+
+    #player-wrapper .player-card{ overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); background: color-mix(in oklab, var(--panel) 90%, transparent); }
+    #player-wrapper iframe{ width: 100%; height: 210px; border: 0; display:block; background: transparent; }
+
+    #player-wrapper.sticky{
+      position: fixed;
+      top: var(--topbar-h);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(var(--maxw), calc(100vw - (2 * var(--pad))));
+      z-index: 40;
+
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* Main layout */
+    .main{ padding: 18px 0 40px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Transcript tools */
+    .tools{ padding: 14px; }
+    .tools h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -0.02em; }
+
+    .search{
+      display:flex; gap: 10px; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .input{
+      flex: 1 1 240px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      outline: none;
+      font-size: 14px;
+    }
+    .input::placeholder{ color: var(--muted2); }
+
+    .small{ font-size: 13px; color: var(--muted2); margin-top: 8px; }
+
+    /* Transcript */
+    .transcript{ padding: 14px; }
+    .turn{
+      display:flex; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background .12s ease, border-color .12s ease;
+    }
+    .turn:hover{ background: var(--panel); }
+    .turn.active{
+      background: color-mix(in oklab, var(--panel-2) 85%, transparent);
+      border-color: color-mix(in oklab, var(--brand) 35%, var(--line));
+      box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--brand) 30%, transparent);
+    }
+
+    .who{ min-width: 92px; }
+    .who .spk{
+      display:inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--accent) 28%, transparent);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 750;
+      font-size: 12px;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+    .who .ts{
+      display:block;
+      margin-top: 6px;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted2);
+      font-size: 12px;
+      user-select: none;
+    }
+    .said{ color: var(--text); font-size: 15px; }
+    .said mark{ background: color-mix(in oklab, var(--brand) 35%, transparent); color: inherit; padding: 0 .08em; border-radius: .25em; }
+
+    /* Sidebar */
+    .side{ padding: 14px; }
+    .side h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -0.02em; }
+
+    .side .links{ display:flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 2px; }
+
+    .hr{ height: 1px; background: var(--line); margin: 14px 0; border:0; }
+
+    footer{ padding: 28px 0 40px; color: var(--muted2); font-size: 13px; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior: auto !important; transition: none !important; }
+    }
   </style>
 </head>
 
 <body>
-  <!-- ⬇⬇⬇ BODY, HERO, PLAYER, TRANSCRIPT, JS ⬇⬇⬇ -->
-  <!-- UNCHANGED FROM YOUR ORIGINAL FILE -->
+  <div class="topbar">
+    <div class="wrap inner">
+      <a class="brand" href="/" aria-label="Back to episodes index">
+        
+        <div style="min-width:0">
+          <div class="name">The Strategists</div>
+          <div class="tag">Transcripts</div>
+        </div>
+      </a>
+
+      <div class="navlinks">
+        <a class="chip" href="/">← <strong>All episodes</strong></a>
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <section class="card hero-main">
+        <h1>Episode 1901: Holiday Spectacular</h1>
+
+        <div class="meta">
+          <span>January 9, 2026</span>
+          
+          
+          
+        </div>
+
+        
+          <div class="desc"><p>Check the Orthodox Boxing Day deals, lower your expectations accordingly, and get ready as The Strategists unpack the year that was in the Flair Airlines* Better Late Than Never Holiday Spectacular. Stephen Carter, Shannon Phillips, and Annalise Klingbeil try to make sense of the last year in politics. From delayed responses and rare perfect landings to middle-seat nightmares, political rebirths and obituaries, Zain Velji keeps everybody in line.</p><p>*not our sponsor</p><p></p></div>
+        
+
+        <div class="cta">
+          <button class="btn primary" type="button" id="btn-copy">Copy link</button>
+          <button class="btn" type="button" id="btn-copy-ts" title="Copies the link to the current moment (or selected line)">Copy link + timestamp</button>
+          <a class="btn" href="#transcript" title="Jump to transcript">Jump to transcript</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="wrap">
+
+      <div id="player-wrapper">
+        
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/69609635b86949aa06354df8"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
+      </div>
+      <div id="player-sentinel"></div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap grid">
+
+      <section class="card">
+        <div class="tools">
+          <h2 id="transcript">Transcript</h2>
+        </div>
+
+        <div class="transcript" id="transcript-list" aria-label="Transcript">
+          
+          <div class="turn" data-start="2">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:02</span>
+  </div>
+  <div class="said">Well hi there, and a warm radiant hello to you, strategist listeners. Isn&#x27;t it just magnificent outside? Look at that sun through the trees, look at your neighbors, who are waving happily at you as you shovel their walk. Yeah, cause you&#x27;re helping, and of course they&#x27;re at home watching heated rivalry, cause that&#x27;s the only thing that gives them purpose in life. Anyways, look at the unity in our political discourse. The Novice Standing Clause, that definitely wasn&#x27;t used to override your basic rights this year. Nope, not even once. It just You&#x27;re sat there on the shelf, dusty, forgotten. And more importantly, you. Look at you. Your blood pressure, it&#x27;s great. It&#x27;s resting at a cool 110 over 70, I imagine. You haven&#x27;t clenched your jaw in a while reading a post-media op-ed in six months. And your wallet, I&#x27;m sure it&#x27;s bursting. Your oil sand stocks are probably doing so well. You&#x27;re welcome. Probably also doing fine with those tariffs. And wait, is that you by a fire? You look rested. Probably saying to yourself, wow, things are great before the water wars start. What a lovely, stress-free life you lead. It&#x27;d be a shame if it really, you know, set in. So grab your kids, grab your lukewarm, inflation-adjusted, no-name eggnog, and grab whatever hope you briefly felt when Mark Carney rolled up his sleeves, and now burn it all. Because it&#x27;s time for the Better Late Than Never Strategist Holiday Spectacular, brought to you by Flair Airlines. And welcome, Shannon Phillips, Annalise Klingbeil, and Stephen Carter. What a glorious post-holiday it is</div>
+</div>
+<div class="turn" data-start="84">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:24</span>
+  </div>
+  <div class="said">The whole gang is here.</div>
+</div>
+<div class="turn" data-start="88">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:28</span>
+  </div>
+  <div class="said">Indeed, indeed. Stephen Carter, how did you celebrate Orthodox Christmas?</div>
+</div>
+<div class="turn" data-start="92">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:32</span>
+  </div>
+  <div class="said">Like I celebrated Christmas by barely being aware of it.</div>
+</div>
+<div class="turn" data-start="96">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:36</span>
+  </div>
+  <div class="said">Yeah, well, there you go. Shannon, Orthodox Christmas, that is the holiday of choice on the show, if you were not aware, and you celebrated how? Okay, and Annalise, same question to you.</div>
+</div>
+<div class="turn" data-start="110">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">1:50</span>
+  </div>
+  <div class="said">Skiing, always skiing, Zane. It&#x27;s</div>
+</div>
+<div class="turn" data-start="113">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:53</span>
+  </div>
+  <div class="said">how we celebrate. Yeah, that is how we celebrate. Listen, I&#x27;m wasting no time. We have our first segment. It is the segment that predicts the future. It is bulletproof. It is the pre-flight security screening, also known as How White with</div>
+</div>
+<div class="turn" data-start="129">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:09</span>
+  </div>
+  <div class="said">Stephen Carter. For those of you that have not been part of this show before, this is our holiday spectacular. Welcome. We&#x27;re not wasting any time. We get straight to the main event. For 12 years now, I think 13, Stephen Carter, Carter. This has been the single most accurate way to predict the weather and how white we&#x27;re going to have this winter. We determine how white Stephen Carter is, and that tells us how white of a white Christmas we&#x27;re going to have going forward. The way this works, Stephen Carter, is we have 10.</div>
+</div>
+<div class="turn" data-start="158">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:38</span>
+  </div>
+  <div class="said">No, no, I&#x27;m going to read. I&#x27;m going to read to you. We have to do this. We have to do this every year. I will allow you know what? Before I get into the rules, I will allow your 30 seconds of protest before I make the decision I have already made. Go ahead</div>
+</div>
+<div class="turn" data-start="169">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">2:49</span>
+  </div>
+  <div class="said">Every Every year we begin the podcast, the Holiday Spectacular, by humiliating me. And we have so many other people we could humiliate. We could humiliate Shannon. We could humiliate Annalise. We can even humiliate you, Zane. Why is it always me? I feel like you hang yourself</div>
+</div>
+<div class="turn" data-start="186">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:06</span>
+  </div>
+  <div class="said">with the rope that is provided. I gave you 30 seconds to protest. Instead, you said, every year I choose not to learn about culture that is not white. I, instead of doing my homework, I feel like this is an embarrassment. Carter, you&#x27;ve revealed yourself once again, hanging yourself with the rope I&#x27;m providing you. Here&#x27;s how this works. Stephen Carter, we&#x27;re doing it. There&#x27;s a person of color that is the response to 10 questions that Annalise and Shannon have. They will alternate back and forth. Stephen Carter has to guess the answer. It&#x27;s a person in our politics, could be Canadian or American politics, or a person in broader pop culture. Here&#x27;s how the scoring works. Marks, every person, as I mentioned, is a person of color. If Carter knows the name, he gets zero points. That&#x27;s good. You get nothing. So if you know, you get nothing, Carter. So I&#x27;ve changed it up this year. If you fail, which I think is a more likely scenario on each of these questions probabilistically, you get one white point.</div>
+</div>
+<div class="turn" data-start="243">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:03</span>
+  </div>
+  <div class="said">The lower the score, the whiter the Christmas. Okay, Carter? So here we are</div>
+</div>
+<div class="turn" data-start="247">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">4:07</span>
+  </div>
+  <div class="said">This is great. So I&#x27;m aiming for something</div>
+</div>
+<div class="turn" data-start="250">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:10</span>
+  </div>
+  <div class="said">You got to just try to get one. And I think there&#x27;s a couple you will be able to get. I really believe in you, Stephen Carter. I will be scorekeeper for this first segment. And we&#x27;ll start with Shannon and then Annalise back and forth. Oh, great.</div>
+</div>
+<div class="turn" data-start="264">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">4:24</span>
+  </div>
+  <div class="said">Yeah, yeah. Follow the questions. Yeah, that&#x27;s right. We&#x27;re reading the questions.</div>
+</div>
+<div class="turn" data-start="270">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:30</span>
+  </div>
+  <div class="said">Yeah, that&#x27;s good. They&#x27;re participating in what could be classified if anyone other than myself did this without my pigmentation. I hate crime. So, Stephen Carter, please go ahead. Did</div>
+</div>
+<div class="turn" data-start="280">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">4:40</span>
+  </div>
+  <div class="said">either of you, when you were tasked with this, think this was unfair? Yes. Don&#x27;t say no. God, don&#x27;t say that. Shannon</div>
+</div>
+<div class="turn" data-start="288">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:48</span>
+  </div>
+  <div class="said">thought it was hard. Annalise didn&#x27;t comment, which I meant she got 10 out of 10</div>
+</div>
+<div class="turn" data-start="293">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">4:53</span>
+  </div>
+  <div class="said">Let&#x27;s do this. Which means that I have more whiteness points than Annalise. All right. Question one. know it&#x27;s coming and I never study. You should probably pay attention to non-white culture at some point over the course of the year. This Calgary Conservative MP of Punjabi background kept his seat in 2025 and remained one of the party&#x27;s loudest voices on cost of living and immigration.</div>
+</div>
+<div class="turn" data-start="319">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">5:19</span>
+  </div>
+  <div class="said">Yeah, this is why I&#x27;m Calgary MP, Carter. You have to say an Name a Calgary Punjabi MP that you know for any place.</div>
+</div>
+<div class="turn" data-start="330">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">5:30</span>
+  </div>
+  <div class="said">I&#x27;m not real good with the Conservative MPs. Oh, okay. Is it the</div>
+</div>
+<div class="turn" data-start="333">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">5:33</span>
+  </div>
+  <div class="said">Conservative MPs or the Punjabi MPs that you&#x27;re not good with?</div>
+</div>
+<div class="turn" data-start="336">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">5:36</span>
+  </div>
+  <div class="said">I mean, both, apparently. Jim Carter, do</div>
+</div>
+<div class="turn" data-start="341">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">5:41</span>
+  </div>
+  <div class="said">you want to take a guess?</div>
+</div>
+<div class="turn" data-start="345">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">5:45</span>
+  </div>
+  <div class="said">want to Google Calgary MPs, but I&#x27;m afraid that I&#x27;d get it wrong even if I did. So I&#x27;m going to go with Jamil</div>
+</div>
+<div class="turn" data-start="355">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">5:55</span>
+  </div>
+  <div class="said">He&#x27;s not Calgary. It is, in fact, Jezron Singh-Hallan, who is also... Also, you you can be forgiven, Carter, because normally people, you know, who pay attention to politics would know who the opposition finance critic is. But this is a man who didn&#x27;t even get to talk to the media and get permission from his leader to talk to the media on Budget Day this year. So</div>
+</div>
+<div class="turn" data-start="378">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">6:18</span>
+  </div>
+  <div class="said">partisan swipe and like defense by Shannon at the same time. That&#x27;s right.</div>
+</div>
+<div class="turn" data-start="384">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">6:24</span>
+  </div>
+  <div class="said">Very good, Shannon. Anyway,</div>
+</div>
+<div class="turn" data-start="386">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">6:26</span>
+  </div>
+  <div class="said">still know who he is.</div>
+</div>
+<div class="turn" data-start="389">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">6:29</span>
+  </div>
+  <div class="said">last part of shannon state but i agree with all righty</div>
+</div>
+<div class="turn" data-start="392">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">6:32</span>
+  </div>
+  <div class="said">question two it&#x27;s a culture one steven carter this houston rapper and cultural force spent 2025 doubling down on independence holding onto her masters and refusing respectability politics carter do not say cardi b do</div>
+</div>
+<div class="turn" data-start="409">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">6:49</span>
+  </div>
+  <div class="said">say Cardi B. Who I mean, you lost me at rapper. have no clue. Houston? No. Really? That&#x27;s a person?</div>
+</div>
+<div class="turn" data-start="426">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">7:06</span>
+  </div>
+  <div class="said">Stephen Carter, your current tally is two points. You&#x27;re getting points. See, Carter? This is how you keep feeling good. This is how you keep pace. You get points while doing nothing. Shannon, over to you. This one, Carter, you should get</div>
+</div>
+<div class="turn" data-start="438">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">7:18</span>
+  </div>
+  <div class="said">this turbaned federal party leader spent the entire year trying to prove his party is relevant in a minority parliament while reminding carney that renters vote too uh</div>
+</div>
+<div class="turn" data-start="449">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">7:29</span>
+  </div>
+  <div class="said">even harder correct zero points accumulated on that one thank we go back to the rap</div>
+</div>
+<div class="turn" data-start="455">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">7:35</span>
+  </div>
+  <div class="said">yeah yeah of course question four a culture one this compton rapper&#x27;s 2025 output defined the year&#x27;s mood his lines about not faking humility were quoted in the house of commons by a conservative backbencher this</div>
+</div>
+<div class="turn" data-start="473">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">7:53</span>
+  </div>
+  <div class="said">is another cultural okay i thought you were frozen yes carter you</div>
+</div>
+<div class="turn" data-start="477">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">7:57</span>
+  </div>
+  <div class="said">have to say where is carter i</div>
+</div>
+<div class="turn" data-start="481">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">8:01</span>
+  </div>
+  <div class="said">a comp think of the most the most famous rapper carter think of m&amp;m jesus christ he chooses the white Question four. Carter gets zero points. No, Carter, you do get points. This is the third point that you have accumulated. We are well on our way. Who was that? Kendrick</div>
+</div>
+<div class="turn" data-start="503">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:23</span>
+  </div>
+  <div class="said">We&#x27;re on question five. Kendrick Lamar. Okay. I think I know that name. Damn</div>
+</div>
+<div class="turn" data-start="508">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">8:28</span>
+  </div>
+  <div class="said">right. Next question. Back to you. He made history as the first black speaker of the House of Commons and spent 2025 trying to keep the Carny-Poilievre shouting matches from violating standing orders. He&#x27;s also a very nice man</div>
+</div>
+<div class="turn" data-start="519">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:39</span>
+  </div>
+  <div class="said">He is a very nice man. His name is escaping me at this particular moment. This is so unfair. It&#x27;s This one is</div>
+</div>
+<div class="turn" data-start="529">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">8:49</span>
+  </div>
+  <div class="said">not unfair. You</div>
+</div>
+<div class="turn" data-start="530">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:50</span>
+  </div>
+  <div class="said">should know the name of the</div>
+</div>
+<div class="turn" data-start="531">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">8:51</span>
+  </div>
+  <div class="said">speaker. You got Jagmeet Singh, which I&#x27;m happy.</div>
+</div>
+<div class="turn" data-start="534">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:54</span>
+  </div>
+  <div class="said">I should get this one. This one I should be able to get</div>
+</div>
+<div class="turn" data-start="538">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">8:58</span>
+  </div>
+  <div class="said">I&#x27;ll give you the no points, technically, because that&#x27;s what we&#x27;re doing. I&#x27;ll give you the no points for either half of his name. should be so easy</div>
+</div>
+<div class="turn" data-start="551">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">9:11</span>
+  </div>
+  <div class="said">yeah i you know it&#x27;s the stress it&#x27;s the stress that gets you i</div>
+</div>
+<div class="turn" data-start="556">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">9:16</span>
+  </div>
+  <div class="said">it&#x27;s a lack of preparation you</div>
+</div>
+<div class="turn" data-start="560">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">9:20</span>
+  </div>
+  <div class="said">i can&#x27;t i i didn&#x27;t i always forget that this is coming i always forget that i&#x27;m going to get humiliated i can&#x27;t remember his name i can see his face give me give me the initials describe</div>
+</div>
+<div class="turn" data-start="576">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">9:36</span>
+  </div>
+  <div class="said">don&#x27;t think I&#x27;ll be doing that</div>
+</div>
+<div class="turn" data-start="579">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">9:39</span>
+  </div>
+  <div class="said">he can picture his face that&#x27;s such a come out Carter</div>
+</div>
+<div class="turn" data-start="583">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">9:43</span>
+  </div>
+  <div class="said">is it the same or different shade than Eminem</div>
+</div>
+<div class="turn" data-start="587">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">9:47</span>
+  </div>
+  <div class="said">I&#x27;m going to skip over this I&#x27;m going to say that I can&#x27;t get it is it Greg Greg Fergus I was going to say Ferguson but my friend who&#x27;s white is named Greg Ferguson And I thought, you know, I&#x27;m going to get in trouble on that one.</div>
+</div>
+<div class="turn" data-start="604">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">10:04</span>
+  </div>
+  <div class="said">Stephen Carter, what are we doing? Shannon, it&#x27;s your call on this one. Do we want to give him the lack of point or not</div>
+</div>
+<div class="turn" data-start="610">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">10:10</span>
+  </div>
+  <div class="said">Give me the point or give me the lack of point. I think we should give him the lack of point because, you know, yeah, I have sympathy for just not being able to remember things.</div>
+</div>
+<div class="turn" data-start="619">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">10:19</span>
+  </div>
+  <div class="said">Yeah, here we go. Very old</div>
+</div>
+<div class="turn" data-start="622">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">10:22</span>
+  </div>
+  <div class="said">Question six is another culture one. Oh, God. My favorite. This South African artist known for her blue hair and self-described future ghetto funk had one of the most praised records of the year. Take a swing, Carter.</div>
+</div>
+<div class="turn" data-start="639">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">10:39</span>
+  </div>
+  <div class="said">artist with blue hair? Yeah. South African artist with A South African Shakira.</div>
+</div>
+<div class="turn" data-start="651">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">10:51</span>
+  </div>
+  <div class="said">Moon Childs and Nelly. Four</div>
+</div>
+<div class="turn" data-start="654">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">10:54</span>
+  </div>
+  <div class="said">on, that doesn&#x27;t even count</div>
+</div>
+<div class="turn" data-start="655">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">10:55</span>
+  </div>
+  <div class="said">Is Shannon back to you? My age is going to know that. Seventh question, Shannon Phillips.</div>
+</div>
+<div class="turn" data-start="662">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">11:02</span>
+  </div>
+  <div class="said">This Haitian Canadian liberal was elected in Papineau in 2025, taking Justin Trudeau&#x27;s old riding and instantly becoming a power player in the Quebec caucus. She is also in cabinet. I&#x27;m going to give you a little</div>
+</div>
+<div class="turn" data-start="673">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">11:13</span>
+  </div>
+  <div class="said">hint. As a health minister, that is correct. We&#x27;ll give you even that, Stephen Carter. Excellent. Does not make a difference.</div>
+</div>
+<div class="turn" data-start="682">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:22</span>
+  </div>
+  <div class="said">Health minister. I should know the health minister</div>
+</div>
+<div class="turn" data-start="684">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">11:24</span>
+  </div>
+  <div class="said">Yeah. Yeah, that&#x27;s a true fact. Anyway, it&#x27;s Marjorie Michelle. We award you points.</div>
+</div>
+<div class="turn" data-start="691">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">11:31</span>
+  </div>
+  <div class="said">Stephen Carter, seven questions in, five points. We&#x27;ve already hit the threshold. Okay, I&#x27;m going to nail these last three. You&#x27;ve got three left. Question eight. This is where</div>
+</div>
+<div class="turn" data-start="698">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">11:38</span>
+  </div>
+  <div class="said">the stress melts off</div>
+</div>
+<div class="turn" data-start="700">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">11:40</span>
+  </div>
+  <div class="said">There&#x27;s no stress anymore. White Christmas is guaranteed. Don&#x27;t</div>
+</div>
+<div class="turn" data-start="703">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">11:43</span>
+  </div>
+  <div class="said">culture one. It is another culture one. Yeah, it is. It&#x27;s so</div>
+</div>
+<div class="turn" data-start="706">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">11:46</span>
+  </div>
+  <div class="said">good. It&#x27;s like giving these</div>
+</div>
+<div class="turn" data-start="707">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">11:47</span>
+  </div>
+  <div class="said">animals an alternating word. Politics, culture, politics, culture. There&#x27;s a pattern going on. He is the men&#x27;s creative director at Louis Vuitton. he co-chaired the Met Gala and he turned black dandyism into the look of 2025. He is also seemingly ageless.</div>
+</div>
+<div class="turn" data-start="729">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:09</span>
+  </div>
+  <div class="said">guess actually. Good guess though. That&#x27;s a terrible guess. Terrible guess. Shannon, you are not one to say good guess. Terrible guess</div>
+</div>
+<div class="turn" data-start="737">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">12:17</span>
+  </div>
+  <div class="said">How is that a terrible guess? Black dandyism is probably not going to be in my cultural literary, you know. Do you think I don&#x27;t know that? Do you think I do not know this?</div>
+</div>
+<div class="turn" data-start="746">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">12:26</span>
+  </div>
+  <div class="said">Zane wrote the questions, Carter. Who&#x27;s the answer? It was Pharrell Williams. I don&#x27;t know why you keep asking for the answers.</div>
+</div>
+<div class="turn" data-start="754">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:34</span>
+  </div>
+  <div class="said">Pharrell, God, this is embarrassing for everyone.</div>
+</div>
+<div class="turn" data-start="757">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">12:37</span>
+  </div>
+  <div class="said">That was my fault.</div>
+</div>
+<div class="turn" data-start="758">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">12:38</span>
+  </div>
+  <div class="said">He&#x27;s the guy who sang the song, right? Yes, the guy who sang the song.</div>
+</div>
+<div class="turn" data-start="762">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:42</span>
+  </div>
+  <div class="said">Okay, I think Carter should get the next two. Shannon and Annalise, I feel like we wanted to end on a struggle. Zane and Carter, we&#x27;ve done eight questions. You&#x27;ve accumulated six points. These are questions nine and ten, starting with Shannon and then Annalise again.</div>
+</div>
+<div class="turn" data-start="777">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">12:57</span>
+  </div>
+  <div class="said">This South Asian Alberta NDP MLA, an effective critic on kids&#x27; rights and education, topped the, quote, best of Alberta politics list this year.</div>
+</div>
+<div class="turn" data-start="791">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:11</span>
+  </div>
+  <div class="said">No, who is it? Pancholi. Rocky Pancholi, okay.</div>
+</div>
+<div class="turn" data-start="796">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">13:16</span>
+  </div>
+  <div class="said">Excellent, excellent. I</div>
+</div>
+<div class="turn" data-start="798">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:18</span>
+  </div>
+  <div class="said">got confused when you said South Asian. I thought immediately Southern Alberta. That&#x27;s my fault. I didn&#x27;t think it all the way through. I didn&#x27;t listen close enough to the question. Yeah, that&#x27;s fair. Okay. At least I can pronounce her name now. There&#x27;s some significance. That&#x27;s right. The name of</div>
+</div>
+<div class="turn" data-start="811">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">13:31</span>
+  </div>
+  <div class="said">it was last year. It wasn&#x27;t last year. It was two or three years ago. It was pretty bad. We should run the tape if we have it. No, we&#x27;re not running the tape, Hax. We should definitely run the tape. Move on. Let&#x27;s go. I&#x27;m Stephen Carter butchering that one. I think Racky&#x27;s been a dancer every single year. You&#x27;re getting incrementally better.</div>
+</div>
+<div class="turn" data-start="826">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:46</span>
+  </div>
+  <div class="said">I&#x27;m getting incrementally better.</div>
+</div>
+<div class="turn" data-start="829">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">13:49</span>
+  </div>
+  <div class="said">Final question. It&#x27;s a politics one. This Cree and French Métis MLA from Edmonton West Henday was a breakout star of the legislature for his work on indigenous justice and the sovereignty fight. We said where he&#x27;s from.</div>
+</div>
+<div class="turn" data-start="850">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">14:10</span>
+  </div>
+  <div class="said">We&#x27;ll give you NDP MLA as well. Well, of</div>
+</div>
+<div class="turn" data-start="853">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">14:13</span>
+  </div>
+  <div class="said">course it&#x27;s an</div>
+</div>
+<div class="turn" data-start="854">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">14:14</span>
+  </div>
+  <div class="said">NDP MLA. I don&#x27;t know. You&#x27;re fucking saying, of course. Some of these are slam dunks, I would say. Cree,</div>
+</div>
+<div class="turn" data-start="861">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">14:21</span>
+  </div>
+  <div class="said">Métis, Edmonton West, Henday Come on Carter</div>
+</div>
+<div class="turn" data-start="865">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">14:25</span>
+  </div>
+  <div class="said">Would you have gotten this when you read this Or did you have to google the answer I would have gotten</div>
+</div>
+<div class="turn" data-start="870">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">14:30</span>
+  </div>
+  <div class="said">the last two I would have gotten</div>
+</div>
+<div class="turn" data-start="876">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">14:36</span>
+  </div>
+  <div class="said">everybody It will be another white Christmas</div>
+</div>
+<div class="turn" data-start="882">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">14:42</span>
+  </div>
+  <div class="said">Brooks, Arcand, Paul, Stephen Carter You, my friend And got Jagmeet Singh right. did. And Greg Fergus. Was that it? Is that what happened</div>
+</div>
+<div class="turn" data-start="894">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">14:54</span>
+  </div>
+  <div class="said">here? He only got the Greg part of this. And it took a long time.</div>
+</div>
+<div class="turn" data-start="899">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">14:59</span>
+  </div>
+  <div class="said">I got crushed. This is the worst performance I think I&#x27;ve ever done.</div>
+</div>
+<div class="turn" data-start="902">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">15:02</span>
+  </div>
+  <div class="said">The culture ones were very difficult. They were hard. I will give you that.</div>
+</div>
+<div class="turn" data-start="906">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:06</span>
+  </div>
+  <div class="said">If you were not into the rap game, Carter, they were difficult</div>
+</div>
+<div class="turn" data-start="909">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">15:09</span>
+  </div>
+  <div class="said">Okay, friends. I got Eminem. I mean, that&#x27;s got to count for something.</div>
+</div>
+<div class="turn" data-start="913">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:13</span>
+  </div>
+  <div class="said">You got something</div>
+</div>
+<div class="turn" data-start="915">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">15:15</span>
+  </div>
+  <div class="said">there. I named a rapper.</div>
+</div>
+<div class="turn" data-start="917">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:17</span>
+  </div>
+  <div class="said">Oh, my God. But, okay, let&#x27;s get everyone into the mix. We&#x27;re moving on to our next segment. Our next segment, our Flair Airlines delayed response of the year. I am going to give you five things that happened, five political parties, five political figures. You are going to give me, in a very simple fashion, who you think the most delayed response of the year belongs to. So, your list includes Jagmeet Singh not calling an election when Trudeau was still around. you have Mark Carney on his major projects file you have Pierre Pauliev on his lack thereof or slow pivot to Trump whatever you want to call it during the election you got Trudeau&#x27;s slow response for leaving and then you got the Ontario Liberals slow response for getting their act together before Doug Ford calls his snap election Jagmeet Singh not taking down the government Mark Carney on major projects Pierre Pauliev on a Trump pivot Trudeau not leaving, or the Ontario Liberals. Annalise, can I start with you? For you, what</div>
+</div>
+<div class="turn" data-start="979">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:19</span>
+  </div>
+  <div class="said">your delayed, which one of these five is your delayed response of the year? Which one would you crown as the best of the worst?</div>
+</div>
+<div class="turn" data-start="987">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">16:27</span>
+  </div>
+  <div class="said">Oh, the best of the worst. Polyev. Like a year ago, a year ago and two weeks, he was like 30 points ahead. And look at where we are now.</div>
+</div>
+<div class="turn" data-start="1000">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:40</span>
+  </div>
+  <div class="said">Annalise chooses Pierre Polyev. Jeff Shannon, can I go to you? Between Jagmeet Karni, Polyev, Trudeau and the Ontario Liberals, who are you choosing?</div>
+</div>
+<div class="turn" data-start="1008">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">16:48</span>
+  </div>
+  <div class="said">Oh, it&#x27;s got to be Polyev. I mean, if you listen to the Holiday Spectacular last year, which I had the misfortune to do over the course of this week, you will find several references from all of, from everyone about how Pierre Polyev was going to be prime minister. A more spectacular bed shit we have not seen in Canadian politics in some time. And he&#x27;s just underlined it yet again with his response to Venezuela, in which he&#x27;s congratulating Donald Trump. The man has learned nothing. But can we just clarify,</div>
+</div>
+<div class="turn" data-start="1040">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:20</span>
+  </div>
+  <div class="said">was it us who shit the bed or was it Pierre? You left that kind of hanging. No, Palliev. It felt like it was us who shit the bed. Absolutely not. It</div>
+</div>
+<div class="turn" data-start="1049">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">17:29</span>
+  </div>
+  <div class="said">seemed like your quarterback of last year&#x27;s</div>
+</div>
+<div class="turn" data-start="1052">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:32</span>
+  </div>
+  <div class="said">Spectacular. I mean, everybody was predicting Pierre Palliev was going</div>
+</div>
+<div class="turn" data-start="1055">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">17:35</span>
+  </div>
+  <div class="said">to get an extra can&#x27;t tell you. So I don&#x27;t feel like that&#x27;s an us problem. It&#x27;s not on you. It&#x27;s not on you. i&#x27;m saying that everyone is sensitive after</div>
+</div>
+<div class="turn" data-start="1063">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:43</span>
+  </div>
+  <div class="said">right now a little sensitive</div>
+</div>
+<div class="turn" data-start="1065">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">17:45</span>
+  </div>
+  <div class="said">no carter on that one you were right on like literally everything else in the holiday spectacular you were wrong but uh on</div>
+</div>
+<div class="turn" data-start="1072">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:52</span>
+  </div>
+  <div class="said">this you were absolutely right well let me tell you something i mean you guys being wrong on pierre pauliev is another thing jagmeet singh gave up everything uh by not forcing an election by doing this ridiculous deal with the with the liberals which basically took his caucus and made them a part of the furthest left liberal party that we&#x27;ve ever seen. Jagmeet Singh wins the award this year for the most delayed response. Congratulations to Flair Airlines.</div>
+</div>
+<div class="turn" data-start="1102">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">18:22</span>
+  </div>
+  <div class="said">Indeed, congratulations to Flair Airlines. And Carter, thank you for mentioning that, because this does bring us to our sponsor block, where, of course, we talk about our sponsors. This episode exclusively available on Microsoft Zoom as we talk about Carter, are the only platform that understands our demographic. And of course, Flair Airlines, there&#x27;s a difference between going and getting somewhere. Carter, let&#x27;s move it on to our next segment. This is our rare perfect landing. And this is a rare year because as part of Flair Airlines&#x27; rare perfect landing, we actually have a unicorn landing, which I&#x27;m not going to let you choose. So there are four options on the table. The unicorn landing of the year was Mark Carney&#x27;s election win. That is too low-hanging fruit for you to go. So I&#x27;m going to take that, put it in its glass case, and memorialize it as it should be. But I&#x27;m going to give the three of you four other rare perfect landings. And you have to tell me which one takes the cake for you. Which one is the best of the year? Number one, Doug Ford&#x27;s early election call.</div>
+</div>
+<div class="turn" data-start="1167">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">19:27</span>
+  </div>
+  <div class="said">CUPE and their public relations fight against Air Canada. Canada. Thomas Lukasik here in Alberta and the Forever Canadian petition drive. Or number four, Danielle Smith and her credit on the pipeline pivot and making pipelines more popular and getting a deal from the Liberals. So I got Ford, I got QP and Air Canada, I got Lukasik and Forever Canadian, and I got Danielle Smith and pipelines. Carter, can I start with you? Of those four, not including Mark Carney, in that glass case, as we mentioned, which are you choosing as the Flair Airlines&#x27; rare perfect landing of 2025?</div>
+</div>
+<div class="turn" data-start="1206">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">20:06</span>
+  </div>
+  <div class="said">I think it has to be Thomas Lukasik in the Forever Canada petition. The collective weight of the podcast was against him by saying that there was no way. Primarily you, but yes. You owe him an apology. The collective weight, Annalise and Shannon were right there, right there agreeing with me. You need to apologize</div>
+</div>
+<div class="turn" data-start="1227">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">20:27</span>
+  </div>
+  <div class="said">Yeah, do you want to do that now? I&#x27;ve had lunch with Thomas where I have apologized to him. He laughed and said something along the lines of, like your fucking predictions matter. So that hurtful. That&#x27;s the appropriate response. Yeah. So yeah, I mean, Thomas Lukaszek, to me, is the rare perfect landing from Flair Airlines</div>
+</div>
+<div class="turn" data-start="1248">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">20:48</span>
+  </div>
+  <div class="said">Oh, I&#x27;m intrigued that you chose that. Shannon, can I turn it over to you? You got the same four on the board. board which one are you picking well</div>
+</div>
+<div class="turn" data-start="1257">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">20:57</span>
+  </div>
+  <div class="said">well i i think if there&#x27;s a play of the year it&#x27;s it&#x27;s that one uh but i&#x27;m gonna choose qp uh and the year canada is straight because we never see this uh in you know the sort of 30 years that i&#x27;ve been watching politics and somewhat adjacent to the labor movement you so rarely see in fact you never see it number one that people had heard about it uh a labor dispute and number two that people were overwhelmingly on the side of the workers and i think it&#x27;s a it&#x27;s a credit to the uh everlasting shittiness of air contempt uh that they have you know essentially uh alienated uh 80 percent uh of their customer base and uh canadians uh that we take no pride uh in that particular uh company that people remember them getting bailed out during COVID and all the rest of it and that people have had enough of sort of the inequality of right now and QP landed the communications perfectly also pretty rare like if we&#x27;re all being honest from unions they usually find a way to you know either wrap the message up in gauze or make it too technical or whatever you know there&#x27;s a kind of two poles of a of a communications fail but they they did neither uh they hit air canada where it hurt and uh it worked and you know the carney government walked right into the trap</div>
+</div>
+<div class="turn" data-start="1344">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">22:24</span>
+  </div>
+  <div class="said">one for cupi and air canada we got one for the forever canadian petition and elise are you breaking the tie or are you going your own</div>
+</div>
+<div class="turn" data-start="1351">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">22:31</span>
+  </div>
+  <div class="said">way i&#x27;m breaking the tie before carter said it i was going to say lucasic as well it was a big he had a big hill to climb and he did it and he got a lot of media he got he had his rv his face like even his name a year ago there was a lot of albertans who wouldn&#x27;t have remembered him from his previous political career and who he was and he&#x27;s he&#x27;s just been out there and he got the signatures right and a lot of people including stephen carter thought that there was no way he could and he did it and</div>
+</div>
+<div class="turn" data-start="1380">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">23:00</span>
+  </div>
+  <div class="said">and and you i I mean, I</div>
+</div>
+<div class="turn" data-start="1384">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">23:04</span>
+  </div>
+  <div class="said">don&#x27;t know if you&#x27;re remembering that correctly, Carter. None of you</div>
+</div>
+<div class="turn" data-start="1388">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">23:08</span>
+  </div>
+  <div class="said">wanted to choose Doug Ford? No. For a jump? Well, why didn&#x27;t I? To me, as I wrote this, Doug Ford was the obvious answer. None of you chose it. That would have been my pick, 100%.</div>
+</div>
+<div class="turn" data-start="1398">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">23:18</span>
+  </div>
+  <div class="said">No. I mean, because it&#x27;s opposition, you know, no shade to my friends in the ONDP and certainly no shade to my non-friends in the OLP, but both opposition parties were kind of wrapped up in a ball of hair by then. You know, like they were not ready for an election, despite it being telegraphed since, you know, essentially September 2024, that one was going to happen. And they didn&#x27;t, they couldn&#x27;t find a way around the Trump discourse, right, and couldn&#x27;t find a way in. And part of that is they hadn&#x27;t seeded the ground effectively on the right issue set, whether like that was adjacent to Trump, whether it was affordability or health care. So, no, it was no surprise to me that he pulled it off. And, in fact, what was a surprise, he didn&#x27;t pull it off bigger. At the time of the election, people were saying, oh, he&#x27;s going to get 100 seats, yada, yada. He did not get 100 seats.</div>
+</div>
+<div class="turn" data-start="1451">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">24:11</span>
+  </div>
+  <div class="said">Yeah, pretty much got what he was at with another four-year refresh of his mandate. Okay, let&#x27;s move it on to our next segment. This one, Stephen Carter, we&#x27;ve also done in the past. It&#x27;s not our eulogies just yet. For those listening, that is coming shortly. this</div>
+</div>
+<div class="turn" data-start="1466">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">24:26</span>
+  </div>
+  <div class="said">next segment is if lair airlines whose middle seat would you rather be in remember this steven carter i give i give the two of you across four questions here a pairing i ask you who would you rather be sitting in the shitty middle seat two people who may not have had a great year shannon best way to start is to get started pierre poliev or justin trudeau who would you rather be sitting in a Flair Airlines middle seat today in early January 2026?</div>
+</div>
+<div class="turn" data-start="1496">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">24:56</span>
+  </div>
+  <div class="said">Oh, Justin Trudeau, because I would get to ask him all about Katy Perry going to space. And that would be really fun. And then I could hear stories that I would then repeat to my friends about how incredibly untethered from reality that man is. And that would also be fun. And probably remind him of some of his public policy achievements, because public policy was not exactly his forte. I also can&#x27;t stand Pierre Polyavre. I think he&#x27;s an unctuous prick. So I would take someone, you know, who&#x27;s known for his performative nonsense any day of the week.</div>
+</div>
+<div class="turn" data-start="1530">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">25:30</span>
+  </div>
+  <div class="said">So Justin Trudeau has a slightly better year than Pierre Polyavre is what you conclude. He&#x27;s</div>
+</div>
+<div class="turn" data-start="1538">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">25:38</span>
+  </div>
+  <div class="said">You disagree with that, Zane?</div>
+</div>
+<div class="turn" data-start="1540">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">25:40</span>
+  </div>
+  <div class="said">I&#x27;m just asking the questions. It&#x27;s all I do. I only voice my opinion when it comes to Doug Ford. Stephen Carter. Middle seat. Two options, who had the shittier year and who would you rather be having in that middle seat? David Parker, that seems like a blast from the past, but it&#x27;s actually really not. Or Sonia Sharp, narrowly losing a mayoral or narrowly losing your political apparatus and perhaps even power, TBD, I guess, on Parker, unless you disagree. agree steven carter middle who would you rather be i&#x27;m</div>
+</div>
+<div class="turn" data-start="1580">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">26:20</span>
+  </div>
+  <div class="said">i&#x27;m gonna put sonja sharp in the middle seat uh you know the uh the the joy of the prevent of the municipal elections primarily rested with me on on sonja sharp not winning uh so i put her in the seat david parker he does feel like a a spent political force in the province of alberta uh someone who used to have the year of the of of the premier, and now still has a Twitter account or an ex-account, and that&#x27;s about it. And so I think that Thomas organizing has taken the best organizer in Alberta title away from David Parker.</div>
+</div>
+<div class="turn" data-start="1621">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:01</span>
+  </div>
+  <div class="said">You think so, hey? I do. I really do. Really? That&#x27;s a category we should bring up, best political organizer. the federal NDP, or the Quebec Liberals,</div>
+</div>
+<div class="turn" data-start="1634">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">27:14</span>
+  </div>
+  <div class="said">what it&#x27;s who who would i rather who would i rather put in the middle seat</div>
+</div>
+<div class="turn" data-start="1638">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:18</span>
+  </div>
+  <div class="said">the middle seat sucks and the middle seat especially sucks on flair airlines who would you want to stuff into that middle seat federal</div>
+</div>
+<div class="turn" data-start="1649">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">27:29</span>
+  </div>
+  <div class="said">yeah even about</div>
+</div>
+<div class="turn" data-start="1650">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:30</span>
+  </div>
+  <div class="said">the quebec liberals tell me why</div>
+</div>
+<div class="turn" data-start="1653">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">27:33</span>
+  </div>
+  <div class="said">look at the year that they had zane just think and potentially think about it and the year that that they&#x27;re going to have and to the point earlier about uh what they could have done with an election or like yeah federal ndp full stop period shannon</div>
+</div>
+<div class="turn" data-start="1674">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:54</span>
+  </div>
+  <div class="said">shannon phillips i&#x27;m going to give you an extra swing because you deserve it also because i</div>
+</div>
+<div class="turn" data-start="1678">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">27:58</span>
+  </div>
+  <div class="said">didn&#x27;t understand the question</div>
+</div>
+<div class="turn" data-start="1679">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:59</span>
+  </div>
+  <div class="said">that&#x27;s fine it doesn&#x27;t matter you just have to listen to previous holidays i did</div>
+</div>
+<div class="turn" data-start="1683">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">28:03</span>
+  </div>
+  <div class="said">you did you did a great Great job</div>
+</div>
+<div class="turn" data-start="1685">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">28:05</span>
+  </div>
+  <div class="said">Who do you want to stuff into a middle seat, Shannon Phillips? Chuck Schumer. We&#x27;re talking American politics. Yeah, yeah. Oh, yeah, that&#x27;s fine. Or anti-mega Republicans. shittier year that belongs in the middle seat?</div>
+</div>
+<div class="turn" data-start="1697">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">28:17</span>
+  </div>
+  <div class="said">Oh, no, the anti-mega Republicans are on good ground. Both the never-Trump Republicans and the ones who are, like, America first going up against the, like, who are, you know, anti-mega but are America first now. Like, your Marjorie is Taylor Greene. uh those folks are having you know had a great 2025 both uh categories of them or at least by the end not the beginning i&#x27;m sticking chuck fucking schumer in that middle seat i hope he has to live in it for the rest of his life uh every single time that man talks publicly he he steps on his own dick and he is just the just the worst it&#x27;s just an object lesson in boomer go home and retire please these just these fossils you know dragging themselves around to a capitol hill making decisions they should be allowed to do nothing they need to go home drink tea write checks uh start a foundation whatever you&#x27;re gonna do but get the fuck out of public life there enough boomers</div>
+</div>
+<div class="turn" data-start="1758">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:18</span>
+  </div>
+  <div class="said">shannon phillips not only does she understand the question we&#x27;ve unlocked a new level of the phillips uh excellent work folks it is now time Stephen Carter, you&#x27;re familiar. Annalise, Shannon, it is the solemn part of our evening. It is the Player Airlines annual goodbye from the gate. This year, everyone will say a few words, of course, to begin with, for I&#x27;d say the most important eulogy, our fallen comrade Corey Hogan, and</div>
+</div>
+<div class="turn" data-start="1784">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:44</span>
+  </div>
+  <div class="said">then eulogize their signed tragedies as I have presented them to you. Who shall we start with? Maybe on Corey Hogan, we&#x27;ll all give our short analogy first. Shannon Phillips, on the passing, the sending off of one Corey Hogan from the Strategist podcast, the Flair Annual&#x27;s Goodbye from the Gate for Corey Hogan, please.</div>
+</div>
+<div class="turn" data-start="1808">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">30:08</span>
+  </div>
+  <div class="said">Friends, listeners, fellow sufferers of Alberta politics, we gather not to mourn the man exactly, but to mark the passing of Corey Hogan, who like a phoenix made entirely of communications rules and brand guidelines pdfs has risen from the ashes of podcasting to become a member of parliament cory hogan gone from our microphones forever alive in our corrections every time someone misses uses podium instead of lectern every time a minor semantic point derails an otherwise good conversation we&#x27;ll hear his voice whisper, well, actually, his ghost still haunting the discord. As</div>
+</div>
+<div class="turn" data-start="1844">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">30:44</span>
+  </div>
+  <div class="said">Shannon Phillips, his replacement, his understudy, his tragic exception, I must acknowledge the obvious. I will never truly replace him, not because I lack insight or perspective, not because I lack some</div>
+</div>
+<div class="turn" data-start="1856">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">30:56</span>
+  </div>
+  <div class="said">decades of experience in politics, but because as we all know, women cannot be strategists or funny or interesting or, God forbid, on podcasts. In all seriousness, though, Corey did possess a rare talent. He could cut through noise, distill complexity, and make politics sound, if not noble, at least like something we should all pay attention to. He</div>
+</div>
+<div class="turn" data-start="1876">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">31:16</span>
+  </div>
+  <div class="said">made words work hard and made you feel smart for following along. That is a skill. That is Corey Hogan. So, farewell, Corey. May Ottawa treat you kindly. May your caucus buy a proper lectern for your maiden speech. And to the Strategist podcast, we will muddle through, knowing full well that some voices, some pedantic, brilliant, impossible voices cannot really ever be replaced.</div>
+</div>
+<div class="turn" data-start="1901">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">31:41</span>
+  </div>
+  <div class="said">Beautiful. Beautiful. Moving. It was good, Shannon. but moving and appropriate. Shannon Phillips with her Flair Airlines goodbye from the gate for one Corey Hogan. Annalise, I will give you the say and crack at Corey Hogan</div>
+</div>
+<div class="turn" data-start="1914">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">31:54</span>
+  </div>
+  <div class="said">I wrote some notes. A fallen comrade Corey, two middle initials Hogan. Great guy, kind, funny, smart. The first time we ever met in person was on stage at the Strategist Live at the Grand Theatre in April 2023 during the Alberta provincial election. if cory was here with us today he would say i was wrong that we had met before that in person but i don&#x27;t remember i</div>
+</div>
+<div class="turn" data-start="1943">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">32:23</span>
+  </div>
+  <div class="said">have no recollection</div>
+</div>
+<div class="turn" data-start="1944">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">32:24</span>
+  </div>
+  <div class="said">uh he was the smart one on the podcast he was the organized one the one who occasionally sent me money for episodes something that has not happened since he left the podcast in may uh</div>
+</div>
+<div class="turn" data-start="1955">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">32:35</span>
+  </div>
+  <div class="said">get to it</div>
+</div>
+<div class="turn" data-start="1956">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">32:36</span>
+  </div>
+  <div class="said">people love him they miss him he&#x27;s a man Are we not paying</div>
+</div>
+<div class="turn" data-start="1961">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">32:41</span>
+  </div>
+  <div class="said">women on the podcast anymore?</div>
+</div>
+<div class="turn" data-start="1963">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">32:43</span>
+  </div>
+  <div class="said">I&#x27;m wrongly renaming entire neighborhoods to buying bus benches in said neighborhoods. Who else would announce on April Fool&#x27;s Day, late in the race, that they were running for MP, which resulted in journalists calling me about the press release and asking if it was a joke or not. And now he&#x27;s on to bigger and better things. He is gone from this podcast, and he&#x27;s an MP, and he&#x27;s my MP. May he rest in peace.</div>
+</div>
+<div class="turn" data-start="1996">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">33:16</span>
+  </div>
+  <div class="said">moving, accurate, and best of all, unpaid. Thank you, Annalise, for that. Thank you for that wonderful eulogy. One choreo, get member of parliament, ex-member of the podcast, Stephen Carter. You&#x27;ve known him the longest. You&#x27;ve hugged him the dearest. Just the Flair Airlines goodbye from the gate for Corey Hogan, member of Parliament, but no longer a member of this podcast.</div>
+</div>
+<div class="turn" data-start="2023">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">33:43</span>
+  </div>
+  <div class="said">Today we stand in memory of Corey Hogan&#x27;s career. Let&#x27;s take a moment to consider the tens of thousands, nay, hundreds of thousands of dollars this political animal will forego for the pleasure of being a parliamentary secretary for the rest of his career.</div>
+</div>
+<div class="turn" data-start="2040">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:00</span>
+  </div>
+  <div class="said">Hogan&#x27;s career began with his fascination of playing with trucks as a small child. He became a truck driver. Not just any truck driver, he was a big, big truck driver. Needed a special license and everything. But the lure of politics, the shiny object that would eventually come to destroy his personal net worth, was always strong. Working</div>
+</div>
+<div class="turn" data-start="2060">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:20</span>
+  </div>
+  <div class="said">both the federal and provincial liberals, one could be forgiven for thinking that the political bug died when Corey single-handedly marshaled the provincial liberal party into oblivion. But after years of making real money through both entrepreneurial and real jobs, Corey was lured back to politics in 2025. This time for good. His life of potential earnings is over. What a waste of an Ivy MBA.</div>
+</div>
+<div class="turn" data-start="2087">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">34:47</span>
+  </div>
+  <div class="said">beautiful gold medal winning ivmba now being devoted to public service the capitalist stephen carter with a beautiful eulogy for his now impoverished friend cory hogan</div>
+</div>
+<div class="turn" data-start="2099">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:59</span>
+  </div>
+  <div class="said">well he didn&#x27;t even give me a chance to make any of that money you know it was very upsetting could have passed some over to us</div>
+</div>
+<div class="turn" data-start="2104">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">35:04</span>
+  </div>
+  <div class="said">he could have but he never did very well done very moving we have got further eulogies to go as folks might be aware this segment we talk about the things that our Canadian politics that have died. And we eulogize them. Corey Hogan was the one that everyone covers, but I&#x27;ve got individual ones for Annalise, Shannon, and Stephen. Shannon, can I go back to you? Because I would like to have a eulogy by yours truly, yourself, on the judicious use of the Notwithstanding Clause.</div>
+</div>
+<div class="turn" data-start="2135">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">35:35</span>
+  </div>
+  <div class="said">That is now gone, and the Flair Airlines goodbye from the gates for the Notwithstanding Clause, Shannon, please, if you could take it away.</div>
+</div>
+<div class="turn" data-start="2144">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">35:44</span>
+  </div>
+  <div class="said">friends and former believers in things like the rule of law we gather here tomorrow in the tragically premature passing of the canadian charter of rights and freedoms choked to death by the notwithstanding clause the charter for those who remember civics and social studies class before that what too was quietly euthanized was born of lofty aspiration pierre trudeau and his flair for constitutional drama flamboyant high-end gestures and rose lapels i dreamed of of a nation where individual rights weren&#x27;t playthings for premiers with poll-tested tempers. But alas, lurking in the fine print, right there in Section 33, the fatal compromise. The deal struck with the provinces, who feared that the federal courts would suddenly tell them they couldn&#x27;t expel or generally harass the citizens they least liked or who were afraid of. Or in the case of the NDP-governed Saskatchewan at the time in 1980, the worry that the federal courts would stop them from nationalizing the potash industry through a backdoor interpretation of private property rights in Section 7.</div>
+</div>
+<div class="turn" data-start="2200">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">36:40</span>
+  </div>
+  <div class="said">at first, the notwithstanding clause slumbered quietly. It&#x27;ll never really be used, and for a while it wasn&#x27;t, they said. Our leaders understood that you don&#x27;t just gut the Bill of Rights in public, you had the manners to pretend shame. But then came a new generation, a golden era of fashy grievance politics, and Alberta stepped forward with great enthusiasm. Behold, I have the constitutional right to ignore your constitutional rights. And so, in Alberta today, you can watch a government light the Charter on fire on the grounds that just because you can, you should, punch down and pummel the vulnerable for sport.</div>
+</div>
+<div class="turn" data-start="2235">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">37:15</span>
+  </div>
+  <div class="said">Next to the Charter lies the rule of la mortally wounded. Want to be recognized as fully human, simple, just pack up your life and walk until your individual liberty means something, again, across a provincial border. So let us mourn, but also acknowledge the replacements that thrive in the Charter&#x27;s absence, the shameless bile of performative populism, the smug smirk of common sense politics. Rest in peace, dear Charter. You were too principled for this place. And to the rule of law, may your gravestone be engraved with the words we once believed, a free and democratic society.</div>
+</div>
+<div class="turn" data-start="2269">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">37:49</span>
+  </div>
+  <div class="said">Powerful. Tears. Beautiful. I don&#x27;t see any tears, Carter.</div>
+</div>
+<div class="turn" data-start="2273">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">37:53</span>
+  </div>
+  <div class="said">No, I mean</div>
+</div>
+<div class="turn" data-start="2273">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">37:53</span>
+  </div>
+  <div class="said">I&#x27;m thinking of someone. Okay, thank you. Someone was probably crying somewhere.</div>
+</div>
+<div class="turn" data-start="2279">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">37:59</span>
+  </div>
+  <div class="said">Carter, that&#x27;s method. that annalise the flare airlines goodbye from the gate for voter turnout a historic low outside of of course the carny unicorn election of voter turnout alberta less than one in three voters so many places experiencing low voter turnout annalise take it away</div>
+</div>
+<div class="turn" data-start="2294">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">38:14</span>
+  </div>
+  <div class="said">you got it</div>
+</div>
+<div class="turn" data-start="2295">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">38:15</span>
+  </div>
+  <div class="said">eulogy on voter turnout</div>
+</div>
+<div class="turn" data-start="2296">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">38:16</span>
+  </div>
+  <div class="said">picture this it&#x27;s the middle of october 2025 i&#x27;m waiting in line at my local elementary school gym with my three-year-olds and waiting and waiting and waiting and waiting to vote waiting for nearly an hour which is a lot longer than an actual hour when you have a three-year-old with you others gave up others did not show up here in calgary less than four out of 10 eligible calgarians cast a ballot in the october municipal election even fewer came out in edmonton where turnout was 30 in february 2025 the ontario federal election saw the second lowest voter turnout in provincial history less than half of ontario&#x27;s eligible voters cast a ballot it. There is a spot of good news, I guess, maybe. Nearly 70% of eligible voters cast a ballot in the 2025 federal election. That is good, but it is not good enough. It&#x27;s not 79.4%, which is the number of eligible Canadians who voted in the March 1958 federal election. The highest number ever.</div>
+</div>
+<div class="turn" data-start="2359">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">39:19</span>
+  </div>
+  <div class="said">And that was nearly 70 years ago. Voter turnout, may you rest in peace.</div>
+</div>
+<div class="turn" data-start="2366">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">39:26</span>
+  </div>
+  <div class="said">beautiful moving carter as someone who pedals and low voter turnout any reaction no tears no tears whatsoever yeah</div>
+</div>
+<div class="turn" data-start="2376">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:36</span>
+  </div>
+  <div class="said">none no tears whatsoever it&#x27;s beautifully written but no tears</div>
+</div>
+<div class="turn" data-start="2379">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">39:39</span>
+  </div>
+  <div class="said">the forgotten but not gone inevitable conservative majority it has died and it deserves to be eulogized by none other than stephen carter stephen carter the flare airlines lines, goodbye from the gate for the inevitable Conservative Party of Canada majority government.</div>
+</div>
+<div class="turn" data-start="2398">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:58</span>
+  </div>
+  <div class="said">See, can I just point something out here?</div>
+</div>
+<div class="turn" data-start="2401">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">40:01</span>
+  </div>
+  <div class="said">You gave me Pierre Poliev, and it&#x27;s subtly different than what you just asked me to do. So I&#x27;m going to do Pierre Poliev. You prepared, Stephen Carter. It&#x27;s the same, but different. And so today, we mark the passing of Pierre Poliev&#x27;s political ambition, not with silence, but with a warning. Like Icarus, he was gifted wings, not of wax and feathers, but of slogans and soundbites. He rose fast, powered by grievance, outrage, and the thrill of being louder than everyone else in the room. And for a while, it worked. The cheers were loud, the cameras followed, the sun felt warm.</div>
+</div>
+<div class="turn" data-start="2438">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">40:38</span>
+  </div>
+  <div class="said">But Icarus was warned, and Pierre was warned too, that anger burns hot, that mercury has a shelf life, that flying against everything eventually leaves you standing for nothing. Still, higher he went, closer to the sun for his own certainty. Until the heat did what heat always does. The wings cracked, the slogans melted, the applause thinned, and down he came, not felled by enemies, but by gravity, the unavoidable pull of reality. Let this obituary note the cause of death plainly. Hubris, unchecked ambition, and the belief that volume is the same thing as leadership.</div>
+</div>
+<div class="turn" data-start="2475">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">41:15</span>
+  </div>
+  <div class="said">May future flyers remember, the sun doesn&#x27;t care how confident you are, and neither do Canadian voters.</div>
+</div>
+<div class="turn" data-start="2483">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">41:23</span>
+  </div>
+  <div class="said">oh yeah see i that&#x27;s what i prepared</div>
+</div>
+<div class="turn" data-start="2486">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">41:26</span>
+  </div>
+  <div class="said">not the one you asked me for there no mention</div>
+</div>
+<div class="turn" data-start="2489">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">41:29</span>
+  </div>
+  <div class="said">of the actual cause by death death by jenny burn but i like that it&#x27;s good it&#x27;s</div>
+</div>
+<div class="turn" data-start="2496">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">41:36</span>
+  </div>
+  <div class="said">that&#x27;s good i should have put that in</div>
+</div>
+<div class="turn" data-start="2497">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">41:37</span>
+  </div>
+  <div class="said">no death by hubris sounds better more shakespeare good job that&#x27;s</div>
+</div>
+<div class="turn" data-start="2502">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">41:42</span>
+  </div>
+  <div class="said">please take that advocate get me sued um shannon phillips um the eulogy The Flair Airlines goodbye from the gates for none other than</div>
+</div>
+<div class="turn" data-start="2514">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">41:54</span>
+  </div>
+  <div class="said">Dearly beloved, we are gathered here to mark the end of an era, the passing the political life and times of Justin Pierre James Trudeau, Canada&#x27;s 23rd Prime Minister. We will, of course, remember his flair for the dramatic, the breathlessly dramatic, the rolled up sleeves, the tearful apologies, the climate change pressers with the emotional range of a soliloquy. the man could milk a photo op who could forget the costume journeys abroad that launched the international use of the cringe emoji but to be serious let&#x27;s talk about the inequality lessening amounts of the canadian child benefit that lifted thousands of people out of poverty the affordable child care they boosted health transfers expanded dental and pharma care use federal spending power to target primary care long-term care for seniors mental health which had been ignored by the provinces, brought in the school food program and many other things. Progressives spent years mocking Trudeau as a neoliberal in disguise, but conservatives loved to feminize him as a way to show his incompetence because everyone knows that being feminine is bad. Yet one day the working class folks with the fuck Trudeau stickers on their trucks might actually check their bank statements and do some financial planning and find their child benefit, their middle class tax cut and their working income tax benefit and their carbon tax tax rebate, actually made them far, far better off than they were under Harper. And the grumpy left may realize that he was the first real NDP prime minister in spirit, investing in families and workers in ways that Jack Layton would have done as Now that he&#x27;s gone, we might find ourselves missing him, though we will not miss his performativity, his drama, his bullshit focus on games and gimmicks, his brain-melting inability to bully his ever-growing civil service into to delivering literally anything on time, his serial ineptitude to talk to Canadians in a language they can understand, his weak-ass little bitch fight-back strategy against an emboldened fashy far-right.</div>
+</div>
+<div class="turn" data-start="2626">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">43:46</span>
+  </div>
+  <div class="said">In lieu of flowers, donations may be made to whatever political party next promises affordable childcare. He&#x27;d like that, though that probably means he&#x27;ll be writing a check to the phantom NDP.</div>
+</div>
+<div class="turn" data-start="2637">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">43:57</span>
+  </div>
+  <div class="said">Whoa. Oh, my goodness. That&#x27;s so good, Shannon. A eulogy turning into a speech on class warfare. That&#x27;s Which is how most eulogies I&#x27;ve attended end up. Shannon Phillips nailing it with the Justin Trudeau eulogy. Annalise, for every man, there is a woman. And that woman has had an extended... Yes, that is actually fact. That is a fact that cannot be criticized. For every man, there is a woman.</div>
+</div>
+<div class="turn" data-start="2664">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">44:24</span>
+  </div>
+  <div class="said">And a little bit more. Because we outnumber them. Because we&#x27;re not as dumb and we live longer</div>
+</div>
+<div class="turn" data-start="2670">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">44:30</span>
+  </div>
+  <div class="said">Semantics. Okay. Okay, that woman is one Krista Freeland, whose official goodbye, coming But her political goodbye, oh, well, was had in 2025. Annalise, the Flair Airlines goodbye from the gate for one Krista Freeland.</div>
+</div>
+<div class="turn" data-start="2688">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">44:48</span>
+  </div>
+  <div class="said">Who speaks five languages, has three children, was born here in Alberta in Peace River, educated at Harvard, a Rhodes Scholar, an acclaimed journalist and author, the first woman in history to serve as Canada&#x27;s Minister of Finance.</div>
+</div>
+<div class="turn" data-start="2703">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">45:03</span>
+  </div>
+  <div class="said">She&#x27;s been a long-time member of parliament, first elected in 2013. She&#x27;s negotiated major trade deals and served for five years as deputy prime minister and she just recently announced she will be stepping down in the coming weeks after she accepted a role advising the Ukrainian president.</div>
+</div>
+<div class="turn" data-start="2720">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">45:20</span>
+  </div>
+  <div class="said">I&#x27;m going to keep this short and sweet. Her accomplishments speak for themselves. Let me end with some words from her own father who she turned to for advice in the summer of 2013 when Justin Trudeau was trying to convince Freeland to run for election as she told the Ivy School of Business quote at the end of the day my</div>
+</div>
+<div class="turn" data-start="2739">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">45:39</span>
+  </div>
+  <div class="said">father was a person who really shaped my decision he said to me Canada has given you a lot as a young person in Alberta you&#x27;re being offered a chance to help your country maybe it will work maybe it won&#x27;t but you owe it to Canadians who have been so great to you and supporting you so much to try it And she did try. She served Canadians as an MP for 13 years. May her political career rest in peace.</div>
+</div>
+<div class="turn" data-start="2765">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">46:05</span>
+  </div>
+  <div class="said">Class eulogy by Annalise. No mention of Disney Plus or Larry Summers on Epstein Island. That&#x27;s a classy. That&#x27;s a classy. You know, Carter, it to Annalise, not you. Yeah, I know. You</div>
+</div>
+<div class="turn" data-start="2780">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">46:20</span>
+  </div>
+  <div class="said">have been all about that backstabbing $13.99</div>
+</div>
+<div class="turn" data-start="2783">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">46:23</span>
+  </div>
+  <div class="said">a month for Disney Plus. us carter you can have at it but just you know see segment one for how it might go down related to people of color uh this flare airlines goodbye from the gate for one and i know you want to do this desperately carter jagmeet singh you are saying goodbye to canada&#x27;s turban prince from politics what do you have to say</div>
+</div>
+<div class="turn" data-start="2805">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">46:45</span>
+  </div>
+  <div class="said">you know zane some eulogies are centered on a simple phrase is gone but not forgotten. For Jagmeet Singh, he is both gone and forgotten. In fact, based on his performance in the 2025 election, his days of being forgotten started in the early 2020s. Sure, some of that may be due to Justin Trudeau moving so far to the political left in Canada that there was no place for Jagmeet Singh&#x27;s NDP. But when Mark Carney took over and moved the federal liberals to the space traditionally occupied by the Federal Progressive Conservative Party, Jagmeet Singh was unable to step up and regain the political left.</div>
+</div>
+<div class="turn" data-start="2843">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">47:23</span>
+  </div>
+  <div class="said">was totally forgotten. We hardly knew you.</div>
+</div>
+<div class="turn" data-start="2849">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">47:29</span>
+  </div>
+  <div class="said">Stephen Carter wrapping us up of our eulogies. Congratulations, folks. Beautiful, beautiful eulogies. Good work this year. Good work this year.</div>
+</div>
+<div class="turn" data-start="2858">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">47:38</span>
+  </div>
+  <div class="said">You know why? Because we knew what we were doing this year. Yes, it&#x27;s helpful. We</div>
+</div>
+<div class="turn" data-start="2862">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">47:42</span>
+  </div>
+  <div class="said">like that. Corey chose the improv route, and you can see how well it worked for him. Okay, Well done. The amount of preparation across the board. It&#x27;s very not us.</div>
+</div>
+<div class="turn" data-start="2875">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">47:55</span>
+  </div>
+  <div class="said">Very not us. This whole episode is very not us. I like this. That&#x27;s good. I think it&#x27;s new for us. Now I&#x27;m going to have to start paying everybody because they&#x27;re working so hard. that&#x27;s why you&#x27;re admitting</div>
+</div>
+<div class="turn" data-start="2886">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">48:06</span>
+  </div>
+  <div class="said">that you weren&#x27;t paying people. No,</div>
+</div>
+<div class="turn" data-start="2888">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">48:08</span>
+  </div>
+  <div class="said">to the bank account. I now have access to the bank account. It&#x27;s a big step</div>
+</div>
+<div class="turn" data-start="2893">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">48:13</span>
+  </div>
+  <div class="said">forward. It only took nine months. Holiday spectacular and business planning episode</div>
+</div>
+<div class="turn" data-start="2897">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">48:17</span>
+  </div>
+  <div class="said">Yeah, also class warfare strategizing session. This is good. You know, we&#x27;re almost near our end, but sometimes there are surprises, especially, Carter, surprises on flight when there&#x27;s a birth, when there&#x27;s a child, when there is a birth to be had on an airplane. Have you ever been witness to a birth on an airplane, Stephen Carter?</div>
+</div>
+<div class="turn" data-start="2915">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">48:35</span>
+  </div>
+  <div class="said">No, I haven&#x27;t. I&#x27;ve been witness to births, but not to one on an airplane. This is the</div>
+</div>
+<div class="turn" data-start="2919">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">48:39</span>
+  </div>
+  <div class="said">Flair Airlines rebirth of the year, the in-flight rebirth of the year, I&#x27;m going to give you four things to choose from that are back in Canadian politics. They&#x27;re gone for a while, but they have been rebirthed, and you&#x27;re going to tell me which one is the rebirth of the year. Your choices are pipelines, and conservative caucus freedom. These are your choices. Conservative caucus freedom, liberal racism, Western alienation slash separation, pipelines and floor crossers. These have all been rebirthed this past year. Stephen Carter, what is your Flair Airlines in-flight rebirth of the year?</div>
+</div>
+<div class="turn" data-start="2967">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">49:27</span>
+  </div>
+  <div class="said">I think that it&#x27;s got to be liberal racism. I mean, liberal racism has really taken a step forward here, as Jamil Javani, whose name I just casually threw out. The only guy you know. Yeah, I mean, I threw that out. it. And there&#x27;s a song. There&#x27;s a song that kind of really typifies what liberal racism is all about. It&#x27;s from Avenue Q, and it goes a little bit like this. Everyone&#x27;s a little bit racist sometimes. Doesn&#x27;t mean we go around committing hate crimes. Look around and you will find no one&#x27;s really colorblind. Maybe it&#x27;s a fact we should all, all should face. Everyone makes Next judgment&#x27;s based on race.</div>
+</div>
+<div class="turn" data-start="3017">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">50:17</span>
+  </div>
+  <div class="said">was something, Stephen Carter. A little Avenue Q coming at you. A little Broadway. A little just off-Broadway.</div>
+</div>
+<div class="turn" data-start="3025">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">50:25</span>
+  </div>
+  <div class="said">any reaction? And then please tell me your rebirth of the year.</div>
+</div>
+<div class="turn" data-start="3028">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">50:28</span>
+  </div>
+  <div class="said">I think that was fantastic. I do not like musicals or the concept of breaking into the song into in the middle of uh a story but once a year i&#x27;ll take it from carter once</div>
+</div>
+<div class="turn" data-start="3041">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">50:41</span>
+  </div>
+  <div class="said">i&#x27;m going to do</div>
+</div>
+<div class="turn" data-start="3041">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">50:41</span>
+  </div>
+  <div class="said">it every episode</div>
+</div>
+<div class="turn" data-start="3042">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">50:42</span>
+  </div>
+  <div class="said">from now on no</div>
+</div>
+<div class="turn" data-start="3044">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">50:44</span>
+  </div>
+  <div class="said">yeah i think it&#x27;s</div>
+</div>
+<div class="turn" data-start="3045">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">50:45</span>
+  </div>
+  <div class="said">going to be so popular that every episode i&#x27;m going to be doing it</div>
+</div>
+<div class="turn" data-start="3048">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">50:48</span>
+  </div>
+  <div class="said">dear listeners that 30 skip button is there for a reason all right uh so floor crossers has got has got to be the rebirth of the year an old parliamentary tradition tradition that somehow we forgot about because of the aforementioned really, really strategically boneheaded move by Jagmeet Singh and the NDP to make common cause with a desperately unpopular third term government. So we forgot about the concept of floor crossing. But as soon as that stupid agreement was gone, what happened? We got back to the business of being a parliament. and it has already undermined Mr. Pugliavera&#x27;s brittle leadership. This is fantastic. I want to see more of it. So much so that I hope somebody recreates Winston Churchill&#x27;s famous quote, which is, you know, what was it? Anyone can rat, but it takes a special genius to rat twice because he, in fact, crossed the floor two times there and back. and so this is a long-standing tradition we we elect individuals not parties not leaders more of this please and I&#x27;m so glad to see it back very</div>
+</div>
+<div class="turn" data-start="3123">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">52:03</span>
+  </div>
+  <div class="said">very nice Shannon Phillips Annalise bring us home which one of these would you choose as our rebirth of the year</div>
+</div>
+<div class="turn" data-start="3128">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">52:08</span>
+  </div>
+  <div class="said">I&#x27;m still focused on the visual of giving birth on an airplane Zane I don&#x27;t know why I did I&#x27;ve written about it before When I was on the crime and breaking news desk, it did happen, and it was international news. Rebirth, I&#x27;m going to also go with floor crossers, was what I was going to go with. Keeps things interesting and spicy and keeps politics fun. So let&#x27;s have more of it in 2026.</div>
+</div>
+<div class="turn" data-start="3155">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">52:35</span>
+  </div>
+  <div class="said">Stephen Carter, no one chose separatism or pipelines. Does that surprise you?</div>
+</div>
+<div class="turn" data-start="3160">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">52:40</span>
+  </div>
+  <div class="said">I actually would have chosen pipelines as my second choice. uh just proving how wrong annalise and shannon</div>
+</div>
+<div class="turn" data-start="3166">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">52:46</span>
+  </div>
+  <div class="said">sing about it carter sing about it</div>
+</div>
+<div class="turn" data-start="3169">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">52:49</span>
+  </div>
+  <div class="said">everybody needs a pipeline everybody needs some gas everybody&#x27;s pipeline goes across bc for fun i don&#x27;t know i was just i i don&#x27;t know</div>
+</div>
+<div class="turn" data-start="3180">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">53:00</span>
+  </div>
+  <div class="said">it&#x27;s off the top of your</div>
+</div>
+<div class="turn" data-start="3180">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">53:00</span>
+  </div>
+  <div class="said">head you know because song is just in me it&#x27;s just in me and shannon every episode from now on i&#x27;m breaking out into song</div>
+</div>
+<div class="turn" data-start="3191">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">53:11</span>
+  </div>
+  <div class="said">let&#x27;s move Moving on to our final dissent, our lightning round on this Flair Airlines Holiday Spectacular. Better late than never. Holiday Spectacular. Four questions I&#x27;m going to ask you guys. I feel like I should jump</div>
+</div>
+<div class="turn" data-start="3201">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">53:21</span>
+  </div>
+  <div class="said">in and say that Flair Airlines isn&#x27;t really our sponsor.</div>
+</div>
+<div class="turn" data-start="3204">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">53:24</span>
+  </div>
+  <div class="said">No, you shouldn&#x27;t do that. That&#x27;s what Corey&#x27;s there for</div>
+</div>
+<div class="turn" data-start="3206">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">53:26</span>
+  </div>
+  <div class="said">That&#x27;s what Corey&#x27;s there</div>
+</div>
+<div class="turn" data-start="3207">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">53:27</span>
+  </div>
+  <div class="said">for. And he&#x27;s not here. He died. I don&#x27;t know if you guys sent him</div>
+</div>
+<div class="turn" data-start="3209">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">53:29</span>
+  </div>
+  <div class="said">off very nicely. Yeah, I sensed</div>
+</div>
+<div class="turn" data-start="3212">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">53:32</span>
+  </div>
+  <div class="said">Okay. I got biggest surprise of 2025 across the board, lightning round. Annalise, do you want to give us your biggest surprise of 2025? I will</div>
+</div>
+<div class="turn" data-start="3220">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">53:40</span>
+  </div>
+  <div class="said">cory hogan is an mp if you but like honestly a year ago a year ago on january 8th 2025 if we were doing an episode and we had said cory hogan is going to be an mp asterix who will announce that he&#x27;s running on april fool&#x27;s day no way everyone would have thought you were ridiculous and it was a joke and look at him now he&#x27;s an mp he&#x27;s parliamentary secretary he&#x27;s not parliamentary he&#x27;s not on the podcast He&#x27;s gotten some cakes. I think that was a big surprise that was not predicted or expected a year ago.</div>
+</div>
+<div class="turn" data-start="3256">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">54:16</span>
+  </div>
+  <div class="said">I like it. Locked and loaded, Annalise was. Shannon, your biggest surprise of 2025 in Canadian politics?</div>
+</div>
+<div class="turn" data-start="3263">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">54:23</span>
+  </div>
+  <div class="said">I&#x27;m sorry to the listeners to take this in a nerdy and substantive direction. But the fact that NAFTA, COSMA is still there at all, if only sort of symbolically, is a massive surprise. Because as soon as Trump</div>
+</div>
+<div class="turn" data-start="3278">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">54:38</span>
+  </div>
+  <div class="said">was elected and in the run up to Inauguration Day, he was beating the drum that, you know, about Canada and about ripping out this very unfair trade deal that he himself negotiated. And so I think the fact that we are still living under the, if not the actual reality, but at least the fumes of QASMA is a huge surprise. I would have thought that he would have somehow found a way to rip it up already.</div>
+</div>
+<div class="turn" data-start="3307">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">55:07</span>
+  </div>
+  <div class="said">Carter, biggest surprise of 2025</div>
+</div>
+<div class="turn" data-start="3309">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">55:09</span>
+  </div>
+  <div class="said">The United States still exists. You know, I mean, the fact that we haven&#x27;t had civil war, I mean, we&#x27;re getting so close. I mean, there&#x27;s so many different pieces. So I&#x27;m going to go with the United States simply existing.</div>
+</div>
+<div class="turn" data-start="3326">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">55:26</span>
+  </div>
+  <div class="said">My next question here is the biggest disappointment of 2025. Not the biggest loser, to be clear, but the biggest disappointment. I want to make sure that I&#x27;m clear. Now, that could be the same as your answer for biggest loser, which is coming up as his biggest winner. Shannon, you want to take a crack at your biggest disappointment of thy calendar year of 2025?</div>
+</div>
+<div class="turn" data-start="3348">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">55:48</span>
+  </div>
+  <div class="said">The Ontario federal NDP longtime seats that lost their seat. I would have thought that they would have been able to, because they were well-established, well-liked incumbents, we&#x27;re talking Hamilton, Windsor, London, and they all not just lost, but lost to Conservatives. And, you know, that historic collapse of the federal NDP vote in southern Ontario, where there&#x27;s a lot of steel workers and uniform unionized jobs, is catastrophic for the industrial labor base of the party. And I think it&#x27;s historic.</div>
+</div>
+<div class="turn" data-start="3390">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">56:30</span>
+  </div>
+  <div class="said">Annalise, your biggest disappointment of 2025? 25 biggest</div>
+</div>
+<div class="turn" data-start="3394">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">56:34</span>
+  </div>
+  <div class="said">disappointment i might just go closer to home like how boring the municipal elections were in calgary and edmonton like voter turnout was one thing but they were just boring they were boring and boring and boring and that&#x27;s disappointing and carter played a big role in that yeah</div>
+</div>
+<div class="turn" data-start="3411">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">56:51</span>
+  </div>
+  <div class="said">thank you yeah thank you very much</div>
+</div>
+<div class="turn" data-start="3413">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">56:53</span>
+  </div>
+  <div class="said">biggest disappointment of 2025 daniel</div>
+</div>
+<div class="turn" data-start="3418">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">56:58</span>
+  </div>
+  <div class="said">in general she just disappoints me she disappoints me every time she opens her mouth</div>
+</div>
+<div class="turn" data-start="3422">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">57:02</span>
+  </div>
+  <div class="said">Stephen Carter, your biggest loser of 2025.</div>
+</div>
+<div class="turn" data-start="3425">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">57:05</span>
+  </div>
+  <div class="said">My biggest loser of 2025.</div>
+</div>
+<div class="turn" data-start="3430">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">57:10</span>
+  </div>
+  <div class="said">Jeez, that&#x27;s a tough one. Is this unanimous? Is this the one where we go unanimous across the board? I thought we would. Really? Yeah. Jugmeet Singh? Sure. That&#x27;s what your choice is. Pierre I think that would be my choice. Annalise?</div>
+</div>
+<div class="turn" data-start="3443">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">57:23</span>
+  </div>
+  <div class="said">I mean, Pierre Polyev certainly lost more by winning so many votes quotes and by being so close he to me is the uh yeah</div>
+</div>
+<div class="turn" data-start="3457">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">57:37</span>
+  </div>
+  <div class="said">biggest loser yeah polyeth 2025 polyeth calgary party and better edmonton lost pretty spectacularly thank you i think it&#x27;s good to have that on the record too yeah so if you need something other than polyeth we could say those two thank</div>
+</div>
+<div class="turn" data-start="3471">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">57:51</span>
+  </div>
+  <div class="said">you shannon phillips your biggest loser of 2025</div>
+</div>
+<div class="turn" data-start="3475">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">57:55</span>
+  </div>
+  <div class="said">well pierre polyever but but it was too much fun to watch for me, so I&#x27;m going to leave him aside and go with a sad thing that I believe is losing, which is public health care. We now have a situation where anything goes in terms of private delivery, private insurance, the whole ball of wax, private hospitals, all of it, and a federal government who is not going to lift a finger.</div>
+</div>
+<div class="turn" data-start="3501">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">58:21</span>
+  </div>
+  <div class="said">Very nice. biggest winner of 2025 i feel like there&#x27;s an obvious answer here you are few you could feel free to choose it or you could feel free to sidestep it annalise can i start with you your biggest political winner of 2025</div>
+</div>
+<div class="turn" data-start="3516">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">58:36</span>
+  </div>
+  <div class="said">mark carney again like at the the episode that you guys did a year ago which shannon and i both listened so we were familiar with the concept of a holiday spectacular spectacular</div>
+</div>
+<div class="turn" data-start="3528">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">58:48</span>
+  </div>
+  <div class="said">uh you should be familiar with your constant and religious listening of the show since you weren&#x27;t</div>
+</div>
+<div class="turn" data-start="3534">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">58:54</span>
+  </div>
+  <div class="said">yeah but like it&#x27;s just nuts how much things have changed in a year and how much polly have lost and carney got into the picture and just how rapidly like you guys recorded before trudeau had even stepped down i think it was like a few days later and then it was just like boom boom boom boom boom and here we are so i&#x27;m gonna go with mark carney the obvious choice.</div>
+</div>
+<div class="turn" data-start="3555">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">59:15</span>
+  </div>
+  <div class="said">Stephen Carter, your biggest winner of 2025</div>
+</div>
+<div class="turn" data-start="3558">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">59:18</span>
+  </div>
+  <div class="said">Everything that Annalise just said. There is no other person in my mind in Canadian politics who won as big as</div>
+</div>
+<div class="turn" data-start="3569">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">59:29</span>
+  </div>
+  <div class="said">Well, again, I don&#x27;t disagree, but I want to put another winner on the table, and that&#x27;s the Canadian oil and gas sector, and the CEO class in general. They now have a seat at the table that they did not have before. They have a level of the business council, like the whole, the CEO class have an ear and a portal into government that they haven&#x27;t had for many years. They got that back after the success of Mr. Carney. And now they have the bat phone into the prime minister&#x27;s office. And that&#x27;s a win for them.</div>
+</div>
+<div class="turn" data-start="3604">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:00:04</span>
+  </div>
+  <div class="said">Fantastic. We&#x27;re going to leave it there. That is our show. We made it. Stephen Carter, we made it. Annalise, we made it. I&#x27;m pretty surprised we did it</div>
+</div>
+<div class="turn" data-start="3613">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:00:13</span>
+  </div>
+  <div class="said">all under an hour. Now we just have to see if Haxem can produce this. Who cares? Who cares about that? Because releasing it is actually a big part of it</div>
+</div>
+<div class="turn" data-start="3620">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:00:20</span>
+  </div>
+  <div class="said">Oh, no, releasing it is not part. Distribution is what we, I don&#x27;t care about at all. Just recording it. That&#x27;s just all I care about. We&#x27;re going to leave it there. That&#x27;s a wrap on episode 1901. The Flair Airlines Better Late Than Never Holiday Spectacular. My name is Zane Velge. With me as always, Shannon Phillips, Annalise Klingbill, and Stephen Carter. We shall see you next time.</div>
+</div>
+<div class="turn" data-start="3672">
+  <div class="who">
+    <span class="speaker">SPEAKER_00</span>
+    <span class="ts">1:01:12</span>
+  </div>
+  <div class="said">Your call has been forwarded to an automatic voice message system. The is not available. At the tone, please record your message. When you have finished recording, you may hang up or press 1 for more options.</div>
+</div>
+<div class="turn" data-start="3686">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:01:26</span>
+  </div>
+  <div class="said">I&#x27;d like to read from the book of Jeremiah, chapter Do not weep for the dead king or mourn his loss. weep bitterly for him who is exiled, because he will never return nor see his native land again. We are gathered here today to pay respects to a host of strategy cut down in his prime by the desire to spend most of his time on a plane or in a strange city far from the world he knows. But do not mourn, for there is no sadness in no longer having to try to get Zane to be available to record a podcast. Do not mourn, for there is no sadness in applying your craft, rather than simply talking about your craft.</div>
+</div>
+<div class="turn" data-start="3737">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:02:17</span>
+  </div>
+  <div class="said">for this, too, will someday be marked by professional debt, and for at that time, many stories will be able to be told of strategy and politics. Whether those are tales of triumph or failure is of no matter. what matters is the effort and being able to leverage that into the view of those not in the know that your experience means you know what you are talking about thus is the eternal joy of politics we will miss you Stephen Carter have running the Manitoba PC campaign and they&#x27;re okay with that?</div>
+</div>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 The Strategists. Built for fast reading, sharing, and search.
+    </div>
+  </footer>
+
+  <script>
+  // ------------------------------
+  // Acast postMessage helper
+  // (Docs: postmessage:do:seek uses seconds)
+  // ------------------------------
+  function acastPost(eventName, data){
+    const iframe = document.getElementById('acast-player');
+    if (!iframe || !iframe.contentWindow) return;
+    try{
+      iframe.contentWindow.postMessage(JSON.stringify({eventName, data: data || {}}), '*');
+    }catch(e){ /* ignore */ }
+  }
+
+  // ------------------------------
+  // Sticky player behavior
+  // ------------------------------
+  (function(){
+    const wrap = document.getElementById('player-wrapper');
+    const sentinel = document.getElementById('player-sentinel');
+    if (!wrap || !sentinel || !('IntersectionObserver' in window)) return;
+
+    const setBodyPad = () => {
+      const topbar = document.querySelector('.topbar');
+      const topbarH = topbar ? topbar.getBoundingClientRect().height : 0;
+      const stickyH = wrap.classList.contains('sticky') ? wrap.getBoundingClientRect().height : 0;
+      document.body.style.paddingTop = (wrap.classList.contains('sticky') ? (stickyH) : 0) + 'px';
+      // Sticky is positioned under topbar; body padding avoids jump.
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      const e = entries[0];
+      if (!e) return;
+      if (e.isIntersecting){
+        wrap.classList.remove('sticky');
+      } else {
+        wrap.classList.add('sticky');
+      }
+      setBodyPad();
+    }, {threshold: [0]});
+
+    io.observe(sentinel);
+    window.addEventListener('resize', setBodyPad);
+  })();
+
+    (function(){
+      const topbar = document.querySelector('.topbar');
+      if (!topbar || !('IntersectionObserver' in window)) return;
+
+      const sentinel = document.createElement('div');
+      sentinel.style.position = 'absolute';
+      sentinel.style.top = '0';
+      sentinel.style.height = '1px';
+      sentinel.style.width = '1px';
+      topbar.before(sentinel);
+
+      const io = new IntersectionObserver(entries => {
+        const e = entries[0];
+        if (!e) return;
+
+        // When the topbar scrolls off, reclaim the space
+        document.documentElement.style.setProperty(
+          '--topbar-h',
+          e.isIntersecting ? `${topbar.offsetHeight}px` : '0px'
+        );
+      }, { threshold: [0] });
+
+      io.observe(sentinel);
+    })();
+
+  // ------------------------------
+  // Transcript: normalize markup
+  // Supports either:
+  //  A) <div class="turn" data-start=".." data-speaker="..">...</div>
+  //  B) legacy <p data-start=".."><span class="ts">..</span> ...</p>
+  // ------------------------------
+  function secondsToClock(s){
+    s = Math.max(0, Math.floor(Number(s) || 0));
+    const h = Math.floor(s/3600);
+    const m = Math.floor((s%3600)/60);
+    const ss = s%60;
+    if (h>0) return `${h}:${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+    return `${m}:${String(ss).padStart(2,'0')}`;
+  }
+
+  function ensureTurnBlocks(){
+    const list = document.getElementById('transcript-list');
+    if (!list) return;
+
+    // If we already have .turn blocks, do nothing.
+    if (list.querySelector('.turn')) return;
+
+    // Upgrade <p data-start> to .turn structure.
+    const paras = Array.from(list.querySelectorAll('p[data-start]'));
+    if (!paras.length) return;
+
+    for (const p of paras){
+      const start = p.getAttribute('data-start');
+      const speaker = p.getAttribute('data-speaker') || '';
+      const text = p.textContent || '';
+
+      const t = document.createElement('div');
+      t.className = 'turn';
+      t.setAttribute('data-start', start);
+      if (speaker) t.setAttribute('data-speaker', speaker);
+
+      const who = document.createElement('div');
+      who.className = 'who';
+      const spk = document.createElement('div');
+      spk.className = 'spk';
+      spk.textContent = speaker || 'Speaker';
+      const ts = document.createElement('span');
+      ts.className = 'ts';
+      ts.textContent = secondsToClock(start);
+      who.appendChild(spk);
+      who.appendChild(ts);
+
+      const said = document.createElement('div');
+      said.className = 'said';
+      // remove any existing timestamp prefix in the old paragraph
+      const clone = p.cloneNode(true);
+      const tsSpan = clone.querySelector('.ts');
+      if (tsSpan) tsSpan.remove();
+      said.textContent = (clone.textContent || '').trim();
+
+      t.appendChild(who);
+      t.appendChild(said);
+      p.replaceWith(t);
+    }
+  }
+
+  // ------------------------------
+  // Deep-linking: ?t=123 or #t=123
+  // ------------------------------
+  function getTFromURL(){
+    const u = new URL(window.location.href);
+    const qp = u.searchParams.get('t');
+    if (qp) return Number(qp);
+    if (u.hash && u.hash.startsWith('#t=')) return Number(u.hash.slice(3));
+    return null;
+  }
+
+  function setURLTime(t){
+    const u = new URL(window.location.href);
+    u.searchParams.set('t', String(Math.max(0, Math.floor(t))));
+    history.replaceState(null, '', u.toString());
+  }
+
+  // ------------------------------
+  // Selection + seek
+  // ------------------------------
+  let selectedStart = null;
+
+  function activateTurn(el){
+    const list = document.getElementById('transcript-list');
+    if (!list) return;
+    list.querySelectorAll('.turn.active').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+
+    const start = Number(el.getAttribute('data-start') || 0);
+    selectedStart = start;
+
+    // update URL
+    setURLTime(start);
+
+    // seek and play
+    acastPost('postmessage:do:seek', { position: start });
+    acastPost('postmessage:do:play');
+  }
+
+  function scrollTurnIntoView(el){
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const topbar = document.querySelector('.topbar');
+    const topbarH = topbar ? topbar.getBoundingClientRect().height : 0;
+    if (rect.top < topbarH + 10 || rect.bottom > window.innerHeight - 12){
+      el.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+  }
+
+  // ------------------------------
+  // Clipboard helpers
+  // ------------------------------
+  async function copyText(text){
+    try{
+      await navigator.clipboard.writeText(text);
+      return true;
+    }catch(e){
+      // fallback
+      try{
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const ok = document.execCommand('copy');
+        ta.remove();
+        return ok;
+      }catch(_){
+        return false;
+      }
+    }
+  }
+
+  function currentShareURL(includeTime){
+    const u = new URL(window.location.href);
+    if (includeTime){
+      const t = selectedStart ?? getTFromURL() ?? 0;
+      u.searchParams.set('t', String(Math.max(0, Math.floor(t))));
+    } else {
+      u.searchParams.delete('t');
+    }
+    return u.toString();
+  }
+
+  // ------------------------------
+  // Boot
+  // ------------------------------
+  (function(){
+    ensureTurnBlocks();
+
+    const list = document.getElementById('transcript-list');
+    if (list){
+      list.addEventListener('click', (e) => {
+        const turn = e.target.closest('.turn');
+        if (!turn) return;
+        activateTurn(turn);
+      });
+    }
+
+    const btnCopy = document.getElementById('btn-copy');
+    const btnCopyTs = document.getElementById('btn-copy-ts');
+    if (btnCopy){
+      btnCopy.addEventListener('click', async () => {
+        const ok = await copyText(currentShareURL(false));
+        btnCopy.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(() => btnCopy.textContent = 'Copy link', 1200);
+      });
+    }
+    if (btnCopyTs){
+      btnCopyTs.addEventListener('click', async () => {
+        const ok = await copyText(currentShareURL(true));
+        btnCopyTs.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(() => btnCopyTs.textContent = 'Copy link + timestamp', 1200);
+      });
+    }
+
+    // Apply deep-linked time
+    const t = getTFromURL();
+    if (t != null && !Number.isNaN(t)){
+      // Find nearest turn
+      const turns = Array.from(document.querySelectorAll('.turn[data-start]'));
+      let best = null;
+      let bestDist = Infinity;
+      for (const el of turns){
+        const s = Number(el.getAttribute('data-start') || 0);
+        const d = Math.abs(s - t);
+        if (d < bestDist){ bestDist = d; best = el; }
+      }
+      if (best){
+        best.classList.add('active');
+        selectedStart = Number(best.getAttribute('data-start') || 0);
+        scrollTurnIntoView(best);
+        // Seek without autoplay on load (safer)
+        acastPost('postmessage:do:seek', { position: selectedStart });
+      }
+    }
+  })();
+  </script>
 </body>
 </html>

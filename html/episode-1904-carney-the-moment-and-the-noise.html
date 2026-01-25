@@ -15,8 +15,7 @@
 
 
 
-
-
+  
   <meta name="description" content="Stephen Carter and Shannon Phillips discuss Mark Carney’s Davos speech and why it cut through the global noise. What made the moment land, and what does seriousness buy Carney right now? Who was this speech actually for? And how did “being serious” become a political strategy again?Zain Velji, as always, picks the questions and keeps everybody in line." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   
@@ -27,9 +26,9 @@
   <meta property="og:description" content="Stephen Carter and Shannon Phillips discuss Mark Carney’s Davos speech and why it cut through the global noise. What made the moment land, and what does seriousness buy Carney right now? Who was this speech actually for? And how did “being serious” become a political strategy again?Zain Velji, as always, picks the questions and keeps everybody in line." />
   
   <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="2026-01-23T03:39:40Z" />
-
   
+  
+    
     <meta property="og:image" content="/assets/og-default.png" />
     <meta name="twitter:image" content="/assets/og-default.png" />
   
@@ -46,7 +45,7 @@
     "name": "Episode 1904: Carney, the Moment, and the Noise",
     "description": "Stephen Carter and Shannon Phillips discuss Mark Carney\u2019s Davos speech and why it cut through the global noise. What made the moment land, and what does seriousness buy Carney right now? Who was this speech actually for? And how did \u201cbeing serious\u201d become a political strategy again?Zain Velji, as always, picks the questions and keeps everybody in line.",
     
-    "datePublished": "2026-01-23T03:39:40Z",
+    
     
     "partOfSeries": {
       "@type": "PodcastSeries",
@@ -83,14 +82,930 @@
 
   
   <style>
-    /* ⬇⬇⬇ YOUR ENTIRE STYLE BLOCK IS UNCHANGED ⬇⬇⬇ */
-    /* (exactly as you provided; omitted here for brevity in explanation,
-       but included in your pasted version above) */
+    :root{
+      --brand: #d7522f;
+      --accent: #232e41;
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --muted2: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --shadow2: 0 8px 22px rgba(0,0,0,.28);
+      --radius: 18px;
+      --radius2: 12px;
+      --maxw: 1100px;
+      --pad: clamp(16px, 3vw, 26px);
+      --sticky-shadow: 0 10px 28px rgba(0,0,0,.35);
+      --topbar-h: 58px;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #fbfbfd;
+        --panel: rgba(0,0,0,0.04);
+        --panel-2: rgba(0,0,0,0.06);
+        --text: rgba(0,0,0,0.92);
+        --muted: rgba(0,0,0,0.68);
+        --muted2: rgba(0,0,0,0.52);
+        --line: rgba(0,0,0,0.10);
+        --shadow: 0 16px 40px rgba(0,0,0,.12);
+        --shadow2: 0 8px 22px rgba(0,0,0,.10);
+        --sticky-shadow: 0 10px 28px rgba(0,0,0,.12);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.55;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% -10%, rgba(215,82,47,.32), transparent 60%),
+        radial-gradient(1000px 600px at 100% 0%, rgba(35,46,65,.50), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg));
+      background-attachment: fixed;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      min-width: 0;
+    }
+    .brand img{ width: 34px; height: 34px; object-fit: contain; }
+    .brand .name{ font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+    .brand .tag{ font-size: 13px; color: var(--muted2); white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
+
+    .navlinks{ display:flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .chip{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .chip strong{ color: var(--text); font-weight: 650; }
+    .chip:hover{ background: var(--panel-2); text-decoration:none; }
+
+    /* Hero */
+    .hero{ padding: 26px 0 12px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      background: color-mix(in oklab, var(--panel) 90%, transparent);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main{ padding: 20px; }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3.2vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .meta{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      align-items:center;
+    }
+    .meta .dot{ opacity: .55; }
+
+    .desc{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .desc p{ margin: 0.6rem 0; }
+    .desc a{ color: var(--text); text-decoration: underline; text-decoration-color: color-mix(in oklab, var(--brand) 70%, transparent); }
+
+    .cta{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 650;
+      font-size: 14px;
+      box-shadow: var(--shadow2);
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover{ background: var(--panel-2); text-decoration:none; }
+    .btn.primary{
+      background: linear-gradient(90deg, color-mix(in oklab, var(--brand) 75%, black), color-mix(in oklab, var(--accent) 70%, black));
+      border-color: color-mix(in oklab, var(--brand) 40%, var(--line));
+    }
+
+    /* Side card */
+    .hero-side{ padding: 16px; }
+    .hero-side h3{ margin: 0 0 10px; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--muted2); }
+    .kv{ display:grid; grid-template-columns: 1fr; gap: 10px; }
+    .kv .row{
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .kv .k{ color: var(--muted2); }
+    .kv .v{ color: var(--text); font-weight: 650; }
+
+    /* Player */
+    #player-sentinel{ height: 1px; }
+    #player-wrapper{ margin: 14px 0 0; }
+
+    #player-wrapper .player-card{ overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); background: color-mix(in oklab, var(--panel) 90%, transparent); }
+    #player-wrapper iframe{ width: 100%; height: 210px; border: 0; display:block; background: transparent; }
+
+    #player-wrapper.sticky{
+      position: fixed;
+      top: var(--topbar-h);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(var(--maxw), calc(100vw - (2 * var(--pad))));
+      z-index: 40;
+
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* Main layout */
+    .main{ padding: 18px 0 40px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Transcript tools */
+    .tools{ padding: 14px; }
+    .tools h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -0.02em; }
+
+    .search{
+      display:flex; gap: 10px; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .input{
+      flex: 1 1 240px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      outline: none;
+      font-size: 14px;
+    }
+    .input::placeholder{ color: var(--muted2); }
+
+    .small{ font-size: 13px; color: var(--muted2); margin-top: 8px; }
+
+    /* Transcript */
+    .transcript{ padding: 14px; }
+    .turn{
+      display:flex; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background .12s ease, border-color .12s ease;
+    }
+    .turn:hover{ background: var(--panel); }
+    .turn.active{
+      background: color-mix(in oklab, var(--panel-2) 85%, transparent);
+      border-color: color-mix(in oklab, var(--brand) 35%, var(--line));
+      box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--brand) 30%, transparent);
+    }
+
+    .who{ min-width: 92px; }
+    .who .spk{
+      display:inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--accent) 28%, transparent);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 750;
+      font-size: 12px;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+    .who .ts{
+      display:block;
+      margin-top: 6px;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted2);
+      font-size: 12px;
+      user-select: none;
+    }
+    .said{ color: var(--text); font-size: 15px; }
+    .said mark{ background: color-mix(in oklab, var(--brand) 35%, transparent); color: inherit; padding: 0 .08em; border-radius: .25em; }
+
+    /* Sidebar */
+    .side{ padding: 14px; }
+    .side h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -0.02em; }
+
+    .side .links{ display:flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 2px; }
+
+    .hr{ height: 1px; background: var(--line); margin: 14px 0; border:0; }
+
+    footer{ padding: 28px 0 40px; color: var(--muted2); font-size: 13px; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior: auto !important; transition: none !important; }
+    }
   </style>
 </head>
 
 <body>
-  <!-- ⬇⬇⬇ BODY, HERO, PLAYER, TRANSCRIPT, JS ⬇⬇⬇ -->
-  <!-- UNCHANGED FROM YOUR ORIGINAL FILE -->
+  <div class="topbar">
+    <div class="wrap inner">
+      <a class="brand" href="/" aria-label="Back to episodes index">
+        
+        <div style="min-width:0">
+          <div class="name">The Strategists</div>
+          <div class="tag">Transcripts</div>
+        </div>
+      </a>
+
+      <div class="navlinks">
+        <a class="chip" href="/">← <strong>All episodes</strong></a>
+        
+        <a class="chip" href="https://patreon.com/strategistspod" target="_blank" rel="noopener">Subscribe</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <section class="card hero-main">
+        <h1>Episode 1904: Carney, the Moment, and the Noise</h1>
+
+        <div class="meta">
+          <span>January 23, 2026</span>
+          
+          
+          
+        </div>
+
+        
+          <div class="desc"><p>Stephen Carter and Shannon Phillips discuss Mark Carney’s Davos speech and why it cut through the global noise. What made the moment land, and what does seriousness buy Carney right now? Who was this speech actually for? And how did “being serious” become a political strategy again?</p><p>Zain Velji, as always, picks the questions and keeps everybody in line.</p><p></p></div>
+        
+
+        <div class="cta">
+          <button class="btn primary" type="button" id="btn-copy">Copy link</button>
+          <button class="btn" type="button" id="btn-copy-ts" title="Copies the link to the current moment (or selected line)">Copy link + timestamp</button>
+          <a class="btn" href="#transcript" title="Jump to transcript">Jump to transcript</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="wrap">
+
+      <div id="player-wrapper">
+        
+          <div class="player-card patreon-lock">
+  <div class="patreon-inner">
+    <img
+      src="/assets/patreon.jpg"
+      alt="Patreon"
+      class="patreon-art"
+      loading="lazy"
+    />
+    <div class="patreon-copy">
+      <strong>Patreon-only episode</strong>
+      <p>Subscribe on Patreon to get full access to this episode.</p>
+      <a
+        class="btn primary"
+        href="https://patreon.com/strategistspod"
+        target="_blank"
+        rel="noopener"
+      >
+        Unlock on Patreon →
+      </a>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      <div id="player-sentinel"></div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap grid">
+
+      <section class="card">
+        <div class="tools">
+          <h2 id="transcript">Transcript</h2>
+        </div>
+
+        <div class="transcript" id="transcript-list" aria-label="Transcript">
+          
+          <div class="turn" data-start="2">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:02</span>
+  </div>
+  <div class="said">This is a strategist episode 1904. My name is Zain Velji. With me, as always, Stephen Carter, Shannon Phillips. How are you, friends?</div>
+</div>
+<div class="turn" data-start="10">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:10</span>
+  </div>
+  <div class="said">Everyone missed the old countdown that we had. You know, when Axum goes five, four, and then you start talking. It was pretty great. It was great. Now we have this new electronic thing. Like, Axum&#x27;s nearly been replaced. It&#x27;s tragic.</div>
+</div>
+<div class="turn" data-start="26">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:26</span>
+  </div>
+  <div class="said">You can get rid of them. Save some costs. costs 1904 by the way steven carter does that did you think we&#x27;d make it this far</div>
+</div>
+<div class="turn" data-start="32">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:32</span>
+  </div>
+  <div class="said">to the year 1904 no i did not i would know to the episode but i&#x27;m not really sure that we&#x27;ve done 1904 episodes i&#x27;m not sure that the numbering system will hold up to scrutiny uh which shannon is probably bringing to the table she&#x27;s probably going to want us to go back and fill in the 800 episodes that we haven&#x27;t done why</div>
+</div>
+<div class="turn" data-start="51">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:51</span>
+  </div>
+  <div class="said">why would you let people in on that shannon please welcome hello hi</div>
+</div>
+<div class="turn" data-start="55">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">0:55</span>
+  </div>
+  <div class="said">how are you uh</div>
+</div>
+<div class="turn" data-start="58">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:58</span>
+  </div>
+  <div class="said">so a little bit too much enthusiasm given yeah i&#x27;m not happy</div>
+</div>
+<div class="turn" data-start="61">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:01</span>
+  </div>
+  <div class="said">yeah i know but you know given world uh there&#x27;s just so many nice people out there you guys and i think we really have to focus in on that right now there&#x27;s so many lovely people out there they listen to this show uh where&#x27;s this going i&#x27;m just saying that doesn&#x27;t feel right well i&#x27;m just saying that you gotta take your you know uh good things where you can find them you guys you can&#x27;t not just wallow all the time uh zane in your basement</div>
+</div>
+<div class="turn" data-start="84">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:24</span>
+  </div>
+  <div class="said">please let us let us let us in let us in who are you talking about in particular</div>
+</div>
+<div class="turn" data-start="89">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:29</span>
+  </div>
+  <div class="said">i am talking about a lovely woman that i met the other night at the vet clinic and i really hope that</div>
+</div>
+<div class="turn" data-start="94">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:34</span>
+  </div>
+  <div class="said">she has a name we need it we need a name</div>
+</div>
+<div class="turn" data-start="95">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:35</span>
+  </div>
+  <div class="said">her name is marissa and she was a lovely woman and uh i was paying my bill at the vet clinic uh things are not great in the four-legged department in this house uh but um and she was there she&#x27;s a very very nice woman. And I also just talked to another one of our listeners named Ben, who is in BC, very nice man. And, you know, there&#x27;s just so many lovely Canadians out there who listened to this show. I feel sorry for them that they are, you know, such big longtime fans of this show, but they&#x27;re long suffering and they deserve wonderful shout outs. And everybody is suffering through shitty times in this world. And we just have to be kind to one another.</div>
+</div>
+<div class="turn" data-start="134">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:14</span>
+  </div>
+  <div class="said">for this. That&#x27;s a Jesus fucking Christ. You know what I want to do, Carter? Carter. Unilaterally, I&#x27;ve got an idea. Let&#x27;s do it.</div>
+</div>
+<div class="turn" data-start="140">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">2:20</span>
+  </div>
+  <div class="said">I&#x27;m in. I don&#x27;t even</div>
+</div>
+<div class="turn" data-start="142">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:22</span>
+  </div>
+  <div class="said">care what it is. Okay. So we have great listeners. I agree with that. And we also are in a cost of living crisis. Yeah. Okay. Which is why I want to offer our Patreon for a dollar more than it is right now. I actually want to increase the cost. In the midst of this cost of living crisis, I think what we should do is increase the cost of our Patreon. Yeah. I want to provide Anybody know how to do this? I do not know how to do this, but I want to do it really badly. Just after hearing that story, it made my heart hearten. And so my heart hearten, just so you&#x27;re clear</div>
+</div>
+<div class="turn" data-start="178">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">2:58</span>
+  </div>
+  <div class="said">Well, I don&#x27;t know what&#x27;s hard over there, but I&#x27;m pretty unhappy about it.</div>
+</div>
+<div class="turn" data-start="181">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:01</span>
+  </div>
+  <div class="said">Yeah, that&#x27;s good. At that age, I&#x27;m sure you are</div>
+</div>
+<div class="turn" data-start="184">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">3:04</span>
+  </div>
+  <div class="said">Yeah, well, I think we should definitely contribute to the cost of living crisis. Thank</div>
+</div>
+<div class="turn" data-start="188">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:08</span>
+  </div>
+  <div class="said">you. We should help. Yeah, we should. This is the way we help. So thank you, Shannon, for sharing that anecdote. out uh it has been the direct result of now us increasing our patreon uh subscription right because we don&#x27;t like by an extra dollar</div>
+</div>
+<div class="turn" data-start="202">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">3:22</span>
+  </div>
+  <div class="said">i don&#x27;t understand no i think that much listeners it&#x27;s just the</div>
+</div>
+<div class="turn" data-start="205">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:25</span>
+  </div>
+  <div class="said">wrong yeah it&#x27;s</div>
+</div>
+<div class="turn" data-start="206">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">3:26</span>
+  </div>
+  <div class="said">the wrong tone it&#x27;s</div>
+</div>
+<div class="turn" data-start="207">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:27</span>
+  </div>
+  <div class="said">it&#x27;s when when shannon yings we have to yang steven yeah it&#x27;s a zig and zag situation here&#x27;s where i&#x27;m the nice uh speaking</div>
+</div>
+<div class="turn" data-start="214">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">3:34</span>
+  </div>
+  <div class="said">that&#x27;s what people say about me uh</div>
+</div>
+<div class="turn" data-start="215">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:35</span>
+  </div>
+  <div class="said">speaking speaking of hard-ons um big dick energy from mark carney steven carter um it is It is being called the greatest speech of all time. It is being called a legacy-making speech. It is being called nothing but positive. Stephen Carter, I want to get down to the brass tacks of a strategist and analyze. Was Mark Carney&#x27;s 17 Minutes in Heaven on the Davos stage as good as it is being written about in the papers and in the columns across the world? Stephen Carter, top line, give it to me straight. Most</div>
+</div>
+<div class="turn" data-start="248">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">4:08</span>
+  </div>
+  <div class="said">of the time what happens is that we get too excited about something, we blow it up out of proportion, and then it becomes forgotten in a few weeks or a few months. Or we find out after time, like for example, the knockout punch of Mulroney in his debate with John Turner, it kind of developed over the course of days, right? It took some time for it to develop. So there&#x27;s two types of communications. One that is we blow it up out of proportion, and the other is it takes a few days to come around. And the truth of the matter is this has been blown up out of proportion, but it also seems to be working. Like people three days later are still remembering and talking about the Davos speech. This is something that I think that world leaders are going to be reflecting on. And it wasn&#x27;t just a speech for Canadians. It was a speech for his peers. And as such, as a speech for his peers, it had it spoke to a to both the target audience of his peers, as well as those of us who just, you know, are his underlings who just, you know, we just vote for the man. That&#x27;s all we do. But my goodness, what a speech. What an absolute fucking command performance, Stu. Like it was just it</div>
+</div>
+<div class="turn" data-start="328">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">5:28</span>
+  </div>
+  <div class="said">was it was a day to be proud to be Canadian. And normally we like to take the piss from people, but I was super pleased with that. I just was super impressed by the speech.</div>
+</div>
+<div class="turn" data-start="340">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">5:40</span>
+  </div>
+  <div class="said">Shannon Carter&#x27;s gushing like a motherfucker, which is what he does like clockwork every five years. So I have not heard Stephen Carter this positive since the Jeb Bush presidency or near the tail end of the Jeb Bush presidency, which was a great four years. I like Jeb Shannon, are you on board the Carnot Express in congratulating Mark Carney to the same level? And then let&#x27;s get into the whys, because I&#x27;m curious about your W-H-Y whys in a second.</div>
+</div>
+<div class="turn" data-start="369">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">6:09</span>
+  </div>
+  <div class="said">Yes, because Canadians have been in the spotlight of, you know, the big bad orange man within the eye of Sauron many, many times. And yet, for whatever reason, I think we have felt like we have not been supported on the international stage by that. Whether that was Keir Starmer&#x27;s extremely tepid responses to kind of standing up for us, whether that&#x27;s been the EU kind of really trying to mollify Trump. And we spent 2025 feeling like nobody was really paying any attention to the fact that, you know, the world&#x27;s most advanced military in the history of the planet was running around talking about annexing us. So this got us the global attention that I think we as Canadians felt like we deserved and that we had been waiting for. And that&#x27;s the domestic piece of it, is that Canadians have been essentially waiting for an articulation of our importance on the international stage. It also feeds straight into Carney&#x27;s electoral coalition. Boomers remember the concept of middle powers. Boomers remember the Pearsonian foreign policy, the last time that we were proud of our foreign policy and that it was something that was maybe while not vote determining, it was certainly nation defining. And so there&#x27;s that piece. uh and i i also think that we are in a moment and and carney is the kind of politician that you know he could fall into some of the pitfalls of of looking like kind of a regular ass politician right he&#x27;s a banker for heaven&#x27;s sakes uh but for him to go up and engage in plain talk and in authenticity and in straight speech uh there&#x27;s there&#x27;s persuasion in that uh that i I think we&#x27;ve also been waiting for. We&#x27;ve been in this moment where, you know, maybe Canadians are starting to wonder, is he wobbly? His elbows are down. But there was a persuasion of, no, actually, he&#x27;s with us. He&#x27;s just with us on a larger stage and a bigger plane than some of the domestic preoccupations in</div>
+</div>
+<div class="turn" data-start="510">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">8:30</span>
+  </div>
+  <div class="said">terms of our desire to see our sovereignty reflected, our self-determination articulated so yeah it was exactly what we needed in this moment big eggplant uh energy yeah</div>
+</div>
+<div class="turn" data-start="525">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">8:45</span>
+  </div>
+  <div class="said">big eggplant energy i i i i agree completely um he should know about that uh stephen carter yes here&#x27;s the thing about okay i want to talk about the substance of it and i&#x27;m actually going to not let you guys go where everyone else goes in terms of let&#x27;s just Let&#x27;s just put some stuff on the table. The tone, the length, the words, the prose, all of that. Excellent. In a second here, I want you to go deeper in terms of what Stephen Carter, the political strategist, saw that made this thing very effective. And I&#x27;ll come to you, Shannon, in a second on that same question. However, before we do that, Carter, there is something, I don&#x27;t know if ironic is the right word, but there&#x27;s something rich in the fact that a seminal, if not legacy-making, if not historic speech by a Canadian prime minister is given at Davos when, let&#x27;s just say one year to the day, we were fighting about the WEF and global elites and Pierre Pauliev saying that one of the principal things that the Pauliev government would never allow allow to happen is to have him or any of his ministers go to that that fuck show known as davos and carter one year later here we are so opine on that for a moment before i ask you back to the substance of the speech and and give me your with maybe without using the word trump give me your analysis of of the journey there uh and the political cost of that one pierre poliev certainly didn&#x27;t seem like he was paying at the time but</div>
+</div>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 The Strategists. Built for fast reading, sharing, and search.
+    </div>
+  </footer>
+
+  <script>
+  // ------------------------------
+  // Acast postMessage helper
+  // (Docs: postmessage:do:seek uses seconds)
+  // ------------------------------
+  function acastPost(eventName, data){
+    const iframe = document.getElementById('acast-player');
+    if (!iframe || !iframe.contentWindow) return;
+    try{
+      iframe.contentWindow.postMessage(JSON.stringify({eventName, data: data || {}}), '*');
+    }catch(e){ /* ignore */ }
+  }
+
+  // ------------------------------
+  // Sticky player behavior
+  // ------------------------------
+  (function(){
+    const wrap = document.getElementById('player-wrapper');
+    const sentinel = document.getElementById('player-sentinel');
+    if (!wrap || !sentinel || !('IntersectionObserver' in window)) return;
+
+    const setBodyPad = () => {
+      const topbar = document.querySelector('.topbar');
+      const topbarH = topbar ? topbar.getBoundingClientRect().height : 0;
+      const stickyH = wrap.classList.contains('sticky') ? wrap.getBoundingClientRect().height : 0;
+      document.body.style.paddingTop = (wrap.classList.contains('sticky') ? (stickyH) : 0) + 'px';
+      // Sticky is positioned under topbar; body padding avoids jump.
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      const e = entries[0];
+      if (!e) return;
+      if (e.isIntersecting){
+        wrap.classList.remove('sticky');
+      } else {
+        wrap.classList.add('sticky');
+      }
+      setBodyPad();
+    }, {threshold: [0]});
+
+    io.observe(sentinel);
+    window.addEventListener('resize', setBodyPad);
+  })();
+
+    (function(){
+      const topbar = document.querySelector('.topbar');
+      if (!topbar || !('IntersectionObserver' in window)) return;
+
+      const sentinel = document.createElement('div');
+      sentinel.style.position = 'absolute';
+      sentinel.style.top = '0';
+      sentinel.style.height = '1px';
+      sentinel.style.width = '1px';
+      topbar.before(sentinel);
+
+      const io = new IntersectionObserver(entries => {
+        const e = entries[0];
+        if (!e) return;
+
+        // When the topbar scrolls off, reclaim the space
+        document.documentElement.style.setProperty(
+          '--topbar-h',
+          e.isIntersecting ? `${topbar.offsetHeight}px` : '0px'
+        );
+      }, { threshold: [0] });
+
+      io.observe(sentinel);
+    })();
+
+  // ------------------------------
+  // Transcript: normalize markup
+  // Supports either:
+  //  A) <div class="turn" data-start=".." data-speaker="..">...</div>
+  //  B) legacy <p data-start=".."><span class="ts">..</span> ...</p>
+  // ------------------------------
+  function secondsToClock(s){
+    s = Math.max(0, Math.floor(Number(s) || 0));
+    const h = Math.floor(s/3600);
+    const m = Math.floor((s%3600)/60);
+    const ss = s%60;
+    if (h>0) return `${h}:${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+    return `${m}:${String(ss).padStart(2,'0')}`;
+  }
+
+  function ensureTurnBlocks(){
+    const list = document.getElementById('transcript-list');
+    if (!list) return;
+
+    // If we already have .turn blocks, do nothing.
+    if (list.querySelector('.turn')) return;
+
+    // Upgrade <p data-start> to .turn structure.
+    const paras = Array.from(list.querySelectorAll('p[data-start]'));
+    if (!paras.length) return;
+
+    for (const p of paras){
+      const start = p.getAttribute('data-start');
+      const speaker = p.getAttribute('data-speaker') || '';
+      const text = p.textContent || '';
+
+      const t = document.createElement('div');
+      t.className = 'turn';
+      t.setAttribute('data-start', start);
+      if (speaker) t.setAttribute('data-speaker', speaker);
+
+      const who = document.createElement('div');
+      who.className = 'who';
+      const spk = document.createElement('div');
+      spk.className = 'spk';
+      spk.textContent = speaker || 'Speaker';
+      const ts = document.createElement('span');
+      ts.className = 'ts';
+      ts.textContent = secondsToClock(start);
+      who.appendChild(spk);
+      who.appendChild(ts);
+
+      const said = document.createElement('div');
+      said.className = 'said';
+      // remove any existing timestamp prefix in the old paragraph
+      const clone = p.cloneNode(true);
+      const tsSpan = clone.querySelector('.ts');
+      if (tsSpan) tsSpan.remove();
+      said.textContent = (clone.textContent || '').trim();
+
+      t.appendChild(who);
+      t.appendChild(said);
+      p.replaceWith(t);
+    }
+  }
+
+  // ------------------------------
+  // Deep-linking: ?t=123 or #t=123
+  // ------------------------------
+  function getTFromURL(){
+    const u = new URL(window.location.href);
+    const qp = u.searchParams.get('t');
+    if (qp) return Number(qp);
+    if (u.hash && u.hash.startsWith('#t=')) return Number(u.hash.slice(3));
+    return null;
+  }
+
+  function setURLTime(t){
+    const u = new URL(window.location.href);
+    u.searchParams.set('t', String(Math.max(0, Math.floor(t))));
+    history.replaceState(null, '', u.toString());
+  }
+
+  // ------------------------------
+  // Selection + seek
+  // ------------------------------
+  let selectedStart = null;
+
+  function activateTurn(el){
+    const list = document.getElementById('transcript-list');
+    if (!list) return;
+    list.querySelectorAll('.turn.active').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+
+    const start = Number(el.getAttribute('data-start') || 0);
+    selectedStart = start;
+
+    // update URL
+    setURLTime(start);
+
+    // seek and play
+    acastPost('postmessage:do:seek', { position: start });
+    acastPost('postmessage:do:play');
+  }
+
+  function scrollTurnIntoView(el){
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const topbar = document.querySelector('.topbar');
+    const topbarH = topbar ? topbar.getBoundingClientRect().height : 0;
+    if (rect.top < topbarH + 10 || rect.bottom > window.innerHeight - 12){
+      el.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+  }
+
+  // ------------------------------
+  // Clipboard helpers
+  // ------------------------------
+  async function copyText(text){
+    try{
+      await navigator.clipboard.writeText(text);
+      return true;
+    }catch(e){
+      // fallback
+      try{
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const ok = document.execCommand('copy');
+        ta.remove();
+        return ok;
+      }catch(_){
+        return false;
+      }
+    }
+  }
+
+  function currentShareURL(includeTime){
+    const u = new URL(window.location.href);
+    if (includeTime){
+      const t = selectedStart ?? getTFromURL() ?? 0;
+      u.searchParams.set('t', String(Math.max(0, Math.floor(t))));
+    } else {
+      u.searchParams.delete('t');
+    }
+    return u.toString();
+  }
+
+  // ------------------------------
+  // Boot
+  // ------------------------------
+  (function(){
+    ensureTurnBlocks();
+
+    const list = document.getElementById('transcript-list');
+    if (list){
+      list.addEventListener('click', (e) => {
+        const turn = e.target.closest('.turn');
+        if (!turn) return;
+        activateTurn(turn);
+      });
+    }
+
+    const btnCopy = document.getElementById('btn-copy');
+    const btnCopyTs = document.getElementById('btn-copy-ts');
+    if (btnCopy){
+      btnCopy.addEventListener('click', async () => {
+        const ok = await copyText(currentShareURL(false));
+        btnCopy.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(() => btnCopy.textContent = 'Copy link', 1200);
+      });
+    }
+    if (btnCopyTs){
+      btnCopyTs.addEventListener('click', async () => {
+        const ok = await copyText(currentShareURL(true));
+        btnCopyTs.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(() => btnCopyTs.textContent = 'Copy link + timestamp', 1200);
+      });
+    }
+
+    // Apply deep-linked time
+    const t = getTFromURL();
+    if (t != null && !Number.isNaN(t)){
+      // Find nearest turn
+      const turns = Array.from(document.querySelectorAll('.turn[data-start]'));
+      let best = null;
+      let bestDist = Infinity;
+      for (const el of turns){
+        const s = Number(el.getAttribute('data-start') || 0);
+        const d = Math.abs(s - t);
+        if (d < bestDist){ bestDist = d; best = el; }
+      }
+      if (best){
+        best.classList.add('active');
+        selectedStart = Number(best.getAttribute('data-start') || 0);
+        scrollTurnIntoView(best);
+        // Seek without autoplay on load (safer)
+        acastPost('postmessage:do:seek', { position: selectedStart });
+      }
+    }
+  })();
+  </script>
 </body>
 </html>

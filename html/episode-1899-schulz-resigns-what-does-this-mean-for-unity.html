@@ -15,8 +15,7 @@
 
 
 
-
-
+  
   <meta name="description" content="Stephen Carter and Shannon Phillips talk about Rebecca Schulz’s sudden resignation from cabinet and what it signals about unity inside the UCP, and the country. They dive into the subtext of the resignation letter, whether this is about an oncoming referendum or possibly even an early election. Is this actually a problem for Danielle Smith or just another data point in a noisy political moment? What should we actually take from the Alberta Next panel? Signal? Noise? Or a roadmap to bigger trouble? And will Carter’s MP return his calls about getting his toilet to flush? Zain Velji, as always, picks the questions and keeps everybody in line." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   
@@ -27,9 +26,9 @@
   <meta property="og:description" content="Stephen Carter and Shannon Phillips talk about Rebecca Schulz’s sudden resignation from cabinet and what it signals about unity inside the UCP, and the country. They dive into the subtext of the resignation letter, whether this is about an oncoming referendum or possibly even an early election. Is this actually a problem for Danielle Smith or just another data point in a noisy political moment? What should we actually take from the Alberta Next panel? Signal? Noise? Or a roadmap to bigger trouble? And will Carter’s MP return his calls about getting his toilet to flush? Zain Velji, as always, picks the questions and keeps everybody in line." />
   
   <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="2025-12-31T19:50:02Z" />
-
   
+  
+    
     <meta property="og:image" content="/assets/og-default.png" />
     <meta name="twitter:image" content="/assets/og-default.png" />
   
@@ -46,7 +45,7 @@
     "name": "Episode 1899: Schulz Resigns | What Does This Mean for Unity?",
     "description": "Stephen Carter and Shannon Phillips talk about Rebecca Schulz\u2019s sudden resignation from cabinet and what it signals about unity inside the UCP, and the country. They dive into the subtext of the resignation letter, whether this is about an oncoming referendum or possibly even an early election. Is this actually a problem for Danielle Smith or just another data point in a noisy political moment? What should we actually take from the Alberta Next panel? Signal? Noise? Or a roadmap to bigger trouble? And will Carter\u2019s MP return his calls about getting his toilet to flush? Zain Velji, as always, picks the questions and keeps everybody in line.",
     
-    "datePublished": "2025-12-31T19:50:02Z",
+    
     
     "partOfSeries": {
       "@type": "PodcastSeries",
@@ -83,14 +82,1793 @@
 
   
   <style>
-    /* ⬇⬇⬇ YOUR ENTIRE STYLE BLOCK IS UNCHANGED ⬇⬇⬇ */
-    /* (exactly as you provided; omitted here for brevity in explanation,
-       but included in your pasted version above) */
+    :root{
+      --brand: #d7522f;
+      --accent: #232e41;
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --muted2: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --shadow2: 0 8px 22px rgba(0,0,0,.28);
+      --radius: 18px;
+      --radius2: 12px;
+      --maxw: 1100px;
+      --pad: clamp(16px, 3vw, 26px);
+      --sticky-shadow: 0 10px 28px rgba(0,0,0,.35);
+      --topbar-h: 58px;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #fbfbfd;
+        --panel: rgba(0,0,0,0.04);
+        --panel-2: rgba(0,0,0,0.06);
+        --text: rgba(0,0,0,0.92);
+        --muted: rgba(0,0,0,0.68);
+        --muted2: rgba(0,0,0,0.52);
+        --line: rgba(0,0,0,0.10);
+        --shadow: 0 16px 40px rgba(0,0,0,.12);
+        --shadow2: 0 8px 22px rgba(0,0,0,.10);
+        --sticky-shadow: 0 10px 28px rgba(0,0,0,.12);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.55;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% -10%, rgba(215,82,47,.32), transparent 60%),
+        radial-gradient(1000px 600px at 100% 0%, rgba(35,46,65,.50), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg));
+      background-attachment: fixed;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      min-width: 0;
+    }
+    .brand img{ width: 34px; height: 34px; object-fit: contain; }
+    .brand .name{ font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+    .brand .tag{ font-size: 13px; color: var(--muted2); white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
+
+    .navlinks{ display:flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .chip{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .chip strong{ color: var(--text); font-weight: 650; }
+    .chip:hover{ background: var(--panel-2); text-decoration:none; }
+
+    /* Hero */
+    .hero{ padding: 26px 0 12px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      background: color-mix(in oklab, var(--panel) 90%, transparent);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main{ padding: 20px; }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3.2vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .meta{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      align-items:center;
+    }
+    .meta .dot{ opacity: .55; }
+
+    .desc{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .desc p{ margin: 0.6rem 0; }
+    .desc a{ color: var(--text); text-decoration: underline; text-decoration-color: color-mix(in oklab, var(--brand) 70%, transparent); }
+
+    .cta{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 650;
+      font-size: 14px;
+      box-shadow: var(--shadow2);
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover{ background: var(--panel-2); text-decoration:none; }
+    .btn.primary{
+      background: linear-gradient(90deg, color-mix(in oklab, var(--brand) 75%, black), color-mix(in oklab, var(--accent) 70%, black));
+      border-color: color-mix(in oklab, var(--brand) 40%, var(--line));
+    }
+
+    /* Side card */
+    .hero-side{ padding: 16px; }
+    .hero-side h3{ margin: 0 0 10px; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--muted2); }
+    .kv{ display:grid; grid-template-columns: 1fr; gap: 10px; }
+    .kv .row{
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .kv .k{ color: var(--muted2); }
+    .kv .v{ color: var(--text); font-weight: 650; }
+
+    /* Player */
+    #player-sentinel{ height: 1px; }
+    #player-wrapper{ margin: 14px 0 0; }
+
+    #player-wrapper .player-card{ overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); background: color-mix(in oklab, var(--panel) 90%, transparent); }
+    #player-wrapper iframe{ width: 100%; height: 210px; border: 0; display:block; background: transparent; }
+
+    #player-wrapper.sticky{
+      position: fixed;
+      top: var(--topbar-h);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(var(--maxw), calc(100vw - (2 * var(--pad))));
+      z-index: 40;
+
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* Main layout */
+    .main{ padding: 18px 0 40px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Transcript tools */
+    .tools{ padding: 14px; }
+    .tools h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -0.02em; }
+
+    .search{
+      display:flex; gap: 10px; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .input{
+      flex: 1 1 240px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      outline: none;
+      font-size: 14px;
+    }
+    .input::placeholder{ color: var(--muted2); }
+
+    .small{ font-size: 13px; color: var(--muted2); margin-top: 8px; }
+
+    /* Transcript */
+    .transcript{ padding: 14px; }
+    .turn{
+      display:flex; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background .12s ease, border-color .12s ease;
+    }
+    .turn:hover{ background: var(--panel); }
+    .turn.active{
+      background: color-mix(in oklab, var(--panel-2) 85%, transparent);
+      border-color: color-mix(in oklab, var(--brand) 35%, var(--line));
+      box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--brand) 30%, transparent);
+    }
+
+    .who{ min-width: 92px; }
+    .who .spk{
+      display:inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--accent) 28%, transparent);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 750;
+      font-size: 12px;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+    .who .ts{
+      display:block;
+      margin-top: 6px;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted2);
+      font-size: 12px;
+      user-select: none;
+    }
+    .said{ color: var(--text); font-size: 15px; }
+    .said mark{ background: color-mix(in oklab, var(--brand) 35%, transparent); color: inherit; padding: 0 .08em; border-radius: .25em; }
+
+    /* Sidebar */
+    .side{ padding: 14px; }
+    .side h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -0.02em; }
+
+    .side .links{ display:flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 2px; }
+
+    .hr{ height: 1px; background: var(--line); margin: 14px 0; border:0; }
+
+    footer{ padding: 28px 0 40px; color: var(--muted2); font-size: 13px; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior: auto !important; transition: none !important; }
+    }
   </style>
 </head>
 
 <body>
-  <!-- ⬇⬇⬇ BODY, HERO, PLAYER, TRANSCRIPT, JS ⬇⬇⬇ -->
-  <!-- UNCHANGED FROM YOUR ORIGINAL FILE -->
+  <div class="topbar">
+    <div class="wrap inner">
+      <a class="brand" href="/" aria-label="Back to episodes index">
+        
+        <div style="min-width:0">
+          <div class="name">The Strategists</div>
+          <div class="tag">Transcripts</div>
+        </div>
+      </a>
+
+      <div class="navlinks">
+        <a class="chip" href="/">← <strong>All episodes</strong></a>
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <section class="card hero-main">
+        <h1>Episode 1899: Schulz Resigns | What Does This Mean for Unity?</h1>
+
+        <div class="meta">
+          <span>December 31, 2025</span>
+          
+          
+          
+        </div>
+
+        
+          <div class="desc"><p>Stephen Carter and Shannon Phillips talk about Rebecca Schulz’s sudden resignation from cabinet and what it signals about unity inside the UCP, and the country. They dive into the subtext of the resignation letter, whether this is about an oncoming referendum or possibly even an early election. Is this actually a problem for Danielle Smith or just another data point in a noisy political moment? What should we actually take from the Alberta Next panel? Signal? Noise? Or a roadmap to bigger trouble? And will Carter’s MP return his calls about getting his toilet to flush? Zain Velji, as always, picks the questions and keeps everybody in line.</p><p></p></div>
+        
+
+        <div class="cta">
+          <button class="btn primary" type="button" id="btn-copy">Copy link</button>
+          <button class="btn" type="button" id="btn-copy-ts" title="Copies the link to the current moment (or selected line)">Copy link + timestamp</button>
+          <a class="btn" href="#transcript" title="Jump to transcript">Jump to transcript</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="wrap">
+
+      <div id="player-wrapper">
+        
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/69557d8d77f9435bdcdda6ae"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
+      </div>
+      <div id="player-sentinel"></div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap grid">
+
+      <section class="card">
+        <div class="tools">
+          <h2 id="transcript">Transcript</h2>
+        </div>
+
+        <div class="transcript" id="transcript-list" aria-label="Transcript">
+          
+          <div class="turn" data-start="3">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:03</span>
+  </div>
+  <div class="said">This is a strategist episode 1899. My name is Zain Velji. With me as always, Stephen Carter, Shannon Phillips. Happy last day of 2025, folks</div>
+</div>
+<div class="turn" data-start="13">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:13</span>
+  </div>
+  <div class="said">Yeah, this is great. I&#x27;m really glad we were able to get together, especially when I had so much advance notice that I could have had a shower but didn&#x27;t. I love that for me. Sorry</div>
+</div>
+<div class="turn" data-start="22">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">0:22</span>
+  </div>
+  <div class="said">about that, Carter. I&#x27;ve</div>
+</div>
+<div class="turn" data-start="24">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:24</span>
+  </div>
+  <div class="said">you down. didn&#x27;t understand i didn&#x27;t understand we were it was 10 30 to 11 and i thought we started at 11 because it&#x27;s zane and then all of a sudden phillips is like no 10 30 let&#x27;s go and then phillips</div>
+</div>
+<div class="turn" data-start="34">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">0:34</span>
+  </div>
+  <div class="said">was 10 minutes late</div>
+</div>
+<div class="turn" data-start="35">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:35</span>
+  </div>
+  <div class="said">and then phillips is late like i don&#x27;t understand what&#x27;s going on it&#x27;s all fucked up in my world sorry carter you</div>
+</div>
+<div class="turn" data-start="40">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:40</span>
+  </div>
+  <div class="said">can you can write it all off carter as the last negative thing to happen to you in 2025</div>
+</div>
+<div class="turn" data-start="46">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:46</span>
+  </div>
+  <div class="said">it&#x27;s not the last negative thing to happen</div>
+</div>
+<div class="turn" data-start="48">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:48</span>
+  </div>
+  <div class="said">what do you think will happen to you predict the future go ahead</div>
+</div>
+<div class="turn" data-start="49">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:49</span>
+  </div>
+  <div class="said">well i can&#x27;t flush my toilet i mean that&#x27;s an upsetting situation</div>
+</div>
+<div class="turn" data-start="53">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:53</span>
+  </div>
+  <div class="said">Now we have to ask questions. Is it the toilet or is it like you have lost the ability and the dexterity to flush a</div>
+</div>
+<div class="turn" data-start="60">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:00</span>
+  </div>
+  <div class="said">toilet? Oh, no, no. We have no water in Calgary. Calgary is shut down. It&#x27;s all on 16th Avenue, all of our water.</div>
+</div>
+<div class="turn" data-start="66">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:06</span>
+  </div>
+  <div class="said">think we know what to do next, which is blame the mayor directly and personally and</div>
+</div>
+<div class="turn" data-start="73">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:13</span>
+  </div>
+  <div class="said">Personally, I&#x27;m going with the local member of parliament. it is in his right. The member of parliament for the area bears full responsibility. Do</div>
+</div>
+<div class="turn" data-start="85">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:25</span>
+  </div>
+  <div class="said">the area yet in order to make sure that he understands the damages?</div>
+</div>
+<div class="turn" data-start="89">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:29</span>
+  </div>
+  <div class="said">I don&#x27;t know if he has. He probably should take a boat and do it. Someone should text him. Yeah, yeah. I blame our local MP. He&#x27;s probably talking about the investments his government has made. That&#x27;s not enough for me, Carter. Is it enough for you? Not</div>
+</div>
+<div class="turn" data-start="102">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:42</span>
+  </div>
+  <div class="said">I mean, I can&#x27;t</div>
+</div>
+<div class="turn" data-start="103">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:43</span>
+  </div>
+  <div class="said">flex my toilet. Are you still a constituent, by the way? You&#x27;re still a constituent. I&#x27;m still a constituent, yeah. That&#x27;s two of us. Shannon, do you want to be an honorary constituent?</div>
+</div>
+<div class="turn" data-start="109">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:49</span>
+  </div>
+  <div class="said">Oh, for sure. And, you know, I have no doubt that his constituency office is, in fact, fielding calls blaming him for this. As my constituency staff used to say to people, you cannot get groceries at the library. And this is not our fault, but it won&#x27;t stop people. It won&#x27;t stop them.</div>
+</div>
+<div class="turn" data-start="127">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:07</span>
+  </div>
+  <div class="said">Do you know who I choose to blame, Stephen and Shannon? Like Daniel Smith, I choose to blame immigrants.</div>
+</div>
+<div class="turn" data-start="132">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:12</span>
+  </div>
+  <div class="said">And we&#x27;ll get into that with the Alberta Next panel. But can I can I get into what is my favorite part of our podcast, which is Reckless Speculation, Stephen Carter? Oh, great. Because an hour ago, Rebecca Schultz has announced she is bye bye from cabinet in Danielle Smith&#x27;s government. And in addition to that, she suggested she&#x27;s looking for new career opportunities and she&#x27;s leaving as an MLA in Q1 spring of this year. Here. Stephen Carter, the strategist, and Stephen Carter, the reckless speculator, help me both digest and analyze this. My eye is on early election. Is that where your eye is on? No, you know what? I don&#x27;t even want to lead you. I don&#x27;t want to lead this camel to a pond. I will let this camel roam free. One Stephen Carter, please.</div>
+</div>
+<div class="turn" data-start="180">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">3:00</span>
+  </div>
+  <div class="said">I think that it was interesting in Rebecca Schultz&#x27;s letter that she talked specifically about unity. Unity both, I think, within the party, but also unity within Canada. so that&#x27;s where i kind of went with it um uh i think that this is a larger play um where you know uh this will have something to this will have something to do with the election but i i think that uh for her this is you know reflects that she doesn&#x27;t fit she&#x27;s a puzzle piece that doesn&#x27;t fit quite into this puzzle um i&#x27;m sure that the premier is asking around if if you&#x27;re planning to run in the next election, regardless of when it is. And Rebecca Schultz might be the first casualty of those types of questions.</div>
+</div>
+<div class="turn" data-start="223">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:43</span>
+  </div>
+  <div class="said">Interesting. Shannon, you have known of this news for, I&#x27;m going to say, 69 to 75 seconds.</div>
+</div>
+<div class="turn" data-start="234">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">3:54</span>
+  </div>
+  <div class="said">I&#x27;ve just read her letter. think this can only be about one thing. And that is the drive, the hell-bent-for-leather drive to get a separation referendum in front of the people of Alberta in 2026. Rebecca Schultz was on the Alberta Next panel, so she went around the province listening to these people at these Alberta Next fiestas, talking about blaming immigrants, about going back to the well of zombie files of the RCMP, of the CPP, and every other, you know, cockamamie scheme</div>
+</div>
+<div class="turn" data-start="274">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:34</span>
+  </div>
+  <div class="said">Equalization. All of it. All</div>
+</div>
+<div class="turn" data-start="277">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">4:37</span>
+  </div>
+  <div class="said">of the old hits, right? She heard everybody playing the old hits. but she also just sat through a legislature where the you know the use of the notwithstanding clause to take away people&#x27;s uh bargaining rights didn&#x27;t bother her i&#x27;m sure the trans stuff i&#x27;m sure didn&#x27;t bother her but changing the legislation so you can put unconstitutional nonsense on the ballot as a referendum probably did because that&#x27;s what i&#x27;m reading in this letter about</div>
+</div>
+<div class="turn" data-start="302">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">5:02</span>
+  </div>
+  <div class="said">about radical policies, right, that are problematic. I joined, you know, a unity party to get rid of this stuff. So this is about the drive to get the referendum question in front of Albertans over the course of 2026. It may be less about election timing, because in my view, they probably want to get this referendum thing done before they go to the polls. But it&#x27;s about that. It can&#x27;t be about anything else.</div>
+</div>
+<div class="turn" data-start="335">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">5:35</span>
+  </div>
+  <div class="said">I want to get into both of those strains. And I&#x27;m sure they overlap with the referendum question in the election, at least in some people&#x27;s reckless speculation. So we&#x27;ll get to that in a second. Carter, you know, these letters, this is not an uncommon type of letter, right? At least in form and in substance. That being said, what</div>
+</div>
+<div class="turn" data-start="354">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">5:54</span>
+  </div>
+  <div class="said">should media and others do as it relates to follow up? I always wonder that, right? Because these letters are so coded that even the three of us have to read into them in terms of what it could mean. What would you suggest people do when they see Rebecca Schultz next or the premier next or suggest a character in this story, Carter, around getting clarity? And then because I&#x27;m curious if that is the next part here or will we never have clarity in your mind, Carter? I</div>
+</div>
+<div class="turn" data-start="384">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">6:24</span>
+  </div>
+  <div class="said">don&#x27;t think we&#x27;ll ever have clarity until sometime after, right? Sometime after, might be 10 years after, when you&#x27;re sitting at a cocktail party and Rebecca Schultz walks in and you finally get to ask the question, you know, remember back at the end of 2025, what were you thinking? What were you thinking? And she actually is honest with you in that moment. But, you know, the follow-up questions that should be asked by media are, you know, does this, were you asked if you plan to seek re-election? Was this a spur-of-the-moment decision from your side, or was this a question that came from the Premier? Was there a reflection in the Alberta Next panel? You were involved. Does this have some impact? and uh what what type of um uh you know uh influence does the uh does the the referendum or the potential election have in this and ultimately you they can ask those questions i&#x27;m quite certain that all the answers are going to be uh no comment or something uh benign i also expect that you know if they asked her about what where what job she&#x27;s moving on to she&#x27;s going to you know absolutely defer on that as well she will not be answering any questions honestly and truthfully because she published this letter this letter is not an honest and true reflection of why she&#x27;s leaving i think that everybody can you know everybody who&#x27;s been a part of writing these letters knows that these letters aren&#x27;t done like this if we want to get an honest and true reflection of why a person&#x27;s</div>
+</div>
+<div class="turn" data-start="478">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">7:58</span>
+  </div>
+  <div class="said">case of christopher freeland yeah</div>
+</div>
+<div class="turn" data-start="481">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">8:01</span>
+  </div>
+  <div class="said">yeah i was gonna say This is not a Christopher Freeland, like, I&#x27;m going to, you know, stab my principal in the back. Shannon, I think you could provide maybe some unique expertise here. This is not your situation in, like, the political dynamics. But when you left, were you hounded by folks around what are you doing? What&#x27;s going on? What&#x27;s internal message are you trying to send, if any? Or was it just so clear on the backs of what that election was and, you know, how long you&#x27;ve been serving that you didn&#x27;t actually have a bunch of folks trying to clarify what your next step was when you when you left and into the private sector</div>
+</div>
+<div class="turn" data-start="514">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">8:34</span>
+  </div>
+  <div class="said">Well, no. Well, first of all, I&#x27;d like to, you know, welcome Rebecca Schultz to the Quitters Caucus. And, you know, although I&#x27;m sure we have a lot of differences, I think upon rereading her letter that the radical policy she was talking about was actually notly and probably specifically me. So that&#x27;s nice. I don&#x27;t our caucus because meetings are going to be very good. I don&#x27;t think</div>
+</div>
+<div class="turn" data-start="536">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:56</span>
+  </div>
+  <div class="said">I have a lot in common with that lady. No, I don&#x27;t see her attending them. Yeah,</div>
+</div>
+<div class="turn" data-start="539">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">8:59</span>
+  </div>
+  <div class="said">don&#x27;t think her and I are friends. Anyways, but no, but I was not a cabinet minister in a that was headed towards a national unity discussion, forcing a national unity discussion in the same year that we have a Quebec election that is widely perceived to be electing the PQ.</div>
+</div>
+<div class="turn" data-start="561">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">9:21</span>
+  </div>
+  <div class="said">that&#x27;s the first thing. um and uh no i mean in my circumstances people kind of went yeah like uh it has been shitty for you we get that um and it sort of met a head nod that</div>
+</div>
+<div class="turn" data-start="573">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">9:33</span>
+  </div>
+  <div class="said">this will just meet a bunch of question marks right she was on the alberta next panel she ran in the leadership she was widely uh perceived as a very loyal lieutenant uh for the for the smith government she was often uh the surrogate for the the Premier, in media, in, you know, business rooms, all of these kinds of places. And so</div>
+</div>
+<div class="turn" data-start="594">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">9:54</span>
+  </div>
+  <div class="said">her leaving when there&#x27;s no explanation, really, I mean, maybe she&#x27;s got a really nice job. But I mean, any of these people can walk out into the consulting and lobbying world and make a bucket of money out of oil and gas. So it&#x27;s probably, she can do that at any point. And And by all accounts, her husband&#x27;s already doing it.</div>
+</div>
+<div class="turn" data-start="617">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">10:17</span>
+  </div>
+  <div class="said">let&#x27;s talk about each of these scenarios. Early election, referendum. Which one do you think is most likely that this is a response to?</div>
+</div>
+<div class="turn" data-start="625">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">10:25</span>
+  </div>
+  <div class="said">I think with the May date, it is a response to an early election. I think the referendum date, to me, all the checkboxes aren&#x27;t yet checked for the referendum to happen in the spring. I think the referendum is more of a fall activity, just because I don&#x27;t think they want to do the referendum on Thomas Lukasik&#x27;s question. I think they want to do a referendum on a different question, and they have to get through a few tick boxes. Having said that, I could be completely wrong, because I&#x27;ve been wrong on everything that Daniel Smith does.</div>
+</div>
+<div class="turn" data-start="662">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">11:02</span>
+  </div>
+  <div class="said">Leave this bracket open for a second. Can I update myself and our listeners? Do you guys know where we&#x27;re at with the whole fucking referendum thing? So we&#x27;ve got Lukaszek&#x27;s question, which has been punted to committee, correct? Yeah. So that thing has kind of been shelved. The clock is now running for four months for the separatists to collect their signatures in the new lower threshold. Am I right about that?</div>
+</div>
+<div class="turn" data-start="684">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:24</span>
+  </div>
+  <div class="said">don&#x27;t know that the clock&#x27;s running for them. Oh, okay. I</div>
+</div>
+<div class="turn" data-start="687">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">11:27</span>
+  </div>
+  <div class="said">don&#x27;t know that it is either. Well, I thought it was. Okay. So this is part of my understanding. No, I think it&#x27;s clarification</div>
+</div>
+<div class="turn" data-start="693">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:33</span>
+  </div>
+  <div class="said">on the question, and they haven&#x27;t yet gotten to Elections Alberta to get the question. Got</div>
+</div>
+<div class="turn" data-start="699">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">11:39</span>
+  </div>
+  <div class="said">they had to wait until, like, Lukasik filed first and sort of did a runaround on them. And so then they had to wait for that to, as I understood the ruling from Elections Alberta. And in any case, they want to put forward something that&#x27;s unconstitutional. So they had to wait for the government to change the law to allow them to do that.</div>
+</div>
+<div class="turn" data-start="719">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">11:59</span>
+  </div>
+  <div class="said">Right. Okay. So regardless of where, if the clock is on or not, you</div>
+</div>
+<div class="turn" data-start="724">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:04</span>
+  </div>
+  <div class="said">would expect that the separatists have their question more than likely. The government&#x27;s going to at least seems like they&#x27;re trying with Alberta next being the third thing to layer on to this equation seems to be the separatist, the favoring the separatist version of the question to be asked to the public and or potentially getting it in front of the public in some way in 2026. OK, that&#x27;s where we&#x27;re at. Carter, you&#x27;re saying this may lines up to an early election call. Tell me why. Tell me why. And I want to talk about, you know, the responses here. But tell me, tell me why, because Shannon, I think, is on the other side of this</div>
+</div>
+<div class="turn" data-start="757">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">12:37</span>
+  </div>
+  <div class="said">because I think that she&#x27;s delayed her stepping down as an MLA post some sort of electoral activity. Otherwise, why would you give up being a cabinet minister for the last five months of your tenure? I never understand that. I mean, if you&#x27;re going to, you know, there&#x27;s no pension to qualify for. There is no outside reason or rationale. When you look at Matt Gennaro and why he&#x27;s choosing to stick around, stick around in quotation marks. he&#x27;s sticking around because it is in the best interest of the conservative party for him to stick around i suspect that it is in the best interest of the conservative of the ucp for rebecca schultz to stick around because if they if she leaves now there&#x27;s by-election speculation there&#x27;s by-election pressures if she leaves in five months it doesn&#x27;t matter because we&#x27;ve had an election she was going to go anyways right so that&#x27;s why i&#x27;m thinking that they&#x27;re we&#x27;re We&#x27;re looking at a spring election from this type of activity.</div>
+</div>
+<div class="turn" data-start="817">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">13:37</span>
+  </div>
+  <div class="said">Shannon, let me get to you in one second to respond to Carter, but also talk to me about the referendum. Carter, is Schultz a one of one or do you see more coming in the next several weeks?</div>
+</div>
+<div class="turn" data-start="827">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:47</span>
+  </div>
+  <div class="said">I would anticipate that she&#x27;s one of a very small number. I don&#x27;t think that the I don&#x27;t think that the UCP caucus is as divided as it should be over the decisions that Daniel Smith has been making over the last two years</div>
+</div>
+<div class="turn" data-start="842">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">14:02</span>
+  </div>
+  <div class="said">And suggesting with Alberta Next, which came out on the Friday before the holiday. Shannon, tell me why this is about a referendum.</div>
+</div>
+<div class="turn" data-start="850">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">14:10</span>
+  </div>
+  <div class="said">Well, when you resign from cabinet, you are able to speak your mind publicly in a way that cabinet can&#x27;t, right? Cabinet solidarity means that you fight it out behind the scenes. And then the decision is the decision. And you go out there and storm the barricades all as a group. and</div>
+</div>
+<div class="turn" data-start="869">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">14:29</span>
+  </div>
+  <div class="said">uh no matter what your personal reservations are so that&#x27;s what that&#x27;s why this is weird right if like if she wanted to just be done with the whole schmoz she would have just said yeah i&#x27;m out right resign seat goodbye but uh the fact that she&#x27;s left herself some runway to be able to speak publicly without the constraints of cabinet and again I&#x27;m just wildly speculating per the editorial direction of this podcast that means that there&#x27;s probably something to say there or she wants to have a hand also in the nomination of whoever replaces her because I know that that&#x27;s been of some concern for people as well and you can do that a lot easier as an MLA right uh you can kind of you know keep your writing association moving in the direction that you want it to and so uh there that might be part of it as well what</div>
+</div>
+<div class="turn" data-start="932">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:32</span>
+  </div>
+  <div class="said">what if she doesn&#x27;t say anything shin what if she resigns there&#x27;s nothing to say it&#x27;s just business as usual she&#x27;s just now mla rather than a cabinet minister that portfolio is headed off they were they pointed someone i think one of their associates is now going to take it if not he may already have other portfolios i I don&#x27;t remember who Grant Hunter. It shows a profound lack</div>
+</div>
+<div class="turn" data-start="950">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">15:50</span>
+  </div>
+  <div class="said">of seriousness on the environment file that they put that man in charge of it</div>
+</div>
+<div class="turn" data-start="953">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:53</span>
+  </div>
+  <div class="said">Sure, sure. A file, you know, well, of course, which</div>
+</div>
+<div class="turn" data-start="956">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:56</span>
+  </div>
+  <div class="said">we can discuss if you&#x27;d like to. But I think for the pure politics of it, if she says nothing, I&#x27;m kind of and I&#x27;m let me let me in on the lens. I&#x27;m looking at this her future leadership ambitions.</div>
+</div>
+<div class="turn" data-start="969">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:09</span>
+  </div>
+  <div class="said">To me, I&#x27;m kind of looking at this through that particular lens, which is I think she&#x27;s very complimentary. complimentary you read it in the letter of her party very</div>
+</div>
+<div class="turn" data-start="976">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:16</span>
+  </div>
+  <div class="said">complimentary of her previous leader nice enough to her existing leader but very much talking about her tenure and and history with politics i think she mentions a dozen or 16 years i don&#x27;t have it in front of me she was a staffer right right exactly so she to me i&#x27;m like this is a woman who still has leadership ambitions and trying to keep that door open while potentially not being associated with this group i think that&#x27;s right and i&#x27;m yeah</div>
+</div>
+<div class="turn" data-start="1001">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">16:41</span>
+  </div>
+  <div class="said">but also don&#x27;t ascribe you know necessarily 4d chess to uh something that could be very</div>
+</div>
+<div class="turn" data-start="1009">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:49</span>
+  </div>
+  <div class="said">simple 1d move yeah</div>
+</div>
+<div class="turn" data-start="1010">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">16:50</span>
+  </div>
+  <div class="said">also i mean there are reasons why people do this uh you want four or five months of salary i i&#x27;d have to do the calculation on the severance allowance if she was you know like if there were six months there that uh maybe she wanted to to benefit from. Maybe she just wants to make $120,000 a year and have freedom to set up her consultancy for the next four or five months. She does have reasonably small kids. Her kids are at least under 14 or 12, right? They were pretty little when she was elected in 19. I remember having this conversation with her.</div>
+</div>
+<div class="turn" data-start="1043">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">17:23</span>
+  </div>
+  <div class="said">sometimes you just want a little bit of freedom to organize your life before you have your next step. But I think there&#x27;s absolutely no question that there&#x27;s something coming that she wants no part of yeah</div>
+</div>
+<div class="turn" data-start="1057">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">17:37</span>
+  </div>
+  <div class="said">carter you&#x27;re doing some deep sighing let it out let it out let the sigh out and then let the thoughts out feels</div>
+</div>
+<div class="turn" data-start="1062">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">17:42</span>
+  </div>
+  <div class="said">like you know one of those it&#x27;s my family it&#x27;s my consultancy it&#x27;s my you know we&#x27;ve written these lines before when really it&#x27;s it is them right the the the the the complimentary you know complimenting danielle smith and jason kenney you interesting choice name checking to be done Yeah. Right. That&#x27;s interesting. Resurrecting Jason Kenney from the dead at this particular moment. Maybe she has federal aspirations. Who knows what&#x27;s going on in the back and forths with Jason Kenney, who is widely assumed to be, you know</div>
+</div>
+<div class="turn" data-start="1102">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">18:22</span>
+  </div>
+  <div class="said">ramping up. Running for the leadership when that opens up. Yeah. Yeah, I</div>
+</div>
+<div class="turn" data-start="1105">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">18:25</span>
+  </div>
+  <div class="said">mean, why would you bring up Jason Kenny when his name is mud in your caucus? I don&#x27;t understand that</div>
+</div>
+<div class="turn" data-start="1112">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">18:32</span>
+  </div>
+  <div class="said">And in your party, I guess, still, I assume still, I&#x27;d be curious to poll that, but I assume still</div>
+</div>
+<div class="turn" data-start="1117">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">18:37</span>
+  </div>
+  <div class="said">Mr. 50.1% or whatever the heck he got, he didn&#x27;t exactly knock it out of the park, but here we are. So I just think that this isn&#x27;t 3D chess, it&#x27;s It&#x27;s not 4D chess. It is simple, two-dimensional chess with her saying, I&#x27;m out of here because I don&#x27;t want to be associated with this shit. I think she has further leadership ambitions. I think that she&#x27;s looked at this party and said, I don&#x27;t know what this party is, and I&#x27;m not sure I could fix it.</div>
+</div>
+<div class="turn" data-start="1151">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">19:11</span>
+  </div>
+  <div class="said">Help me strategize this a bit. How bad is this for Smith?</div>
+</div>
+<div class="turn" data-start="1157">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">19:17</span>
+  </div>
+  <div class="said">It&#x27;s not bad yet because it&#x27;s New Year&#x27;s Eve. Nobody notices. Nobody cares. Despite the fact that she was a relatively high-profile minister and a very helpful surrogate for the Premier&#x27;s office, the fact of the matter is, is that any random Albertan would have no idea who she is. That is the way things are in a cabinet government. And no question that that&#x27;s the case for her as well. So there&#x27;s no problem yet. um and and but also there&#x27;s no problem because like we&#x27;ll remember who in like you know all of the sort of more quote-unquote normal chamber of commerce conservatives that endorsed taves uh and schultz obviously was running her own uh thing but uh you know the people that supported her were in that venn diagram of people who supported taves and they got their ass beat by by Danielle Smith. She controls the party. The caucus understands that they&#x27;re either behind her, they&#x27;re behind her for two reasons, to defeat the NDP and to defeat the separatists. That&#x27;s how they view her, is able to do both things. And so, you know, I don&#x27;t think there&#x27;ll be very many following her out the door, to Carter&#x27;s point.</div>
+</div>
+<div class="turn" data-start="1237">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">20:37</span>
+  </div>
+  <div class="said">And I don&#x27;t think it means a a whole lot right now right</div>
+</div>
+<div class="turn" data-start="1242">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">20:42</span>
+  </div>
+  <div class="said">right now carter how bad is this for smith she loses a lieutenant like shannon said she probably loses someone and i don&#x27;t know if rebecca schultz would be would be friendly to this um characterization but she did see i think the paper commerce conservative is a good way of putting in shannon i was going to say more older school pc even though i don&#x27;t think that&#x27;s what she is no um what what sort of loss is this for smith uh and the extension of that that question that I want to naturally get to is, is how do you inflict the greatest amount of pain on Smith because of this resignation, if there is any pain to inflict by the NDP or others? So, Carter, maybe package those two questions for me in terms of analysis and a bit of strategy</div>
+</div>
+<div class="turn" data-start="1280">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:20</span>
+  </div>
+  <div class="said">Well, I think that ultimately everybody was a Danielle Smith loyalist, right? But this is someone who wasn&#x27;t 100% drinking all the Kool-Aid. So she leaves, and now she, Danielle Smith can and just replace her with a daniel smith loyalist um someone who will do the bidding of the premier 100 without speaking back i am not privy to what happens in caucus i don&#x27;t know if there&#x27;s a uh a caucus fracture um i don&#x27;t i kind of doubt it but if there was a caucus fracture rebecca schultz would be on the other side of it so</div>
+</div>
+<div class="turn" data-start="1317">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:57</span>
+  </div>
+  <div class="said">from daniel smith&#x27;s point of view who cares income someone better hunter is hilarious in environment um hilarious like it this this government is a joke on top of a joke and you know danielle smith just gets to be um the queen bee who sits atop it and and and this this departure doesn&#x27;t hurt danielle one iota in my in my opinion um</div>
+</div>
+<div class="turn" data-start="1345">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">22:25</span>
+  </div>
+  <div class="said">um is there any way to make this painful shannon can the ndp do anything here should they do anything here um and i&#x27;m talking on the field candidates otherwise prepare for by-election but i&#x27;m also talking over the air um around losing someone of smith stature is there is there a there there is my question to both of you</div>
+</div>
+<div class="turn" data-start="1365">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">22:45</span>
+  </div>
+  <div class="said">uh not on december 31st 2025 uh or you know i think this is one of those things where the ball bounces and then you kind of follow it uh if it goes there but i mean you&#x27;re already on good ground uh with talking about you know separatism and the threat to the economy of a referendum you&#x27;re already on good ground uh in terms of just destroying the health care system you&#x27;re already on good ground uh in terms of indulging uh ridiculous uh policies instead of making life more affordable and you know uh whether it&#x27;s a citizenship marker or other uh you know little flights of fancy that they&#x27;re going to do to indulge the far right you&#x27;re on good ground there uh because people do have affordability challenges they are worried about uh health care and overall they they don&#x27;t support a referendum and they do buy that it&#x27;s a threat to the economy so stay there uh you know one of the criticisms of uh uh the notly years and and i would push back on it because um uh i i don&#x27;t think it was valid but it was or entirely but it was a criticism was that they were everywhere everything all the time, right, and talking about everything. And I do think that Nenshi has brought a certain discipline to the opposition message, and he should stay there and live there. There is, because he is smart and does think about politics a lot, I think, a temptation for him to go punditry. He</div>
+</div>
+<div class="turn" data-start="1449">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">24:09</span>
+  </div>
+  <div class="said">this. He should not indulge that temptation. He should stay and live in the space of three main messages that are driving swing voters, particularly in Calgary and small cities.</div>
+</div>
+<div class="turn" data-start="1461">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">24:21</span>
+  </div>
+  <div class="said">I&#x27;m actually curious to pick up on what Shannon just said about Nahed. A very interesting year-end interview, Carter, very confident with Braid in the Calgary Herald, effectively the headline becoming, even though maybe not intended, that we would kick the UCP&#x27;s ass if an election were held today. I personally liked the aggressive fuck you energy to it, but it did, to Shannon&#x27;s point, have a bit of punditry element to it. Do you mind that yourself? Or would you have made that year ender about, you know, and I want to get to the Alberta next panel. And frankly, just a preview where I&#x27;m going forward. Like there&#x27;s a shit ton of things that the NDP opposition organizing forces can focus on. I want to talk about signal and noise in a second. But Carter, getting your take on just that, that, that, that pundit mode and how Nenshi ended the year off being like, we would fucking kick their ass and wreck them. What did you think about that? Did you personally like that? it</div>
+</div>
+<div class="turn" data-start="1507">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">25:07</span>
+  </div>
+  <div class="said">not really i mean i&#x27;m a bravado guy i&#x27;m a guy who likes bravado who&#x27;s who&#x27;s a big fan of of saying you know sticking a stick in the ground and saying that we&#x27;re going to do this yeah has to be about why not that we&#x27;re going to you know why why are we going to win we&#x27;re going to win because health care is a shambles they and they screwed it up we&#x27;re going to win because education&#x27;s a gong show and they screwed it up we&#x27;re going to win because we&#x27;re we&#x27;re not taking care of Albertans and we&#x27;re going, you know, those, whatever your three messages are, that&#x27;s why we&#x27;re going to win. We&#x27;re going to win because Albertans have had enough, not because, you know,</div>
+</div>
+<div class="turn" data-start="1546">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">25:46</span>
+  </div>
+  <div class="said">not just because we&#x27;re the biggest swing and dicks in, in politics right now. And I think that that&#x27;s kind of how I was reading the braid article is a little bit like, you know, I, I&#x27;m just better than everybody else. And I, I, maybe I was, I mean, I</div>
+</div>
+<div class="turn" data-start="1563">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">26:03</span>
+  </div>
+  <div class="said">think it was in combination of that this government has had done massive fuck-ups, right? Like this government&#x27;s totally lost the plot, similar to what you were saying in some ways. Can I move it on to – I think the Schultz thing is related to what I want to talk about next because regardless of whether she leaves because of an election or because she was asked if you&#x27;re going to run, you got to leave now or whether it was a referendum or she was offside with certain things, she wasn&#x27;t feeling it the entire way through. OK, whatever it might be, guys, we have a shit ton of things that that that are in the basket of issues, real or otherwise. And I&#x27;m going to just give you what the Alberta Next panel has in the sense that of what it wants to make an issue. So this is right. So the Alberta Next panel ultimately comes out with a report on Friday that says we are going to make a shit ton of noise around the following equalization, immigration as a provincial construct and and responsibility. Um, in</div>
+</div>
+<div class="turn" data-start="1618">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">26:58</span>
+  </div>
+  <div class="said">addition to that, the zombie files that Shannon mentioned, great description, Shannon, a provincial police force, a pension, Alberta pension, which we thought both of those things were dead when certain sort of committees and whatever task forces broke out, produced reports and polling that said no one fucking wants this. Anyways, those things are back. On top of that, let&#x27;s add separatism, as has been discussed. Let&#x27;s add privatization of healthcare. Let&#x27;s also add recall.</div>
+</div>
+<div class="turn" data-start="1647">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:27</span>
+  </div>
+  <div class="said">This is just a non-comprehensive list off the top of my head of shit that is currently in the ether. her and i need your guys&#x27;s help to help me figure out what is the signal using a a nate silver term what is a signal and what is the noise here right like what is real worthy</div>
+</div>
+<div class="turn" data-start="1667">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:47</span>
+  </div>
+  <div class="said">of time and attention and what is just noise and on top of this layering on what shannon was saying the the ndp as a as a party have focused really on the cost of living side of things right really on the cost of living discipline message amongst other things but that seems to be at least where they&#x27;re headed right Right now, affordability, which is I&#x27;m not saying is not a real thing, but is not in the basket of things I introduced that are being propped up every single day. So whether it is an organizing principle or a way to strategize this, how are you thinking about this? Because you also have on top of our main opposition party, literally tens of thousands of Albertans rearing at doing something. Something I think Recall, as we&#x27;ve discussed, is a good indication of that. Where do they focus their energies when a half a dozen more things have been added to the fucking plate at the end of this calendar year? Who wants to get started? Shannon, Stephen?</div>
+</div>
+<div class="turn" data-start="1717">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">28:37</span>
+  </div>
+  <div class="said">Shannon, you go first. This is actually really easy. Is it? Yes. They are putting forward things that are demonstrably proven losers. Yes, they are. Like, just absolute garbage ideas that nobody has liked since Ralph Klein trotted these around in 2000 and whatever it was, two, three, when Ian McClellan did a panel like this. Like, that&#x27;s literally how flippin&#x27; long we&#x27;ve been talking about this, right? More than 20 years. And, in fact, going back to the late 80s of some of the Reform Party</div>
+</div>
+<div class="turn" data-start="1754">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:14</span>
+  </div>
+  <div class="said">Some of the firewall stuff kind of has this flavor. Yeah</div>
+</div>
+<div class="turn" data-start="1757">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">29:17</span>
+  </div>
+  <div class="said">for sure. Like, this has been going on for a very long time, and nobody likes it. Now, there might be things that people don&#x27;t understand, like Alberta doing its own tax collection. But as soon as you talk about how it&#x27;s going to cost a literal half a billion dollars and end up being a, you know, job creation program for tax bureaucrats, people kind of sour on the idea because that&#x27;s exactly what it would be. Right. We&#x27;d have to hire like 2,500 people.</div>
+</div>
+<div class="turn" data-start="1782">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:42</span>
+  </div>
+  <div class="said">Yeah, I forgot tax collection. Thanks for adding that. Yeah, I</div>
+</div>
+<div class="turn" data-start="1785">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">29:45</span>
+  </div>
+  <div class="said">mean, they&#x27;re just going to study that one, I think. Fuck me, yeah, sure. Anyway, the point here is, is that this is a basket of issues that are terrible, that make fantastic policy announcements from the opposition of we are day one, we are going to pass a law that nobody fucks with your pension. Day one, we are going to pass a law that we&#x27;re not going to defund the RCMP, right? Right. Like you can do kind of a really cheeky stuff with this. And we are going like, you know, these are easy platform things that don&#x27;t cost any money when you&#x27;re trying to put together a very quick policy</div>
+</div>
+<div class="turn" data-start="1819">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">30:19</span>
+  </div>
+  <div class="said">offer that is coming. And it gets your base up in the morning to basically be running on the no campaign. It&#x27;s great, because there&#x27;s a very quick pivot to we are talking about taking away your pension instead of regulating your insurance. We are talking about taking away the police in small communities and spending billions upon billions of dollars to do it instead of making sure that your emergency room is open. It&#x27;s great. It&#x27;s a great contrast. You know, the Conservatives think they&#x27;re being oh so clever, flooding the zone with shit, as Bannon would say.</div>
+</div>
+<div class="turn" data-start="1862">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">31:02</span>
+  </div>
+  <div class="said">But really what they&#x27;re doing is providing beautiful contrast messaging at every available turn. And not just in the air, but on the ground. Because the forever Canadian boomers will absolutely be exercised by this. Number one is CPP. They&#x27;re not going to tolerate it.</div>
+</div>
+<div class="turn" data-start="1883">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">31:23</span>
+  </div>
+  <div class="said">it carter do you do you tend to agree that this is a package of losers you brand them all as part of contrast not to simplify your point shannon i&#x27;m just trying to summarize it um and and then you are able to move on to your own thing or do you think there is there&#x27;s some there&#x27;s some risk there&#x27;s some issues that you could focus on the wrong thing and lose the plot line a bit with uh with just trying to whack down these things and i guess my internal bias as i as i ask you this question carter um is we&#x27;ve seen unpopular things become 50 plus one percent things uh in the past and so this is my concern is that you kind of just you you you&#x27;d be like ah that&#x27;s stupid that&#x27;s fucking dumb no one wants this well turns out if the right person at the right time is proposing it the 20 thing can become a fifth not a 90 thing but can become a 50 plus one percent thing separatism is the one that we&#x27;re going to have a referendum on more than likely but these other Other things could also metastasize into popularity. Weird turn of phrase. Carter, your thoughts here? Like, to be honest, I would like to think it&#x27;s as simple as Shannon is saying. I&#x27;m not there yet.</div>
+</div>
+<div class="turn" data-start="1944">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">32:24</span>
+  </div>
+  <div class="said">Well, I don&#x27;t necessarily agree with Shannon. I think I partly agree with her framing of they&#x27;re going to be doing this when we should be doing that. You know, so they&#x27;re going to be talking about CPP and we should be talking about health care. That part of it, I agree with what with the Shannon framing. But I think that what happens is you get dragged off of your big three, your big three issues that Albertans care about, and you start talking about issues that Albertans don&#x27;t care about. And it feels like you&#x27;re just as out of touch as anybody else. I would say this is a massive opportunity for the NDP to double down on their core three, not necessarily an opportunity to say we&#x27;re against this that the UCP is for.</div>
+</div>
+<div class="turn" data-start="1994">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">33:14</span>
+  </div>
+  <div class="said">I would just say in general, the UCP is talking about things that don&#x27;t matter. They&#x27;re trying to distract you from health care. They&#x27;re trying to distract you from education. They&#x27;re trying to distract you about the cost of living. those are the things that matter and we&#x27;re not going to fall prey to that</div>
+</div>
+<div class="turn" data-start="2008">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">33:28</span>
+  </div>
+  <div class="said">so here&#x27;s my struggle with that message right let&#x27;s say let&#x27;s say let&#x27;s say the let&#x27;s say the pension becomes the number let&#x27;s just use the pension right yeah so if the if if the ucps start putting more of their resources their their political capital into the pension the alberta pension and the ndp say this is just a distraction we&#x27;re focusing on cost of living doesn&#x27;t the ndp need to just be like okay fucking and you want to play this game, we&#x27;re going to be the pro-CPP, the pro-Canada pension side. We&#x27;re going to be direct commitments. We&#x27;re going to spend our political capital. Some of the time, energy, and space we would have put on affordability to say, fuck it, if they&#x27;re going to make this an issue, we&#x27;re going to make it. That&#x27;s the part of Shannon&#x27;s argument that I do buy, that the NDP and certain things should say this is signal, not noise. Fuck it, we&#x27;re going to take the opposing force on it. I totally</div>
+</div>
+<div class="turn" data-start="2053">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">34:13</span>
+  </div>
+  <div class="said">disagree with Carter on the distraction thing. Well, you&#x27;re totally wrong. Okay. I</div>
+</div>
+<div class="turn" data-start="2059">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:19</span>
+  </div>
+  <div class="said">mean, you can disagree, but it just makes you look I find the distraction framing so... It&#x27;s fine for you to</div>
+</div>
+<div class="turn" data-start="2066">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">34:26</span>
+  </div>
+  <div class="said">It sounds like punditry to me. And it also, like, oh, because you&#x27;re trying to marry, you know, what the marionette strings are doing</div>
+</div>
+<div class="turn" data-start="2075">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">34:35</span>
+  </div>
+  <div class="said">Here&#x27;s what Albertans care about, yeah</div>
+</div>
+<div class="turn" data-start="2076">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">34:36</span>
+  </div>
+  <div class="said">No, here&#x27;s what I care about. I&#x27;m a new Democrat, and you know you can trust me to stand up for your fucking health care and your pension and the thing in your education system and the things that we like in this world.</div>
+</div>
+<div class="turn" data-start="2088">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:48</span>
+  </div>
+  <div class="said">Not if you&#x27;re talking about 30 things at once. Well, CPP is a, then throw it in the</div>
+</div>
+<div class="turn" data-start="2092">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">34:52</span>
+  </div>
+  <div class="said">mix because it&#x27;s an easy one. Here&#x27;s how, why I also don&#x27;t buy Zine&#x27;s premise of, oh, you know, like an unpopular thing can become a 50-50 thing. This is a government that in 2023 rode in on a pretty significant majority, at least on popular vote and, you know, to a reasonable extent on seat count. And they went immediately into spending millions upon millions of dollars plus political capital on the Alberta pension plan. They spent like, I don&#x27;t know, I mean, between eight and 10 million, right, because it was like jumbled up with some other spending out of the Public Affairs Bureau or whatever it&#x27;s called. um and</div>
+</div>
+<div class="turn" data-start="2129">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">35:29</span>
+  </div>
+  <div class="said">uh so they spent all that money and what happened absolutely nothing and in fact it got less popular uh because they were bombarding people with alberta pension plan messages and people were having none of it uh so i think this is a great issue for the new democrats it&#x27;s and it&#x27;s not a distraction they want to fucking do it and it is in fact a priority for total distraction No, it&#x27;s not a distraction.</div>
+</div>
+<div class="turn" data-start="2155">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">35:55</span>
+  </div>
+  <div class="said">have is how do you push back carter your your thing is like this is all a distraction everything&#x27;s a distraction bucket top three message my thing is how do you pick amongst all of these in terms of what is a initiative or issue you want to get on the uh the the the declare i&#x27;m going to be official opposition on pension because fuck these guys declare i&#x27;m going to be official opposition on health care uh tax collection is bullshit fuck that i&#x27;m gonna that&#x27;s a distraction cat at this is what i&#x27;m trying to figure out how do you think about these things is it intuitively is it polling wise like this is what i&#x27;m trying to understand and unearth because this i think is the challenge that the ndp have what do they want to be a vocal opposition force to and what do they want to put in the distraction bucket</div>
+</div>
+<div class="turn" data-start="2228">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">37:08</span>
+  </div>
+  <div class="said">a 44 year old man dies in the emergency room waiting room because no one will heroin and totally rejects every one of his symptoms um because you know they can&#x27;t get to them because there&#x27;s just too much going on</div>
+</div>
+<div class="turn" data-start="2241">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">37:21</span>
+  </div>
+  <div class="said">to be clear you&#x27;re mentioning a true story in edmonton that happened over this christmas fucking issue</div>
+</div>
+<div class="turn" data-start="2246">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">37:26</span>
+  </div>
+  <div class="said">this stuff this this this this stuff is fluff that doesn&#x27;t matter because ultimately you know even if they change the cpp which is ridiculous it doesn&#x27;t change people&#x27;s lives the way that the health care system collapse changes people</div>
+</div>
+<div class="turn" data-start="2260">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">37:40</span>
+  </div>
+  <div class="said">such a motivating force in terms of how people think it changes is their lives even if you mistake</div>
+</div>
+<div class="turn" data-start="2265">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">37:45</span>
+  </div>
+  <div class="said">people pay a cpp contribution on every fucking paycheck paycheck know there&#x27;s nothing closer really well</div>
+</div>
+<div class="turn" data-start="2276">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">37:56</span>
+  </div>
+  <div class="said">federal income tax they pay it all the time too and and the only way that they complain about it is equalization</div>
+</div>
+<div class="turn" data-start="2282">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">38:02</span>
+  </div>
+  <div class="said">okay so shannon let&#x27;s you and i step out of the conversation for a second so carter walk me through your version of reality Because I&#x27;m like, I really want to understand this. You propose most of the things I mentioned as a distraction bucket. You focus on those the three issues you care about. Game out the rest for me. What happens to these metastasizing forces that the UCP is now putting all of their political energy in? Like, you know, and there&#x27;s no immunity response baked in from an official opposition perspective. Maybe civil society groups and others will step in. But walk me through what happens to these issues. You think they all just automatically wither and die</div>
+</div>
+<div class="turn" data-start="2319">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">38:39</span>
+  </div>
+  <div class="said">I think the give-a-fuck factor is too low for all of them. I don&#x27;t think that people give a fuck about these things in the same fashion that they care about health care, education, or cost of living.</div>
+</div>
+<div class="turn" data-start="2328">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">38:48</span>
+  </div>
+  <div class="said">Would you include separatism in that same bucket?</div>
+</div>
+<div class="turn" data-start="2331">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">38:51</span>
+  </div>
+  <div class="said">I would include separatism in the I don&#x27;t care bucket because I don&#x27;t believe it&#x27;s going to happen.</div>
+</div>
+<div class="turn" data-start="2336">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">38:56</span>
+  </div>
+  <div class="said">Really? See, separatism is the one, me personally, I think, because we&#x27;ve seen Brexit as an almost near identical movie, um the one that can be 20 support that they can lie people into believing it&#x27;s a 50 plus one issue</div>
+</div>
+<div class="turn" data-start="2353">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:13</span>
+  </div>
+  <div class="said">i don&#x27;t i just</div>
+</div>
+<div class="turn" data-start="2355">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">39:15</span>
+  </div>
+  <div class="said">but you&#x27;re still not taking an oppose you&#x27;re not spending political capital opposing it no</div>
+</div>
+<div class="turn" data-start="2360">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:20</span>
+  </div>
+  <div class="said">there&#x27;s other people who can spend that political capital the kazakh&#x27;s got a full fucking army of people to spend that capital you know you&#x27;re not going to get credit for it anyways the kazakh&#x27;s going to get credit for the opposition let him be that that guy beat down the things that the you know there&#x27;s lots of places that this can get beaten down but don&#x27;t don&#x27;t waste your political capital and focus instead on the things that actually matter to albertans the stuff that they give a fuck about we see right now the people actually care about health care how about health care</div>
+</div>
+<div class="turn" data-start="2392">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">39:52</span>
+  </div>
+  <div class="said">would you focus on health care health on the two-tier</div>
+</div>
+<div class="turn" data-start="2394">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:54</span>
+  </div>
+  <div class="said">health care cost of living</div>
+</div>
+<div class="turn" data-start="2398">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">39:58</span>
+  </div>
+  <div class="said">shannon what are you you heard your character strategy strategy now in a more fulsome sense any part of it that you&#x27;re buying like let&#x27;s say let&#x27;s say steven&#x27;s the strategist that shows up to caucus with this idea you&#x27;re the cabinet member or the caucus member as you have been historically in the past who gets to ask questions to the campaign team and or the caucus you know senior team what&#x27;s one of the questions you&#x27;re asking steven here being like if this is our play what the fuck dude like what do you what are you saying to him</div>
+</div>
+<div class="turn" data-start="2426">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">40:26</span>
+  </div>
+  <div class="said">well Well, I&#x27;m looking at the polling that shows us that people are still pretty split on, you know, Daniel Smith&#x27;s remedy to the health care system, whether it&#x27;s, you know, two tier or restructuring these kinds of things. There&#x27;s still a good chunk of Albertans that are willing to give her the benefit of the doubt. Just for example, I&#x27;m looking at affordability and questions of economy and I&#x27;m going, OK, there&#x27;s still a baked in trust of the conservatives that is higher than the new Democrats, depending on how you ask the question, certainly on economy, sometimes on affordability. Okay, so I&#x27;m looking at that. And then I&#x27;m looking over here at, in particular, CPP, that affects every single person, particularly people who vote. The people who vote understand what it is, because they&#x27;re at least old enough to have visited a financial planner or thought about their retirement and</div>
+</div>
+<div class="turn" data-start="2474">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">41:14</span>
+  </div>
+  <div class="said">done the calculation of how much CPP am I getting. and it&#x27;s a it&#x27;s a 70 30 at worst a kind of a proposition um and it works and we already have evidence that it works that when the new democrats go hard at this issue that it raises their profile it raises their popularity and it lowers the popularity of the government there&#x27;s a reason why they backed away from touching the hot stove in the winter of 2023 and it is because the new Democrats did exactly that. They put it in the window. They went hard. They worked with, you know, other people, you know, experts and other groups and to drive the message that Daniel Smith wants to take your retirement and gamble with it. This is tailor made for getting, you know, both ground ground enthusiasm and also getting back into what remains of the air war there&#x27;s not a whole lot of it left so i would not ignore that at all the other thing that i wouldn&#x27;t ignore is uh separatism number one because of look at the polling and number two because again we have an even more like sort of grand illustration of the ground war that can be mobilized against this stupid stupid fucking idea. And we had it just last summer. And so the people are there, the energy is there, the enthusiasm is there. And you want to go as somebody who&#x27;s competing for government in kind of two directions, you need to be propositional on we&#x27;ll fix the healthcare system, and we&#x27;ll re-regulate your insurance or whatever the fuck it is. But we also need to show you that we are with the people in some way and that has been the broken piece since uh nenshi took took over they haven&#x27;t had the validators at the news conferences they haven&#x27;t you know had that kind of like we are with the people kind of a vibe the the town halls uh did help to energize the base last summer they did there were hundreds of people uh at certainly like a couple of them in Lethbridge and Calgary, the ones I paid attention to.</div>
+</div>
+<div class="turn" data-start="2608">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">43:28</span>
+  </div>
+  <div class="said">But he needs to show that kind of people momentum, and those two issues can do that for him.</div>
+</div>
+<div class="turn" data-start="2615">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">43:35</span>
+  </div>
+  <div class="said">Carter, you&#x27;re the party strategist in this room. Shannon has given you what she&#x27;s just said as a response to your proposed approach. What are you saying?</div>
+</div>
+<div class="turn" data-start="2623">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">43:43</span>
+  </div>
+  <div class="said">I mean, I see where she&#x27;s coming from from a simplistic point of view. It&#x27;s a simple strategy. strategy uh i love them talking about issues that aren&#x27;t popular i love them talking about it i don&#x27;t know that i want to clarify</div>
+</div>
+<div class="turn" data-start="2637">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">43:57</span>
+  </div>
+  <div class="said">clarify them the ucp</div>
+</div>
+<div class="turn" data-start="2639">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">43:59</span>
+  </div>
+  <div class="said">ucp i don&#x27;t want to get in the way of the opposition when they&#x27;re destroying themselves you know i don&#x27;t want to get in the way of my opposition when they are like they stopped talking about the pension plan in 2023 that&#x27;s too bad the pension plan was a dog right i want them to be talking about things that are a dog i want them them to talk about things that appeal to the 20%, not the 80%. I</div>
+</div>
+<div class="turn" data-start="2659">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">44:19</span>
+  </div>
+  <div class="said">want them to take these things and make them be their platform, because then I can have my platform free and clear. Go for it. Have them all day long. Take them all day long. You be on the side of 20. I&#x27;ll be on the side of 80. And I don&#x27;t need to be on the same issue. I don&#x27;t need to be on the same issue to be on the side of 80.</div>
+</div>
+<div class="turn" data-start="2681">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">44:41</span>
+  </div>
+  <div class="said">To Shannon&#x27;s point, though, I appreciate Shannon&#x27;s point. Do you spend any political capital carter just clarifying oh yeah we fucking hate all of this shit and like here&#x27;s what we&#x27;re going to do on day one what shannon was saying like here&#x27;s our day one agenda and it&#x27;s going to be six things that this next panel and and health care and a few others that they&#x27;re mentioning that we&#x27;re going to say no to or are you not even spending in are you not even entering the chat of any of these issues i&#x27;m curious like how committed you are to staying in your lane I</div>
+</div>
+<div class="turn" data-start="2710">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">45:10</span>
+  </div>
+  <div class="said">would be willing to say what Shannon suggested, which is, of course, you know, the UCB is chasing all these stupid ideas. We&#x27;re against them. Here&#x27;s what we&#x27;re for, you know, in a contrast style of ad.</div>
+</div>
+<div class="turn" data-start="2724">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">45:24</span>
+  </div>
+  <div class="said">Okay. I&#x27;m going to move on to our lightning round. I have two questions for you. Amongst a suite of issues, first question, and Shannon, let me start with you. I&#x27;m curious to get your take. Amongst a suite of issues I&#x27;ve mentioned roughly, some from the next panel, recall, healthcare, separatism, which one do you think is a pure bear trap and a pure loser for either civil society or the NDP to go after? and pick up and spend political capital on. You mentioned tax collection, equalization being others. Like, in your mind, is</div>
+</div>
+<div class="turn" data-start="2756">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">45:56</span>
+  </div>
+  <div class="said">there one that you would say, this is pure noise to me, this one is noise, don&#x27;t pick this one up, it&#x27;s not going to get you the uplift, you&#x27;re going to spend more capital than you get out of it. I&#x27;m curious, Carter, I think the answer for you is all of them, but I&#x27;m curious to get Shannon&#x27;s answer first, to say which is the ultimate sort of loser for you, civil society and NDP</div>
+</div>
+<div class="turn" data-start="2776">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">46:16</span>
+  </div>
+  <div class="said">equalization uh because nobody understands it and people think that you know like literal money bags go on a conveyor belt through the floor of the house of commons over uh to the assemblée nationale in quebec uh that&#x27;s literally uh what albertans think which is not right um so i wouldn&#x27;t uh talk about that much and certainly when there was a referendum on it in fall uh the party spent no time talking about it because it was fucking stupid bit um and uh so there&#x27;s that one uh the tax collection if they actually put it to referendum then you can go around yelling about hiring bureaucrats and and wasting money and you know spending half a billion dollars again nobody understands it and and from what i understand from the uh alberta next panel recommendations so the idea was just to punt it to study anyway um the cops thing you know when you read the alberta next um um recommendations it&#x27;s interesting they&#x27;re were like well you know it it only affects such a small group of people um they&#x27;re basically but you know for but the broad population doesn&#x27;t like it because the broad population uh sees something of integrity uh and accountability and responsibility in the rcmp that they don&#x27;t necessarily see in their municipal contract policing um or their municipally deserved delivered services so uh i mean that one that&#x27;s a nice rural message because you could literally really go around and there&#x27;s so many places that have rcmp policing and a closed emergency room if there&#x27;s a few places where you want to put the fear of god into the fucking ucp you would go and stand in front of those emergency rooms and say look they want to take away your cops and look at this place is closed right uh and you can&#x27;t have a baby here there&#x27;s no ob-gyn there&#x27;s nothing um and so you know if there&#x27;s a couple of places but that&#x27;s like kind of a spot argument the big ones uh are separation and cpp in my view carter</div>
+</div>
+<div class="turn" data-start="2889">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">48:09</span>
+  </div>
+  <div class="said">carter which one&#x27;s a the ultimate trap in your your mind um</div>
+</div>
+<div class="turn" data-start="2894">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">48:14</span>
+  </div>
+  <div class="said">i&#x27;m not really even sure which one&#x27;s the ultimate trap i actually wanted to go as i was listening to to shannon i&#x27;m actually starting to become more and more inclined to go with the um the alberta police force uh which is uh you know as</div>
+</div>
+<div class="turn" data-start="2909">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">48:29</span>
+  </div>
+  <div class="said">as an issue that you you oppose you mean like actively spend capital to oppose just i think it&#x27;s going to happen</div>
+</div>
+<div class="turn" data-start="2914">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">48:34</span>
+  </div>
+  <div class="said">um at some point They&#x27;re going to do a drip, drip, drip. I think that the RCMP don&#x27;t want to be everybody&#x27;s rural police force anymore. I think they&#x27;re having trouble being that, and they want to be the FBI.</div>
+</div>
+<div class="turn" data-start="2933">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">48:53</span>
+  </div>
+  <div class="said">that&#x27;s neither here nor there. I agree with Shannon. The equalization is probably the hardest one to sell because there is no real way out of it. I mean, people, it&#x27;s a great thing to bang, to bang a drum with, but it&#x27;s not a great thing to ever try and fix. You know, Stephen Harper, you know, if there&#x27;s a, if there&#x27;s a conservative prime minister, I can guarantee you that person is not going to be changing the equalization formula to the point where Albertans are going to be happy. be. We make more money, we spend more money, we put more money into income tax, ergo, we will always be givers into the system. At least we hope, we should hope we should always be givers into the system. It means that we&#x27;re actually rich.</div>
+</div>
+<div class="turn" data-start="2979">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">49:39</span>
+  </div>
+  <div class="said">But yeah, I think that, yeah, I don&#x27;t know where I&#x27;m going anymore. I forgot the question.</div>
+</div>
+<div class="turn" data-start="2985">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">49:45</span>
+  </div>
+  <div class="said">Carter, let me let you redeem yourself. Let&#x27;s say you&#x27;re wrong that this Rebecca Schultz resignation is not aligned with a general election. If this is a by-election, in the world of these recalls, how much pressure is there on the NDP to win that seat? Calgary Shaw. Calgary Shaw. As you know, you and I both know Calgary Shaw well. What do you think?</div>
+</div>
+<div class="turn" data-start="3008">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">50:08</span>
+  </div>
+  <div class="said">I don&#x27;t think there&#x27;s a lot of pressure on the NDP to win that seat</div>
+</div>
+<div class="turn" data-start="3010">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">50:10</span>
+  </div>
+  <div class="said">Shannon, what do you think?</div>
+</div>
+<div class="turn" data-start="3011">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">50:11</span>
+  </div>
+  <div class="said">I don&#x27;t think that that&#x27;s a seat that&#x27;s seen as winnable. I think it would be very very interesting if the the new Alberta Tories were able to compete in that seat and maybe the NDP sneaks up the middle. But I just don&#x27;t see.</div>
+</div>
+<div class="turn" data-start="3028">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">50:28</span>
+  </div>
+  <div class="said">You know, you don&#x27;t think this is a world of recall, the fact that, you know, we&#x27;d beat them in the next election, that the stakes that this unpopular government, all these things that have been eroding away at the UCP, that this adds a bit of stakes in calgary shaw shannon</div>
+</div>
+<div class="turn" data-start="3043">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">50:43</span>
+  </div>
+  <div class="said">no uh i mean by elections very rarely change hands uh it&#x27;s an interesting one because it</div>
+</div>
+<div class="turn" data-start="3050">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">50:50</span>
+  </div>
+  <div class="said">is one that you may need to flip it in general given the new 89 seat count sure</div>
+</div>
+<div class="turn" data-start="3056">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">50:56</span>
+  </div>
+  <div class="said">sure but it&#x27;s probably not going to happen in a by-election and so interesting i i i</div>
+</div>
+<div class="turn" data-start="3062">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">51:02</span>
+  </div>
+  <div class="said">don&#x27;t think you guys would both say it&#x27;s the stakes are a bit higher okay i&#x27;ll leave that one there uh last question shannon phillips i&#x27;ll start with you if you you could wave your magic wand and tell civil society in alberta that is mobilized that is engaged against this government to focus on one thing and it cannot be helping the ndp like as the thing you get to choose which one of these list of issues would you say all of you singularly go here separation</div>
+</div>
+<div class="turn" data-start="3091">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">51:31</span>
+  </div>
+  <div class="said">uh and the reason is is that it is a compelling argument that fucking around round with this entails a find out phase that has very severe economic consequences. And that is an argument that appeals across the board. It is one of the reasons why, again, you know, my sort of typology of, well, voter Chamber of Commerce conservatives are different than the ones in the UCP caucus, but votary PC types lent us their vote in 2023, in large part because Daniel Smith Smith was seen as a fucking separatist. And, you know, she&#x27;s gone up and down on assuaging those fears for those voters. But now she is going full, fully straight at underlining that reputation. And so everyone in Alberta of good faith and good conscience, every patriot should be reminding voters that this is who she is. This is what she wants. And it&#x27;s a dangerous distraction, action and we cannot have it carter</div>
+</div>
+<div class="turn" data-start="3153">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">52:33</span>
+  </div>
+  <div class="said">carter there&#x27;s a notwithstanding clause there&#x27;s health care one of your three issues for the ndp there&#x27;s so many other things on the table what would you choose as a final question of 2025 as we come back for the holiday spectacular next year as the singular issue that you would get alberta civil society to focus on i</div>
+</div>
+<div class="turn" data-start="3173">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">52:53</span>
+  </div>
+  <div class="said">i would love to disagree agree with Shannon um just because usually she&#x27;s wrong but she&#x27;s right this time um the separation uh issue first of all it has an army there&#x27;s already an army available there&#x27;s a group of people who&#x27;ve already said that this is the thing that they want to fight for and it continues to be something despite the fact that Thomas Lukasik crushed it with that uh with that referendum referendum defeating even my you know my best predictions um he crushed it despite the fact that everybody knows he&#x27;s got the best political organization right now in alberta they continue to chase this particular car and they are going to get run over um they are going to get run over in the street if they keep chasing it so for me um keeping everybody&#x27;s eye on the ball on separation and making sure that people understand that the alberta next panel was not about alberta as a part of Canada, but Alberta as a part of separation. That should fall right into the lap of the anti-separation coalition</div>
+</div>
+<div class="turn" data-start="3236">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">53:56</span>
+  </div>
+  <div class="said">created by Thomas Cossack.</div>
+</div>
+<div class="turn" data-start="3239">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">53:59</span>
+  </div>
+  <div class="said">There is a wild card that we haven&#x27;t talked about at all, both in the context of Schultz, the Alberta Next recommendations and the government&#x27;s agenda for 2026, and that&#x27;s immigration. Yeah. And it&#x27;s a wild card on how far the government goes on this, how much they dine out on it how they frame it i i all of those things are i i think up for consideration and conversation we know they&#x27;re going to go there we don&#x27;t know how as</div>
+</div>
+<div class="turn" data-start="3267">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">54:27</span>
+  </div>
+  <div class="said">much as separation can be a catch-all for all your concerns health care economy all these sort of things the devastating force immigration is like your catch-all for everything else they&#x27;re the reason why everything sucks they&#x27;re the reason why they&#x27;re the reason why we have seen this many many times, and it&#x27;s already a movie that Daniel Smith is starting to preview at the end of 2025. We will leave it there. That&#x27;s a wrap on episode 1899 of The Strategist. My name is Zane Belchie. With me, as always, Stephen Carter, Shannon Phillips. We will see you for the Holiday Spectacular. Folks, what? At some time in January? Just before, maybe before Orthodox Christmas. Before Orthodox Christmas,</div>
+</div>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 The Strategists. Built for fast reading, sharing, and search.
+    </div>
+  </footer>
+
+  <script>
+  // ------------------------------
+  // Acast postMessage helper
+  // (Docs: postmessage:do:seek uses seconds)
+  // ------------------------------
+  function acastPost(eventName, data){
+    const iframe = document.getElementById('acast-player');
+    if (!iframe || !iframe.contentWindow) return;
+    try{
+      iframe.contentWindow.postMessage(JSON.stringify({eventName, data: data || {}}), '*');
+    }catch(e){ /* ignore */ }
+  }
+
+  // ------------------------------
+  // Sticky player behavior
+  // ------------------------------
+  (function(){
+    const wrap = document.getElementById('player-wrapper');
+    const sentinel = document.getElementById('player-sentinel');
+    if (!wrap || !sentinel || !('IntersectionObserver' in window)) return;
+
+    const setBodyPad = () => {
+      const topbar = document.querySelector('.topbar');
+      const topbarH = topbar ? topbar.getBoundingClientRect().height : 0;
+      const stickyH = wrap.classList.contains('sticky') ? wrap.getBoundingClientRect().height : 0;
+      document.body.style.paddingTop = (wrap.classList.contains('sticky') ? (stickyH) : 0) + 'px';
+      // Sticky is positioned under topbar; body padding avoids jump.
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      const e = entries[0];
+      if (!e) return;
+      if (e.isIntersecting){
+        wrap.classList.remove('sticky');
+      } else {
+        wrap.classList.add('sticky');
+      }
+      setBodyPad();
+    }, {threshold: [0]});
+
+    io.observe(sentinel);
+    window.addEventListener('resize', setBodyPad);
+  })();
+
+    (function(){
+      const topbar = document.querySelector('.topbar');
+      if (!topbar || !('IntersectionObserver' in window)) return;
+
+      const sentinel = document.createElement('div');
+      sentinel.style.position = 'absolute';
+      sentinel.style.top = '0';
+      sentinel.style.height = '1px';
+      sentinel.style.width = '1px';
+      topbar.before(sentinel);
+
+      const io = new IntersectionObserver(entries => {
+        const e = entries[0];
+        if (!e) return;
+
+        // When the topbar scrolls off, reclaim the space
+        document.documentElement.style.setProperty(
+          '--topbar-h',
+          e.isIntersecting ? `${topbar.offsetHeight}px` : '0px'
+        );
+      }, { threshold: [0] });
+
+      io.observe(sentinel);
+    })();
+
+  // ------------------------------
+  // Transcript: normalize markup
+  // Supports either:
+  //  A) <div class="turn" data-start=".." data-speaker="..">...</div>
+  //  B) legacy <p data-start=".."><span class="ts">..</span> ...</p>
+  // ------------------------------
+  function secondsToClock(s){
+    s = Math.max(0, Math.floor(Number(s) || 0));
+    const h = Math.floor(s/3600);
+    const m = Math.floor((s%3600)/60);
+    const ss = s%60;
+    if (h>0) return `${h}:${String(m).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+    return `${m}:${String(ss).padStart(2,'0')}`;
+  }
+
+  function ensureTurnBlocks(){
+    const list = document.getElementById('transcript-list');
+    if (!list) return;
+
+    // If we already have .turn blocks, do nothing.
+    if (list.querySelector('.turn')) return;
+
+    // Upgrade <p data-start> to .turn structure.
+    const paras = Array.from(list.querySelectorAll('p[data-start]'));
+    if (!paras.length) return;
+
+    for (const p of paras){
+      const start = p.getAttribute('data-start');
+      const speaker = p.getAttribute('data-speaker') || '';
+      const text = p.textContent || '';
+
+      const t = document.createElement('div');
+      t.className = 'turn';
+      t.setAttribute('data-start', start);
+      if (speaker) t.setAttribute('data-speaker', speaker);
+
+      const who = document.createElement('div');
+      who.className = 'who';
+      const spk = document.createElement('div');
+      spk.className = 'spk';
+      spk.textContent = speaker || 'Speaker';
+      const ts = document.createElement('span');
+      ts.className = 'ts';
+      ts.textContent = secondsToClock(start);
+      who.appendChild(spk);
+      who.appendChild(ts);
+
+      const said = document.createElement('div');
+      said.className = 'said';
+      // remove any existing timestamp prefix in the old paragraph
+      const clone = p.cloneNode(true);
+      const tsSpan = clone.querySelector('.ts');
+      if (tsSpan) tsSpan.remove();
+      said.textContent = (clone.textContent || '').trim();
+
+      t.appendChild(who);
+      t.appendChild(said);
+      p.replaceWith(t);
+    }
+  }
+
+  // ------------------------------
+  // Deep-linking: ?t=123 or #t=123
+  // ------------------------------
+  function getTFromURL(){
+    const u = new URL(window.location.href);
+    const qp = u.searchParams.get('t');
+    if (qp) return Number(qp);
+    if (u.hash && u.hash.startsWith('#t=')) return Number(u.hash.slice(3));
+    return null;
+  }
+
+  function setURLTime(t){
+    const u = new URL(window.location.href);
+    u.searchParams.set('t', String(Math.max(0, Math.floor(t))));
+    history.replaceState(null, '', u.toString());
+  }
+
+  // ------------------------------
+  // Selection + seek
+  // ------------------------------
+  let selectedStart = null;
+
+  function activateTurn(el){
+    const list = document.getElementById('transcript-list');
+    if (!list) return;
+    list.querySelectorAll('.turn.active').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+
+    const start = Number(el.getAttribute('data-start') || 0);
+    selectedStart = start;
+
+    // update URL
+    setURLTime(start);
+
+    // seek and play
+    acastPost('postmessage:do:seek', { position: start });
+    acastPost('postmessage:do:play');
+  }
+
+  function scrollTurnIntoView(el){
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const topbar = document.querySelector('.topbar');
+    const topbarH = topbar ? topbar.getBoundingClientRect().height : 0;
+    if (rect.top < topbarH + 10 || rect.bottom > window.innerHeight - 12){
+      el.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+  }
+
+  // ------------------------------
+  // Clipboard helpers
+  // ------------------------------
+  async function copyText(text){
+    try{
+      await navigator.clipboard.writeText(text);
+      return true;
+    }catch(e){
+      // fallback
+      try{
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const ok = document.execCommand('copy');
+        ta.remove();
+        return ok;
+      }catch(_){
+        return false;
+      }
+    }
+  }
+
+  function currentShareURL(includeTime){
+    const u = new URL(window.location.href);
+    if (includeTime){
+      const t = selectedStart ?? getTFromURL() ?? 0;
+      u.searchParams.set('t', String(Math.max(0, Math.floor(t))));
+    } else {
+      u.searchParams.delete('t');
+    }
+    return u.toString();
+  }
+
+  // ------------------------------
+  // Boot
+  // ------------------------------
+  (function(){
+    ensureTurnBlocks();
+
+    const list = document.getElementById('transcript-list');
+    if (list){
+      list.addEventListener('click', (e) => {
+        const turn = e.target.closest('.turn');
+        if (!turn) return;
+        activateTurn(turn);
+      });
+    }
+
+    const btnCopy = document.getElementById('btn-copy');
+    const btnCopyTs = document.getElementById('btn-copy-ts');
+    if (btnCopy){
+      btnCopy.addEventListener('click', async () => {
+        const ok = await copyText(currentShareURL(false));
+        btnCopy.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(() => btnCopy.textContent = 'Copy link', 1200);
+      });
+    }
+    if (btnCopyTs){
+      btnCopyTs.addEventListener('click', async () => {
+        const ok = await copyText(currentShareURL(true));
+        btnCopyTs.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(() => btnCopyTs.textContent = 'Copy link + timestamp', 1200);
+      });
+    }
+
+    // Apply deep-linked time
+    const t = getTFromURL();
+    if (t != null && !Number.isNaN(t)){
+      // Find nearest turn
+      const turns = Array.from(document.querySelectorAll('.turn[data-start]'));
+      let best = null;
+      let bestDist = Infinity;
+      for (const el of turns){
+        const s = Number(el.getAttribute('data-start') || 0);
+        const d = Math.abs(s - t);
+        if (d < bestDist){ bestDist = d; best = el; }
+      }
+      if (best){
+        best.classList.add('active');
+        selectedStart = Number(best.getAttribute('data-start') || 0);
+        scrollTurnIntoView(best);
+        // Seek without autoplay on load (safer)
+        acastPost('postmessage:do:seek', { position: selectedStart });
+      }
+    }
+  })();
+  </script>
 </body>
 </html>
