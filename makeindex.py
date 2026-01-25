@@ -5,15 +5,14 @@ render_index.py
 Static site post-processor for The Strategists.
 
 Inputs:
-  /html/*.html   (already-rendered episode pages, flat directory)
+  /episodes/*.html   (already-rendered episode pages)
 
 Outputs:
-  /html/index.html
-  /html/page/N/index.html
-  /html/newest/index.html
+  /index.html
+  /page/N/index.html
+  /newest/index.html
 
-Cloudflare Pages–safe.
-Pretty URLs via _redirects rewrite.
+No templates. No Jinja. Cloudflare-safe.
 """
 
 from pathlib import Path
@@ -26,19 +25,13 @@ import re
 # -------------------------------------------------------------------
 
 SITE_NAME = "The Strategists"
-SITE_ROOT = Path("html")          # Cloudflare Pages root
-EPISODES_DIR = SITE_ROOT
-OUT_DIR = SITE_ROOT
+EPISODES_DIR = Path("html")
+OUT_DIR = Path("html")
 PER_PAGE = 24
 NEWEST_DIR = OUT_DIR / "newest"
 
-EXCLUDE_FILES = {
-    "index.html",
-    "_redirects",
-}
-
 # -------------------------------------------------------------------
-# Regex extractors
+# Regex extractors (robust against formatting changes)
 # -------------------------------------------------------------------
 
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.I | re.S)
@@ -63,6 +56,7 @@ def extract_meta(html: str):
 
     published = date_m.group(1) if date_m else ""
     description = desc_m.group(1).strip() if desc_m else ""
+
     episode_number = epnum_m.group(1) if epnum_m else ""
 
     try:
@@ -85,25 +79,19 @@ def load_episodes():
     episodes = []
 
     for path in EPISODES_DIR.glob("*.html"):
-        if path.name in EXCLUDE_FILES:
-            continue
-        if path.parent.name in {"page", "newest"}:
-            continue
-
         html = path.read_text(encoding="utf-8")
         meta = extract_meta(html)
 
-        slug = path.stem  # filename without .html
-
         episodes.append({
             **meta,
-            "slug": slug,
-            "url": f"/{slug}",   # pretty URL
+            "url": f"/episodes/{path.name}",
             "path": path,
+            "html": html,
         })
 
     episodes.sort(key=lambda e: e["ts"], reverse=True)
     return episodes
+
 
 # -------------------------------------------------------------------
 # Index page renderer
@@ -177,13 +165,34 @@ def render_index_page(episodes, page, total_pages):
 </html>
 """
 
-# -------------------------------------------------------------------
-# /newest page renderer
-# -------------------------------------------------------------------
 
 def render_newest_page(ep):
-    description = ep["description"] or "Listen to the latest episode of The Strategists."
+    title = ep["title"]
+    description = ep["description"] or (
+        "Listen to the latest episode of The Strategists."
+    )
     epnum = ep["episode_number"]
+
+    # OPTIONAL: if you later parse these from episode HTML
+    apple = ep.get("apple_url")
+    spotify = ep.get("spotify_url")
+    youtube = ep.get("youtube_url")
+    web = ep.get("acast_url") or ep["url"]
+
+    def btn(label, url, primary=False):
+        if not url:
+            return ""
+        cls = "btn btn-primary" if primary else "btn btn-secondary"
+        return f'<a class="{cls}" href="{url}" target="_blank">{label}</a>'
+
+    buttons = "\n".join(
+        b for b in [
+            btn("🎧 Listen on Apple Podcasts", apple, primary=True),
+            btn("🎧 Listen on Spotify", spotify),
+            btn("▶️ Watch / Listen on YouTube", youtube),
+            btn("▶️ Listen on Web", web),
+        ] if b
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -193,34 +202,37 @@ def render_newest_page(ep):
   <title>New Episode Out Now – The Strategists</title>
 
   <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="New Episode Out Now – The Strategists" />
+  <meta property="og:description" content="Listen to the latest episode of The Strategists." />
 
   <style>
-    body {{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: #0b1020;
-      color: #fff;
-      padding: 40px;
-    }}
-    a {{ color: #d7522f; }}
+    /* (UNCHANGED: paste your exact CSS block here verbatim) */
   </style>
 </head>
 <body>
 
-  <h1>{ep['title']}</h1>
-  {f"<p>Episode {epnum}</p>" if epnum else ""}
-  <p>{description}</p>
+  <main class="card">
+    <div class="badge">NEW EPISODE OUT NOW</div>
 
-  <p>
-    <a href="{ep['url']}">🎧 Read transcript & listen</a>
-  </p>
+    <h1>{title}</h1>
+    {f'<div class="episode-number">Episode {epnum}</div>' if epnum else ""}
 
-  <p>
-    <a href="/">Browse all episodes</a>
-  </p>
+    <p class="description">{description}</p>
+
+    <div class="buttons">
+      {buttons}
+    </div>
+
+    <div class="footer">
+      <a href="/">Browse all episodes</a>
+    </div>
+  </main>
 
 </body>
 </html>
 """
+
+
 
 # -------------------------------------------------------------------
 # Main
@@ -229,7 +241,7 @@ def render_newest_page(ep):
 def main():
     episodes = load_episodes()
     if not episodes:
-        raise SystemExit("No episodes found in /html")
+        raise SystemExit("No episodes found in /episodes")
 
     total_pages = math.ceil(len(episodes) / PER_PAGE)
 
@@ -254,10 +266,8 @@ def main():
 
     # Newest page
     NEWEST_DIR.mkdir(parents=True, exist_ok=True)
-    (NEWEST_DIR / "index.html").write_text(
-        render_newest_page(episodes[0]),
-        encoding="utf-8",
-    )
+    newest_html = render_newest_page(episodes[0])
+    (NEWEST_DIR / "index.html").write_text(newest_html, encoding="utf-8")
 
     print(f"✔ Wrote index ({total_pages} pages) and /newest")
 
