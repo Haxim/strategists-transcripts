@@ -25,8 +25,8 @@ import re
 # -------------------------------------------------------------------
 
 SITE_NAME = "The Strategists"
-EPISODES_DIR = Path("./episodes")
-OUT_DIR = Path(".")
+EPISODES_DIR = Path("html")
+OUT_DIR = Path("html")
 PER_PAGE = 24
 NEWEST_DIR = OUT_DIR / "newest"
 
