@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/140782862.mp3?sig=RMzRic2dxZooa3EVbso3cY5BUEFTIRCSqb_CzDC6rDQ%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -380,7 +437,7 @@
       <div class="navlinks">
         <a class="chip" href="/">← <strong>All episodes</strong></a>
         
-        
+        <a class="chip" href="https://patreon.com/strategistspod" target="_blank" rel="noopener">Subscribe</a>
       </div>
     </div>
   </div>
@@ -412,9 +469,30 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card patreon-lock">
+  <div class="patreon-inner">
+    <img
+      src="/assets/patreon.jpg"
+      alt="Patreon"
+      class="patreon-art"
+      loading="lazy"
+    />
+    <div class="patreon-copy">
+      <strong>Patreon-only episode</strong>
+      <p>Subscribe on Patreon to get full access to this episode.</p>
+      <a
+        class="btn primary"
+        href="https://patreon.com/strategistspod"
+        target="_blank"
+        rel="noopener"
+      >
+        Unlock on Patreon →
+      </a>
+    </div>
+  </div>
+</div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -439,7 +517,7 @@
 </div>
 <div class="turn" data-start="11">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:11</span>
   </div>
   <div class="said">Stephen Carter</div>
@@ -453,7 +531,7 @@
 </div>
 <div class="turn" data-start="30">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:30</span>
   </div>
   <div class="said">they get. Oh, okay. I need to hear your number first. I&#x27;m going to drop it off. It&#x27;s single</div>
@@ -467,7 +545,7 @@
 </div>
 <div class="turn" data-start="45">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:45</span>
   </div>
   <div class="said">Well, I mean, it depends on the combination in terms of being actually to be able to make change around a city council table. First of all, a mayor is only one vote for starters. And if you can get the right combinations in place, you can actually get stuff done. At least that&#x27;s what I&#x27;m told. I&#x27;m not much for potable politics myself, but municipal doesn&#x27;t really get me up in the morning.</div>
@@ -481,7 +559,7 @@
 </div>
 <div class="turn" data-start="75">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:15</span>
   </div>
   <div class="said">yeah, certainly I&#x27;ve, you know, I&#x27;ve been kind of watching what&#x27;s happening in Calgary. Like, nobody has really, you know, gotten excited about one candidate or another. Nope. I think it might be starting to happen a little bit in Edmonton. It looks like the progressive universe is understanding the assignment in Andrew Knack, Apogast, Tim Cartmell. I&#x27;m seeing a little of that congealed. I&#x27;m certainly not seeing it in Talgary at all, right? So there&#x27;s no, there doesn&#x27;t seem to be, with the exception of Ferkis, and I would say Sonia Sharpe is probably doing this too into the conservative universe, but they&#x27;re not anchoring back to pre-existing social networks or relational, right? Right. And so that&#x27;s what I&#x27;m seeing. And of course, down here in Lethbridge, we don&#x27;t really have a mayor&#x27;s race. The incumbent, as unfortunate as he is, doesn&#x27;t really have a challenger. But there&#x27;s lots going on in the council space. So that&#x27;s good. And maybe we can get another woman or two on council. That&#x27;d be nice</div>
@@ -491,11 +569,18 @@
     <span class="speaker">Zain</span>
     <span class="ts">2:17</span>
   </div>
-  <div class="said">Yeah, I hear you on all of those points, including the fact that these pre-existing networks are not coming together in a unified way to, A, have the same perspective or an aligned perspective and B, do the work to make sure others around them know of that. I&#x27;m not seeing really any of that happening. And we&#x27;re like, we&#x27;re in advanced vote period right now. Like you could advance vote in Calgary right now. And I know many folks, like, let me give you an anecdote. This is why I find this interesting, because I&#x27;ve been trying to figure out for a while why this is such a sleepy election. In fact, I&#x27;ve had people ask me, like, who should we vote for? What&#x27;s going on? And I&#x27;m in a text group of, you know, center left to progressive people. In that group for all Calgarians, there&#x27;s probably four mayoral candidates people support of varying viability. But I think that&#x27;s also part of the question is that no one really has a sense of who&#x27;s viable in this election. No one knows if we have enough runway here for any of the candidates that are polling in single digits to make a breakthrough when half the city is undecided and the leader is at 16%, give or take, depending on which poll is your variety</div>
+  <div class="said">Yeah, I hear you on all of those points, including the fact that these pre-existing networks are not coming together in a unified way to, A, have the same perspective or an aligned perspective and B, do the work to make sure others around them know of that. I&#x27;m not seeing really any of that happening. And we&#x27;re</div>
+</div>
+<div class="turn" data-start="158">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:38</span>
+  </div>
+  <div class="said">like, we&#x27;re in advanced vote period right now. Like you could advance vote in Calgary right now. And I know many folks, like, let me give you an anecdote. This is why I find this interesting, because I&#x27;ve been trying to figure out for a while why this is such a sleepy election. In fact, I&#x27;ve had people ask me, like, who should we vote for? What&#x27;s going on? And I&#x27;m in a text group of, you know, center left to progressive people. In that group for all Calgarians, there&#x27;s probably four mayoral candidates people support of varying viability. But I think that&#x27;s also part of the question is that no one really has a sense of who&#x27;s viable in this election. No one knows if we have enough runway here for any of the candidates that are polling in single digits to make a breakthrough when half the city is undecided and the leader is at 16%, give or take, depending on which poll is your variety</div>
 </div>
 <div class="turn" data-start="200">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">3:20</span>
   </div>
   <div class="said">Yeah, your preferred poison, yeah. But then I think it&#x27;s also this broader aspect of</div>
@@ -505,11 +590,18 @@
     <span class="speaker">Zain</span>
     <span class="ts">3:23</span>
   </div>
-  <div class="said">what you put on the table, maybe inadvertently, that I don&#x27;t know if city issues are moving anyone when the province is disrespecting the city, just can railroad quite literally whatever they want. The Green Line here in Calgary is a great example. Be like, this is what we want. Who cares? Like, your council is a pet project for us. And I think some of that negative partisanship against municipal politics, maybe not even against the politicians themselves and where they stand, is starting to pay dividends, is not the right word, but is starting to see its consequences in terms of an extremely sleepy election in both jurisdictions where, frankly, yes, Josie Gondek is running again, but you can classify both of them as largely open races, per se, because she doesn&#x27;t seem to want to necessarily defend her past or doesn&#x27;t seem to have the incumbent advantage. It&#x27;s a weird and wild sort of state of play with 12 days to go and no one wanting to choose to vote early, at least in the groups that I&#x27;m in. Everyone&#x27;s like, I&#x27;m going to hold off to see if something happens so that I know what to do because the signals aren&#x27;t out there yet.</div>
+  <div class="said">what you put on the table, maybe inadvertently, that I don&#x27;t know if city issues are moving anyone when the province is disrespecting the city, just can railroad quite literally whatever they want. The Green Line here in Calgary is a great example. Be like, this is what we want. Who cares? Like, your council is a pet project for us. And I think some of that negative partisanship against municipal politics, maybe not even against the politicians themselves and where they stand, is starting to pay dividends, is not the right word, but is starting to see its consequences in terms of an extremely sleepy election in both jurisdictions where, frankly, yes, Josie Gondek is running again, but you can classify both of them as largely open races, per se, because she doesn&#x27;t seem to want to necessarily defend her past or doesn&#x27;t seem to have the incumbent advantage. It&#x27;s a weird and wild sort of state of play with 12 days to go and</div>
+</div>
+<div class="turn" data-start="255">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:15</span>
+  </div>
+  <div class="said">no one wanting to choose to vote early, at least in the groups that I&#x27;m in. Everyone&#x27;s like, I&#x27;m going to hold off to see if something happens so that I know what to do because the signals aren&#x27;t out there yet.</div>
 </div>
 <div class="turn" data-start="266">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:26</span>
   </div>
   <div class="said">Well, what I have seen has been purely relational organizing. Anything that is actually breaking through is purely of, I like this person, you should vote for them. uh at kind of variety that&#x27;s what&#x27;s happening down here that is what&#x27;s happening but how like how are you thinking like in</div>
@@ -523,7 +615,7 @@
 </div>
 <div class="turn" data-start="285">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:45</span>
   </div>
   <div class="said">part of these conversations like what yeah i mean through my personal networks through my you know whatever the algorithm is is uh uh serving up to me uh it it seems to me that that is the only thing that is breaking through and there&#x27;s not the the broader like in 21 and i&#x27;m i&#x27;m i&#x27;m harking back to what happened there people saw it as mattering because somehow they were going to the polls to send a message to jason kenney uh in 2021 right and a lot of the successful campaigns sort of hitched their wagon to that right now it doesn&#x27;t seem like anything matters maybe because trump is blotting out the sun in some ways and so nothing does matter on my local street corner compared to that or we are just in we it is so obvious that there is not one narrative to be had and not one channel to be had and and uh the just complete atomization of communication networks means that uh even people who are paying attention don&#x27;t have something to pay attention to yes</div>
@@ -537,21 +629,35 @@
 </div>
 <div class="turn" data-start="351">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">5:51</span>
   </div>
-  <div class="said">other than you know the the orange menace floats through every once in a while and there&#x27;s a gaudy oval office take and, you know, or some ridiculous thing. But other, other than that, people are not, there&#x27;s nothing to plug in to. Well, and here I think, I mean, I&#x27;m interested in your take on this because you understand this world a lot better than I do. The lack of news links, outbound news links on meta platforms. forms yeah how much is that actually changing how we see uh the world essentially what&#x27;s important what&#x27;s not what&#x27;s uh what&#x27;s a headline what&#x27;s not and how much is that walling us off uh because like it or not people you still use facebook people use uh use the hell out of that instagram threads is actually moving up in terms of its use uh but if you&#x27;re not getting headlines out of there there&#x27;s there&#x27;s no there&#x27;s no story there&#x27;s no nothing there&#x27;s no narrative to pay attention to i</div>
+  <div class="said">other than you know the the orange menace floats through every once in a while and there&#x27;s a gaudy oval office take and, you know, or some ridiculous thing. But other, other than that, people are not, there&#x27;s nothing to plug in to. Well, and here I think, I mean, I&#x27;m interested in your take on this because you understand this world a lot better than I do.</div>
+</div>
+<div class="turn" data-start="373">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">6:13</span>
+  </div>
+  <div class="said">The lack of news links, outbound news links on meta platforms. forms yeah how much is that actually changing how we see uh the world essentially what&#x27;s important what&#x27;s not what&#x27;s uh what&#x27;s a headline what&#x27;s not and how much is that walling us off uh because like it or not people you still use facebook people use uh use the hell out of that instagram threads is actually moving up in terms of its use uh but if you&#x27;re not getting headlines out of there there&#x27;s there&#x27;s no there&#x27;s no story there&#x27;s no nothing there&#x27;s no narrative to pay attention to i</div>
 </div>
 <div class="turn" data-start="411">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">6:51</span>
   </div>
-  <div class="said">think it&#x27;s i think it&#x27;s certainly contributing to part of it i think what you have a lot more of is people reacting to circumstances and things that have played out but the fact is that you know i&#x27;ll go back to an example right one of the things that johnster would talked about with the daily show is that one of the reasons it worked for the population that it targeted when it did was that it was a commentary show where they would not spoon-feed you the context. They already relied on, the assumption was, that if you were watching the show, you would have the context in order to engage with it deeply. And over the 25 years or 20-some years since that comment was made, that still seems to be the case with that format. The problem with that format is that without legacy media and without people having a baseline understanding of what&#x27;s going on, they can&#x27;t patch into it. So what we are seeing the rise of is people like us, Like even folks that are great talkers on TikTok, on Instagram, have been campaign volunteers, have do political commentary. You may have never seen them on a major news network, and arguably they&#x27;re better, more educated, have a more dedicated audience than those folks that do, you know, present company included in some ways. And they&#x27;re talking to a base of people. I forget the gentleman&#x27;s name, but he&#x27;s been fantastic on The Teacher Strike, which we&#x27;ll get to in a second. I said Cole, and I apologize. I&#x27;m sure people listening will know his name. But I see them all the time on Instagram, on Reels, getting several thousand hits. But the fact is, I think there&#x27;s more content than ever before for the hyper-engaged. And we are part of that machinery. Like our content, like, you know, to make this meta is for the hyper-engaged, is for folks that are either already engaged, know the baseline effects. I mean, our next topic is just, we&#x27;re going to be talking about like the tactics of an ATA strike. Like, fuck, there&#x27;s some people who woke up on Monday morning realizing that there was a strike. And here we are making political content for a very sub-genre. But that level of content has increased significantly. It</div>
+  <div class="said">think it&#x27;s i think it&#x27;s certainly contributing to part of it i think what you have a lot more of is people reacting to circumstances and things that have played out but the fact is that you know i&#x27;ll go back to an example right one of the things that johnster would talked about with the daily show is that one of the reasons it worked for the population that it targeted when it did was that it was a commentary show where they would not spoon-feed you the context. They already relied on, the assumption was, that if you were watching the show, you would have the context in order to engage with it deeply. And over the 25 years or 20-some years since that comment was made, that still seems to be the case with that format. The problem with that format is that without legacy media and without people having a baseline understanding of what&#x27;s going on, they can&#x27;t patch into it. So what we are seeing the rise of is people like us, Like even folks that are</div>
+</div>
+<div class="turn" data-start="461">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">7:41</span>
+  </div>
+  <div class="said">great talkers on TikTok, on Instagram, have been campaign volunteers, have do political commentary. You may have never seen them on a major news network, and arguably they&#x27;re better, more educated, have a more dedicated audience than those folks that do, you know, present company included in some ways. And they&#x27;re talking to a base of people. I forget the gentleman&#x27;s name, but he&#x27;s been fantastic on The Teacher Strike, which we&#x27;ll get to in a second. I said Cole, and I apologize. I&#x27;m sure people listening will know his name. But I see them all the time on Instagram, on Reels, getting several thousand hits. But the fact is, I think there&#x27;s more content than ever before for the hyper-engaged. And we are part of that machinery. Like our content, like, you know, to make this meta is for the hyper-engaged, is for folks that are either already engaged, know the baseline effects. I mean, our next topic is just, we&#x27;re going to be talking about like the tactics of an ATA strike. Like, fuck, there&#x27;s some people who woke up on Monday morning realizing that there was a strike. And here we are making political content for a very sub-genre. But that level of content has increased significantly. It</div>
 </div>
 <div class="turn" data-start="523">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:43</span>
   </div>
   <div class="said">is content for, yeah, for politically adjacent normies. But they are still adjacent and they still know that context. You&#x27;re right. But we are a smaller and smaller group. Maybe. I don&#x27;t know if we are. I would want to test that. I think we are. are uh based on what we&#x27;re seeing in the municipal election i would say that we might be</div>
@@ -561,693 +667,7 @@
     <span class="speaker">Zain</span>
     <span class="ts">9:08</span>
   </div>
-  <div class="said">yeah and so this is i&#x27;m kind of past trying to patch this theory together right which is like i think there&#x27;s more content than ever okay a couple points right in the last half decade politics has become culture so when we started this podcast you know 10 years ago the idea that we would take politics and use it like a sports talk format was novel it&#x27;s no longer novel because Because politics is now part of culture and culture has like a more, I hate to kind of lowest common denominator approach in terms of language and vernacular. Like politics in both other countries, USA and Canada, has entered that space. So our format is no longer novel. You add on the algorithmic element to it. So talking in a snippy, plain spoken language about big topics is part of it. So you&#x27;re having this content machine kind of being produced. I think there&#x27;s more people than ever before paying attention to politics because it is culture. It&#x27;s embedded in everything. It&#x27;s embedded in their identity. It&#x27;s embedded in how they consume music and sports. Let the launch of the Taylor Swift album earlier this week, you know, be split on partisan grounds. Has she gone mega as an entire subcultural conversation right now? Now, so politics, I think, is like how it&#x27;s the prism we slice and dice everything through. But I think it has not translated, A, to a growing set of people who feel alienated for that. I think the divisions have become deeper. This is my theory, right? The divisions have become deeper. Those who care are really in it now. And those who don&#x27;t are extremely out of</div>
-</div>
-<div class="turn" data-start="631">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">10:31</span>
-  </div>
-  <div class="said">it. And they have</div>
-</div>
-<div class="turn" data-start="632">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">10:32</span>
-  </div>
-  <div class="said">no desire to ever be in. There&#x27;s no casual. There&#x27;s no casual</div>
-</div>
-<div class="turn" data-start="637">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">10:37</span>
-  </div>
-  <div class="said">floater anymore. There was no casual watching of Young and the Restless back in the day either. there you really have to know the storyline to be able right and so like that&#x27;s where we&#x27;re at so if we&#x27;re creating political content plug in</div>
-</div>
-<div class="turn" data-start="647">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">10:47</span>
-  </div>
-  <div class="said">yes i and for those watching i do have a bottle of lemon juice that i just picked up for no reason um yeah yes so i agree and so we might be entering this political era in terms of content consumption where it&#x27;s the richest it&#x27;s the worst of times and it&#x27;s the best of times if you&#x27;re politically engaged you can find extremely niche things like our pod and other tiktok accounts and instagram accounts to fulfill your appetite on any political story of the day or of the hour really you can it exists yeah right yeah um yet there is very little of that baseline informing uh for for the folks that have kind of tuned</div>
-</div>
-<div class="turn" data-start="684">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">11:24</span>
-  </div>
-  <div class="said">out news gathering crucially news gathering</div>
-</div>
-<div class="turn" data-start="686">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">11:26</span>
-  </div>
-  <div class="said">and so and then to your point i do think meta has having a huge impact because there is no bridge between one group and the next i think the fracture has become come even deeper which is those</div>
-</div>
-<div class="turn" data-start="696">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">11:36</span>
-  </div>
-  <div class="said">that are engaged or super engaged there&#x27;s no there&#x27;s no uh here&#x27;s what is happening in your community i have seen this in the context of a small city but not just not just like um you know well first of all what is the point of a protest if no if there&#x27;s no uh headline afterwards if there&#x27;s no story afterwards if people don&#x27;t see it more broadly that&#x27;s the first thing right so why are we gathering at city hall well we&#x27;re doing it for for the relational content and the other content that is pushed out. And we&#x27;ll talk about this in terms of the ATA and pushing out that content. But there&#x27;s no drumbeat of civic engagement either that you would get through CTV nightly news, through all this was written about in the Calgary Herald, whether it&#x27;s political or not. Right. And crucially, especially if it&#x27;s not, that&#x27;s not there either. A story of a community, right? A story of people making a difference in a community. So then you&#x27;re going to get a demotivation of individual Democratic actors, basically. There&#x27;s no point in doing a non-profit awareness campaign about issue X. Because there&#x27;s no awareness to be had. There&#x27;s just, where are you going to plug it into? There&#x27;s no plug-in.</div>
-</div>
-<div class="turn" data-start="771">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">12:51</span>
-  </div>
-  <div class="said">think and this is also like my broader sort of concern is that i think a lot of us on the political left in the last and it&#x27;s muse half decade as a as a as a timeline um have confronted our already long and fraught relationship with social media with potentially a a freezing out of it or not checking of or a leaving of it right yeah it&#x27;s it&#x27;s commonplace now um i&#x27;m I&#x27;m assuming even amongst us, like we probably are no longer on platforms that we once were. And I think what&#x27;s happened is that the right continues. The right continues to just have those platforms to organize. And one of the simplest things that has been a result is that I don&#x27;t know where the left organizes anymore. And even if it organizes online in different places like discords and reddits, it also I also don&#x27;t think it fully meets the moment, whereas the has actually started to use the platforms that, let&#x27;s just call them social 2.0 native platforms like X and other places to organize</div>
-</div>
-<div class="turn" data-start="831">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">13:51</span>
-  </div>
-  <div class="said">They&#x27;re using X like crazy. They</div>
-</div>
-<div class="turn" data-start="833">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">13:53</span>
-  </div>
-  <div class="said">are, but they&#x27;ve also taken that engagement offline much faster, much more aggressively, much more profitably. I mean, they found a profit motive in this, right? Like, we can go back to Charlie Kirk and TPA, but, you know, if Charlie Kirk&#x27;s assassination wasn&#x27;t the headline about TPA, it would be the business structure of TPA and their offline engagement. How they meet thousands of people, literally IRL. And we haven&#x27;t actually adopted any of those pieces in a meaningful way, in a sustained way, at least in a modeled way that I can tell that allows progressives to organize. So, you know, there has been a cost to our moral outrage against big tech. Like, that&#x27;s the point I&#x27;m trying to make is that as we have left and had these breakups, we actually haven&#x27;t poured it into an alternative place. Some might say blue sky, but I don&#x27;t think it has critical mass yet. People can disagree with me on places, but I just don&#x27;t think we have found our place to take a headline, morph it into a story and a narrative, turn that story and narrative into outrage and a movement, and then port that into real life or policy or advocacy in a real way. This teacher strike might be a great example to test this theory that I&#x27;m putting out there, but I feel like we have fewer and fewer places that we have involuntarily</div>
-</div>
-<div class="turn" data-start="904">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">15:04</span>
-  </div>
-  <div class="said">There are places, I mean, let&#x27;s just get into it with the ATA because we keep saying we&#x27;ll talk about this. We</div>
-</div>
-<div class="turn" data-start="910">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">15:10</span>
-  </div>
-  <div class="said">dancing around it because it is actually, I think it&#x27;s a good segue to this conversation. and i and i and i just want to add one more as you get into it this is very much inspired by producer haxum who is who is sending me uh outraged uh texts about what the heck is the ata doing now i&#x27;m not sure i buy into the what the heck the ata is doing and the extension of that which is like they&#x27;re fucking this up but there is a narrative to exist there is a narrative out there i don&#x27;t think that&#x27;s it&#x27;s limited there but there is something to be said about examining what they&#x27;re trying to do. So go where you were going, but I wanted to kind of add that very loose frame to our conversation as we jump into, because I do want to study some of the tactics and what they&#x27;re doing 72 hours in.</div>
-</div>
-<div class="turn" data-start="952">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">15:52</span>
-  </div>
-  <div class="said">Yeah, I&#x27;m going to take a step back and just look at this from a personal angle, because I was thinking about it this afternoon, and this is the first time that I can recall in my life, certainly in having children, that a labor disruption or or even like a major public policy issue, has really affected me while I am not an elected person or working for a party or working for Labour. Interesting. I&#x27;m just a normie, I guess, in that way. So I&#x27;ve been trying to go about my life, do my job. I&#x27;ve been super busy. That&#x27;s why I look tired on this YouTube. um and so things are not really punching through to me necessarily i haven&#x27;t had time to you know uh look at my phone too much i did a cursory glance of the atas at products uh before we began this podcast i said to you earlier today uh zane like i really haven&#x27;t had time to look at the ata campaign um because my hands have been full cleaning up a bunch after a bunch of teenagers who are stuck in my house uh because they&#x27;re not going to school and uh so in That is an interesting way to go into this, because I am now a consumer of the messages. I am not an amplifier of the messages. I&#x27;m not anywhere near any of the meetings. None of the work I do is particularly provincial in this province, anyway. And so I have not been reached by ATA messages. Even when my algorithms are tuned to them, you know, they should be keyed in. I have been reached by government advertising via my kids&#x27; YouTube because I pay for the premium, but I don&#x27;t give it to them. I&#x27;ve seen their ads. Make</div>
-</div>
-<div class="turn" data-start="1063">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">17:43</span>
-  </div>
-  <div class="said">them watch the ads. Humble them a bit. I like it. Yeah.</div>
-</div>
-<div class="turn" data-start="1065">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">17:45</span>
-  </div>
-  <div class="said">Well, they&#x27;re my focus group for whenever the UCP is advertising, in Lethbridge West during a by-election to replace me. um but i uh so i have not i have not been reached by been reached by some relational content uh in my algorithms from teachers right from politically active teachers who has who have basically relayed the messages to me but i have not been reached by any paid except for government uh and i&#x27;ve been reached by the divisions uh quite able communications i will say from the public school division right so i&#x27;m essentially what most progressive adjacent parents would be would be receiving which is not a whole lot but i have been reached by the government and i think that says a lot uh and after this first week we&#x27;re going to have a long weekend that&#x27;ll be good and hopefully they&#x27;ll be able to hammer out a deal next week is when people are going to start to get pissed off yes because you can handle i you know by by friday it&#x27;ll be five Five days, and then we&#x27;ll have a long weekend. But you can handle five days, probably as a parent. After that, it becomes untenable.</div>
-</div>
-<div class="turn" data-start="1135">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">18:55</span>
-  </div>
-  <div class="said">Yeah, yeah, because this becomes another reading week, Easter break, spring break, whatever it&#x27;s called based on your jurisdiction and your school board. So this week, by the end of it, imagining there&#x27;s no deal by Friday, this becomes like a week-long sort of thing we had to take. Okay. By next week, I tend to agree with you. But the government knows that, too. So before I get into tactics, talk to me about strategy. The government knows that too, and they seem to have unlimited public money firepower that is not going to be scrutinized by folks because of the lack of engagement or understanding in terms of what they&#x27;re doing. And to folks&#x27; credits, people are trying to make the case that the government is using taxpayer dollars to try to defend</div>
-</div>
-<div class="turn" data-start="1176">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">19:36</span>
-  </div>
-  <div class="said">their position against teachers. You do see parents pissed about it, for sure. Correct</div>
-</div>
-<div class="turn" data-start="1178">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">19:38</span>
-  </div>
-  <div class="said">You&#x27;re starting to see a greater number, but I don&#x27;t think a critical mass to tip it over in terms of the government to reverse course on that strategy to not spend that public money. They will continue to do so. So they have a firehose that they can spend. The ATA also seems to have a firehose that they&#x27;re not spending, which we could talk about in a second. But the government has that and they know that fatigue is probably on their side. So don&#x27;t you think they prepare for something longer rather than shorter? In fact, are advantaged here if this does drag out? And if</div>
-</div>
-<div class="turn" data-start="1208">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">20:08</span>
-  </div>
-  <div class="said">it makes it look like</div>
-</div>
-<div class="turn" data-start="1209">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">20:09</span>
-  </div>
-  <div class="said">the teachers are the ones not showing up here?</div>
-</div>
-<div class="turn" data-start="1212">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">20:12</span>
-  </div>
-  <div class="said">Yes, exactly. That is the risk for the ATA. It&#x27;s also a risk for the ATA, just the bare logistics of a campaign and a strike. Because they don&#x27;t do strike pay, there are no pickets. Yes, I want to talk about this. That was the first thing on Monday morning that I noticed. So I went driving around on Monday at a little bit of time. And so I stopped and talked to a couple of posties. And I thought, you know what, I&#x27;m just going to, I have a half an hour between meetings. I&#x27;m going to just drive by the division board office just to see if anybody&#x27;s picketing. Because it&#x27;s like a whole, you know, a couple blocks of schools over in that area of town. There&#x27;s nobody there. And I&#x27;m like, what the hell? So, you know, I&#x27;m in the group chat. I&#x27;m like, where are the pickets? And there aren&#x27;t any. I just didn&#x27;t put it together. I knew they weren&#x27;t getting strike pay, but obviously then it would follow logically if there weren&#x27;t pickets. There are some students organizing sort of daily rallies at one of the high schools, which I think is really interesting. But other than that, there&#x27;s no public presence of the strike or the messages or the clever signs or a place for the public to also plug in their support. There&#x27;s no physical manifestation. And without the information channels, you&#x27;re kind of left with the old ways, which is a picket line with signs on it of telling people what you were doing and why</div>
-</div>
-<div class="turn" data-start="1289">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">21:29</span>
-  </div>
-  <div class="said">A hundred percent, which are strategically and conveniently located every couple of kilometers, at least in the urban centers, from people&#x27;s homes. So when you see people huddled around, you would see these teachers or a select number of teachers kind of, and then potentially that would also have the ability to have union organizers, members of community join for shorter, long periods of time to express their solidarity or support, get the organizing details of what&#x27;s next. Hey, are you doing this again tomorrow? Is there a town hall? What are we doing in the in our in our neighborhood? Hey, do you have any signs to give? Like any of that sort of stuff, Like signs across the street because there&#x27;s</div>
-</div>
-<div class="turn" data-start="1327">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">22:07</span>
-  </div>
-  <div class="said">Right. Lawn signs. But even the traditional media such as it exists, you know, go down and talk to people, go down and talk to teachers, get their take on things. You know, why are you here? so that you know always in political communications the who and the why is so important right and i am left having to fill in uh as a relative normie as a civilian now i&#x27;m left to fill in those blanks in myself as a parent</div>
-</div>
-<div class="turn" data-start="1354">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">22:34</span>
-  </div>
-  <div class="said">and i and i don&#x27;t want to spend too much time on the semantics but i think they&#x27;re important the lack of strike play leads to a lack of picketing which leads to a lack of sort of demonstrable visibility but there&#x27;s also another angle that i think you and i were were texting about which is association versus union slight like not semantics right in some way at least in terms of what the practicality might look like for the ata here like they look at themselves as an association rather than as like a union per se it&#x27;s not in their name does that have some practical like elements in terms of how they present themselves and what they think their members should or should not be doing it</div>
-</div>
-<div class="turn" data-start="1389">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">23:09</span>
-  </div>
-  <div class="said">does culturally and always has so uh here&#x27;s the thing right the the ata is structured such that the regulatory body and uh the labor union part are fused whereas for example united nurses yeah united nurses of alberta uh there&#x27;s a union over here and then there&#x27;s karna uh the regular the regulatory side of registered nurses is over here uh and so that like the call i think college of alberta registered nurses or something like that is their or was their their acronym back in the day so they&#x27;re the you know the disciplinary body the licensing body all of that but the eta they&#x27;re fused and and back until as far back as ralph klein maybe earlier uh he used to threaten you know i&#x27;m going to split the uh the ata and legislation and they kind of a little bit are now but they&#x27;re still kind of all in the same same uh you know house and you know in the same uh organization but the fact is is that that has had a uh an institutional effect on how they engage they&#x27;re not affiliated to the house of labor they have always seen themselves more in the professional body way than in the union way uh and you do see a split of those two functions in other provinces and in some places like in in ontario for example the ontario elementary teachers and a few others you&#x27;re going to see more labor militancy coming out of teachers than you do uh historically in alberta uh so that&#x27;s a cultural piece and may account for why when you go and look on the ata&#x27;s instagram for example you&#x27;re just going to see some of the repetition of the same messages around you know classroom conditions and send a message on classroom conditions you know very professionalized randomized restrained messaging um uh number one because uh dollars to donuts that&#x27;s what you&#x27;re pulling in focus groups are going to tell you that people actually want to hear yep right and and so there is a danger in being led too much by that when you&#x27;re having to make day-to-day changes um to respond to events and uh uh number two it&#x27;s going to account a little bit for some of the hesitancy to really go full-throated and uh in a labor uh dispute and then you&#x27;re not going going to have the pickup lines right because they do see themselves as different and you know some teachers aren&#x27;t gonna like to hear this i don&#x27;t really care actually i but they see themselves as separate and apart from like industrial labor unions uh and uh uh you know as more of a professional organization um when you are in strike with a fundamentally hostile government government who you know uh put the 19th century coal barons to shame uh in terms of their labor hostility i&#x27;m not sure that that posture helps you</div>
-</div>
-<div class="turn" data-start="1562">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">26:02</span>
-  </div>
-  <div class="said">too much yep yep no i think you&#x27;re right and if we get into it you know first of all credit where credit is due the sunday rallies in the two major cities looked awesome they were and there was one down here too that was oh in lethbridge i&#x27;m i&#x27;m sorry i didn&#x27;t i didn&#x27;t catch</div>
-</div>
-<div class="turn" data-start="1577">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">26:17</span>
-  </div>
-  <div class="said">that one as well yeah good to hear i mean no but it was It was interesting, right? Like that it was one of the biggest ones that anyone had ever seen here, like up there with the Black Lives Matter, the Iraq War ones, like going back way, way in time</div>
-</div>
-<div class="turn" data-start="1589">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">26:29</span>
-  </div>
-  <div class="said">Yeah, decades, decades of time in terms of like, you know, local domestic as well as international issues, people protesting. And they looked great. There was a coordinated sort of like red theme to it. The messaging sounded good. I think for me, 72 hours in, I think that momentum of people wanting to do something and continue to help, I think that is what I find particularly missing right now, which is you are now a consumer of this message. But I think to your earlier point around relational organizing, I haven&#x27;t seen materials that say, here&#x27;s, there&#x27;s two things I have not seen. One we&#x27;ve actually addressed, which is, I have not seen teachers quite literally fighting for the core message of what this, you know, strike is about, which is this, like the student-centered last resort stand for the classrooms and the system, right? Right. The visible demonstration or the lack of visible demonstration for that, whether that be picket lines or whatever, or other sort of coordinated sort of even on video so that we can span it out and spend tens of thousands of ad dollars to get it out in front of people of teachers actually saying this is not just another vacation for us. We are going to we&#x27;re doing something like this is a last resort. I need that. I think people will need that because at a certain point watching you know my instagram feed and see 50 off discounts for teachers to do daytime activities while as an amazing gesture if that&#x27;s what ends up happening but seriously i&#x27;ve seen a half a</div>
-</div>
-<div class="turn" data-start="1680">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">28:00</span>
-  </div>
-  <div class="said">dozen of those already</div>
-</div>
-<div class="turn" data-start="1681">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">28:01</span>
-  </div>
-  <div class="said">but i&#x27;m sure you have too but and if that if that becomes the what the teachers are doing during the day like you know just bless them i get it they&#x27;re not getting strike pay i get it this is a shitty fucking situation like like i want to acknowledge that that point first but visibly there needs to be some level of like we care so much for our students even the ones we have right now not even just the existential future of education here&#x27;s 10 resources that each of us are punting out every single day to try to like do something right or because we&#x27;re at and let&#x27;s take every teacher has to do this and i know i&#x27;m trying to ask a lot but i need some semblance of visible fight that we&#x27;re fighting for something bigger than ourselves and i and i know we get into a gray area in terms of where teachers are what their ability to do certain things are but i think that&#x27;s point one react to that tell me if i&#x27;m wrong too i&#x27;m i&#x27;m i&#x27;m just</div>
-</div>
-<div class="turn" data-start="1726">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">28:46</span>
-  </div>
-  <div class="said">observing you&#x27;re absolutely right i i mean i even on even on even with even absent a super hostile government you&#x27;re right uh because i i mean obviously you know i i&#x27;m subsisting in a house full of teenagers who are awake till two o&#x27;clock in the morning when they ought to be in school right i i had one this morning on every available horizontal surface I had to do my meetings this morning from my bedroom because there were so many teenagers in my house. There is a public responsibility to parents, to voters, to communicate why my life has been disrupted. Even absent, you know, whether I&#x27;m up against a tough government or not, but the fact is that they are. And they are going to get steamrolled. And even in the interest of union self-preservation, this needs to start happening because you&#x27;re going to start to get people getting rested. So to your first point, though, okay, so that needs to happen, Zane. Let&#x27;s say they pull you in midday tomorrow and say, okay, we&#x27;re going to give you keys to the store and all the money in the world by Friday morning. What do you do</div>
-</div>
-<div class="turn" data-start="1794">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">29:54</span>
-  </div>
-  <div class="said">Well, I come and ask you, I&#x27;m like, do I seriously ask you as someone who&#x27;s got more experiences in terms of what I&#x27;m allowed to do, do I have access to the teachers? That becomes my fundamental question. If I have access to the teachers, I think the first thing I would love to see is a toolkit that allows teachers to fundamentally not just tell, but show how they&#x27;re trying to fight for education. The tell would be things like picketing and other sort of demonstrations and the media messaging. How could teachers still behind the scenes be these machines of empathy online and other places? And we only need to cover this once or twice to really get a flavor of it, because is this performative? What I&#x27;m about to say, yes, slightly, but also trying to be helpful. Are teachers punting out materials that are helping kids at home right now? Are they helping you, Shannon Phillips, right, who&#x27;s parenting kids right now? Is Ms. Johnson and or an equivalent, your kid&#x27;s teacher, pushing stuff out there saying this is what you can do? I know the government&#x27;s created a platform. Here&#x27;s all the things we&#x27;ve developed. Here&#x27;s some of the stuff we&#x27;re doing. a toolkit for teachers to frankly help that that longer standing empathy online not paid not advertised but covered ultimately when people word to mouth talk to each other be like fuck these teachers are awesome like despite these shitty conditions have you seen like there&#x27;s this group where they&#x27;ve set up a facebook group and they&#x27;re like they&#x27;re downloading curriculum materials for parents just to grab online or whatever or they&#x27;re downloading something some element of teachers showing that we are here to help still in the micro then i need to see</div>
-</div>
-<div class="turn" data-start="1886">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">31:26</span>
-  </div>
-  <div class="said">some really interesting i&#x27;m going to push back on that just a tiny bit like before you get to the thing yeah uh just to element introduce a little element of complexity there which is um you know when my kids uh said to me well what are we going to do i said well actually we&#x27;re not going to do anything because i&#x27;m not a scap uh and i you know and everybody laughed i get this i this but i i there was an element of truth to it right like the point is to be inconvenient so i&#x27;m just going to to introduce that as an element of complexity. I&#x27;m hearing you. I&#x27;m wondering, though... This is</div>
-</div>
-<div class="turn" data-start="1916">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">31:56</span>
-  </div>
-  <div class="said">not crossing an imaginary non-existent picket line, because that is the level of complexity that we&#x27;re talking about here as well. The actual picket line does not exist.</div>
-</div>
-<div class="turn" data-start="1925">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">32:05</span>
-  </div>
-  <div class="said">know, but you&#x27;re right that there&#x27;s got to, there should be a micro we understand that this is shitty for you. And here&#x27;s what we&#x27;re trying to do. We understand that the government is doing bullshit. And even if they&#x27;re just pushing out, like, the problem is, I mean, I guess they would have to use their teacher channels to push that out. Correct. They couldn&#x27;t use they don&#x27;t have access to parents like the government does and like this, like school divisions do. And so that makes it I&#x27;m hearing what you&#x27;re saying, though, in terms of part of their communications being micro to teachers. But I actually think that the bigger piece is teachers as communicators on why the fuck are we on strike and what are we asking for and what do you do there? Part</div>
-</div>
-<div class="turn" data-start="1968">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">32:48</span>
-  </div>
-  <div class="said">two is a macro. I have not seen what Shannon Phillips recommended last week. I don&#x27;t know where the vertical videos at scale that give teachers relative freedom and bandwidth to talk about what&#x27;s up and why they&#x27;re doing it and why they care about their students. I have not seen that. i&#x27;ve seen a couple of teachers do it i&#x27;ve seen a few teachers put out content i don&#x27;t know if it&#x27;s hitting the scale that we need it to and i think if i&#x27;m the ata i&#x27;m picking up on all of that giving its shelf life of 24 hours of natural organic reach and then seeing how do i co-op that for my social channels to to ultimately pay for turn each one of those things into into micro ads um i looked at the the ata meta ad library right now the spend is not high at all and there could could be a strategy behind that you want to keep your powder dry you want to negotiate you don&#x27;t want to you don&#x27;t want to fight fire with fire especially if they&#x27;re going to lose but at this point if we acknowledge one of the baseline facts that i think you and i are on the same page of longer strike benefits government shorter strike benefits teachers so to speak especially when the inconvenience factor has a relationship with with potential sympathy for teachers then we&#x27;re in a situation where teachers may want to actually think about the ata may want to start thinking about spending that money quickly and having these cycles and phases happen faster rather than shorter. Where they&#x27;re like, okay, this is a week two strategy. No, maybe it&#x27;s a day two strategy, I guess is what I try to say.</div>
-</div>
-<div class="turn" data-start="2052">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">34:12</span>
-  </div>
-  <div class="said">I think it has to be. I think by Friday, if there&#x27;s no, like, we&#x27;re going to go into a long weekend where as we know from political campaign, as soon as you&#x27;re into a lot, there&#x27;s almost always a long weekend over a political campaign. And it&#x27;s always the reset point, right? A spring campaign, it&#x27;s often Easter or it&#x27;s the May long. And it&#x27;s kind of campaigns press reset set. And they&#x27;re oftentimes going into the third period of the campaign, the kind of final throw. And it is the time in which you kind of expect that what the voters are doing is going kind of back to their family groups, their friend groups, their dinner tables, and kind of deciding what they&#x27;re going to do and what the main messages are. That&#x27;s how we kind of imagine it as campaign practitioners. This weekend is one of those times for the teachers. It&#x27;s Thanksgiving. you i</div>
-</div>
-<div class="turn" data-start="2099">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">34:59</span>
-  </div>
-  <div class="said">agree with you i agree with you</div>
-</div>
-<div class="turn" data-start="2101">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">35:01</span>
-  </div>
-  <div class="said">and uh i i right now i don&#x27;t have the messages to push back on you know conservative uncle bert right i just don&#x27;t i i necessarily i don&#x27;t have the tiktok video that&#x27;s like super compelling to pull up to be like no actually you know this strike is affecting me and but here&#x27;s why i look at this teacher like what she has to say right i don&#x27;t have that necessarily in my arsenal as a first-time strike-adjacent normie, and politically adjacent normie. And I wish I did. I wish I did. Because this is the time. And they can still do it by Friday. That&#x27;s the time.</div>
-</div>
-<div class="turn" data-start="2146">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">35:46</span>
-  </div>
-  <div class="said">I&#x27;m glad you mentioned that last point. I think this is in the spirit of being constructive, because this is all still possible, right? There is a possibility that That there&#x27;s a very simple mindset shift, or frankly, if this is on their pipeline, just bringing it up earlier and saying, we&#x27;re doing three days of becoming an influencer. We&#x27;re going to create, you know, we&#x27;ve got all these teachers. The instruction that we&#x27;re given is create one or two pieces. I know this sounds silly, but this is how we communicate these days. We&#x27;ve just talked about why the Calgary election is so sleepy. I mean, when it&#x27;s sleepy, tie goes to the government. goes to the right. Exactly. And the ATA should be taking lessons from that in some ways, which is that, yes, you started off at a beautiful visual high watermark and you have built in support, but people can just tune out. Like frog and boiling water syndrome is the half-life of that is increasing so quickly that people are just like, yeah, whatever. There&#x27;s just a norm now. Teachers on strike. I mean, Shannon, we&#x27;re just so used to fucking Canada Post not being a thing anymore. I don&#x27;t even go to the mailbox. You know what I mean? I get home delivery. i used to go every day to see if i just don&#x27;t do it anymore like i&#x27;ve normalized my behavior fucking five days so the government risks we normalize our behavior so quick i mean the union i should say uh risks that we normalize our behavior so quickly here that we normalize reality so quickly and yes this is a pain to the 700 000 kids and their parents but frankly there&#x27;s a group beyond that right that i think they will still need public sympathy for um because Because if this just becomes parents, then that number starts dwindling. And then I&#x27;m curious if you think the math here just works for the ATA. As long as they hold the parents, no one else matters. To me, I think, no, I think the second and third ring of support beyond the parents does matter. And</div>
-</div>
-<div class="turn" data-start="2249">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">37:29</span>
-  </div>
-  <div class="said">they need to hold</div>
-</div>
-<div class="turn" data-start="2250">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">37:30</span>
-  </div>
-  <div class="said">the public well, because parents are not a singular. They&#x27;re not all just showing up in one direction or another, as you&#x27;ve seen online with some of the discourses I&#x27;ve seen online. And so to me, it&#x27;s like, yeah, it sounds silly. but every teacher is becoming an influencer for the next 72 hours we&#x27;re all producing one or two pieces of content we&#x27;re putting it up online we&#x27;re getting a broader message structure we&#x27;re giving some latitude to teachers to do what they need to um and one of the benefits and now we&#x27;re getting a bit detailed of an algorithmic media cycle social media cycle that i fucking hate is that everyone has abandoned the square so in some ways relational organizing as it used to be done on social has now decreased because you&#x27;re no longer reaching your friends anymore one of the benefits is that you&#x27;re reaching a larger catchment of people that don&#x27;t know you and isn&#x27;t that helpful and interesting here where if a bunch of people could talk about one topic at scale um you save a shit ton potentially on ad spend but you can even power it with ad spend on the back end but you have a real opportunity to then reach people through multiple different speakers in multiple different ways who are all teachers that are sympathetic but i go back to my my first point I need some demonstration of the fight happening, of the broader sort of strategy that this is student-centered, because the government&#x27;s going to make it about the wages. The government&#x27;s going to make it about the small investments that they&#x27;re making. The government just today is going to make it about post-tax is the best wage of any teacher, five years, 10 years in Western Canada. why do i know that shannon why do i know that</div>
-</div>
-<div class="turn" data-start="2337">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">38:57</span>
-  </div>
-  <div class="said">because i advertise their faces off to you</div>
-</div>
-<div class="turn" data-start="2339">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">38:59</span>
-  </div>
-  <div class="said">totally and it&#x27;s very it&#x27;s a very clear</div>
-</div>
-<div class="turn" data-start="2342">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">39:02</span>
-  </div>
-  <div class="said">and what&#x27;s interesting to me is that like but the ata also has they have a beautiful weapon from sunday which is they have gorgeous visuals all visuals which has these great signs you know i this rally uh is almost as crowded as my uh classroom i saw that was a good one for sure we can&#x27;t have nice things because</div>
-</div>
-<div class="turn" data-start="2362">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">39:22</span>
-  </div>
-  <div class="said">of this lady there&#x27;s so many good ones</div>
-</div>
-<div class="turn" data-start="2363">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">39:23</span>
-  </div>
-  <div class="said">yeah oh so many good ones so i mean the ata can package and push a a a traditional and a social media ad spanned right now right with gorgeous red sweater every like it&#x27;s all there right it looks so good uh they should be pushing that over the weekend regardless of anything else that happens um and i had another point that i forgot and i&#x27;ll remember</div>
-</div>
-<div class="turn" data-start="2389">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">39:49</span>
-  </div>
-  <div class="said">um why do you think they&#x27;re not spending money why do you think they&#x27;re not spending the</div>
-</div>
-<div class="turn" data-start="2394">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">39:54</span>
-  </div>
-  <div class="said">what could they hope they&#x27;re waiting well you know i know and my other point was uh my point was they have to uh the 18 has to hold broader public opinion because that&#x27;s what the government is polling yes and that&#x27;s going to push the government as well right because ultimately the government&#x27;s going to be out there especially this weekend i mean we can long weekend polling especially can be a bit um but uh the government is going to be out there in the field uh at testing their ads testing their message uh and uh as you can&#x27;t lose broader public opinion it&#x27;s not just about parents because you can&#x27;t really disaggregate uh in your polling right you kind of like it&#x27;s it&#x27;s hard to do you end up with too high of a margin of error so no you have to hold the whole population because that&#x27;s who responds to polls</div>
-</div>
-<div class="turn" data-start="2438">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">40:38</span>
-  </div>
-  <div class="said">yeah that&#x27;s who responds to polls that&#x27;s how the government knows they&#x27;re succeeding and frankly if they have a fire hose of ad spend they can turn it up or down based on their current circumstances with with how they&#x27;re polling right um and you know there&#x27;s many theories around why this government is doing what they&#x27;re doing right now some of them suggesting that you know this is part of their broader plans to dismantle public education education choice etc um you can buy whichever theory you want i almost think it&#x27;s irrelevant here in terms of what the government&#x27;s motivations are right like in terms of the teacher fight i think they need to act like this is this is existential which they have suggested in their their messaging i do i want to give them credit for that they&#x27;ve done well to make sure that this is about student-centric you know effort for for proper funding for your kids for the kids and the learners and the and the and the future sort of you know members of society in alberta the problem i have is i&#x27;ve got no visual evidence of that that that that is being told to me the simplest way of putting this would be i don&#x27;t not know why the paid is waiting i don&#x27;t know why the paid at scale is waiting and and if it is not waiting and if there&#x27;s other sort of paid that&#x27;s happening the government&#x27;s done a great job i would say making it look like that the ata war chest is what they&#x27;re scared against you could already see the government on process messaging talking about oh my god there&#x27;s a fire hose that they have and we&#x27;ve got to be careful this is why we&#x27;re spending they&#x27;ve already given cloud cover to their spend that yeah</div>
-</div>
-<div class="turn" data-start="2519">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">41:59</span>
-  </div>
-  <div class="said">they&#x27;re trying to do the big evil unions correct you know they&#x27;ve collected money money that comes from george sorrows or something</div>
-</div>
-<div class="turn" data-start="2525">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">42:05</span>
-  </div>
-  <div class="said">they&#x27;ve just been waiting they&#x27;ve been waiting for this this is exactly why they exist their whole uh mo is to wait for these moments and to uh and to and to like lie to the public etc um so it&#x27;s not just about the creative and i think this is one of those things when we talk about creative i do not think and i&#x27;m curious to get your thoughts on this that this needs to be a clever creative campaign</div>
-</div>
-<div class="turn" data-start="2546">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">42:26</span>
-  </div>
-  <div class="said">no i think the more clever creative</div>
-</div>
-<div class="turn" data-start="2547">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">42:27</span>
-  </div>
-  <div class="said">they go the more beautifully lit a teacher looks like with the pro res style portrait background the more disingenuous this feels the more and i know the i know one of the the comparisons that was made was uh or that&#x27;s been floating around it&#x27;s like you know why is there not like creative such as what the airlines had um with that fake podcast sort of style interview about uh that this is i&#x27;m talking about the um the airline workers recently with cupi i think this is from a creative perspective this is the exact opposite in terms of i think so too this is extremely organic and feel this is almost trying to showcase the lack of budget that teachers work with um and the money is spent on promoting that message not making the creative look flashy or sexy creative installations creative activations creative and fun projections like memefied whatever go for it but as it relates to the video i see i think that has to not look slick and in fact i think there&#x27;s a huge downside side risk if it does look slick because you&#x27;re walking right into uh the government&#x27;s sort of big union and then they&#x27;re going to keep spending with their voiceover stock image videos that they make which frankly you know as much as i hate them seem to have an effect at least in terms of message recognition and and clarity in terms of what the uh uh what the government wants</div>
-</div>
-<div class="turn" data-start="2626">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">43:46</span>
-  </div>
-  <div class="said">no the key here has to be the uh the teachers and and i would say to shilling&#x27;s credit And he has not been, you know, if I&#x27;m thinking back to the 2002 teacher strike, because I know Larry Boyd pretty well. He was the president of the ATA at the time. That was also a gigantic rally on the steps of the legislature when they went out. It was not as big as the Iraq war, but close. And a very, very big protest. protests and Larry was absolutely everywhere in earned media right which was a different time he was a lot more uh I um as a a traditional union leader in that way of you know uh giving you know the sort of more soaring I treat unionist rhetoric you know Larry would go around like you know quoting Antonio Gramsci and uh I you know he was he was a delight uh to those of of us of the left in that way. Schilling is a much more administrative, sort of technocratic communicator. But I&#x27;m not saying that is a bad thing. I think that&#x27;s fine. Because what it does is it allows for the rank and file to fill the communications gap. And I think that&#x27;s a good thing in this case. You want that. You don&#x27;t want him to become a lightning rod, right? You notice us that the government hasn&#x27;t really attacked him personally. They absolutely did that to Larry Boy back in the day, if I remember correctly. But they&#x27;re not doing that to Shillie. But it allows that nice open lane for teachers to do that organic communication. Now the door is open. We need them to walk through it.</div>
-</div>
-<div class="turn" data-start="2730">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">45:30</span>
-  </div>
-  <div class="said">Okay, one last thing on this before we break. We&#x27;ve got so many, because this is going to, as we head into the long weekend, this is going to be a bouncing ball that we will We&#x27;ll track it and certain things will change. I hope certain things do change. I still feel like, you know, to your point, I agree with your assessment that parents are still very much on side. The public is still very much on side. I think the ATA needs to be careful, though, with the with the government that&#x27;s trying to be so crisp and so lean in its messaging. And it might even sound crass in terms of how the government&#x27;s messaging, but it is puncturing and piercing through, which is something to be said. Daniel Smith, though, Shannon, has not closed the door on back to work legislation. to me about this you said you said comms was more my specialty policy is your sort of thing um i guess we&#x27;re going to meet in the intersection here of like strategy for the government here when and if do they use that that particular piece is that is that a she seems to be trigger happy in some ways where she&#x27;s just like let&#x27;s just let&#x27;s just get shit out of the way right like so so yeah you&#x27;re striking fuck it i&#x27;m gonna build a pipeline and uh you know the national media&#x27;s attention is off of things so she could one day just show up back to work get going and then throw another channel changer so we all not forget but people are like okay i guess kids are going back and and the teachers and their fight kind of becomes second some ways and so</div>
-</div>
-<div class="turn" data-start="2815">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">46:55</span>
-  </div>
-  <div class="said">so talk to me about october 23rd</div>
-</div>
-<div class="turn" data-start="2817">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">46:57</span>
-  </div>
-  <div class="said">october 23rd yes i was going to highlight some dates for you so october 23rd so we have a couple of weeks until we go back i believe they&#x27;re going going to be in session until early to mid-December. I think this kind of runs all the way to the Christmas calendar. Well, it</div>
-</div>
-<div class="turn" data-start="2829">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">47:09</span>
-  </div>
-  <div class="said">did. Yeah, talk me through this, though. Dave Hancock used to famously say, Zane, the government decides when the legislature comes back at the end of the session, the opposition decides when they leave. Well said, well said. That was true back in the day of when Dave Hancock was House leader, and there was relative civility between the parties on the floor. It&#x27;s a little different now where the government just invokes closure, you know, at the drop of a hat. Look, if we are still in a teacher strike by October 23rd, you bet your ass that Bill wanted back to work legislation. And they probably are prepping it 100 percent. Why wouldn&#x27;t it be? Right. Because by then, you are at, like, what, like, day 15, like, of a strike in terms of, you know, actual business days, school days. There&#x27;s no way that they&#x27;re not doing back-to-work legislation. And by then...</div>
-</div>
-<div class="turn" data-start="2884">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">48:04</span>
-  </div>
-  <div class="said">no way? You think even if public support is high, even if the teachers, you know, are out there</div>
-</div>
-<div class="turn" data-start="2888">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">48:08</span>
-  </div>
-  <div class="said">visibly demonstrating... I don&#x27;t think that if teachers are out for two straight weeks that... I mean, if this thing is sort of a 50-50 proposition now, it will become less so. I think they&#x27;re doing it. and by then the public will be sick of it, and it&#x27;ll put the opposition in a tough spot for sure. But no, if the teachers are still out by the 23rd, you will hear the rumblings by speech from the throne, and potentially the next day, Enoch comes. I mean, well, they introduce Bill 1 famously right after the speech from the throne</div>
-</div>
-<div class="turn" data-start="2923">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">48:43</span>
-  </div>
-  <div class="said">They do. Talk to me about the solidarity that the Alberta NDP needs to give to the teachers here. unconditional conditional any daylight between the the the two at the moment what would your what would your suggestion be especially and i ask especially with bill one potentially i&#x27;m not saying it&#x27;s a probability</div>
-</div>
-<div class="turn" data-start="2940">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">49:00</span>
-  </div>
-  <div class="said">but it&#x27;s a possibility right to the end right it has to be they they have no daylight no daylight no uh number one uh because since at least 2019 uh and certainly in 23 teachers had the memo almost more than any other public sector worker This is my anecdata talking here, but I&#x27;m sorry, but like, even when you would talk to, you know, nurses or other allied health, you know, allied health professionals, others, you might get like a bit of a heterogeneity, if you will, in party support</div>
-</div>
-<div class="turn" data-start="2973">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">49:33</span>
-  </div>
-  <div class="said">yeah um yeah teachers hadn&#x27;t</div>
-</div>
-<div class="turn" data-start="2975">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">49:35</span>
-  </div>
-  <div class="said">hadn&#x27;t understood the assignment right uh they know who their friends are so the ndp needs to know who their friends are too uh and uh i mean you know it was always so hilarious when you&#x27;d walk on someone&#x27;s door they would just be like yeah i&#x27;m a teacher so and they would just kind of drift off and that was your cue to go yes of course you know it was like of course what do you like you know teachers would be like of course i support or you get out of here right go talk to somebody else stop</div>
-</div>
-<div class="turn" data-start="3001">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">50:01</span>
-  </div>
-  <div class="said">wasting your time sort of thing</div>
-</div>
-<div class="turn" data-start="3002">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">50:02</span>
-  </div>
-  <div class="said">yeah um so the new democrats need to do the same thing uh and um number one because we are the workers party and uh you know that needs to be real particularly in this economic populist conservative moment uh number two because you know this thing isn&#x27;t going less than 40 60 just because of negative polarization and you know like it&#x27;s just not right there&#x27;s no there&#x27;s no real debt like who who are you going to lose? Who are you going to actually lose? You know, maybe six months out of an election if you&#x27;re all in on teachers right now. Yeah. I mean, there might there are some swing voters that like if this was happening, if we were already minus 35, I might be like, you know, let&#x27;s not piss off, you know, private sector workers in Boma because we want to win that seat right but it&#x27;s not that that&#x27;s not the calculation right so okay</div>
-</div>
-<div class="turn" data-start="3055">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">50:55</span>
-  </div>
-  <div class="said">this isn&#x27;t i&#x27;m not curious as a former minister and former sort of member of of an nd caucus what&#x27;s the balance between drifting off of the halo that a group teachers provides versus like what you&#x27;re doing to support them like there&#x27;s it&#x27;s a fine balance and it&#x27;s all it&#x27;s often unclear it&#x27;s a who&#x27;s doing what right so attaching to the hip can</div>
-</div>
-<div class="turn" data-start="3076">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">51:16</span>
-  </div>
-  <div class="said">do a whole lot they can show up to the staff right they can yell in the legislature like this is the thing about the westminster system like you have no power other than uh your voice and your amplification and and uh definitely they should use it um because also because teachers have shown up for us right like uh in their spare time in a big way uh and uh you know not the union and all that like i&#x27;m not talking about that i&#x27;m talking Individual teachers have absolutely had their oar in the water for us as a party, individual organizations and so on. So, yeah, absolutely. But there&#x27;s not much more you can do besides, you know, show up to their events and, you know, make a big mess in the legislature if there&#x27;s back to work legislation. And it&#x27;s actually a really good opportunity for the New Democrats to really like put a stake in the ground and stand for something.</div>
-</div>
-<div class="turn" data-start="3127">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">52:07</span>
-  </div>
-  <div class="said">shannon phillips we&#x27;re going to move it on to our over under in our lightning round it&#x27;s always fun when stephen carter&#x27;s here because he gives wrong answers to things but i&#x27;m looking for you to give right answers to things you&#x27;re gonna you&#x27;re gonna give me predictive and correct answers</div>
-</div>
-<div class="turn" data-start="3137">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">52:17</span>
-  </div>
-  <div class="said">oh that&#x27;s uh i wouldn&#x27;t oversell the segment</div>
-</div>
-<div class="turn" data-start="3141">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">52:21</span>
-  </div>
-  <div class="said">yeah oh yeah no we all we always do i know you i know you never listened before before you&#x27;re on the show but we always absolutely</div>
-</div>
-<div class="turn" data-start="3145">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">52:25</span>
-  </div>
-  <div class="said">did you never listened the other day i was reminded of um the time that cory hogan did a tight 30 on the kerning uh on the alberta ndp um new logo at the time which</div>
-</div>
-<div class="turn" data-start="3161">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">52:41</span>
-  </div>
-  <div class="said">think i i said on the air which uh which uh which my team developed so yes yeah yeah yeah yeah i i think i passed on that episode uh so</div>
-</div>
-<div class="turn" data-start="3170">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">52:50</span>
-  </div>
-  <div class="said">the type 30 on the and cory was reminded of the existence of that uh and also reminded in my travels in the last uh few weeks that people actually do listen to this podcast and the two things still are incongruent to me 30 minutes on kerning and people actually listen to this fucking thing but anyway i&#x27;m just yeah there is</div>
-</div>
-<div class="turn" data-start="3192">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">53:12</span>
-  </div>
-  <div class="said">so much content for the hyper engaged that is my theory and there is not enough content for for folks to bring them into the tent uh shannon phillips will we see back to work legislation yes</div>
-</div>
-<div class="turn" data-start="3205">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">53:25</span>
-  </div>
-  <div class="said">i think they&#x27;re gonna actually settle it out before that</div>
-</div>
-<div class="turn" data-start="3208">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">53:28</span>
-  </div>
-  <div class="said">you do okay well i&#x27;m gonna give you i&#x27;m gonna give you a date oh or before after next wednesday it</div>
-</div>
-<div class="turn" data-start="3218">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">53:38</span>
-  </div>
-  <div class="said">it might be the end of the next week</div>
-</div>
-<div class="turn" data-start="3221">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">53:41</span>
-  </div>
-  <div class="said">oh you think</div>
-</div>
-<div class="turn" data-start="3221">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">53:41</span>
-  </div>
-  <div class="said">next week i</div>
-</div>
-<div class="turn" data-start="3222">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">53:42</span>
-  </div>
-  <div class="said">tend to agree with you actually on this to make it a conversation but i tend to agree with you on this i have no inside track i just feel like it seems like a natural sort of point but would it surprise you then maybe i&#x27;ll ask you a different question would it surprise you that this thing goes on um would it surprise you i would be i</div>
-</div>
-<div class="turn" data-start="3242">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">54:02</span>
-  </div>
-  <div class="said">would be shocked if it does i don&#x27;t think uh yeah because i think actually daniel smith wants to talk about pipelines right you think she wants to get into a pipeline thing yeah yeah she wants to talk about pipelines because she wants to calm down her separatist flank uh she feels like she needs to deliver something to us with this fake 14 million thing that is going to work you know sort of have some kind of uh outcome in in may of 2026 that&#x27;s what this is about um honestly i think she would way rather because when she&#x27;s talking about pipelines she&#x27;s not just calming down her rest of uh separatist caucus she&#x27;s also talking to albertans about because albertans for whatever reason equate having pipelines with uh economic performance even though another one universally universally</div>
-</div>
-<div class="turn" data-start="3288">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">54:48</span>
-  </div>
-  <div class="said">blessed economic performance that&#x27;s</div>
-</div>
-<div class="turn" data-start="3290">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">54:50</span>
-  </div>
-  <div class="said">yeah right and and another one over and above tmx it&#x27;s not even you know all clear uh what kind of uh uplift that would have for the differential maybe a little uh if it&#x27;s if it&#x27;s west coast egress but it&#x27;s not gonna happen</div>
-</div>
-<div class="turn" data-start="3304">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">55:04</span>
-  </div>
-  <div class="said">um but uh</div>
-</div>
-<div class="turn" data-start="3306">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">55:06</span>
-  </div>
-  <div class="said">and so i think she&#x27;s like she&#x27;s probably happier in that space in the like rather than in the uh uh in the in the public like the sort of social policy space</div>
-</div>
-<div class="turn" data-start="3320">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">55:20</span>
-  </div>
-  <div class="said">let&#x27;s leave it the final over under on on this question which is let&#x27;s let&#x27;s make it about pipelines and let&#x27;s make it about leader of the alberta ndp nahed nenshi um is this an opportunity let me phrase the question this way is this an opportunity for nahed to do what what your government did, which is maybe have a little bit of a battle with your NDP brethren out west in British Columbia. Does he go after EB on this to try to punch through? Does he propose a different pipeline plan if he has to respond to Danielle Smith? His current sort of messaging is broadly this is non-consultative. It&#x27;s very much process-based. But in terms of where Nahid Nenshi goes, if pipelines do become the fight or do become the conversation topic, what advice would you want to give them?</div>
-</div>
-<div class="turn" data-start="3366">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">56:06</span>
-  </div>
-  <div class="said">Well, this was such a tough one. I wouldn&#x27;t, you know, like, it served our interests at the time to, you know, hit Horgan a bit with Horgan&#x27;s people. But Horgan had a different set of political incentives at the time than Evie does. I do not think, like, even, maybe it&#x27;s just my New Democrat bleeding heart that it is helpful to punch EB right now and also I think it would be like a bit of a fly buzzing around a guerrilla you know like we&#x27;re an opposition party he&#x27;s a government so like who cares kind of and I do think that he should probably talk to you know because this paints both the Alberta and Saskatchewan NTP into a bit of a corner so he should probably have a do a bit of coordination with Carla because it hurts her too or helps you know depending on whatever the thing is that&#x27;s happening. But, you know, Carney might have given the whole thing, again, a jail-free card with Trump bringing up Keystone Excel in the Oval Office yesterday. I think this is kind of a brilliant way out where, you know, Carney can say, yeah, fine, you know, we&#x27;ll give you your pipeline. Once again, how much, like, so TMX had uplift for both Kennedy and Carney and specifically the Alberta Treasury, right? It is measurable. It is significant amounts of money. It is exactly what we said it was going to be. Thank you very much. But it&#x27;s not clear how much more capacity would actually do that, especially if it&#x27;s going down south. But I think this kind of shows the extent to which pipelines is a bit performative</div>
-</div>
-<div class="turn" data-start="3466">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">57:46</span>
-  </div>
-  <div class="said">right? We&#x27;re now in the world of performance</div>
-</div>
-<div class="turn" data-start="3469">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">57:49</span>
-  </div>
-  <div class="said">politics with pipelines. I will be interested to see what the actual economic uplift would be from a Keystone. I mean, we guaranteed barrels on it back in the day. So like as a government, that was one of the things we did when we were in government. So it could be that it would have an incremental, be an incremental advantage to the Alberta Treasury still, in which case it gives everyone a nice thing, way to go kind of look over to a real project, as opposed to whatever, you know, Kabuki theater we&#x27;re playing with this no-proponent, not-real project that Daniel Smith has put forward. I don&#x27;t think that Nahed should go to war with any other sections or even the federal party right now. I think that our opponents will try to drag everybody else in. You saw Scott Moe doing some attacks on Carla Beck in the last day or so. Like, oh, your federal party thinks this, and your BCE NDP thinks that, so therefore you think all these things, right? And they&#x27;ve been trying to do that to the Alberta NDP for a long time, too. And it works. So, you know, kind of, so not doing it as well? don&#x27;t really see the advantage. I could be persuaded otherwise, but right now I don&#x27;t see it.</div>
-</div>
-<div class="turn" data-start="3551">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">59:11</span>
-  </div>
-  <div class="said">Final question, Shannon Phillips. I&#x27;m not letting you get away without answering this. Over, under, on the amount of seats that Stephen Carter&#x27;s Calgary Party and the Edmonton Accelerants together win. As you know, he&#x27;s running 28 campaigns. He&#x27;s not here. He sends his regrets, but we know he doesn&#x27;t. Over, under, on nine. Lay it for me. Lay it out for me.</div>
-</div>
-<div class="turn" data-start="3572">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">59:32</span>
-  </div>
-  <div class="said">I&#x27;m going to go over to</div>
-</div>
-<div class="turn" data-start="3576">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">59:36</span>
-  </div>
-  <div class="said">That&#x27;s a high level of trust. All the good ones, though. The 11s are all the best ones. We&#x27;ll get in. That&#x27;s what I say.</div>
-</div>
-<div class="turn" data-start="3582">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">59:42</span>
-  </div>
-  <div class="said">I&#x27;m a little worried about Edmonton. I mean, best is, well, from my perspective anyway, I&#x27;m not wishing Carter well in Edmonton.</div>
-</div>
-<div class="turn" data-start="3592">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">59:52</span>
-  </div>
-  <div class="said">Oh, my goodness</div>
-</div>
-<div class="turn" data-start="3593">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">59:53</span>
-  </div>
-  <div class="said">More so in Calgary</div>
-</div>
-<div class="turn" data-start="3594">
-  <div class="who">
-    <span class="speaker">Zain</span>
-    <span class="ts">59:54</span>
-  </div>
-  <div class="said">We are going to leave it there. That&#x27;s a wrap on episode 1885 of The Strategist. My name is Zane Velge. you with me as always shannon phillips and frankly we needed no one else and we&#x27;ll see you next time</div>
+  <div class="said">yeah and so this is i&#x27;m kind of past trying to patch this theory together right which is like i think there&#x27;s more content than ever okay a couple points right in the last half decade politics has become culture so when we started this podcast you know 10 years ago the idea that we would take politics and use it like a sports talk format was novel it&#x27;s no longer novel because Because politics is now part of culture and culture has like a more, I hate to kind of lowest common denominator approach in terms of language and vernacular. Like politics in both other countries, USA and Canada, has entered that space. So our format is no longer novel. You add on the algorithmic element to it. So talking in a snippy, plain spoken language about big topics is part of it. So you&#x27;re having this content machine kind of being produced. I think there&#x27;s more people than ever before paying attention to politics because it is culture. It&#x27;s embedded in everything. It&#x27;s embedded in their identity. It&#x27;s embedded in how they consume music and sports. Let the launch of the Taylor Swift album earlier this week, you know, be split on partisan grounds. Has she gone mega as an entire subcultural conversation right now? Now, so politics, I think, is like how it&#x27;s the prism we slice and dice everything through. But I think it has not translated, A,</div>
 </div>
 
         </div>

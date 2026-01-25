@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/135985043.mp3?sig=Y4DDN-5gK0S8ILbpkThez4meki6Ln3-Ax_mF2xXbnCU%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/689558f0c952cf597838b3cb"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -855,7 +921,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">6:36</span>
   </div>
-  <div class="said">um because infill continues to dominate and no one has a really good answer for infill um the zoning question is is not i i don&#x27;t think the zoning question is anybody&#x27;s actual ballot box question maybe sonja Sharp thinks it can be her ballot box question. But the problem is that there&#x27;s going to be a group of people who are on repeal. And I think that those people are hopelessly naive. And I don&#x27;t want to run on ballot box questions that we can&#x27;t actually achieve. I did that in 2012 with Redford. You know, we could shrink the size of government, reduce your taxes and increase government spending. It was kind of like, you can&#x27;t do all that. You can&#x27;t. That&#x27;s an impossible So from that time on, I&#x27;ve been really trying to make my ballot box questions something that can actually be achieved. And I don&#x27;t think that repeal is one of those</div>
+  <div class="said">um because infill continues to dominate and no one has a really good answer for infill um the zoning question is is not i i don&#x27;t think the zoning question is anybody&#x27;s actual ballot box question maybe sonja Sharp thinks it can be her ballot box question. But the problem is that there&#x27;s going to be a group of people who are on repeal. And I think that those people are hopelessly naive. And I don&#x27;t want to run on ballot box questions that we can&#x27;t actually achieve. I did that in 2012 with Redford. You know, we could shrink the size of government, reduce your taxes and increase government spending. It was kind of like, you can&#x27;t do all that. You can&#x27;t. That&#x27;s an impossible So from that time on, I&#x27;ve been really trying to make my ballot box questions something that</div>
+</div>
+<div class="turn" data-start="446">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">7:26</span>
+  </div>
+  <div class="said">can actually be achieved. And I don&#x27;t think that repeal is one of those</div>
 </div>
 <div class="turn" data-start="449">
   <div class="who">
@@ -911,7 +984,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">9:18</span>
   </div>
-  <div class="said">more than that you&#x27;ve got to figure out what they care about more right what type of change they&#x27;re looking for that&#x27;s what i&#x27;m that&#x27;s what i&#x27;m working on right now is what type of change do people want do they just want change for the sake of change do they want to change to the most capable candidate do they want to change to someone that they know do they want to change like what kind of change do Do they want, do they want experience? Do they want no, no experience? And then I have to try and muscle my candidates into those positions, um, and kind of create a ballot box question around them. Like for Joe Clark, the ballot box question was, would you rather have the right honorable Joe Clark or what&#x27;s his name? Um, you know, I, I imagine that there&#x27;ll be some sort of ballot box question in Calgary that, uh, you know, focuses right now on, on the changing changing personalities and changing moods of Jeremy Farkas.</div>
+  <div class="said">more than that you&#x27;ve got to figure out what they care about more right what type of change they&#x27;re looking for that&#x27;s what i&#x27;m that&#x27;s what i&#x27;m working on right now is what type of change do people want do they just want change for the sake of change do they want to change to the most capable candidate do they want to change to someone that they know do they want to change like what kind of change do Do they want, do they want experience? Do they want no, no experience? And then I have to try and</div>
+</div>
+<div class="turn" data-start="583">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">9:43</span>
+  </div>
+  <div class="said">muscle my candidates into those positions, um, and kind of create a ballot box question around them. Like for Joe Clark, the ballot box question was, would you rather have the right honorable Joe Clark or what&#x27;s his name? Um, you know, I, I imagine that there&#x27;ll be some sort of ballot box question in Calgary that, uh, you know, focuses right now on, on the changing changing personalities and changing moods of Jeremy Farkas.</div>
 </div>
 <div class="turn" data-start="607">
   <div class="who">
@@ -1198,7 +1278,7 @@
     <span class="speaker">Annalise</span>
     <span class="ts">17:11</span>
   </div>
-  <div class="said">in both calgary edmonton and medicine hat uh</div>
+  <div class="said">in both calgary edmonton and medicine hat</div>
 </div>
 <div class="turn" data-start="1033">
   <div class="who">
@@ -1345,7 +1425,21 @@
     <span class="speaker">Carter</span>
     <span class="ts">20:45</span>
   </div>
-  <div class="said">give him uh probably an a minus a minus i don&#x27;t think there&#x27;s a lot more that he could do in order to generate positive i mean outside of making to donald trump a sane human being um he&#x27;s doing exactly he&#x27;s doing the he&#x27;s taking the low-hanging fruit that&#x27;s available to him and doing the best things with it the low-hanging fruit&#x27;s going to go away pretty soon because at At some point, you will need to do a project that is Canadian defining, right? There&#x27;s going to have to be, instead of just talking about building Canada and making Canada stronger, you&#x27;re going to have to actually do something to do that. And that&#x27;s when you go from having low-hanging fruit to having fruit that you just can&#x27;t reach in a normal setting. You&#x27;re going to have to deal with Indigenous issues. you&#x27;re going to have to deal with uh with nations across the country that don&#x27;t want the same things that you want and that is going to be when the low-hanging fruit is all gone but right now you get to talk about everything as though it&#x27;s but there&#x27;s a high degree of potential as though it could all happen and i think he&#x27;s taking good advantage of it especially through a relatively sleepy summer um and i&#x27;m looking forward to seeing what happens in september uh when when he kind of comes back to it i think that it&#x27;s</div>
+  <div class="said">give him uh probably an a minus a minus i don&#x27;t think there&#x27;s a lot more that he could do in order to generate positive i mean outside of making to donald trump a sane human being um he&#x27;s doing exactly he&#x27;s doing the he&#x27;s taking the low-hanging fruit that&#x27;s available to him and doing the best things with it the low-hanging fruit&#x27;s going to go away pretty soon because at At some point, you will need to do a project that is Canadian defining, right? There&#x27;s going to have to be, instead of just talking about building Canada and making Canada stronger, you&#x27;re</div>
+</div>
+<div class="turn" data-start="1282">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:22</span>
+  </div>
+  <div class="said">going to have to actually do something to do that. And that&#x27;s when you go from having low-hanging fruit to having fruit that you just can&#x27;t reach in a normal setting. You&#x27;re going to have to deal with Indigenous issues. you&#x27;re going to have to deal with uh with nations across the country that don&#x27;t want the same things that you want and that is going to be when</div>
+</div>
+<div class="turn" data-start="1305">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:45</span>
+  </div>
+  <div class="said">the low-hanging fruit is all gone but right now you get to talk about everything as though it&#x27;s but there&#x27;s a high degree of potential as though it could all happen and i think he&#x27;s taking good advantage of it especially through a relatively sleepy summer um and i&#x27;m looking forward to seeing what happens in september uh when when he kind of comes back to it i think that it&#x27;s</div>
 </div>
 <div class="turn" data-start="1326">
   <div class="who">
@@ -1478,7 +1572,7 @@
     <span class="speaker">Annalise</span>
     <span class="ts">24:03</span>
   </div>
-  <div class="said">about that. Canada has not secured a trade deal. This August 1st, Trump-imposed deadline has come and gone. Our blanket tariff on Canada is now 25% to 35%. Is no deal better than a bad deal, like strategically? strategically well</div>
+  <div class="said">about that. Canada has not secured a trade deal. This August 1st, Trump-imposed deadline has come and gone. Our blanket tariff on Canada is now 25% to 35%. Is no deal better than a bad deal, like strategically? strategically</div>
 </div>
 <div class="turn" data-start="1460">
   <div class="who">
@@ -1541,7 +1635,28 @@
     <span class="speaker">Carter</span>
     <span class="ts">25:19</span>
   </div>
-  <div class="said">it were, we&#x27;d really be in trouble. Yeah, But as it currently stands, I think that we&#x27;re just at a level of frustration, not necessarily a level of really economic devastation. Now, I say that, but I&#x27;m sure there are industries that are being economically devastated or will be economically devastated in the future. I know that, you know, each of these times that Trump opens his mouth, I&#x27;m sure that the markets just kind of, you know, teeter on the edge of something, either going up or down or whatever, some sort of major reactions. But my view is that, you know, like the people who&#x27;ve negotiated the deals, like the European Union taking the 15% tariff across the board and opening the European Union to more American goods, I&#x27;m not sure that they deserve an A-plus either. I&#x27;m not sure that that&#x27;s the solution that&#x27;s going to make it better for the United States and better for the European Union. game so um i&#x27;m not sure that anybody in the class can can get an a plus i think that the teacher may have taken that off the table</div>
+  <div class="said">it were, we&#x27;d really be in trouble. Yeah,</div>
+</div>
+<div class="turn" data-start="1522">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">25:22</span>
+  </div>
+  <div class="said">But as it currently stands, I think that we&#x27;re just at a level of frustration, not necessarily a level of really economic devastation. Now, I say that, but I&#x27;m sure there are industries that are being economically devastated or will be economically devastated in the future. I know that, you know, each of these times that Trump opens his mouth, I&#x27;m sure that the markets just kind of, you</div>
+</div>
+<div class="turn" data-start="1549">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">25:49</span>
+  </div>
+  <div class="said">know, teeter on the edge of something, either going up or down or whatever, some sort of major reactions. But</div>
+</div>
+<div class="turn" data-start="1556">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">25:56</span>
+  </div>
+  <div class="said">my view is that, you know, like the people who&#x27;ve negotiated the deals, like the European Union taking the 15% tariff across the board and opening the European Union to more American goods, I&#x27;m not sure that they deserve an A-plus either. I&#x27;m not sure that that&#x27;s the solution that&#x27;s going to make it better for the United States and better for the European Union. game so um i&#x27;m not sure that anybody in the class can can get an a plus i think that the teacher may have taken that off the table</div>
 </div>
 <div class="turn" data-start="1588">
   <div class="who">
@@ -1835,7 +1950,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">32:38</span>
   </div>
-  <div class="said">it&#x27;s really interesting because i&#x27;m not seeing that messaging from this is a grassroots response to you know to a to a treetop issue and that to me is the most powerful types of responses it&#x27;s not just the people on our podcast that aren&#x27;t buying can you know that aren&#x27;t buying american goods or traveling to the united states it is a country-wide phenomenon and it is it is traveling through True social networks by word of mouth. And that to me is, you know, that&#x27;s something you try and get when you&#x27;re in the prime minister&#x27;s office. You never get right. This is something that is is only happens at the at the true grassroots level. And it&#x27;s it&#x27;s staggering to watch. I love it</div>
+  <div class="said">it&#x27;s really interesting because i&#x27;m not seeing that messaging from this is a grassroots response to you know to a to a treetop issue and that to me is the most powerful types of responses it&#x27;s not just the people on our podcast that aren&#x27;t buying can you know that aren&#x27;t buying american goods or traveling to the united states it is a country-wide phenomenon and it is it is traveling through True social networks by word of mouth. And that to me is, you know, that&#x27;s something you try and get when you&#x27;re in the prime minister&#x27;s office. You never get right. This is something that is is only happens at the at</div>
+</div>
+<div class="turn" data-start="1997">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">33:17</span>
+  </div>
+  <div class="said">the true grassroots level. And it&#x27;s it&#x27;s staggering to watch. I love it</div>
 </div>
 <div class="turn" data-start="2001">
   <div class="who">
@@ -1849,7 +1971,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">33:51</span>
   </div>
-  <div class="said">i mean this to me is a it&#x27;s a variant of wag the dog right wag the dog you get into an you get into a war so you have a made-up enemy and the population rallies around the flag this is a variant of wag the dog we have an enemy his name is donald trump we are asking our canadians to rally around the flag but you you don&#x27;t have to ask them because the enemy is so clear that that they just simply rally around the flag. And I think that that type of rallying, that type of positive posturing is really valuable to the prime minister&#x27;s office. They didn&#x27;t start the rallying. They didn&#x27;t start it. And they&#x27;re not necessarily in a position where they have to try and continue it. It&#x27;s doing its own work because the enemy that they&#x27;ve defined is so clear and which side they&#x27;re on is also so clear. how many times have you heard mark carney say i&#x27;m on the side of canada right i will only sign a deal that is good for canada right that is he&#x27;s not saying that&#x27;s your enemy he doesn&#x27;t need to say that he&#x27;s saying i&#x27;ve got your back because we all know who the enemy is trust</div>
+  <div class="said">i mean this to me is a it&#x27;s a variant of wag the dog right wag the dog you get into an you get into a war so you have a made-up enemy and the population rallies around the flag this is a variant of wag the dog we have an enemy his name is donald trump we are asking our canadians to rally around the flag but you you don&#x27;t have to ask them because the enemy is so clear that that they just simply rally around the flag. And I think that that type of rallying, that type of positive posturing is really valuable to the prime minister&#x27;s office. They didn&#x27;t start the rallying. They didn&#x27;t start it. And they&#x27;re not necessarily in a position where they have to try and continue it. It&#x27;s doing its own work because the enemy that they&#x27;ve defined is so clear and which side they&#x27;re on is also so clear. how many times have you heard mark carney say i&#x27;m on the side of canada right</div>
+</div>
+<div class="turn" data-start="2089">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:49</span>
+  </div>
+  <div class="said">i will only sign a deal that is good for canada right that is he&#x27;s not saying that&#x27;s your enemy he doesn&#x27;t need to say that he&#x27;s saying i&#x27;ve got your back because we all know who the enemy is trust</div>
 </div>
 <div class="turn" data-start="2104">
   <div class="who">
@@ -2227,7 +2356,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">45:27</span>
   </div>
-  <div class="said">right? It is hard to break through. It is super hard to break through. Anybody trying to run in politics right now, I&#x27;ve talked about it a million times. The general media has fallen apart. We&#x27;ve filled that void with social media for quite some time. It has fallen apart. News is not getting shared. There is no mechanism available to actually share information except sitting around a campfire, apparently. and how that information gets there is a giant fucking mystery we don&#x27;t understand social network construction enough to create consistently create information that travels through social networks</div>
+  <div class="said">right? It is hard to break through. It is super hard to break through. Anybody trying to run in politics right now, I&#x27;ve talked about it a million times. The general media has fallen apart. We&#x27;ve filled that void with social media for quite some time. It has fallen apart.</div>
+</div>
+<div class="turn" data-start="2746">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">45:46</span>
+  </div>
+  <div class="said">News is not getting shared. There is no mechanism available to actually share information except sitting around a campfire, apparently. and how that information gets there is a giant fucking mystery we don&#x27;t understand social network construction enough to create consistently create information that travels through social networks</div>
 </div>
 <div class="turn" data-start="2766">
   <div class="who">
@@ -2262,7 +2398,7 @@
     <span class="speaker">Annalise</span>
     <span class="ts">46:37</span>
   </div>
-  <div class="said">yeah it is world famous people across the world are lucky to listen kate last last one on the uh the provincial stuff which is um the separation referendum question question um so tomic thomas lukaszek is now on the clock to get nearly 300 signatures on the stay in canada oh sorry sorry 300 000 signatures yeah because i think you can actually get 300 000 signatures uh on the stay in canada question he&#x27;s got a higher threshold holds because of when he filed his question um alberta&#x27;s albertans could start signing the petition as of i think it was a week ago when i was away um he says he&#x27;s confident he&#x27;ll get there from a number of standpoints i don&#x27;t think he will do you no</div>
+  <div class="said">yeah it is world famous people across the world are lucky to listen kate last last one on the uh the provincial stuff which is um the separation referendum question question um so tomic thomas lukaszek is now on the clock to get nearly 300 signatures on the stay in canada oh sorry sorry 300 000 signatures yeah because i think you can actually get 300 000 signatures uh on the stay in canada question he&#x27;s got a higher threshold holds because of when he filed his question um alberta&#x27;s albertans could start signing the petition as of i think it was a week ago when i was away um he says he&#x27;s confident he&#x27;ll get there from a number of standpoints i don&#x27;t think he will do you</div>
 </div>
 <div class="turn" data-start="2849">
   <div class="who">
@@ -2416,7 +2552,7 @@
     <span class="speaker">Annalise</span>
     <span class="ts">50:35</span>
   </div>
-  <div class="said">would you do it would you take the work the paid the very well-paid work hypothetically if the threshold was not the 300 000 it was the new lower threshold of what 177 then is it possible if that number&#x27;s cut and almost half yeah</div>
+  <div class="said">would you do it would you take the work the paid the very well-paid work hypothetically if the threshold was not the 300 000 it was the new lower threshold of what 177 then is it possible if that number&#x27;s cut and almost half</div>
 </div>
 <div class="turn" data-start="3052">
   <div class="who">
@@ -2444,7 +2580,7 @@
     <span class="speaker">Annalise</span>
     <span class="ts">51:06</span>
   </div>
-  <div class="said">you can find 2 000 i</div>
+  <div class="said">you can find 2 000</div>
 </div>
 <div class="turn" data-start="3068">
   <div class="who">

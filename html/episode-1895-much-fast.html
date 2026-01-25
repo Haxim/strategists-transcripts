@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/144091997.m4a?sig=dffiALJofu1sSRBoWqkUcEufLcu6LB7sEvEBcxGOzwI%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/69208c23c367efee962000db"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -432,7 +498,7 @@
           
           <div class="turn" data-start="2">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:02</span>
   </div>
   <div class="said">This is a strategist episode 1895. My name is Zain Velji. I can&#x27;t even do my name, guys. I can&#x27;t even do my name. Zain Velji. You go</div>
@@ -446,7 +512,7 @@
 </div>
 <div class="turn" data-start="12">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:12</span>
   </div>
   <div class="said">I thought it was the P&#x27;s that I, can I even do the P? P. They&#x27;re They are popping. Well, I think it&#x27;s because I&#x27;m close. Zain Velji, Shannon Phillips, Stephen Carter. What&#x27;s up, guys?</div>
@@ -460,7 +526,7 @@
 </div>
 <div class="turn" data-start="30">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:30</span>
   </div>
   <div class="said">yet. Well, I&#x27;m going to be talking from the left side of my mouth. Are you in a</div>
@@ -474,7 +540,7 @@
 </div>
 <div class="turn" data-start="36">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:36</span>
   </div>
   <div class="said">This is a mini recording studio of</div>
@@ -488,7 +554,7 @@
 </div>
 <div class="turn" data-start="44">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:44</span>
   </div>
   <div class="said">Undisclosed location, Carter. Undisclosed location. Oh, my God. Carter, undisclosed</div>
@@ -502,14 +568,14 @@
 </div>
 <div class="turn" data-start="54">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:54</span>
   </div>
   <div class="said">Shannon who does that. Proximal to many things. Shannon, how are you?</div>
 </div>
 <div class="turn" data-start="60">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:00</span>
   </div>
   <div class="said">i&#x27;m uh tired of traveling i put it that way if that&#x27;s my honest answer</div>
@@ -523,7 +589,7 @@
 </div>
 <div class="turn" data-start="69">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:09</span>
   </div>
   <div class="said">yeah isn&#x27;t that what the money firms do so they just make you travel and then make you useful when you&#x27;re traveling i think the</div>
@@ -537,28 +603,28 @@
 </div>
 <div class="turn" data-start="84">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:24</span>
   </div>
   <div class="said">No. But it is. It&#x27;s a lot of travel. Put it that way. And B.C. last week, Toronto this weekend. I&#x27;m tired of it, but that&#x27;s OK. We</div>
 </div>
 <div class="turn" data-start="96">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:36</span>
   </div>
   <div class="said">travel. I&#x27;m taking</div>
 </div>
 <div class="turn" data-start="97">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:37</span>
   </div>
   <div class="said">my kids to Toronto and then I&#x27;m staying. The worst.</div>
 </div>
 <div class="turn" data-start="101">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:41</span>
   </div>
   <div class="said">The worst. The worst. We can work. Travel is the worst. Carter, did you have to do weekend work travel? I You never took me on weekend work travel trips when I would have enjoyed that</div>
@@ -572,7 +638,7 @@
 </div>
 <div class="turn" data-start="123">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:03</span>
   </div>
   <div class="said">Fuck you so much</div>
@@ -586,7 +652,7 @@
 </div>
 <div class="turn" data-start="128">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:08</span>
   </div>
   <div class="said">are recording. Of course we are. I&#x27;m just trying to get my mouth warmed up.</div>
@@ -600,10 +666,17 @@
 </div>
 <div class="turn" data-start="136">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:16</span>
   </div>
-  <div class="said">Zane Velge. I can&#x27;t even do it. Now I just forgot my name. Zane Velge. Hey, look, I could have done it. I could have done it. We could start again. Okay, I&#x27;ve got an idea for this show. Stephen Carter, we did a Patreon episode after the live show. Is there anything? I am assuming this is not a Patreon episode, unless it is. I don&#x27;t Let&#x27;s just assume it isn&#x27;t. Anything you wanted to tell the general audience about the Strategist live show? We still have a Part B side coming out to that, maybe sometime this weekend, end with our q a and maybe our interviews with our special guests but steven carter any one thing you want to tell the general audience how&#x27;s the hangover</div>
+  <div class="said">Zane Velge. I can&#x27;t even do it. Now I just forgot my name. Zane Velge. Hey, look, I could have done it. I could have done it. We could start again. Okay, I&#x27;ve got an idea for this show. Stephen Carter, we did a Patreon episode after the live show. Is there anything? I am assuming this is not a Patreon episode, unless it is. I don&#x27;t Let&#x27;s just assume it isn&#x27;t. Anything you wanted to tell the general audience about the Strategist live show? We still have a Part B side coming out to that, maybe sometime this weekend, end with our q a and maybe our interviews</div>
+</div>
+<div class="turn" data-start="165">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:45</span>
+  </div>
+  <div class="said">with our special guests but steven carter any one thing you want to tell the general audience how&#x27;s the hangover</div>
 </div>
 <div class="turn" data-start="170">
   <div class="who">
@@ -614,14 +687,14 @@
 </div>
 <div class="turn" data-start="190">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">3:10</span>
   </div>
   <div class="said">and thanks Thanks to one Corey Hogan for showing up as part of the beat up and I think leading it.</div>
 </div>
 <div class="turn" data-start="196">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">3:16</span>
   </div>
   <div class="said">was way worse than</div>
@@ -635,14 +708,14 @@
 </div>
 <div class="turn" data-start="207">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">3:27</span>
   </div>
   <div class="said">you know, I don&#x27;t speak to Corey either. And I&#x27;ve told him this until he becomes a minister. Don&#x27;t waste my time. And I think I told him that the live show and we don&#x27;t talk either. So we&#x27;re on the same page. I talk Well, I&#x27;m a nicer</div>
 </div>
 <div class="turn" data-start="221">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">3:41</span>
   </div>
   <div class="said">person than either of you. Are you</div>
@@ -656,7 +729,7 @@
 </div>
 <div class="turn" data-start="223">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">3:43</span>
   </div>
   <div class="said">something? You&#x27;ve got lower standards. Here&#x27;s what I want to do today. I&#x27;ve got an idea and I&#x27;m going to throw it at you. It&#x27;s not dissimilar to what we&#x27;ve done in the past, but there&#x27;s a lot going on in Alberta politics. There&#x27;s a lot going on in Canadian politics. So today I&#x27;m going to pitch you, and we&#x27;ll see how many of these we can get through, a series of things that have happened in our Canadian politics broadly. Some of them might be acute to Alberta. Some of them may not. And I want you, on a purely strategic level, and I&#x27;ll give you some release valve to talk about how you feel about these things and your sort of analysis in that sense. But on a political strategy angle, I want you to tell me, are you going to take what the person in question did? Is it going to be a take? I&#x27;m going to take it at its face value. Am I going to tweak it or am I going to trash it?</div>
@@ -670,10 +743,17 @@
 </div>
 <div class="turn" data-start="275">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">4:35</span>
   </div>
-  <div class="said">it&#x27;s a take at face value. You&#x27;re going to tweak it or you&#x27;re going to trash it. great. And we talk about this purely from a political strategy level. And let&#x27;s start with the story that I think is just interesting. We&#x27;ll get to the Alberta stories because I know both of you maybe want to talk about notwithstanding and private health care. Let&#x27;s talk about conservative MP Jamil Javani and his end liberal racism events. So Jamil Javani, for those who don&#x27;t know, is a conservative member of parliament. He is a former Yale Law School grad, best buds with J.D. Vance, former Bell Media talk show host. He&#x27;s now kind of taken on the in-house role of the conservative Charlie Kirk mantra, going to university campuses and starting to try to ignite that base that the conservatives believe is there for them already. They kind of believe that these are their people, especially those men. And so his most recent salvo into this conversation is about ending liberal racism as an extension of his university tour. And he had an event earlier this week called the National Forum to End Liberal Racism in Ottawa. 50 people showed up. Giovanni&#x27;s campaign targets what he labels as liberal racism, criticizing DEI policies and suggests they create race-based government decisions. He&#x27;s also gone on the record to criticize size the liberal government&#x27;s uh school lunch program carter you get your feelings aside your feelings i can&#x27;t you know what the letter i can&#x27;t do it&#x27;s the f yeah</div>
+  <div class="said">it&#x27;s a take at face value. You&#x27;re going to tweak it or you&#x27;re going to trash it. great. And we talk about this purely from a political strategy level. And let&#x27;s start with the story that I think is just interesting. We&#x27;ll get to the Alberta stories because I know both of you maybe want to talk about notwithstanding and private health care. Let&#x27;s talk about conservative MP Jamil Javani and his end liberal racism events. So Jamil Javani, for those who don&#x27;t know, is a conservative member of parliament. He is a former Yale Law School grad, best buds with J.D. Vance, former Bell Media talk show host. He&#x27;s now kind of taken on the in-house role of the conservative Charlie Kirk mantra, going to university campuses and starting to try to ignite that base that the conservatives believe is there for them already. They kind of believe that these are their people, especially those men. And so his most recent salvo into this conversation is about ending liberal racism as an extension of his university tour. And he had an event earlier this week called the National Forum to End Liberal Racism in Ottawa. 50 people showed up.</div>
+</div>
+<div class="turn" data-start="354">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">5:54</span>
+  </div>
+  <div class="said">Giovanni&#x27;s campaign targets what he labels as liberal racism, criticizing DEI policies and suggests they create race-based government decisions. He&#x27;s also gone on the record to criticize size the liberal government&#x27;s uh school lunch program carter you get your feelings aside your feelings i can&#x27;t you know what the letter i can&#x27;t do it&#x27;s the f yeah</div>
 </div>
 <div class="turn" data-start="373">
   <div class="who">
@@ -684,7 +764,7 @@
 </div>
 <div class="turn" data-start="378">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">6:18</span>
   </div>
   <div class="said">strategy that giovanni and the conservatives are employing do you want to take it do you want to take uh tweak it or do you want to fully just trash what they&#x27;re up to with this being the most recent salvo strategic level steven carter let&#x27;s go</div>
@@ -694,67 +774,116 @@
     <span class="speaker">Carter</span>
     <span class="ts">6:32</span>
   </div>
-  <div class="said">I think I&#x27;m going to trash it. Um, not just because it&#x27;s, it&#x27;s, uh, you know, it&#x27;s crazy on its face, but, but, but I sometimes feel like what the, what the conservatives do is they look in the mirror and they see themselves and they say, let&#x27;s accuse them of that. And I think that that&#x27;s where we are with the racism complaint, right? There&#x27;s a, there&#x27;s an inherent, uh, I don&#x27;t want to say racism, but there&#x27;s an inherent bias with the conservatives and they, uh, they look in the mirror they see it and they say well the other side must be guilty of it too and the same thing happens with when you know when they&#x27;re talking about fiscal conservatism when they&#x27;re talking about you know the failings of the liberal government the lack of ethics that all exists on the liberal on the conservative side they look into the mirror they see themselves and then they accuse someone else of that very same thing and that&#x27;s that&#x27;s the donald trump mantra i mean if If Donald Trump says anything, chances are he&#x27;s doing that very thing. So when I think of Donald Trump, when I think of the conservatives movement as it stands currently, it is stand in front of the mirror, find the negative that you see, and then accuse the other side of doing that thing. So that&#x27;s why I&#x27;m going to trash Jamil Javani and his lunacy in this particular case.</div>
+  <div class="said">I think I&#x27;m going to trash it. Um, not just because it&#x27;s, it&#x27;s, uh, you know, it&#x27;s crazy on its face, but, but, but I sometimes feel like what the, what the conservatives do is they look in the mirror and they see themselves and they say, let&#x27;s accuse them of that. And I think that that&#x27;s where we are with the racism complaint, right? There&#x27;s a, there&#x27;s an inherent, uh, I</div>
+</div>
+<div class="turn" data-start="413">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">6:53</span>
+  </div>
+  <div class="said">don&#x27;t want to say racism, but there&#x27;s an inherent bias with the conservatives and they, uh, they look in the mirror they see it and they say well the other side must be guilty of it too and the same thing happens with when you know when they&#x27;re talking about fiscal conservatism when they&#x27;re talking about you know the failings of the liberal government the lack of ethics that all exists on the liberal on the conservative side they look into the mirror they see themselves and then they accuse someone else of that very same thing and that&#x27;s that&#x27;s the donald trump mantra i mean if If Donald Trump says anything, chances are he&#x27;s doing that very thing. So when I think of Donald Trump, when I think of the conservatives movement as it stands currently, it is stand in front of the mirror, find the negative that you see, and then accuse the other side of doing that thing. So that&#x27;s why I&#x27;m going to trash Jamil Javani and his lunacy in this particular case.</div>
 </div>
 <div class="turn" data-start="471">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">7:51</span>
   </div>
   <div class="said">Shannon, what do you think of this strategy? You know, the Conservatives may make a case that woke is at an all-time low, DEI is at an all-time low, that this is something worthy of pouncing on, that this is something that really speaks to the new generation of young, predominantly white men, perhaps. What are you doing if you&#x27;re the Conservatives on this strategy? In your case, are you taking this? Are you tweaking this? Are you trashing this?</div>
 </div>
 <div class="turn" data-start="496">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:16</span>
   </div>
-  <div class="said">Well, I&#x27;m trashing it and not just because it really is like fingernails on the chalkboard for my values. but i&#x27;m looking at what the conservatives need to do here right like what they&#x27;re doing is they&#x27;re doubling down on the young men&#x27;s strategy they&#x27;ve seen that they&#x27;ve got young men now you know pretty narrowly in most polling but they&#x27;ve got them uh and so they think there&#x27;s more there to find to put them over the edge in the places where they need to need to be put over the edge or keep what they just won places like london windsor uh at northern ontario stuff like that you know and some other stuff in the 905 um but i&#x27;m trashing this number one i mean 50 people showed up so like there&#x27;s your answer pal uh but also because young men don&#x27;t vote uh so it&#x27;s very similar to new democrats going into super low income areas and and and trying to till that soil if they&#x27;re not going to vote they&#x27;re not going to vote right and you are better off quite frankly like i&#x27;m just talking about a straight door knocking uh and trying to like how are you spending your time because i always look at things through that lens and usually that then gives me a key to how i&#x27;m looking at polling and other things but if you&#x27;re going into a where they have lost is certainly women over 50 but they&#x27;ve lost men over 55 too the conservatives have why because they they don&#x27;t uh it&#x27;s not that they need to like mr poileva they didn&#x27;t really really like harper like what was right but they trusted him they and they they thought of him as capable and that&#x27;s where the conservatives that&#x27;s where canadians are more likely to place a conservative vote like oftentimes when they when they&#x27;re replacing liberals at least the history of this country they&#x27;re they&#x27;re replacing they&#x27;re they&#x27;re they&#x27;re voting conservative because of usually like the liberals have timed themselves out of some sort of corruption self-dealing you know uh or or other like that is the the pattern with those folks that is you know it&#x27;s kind of their achilles heel they they elect new democrats because they want a threat to the liberals or uh to the conservatives they elect uh conservatives because uh because oftentimes they want to sort of replace uh some of the things that have gone sideways with liberals that&#x27;s why canadians are motivated to vote for those parties so they need to restore trust uh and not Not necessarily likability, but capability, the conservatives do. And screaming about internet things is actually not going to do that for you in the groups of voters that you need, especially not school lunch programs, which like last I checked, when Jason Kenney came to power in 2019, he explicitly kept our school lunch program and expanded it because it&#x27;s popular, right? Right. So he&#x27;s doing things that are are wedgie and that are are trying to, like, find this group of voters or, like, create, you know, antagonism or grievance. But, I mean, is this popular? Right. Like, I go back to, like, what do people like? They don&#x27;t really like, you know, that kind of antagonism, that kind of instability. You know, they&#x27;re not interested. And young people aren&#x27;t interested because 50 people showed up.</div>
+  <div class="said">Well, I&#x27;m trashing it and not just because it really is like fingernails on the chalkboard for my values. but i&#x27;m looking at what the conservatives need to do here</div>
+</div>
+<div class="turn" data-start="504">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">8:24</span>
+  </div>
+  <div class="said">right like what they&#x27;re doing is they&#x27;re doubling down on the young men&#x27;s strategy they&#x27;ve seen that they&#x27;ve got young men now you know pretty narrowly in most polling but they&#x27;ve got them uh and so they think there&#x27;s more there to find to put them over the edge in the places where they need to need to be put over the edge or keep what they just won places like london windsor uh at northern ontario stuff like that you know and some other stuff in the 905 um but i&#x27;m trashing this number one i mean 50 people showed up so like there&#x27;s your answer pal uh but also because young men don&#x27;t vote uh so it&#x27;s very similar to new democrats going into super low income areas and and and trying to till that soil if they&#x27;re not going to vote they&#x27;re not going to vote right and you are better off quite frankly like i&#x27;m just talking about a straight door knocking uh and trying to like how are you spending your time because i always look at things through that lens and usually that then gives me a key to how i&#x27;m looking at polling and other things but if you&#x27;re going into a where they have lost is certainly women over 50 but they&#x27;ve lost men over 55 too the conservatives have why because they they don&#x27;t uh it&#x27;s not that they need to like mr poileva they didn&#x27;t really really like harper like what was right but they trusted him they and they they thought of him as capable and that&#x27;s where the conservatives that&#x27;s where canadians are more likely to place a conservative vote like oftentimes when they when they&#x27;re replacing liberals at least the history of this country they&#x27;re they&#x27;re replacing they&#x27;re they&#x27;re they&#x27;re voting conservative because of usually like the liberals have timed themselves out of some sort of corruption self-dealing you know uh or or other like that is the the pattern with those folks that is you know it&#x27;s kind of their achilles heel they they elect new democrats because they want a threat to the liberals or uh to the conservatives they elect uh conservatives because uh because oftentimes they want to sort of replace uh some of the things that have gone sideways with liberals that&#x27;s why canadians are motivated to vote for those parties so they need to restore trust uh and not Not necessarily likability, but capability, the conservatives do. And screaming about internet things is actually not going to do that for you in the groups of voters that you need, especially not school lunch programs, which like last I checked, when Jason Kenney came to power in 2019, he explicitly kept our school lunch program and expanded it because it&#x27;s popular, right? Right. So he&#x27;s doing things that are are wedgie and that are are trying to, like, find this group of voters or, like, create, you know, antagonism or grievance. But, I mean, is this popular?</div>
+</div>
+<div class="turn" data-start="669">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">11:09</span>
+  </div>
+  <div class="said">Right. Like, I go back to, like, what do people like? They don&#x27;t really like, you know, that kind of antagonism, that kind of instability. You know, they&#x27;re not interested. And young people aren&#x27;t interested because 50 people showed up.</div>
 </div>
 <div class="turn" data-start="683">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">11:23</span>
   </div>
-  <div class="said">Carter, what do you think is going on with politicians these days? I almost feel like they&#x27;re getting into the pundit space more aggressively. Like it used to be novel, but now it&#x27;s not novel. Now it&#x27;s like what they do. Like this transition between politician and pundit has happened so swiftly that even in the online video space, without criticizing one party in particular, a lot of politicians are starting to look like influencers who just go to the polls every couple of years. And so is this Giovanni transition something you think we&#x27;re going to see more of from a strategy perspective? And should we see more of it, even if this is not the right play for them? Should we see like one-off MPs having their own initiatives and building a little bit of a kind of a fiefdom or a sort of media enterprise around them as a quasi-influencer who also happens happens to have a vote in in parliament in this case</div>
+  <div class="said">Carter, what do you think is going on with politicians these days? I almost feel like they&#x27;re getting into the pundit space more aggressively. Like it used to be novel, but now it&#x27;s not novel. Now it&#x27;s like what they do. Like this transition between politician and pundit has happened so swiftly that even in the online video space, without criticizing one party in particular, a lot of politicians are starting to look like influencers who just go to the polls every couple of years. And so is this Giovanni transition something you think we&#x27;re going to see more of from a strategy perspective? And should we see more of it, even if this is not the right play for them? Should we see like one-off MPs having their own initiatives and building a little bit of a kind</div>
+</div>
+<div class="turn" data-start="730">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:10</span>
+  </div>
+  <div class="said">of a fiefdom or a sort of media enterprise around them as a quasi-influencer who also happens happens to have a vote in in parliament in this case</div>
 </div>
 <div class="turn" data-start="740">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">12:20</span>
   </div>
-  <div class="said">i mean i&#x27;ve talked uh for quite a while i can&#x27;t remember his name now but he was the uh he was a congressman from tennessee or something along those lines and he he had this wonderful uh you know tiktok presence and i didn&#x27;t give a shit about south carolina guy south carolina yeah and he&#x27;s the he&#x27;s he&#x27;s moved into the state state hierarchy now i can&#x27;t remember his role but let&#x27;s say attorney general or something along those lines uh state treasurer or some stupid thing that i don&#x27;t understand he had a great um tiktok presence his the way he would deliver the way he would make you feel about the information and our good friend cory hogan has a great internet presence you know there&#x27;s there&#x27;s kind of two tracks that he has he has his very professional ones and he has his little um you know stand up talk to the camera ones both of which i think are extremely effective um you know they get tons of views and those, uh, those interrelate, those relationships that are developed through those communication tools, I think have tremendous value. So I think that we will see more of it. Will we see more Jamil Javani style negative type of stuff? Of course we will. of course we will um it has value and it um you know it it creates opportunity for the person who&#x27;s doing the uh the the communication piece if you can find an audience and i do agree with everything that shannon said about the audience if you can find an audience then you&#x27;re You&#x27;re nuts not to take advantage of that audience. And if that audience is Charlie Kirk style and you&#x27;re an elected MP, I mean, they&#x27;re not going to kick you out because you&#x27;re doing communications that are effective. They may kick you out because you do communications that are ineffective and ultimately paint the rest of the party poorly. So Jamil Javani needs to worry about that. But I think that the Corey Hogans of the world that are doing their communications for their party with a strong sense of party loyalty and a strong sense of party commitment, I think that that is a really strong thing.</div>
+  <div class="said">i mean i&#x27;ve talked uh for quite a while i can&#x27;t remember his name now but he was the uh he was a congressman from tennessee or something along those lines and he he had this wonderful uh you know tiktok presence and i didn&#x27;t give a shit about south carolina guy south carolina yeah and he&#x27;s the he&#x27;s he&#x27;s moved into the state state hierarchy now i can&#x27;t remember his role but let&#x27;s say attorney general or something along those lines uh state treasurer or some stupid thing that i don&#x27;t understand he had a great um tiktok presence his the way he would deliver the way he would make you feel about the information and our good friend cory hogan has a great internet presence you know there&#x27;s there&#x27;s kind of two tracks that he has he has his very professional ones and he has his little um you know stand up talk to the camera ones both of which i think are extremely effective um you know they get tons of views and those, uh, those interrelate, those relationships that are developed through those communication tools, I think have tremendous value. So I think that we will see more of it. Will we see more Jamil Javani style negative type of stuff? Of course we will. of course we will um</div>
+</div>
+<div class="turn" data-start="819">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:39</span>
+  </div>
+  <div class="said">it has value and it um you know it it creates opportunity for the person who&#x27;s doing the uh the the communication piece if you can find an audience and i do agree with everything that shannon said about the audience if you can find an audience then you&#x27;re You&#x27;re nuts not to take advantage of that audience. And if that audience is Charlie Kirk style and you&#x27;re an elected MP, I mean, they&#x27;re not going to kick you out because you&#x27;re doing communications that are effective. They may kick you out because you do communications that are ineffective and ultimately paint the rest of the party poorly.</div>
+</div>
+<div class="turn" data-start="860">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">14:20</span>
+  </div>
+  <div class="said">So Jamil Javani needs to worry about that. But I think that the Corey Hogans of the world that are doing their communications for their party with a strong sense of party loyalty and a strong sense of party commitment, I think that that is a really strong thing.</div>
 </div>
 <div class="turn" data-start="876">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">14:36</span>
   </div>
   <div class="said">That&#x27;s interesting to me. And Shannon, I&#x27;m curious to get your take because the party commitment piece can be questioned on Erskine Smith because the guy freelances all the time in highly produced videos, probably better than most politicians, if not the central party. But he also kind of sounds like a liberal adjacent, liberal friendly MP who happens to be a liberal. So I&#x27;m curious to get your take on this, Shannon. Like, will we see more of this? And maybe the question to you is, should any of the very small federal NDP caucus be thinking about something like this?</div>
 </div>
 <div class="turn" data-start="910">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">15:10</span>
   </div>
-  <div class="said">Well, this is the part of the Giovanni strategy that I&#x27;ll take. Right. Like the substance of it, I think, is like not smart. But I mean, what do I know? I&#x27;m not the target audience. uh but he&#x27;s out there by all accounts you know with uh the blessing of the leader&#x27;s office he&#x27;s largely on message it&#x27;s not like he&#x27;s uh cross-talking the message like nadir skinsmith sometime it sometimes is and becoming a talking point for the opposition because nadir skinsmith absolutely did last week or whenever it was on the budget um and uh what giovanni is doing is he&#x27;s counting on media fragmentation to be able to quote unquote get away with it right so that that he is targeting straight into young people and using that to drive a bit of the cultural zeitgeist so that, you know, other older voters might find it more culturally acceptable. That&#x27;s what Kirk did. And so, but he&#x27;s counting on in the first instance that he&#x27;s talking about those issues that will kind of get some of those young folks up in the morning and that boomers won&#x27;t notice. Women won&#x27;t notice necessarily, right? Because it&#x27;s not in their corner of the internet or the the information environment so i mean that part is fine right as far as it goes as a strategy on its face uh because it does allow you to you know collect new lists maybe uncover new fundraising opportunities although you know i wouldn&#x27;t really be trying to do too too much small dollar even small dollar fundraising after the off the under 30 crowd but again what do i i know uh i&#x27;m not in these spaces um but uh you know so they&#x27;re clearly seeing it as additive the leader&#x27;s offices right to what polyamory is doing um and i think the only problem with it is when it starts to subtract from message or detract or or distract uh from the overall message again though it shows you that polyamory is not changing right he&#x27;s not going to get off this like jordan and peterson like wackadoodle nonsense uh he&#x27;s just gonna double straight down on it he thinks it&#x27;s fine why because he actually agrees with it that&#x27;s who he is let</div>
+  <div class="said">Well, this is the part of the Giovanni strategy that I&#x27;ll take. Right. Like the substance of it, I think, is like not smart. But I mean, what do I know? I&#x27;m not the target audience. uh but he&#x27;s out there by all accounts you know with uh the blessing of the leader&#x27;s office he&#x27;s largely on message it&#x27;s not like he&#x27;s uh cross-talking the message like nadir skinsmith sometime it sometimes is and becoming a talking point for the opposition because nadir skinsmith absolutely did last week or whenever it was on the budget um and uh what giovanni is doing is he&#x27;s counting on media fragmentation to be able to quote unquote get away with it right so that that he is targeting straight into young people and using that to drive a bit of the cultural zeitgeist so that, you know, other older voters might find it more culturally acceptable. That&#x27;s what Kirk did. And so, but he&#x27;s counting on in the first instance that he&#x27;s talking about those issues that will kind of get some of those young folks up in the morning and that boomers won&#x27;t notice. Women won&#x27;t notice necessarily, right? Because it&#x27;s not in their corner of the internet or the the information environment so</div>
+</div>
+<div class="turn" data-start="979">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">16:19</span>
+  </div>
+  <div class="said">i mean that part is fine right as far as it goes as a strategy on its face uh because it does allow you to you know collect new lists maybe uncover new fundraising opportunities although you know i wouldn&#x27;t really be trying to do too too much small dollar even small dollar fundraising after the off the under 30 crowd but again what do i i know uh i&#x27;m not in these spaces um but uh you know so they&#x27;re clearly seeing it as additive the leader&#x27;s offices right to what polyamory is doing um and i think the only problem with it is when it starts to subtract from message or detract or or distract uh from the overall message again though it shows you that polyamory is not changing right he&#x27;s not going to get off this like jordan and peterson like wackadoodle nonsense uh he&#x27;s just gonna double straight down on it he thinks it&#x27;s fine why because he actually agrees with it that&#x27;s who he is let</div>
 </div>
 <div class="turn" data-start="1037">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">17:17</span>
   </div>
   <div class="said">let me um let me stick with federal a federal provincial carter before i jump i have actually no shannon should the ndp do something like this i want to i don&#x27;t want to should the federal ndp because this does get get attention at least it did in giovanni&#x27;s case and say what you will i think he&#x27;s a pretty interesting maybe not fully compelling interesting person in that caucus so it does get him attention should the ndp with their low numbers and struggling to get attention consider something like this where they send a person off on a tour where they try to really invest in one person&#x27;s like media vertical in a non-traditional way such as this i&#x27;m</div>
 </div>
 <div class="turn" data-start="1079">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">17:59</span>
   </div>
   <div class="said">i&#x27;m really uh like first of all like i&#x27;m not sure who because they&#x27;re in the middle of a leadership race uh number two like where are the resources for this who&#x27;s the they quote unquote right they you know they&#x27;re they&#x27;re down to a a couple of staff to run house business um because uh you know the liberals didn&#x27;t give them uh anything approaching resources so making sure you&#x27;ve got enough people to show up to committee uh it you know has to be the first order priority right and they&#x27;re they&#x27;re running a leadership so all other resources are going towards that because it&#x27;s not small to to as we all know uh to pull together the the debates and run the membership and uh just all of the back end of a leadership race right so like who and also who right like who on the front end and who on the back end would be would be doing that&#x27;s interesting right i mean like some can do it on their own steam right like i again this is switching over to provincial but janice erwin uh you know has like a couple of cas like the rest of the mlas and she&#x27;s she&#x27;s running you know one of the most influential social media presences on the left anyway in the country yeah</div>
 </div>
 <div class="turn" data-start="1143">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">19:03</span>
   </div>
   <div class="said">yeah it&#x27;s interesting carter like in some ways it&#x27;s kind of changed the calculation we&#x27;re not necessarily looking for star candidates we&#x27;re kind of looking for like i don&#x27;t know what the term is but like micro micro-influencer candidates in some ways, or even nano-influencer candidates, people who can have reach that can organically grow, not necessarily have big profile and then rely on something that they did, right? It&#x27;s like they&#x27;re not relying on what they historically have done to bring them credibility. They&#x27;re relying on their ability to get constant attention day to day, which is a fundamentally different thing, to continue to build their and their party&#x27;s credibility and we don&#x27;t necessarily look for that in in candidate making and in a modern sort we probably should going forward and maybe some aren&#x27;t doing it more than less but i&#x27;m kind of curious to get your final reflections before i move on</div>
@@ -768,7 +897,7 @@
 </div>
 <div class="turn" data-start="1206">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">20:06</span>
   </div>
   <div class="said">like cory&#x27;s vet probably took days we know that thanks to our friend yeah i mean yeah i</div>
@@ -782,7 +911,7 @@
 </div>
 <div class="turn" data-start="1212">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">20:12</span>
   </div>
   <div class="said">months in a day&#x27;s long election</div>
@@ -796,7 +925,7 @@
 </div>
 <div class="turn" data-start="1219">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">20:19</span>
   </div>
   <div class="said">pretty much gave up at their own we shouldn&#x27;t tell we shouldn&#x27;t tell the conservatives that but we&#x27;ll just skip over that</div>
@@ -806,11 +935,18 @@
     <span class="speaker">Carter</span>
     <span class="ts">20:25</span>
   </div>
-  <div class="said">but the the truth is that the um that this is a uh this is a new skill ill. You know, communicating on behalf of your leader, communicating on behalf of your party was always part of the game. But now using these non-traditional or now, I guess, very traditional methods of social media and video especially. And Janice Irwin&#x27;s a great example. And you can contrast with Kathleen Ganley, who also does a lot of videos, but doesn&#x27;t have the same reach and presence right both of them are uh making you know using the medium but neither you know but janice&#x27;s is nailing it and kathleen tries really hard and i i like kathleen&#x27;s stuff actually better than janice&#x27;s but maybe i&#x27;m more her target audience well i am one of her constituents i suppose</div>
+  <div class="said">but the the truth is that the um that this is a uh this is a new skill ill. You know, communicating on behalf of your leader, communicating on behalf of your party was always part of the game. But now using these non-traditional or now,</div>
+</div>
+<div class="turn" data-start="1243">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">20:43</span>
+  </div>
+  <div class="said">I guess, very traditional methods of social media and video especially. And Janice Irwin&#x27;s a great example. And you can contrast with Kathleen Ganley, who also does a lot of videos, but doesn&#x27;t have the same reach and presence right both of them are uh making you know using the medium but neither you know but janice&#x27;s is nailing it and kathleen tries really hard and i i like kathleen&#x27;s stuff actually better than janice&#x27;s but maybe i&#x27;m more her target audience well i am one of her constituents i suppose</div>
 </div>
 <div class="turn" data-start="1278">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">21:18</span>
   </div>
   <div class="said">we both are exactly</div>
@@ -824,35 +960,56 @@
 </div>
 <div class="turn" data-start="1306">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">21:46</span>
   </div>
-  <div class="said">So in part, I agree with you, but let me ask you the question this way, and we haven&#x27;t gotten past the first question 22 minutes in, but I&#x27;m finding this interesting. like shannon if you were the liberal party today would you take erskine smith in your caucus like if you had a chance to do a do-over and you could make a binary choice like i think he&#x27;s an interesting case because he&#x27;s obviously talented he&#x27;s obviously a great communicator he obviously seems to want to produce his own stuff yeah he&#x27;s got flirty eyes with other political ambitions maybe even currently um but someone like him would you want him in your caucus or is this kind of the danger of the relaxation that carter is is proposing that that for every janice who&#x27;s loyal to the party you still get a bit of a freelancy aspect to some of these people because they&#x27;re loyal to their own audience and themselves rather than a political institution like we we might be entering a new era which i agree with carter on but you know like the question maybe Maybe it&#x27;s like, is Erskine-Smith perhaps a telltale sign or a cautionary tale? Cautionary.</div>
+  <div class="said">So in part, I agree with you, but let me ask you the question this way, and we haven&#x27;t gotten past the first question 22 minutes in, but I&#x27;m finding this interesting.</div>
+</div>
+<div class="turn" data-start="1316">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">21:56</span>
+  </div>
+  <div class="said">like shannon if you were the liberal party today would you take erskine smith in your caucus like if you had a chance to do a do-over and you could make a binary choice like i think he&#x27;s an interesting case because he&#x27;s obviously talented he&#x27;s obviously a great communicator he obviously seems to want to produce his own stuff yeah he&#x27;s got flirty eyes with other political ambitions maybe even currently um but someone like him would you want him in your caucus or is this kind of the danger of the relaxation that carter is is proposing that that for every janice who&#x27;s loyal to the party you still get a bit of a freelancy aspect to some of these people because they&#x27;re loyal to their own audience and themselves rather than a political institution like we we might be entering a new era which i agree with carter on but you know like the question maybe Maybe it&#x27;s like, is Erskine-Smith perhaps a telltale sign or a cautionary tale? Cautionary.</div>
 </div>
 <div class="turn" data-start="1374">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">22:54</span>
   </div>
-  <div class="said">No, I think so. I mean, but like, I am naturally so much more cautious due to my experience working in the Notley government where we, you know, like we were, we very much learned these lessons in the first 48 hours that there was much more strength in the protection of the group uh uh because we were so uh you know like we were they were trying to disqualify us from day one uh and so i uh i always like as a matter of like it&#x27;s it&#x27;s tattooed in my dna now uh to be very cautious even at the live show i&#x27;m like oh cory you know um like i&#x27;m the one like i am my own own issues manager right um because i don&#x27;t like it uh uh it it is uh it&#x27;s an eye poker for me uh i i just don&#x27;t think that it can lead anywhere productive to be freelancing off your party and your leader uh and second guessing your government&#x27;s message uh i i just don&#x27;t think it&#x27;s helpful when if you&#x27;re up or you&#x27;re down or otherwise uh and uh because i don&#x27;t think it it it is actually the job like your job is to contribute to the whole when you&#x27;re part of a caucus it&#x27;s not about you i can&#x27;t stand this uh idea like when people think oh well you know you should just step outside your caucus or you know and they kind of look down on uh towing the party line i actually think that contributing to the group behind closed doors and then going out with a unified message is an element of professionalism it is part of the vocation of politics like Like, if you don&#x27;t like it, go get a different fucking job. And so, like, I wouldn&#x27;t take an Erskine-Smith, or I&#x27;d slap his wrist behind the scenes, because I don&#x27;t like it. I don&#x27;t think it&#x27;s productive. But that&#x27;s not what Giovanni&#x27;s doing, right? No, it isn&#x27;t. You know, like, not at all.</div>
+  <div class="said">No, I think so. I mean, but like, I am naturally so much more cautious due to my experience working in the Notley government where we, you know, like we were, we very much learned these lessons in the first 48 hours that there was much more strength in the protection of the group uh uh because we were so uh you know like we were they were trying to disqualify us from day one uh and so i uh i always like as a matter of like it&#x27;s it&#x27;s tattooed in my dna now uh to be very cautious even at the live show i&#x27;m like oh cory you know um like i&#x27;m the one like i am my own own issues manager right um because i don&#x27;t like it uh uh it it is uh it&#x27;s an eye poker for me uh i i just don&#x27;t think that it can lead anywhere productive to be freelancing off your party and your leader uh</div>
+</div>
+<div class="turn" data-start="1428">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">23:48</span>
+  </div>
+  <div class="said">and second guessing your government&#x27;s message uh i i just don&#x27;t think it&#x27;s helpful when if you&#x27;re up or you&#x27;re down or otherwise uh and uh because i don&#x27;t think it it it is actually the job like your job is to contribute to the whole when you&#x27;re part of a caucus it&#x27;s not about you i can&#x27;t stand this uh idea like when people think oh well you know you should just step outside your caucus or you know and they kind of look down on uh towing the party line i actually think that contributing to the group behind closed doors and then going out with a unified message is an element of professionalism it is part of the vocation of politics like Like, if you don&#x27;t like it, go get a different fucking job.</div>
+</div>
+<div class="turn" data-start="1468">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">24:28</span>
+  </div>
+  <div class="said">And so, like, I wouldn&#x27;t take an Erskine-Smith, or I&#x27;d slap his wrist behind the scenes, because I don&#x27;t like it. I don&#x27;t think it&#x27;s productive. But that&#x27;s not what Giovanni&#x27;s doing, right? No, it isn&#x27;t. You know, like, not at all.</div>
 </div>
 <div class="turn" data-start="1482">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">24:42</span>
   </div>
   <div class="said">It seems to have probably a blessing. And I guess I could kind of use your opinion on, if you were in a caucus, and the party made a decision to invest resources on a fellow caucus member. Great. Right? Right. How would how would that sit with you? Like, I think it was amazing. You would. Hey, yeah.</div>
 </div>
 <div class="turn" data-start="1500">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">25:00</span>
   </div>
   <div class="said">you&#x27;re going out there and you&#x27;re you&#x27;re probably communicating in a in a different way than the leader. You have more freedom than the leader. You can be more authentic sometimes and more approachable than the leader. Or you can take on specific topics in a way that&#x27;s consistent with the party&#x27;s message, but that the leader doesn&#x27;t always want to be talking about. right uh maybe on certain social justice issues or whatever you you know you want the leader to be broader sometimes than than some specific struggles so it&#x27;s perfect to have people who can reach uh specific audiences that&#x27;s that&#x27;s great more power to them what</div>
 </div>
 <div class="turn" data-start="1534">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">25:34</span>
   </div>
   <div class="said">what would you what would you for every shannon phillips there&#x27;s probably three other people that are like fucking i can do that job better than jamil javani or whoever the jamil javani stand-in is for your caucus well how do you you kind of like what do you kind of make of that aspect of it because to carter&#x27;s point and i&#x27;ll get your take on this too carter like there&#x27;s always people that you elevate in a caucus this is an interesting opposition sort of element that giovanni is in they&#x27;re elevating him they&#x27;re not necessarily investing in elevating others probably some of this is based on his own mojo and his own abilities no doubt but like how do you kind of deal for the rest of the folks who don&#x27;t necessarily come with that same sort of profile or um when they kind of be like fuck why are you growing his audience for him when that seems to be the modern day metric of success?</div>
@@ -866,7 +1023,7 @@
 </div>
 <div class="turn" data-start="1599">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">26:39</span>
   </div>
   <div class="said">to me. No shadow position either</div>
@@ -880,21 +1037,21 @@
 </div>
 <div class="turn" data-start="1637">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">27:17</span>
   </div>
   <div class="said">Any final thoughts here before I move on to my next one?</div>
 </div>
 <div class="turn" data-start="1641">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">27:21</span>
   </div>
   <div class="said">not really. I just, there&#x27;s parts of this strategy for Giovanni that I would take, some that I would tweak and some that I would trash.</div>
 </div>
 <div class="turn" data-start="1649">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">27:29</span>
   </div>
   <div class="said">karni and smith carter i&#x27;ll start with you are moving closer to reaching a deal on the future of alberta&#x27;s energy sector according to senior government officials and it&#x27;s likely to include some language about a path forward on the northwest bc oil pipeline and potentially relaxing the tanker ban stephen carter from a federal government perspective are you taking in this strategy if it was given to you are you tweaking it or are you saying folks trash it right away uh this is not worth the pain what are you doing steven carter as you&#x27;re assessing this from fed government perspective your feelings aside strategy and politics</div>
@@ -904,25 +1061,46 @@
     <span class="speaker">Carter</span>
     <span class="ts">28:11</span>
   </div>
-  <div class="said">aside this is tricky for me because apparently i&#x27;m i&#x27;m a closet environmentalist um and i i i believe very very strongly in curtailing, you know, in getting us off of fossil fuels. So, you know, from that point of view, I would probably start trashing this in some fashion. But the zeitgeist has shifted. We are now talking about, you know, Canadian oil being there and using Canadian oil and gas in ways that we weren&#x27;t considering a few, you know, a decade ago. and I guess from that point of view the only thing that I would tweak is making Alberta carry much of the load on this I would probably make sure that it&#x27;s very clear that Alberta has decided that they want to take an ownership position and an ownership stake in the next pipeline by the actions that they have taken and that the federal government will stand by and wait for the government of Alberta to tell them what they want to do and how they want to do it in terms of actually getting a pipeline through British Columbia. I don&#x27;t think that we need to see the federal government do what they did with Trans Mountain and jump in and become the owner-operator-builder of the pipeline when we&#x27;ve clearly got Alberta standing there wanting to take the reins on this particular project. project.</div>
+  <div class="said">aside this is tricky for me because apparently i&#x27;m i&#x27;m a closet environmentalist um and i i i believe very very strongly in curtailing, you know, in getting us off of fossil fuels.</div>
+</div>
+<div class="turn" data-start="1708">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">28:28</span>
+  </div>
+  <div class="said">So, you know, from that point of view, I would probably start trashing this in some fashion. But the zeitgeist has shifted. We are now talking about, you know, Canadian oil being there and using Canadian oil and gas in ways that we weren&#x27;t considering a few, you know, a decade ago. and I guess</div>
+</div>
+<div class="turn" data-start="1729">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">28:49</span>
+  </div>
+  <div class="said">from that point of view the only thing that I would tweak is making Alberta carry much of the load on this I would probably make sure that it&#x27;s very clear that Alberta has decided that they want to take an ownership position and an ownership stake in the next pipeline by the actions that they have taken and that the federal government will stand by and wait for the government of Alberta to tell them what they want to do and how they want to do it in terms of actually getting a pipeline through British Columbia. I don&#x27;t think that we need to see the federal government do what they did with Trans Mountain and jump in and become the owner-operator-builder of the pipeline when we&#x27;ve clearly got Alberta standing there wanting to take the reins on this particular project. project.</div>
 </div>
 <div class="turn" data-start="1781">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">29:41</span>
   </div>
   <div class="said">Shannon, this is not a deal struck just yet. This is leaks from government sources. We also know a couple of other things that EV has aggressively, is that a good word? Strenuously opposed a pipeline. And we&#x27;re also hearing to my earlier point that there might be slight exemptions made, limited exemptions as it&#x27;s been told in the media reports on the tanker ban and and potentially using C-5, the legislation, to do so. From the Fed&#x27;s perspective, are you taking this wholesale? Yep, good, next. Are you tweaking this? Are you trashing this as a strategic political move by our federal government?</div>
 </div>
 <div class="turn" data-start="1824">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">30:24</span>
   </div>
-  <div class="said">think it depends on whether it&#x27;s kind of a memorandum of understanding to have a task force to maybe have a meeting for a committee, or if it&#x27;s actually we&#x27;re putting money behind this and here are the conditions that we&#x27;re putting money behind it for uh here&#x27;s the equity stake and here are the uh specific conditions for how we&#x27;re relaxing uh the uh tanker traffic ban um i think they&#x27;re two different things but in the main i think these guys are flying way too close to the sun with their 20 liberal mps like leaving aside all other you know driving ourselves into a a fucking intellectual cul-de-sac for the 87 millionth time uh on pipeline politics like leaving that aside for a moment you have 20 new liberal mps the majority of whom won because the ndp vote collapsed in british columbia and in fact that i it&#x27;s those mps and quebec uh where they had their their most growth um and uh so i&#x27;m not really sure what exactly we&#x27;re doing here from electoral calculation standpoint like it is it is dangerous i uh they may touch the hot stove and the reason you know it&#x27;s dangerous in british columbia is because john rusted has been so quiet about it sometimes you know um i&#x27;m a new democrat so we didn&#x27;t always have polling for things and oftentimes you&#x27;d have to go with your gut one of the best ways to get your own polling was to would be to listen very carefully to what the other side is doing because they do have money for polling and then you can kind of deduce from there what they are hearing and rusted has like he said oh yes we need to have more investment in bc and the ndp is bad because we don&#x27;t have more investment which is of course kind of a bullshit argument because six of the 12 new major projects are are in british columbia that have been named by the feds but if you listen carefully he hasn&#x27;t said repeal the tanker ban at all he hasn&#x27;t been clear on that at all uh and And that tells me, well, and we know this, we know this from Christy Clark back in the day, imposing her five conditions on Northern Gateway, who, you know, newsflash, she was not exactly an Elizabeth May Green Party cardholder, but she represented a center to the quite right coalition where they didn&#x27;t go there on tanker ban either, right? So I think there&#x27;s a fundamental misread from the Liberal Party of Canada on what they can get away with in British Columbia, because I think what they&#x27;re doing is they&#x27;re probably looking at polling that says, yay, we want more resource development, which is true. As soon as you put it in the context of a particular project, you&#x27;re going to go back to the old battles. and yeah it&#x27;s true that maybe david eby doesn&#x27;t you know necessarily at the end of the day hold the pen on the saying no but i tell you who does the coastal first nations like you want to fuck with that carney like this is what it kind of seems like</div>
+  <div class="said">think it depends on whether it&#x27;s kind of a memorandum of understanding to have a task force to maybe have a meeting for a committee, or if it&#x27;s actually we&#x27;re putting money behind this and here are the conditions that we&#x27;re putting money behind it for uh here&#x27;s the equity stake and here are the uh specific conditions for how we&#x27;re relaxing uh the uh tanker traffic ban um i think they&#x27;re two different things but in the main i think these guys are flying way too close to the sun with their 20 liberal mps like leaving aside all other you know driving ourselves into a a fucking intellectual cul-de-sac for the 87 millionth time uh on pipeline politics like leaving that aside for a moment you have 20 new liberal mps the majority of whom won because the ndp vote collapsed in british columbia and in fact that i it&#x27;s those mps and quebec uh where they had their their most growth um and uh so i&#x27;m not really sure what exactly we&#x27;re doing here from electoral calculation standpoint like it is it is dangerous i uh they may touch the hot stove and the reason you know it&#x27;s dangerous in british columbia is because john rusted has been so quiet about it sometimes you know um i&#x27;m a new democrat so we didn&#x27;t always have polling for things and oftentimes you&#x27;d have to go with your gut one of the best ways to get your own polling was to would be to listen very carefully to what the other side is doing because they do have money for polling and then you can kind of deduce from there what they are hearing and rusted has like he said oh yes we need to have more investment in bc and the ndp is bad because we don&#x27;t have more investment which is of course kind of a bullshit argument because six of the 12 new major projects are are in british columbia that have been named by the feds but if you listen carefully he hasn&#x27;t said repeal the tanker ban at all he hasn&#x27;t been clear on that at all uh and And that tells me, well, and we know this, we know this from Christy Clark back in the day, imposing her five conditions on Northern Gateway, who, you know, newsflash, she was not exactly an Elizabeth May Green Party cardholder, but she represented a center to the quite right coalition where they didn&#x27;t go there on tanker ban either, right? So I think there&#x27;s a fundamental misread from the Liberal Party of Canada on what they can get away with in British Columbia, because I think what they&#x27;re doing is they&#x27;re probably looking at polling that says, yay, we want more resource development, which is true. As soon as you put it in the context of a particular project, you&#x27;re going to go back to the old battles. and yeah it&#x27;s true that maybe david eby doesn&#x27;t you know necessarily at</div>
+</div>
+<div class="turn" data-start="1996">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">33:16</span>
+  </div>
+  <div class="said">the end of the day hold the pen on the saying no but i tell you who does the coastal first nations like you want to fuck with that carney like this is what it kind of seems like</div>
 </div>
 <div class="turn" data-start="2007">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">33:27</span>
   </div>
   <div class="said">when all the other things kind of settle it seems like it might be the same thing carney really couldn&#x27;t solve over the summer summer, which is the indigenous groups versus the federal government. Like, I could see resolutions and deals and side deals and alleviation for everything else, but it comes down to that. And I think that&#x27;s what the use of C-5 against that, I think, becomes a core strategy point for me to potentially assess. Carter, any thoughts? Shannon, I&#x27;ll let you even argue with my interpretation of where we might end up. But Carter, you wanted to get in</div>
@@ -932,18 +1110,53 @@
     <span class="speaker">Carter</span>
     <span class="ts">34:02</span>
   </div>
-  <div class="said">I mean, I just think that, you know, using it against an interest like the Coastal First Nations isn&#x27;t going to work. You know, you still have the constitutional duty to consult. that constitutional responsibility is not going anywhere. Even if you write yourself into a piece of legislation. You know, I think Elizabeth May was the one who was saying this is just not going to happen. We&#x27;re not going to see tankers on the coast. We&#x27;re not going to see a northern pipeline for heavy oil. I think that that&#x27;s, you know, and I don&#x27;t usually take Elizabeth May&#x27;s word on things, but I think that she&#x27;s got a very strong read of the coastal First Nations and the combativeness of those First Nations. I mean, I can&#x27;t remember what the stats were on Northern Gateway. 80% or 75% of the First Nations along the route were in favor of Northern Gateway until you got to the end. right? And the problem with 75% of a pipeline being in favor is that the end matters. You can&#x27;t stop a pipeline in the middle. You have to get to the part. And I think that Carney is going to be very smart insofar as, you know, placating Danielle Smith. But I wouldn&#x27;t be surprised if this relationship was very Alberta-centric insofar as Alberta needs to do a lot of work if alberta wants to see something we&#x27;ll support you because i think that i think that where i differ from shannon is that carney&#x27;s not looking at this from electoral politics he&#x27;s looking at this from economic politics the idea is that you know most governments can&#x27;t sustain themselves in a recession if you have if we continue towards a national recession which i think it feels like we&#x27;re heading if it hasn&#x27;t been declared already it is somewhere where we&#x27;re heading, then we will be heading, you know, we have to have economic stimulus, we have to have economic opportunity to try and lift this out. And I think that Carney&#x27;s primary focus is economy first, build it out, and then environment second, because ultimately, even the people of British Columbia are going to be more inclined to support a federal party that&#x27;s overseeing economic growth rather than economic production</div>
+  <div class="said">I mean, I just think that, you know, using it against an interest like the Coastal First Nations isn&#x27;t going to work. You know, you still have the constitutional duty to consult.</div>
+</div>
+<div class="turn" data-start="2055">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:15</span>
+  </div>
+  <div class="said">that constitutional responsibility is not going anywhere. Even if you write yourself into a piece of legislation. You know, I think Elizabeth May was the one who was saying this is just not going to happen. We&#x27;re not going to see tankers on the coast. We&#x27;re not going to see a northern pipeline for heavy oil. I think that that&#x27;s, you know, and I don&#x27;t usually take Elizabeth May&#x27;s word on things, but I think that she&#x27;s got a very strong read of the coastal First Nations and the combativeness of those First Nations. I mean, I can&#x27;t remember what the stats were on Northern Gateway.</div>
+</div>
+<div class="turn" data-start="2093">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">34:53</span>
+  </div>
+  <div class="said">80% or 75% of the First Nations along the route were in favor of Northern Gateway until you got to the end. right? And the problem with 75% of a pipeline being in favor is that the end matters. You can&#x27;t stop a pipeline in the middle. You have to get to the part. And I think that Carney is going to be very smart insofar as, you know, placating Danielle Smith. But I wouldn&#x27;t be surprised if this relationship was very Alberta-centric insofar as Alberta needs to do a lot of work if alberta wants to see something we&#x27;ll</div>
+</div>
+<div class="turn" data-start="2132">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">35:32</span>
+  </div>
+  <div class="said">support you because i think that i think that where i differ from shannon is that carney&#x27;s not looking at this from electoral politics he&#x27;s looking at this from economic politics the idea is that you know most governments can&#x27;t sustain themselves in a recession if you have if we continue towards a national recession which i think it feels like we&#x27;re heading if it hasn&#x27;t been declared already it is somewhere where we&#x27;re heading, then we will be heading, you know, we have to have economic stimulus, we have to have economic opportunity to try and lift this out. And I think that Carney&#x27;s primary focus is economy first, build it out, and then environment second, because ultimately, even the people of British Columbia are going to be more inclined to support a federal party that&#x27;s overseeing economic growth rather than economic production</div>
 </div>
 <div class="turn" data-start="2184">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">36:24</span>
   </div>
-  <div class="said">well that&#x27;s what the interesting thing is uh in terms of the coastal first nations perspective because they are actually trading one form of economic activity for another because the taker ban actually i i mean it helps them be able to like quite literally manage the growth in the area for the lng the other port infrastructure the electrification that is going to be uh happening and their interest in in some critical minerals projects It&#x27;s not like this is an anti-growth. It is actually those boats are not compatible with this geography, with all the other stuff that is going on. They have made a trade-off. They&#x27;ve made a trade-off in favor of the $56 billion worth of projects that have been approved through the Major Projects Office or sent through the Major Projects Office in the province of British Columbia, a lot of which are concentrated in northwest British Columbia. uh and so those are real benefits as well right and and and the on the other side you have a fake pipeline uh and so you know 56 billion or something that makes daniel smith and like weird people at the ranchments feel good like it doesn&#x27;t it doesn&#x27;t add up uh and so i think what will be interesting is you know because carney considers himself a deal maker like he actually is you know trump likes to go around saying he makes deals and meanwhile you know You know, Carney is the guy doing it. will be interesting to me what kind of deal they cut with the coastal First Nations, if anything. If they actually move forward with this, then they will have to have one. That&#x27;s the contents of a memorandum of understanding that I would find interesting. All right. You know, whatever they do with Alberta, like, who kind of cares?</div>
+  <div class="said">well that&#x27;s what the interesting thing is uh in terms of the coastal first nations perspective because they are actually trading one form of economic activity for another because the taker ban actually i i mean it helps them be able to like quite literally manage the growth in the area for the lng the other port infrastructure the electrification that is going to be uh happening and their interest in in some critical minerals projects It&#x27;s not like this is an anti-growth. It is actually those boats are not compatible with this geography, with all the other stuff that is going on. They have made a trade-off. They&#x27;ve made a trade-off in favor of the $56 billion worth of projects that have been approved through the Major Projects Office or sent through the Major Projects Office in the province of British Columbia, a lot of which are concentrated in northwest British Columbia. uh</div>
+</div>
+<div class="turn" data-start="2240">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">37:20</span>
+  </div>
+  <div class="said">and so those are real benefits as well right and and and the on the other side you have a fake pipeline uh and so you know 56 billion or something that makes daniel smith and like weird people at the ranchments feel good like it doesn&#x27;t it doesn&#x27;t add up uh and so i think what will be interesting is you know because carney considers himself a deal maker like he actually is you know trump likes to go around saying he makes deals and meanwhile you know You know, Carney is the guy doing it.</div>
+</div>
+<div class="turn" data-start="2270">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">37:50</span>
+  </div>
+  <div class="said">will be interesting to me what kind of deal they cut with the coastal First Nations, if anything. If they actually move forward with this, then they will have to have one. That&#x27;s the contents of a memorandum of understanding that I would find interesting. All right. You know, whatever they do with Alberta, like, who kind of cares?</div>
 </div>
 <div class="turn" data-start="2289">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">38:09</span>
   </div>
   <div class="said">Could this be a situation, Carter, where, actually, before I get there, would you advise Carney to still stay on, as you called it, economic versus electoral politics? Would you say, buddy, be aware of the latter, not so much the former?</div>
@@ -957,7 +1170,7 @@
 </div>
 <div class="turn" data-start="2317">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">38:37</span>
   </div>
   <div class="said">how about electoral as we talk about</div>
@@ -971,21 +1184,42 @@
 </div>
 <div class="turn" data-start="2353">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">39:13</span>
   </div>
-  <div class="said">Let me move it on to my final one, because I want to try to shove this in before we got to kind of call it quits, Stephen Carter. And Shannon, let me start with you on this. And this one I have to impress that I need to put everyone&#x27;s feelings aside. But I&#x27;m just going to frame it this way. the shit that danielle smith is doing the bucket of it the notwithstanding clause on teachers counted and talked about the notwithstanding clause on trans kids and and uh the three bills on trans legislation the first floating and then seven minute video explanation of upcoming coming legislation on letting doctors work both privately and publicly simultaneously. The negotiations with Carney on Pipeline, the session is not done yet. There could be much more. I&#x27;m just highlighting a couple of things, and I&#x27;m sure I missed a half a dozen. That would be big things, but they almost seem to be small. And maybe that&#x27;s inherently the question here, which is from a strategic level of what Smith is doing. You&#x27;re tweaking it or you&#x27;re trashing it. And I know it&#x27;s hard to ask a former NDP cabinet minister this from a strategic level. So I&#x27;ll let you event as you need to because we want to talk about the substance of these and we don&#x27;t have to do it all today. But I&#x27;m really curious in terms of as we assess this political moment, Shannon, we also have seen this political strategy playbook before played elsewhere. Smith is not doing something entirely novel, but she seems to be doing it at a pace that has worked in other places. So with that in mind, and not trying to put my finger on the scale, take, tweak, or trash?</div>
+  <div class="said">Let me move it on to my final one, because I want to try to shove this in before we got to kind of call it quits, Stephen Carter. And Shannon, let me start with you on this. And this one I have to impress that I need to put everyone&#x27;s feelings aside. But I&#x27;m just going to frame it this way. the shit that danielle smith is doing the bucket of it the notwithstanding clause on teachers counted and talked about the notwithstanding clause on trans kids and and uh the three bills on trans legislation the first floating and then seven minute video explanation of upcoming coming legislation on letting doctors work both privately and publicly simultaneously. The negotiations with Carney on Pipeline, the session is not done yet. There could be much more. I&#x27;m just highlighting a couple of things, and I&#x27;m sure I missed a half a dozen. That would be big things, but they almost seem to be small. And maybe that&#x27;s inherently the question here, which is from a strategic level of what Smith is doing.</div>
+</div>
+<div class="turn" data-start="2423">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">40:23</span>
+  </div>
+  <div class="said">You&#x27;re tweaking it or you&#x27;re trashing it. And I know it&#x27;s hard to ask a former NDP cabinet minister this from a strategic level. So I&#x27;ll let you event as you need to because we want to talk about the substance of these and we don&#x27;t have to do it all today. But I&#x27;m really curious in terms of as we assess this political moment, Shannon, we also have seen this political strategy playbook before played elsewhere. Smith is not doing something entirely novel, but she seems to be doing it at a pace that has worked in other places. So with that in mind, and not trying to put my finger on the scale,</div>
+</div>
+<div class="turn" data-start="2456">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">40:56</span>
+  </div>
+  <div class="said">take, tweak, or trash?</div>
 </div>
 <div class="turn" data-start="2459">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">40:59</span>
   </div>
-  <div class="said">I think the substance of these big pieces is pretty antithetical to what she ran on and what she won on. And so these moves of the last couple of weeks, I think, prove that potentially I was very wrong. um in that i i thought potentially we were going into an election in spring of 26 but i don&#x27;t see how you do such large things uh uh and and glide into you know a bigger majority or or like and so i i i think that i may have been wrong on that and she is going to go uh the full term to 27 if she wants to go in spring of 26 i&#x27;d trash this uh and uh and i would go back to what i was elected on which is uh you know grow the economy like we have the either highest or second highest unemployment in the country uh there&#x27;s a number of other economic indicators that are a little wobbly um and so i would be looking at like what else am i getting through to the major project office why do i have literally fucking bupkis i i on that list when i&#x27;m supposed to be you know the big economic engine of the the country right and and david eby a new democrat next door is eating my lunch on that on major projects like the only idea i have is a fake pipeline um like at some point uh albertans are going to go back to we we you know we think we elect conservatives to run a uh the economy and to you know at least not make health care and education poke me in the eye uh as issues she&#x27;s not doing either of those things and so um i would i would trash this big stuff and go back to uh more of this the small ball of economic management and the reason why why people send conservatives to the legislature.</div>
+  <div class="said">I think the substance of these big pieces is pretty antithetical to what she ran on and what she won on. And so these moves of the last couple of weeks, I think, prove that potentially I was very wrong. um in that i i thought potentially we were going into an election in spring of 26 but i don&#x27;t see how you do such large things uh uh and and glide into you know a bigger majority or or like and so i i i think that i may have been wrong on that and she is going to go uh the full term to 27</div>
+</div>
+<div class="turn" data-start="2497">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">41:37</span>
+  </div>
+  <div class="said">if she wants to go in spring of 26 i&#x27;d trash this uh and uh and i would go back to what i was elected on which is uh you know grow the economy like we have the either highest or second highest unemployment in the country uh there&#x27;s a number of other economic indicators that are a little wobbly um and so i would be looking at like what else am i getting through to the major project office why do i have literally fucking bupkis i i on that list when i&#x27;m supposed to be you know the big economic engine of the the country right and and david eby a new democrat next door is eating my lunch on that on major projects like the only idea i have is a fake pipeline um like at some point uh albertans are going to go back to we we you know we think we elect conservatives to run a uh the economy and to you know at least not make health care and education poke me in the eye uh as issues she&#x27;s not doing either of those things and so um i would i would trash this big stuff and go back to uh more of this the small ball of economic management and the reason why why people send conservatives to the legislature.</div>
 </div>
 <div class="turn" data-start="2564">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">42:44</span>
   </div>
   <div class="said">Carter, your take. Take, tweak, or trash?</div>
@@ -999,7 +1233,7 @@
 </div>
 <div class="turn" data-start="2588">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">43:08</span>
   </div>
   <div class="said">Ever in this country. It</div>
@@ -1013,7 +1247,7 @@
 </div>
 <div class="turn" data-start="2640">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">44:00</span>
   </div>
   <div class="said">Yes, AOP, I haven&#x27;t</div>
@@ -1027,14 +1261,14 @@
 </div>
 <div class="turn" data-start="2677">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">44:37</span>
   </div>
   <div class="said">she&#x27;ll start cutting us checks for some</div>
 </div>
 <div class="turn" data-start="2680">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">44:40</span>
   </div>
   <div class="said">right right your dividend from the savings of the public private uh simultaneous work but you know but carter not hearing fully trashing from you though right like you are both of you i don&#x27;t think are agreeing with the contents, but are you agreeing with the speed of the play? Are you agreeing with any aspects here? I know you&#x27;re saying she could eventually hit a nerve. I just want to try to get some clarity from you</div>
@@ -1048,14 +1282,21 @@
 </div>
 <div class="turn" data-start="2757">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">45:57</span>
   </div>
-  <div class="said">mean, it was a central plank of the Ralph Klein&#x27;s third way and was allowing doctors to practice in both systems. And, you know, it was ultimately they walked back on it and didn&#x27;t look at it again for quite literally 20 years because it was 2005. And why? Because there were regional health authorities at the time and rural PCMLA&#x27;s who bucked on him. She has neither thing. So, you know, they just waited for 20 years. And now the big money, you know, health care insurance interest in they come into the system. The interesting thing will be whether the federal government actually steps in to enforce the Canada Health Act, which, again, I mean, she may want that. If she doesn&#x27;t have a fight on natural resources, she may want one in 2026 on other things with the Liberals. I don&#x27;t know.</div>
+  <div class="said">mean, it was a central plank of the Ralph Klein&#x27;s third way and was allowing doctors to practice in both systems. And, you know, it was ultimately they walked back on it and didn&#x27;t look at it again for quite literally 20 years because it was 2005. And why? Because there were regional health authorities at the time and rural PCMLA&#x27;s who bucked on him. She has neither thing.</div>
+</div>
+<div class="turn" data-start="2779">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">46:19</span>
+  </div>
+  <div class="said">So, you know, they just waited for 20 years. And now the big money, you know, health care insurance interest in they come into the system. The interesting thing will be whether the federal government actually steps in to enforce the Canada Health Act, which, again, I mean, she may want that. If she doesn&#x27;t have a fight on natural resources, she may want one in 2026 on other things with the Liberals. I don&#x27;t know.</div>
 </div>
 <div class="turn" data-start="2807">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">46:47</span>
   </div>
   <div class="said">Let me pick up on that because I want to ask you a final question here, which is very much related. Carter Nye Nenshi, his response summarized as, Danielle Smith, if you&#x27;re going to do this, dissolve the legislature, call an election on the question of privatization in our Alberta health care system. system. You&#x27;re taking that, you&#x27;re tweaking that, or you&#x27;re trashing that based on everything we&#x27;ve just talked about in the most recent comments from Shannon here. I&#x27;m</div>
@@ -1069,7 +1310,7 @@
 </div>
 <div class="turn" data-start="2852">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">47:32</span>
   </div>
   <div class="said">Oh, you&#x27;re going to to go there this</div>
@@ -1083,7 +1324,7 @@
 </div>
 <div class="turn" data-start="2859">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">47:39</span>
   </div>
   <div class="said">private bill to one system it&#x27;s it&#x27;s a single payer uh which is what the change is that she is going to make where you have more than one payer you can pay privately or but the point is it is a health care insurance plan medicare is it is not uh you&#x27;re not government doctors so this is a totally red herring argument doctors i think that</div>
@@ -1097,7 +1338,7 @@
 </div>
 <div class="turn" data-start="2882">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">48:02</span>
   </div>
   <div class="said">we should be doing more that&#x27;s fine especially that&#x27;s fine there&#x27;s still one insurance plan that is billed to carter don&#x27;t</div>
@@ -1111,7 +1352,7 @@
 </div>
 <div class="turn" data-start="2892">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">48:12</span>
   </div>
   <div class="said">oh don&#x27;t start with me these just absolute canards</div>
@@ -1125,21 +1366,42 @@
 </div>
 <div class="turn" data-start="2903">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">48:23</span>
   </div>
-  <div class="said">keep going you like you like You&#x27;re taking what Nenshi&#x27;s saying. Shannon, I&#x27;ll ask you. It&#x27;s still Are you taking, are you tweaking, are you trashing, Shannon, in terms of Nenshi&#x27;s dissolve the legislature? And I guess the forward-looking question is, is this a rich vein to keep mining? Is this your new thing? Can you now turn this back into corrupt care? Do you drop notwithstanding, like I&#x27;m trying to like triangulate all the shit from their perspective. Give me a sense of like, now that this is on the table, are you back to your sweet spot historically Historically, on health care, bringing corrupt care back in, privatization back in, dissolve the legislature, call an election on this question. Take, tweak, or trash on the initial question and then some ideas going forward.</div>
+  <div class="said">keep going you like you like You&#x27;re taking what Nenshi&#x27;s saying. Shannon, I&#x27;ll ask you. It&#x27;s still</div>
+</div>
+<div class="turn" data-start="2910">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">48:30</span>
+  </div>
+  <div class="said">Are you taking, are you tweaking, are you trashing, Shannon, in terms of Nenshi&#x27;s dissolve the legislature? And I guess the forward-looking question is, is this a rich vein to keep mining? Is this your new thing? Can you now turn this back into corrupt care? Do you drop notwithstanding, like I&#x27;m trying to like triangulate all the shit from their perspective. Give me a sense of like, now that this is on the table, are you back to your sweet spot historically Historically, on health care, bringing corrupt care back in, privatization back in, dissolve the legislature, call an election on this question. Take, tweak, or trash on the initial question and then some ideas going forward.</div>
 </div>
 <div class="turn" data-start="2943">
   <div class="who">
-    <span class="speaker">SPEAKER_01</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">49:03</span>
   </div>
-  <div class="said">Oh, I&#x27;m taking it because, I mean, health care is always part of the ballot question if you&#x27;re a new Democrat with their name on a lawn sign. And it is, you know, at least number one or within the top three, economy, affordability, being the other ones, usually in the issue set in salience for voters. uh and who do they trust on health care they trust us uh and you know you can go back to just the old ads and run them again um because quite literally she is saying you know get out your credit card um so this is a great place for the new democrats to be it was going to be even if she didn&#x27;t do this uh you know you done fucked up the health care system and now you need to uh you know elect us and we&#x27;ll fix it that&#x27;s i mean it&#x27;s always the offer in some way shape or form from a new democrat um but number two i mean really what you&#x27;ve got are two issues with daniel i think the number one is health care and then number two is like can we trust you are you self-interested uh or are you looking out for people and that&#x27;s where you put the bucket of literally everything else right from notwithstanding this and that and uh uh you know all the other you know kind of like vaguely corrupt things that they&#x27;ve done and uh flying off to saudi arabia and every other uh issue right like you don&#x27;t care about me that&#x27;s why you&#x27;re worried about license plates you don&#x27;t care about uh me that&#x27;s why you&#x27;re giving contracts to your friends you don&#x27;t care about me that&#x27;s why you want to um you know before you said you weren&#x27;t going to privatize you did it um now then you said you didn&#x27;t want to touch my pension i don&#x27;t trust you because you you don&#x27;t care about me carter</div>
+  <div class="said">Oh, I&#x27;m taking it because, I mean, health care is always part of the ballot question if you&#x27;re a new Democrat with their name on a lawn sign.</div>
+</div>
+<div class="turn" data-start="2951">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">49:11</span>
+  </div>
+  <div class="said">And it is, you know, at least number one or within the top three, economy, affordability, being the other ones, usually in the issue set in salience for voters. uh and who do they trust on health care they trust us uh and you know you can go back to just the old ads and run them again um because quite literally she is saying you know get out your credit card um so this is a great place for the new democrats to be it was going to be even if she didn&#x27;t do this uh you know you done fucked up the health care system and now you need to uh you know elect us and we&#x27;ll fix it that&#x27;s i mean it&#x27;s always the offer in some way shape or form from a new democrat um</div>
+</div>
+<div class="turn" data-start="2987">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">49:47</span>
+  </div>
+  <div class="said">but number two i mean really what you&#x27;ve got are two issues with daniel i think the number one is health care and then number two is like can we trust you are you self-interested uh or are you looking out for people and that&#x27;s where you put the bucket of literally everything else right from notwithstanding this and that and uh uh you know all the other you know kind of like vaguely corrupt things that they&#x27;ve done and uh flying off to saudi arabia and every other uh issue right like you don&#x27;t care about me that&#x27;s why you&#x27;re worried about license plates you don&#x27;t care about uh me that&#x27;s why you&#x27;re giving contracts to your friends you don&#x27;t care about me that&#x27;s why you want to um you know before you said you weren&#x27;t going to privatize you did it um now then you said you didn&#x27;t want to touch my pension i don&#x27;t trust you because you you don&#x27;t care about me carter</div>
 </div>
 <div class="turn" data-start="3038">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">50:38</span>
   </div>
   <div class="said">carter final thoughts here as we wrap up this episode So does this now become the NDP go-forward strategy? Does everything triangulate to this? Even if there&#x27;s other distractions and noise, healthcare is your turf. She may have inadvertently escalated the issue right to the top. She may have tied it nicely into affordability. Are you putting all your eggs in this basket? How are you thinking about it, Carter, as we wrap up?</div>
@@ -1153,7 +1415,7 @@
 </div>
 <div class="turn" data-start="3094">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">51:34</span>
   </div>
   <div class="said">We&#x27;re going to leave it there. There, that&#x27;s a wrap. Yeah, I can&#x27;t even do it. I It&#x27;s fine. I&#x27;m never going to the dentist again. You know, they told me it was a routine visit. I got four needles in my mouth, Carter. Four needles</div>
@@ -1167,7 +1429,7 @@
 </div>
 <div class="turn" data-start="3110">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">51:50</span>
   </div>
   <div class="said">Something called a post. I have a post. You have a post</div>
@@ -1181,7 +1443,7 @@
 </div>
 <div class="turn" data-start="3116">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">51:56</span>
   </div>
   <div class="said">different story. That&#x27;s a wrap on episode 1895 of The Strategist. My name is Zane Velich. You have with me, as always, Shannon Phillips, Stephen Carter, and we shall see you next time.</div>

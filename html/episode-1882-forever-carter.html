@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/137441679.mp3?sig=F1GKXKhVqC4S0vHJswWHi4Jc9-94USOIdbGqLDkawDM%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/68ae88e51ec4fc757631a2ef"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -509,7 +575,7 @@
 </div>
 <div class="turn" data-start="40">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:40</span>
   </div>
   <div class="said">What we need to discuss and that&#x27;s obviously The Taylor Whatever that fucking</div>
@@ -579,7 +645,7 @@
 </div>
 <div class="turn" data-start="106">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:46</span>
   </div>
   <div class="said">ring. That was great.</div>
@@ -593,7 +659,7 @@
 </div>
 <div class="turn" data-start="112">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:52</span>
   </div>
   <div class="said">I mean, these are the people with With most</div>
@@ -607,7 +673,7 @@
 </div>
 <div class="turn" data-start="120">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:00</span>
   </div>
   <div class="said">I don&#x27;t have a hate for either of them. I just</div>
@@ -663,7 +729,7 @@
 </div>
 <div class="turn" data-start="180">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">3:00</span>
   </div>
   <div class="said">Oh, yeah. I forgot about it until just now</div>
@@ -691,7 +757,7 @@
 </div>
 <div class="turn" data-start="222">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">3:42</span>
   </div>
   <div class="said">It&#x27;s super rough for the union, right? Because if they&#x27;re recommending a deal to members and members are like, no, get out of here, that means that the union leadership has misread their membership. And I&#x27;m not sure if it&#x27;s binding or if it&#x27;s just regular arbitration either. I&#x27;m not as up on how things work with federally regulated industries. But the point is that it&#x27;s super rough for CUPE because then CUPE has basically lost the plot with their own members. And I doubt that will happen. To be honest, it very rarely happens. And so I would think this thing will pass through.</div>
@@ -719,10 +785,24 @@
 </div>
 <div class="turn" data-start="332">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">5:32</span>
   </div>
-  <div class="said">I don&#x27;t know if publicly. Publicly, I think it adds another proof point, though, and just another data point in terms of people are getting a raw deal out there and the government doesn&#x27;t have my back. that&#x27;s the piece that&#x27;s the vulnerability for Carney. We saw that in the Abacus data, the poll that they put out that they did on behalf of the union. But I think there was some other polling that Abacus did on Carney&#x27;s strengths and weaknesses. And, you know, obviously, his strengths, you know, super solid on like, send him out onto the world stage, negotiate with Trump, manage the economy, you know, all those sort of big files. But his one weakness was understands what people like me go through. And I think they&#x27;re missing the mark. It might not actually stick to him at all. But it&#x27;s for the labor movement, certainly. It&#x27;s another proof point. and i wouldn&#x27;t you know a lot of people would be you know oh well like qp is mostly public sector workers yada yada you know i&#x27;ve heard people say stuff like that the fact of the matter is is that there are a lot of private sector workers that um are counting on carney with respect to the negotiations with the united states uh and with opening up new markets and so on protecting those Right. Whether it&#x27;s in forestry, steel and aluminum or auto. And that&#x27;s where losing the plot for him can be both policy dicey and politically dicey. But the overall narrative of like, does he get what I&#x27;m going through? The conservatives are still stronger than than him on that metric. And that&#x27;s that&#x27;s their one vulnerability.</div>
+  <div class="said">I don&#x27;t know if publicly. Publicly, I think it adds another proof point, though, and just another data point in terms of people are getting a raw deal out there and the government doesn&#x27;t have my back.</div>
+</div>
+<div class="turn" data-start="345">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">5:45</span>
+  </div>
+  <div class="said">that&#x27;s the piece that&#x27;s the vulnerability for Carney. We saw that in the Abacus data, the poll that they put out that they did on behalf of the union. But I think there was some other polling that Abacus did on Carney&#x27;s strengths and weaknesses. And, you know, obviously, his strengths, you know, super solid on like, send him out onto the world stage, negotiate with Trump, manage the economy, you know, all those sort of big files. But his one weakness was understands what people like me go through. And I think they&#x27;re missing the mark. It might not actually stick to him at all. But it&#x27;s for the labor movement, certainly. It&#x27;s another proof point. and i wouldn&#x27;t you know a lot of people would be you know oh well like qp is mostly public sector workers yada yada you know i&#x27;ve heard people say stuff like that the</div>
+</div>
+<div class="turn" data-start="395">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">6:35</span>
+  </div>
+  <div class="said">fact of the matter is is that there are a lot of private sector workers that um are counting on carney with respect to the negotiations with the united states uh and with opening up new markets and so on protecting those Right. Whether it&#x27;s in forestry, steel and aluminum or auto. And that&#x27;s where losing the plot for him can be both policy dicey and politically dicey. But the overall narrative of like, does he get what I&#x27;m going through? The conservatives are still stronger than than him on that metric. And that&#x27;s that&#x27;s their one vulnerability.</div>
 </div>
 <div class="turn" data-start="435">
   <div class="who">
@@ -733,7 +813,7 @@
 </div>
 <div class="turn" data-start="474">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">7:54</span>
   </div>
   <div class="said">i mean they&#x27;re not doing a whole lot right now but what they have been doing is communicating to members what the deal entails right because even that for a large membership like this you&#x27;re not you&#x27;re going to need to to do a little bit of that uh and what happens if you vote no right usually what like it&#x27;s usually pretty crisp, straightforward message, because, you know, while, you know, union bargaining team is recommending the deal, they&#x27;re not like out there selling in the same way that we think of political marketing and selling.</div>
@@ -747,7 +827,7 @@
 </div>
 <div class="turn" data-start="510">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:30</span>
   </div>
   <div class="said">right. Yeah. And basically they&#x27;re saying, like, if we vote this down, here&#x27;s why we accepted this deal, essentially. and if we vote this down here&#x27;s what happens the next steps are x y and z and basically you&#x27;re super taking your chances and</div>
@@ -761,7 +841,7 @@
 </div>
 <div class="turn" data-start="522">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:42</span>
   </div>
   <div class="said">things that we did win and sometimes it&#x27;s non-monetaries and sometimes it&#x27;s other things like they ask people to to kind of consider the whole deal right and if we have to go back to the drawing board then we&#x27;re uh then we&#x27;re opening up the agreement uh for all of these other things that were kind of settled out when we got down to the you know the unpaid work or whatever the sticky points were um and so oftentimes they&#x27;ll just be educating members like look we we want all this stuff um and uh we have we we go way back uh to way before um the the strike vote like we start at square one again and that really really sucks and there&#x27;s huge downsides for doing it and that&#x27;s why we accepted this deal even if you&#x27;re not super jazzed about all of the aspects of that deal.</div>
@@ -771,7 +851,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">9:31</span>
   </div>
-  <div class="said">Strategist Stephen Carter, there is a timeline, there&#x27;s an opponent, there is a threshold for what success looks like. This sounds like the world of a strategist in some ways. We talk about most of this being internal. We talk about, and Shannon, I appreciate that. But I will also say I expected that answer in some degree, right? Like pretty conventional. This is inside baseball. You push through the messaging. You&#x27;re They&#x27;re not doing anything to ruffle feathers. Carter, should they, though? Or is the conventional approach the right approach here? Or is there some strategic marketing innovations that a union should consider as they try to encourage, ever so lightly, but perhaps not so, their members to vote this deal? Because I tend to agree with Shannon that it&#x27;s potentially CUPE that wears egg on their face should this thing not pass and ratify in the next number of days. I</div>
+  <div class="said">Strategist Stephen Carter, there is a timeline, there&#x27;s an opponent, there is a threshold for what success looks like. This sounds like the world of a strategist in some ways. We talk about most of this being internal. We talk about, and Shannon, I appreciate that. But I will also say I expected that answer in some degree, right? Like pretty conventional. This is inside baseball. You push through the messaging. You&#x27;re They&#x27;re not doing anything to ruffle feathers. Carter, should</div>
+</div>
+<div class="turn" data-start="598">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">9:58</span>
+  </div>
+  <div class="said">they, though? Or is the conventional approach the right approach here? Or is there some strategic marketing innovations that a union should consider as they try to encourage, ever so lightly, but perhaps not so, their members to vote this deal? Because I tend to agree with Shannon that it&#x27;s potentially CUPE that wears egg on their face should this thing not pass and ratify in the next number of days. I</div>
 </div>
 <div class="turn" data-start="620">
   <div class="who">
@@ -792,7 +879,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">10:39</span>
   </div>
-  <div class="said">we&#x27;re going to vote for Rachel Notley, right? Back in the day, we&#x27;re going to vote for Rachel Notley. Surprise pick. Didn&#x27;t know that&#x27;s where they&#x27;d go. The membership loses their shit. And they say, well, you don&#x27;t tell us what to do. You&#x27;re not going to, you&#x27;re not the boss of us. We&#x27;re going to vote the way we want to vote. And it may even have a negative impact. pack. And I suspect that if the, if the, if QP were to take a sales focused, sell the membership on this deal, you&#x27;d have the very same type of negative backlash. The best you can do, the best you can do is to say, this is what it is. This is what happens if it doesn&#x27;t go through very non-committal, very much non-sales focused. And that, that way you&#x27;re not putting your thumb on the scale because if you put your thumb on the scale they&#x27;re going to see and they&#x27;re going to overreact is</div>
+  <div class="said">we&#x27;re going to vote for Rachel Notley, right? Back in the day, we&#x27;re going to vote for Rachel Notley. Surprise pick.</div>
+</div>
+<div class="turn" data-start="644">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">10:44</span>
+  </div>
+  <div class="said">Didn&#x27;t know that&#x27;s where they&#x27;d go. The membership loses their shit. And they say, well, you don&#x27;t tell us what to do. You&#x27;re not going to, you&#x27;re not the boss of us. We&#x27;re going to vote the way we want to vote. And it may even have a negative impact. pack. And I suspect that if the, if the, if QP were to take a sales focused, sell the membership on this deal, you&#x27;d have the very same type of negative backlash. The best you can do, the best you can do is to say, this is what it is. This is what happens if it doesn&#x27;t go through very non-committal, very much non-sales focused. And that, that way you&#x27;re not putting your thumb on the scale because if you put your thumb on the scale they&#x27;re going to see and they&#x27;re going to overreact is</div>
 </div>
 <div class="turn" data-start="689">
   <div class="who">
@@ -824,7 +918,7 @@
 </div>
 <div class="turn" data-start="744">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">12:24</span>
   </div>
   <div class="said">it just isn&#x27;t the same as it once was if that were the case carter then pierre poliovo wouldn&#x27;t be spending all of this political capital sucking up to them and writing a bunch of checks his ass can&#x27;t cash because that&#x27;s exactly what he&#x27;s doing that&#x27;s what he did during the the our canada strike he did it in the platform there&#x27;s a reason why they pulled out a bunch of stuff in the platform that was anti-union. Why would he do that if there was no political payoff in doing it?</div>
@@ -918,7 +1012,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">14:36</span>
   </div>
-  <div class="said">question is, do you agree that Alberta should remain in Canada? Elections Alberta approved this petition on June 30th, so July 1st. It allowed signature collection to begin on August 2nd. And Lukaszek and this group have to collect, and I&#x27;m just going to set the facts out for folks, right? right? 293,000 some odd signatures by the date October 28th, 2025. So not a lot of time. Collection began on the 2nd of August. By the end of October, they need just under 300,000 signature, i.e. 10% of Alberta&#x27;s electorate. If it succeeds, the petition will go to the legislature and could trigger a referendum before the 2027 provincial election. The reason I bring all these facts up is that things, according to Thomas Lukasik, seem to be going well. There There was a Canadian press profile that highlighted him up front and center with his beautiful t-shirt. Laugh as you much. No, no. I mean, profiles</div>
+  <div class="said">question is, do you agree that Alberta should remain in Canada? Elections Alberta approved this petition on June 30th, so July 1st. It allowed signature collection to begin on August 2nd. And Lukaszek and this group have to collect, and I&#x27;m just going to set the facts out for folks, right? right? 293,000 some odd signatures by the date October 28th, 2025. So not a lot of time.</div>
+</div>
+<div class="turn" data-start="903">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:03</span>
+  </div>
+  <div class="said">Collection began on the 2nd of August. By the end of October, they need just under 300,000 signature, i.e. 10% of Alberta&#x27;s electorate. If it succeeds, the petition will go to the legislature and could trigger a referendum before the 2027 provincial election. The reason I bring all these facts up is that things, according to Thomas Lukasik, seem to be going well. There There was a Canadian press profile that highlighted him up front and center with his beautiful t-shirt. Laugh as you much. No, no. I mean, profiles</div>
 </div>
 <div class="turn" data-start="932">
   <div class="who">
@@ -943,7 +1044,7 @@
 </div>
 <div class="turn" data-start="977">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">16:17</span>
   </div>
   <div class="said">no but i don&#x27;t think they know that yet because a lot of these elbows up boomers that are out there uh uh collecting them i have them you know neatly stored in their clipboards and haven&#x27;t turned</div>
@@ -957,7 +1058,7 @@
 </div>
 <div class="turn" data-start="1006">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">16:46</span>
   </div>
   <div class="said">like people that</div>
@@ -971,7 +1072,7 @@
 </div>
 <div class="turn" data-start="1047">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">17:27</span>
   </div>
   <div class="said">for you carter looks like 294 000 and i and i think that i mean you and i carter have both poo-pooed this in the</div>
@@ -985,7 +1086,7 @@
 </div>
 <div class="turn" data-start="1057">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">17:37</span>
   </div>
   <div class="said">show but i have revised my opinion a little bit since i went into some of the volunteer groups in the and and i&#x27;m looking at the action on the ground on it basically it&#x27;s elbows up boomers on facebook is what it is and they have got p and v and irl yeah they are ready to roll they&#x27;re sitting in their driveways they&#x27;re going to there were literally hundreds of people lined up lethbridge hundreds hundreds like of like old ass boomers standing in the 30 degree heat to sign a petition it was wild 294 000 yeah i get that okay</div>
@@ -1132,10 +1233,24 @@
 </div>
 <div class="turn" data-start="1332">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">22:12</span>
   </div>
-  <div class="said">i i here&#x27;s the thing once the horse is out at the barn i First of all, I think that it is up to all of us to, you know, support efforts for Alberta to remain in Canada as a matter of principle. And I don&#x27;t think there is any more important, basically, thing to articulate over this summer to push back against Daniel Smith&#x27;s separatist misadventures. So that&#x27;s the first piece. The second thing is, what I have seen is analogous to some of the pushback that I saw during the CPP fight. But it&#x27;s way bigger, and it&#x27;s summer and people are not paying attention. And yet, here these people are paying attention. I think we have to, I really do believe that we have to grab onto anything that catches people&#x27;s attention right now, if it&#x27;s for, quote unquote, our side, and make common cause and push back. And that&#x27;s where I do see enthusiasm. People are excited about this. and I am not in the business as you know a political has been but was once a politician of getting in the way of people&#x27;s good time if people are enthusiastic about something that you know roughly comports to your values we should be excited about it it&#x27;s important for civil society it&#x27;s important for for people&#x27;s you know sense of attachment it&#x27;s important for for just the ongoing subsistence of liberal democratic values for people to put their oar in the water and do some organizing in the old-fashioned way. And I don&#x27;t care that it&#x27;s a guy whose politics I profoundly dislike, or at least his historical politics. I really don&#x27;t</div>
+  <div class="said">i i here&#x27;s the thing once the horse is out at the barn i First of all, I think that it is up to all of us to, you know, support efforts for Alberta to remain in Canada as a matter of principle. And I don&#x27;t think there is any more important, basically, thing to articulate over this summer to push back against Daniel Smith&#x27;s separatist misadventures. So that&#x27;s the first piece. The second thing is, what I have seen is analogous to some of the pushback that I saw during the CPP fight. But it&#x27;s way bigger, and</div>
+</div>
+<div class="turn" data-start="1372">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">22:52</span>
+  </div>
+  <div class="said">it&#x27;s summer and people are not paying attention. And yet, here these people are paying attention. I think we have to, I really do believe that we have to grab onto anything that catches people&#x27;s attention right now, if it&#x27;s for, quote unquote, our side, and make common cause and push back. And that&#x27;s where I do see enthusiasm. People are excited about this. and I am not in the business as you know a political has been but was once a politician of getting in the way of people&#x27;s good time if people are enthusiastic about something that you know roughly comports to your values we should be excited about it it&#x27;s important for civil society it&#x27;s important for for people&#x27;s you know sense of attachment it&#x27;s important for for just the ongoing subsistence of liberal democratic values for people to put their oar in the water and do some organizing in the old-fashioned way. And I don&#x27;t care that it&#x27;s a guy whose politics I profoundly dislike,</div>
+</div>
+<div class="turn" data-start="1435">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">23:55</span>
+  </div>
+  <div class="said">or at least his historical politics. I really don&#x27;t</div>
 </div>
 <div class="turn" data-start="1439">
   <div class="who">
@@ -1146,7 +1261,7 @@
 </div>
 <div class="turn" data-start="1441">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">24:01</span>
   </div>
   <div class="said">talking about Lacazette</div>
@@ -1160,10 +1275,17 @@
 </div>
 <div class="turn" data-start="1444">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">24:04</span>
   </div>
-  <div class="said">Yeah, I mean... Kind of a big deal. he was a pretty anti guy and and like i don&#x27;t like his politics but that doesn&#x27;t matter at all wasn&#x27;t offended at stellmax politics either i was a new democrat right when there were four of them um but i do think that this is important i do think it&#x27;s important for all albertans of good faith and good conscience uh to push back against the separatist nonsense because within the separatist uh idea bucket is a whole bunch of really really revanchist regressive of bullshit uh that is rooted in racist tropes on her her views on immigration that is about privatizing uh public services so every single time that we have thousands of albertans and i actually don&#x27;t care if they meet the 294 i think if they even come close to what the uh the half is the 150 or whatever the one that the actual separatists will be uh held to i think if they they come close to</div>
+  <div class="said">Yeah, I mean... Kind of a big deal. he was a pretty anti</div>
+</div>
+<div class="turn" data-start="1448">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">24:08</span>
+  </div>
+  <div class="said">guy and and like i don&#x27;t like his politics but that doesn&#x27;t matter at all wasn&#x27;t offended at stellmax politics either i was a new democrat right when there were four of them um but i do think that this is important i do think it&#x27;s important for all albertans of good faith and good conscience uh to push back against the separatist nonsense because within the separatist uh idea bucket is a whole bunch of really really revanchist regressive of bullshit uh that is rooted in racist tropes on her her views on immigration that is about privatizing uh public services so every single time that we have thousands of albertans and i actually don&#x27;t care if they meet the 294 i think if they even come close to what the uh the half is the 150 or whatever the one that the actual separatists will be uh held to i think if they they come close to</div>
 </div>
 <div class="turn" data-start="1500">
   <div class="who">
@@ -1174,7 +1296,7 @@
 </div>
 <div class="turn" data-start="1503">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">25:03</span>
   </div>
   <div class="said">So if they come close to that, that&#x27;s more of a metric of success, I think, because I do not believe that those separatists will be able to organize a two-car parade, right? So they won&#x27;t come close to the 177.</div>
@@ -1219,7 +1341,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">25:55</span>
   </div>
-  <div class="said">Shannon, the white man is speaking. Please, please let him. Oh my God. episode title just uh the white man is speaking all caps damn right yeah yeah please just i just want that to be the episode title thank you um carter hits actually on something interesting and shannon you go you&#x27;re going exactly where i want to go which is carter you at least seem to be implying that she&#x27;s not going to find another excuse all of this is with the assumption that we are getting a referendum question either way might as well organize and or in the in the I agree with the two of you that there&#x27;s a slimmer chance that the Kazakh hits the 300,000, like best of luck, I hope they do. But in the off chance that they do, that becomes a question. But at the very least, Carter, they&#x27;re building an org apparatus for when the actual day comes and we need to be able to fight this question on its own merits. A separate</div>
+  <div class="said">Shannon, the white man is speaking. Please, please let him. Oh my God.</div>
+</div>
+<div class="turn" data-start="1558">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">25:58</span>
+  </div>
+  <div class="said">episode title just uh the white man is speaking all caps damn right yeah yeah please just i just want that to be the episode title thank you um carter hits actually on something interesting and shannon you go you&#x27;re going exactly where i want to go which is carter you at least seem to be implying that she&#x27;s not going to find another excuse all of this is with the assumption that we are getting a referendum question either way might as well organize and or in the in the I agree with the two of you that there&#x27;s a slimmer chance that the Kazakh hits the 300,000, like best of luck, I hope they do. But in the off chance that they do, that becomes a question. But at the very least, Carter, they&#x27;re building an org apparatus for when the actual day comes and we need to be able to fight this question on its own merits. A separate</div>
 </div>
 <div class="turn" data-start="1605">
   <div class="who">
@@ -1279,7 +1408,7 @@
 </div>
 <div class="turn" data-start="1777">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">29:37</span>
   </div>
   <div class="said">first, I agreed with Carter that I wasn&#x27;t sure about this strategy. But, you know, it turns out people don&#x27;t listen to us. And so they went forward and did it. Now that the horse is out of the barn and it is happening, um i&#x27;m seeing some really really interesting things happening on the ground i&#x27;m seeing it in rural communities where you don&#x27;t want this question filtered through a partisan lens uh you actually do want uh some</div>
@@ -1293,10 +1422,17 @@
 </div>
 <div class="turn" data-start="1807">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">30:07</span>
   </div>
-  <div class="said">right like because you&#x27;re getting all kinds of old farmers that will absolutely sign the petition because they believe that all british remain in canada and they&#x27;re they&#x27;re not convinced on you know know the separatist stuff uh that&#x27;s coming under the ucp but they probably think you know in the main conservatives uh exist in edmonton to kind of send you know ottawa a message right uh but it&#x27;s it&#x27;s reaching those folks and it&#x27;s also giving hope and enthusiasm to the people who are and because those people are within the ndp universe whether they are in uh edmonton or in claire&#x27;s home uh and it&#x27;s it&#x27;s giving them something to do and feeling like they are doing something and in In this day and age, feeling like you&#x27;re doing something, like you&#x27;re getting any traction whatsoever, is very, very tough to find in politics, that feeling of common cause with one another. And so that&#x27;s the gift that it gives. As for what the NDP should be doing in this, I do think that they should be not exactly hiding from these petition gathering, you know, signature gathering exercises. exercises i think that their mlas should be registered canvassers uh and collecting signatures because i just think it&#x27;s a nice way to interact with your constituents like it&#x27;s low stakes and the people especially if you&#x27;re talking to your already identified you know supporters leaners or undecideds uh from the last election then you&#x27;ve got something again for people to do and a clear thing uh to engage on i don&#x27;t think they need to be you know uh carrying the uh storming the barricades on this and, you know, carrying it forward. I think it&#x27;s fine that it&#x27;s Lukasik. But now that it&#x27;s happening, I think it&#x27;s good for the NDP to have, again, that sense of connection to what their engaged constituents think about, their activist base, right? The base voters are different than the activist base. And the activist base is, believe me, is engaged on this in New Democrat land. I have seen them all over the groups, and I see them, and there&#x27;s all these names, and I&#x27;m like, yeah, of course I know that person. I know that person. When you go into their Facebook groups, it&#x27;s the activist base that has got something to do, and that is awesome.</div>
+  <div class="said">right like because you&#x27;re getting all kinds of old farmers that will absolutely sign the petition because they believe that all british remain in canada and they&#x27;re they&#x27;re not convinced on you know know the separatist stuff uh that&#x27;s coming under the ucp but they probably think you know in the main conservatives uh exist in edmonton to kind of send you know ottawa a message right uh but it&#x27;s it&#x27;s reaching those folks and it&#x27;s also giving hope and enthusiasm to the people who are and because those people are within the ndp universe whether they are in uh edmonton or in claire&#x27;s home uh and it&#x27;s it&#x27;s giving them something to do and feeling like they are doing something and in In this day and age, feeling like you&#x27;re doing something, like you&#x27;re getting any traction whatsoever, is very, very tough to find in politics, that feeling of common cause with one another. And so that&#x27;s the gift that it gives. As for what the NDP should be doing in this, I do think that they should be not exactly hiding from these petition gathering, you know, signature gathering exercises. exercises i think that their mlas should be registered canvassers uh and collecting signatures because i just think it&#x27;s a nice way to interact with your constituents like it&#x27;s low stakes and the people especially if you&#x27;re talking to your already identified you know supporters leaners or undecideds uh from the last election then you&#x27;ve got something again for people to do and a clear thing uh to engage on i don&#x27;t think they need to be you know uh carrying the uh storming the barricades on this and, you know, carrying it forward. I think it&#x27;s fine that it&#x27;s Lukasik.</div>
+</div>
+<div class="turn" data-start="1904">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">31:44</span>
+  </div>
+  <div class="said">But now that it&#x27;s happening, I think it&#x27;s good for the NDP to have, again, that sense of connection to what their engaged constituents think about, their activist base, right? The base voters are different than the activist base. And the activist base is, believe me, is engaged on this in New Democrat land. I have seen them all over the groups, and I see them, and there&#x27;s all these names, and I&#x27;m like, yeah, of course I know that person. I know that person. When you go into their Facebook groups, it&#x27;s the activist base that has got something to do, and that is awesome.</div>
 </div>
 <div class="turn" data-start="1939">
   <div class="who">
@@ -1310,7 +1446,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">32:50</span>
   </div>
-  <div class="said">those questions. I agree with Shannon in terms of the infiltration component. I felt like the NDP should have infiltrated the Jyoti Gandak campaign in 2021 when there was an opportunity for them to pick up an awful lot of support, understand what the Calgary voters wanted, have voters and volunteers from across the city working with them. I think it would have made a difference in the subsequent provincial election that Rachel Notley lost, primarily in Calgary. I also think that they should integrate more into the civic elections here in 2025. I think that infiltration and co-opting of existing structures and strategies is great. They need to be doing it at every level. Can</div>
+  <div class="said">those questions. I agree with Shannon in terms of the infiltration component. I felt like the NDP should have infiltrated the Jyoti Gandak campaign in 2021 when there was an opportunity for them to pick up an awful lot of support, understand what the Calgary voters wanted, have voters and volunteers from across the city working with them. I think it would have made a difference in the subsequent provincial election that Rachel Notley lost, primarily in Calgary.</div>
+</div>
+<div class="turn" data-start="2001">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">33:21</span>
+  </div>
+  <div class="said">I also think that they should integrate more into the civic elections here in 2025. I think that infiltration and co-opting of existing structures and strategies is great. They need to be doing it at every level. Can</div>
 </div>
 <div class="turn" data-start="2021">
   <div class="who">
@@ -1328,7 +1471,7 @@
 </div>
 <div class="turn" data-start="2065">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:25</span>
   </div>
   <div class="said">about something different though then like this forever canadian thing is like activist base it&#x27;s not professionalized organizers it&#x27;s just like it&#x27;s literally elbows up boomers right and and they&#x27;re just like give me something to do what carter&#x27;s talking about the no no no one is believe me believe me no one organizes my mother my god that woman um but</div>
@@ -1342,7 +1485,7 @@
 </div>
 <div class="turn" data-start="2124">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:24</span>
   </div>
   <div class="said">about is a different thing which is also important and probably should happen at the professional</div>
@@ -1363,7 +1506,7 @@
 </div>
 <div class="turn" data-start="2158">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:58</span>
   </div>
   <div class="said">forever, forever sliding. It&#x27;s possible he handed them in on one day but had, you know, taken a couple of weeks to gather them. No, but that&#x27;s not what was said in the media.</div>
@@ -1387,7 +1530,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">36:53</span>
   </div>
-  <div class="said">I&#x27;d be probably saying, okay, if there is no real structure, then let&#x27;s provide some structure and let&#x27;s provide some structure through our own people, right? Let&#x27;s assume that this ad hoc group can maybe get 150,000 signatures. Can the NDP generate 100,000 signatures within their own tribal subset using an actual organized structure, right, where you&#x27;ve got captains and lieutenants and people marshalling larger groups? I mean, ultimately, politics is the largest pyramid scheme that You&#x27;re activating large groups of people in small groups. So you have to try and figure out how do we get 100,000 signatures. Jump in. Be a part of it. If you want to be a part of it, then fucking be a part of it</div>
+  <div class="said">I&#x27;d be probably saying, okay, if there is no real structure, then let&#x27;s provide some structure and let&#x27;s provide some structure through our own people, right? Let&#x27;s assume that this ad hoc group can maybe get 150,000 signatures. Can the NDP generate 100,000 signatures within their own tribal</div>
+</div>
+<div class="turn" data-start="2231">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">37:11</span>
+  </div>
+  <div class="said">subset using an actual organized structure, right, where you&#x27;ve got captains and lieutenants and people marshalling larger groups? I mean, ultimately, politics is the largest pyramid scheme that You&#x27;re activating large groups of people in small groups. So you have to try and figure out how do we get 100,000 signatures. Jump in. Be a part of it. If you want to be a part of it, then fucking be a part of it</div>
 </div>
 <div class="turn" data-start="2262">
   <div class="who">
@@ -1398,7 +1548,7 @@
 </div>
 <div class="turn" data-start="2275">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">37:55</span>
   </div>
   <div class="said">Well, I just, like I said before, you know, I went to the Ralph Klein School of Politics. If you see a parade, get in front of it. This isn&#x27;t</div>
@@ -1412,10 +1562,17 @@
 </div>
 <div class="turn" data-start="2302">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">38:22</span>
   </div>
-  <div class="said">but so i i i think that they need to find a way to plug in but uh there are some logistical and legal uh ways that they can&#x27;t and that is fine i actually think that uh being able to uh up some of that enthusiasm gap that that you always get in the summer, that you always get midterm, using this, right, to like, you know, kind of gin up your base, gin up your MLAs, their riding associations, you know, like get your volunteers blood pumping a little bit. I think it can only be good. And like I said, I have heard anecdotally of people signing this thing, you know, out at rodeo grounds in southern Alberta and places like that. that. They wouldn&#x27;t do that if a new Democrat put the petition in front of their face. There&#x27;s no question about that. But if it is seen that we are making common cause across a broad swath of Alberta society, that also can only be to the good. I think in order to broaden the appeal a little bit, because right now we are still, you know, pretty urban, all of those things, and we have to be able, the party needs to be able to win in the small cities at the very minimum.</div>
+  <div class="said">but so i i i think that they need to find a way to plug in but uh there are some logistical and legal uh ways that they can&#x27;t and that is fine i actually think that uh being able to uh up some of that enthusiasm gap that that you always get in the summer, that you always get midterm, using this, right, to like, you know, kind of gin up your base, gin up your MLAs, their riding associations, you know, like get your volunteers blood pumping a little bit. I think it can only be good. And like I said, I have heard anecdotally of people signing this thing, you know, out at rodeo grounds in southern Alberta and places like that. that.</div>
+</div>
+<div class="turn" data-start="2346">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">39:06</span>
+  </div>
+  <div class="said">They wouldn&#x27;t do that if a new Democrat put the petition in front of their face. There&#x27;s no question about that. But if it is seen that we are making common cause across a broad swath of Alberta society, that also can only be to the good. I think in order to broaden the appeal a little bit, because right now we are still, you know, pretty urban, all of those things, and we have to be able, the party needs to be able to win in the small cities at the very minimum.</div>
 </div>
 <div class="turn" data-start="2376">
   <div class="who">
@@ -1440,10 +1597,17 @@
 </div>
 <div class="turn" data-start="2432">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">40:32</span>
   </div>
-  <div class="said">I don&#x27;t know Thomas like Carter does. But from my vantage point, it looks like he just saw a job and decided to go and get it done. And I think he likes to mix it up because people who have been in politics do enjoy mixing it up. That&#x27;s why Ed Stelmack waited in. That&#x27;s why Brian Mason waited in, Ray Martin even. There&#x27;s all kinds of folks that have have endorsed this thing and that are, you know, again, they want to do something that&#x27;s exciting and meaningful. So there may be, you know, people who get active in this thing who then see a role for themselves in politics. I don&#x27;t know if that person is Thomas, and I don&#x27;t know if it would be provincial or federal. days, you know, he worked hard on some federal liberal campaigns as well. He would fit comfortably in that tent. Um, and there&#x27;s very few people that could, uh, win a conservative seat, uh, in, in, uh, North Edmonton. He might be one of them. I mean, I&#x27;m just totally speculating here, but, um</div>
+  <div class="said">I don&#x27;t know Thomas like Carter does. But from my vantage point, it looks like he just saw a job and decided to go and get it done. And I think he likes to mix it up because people who have been in politics do enjoy mixing it up. That&#x27;s why Ed Stelmack waited in. That&#x27;s why Brian Mason waited in, Ray Martin even. There&#x27;s all kinds of folks that have have endorsed this thing and that are, you know, again, they want to do something that&#x27;s exciting and meaningful. So there may be, you know, people who get active in this thing who then see a role for themselves in politics. I don&#x27;t know if that person is Thomas, and I don&#x27;t know if it would be provincial or federal.</div>
+</div>
+<div class="turn" data-start="2481">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">41:21</span>
+  </div>
+  <div class="said">days, you know, he worked hard on some federal liberal campaigns as well. He would fit comfortably in that tent. Um, and there&#x27;s very few people that could, uh, win a conservative seat, uh, in, in, uh, North Edmonton. He might be one of them. I mean, I&#x27;m just totally speculating here, but, um</div>
 </div>
 <div class="turn" data-start="2498">
   <div class="who">
@@ -1482,7 +1646,7 @@
 </div>
 <div class="turn" data-start="2598">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">43:18</span>
   </div>
   <div class="said">he opens up a really good permission structure for people right because uh any of the like sort of basically chamber of commerce conservatives who uh might vote might have even voted ucp in 23 begrudgingly uh you know in spite of you know some of smith&#x27;s wackier ideas um it allows them an outlet as well and allows them a way to plug in and you know lefties like me who are old enough to remember him uh are like okay fine right uh and actually seems like a pretty nice guy and so like we&#x27;ll begrudgingly go along uh folks you know on the more progressive side um but uh people for whom we don&#x27;t have a lot in common will also uh go along they he also has a steering committee he&#x27;s done this thing right um that is you know kind across the spectrum he&#x27;s soliciting a wide range of of views on on strategy and and and that kind and that is great right like uh people from the progressive conservative sort of universe people from the more like federal conservative like for the right kind of universe people from the liberals from you know from new democrats so he&#x27;s he&#x27;s also you know like Like he&#x27;s consulting widely. And so I think he&#x27;s good for the moment in particular, because if he doesn&#x27;t have any other partisan or other affiliation, he can just go at Smith, you know, in a more unrestrained way. And he&#x27;s a good spokesperson for that, too.</div>
@@ -1496,7 +1660,7 @@
 </div>
 <div class="turn" data-start="2720">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">45:20</span>
   </div>
   <div class="said">Well, I don&#x27;t know if she has a problem yet. that&#x27;s the official opposition&#x27;s job to make it a problem uh and i don&#x27;t think any one of her caucus members or she herself should be able to go out in public without being asked if they&#x27;re going to sign this petition if they want to remain in canada</div>
@@ -1510,7 +1674,7 @@
 </div>
 <div class="turn" data-start="2740">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">45:40</span>
   </div>
   <div class="said">look around us right in terms of the media environment and the animating issues right it is it&#x27;s a good one it&#x27;s a wedge um you can cause problems within the caucus uh Uh, uh, you can cause, you know, uh, just irritation every time they want to stand up at a podium to announce, you know, uh, uh, new funding for something all through the fall</div>
@@ -1524,7 +1688,7 @@
 </div>
 <div class="turn" data-start="2761">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">46:01</span>
   </div>
   <div class="said">make life irritating for them. And, uh, uh, they should be asked, uh, at every turn, are you going to sign this thing? Why don&#x27;t you want to remain in Canada? What&#x27;s wrong with you? You don&#x27;t just sea lion troll them, uh, uh, into submission by the fall.</div>
@@ -1573,7 +1737,7 @@
 </div>
 <div class="turn" data-start="2886">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">48:06</span>
   </div>
   <div class="said">usually wish that they will stay out of it kind of like i wish um once i see american news coverage of canada i i wish that they didn&#x27;t write it um because it&#x27;s usually wrong and a caricature of us and the same goes for some of these national unity questions when you know toronto cbc comes out to you know the innisfail rodeo and goes on safari right it has it is very very strong sort of Pennsylvania diner vibes to it. I can&#x27;t stand it. They go out and find like someone who&#x27;s like a card carrying separatist who&#x27;s been like a spokesperson for this or the convoy movement. And they&#x27;re like, here&#x27;s a guy off the street. It&#x27;s crazy making. So certainly national organizations should stay far, far away from it because there&#x27;s nothing that might piss an Albertan off more than being told by somebody, quote unquote, out east, how to think about these matters. But number two, it doesn&#x27;t involve them at all, right</div>
@@ -1587,7 +1751,7 @@
 </div>
 <div class="turn" data-start="2949">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">49:09</span>
   </div>
   <div class="said">it either, right? No, this is the last thing I would want. It would be the kiss of death to have some, you know, retired central Canadian politician come in and tell us what&#x27;s what on this topic of any stripe. Extremely unhelpful. And certainly Danielle Smith, if she has a political problem, she&#x27;ll be waiting for something like that to happen.</div>
@@ -1615,7 +1779,7 @@
 </div>
 <div class="turn" data-start="3010">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">50:10</span>
   </div>
   <div class="said">No, I don&#x27;t know what the</div>
@@ -1629,7 +1793,7 @@
 </div>
 <div class="turn" data-start="3014">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">50:14</span>
   </div>
   <div class="said">Oh, I&#x27;m going to say that they&#x27;re in the 160, 170 range.</div>
@@ -1643,7 +1807,7 @@
 </div>
 <div class="turn" data-start="3026">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">50:26</span>
   </div>
   <div class="said">I&#x27;m going to be cautiously optimistic, but it&#x27;s just, you know, when you actually do the math, to Carter&#x27;s point about how many signatures you have to get per minute in order to do it, it&#x27;s tough. It&#x27;s really tough.</div>
@@ -1699,10 +1863,17 @@
 </div>
 <div class="turn" data-start="3118">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">51:58</span>
   </div>
-  <div class="said">Not only does he remain the most popular premier in Canada, but in the context of a deteriorating fiscal picture, an employment picture for everyone, theirs is not as bad as projected, which is pretty good. Number three, we know Porter Churchill now is going to be one of the first projects designated by the Kearney government under C5. There&#x27;s lots of new interest in Manitoba as a level of government that can do business with the federal government that also has many of the Indigenous components in place to be able to attract those new forms of investment. They&#x27;ve got critical minerals coming out their ears. and Wapkanu, you know, they&#x27;re going through a by-election in a super safe conservative seat right now. They&#x27;re even running a little campaign there because they have the bandwidth to be able to do it. Wapkanu is far and away the best political athlete in this country and he set his province up for success over the course of this summer.</div>
+  <div class="said">Not only does he remain the most popular premier in Canada, but in the context of a deteriorating fiscal picture, an employment picture for everyone, theirs is not as bad as projected, which is pretty good. Number three, we know Porter Churchill now is going to be one of the first projects designated by</div>
+</div>
+<div class="turn" data-start="3141">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">52:21</span>
+  </div>
+  <div class="said">the Kearney government under C5. There&#x27;s lots of new interest in Manitoba as a level of government that can do business with the federal government that also has many of the Indigenous components in place to be able to attract those new forms of investment. They&#x27;ve got critical minerals coming out their ears. and Wapkanu, you know, they&#x27;re going through a by-election in a super safe conservative seat right now. They&#x27;re even running a little campaign there because they have the bandwidth to be able to do it. Wapkanu is far and away the best political athlete in this country and he set his province up for success over the course of this summer.</div>
 </div>
 <div class="turn" data-start="3183">
   <div class="who">

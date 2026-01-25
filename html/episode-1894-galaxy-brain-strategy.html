@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/143825501.m4a?sig=kWLk_XTbsHzKkqcDx4i3CGZsErsqdzmggZLxkwD1d6Y%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -380,7 +437,7 @@
       <div class="navlinks">
         <a class="chip" href="/">← <strong>All episodes</strong></a>
         
-        
+        <a class="chip" href="https://patreon.com/strategistspod" target="_blank" rel="noopener">Subscribe</a>
       </div>
     </div>
   </div>
@@ -412,9 +469,30 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card patreon-lock">
+  <div class="patreon-inner">
+    <img
+      src="/assets/patreon.jpg"
+      alt="Patreon"
+      class="patreon-art"
+      loading="lazy"
+    />
+    <div class="patreon-copy">
+      <strong>Patreon-only episode</strong>
+      <p>Subscribe on Patreon to get full access to this episode.</p>
+      <a
+        class="btn primary"
+        href="https://patreon.com/strategistspod"
+        target="_blank"
+        rel="noopener"
+      >
+        Unlock on Patreon →
+      </a>
+    </div>
+  </div>
+</div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -432,7 +510,7 @@
           
           <div class="turn" data-start="2">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:02</span>
   </div>
   <div class="said">This is the Strategist episode 1894. My name is Zain Velji. With me as always, Shannon Phillips, Stephen Carter.</div>
@@ -446,7 +524,7 @@
 </div>
 <div class="turn" data-start="21">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:21</span>
   </div>
   <div class="said">You know, I got through it.</div>
@@ -460,7 +538,7 @@
 </div>
 <div class="turn" data-start="25">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:25</span>
   </div>
   <div class="said">You know who I think was harshest on you? I didn&#x27;t know such a thing. can i assess this now that the episode is out uh cory cory</div>
@@ -474,7 +552,7 @@
 </div>
 <div class="turn" data-start="41">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">0:41</span>
   </div>
   <div class="said">true you needed the video and too oh too bad there&#x27;s excellent 4k video yeah so available yeah uh cory also with his words uh can i quote can i quote uh your and your actions and your words live on separate Oh,</div>
@@ -488,7 +566,7 @@
 </div>
 <div class="turn" data-start="58">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:58</span>
   </div>
   <div class="said">The operation was a success. It&#x27;s too bad the patient died.</div>
@@ -502,7 +580,7 @@
 </div>
 <div class="turn" data-start="65">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:05</span>
   </div>
   <div class="said">Do you feel like it was catharsis for you, Carter? I</div>
@@ -516,7 +594,7 @@
 </div>
 <div class="turn" data-start="76">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:16</span>
   </div>
   <div class="said">But we have to tell the listeners that you&#x27;re the one who kind of put all of this in motion</div>
@@ -530,7 +608,7 @@
 </div>
 <div class="turn" data-start="82">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:22</span>
   </div>
   <div class="said">I&#x27;m not blaming anyone. I&#x27;m not even talking about the Calgary part. I&#x27;m talking about the episode that</div>
@@ -544,7 +622,7 @@
 </div>
 <div class="turn" data-start="104">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:44</span>
   </div>
   <div class="said">like there was thought, but the theme was themes. I will tell</div>
@@ -558,7 +636,7 @@
 </div>
 <div class="turn" data-start="117">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">1:57</span>
   </div>
   <div class="said">so yeah i feel like the organist was good though</div>
@@ -572,7 +650,7 @@
 </div>
 <div class="turn" data-start="128">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:08</span>
   </div>
   <div class="said">she should just jumped in with it it&#x27;s pretty good um or at least the second part of that episode uh only feedback i&#x27;m getting two pieces of feedback number one people love shannon carter which is uh which is really a blow to our egos number two not long enough</div>
@@ -586,7 +664,7 @@
 </div>
 <div class="turn" data-start="144">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:24</span>
   </div>
   <div class="said">lot of people said it was long enough</div>
@@ -600,21 +678,21 @@
 </div>
 <div class="turn" data-start="159">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">2:39</span>
   </div>
   <div class="said">that&#x27;s true we&#x27;ll have we&#x27;ll have special guests on the part two um shannon any reflections from the live show before we jump it up i&#x27;ve got a lot lot of things to talk about if we want to uh carter&#x27;s given us a tight 45 so i&#x27;ll try to cram as much as i can but any reflections on the live show before i i jump uh to something else</div>
 </div>
 <div class="turn" data-start="175">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:55</span>
   </div>
   <div class="said">well i&#x27;m always astonished at how many people are actually listening to this podcast uh and i got to meet some of the listeners which uh you know i liked them more than i thought i would i really did uh and uh so that was nice and farkas was good but he was too guarded uh but he has to it be so i have mad respect for him for staying on message um but it&#x27;s uh less fun when they do but you know uh we have to respect uh the game and the game is not to uh say anything that&#x27;s gonna get you in trouble when your chief of staff is sitting in the front row yeah</div>
 </div>
 <div class="turn" data-start="211">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">3:31</span>
   </div>
   <div class="said">it&#x27;s true um we have not released the farkas part yet but people can hear him as one of our special guests on the The part two of the live show, Stephen Carter, the Liberal government stands</div>
@@ -628,7 +706,7 @@
 </div>
 <div class="turn" data-start="260">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">4:20</span>
   </div>
   <div class="said">He said that about you. Yeah, he said that about you, just so you&#x27;re clear</div>
@@ -642,7 +720,7 @@
 </div>
 <div class="turn" data-start="264">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">4:24</span>
   </div>
   <div class="said">Polyev. Oh, you&#x27;re applying it. Oh, I see. Okay, okay, yeah, yeah. Well, that&#x27;s good. That&#x27;s good. It&#x27;s called paying it forward. Yeah, that&#x27;s exactly</div>
@@ -656,24 +734,38 @@
 </div>
 <div class="turn" data-start="271">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">4:31</span>
   </div>
   <div class="said">I appreciate it. Shannon, this is, the outcome of this is not a surprise. There was a bit of, I don&#x27;t want to say high drama, but mild drama leading into this. But I&#x27;m curious to just get your take on the outcome before we kind of try to pick up some other pieces that might be interesting.</div>
 </div>
 <div class="turn" data-start="284">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:44</span>
   </div>
-  <div class="said">Oh, I think that anybody who expected drama was a very stupid person and was just, you know, wanting to drum up interest in Canadian politics at a time when sometimes it wanes and talk about something besides the budget. It was never going to be that we were going into an election. And the way you knew that was the way that Mark Carney comported himself. He, from the very beginning, essentially said to the House of Commons, no, I don&#x27;t have a parliamentary strategy to pass this budget. Like it or go to an election. And that was his, you know, the way he conducted himself, his whole House strategy from the very beginning. and it was never going to be the case that this budget was going to have major amendments made to it or if there was going to be horse trading. The government never really opened the door to that. He had some performative meetings with Polievre and with Don Davies and others, even Elizabeth May, but he was never going to be making changes to this budget. This is not he is not basically acting like he has a minority at all. He&#x27;s acting like he has a de facto majority. And for now, that&#x27;s probably the smart thing to do. If anything, he wrote this budget so that he would get more floor crossers from the Conservatives so that they could find some palatable things in it, which means that that will probably get them through the Budget Implementation Act votes that have to happen in the spring as well.</div>
+  <div class="said">Oh, I think that anybody who expected drama was a very stupid person and was just, you know, wanting to drum up interest in Canadian politics at a time when sometimes it wanes and talk about something besides the budget. It was never going to be that we were going into an election. And the way you knew that was the way that Mark Carney comported himself. He, from the very beginning, essentially said to the House of Commons, no, I don&#x27;t have a parliamentary strategy to pass this budget. Like it or go to an election. And that was his, you know, the way he conducted himself, his whole House strategy from the very beginning. and it was never going to be the case that this budget was going to have major amendments made to it or if there was going to be horse trading. The government never really opened the door to that. He had some performative meetings with Polievre and with Don Davies and others, even Elizabeth May, but he was never going to be making changes to this budget. This is not he is not basically</div>
+</div>
+<div class="turn" data-start="353">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">5:53</span>
+  </div>
+  <div class="said">acting like he has a minority at all. He&#x27;s acting like he has a de facto majority. And for now, that&#x27;s probably the smart thing to do. If anything, he wrote this budget so that he would get more floor crossers from the Conservatives so that they could find some palatable things in it, which means that that will probably get them through the Budget Implementation Act votes that have to happen in the spring as well.</div>
 </div>
 <div class="turn" data-start="381">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">6:21</span>
   </div>
-  <div class="said">Carter, I agree with Shannon in the sense that anyone expecting the government to fall was definitely drumming something up that was not there. However, the other sources of drama also didn&#x27;t manifest. And I&#x27;m not saying you said this would happen, but you did say on a previous episode that a way for a conservative to leave would be on the budget vote. We didn&#x27;t see that. And I&#x27;m not saying you predicted it, to be clear again. Does this kind of, does this, the lack of that not happening and the Conservatives getting through this budget, which is a funny way to say it because it&#x27;s the Liberals who kind of get to celebrate their budget. But the Conservatives getting through this moment, is that a bit of a strategic victory for Polyev here? Is that one of the hurdles crossed as we revisit some of the work that we did in the previous episode talking about Polyev&#x27;s three acts and what he needs to do?</div>
+  <div class="said">Carter, I agree with Shannon in the sense that anyone expecting the government to fall was definitely drumming something up that was not there. However, the other sources of drama also didn&#x27;t manifest. And I&#x27;m not saying you said this would happen, but you did say on a previous episode that a way for a conservative to leave would be on the budget vote. We didn&#x27;t see that. And I&#x27;m not saying you predicted it, to be clear again.</div>
+</div>
+<div class="turn" data-start="405">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">6:45</span>
+  </div>
+  <div class="said">Does this kind of, does this, the lack of that not happening and the Conservatives getting through this budget, which is a funny way to say it because it&#x27;s the Liberals who kind of get to celebrate their budget. But the Conservatives getting through this moment, is that a bit of a strategic victory for Polyev here? Is that one of the hurdles crossed as we revisit some of the work that we did in the previous episode talking about Polyev&#x27;s three acts and what he needs to do?</div>
 </div>
 <div class="turn" data-start="428">
   <div class="who">
@@ -684,556 +776,24 @@
 </div>
 <div class="turn" data-start="505">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
+    <span class="speaker">Zain</span>
     <span class="ts">8:25</span>
   </div>
   <div class="said">Shannon, does this help Pierre Polyev that he&#x27;s done through today and no additional floor crossers or folks leaving his caucus? Is that a bit of a W he can cash in or would you say not so much?</div>
 </div>
 <div class="turn" data-start="517">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:37</span>
   </div>
-  <div class="said">Well, I don&#x27;t think it&#x27;s any time a W when, you know, somebody doesn&#x27;t leave your caucus. The assumption is when you form a caucus after an election, that everybody&#x27;s there for the long haul. You know, he had a really bad time with General Rendon Samoan leaving. And, you know, by all accounts, there were more. It&#x27;s not a W for him. uh and but what he needs to do is keep himself out of any bad headlines like the uh you know the threatening to or wanting to fantasizing i guess about locking up his jailing his opponents uh and you know calling into question the uh neutrality and competence of the rcmp uh he needs to not do any of that he needs not to you know basically uh not indulge the ostriches put it that way. The ostrich caucus needs to be nice and quiet. And he&#x27;ll just, you know, come out, throw some red meat to the base every once in a while between now and January, and he&#x27;s good. There&#x27;s going to be more budget votes in the spring, and there&#x27;ll be more confidence motions in the spring. And there&#x27;s going to be some off-cycle funding as well, right? We know this because the government has said, well, for example, we&#x27;re going to do a nature strategy between now and then, because that was left out of the budget. There&#x27;s some other stuff that we we know is probably coming that might uh maybe focus the mind on new democrats or might focus the mind for elizabeth may or alternatively uh uh depending if they do you know little goodies in people&#x27;s writings or something it might help a conservative or two but i don&#x27;t think that the uh that the government&#x27;s really looking for that they&#x27;ve got through their their big part and now they have to do implementation</div>
+  <div class="said">Well, I don&#x27;t think it&#x27;s any time a W when, you know, somebody doesn&#x27;t leave your caucus. The assumption is when you form a caucus after an election, that everybody&#x27;s there for the long haul. You know, he had a really bad time with General Rendon Samoan leaving. And, you know, by all accounts, there were more. It&#x27;s not a W for him. uh and but what he needs to do is keep himself out of any bad headlines like the uh you know the threatening to or wanting to fantasizing i guess about locking up his jailing his opponents uh and you know calling into question the uh neutrality and competence of the rcmp uh he needs to not do any of that he needs not to you know basically uh not indulge the ostriches put it that way. The ostrich caucus needs to be nice and quiet. And he&#x27;ll just, you know, come out, throw some red meat to the base every once in a while between now and January, and he&#x27;s good. There&#x27;s going to be more budget votes in the spring, and there&#x27;ll be more confidence motions in the spring. And there&#x27;s going to be some off-cycle funding as well, right? We know this because the government has said, well, for example, we&#x27;re going to do a nature strategy between now and then, because that was left out of the budget. There&#x27;s some other stuff that we we know is probably coming that might uh</div>
 </div>
-<div class="turn" data-start="623">
+<div class="turn" data-start="599">
   <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">10:23</span>
+    <span class="speaker">Shannon</span>
+    <span class="ts">9:59</span>
   </div>
-  <div class="said">carter do you want to talk about the votes at all we usually don&#x27;t go this deep but it just happened do you want to talk about the votes 170 to 168 uh correct me if your information doesn&#x27;t line up with what i&#x27;m just about to say so generu from the conservatives abstained is that correct</div>
-</div>
-<div class="turn" data-start="637">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">10:37</span>
-  </div>
-  <div class="said">you see he did not vote</div>
-</div>
-<div class="turn" data-start="639">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">10:39</span>
-  </div>
-  <div class="said">he did not vote okay he abstained that&#x27;s correct yeah</div>
-</div>
-<div class="turn" data-start="643">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">10:43</span>
-  </div>
-  <div class="said">think not voting is different than abstaining isn&#x27;t it because it&#x27;s an abstention recorded anyway it doesn&#x27;t matter we&#x27;re really in the fucking extension</div>
-</div>
-<div class="turn" data-start="649">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">10:49</span>
-  </div>
-  <div class="said">but not record okay Okay. Elizabeth May voted for it. Yeah. All the liberals voted for it. Yep. And the NDP, at least two abstained from what I&#x27;m, I&#x27;m just trying to gather pieces here. I apologize. I don&#x27;t have that. Yeah, as I understand</div>
-</div>
-<div class="turn" data-start="664">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">11:04</span>
-  </div>
-  <div class="said">Lori Idlow. How do you say Lori&#x27;s last name? Idlow? Idlow. And Gord Johns. Gord Johns. Both abstained. And Shannon Stubbs, there&#x27;s a question as to whether or not she was healthy. they but shannon and i both agree you can vote from the bathroom so</div>
-</div>
-<div class="turn" data-start="681">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">11:21</span>
-  </div>
-  <div class="said">five ndp vote no to abstain is that right there&#x27;s that is there seven that they have they have seven okay so five vote no no to abstain passes 170 to 168 any um three potential areas of conversation well maybe four if you feel like well if you want to talk about the liberals you can i mean they they got through a budget if you want to talk about the ndp and their strategy or five five vote no know, to abstain. Elizabeth May is always a fun conversation topic. And then, of course, the general topic of the no vote slash abstention, which we can clarify in a moment here. Any one of these interest you as it relates to vote based tea leaf reading? Stephen Carter, I&#x27;ll start with you. And then, Shannon, if there&#x27;s anything that interests you, we can jump on to as well.</div>
-</div>
-<div class="turn" data-start="724">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">12:04</span>
-  </div>
-  <div class="said">Well, I think that I think, frankly, the conservatives and the NDP didn&#x27;t want this budget to fail. And they made sure that they orchestrated something so that but it didn&#x27;t fail. You know, this is, I mean, the NDP did most of the heavy lifting with, you know, two-sevenths of their caucus choosing not to vote at all. But Matt Gennaro, and again, I&#x27;m throwing in Shannon Stubbs, you know, them choosing not to vote or not being able to vote or whatever, also sent a clear signal of support of this budget. it so for me this is a um you know 170 to 168 a great victory for the liberals uh and the ndp and the conservatives both both live to fight another day they don&#x27;t want to go into an election uh this close to christmas this close this this soon after there was some polling that came out i think it was lege that had like the liberals ahead in alberta uh after</div>
-</div>
-<div class="turn" data-start="784">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">13:04</span>
-  </div>
-  <div class="said">the presentation of Zekos.</div>
-</div>
-<div class="turn" data-start="787">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">13:07</span>
-  </div>
-  <div class="said">has a bit of</div>
-</div>
-<div class="turn" data-start="789">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">13:09</span>
-  </div>
-  <div class="said">bias, right, towards the Liberals</div>
-</div>
-<div class="turn" data-start="790">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">13:10</span>
-  </div>
-  <div class="said">Although I will say Graves was the first to say that the Carney uptick was real and everyone was poo-pooing Graves. That&#x27;s true. He</div>
-</div>
-<div class="turn" data-start="799">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">13:19</span>
-  </div>
-  <div class="said">didn&#x27;t turn out to be that wrong, which is quite a statement about most pollsters.</div>
-</div>
-<div class="turn" data-start="805">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">13:25</span>
-  </div>
-  <div class="said">was the first to see it and I think he was, yeah. To be clear, that is not the reality of the situation we usually live in, Carter, right? The Liberals being up in Alberta.</div>
-</div>
-<div class="turn" data-start="814">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">13:34</span>
-  </div>
-  <div class="said">No, no. It&#x27;s just a cautionary tale, I think, for a party like the Conservatives that if you go rushing into an election, you better make sure you&#x27;ve got something to blame the liberals for or there&#x27;s going to be a real hardship. We got to remember the Conservatives have performed to their highest level since the Mulbruny era. That&#x27;s pretty great. So can you expect to perform that well again with the same leader and a minority government falling? I don&#x27;t know. I mean, the Liberals did it in 79, 80, but can the Conservatives do it this time?</div>
-</div>
-<div class="turn" data-start="860">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">14:20</span>
-  </div>
-  <div class="said">Shannon, anything here interesting? If not, I&#x27;m going to tag you with an NDP conversation to unpack. back um</div>
-</div>
-<div class="turn" data-start="866">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">14:26</span>
-  </div>
-  <div class="said">um well i mean the fact that laurie uh abstained i think you know there&#x27;s a billion dollars in arctic infrastructure in the budget the uh university in inuit nunangat is uh uh is at least mentioned in the budget and uh there&#x27;s commitment for federal funding in there uh obviously she was given uh enough assurances that inuit child first initiative would be funded the The funding wasn&#x27;t in the budget. And that was a little bit that has made the government of Nunavut and the Inuit treaty organizations a little bit skittish. So obviously she got the assurances that she needed. That&#x27;s good for those of us who are, you know, paying attention to First Nations, Métis and Inuit politics and the North broadly. probably um and uh you know other than that uh i mean what the what do the ndp need uh more than anything uh they need pierre polly ever to go away uh and so they need a bunch of things that are out of their control uh the biggest one is they need uh the guy who scares the living daylights out of uh a good chunk a chunk of voters uh to exit um so they obviously they have no power to make that happen but that&#x27;s the best case scenario for them for their numbers to come back up</div>
-</div>
-<div class="turn" data-start="946">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">15:46</span>
-  </div>
-  <div class="said">shannon can i stick with you and maybe we&#x27;ll open up a conversation of the broader sort of ndp family at the moment you were in british columbia this past weekend for the bc ndp convention give us some thoughts in terms of what you&#x27;re seeing by the new democrats more broadly like you know bc obviously for those that are unaware it is a held government by the new democrats alongside manitoba what did you see there that that either inspired you that interested Interested you that maybe it could be comparisons or comparators for our lessons learned that the federal party could take or frankly, just even the health and litmus tests of the the NDP overall?</div>
-</div>
-<div class="turn" data-start="983">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">16:23</span>
-  </div>
-  <div class="said">Well, I mean, we&#x27;re now at 50 percent of the major projects that have been announced by the government of Canada are in British Columbia for a total of 56 billion worth of new economic activity. That is a lot. lot. So don&#x27;t at me with New Democrats being, you know, anti-development or anti-resources or any of these things. That is to be put up against Alberta&#x27;s number of major projects announced, which is a giant goose egg. And so, like, that&#x27;s the first thing, right? This is not an anti-development group of New Democrats in charge in British Columbia. They have, you know, they&#x27;ve said, even with TMX, like, look, put more pumping stations, move more products through, we&#x27;ll dredge Burrard Inlet. This is, you know, a different kind of approach to basically natural resources and industrial policy. To the point where EB on Friday quite literally busted out with if the Conservatives, you know, or if something happens, and the opposition gangs up on us, because they have a really slim majority right um we will call an election over the north coast transmission line uh legislation that&#x27;s in the house right now like that&#x27;s how serious and that that transmission line is between prince george and terrace for people who don&#x27;t know and essentially it&#x27;s to like strengthen out the uh electricity lines so that more uh mine development can happen uh in that entire corridor so they are serious about critical minerals they&#x27;re serious about minerals that are needed for transmission and electrification, batteries, and so on. Because, you know, and they&#x27;ve got an opposition that&#x27;s really, really divided, but also the Conservatives have not been clear on either North Coast transmission line or on tanker ban. They don&#x27;t give a straight answer, right? It&#x27;s really interesting. So these are issues that have divided Conservatives, economic issues that have divided Conservatives, and essentially brought the New Democrats together. Sure, there are some folks who, you know, don&#x27;t like it for various reasons. But in the main, you&#x27;ve got Indigenous buy-in. You&#x27;ve got, you know, full-on equity and other forms of participation for the nations that are affected by any of these projects. And you&#x27;ve got kind of a consensus among BC New Democrats that this is the way to move forward and to be able to pay for public services. Now, there was some grouchiness coming up to the convention, not coming out of the green flank, but coming out of labor because they&#x27;d just gone through a public sector strike of three months or two months or something. And so, you know, you saw a lot of that on the floor. There was a ton of labor stuff, right, like in the video introducing the premier and in the resolutions and all of that. But, you know, that&#x27;s just smart strategy because what are you doing? You are are front facing things that are going to bring together your own base. But also they&#x27;re they&#x27;re not things that put you at odds with the normie electorate. Because normie electorate also wants good things on the labor side. You know, some paid sick days and some action on minimum wage and some investment in apprenticeship, shit like that. So they brought it together really smartly. He exited with an 82 percent, you know, leadership outcome, which is fine when you&#x27;re governing. was a good weekend.</div>
-</div>
-<div class="turn" data-start="1196">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">19:56</span>
-  </div>
-  <div class="said">Carter, you&#x27;re laughing and you&#x27;re smiling. Pick up on anything Shannon said, and if you don&#x27;t pick up on it, I want to pick up on Eby&#x27;s 82%, because I&#x27;m curious about... No, it&#x27;s just the 82%. Okay, we&#x27;ll pick up on it</div>
-</div>
-<div class="turn" data-start="1206">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">20:06</span>
-  </div>
-  <div class="said">The New Democrats have a tendency not to torch their leader until they absolutely have to. And oftentimes, one or two elections pass when they absolutely have to. I think that it&#x27;s probably good that David Eby was able to hold on and didn&#x27;t get killed. Did you think it was</div>
-</div>
-<div class="turn" data-start="1221">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">20:21</span>
-  </div>
-  <div class="said">more precarious than that, Carter? Is that what you&#x27;re suggesting? I&#x27;m not</div>
-</div>
-<div class="turn" data-start="1225">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">20:25</span>
-  </div>
-  <div class="said">suggesting it was more precarious. It&#x27;s the New Democrats. just don&#x27;t throw their leaders overboard the same way the conservatives do. I mean, is Rustad still the leader of the conservative party</div>
-</div>
-<div class="turn" data-start="1238">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">20:38</span>
-  </div>
-  <div class="said">Sure is with a 71% approval rating</div>
-</div>
-<div class="turn" data-start="1241">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">20:41</span>
-  </div>
-  <div class="said">Yeah, but from dead</div>
-</div>
-<div class="turn" data-start="1243">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">20:43</span>
-  </div>
-  <div class="said">It&#x27;s going to be an interesting few months watching the B.C. conservatives eat themselves from the inside. But the B.C. NDP aren&#x27;t aren&#x27;t uh aren&#x27;t taking the same approach it&#x27;s nice</div>
-</div>
-<div class="turn" data-start="1255">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">20:55</span>
-  </div>
-  <div class="said">it could be said that they&#x27;ve learned those lessons right like he&#x27;d be his leadership was not a walk in the park as it was supposed to be right like he learned lessons there around uh you know discontent i&#x27;m not saying it&#x27;s discontent from the same group of people to be clear but they probably had learnings that that were uh that were had and that were made shannon no</div>
-</div>
-<div class="turn" data-start="1273">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">21:13</span>
-  </div>
-  <div class="said">oh yeah they learned that they needed to organize even when in government and sometimes governments lose uh the organizing ethic right like because Because organizing innovation often comes from out parties, right? And once you&#x27;re in government, you&#x27;re not doing as much organizing. And because they learned, oh, oh, actually, we have to be New Democrats and do what we do, which is organize. They learned that in the leadership process.</div>
-</div>
-<div class="turn" data-start="1298">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">21:38</span>
-  </div>
-  <div class="said">think that&#x27;s such a good point. And I think often you notice one of two things. Either they don&#x27;t do it or they do it in the most bureaucratic, flabby way because they&#x27;re used to all the cushions of government. So they do it in like an absolute sort of like infused with government ethic, which is, you know, it&#x27;s more bureaucratic. It&#x27;s not as grassroots. It&#x27;s not as guerrilla or freestyle as you expect a party that is always itching and clawing for power to do these things. Is</div>
-</div>
-<div class="turn" data-start="1324">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">22:04</span>
-  </div>
-  <div class="said">82% a success</div>
-</div>
-<div class="turn" data-start="1325">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">22:05</span>
-  </div>
-  <div class="said">marker, Shannon? I think we&#x27;re beyond the era of a number universally meaning something in a leadership review. Is that fair to say? We&#x27;ve seen leaders with just above 50 stay. We&#x27;ve seen leaders with 80s or 90s subsequently be forced out in months or weeks after. We&#x27;ve seen Jason Kenney with 51 saying, I got to go. So 82 is in this weird spot where I don&#x27;t know what that looks like in 2025 numbers. What does it mean to you as you as you analyze it?</div>
-</div>
-<div class="turn" data-start="1360">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">22:40</span>
-  </div>
-  <div class="said">I think it&#x27;s fine. What it means is the vast majority of the party membership and the delegates who are the people voting. It&#x27;s not one member, one vote with the party. Right. So there were 743 ballots. and of that you know the vast majority of them did not want to have a leadership review because that&#x27;s actually how the question is posed on the floor um but uh and you know as a government that just went through a public sector worker strike a labor government that just went through that and that has had to make some you know reasonably tough calls around uh clean bc they&#x27;ve had to make tough calls on uh their fiscal position because their deficit&#x27;s pretty big this year you know so So they&#x27;re not necessarily delivering all the big dreams that New Democrat members would like them to deliver. And so the pressure is still on there. And that&#x27;s fine. That&#x27;s a normal dynamic for a New Democrat provincial government.</div>
-</div>
-<div class="turn" data-start="1417">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">23:37</span>
-  </div>
-  <div class="said">Carter, any thoughts on that 82 in terms of it being a successful number? And how does it peg in a 2025 reality</div>
-</div>
-<div class="turn" data-start="1422">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">23:42</span>
-  </div>
-  <div class="said">In 2025 reality, it&#x27;s 96</div>
-</div>
-<div class="turn" data-start="1425">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">23:45</span>
-  </div>
-  <div class="said">You think so, hey</div>
-</div>
-<div class="turn" data-start="1426">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">23:46</span>
-  </div>
-  <div class="said">Oh, yeah. I think that the reality has been that these numbers are trending lower and lower and lower. You don&#x27;t see blind leadership, blind following of the leader, right? It is instead an opportunity to make sure your voice is heard and the negative voice comes out much louder. So in my mind, you know, this compares, you know, very favorably with some of those 80s and 90s, high 80s and 90s that we&#x27;ve seen from other</div>
-</div>
-<div class="turn" data-start="1456">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">24:16</span>
-  </div>
-  <div class="said">And I will say both of our leaders here in Alberta, Nenshi at 89, Daniel Smith just above 90, is what they were clocking in with their leadership reviews. But I get what you&#x27;re saying, Shannon, around the discontent that EB was facing heading into this. Talk to me about anything you saw or anything you&#x27;ve observed on the lead up to the British Columbia file that the feds, the federal NDP, should be thinking about absorbing as a lesson. uh</div>
-</div>
-<div class="turn" data-start="1482">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">24:42</span>
-  </div>
-  <div class="said">uh propose things that unite your base but also don&#x27;t put you offside the normie electorate put to my previous point um it&#x27;s one thing to propose like and and policy is fine and great but really it should just be an expression of what you&#x27;re willing to fight for so for example on the floor you know there was a reaffirming tanker ban uh you know a bunch of stuff on training and apprenticeship some labor stuff uh you know these are opportunities to um remind your uh your activist base but also say to the public like here are the like policy is another expression for what we&#x27;re willing to fight for uh and what we&#x27;re willing to scrap it out with the opponent over um and and where we&#x27;re on on on solid ground in our own uh uh voting universe the federal Federal NDP oftentimes like to do things that get their activist base up in the morning and make them really excited. But they&#x27;re not necessarily things that either matter to or are resonant with the kind of the accessible voter pool. So they don&#x27;t end up with a broader Democratic permission for their ideas.</div>
-</div>
-<div class="turn" data-start="1556">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">25:56</span>
-  </div>
-  <div class="said">Carter, we&#x27;ve got a choice here. Do you want to go back to the feds and talk about what Mark Carney does post-budget, if that&#x27;s sexy to you and exciting to you? Or I&#x27;m going to give you option two. I&#x27;m going to let you decide. Door number two is leave a voicemail with the word motherfucker in it.</div>
-</div>
-<div class="turn" data-start="1576">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">26:16</span>
-  </div>
-  <div class="said">want door number two. I want door number two.</div>
-</div>
-<div class="turn" data-start="1578">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">26:18</span>
-  </div>
-  <div class="said">Okay, let me summarize the story to the best I can. And then you guys can chime in because I think there&#x27;s a list of questions we can go here. And I know you&#x27;ve got a hard out, Carter. So we&#x27;re going to do the 25 hardest minutes on motherfucker that we can. Okay? Okay. 25 hard minutes on Motherfucker. Tanya Furr, who&#x27;s a UCP MLA and minister, she left a voicemail for a constituent regarding the teacher strike. After the constituent hung up, she continued recording, accidentally captured her using an expletive, I believe was Motherfucker, referring to someone else, the next person she was going to call. The voicemail was leaked online. There&#x27;s a series of steps in between, but the person who got the first voicemail sent it. The second person leaked it online, turned out to be a columnist. The voicemail leaked online over the weekend and widely circulated sparking controversy. Furr has apologized for the language, calling it a lapse in judgment caused by frustration with ongoing political conflict. A subnote or a subtext to this is that once the person who was referred to as a motherfucker called Tanya Furr out on this, she then made him listen to, or volunteered for him to listen to, multiple voicemails she received where people were calling her expletives and in very aggressive fashion as well. Carter, this kind of sparks a couple of things, right? Did I summarize that okay, Shannon? You summarized it well. Yeah, I think so. It&#x27;s a twist and turns. You did well. The broad strokes. I mean, there&#x27;s a couple of angles to go. Let me get this one out of the way first, okay? And then we can talk about the decorum and that sort of stuff. Political consequences for Tanya, for Carter, yes or no? None. Shannon? None. If she did not have these additional voicemails, And this journalist had not necessarily added the contours to this story that he did, at least through his sub stack. Would she have faced political consequences, Carter</div>
-</div>
-<div class="turn" data-start="1682">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">28:02</span>
-  </div>
-  <div class="said">I don&#x27;t think so. I that she&#x27;s a loyal soldier in the UCP and loyal soldiers get away with murder. But I don&#x27;t think this is murder. I think that this is a classic mistake where, you know, the mic is hot and you say things that you shouldn&#x27;t say. um we&#x27;ve we&#x27;ve all made that mistake like for example uh i did an entire episode uh last week uh where i said things that i shouldn&#x27;t have said and but nonetheless here we are the live show okay the live show but you know that&#x27;s the that&#x27;s the nature of uh politics that&#x27;s the nature i mean sometimes you write it in a text sometimes you write it you say it out loud sometimes. But this is, to me, just a hot mic incident. And I don&#x27;t think that she&#x27;d be facing any ramifications. And I&#x27;m not sure that she should. I think that this is, well, it&#x27;s not fabulous that she&#x27;s done this. I think it&#x27;s absolutely fine that she has been working with her team and understands that her team needs to let off some steam after being barraged with With the people, because the people are fucking nuts and the people are assholes.</div>
-</div>
-<div class="turn" data-start="1758">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">29:18</span>
-  </div>
-  <div class="said">Shannon, if this was not contoured in the way it was, would she face consequences?</div>
-</div>
-<div class="turn" data-start="1764">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">29:24</span>
-  </div>
-  <div class="said">no. These guys never admit they&#x27;ve done anything wrong. So, no, absolutely not. They&#x27;re they they don&#x27;t back down ever. So why would they this time? And, you know, she said she was sorry. So, you know, for for them, that&#x27;s enough. uh and uh and i actually think that&#x27;s probably appropriate</div>
-</div>
-<div class="turn" data-start="1785">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">29:45</span>
-  </div>
-  <div class="said">i was i was going to ask you the b-side to this question which is should the ndp pick this up is there any political hate to be made here there is i</div>
-</div>
-<div class="turn" data-start="1791">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">29:51</span>
-  </div>
-  <div class="said">don&#x27;t think so i think the people are going to right like the online are going to make their memes and you know basically it&#x27;ll just become a bit of a shorthand uh and another proof point for some of the you know especially the terminally online uh that you you know the ecp doesn&#x27;t care about people and that they&#x27;re you know arrogant and and whatever and that&#x27;s you know all true uh and but you know i think you know in tanya&#x27;s case she done fucked up uh she doesn&#x27;t know how to use a phone so that&#x27;s too bad um and uh i don&#x27;t really understand how she&#x27;s running her office</div>
-</div>
-<div class="turn" data-start="1830">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">30:30</span>
-  </div>
-  <div class="said">just from a purely logistical point of view to have her ca</div>
-</div>
-<div class="turn" data-start="1833">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">30:33</span>
-  </div>
-  <div class="said">like Like, calling out numbers across the, like, that doesn&#x27;t make any sense to me at all. That&#x27;s the</div>
-</div>
-<div class="turn" data-start="1838">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">30:38</span>
-  </div>
-  <div class="said">part of the summary I did not mention, which is actually worth more watching, which is just</div>
-</div>
-<div class="turn" data-start="1843">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">30:43</span>
-  </div>
-  <div class="said">yeah. It&#x27;s just, like, what are we doing? Like, your CA doesn&#x27;t understand the concept of, you know, some, like, sticky notes or whatever. Like, call this guy. None of the sort of, like, the flow of the story made any sense to me whatsoever. But really all I learned is Tanya Furr doesn&#x27;t know how to use a phone. uh and um also like but she also you know like uh the people who are mad are really fucking mad uh i learned that too right um my office has been on the receiving end of that stuff too it&#x27;s not all pleasant uh i i don&#x27;t think that we should talk to people or mlas like that uh i do I do think that people really did get very mad, though, because it was pretty historic what they did in terms of using the Notwithstanding Clause in a preemptive fashion like that. It wasn&#x27;t just some garden variety bill. Carter, what is – can</div>
-</div>
-<div class="turn" data-start="1904">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">31:44</span>
-  </div>
-  <div class="said">I just jump</div>
-</div>
-<div class="turn" data-start="1904">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">31:44</span>
-  </div>
-  <div class="said">in? Yeah, yeah, jump in because I was going to say, what&#x27;s the story here in your mind?</div>
-</div>
-<div class="turn" data-start="1908">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">31:48</span>
-  </div>
-  <div class="said">I&#x27;ve seen death threats over garden variety bills. That&#x27;s true. So have I. To me. Yeah, I know. I&#x27;ve seen death threats over school closings, right? When the Board of Education has to close schools for economic reasons, I&#x27;ve seen those trustees get threatened with death. So, you know, having a means, whatever the means is to kind of blow off whatever steam is generated from these negative encounters, I&#x27;m fine with it. whatever. I&#x27;m sorry that it got recorded, but I&#x27;ve heard people say, I&#x27;m going to call the fucking donors now. Right. Like these aren&#x27;t, have you heard people say that or have you said that? To the, I said it too. Um, but you know, you, you pick up the phone and you, and you have to, you know, you have to make the phone calls and you&#x27;re going to eat your, you&#x27;re going to take your medicine because you know, these phone calls aren&#x27;t going to be pleasant ones. And, uh, you just hope that when you pick up the telephone and you call the person who left a message, um, that that they&#x27;re not as crazy to you live as they are to your recording. That&#x27;s true. You know, this is just blowing off steam, and I don&#x27;t usually like to use that as an excuse. I&#x27;m sure there&#x27;s other times when I haven&#x27;t, when someone has said we&#x27;re just blowing off steam and I&#x27;ve refused to accept it. But in this particular case, I just think that, you know, the, what was his name, the calamist</div>
-</div>
-<div class="turn" data-start="1995">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">33:15</span>
-  </div>
-  <div class="said">Doug Furby, sorry. Furby, that&#x27;s right. Furby,</div>
-</div>
-<div class="turn" data-start="1997">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">33:17</span>
-  </div>
-  <div class="said">I think, wrote a really good column. That was a very interesting column. And then he posts the goddamn audio online. And then lesser journalists like the breakdown journalists, in quotation marks, pick it up and, you know, turn it into trash. And, you know, I just think that this is a really unfortunate series of events, and I don&#x27;t usually defend the UCP members of the Legislative Assembly, but I find myself in an uncomfortable position of doing so today.</div>
-</div>
-<div class="turn" data-start="2031">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">33:51</span>
-  </div>
-  <div class="said">In some ways, this is a semantics debate around vocabulary and language. In other ways, it&#x27;s about tone and threats. And I want to make sure I separate the two in some ways, if that&#x27;s okay. Okay. Because Carter, to your point around blowing off steam, I&#x27;m actually with you there, right? I think the three of us on this show and our predecessor on this show was also very fond of select curse words. So it&#x27;s not like we&#x27;re holier than thou. But I&#x27;m trying to maybe, the best way I phrase this, help me give a guide to people who are, let&#x27;s just say, not the extreme, I&#x27;m going to threaten my MLA and their staff people. Those people are a very special breed. Park them elsewhere. If I, as a voter, want to let off steam of my own and want people in my MLA&#x27;s office to know how serious I am, is dropping an expletive in a voicemail or something like that out of bounds for you? And part of it, I don&#x27;t want to make this purely semantic, but I&#x27;m trying to understand and tease out what is appropriate in this modern age because we&#x27;ve spent a whole 90 minutes on politician swearing. I&#x27;m curious about what it means about the electorate in this case and, of course, understanding the massive nuance there is. Well, I think Shannon and I have different positions</div>
-</div>
-<div class="turn" data-start="2106">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">35:06</span>
-  </div>
-  <div class="said">on this, but my position is that if it involves an I statement, I am fucking furious. no problem. That&#x27;s fine. Drop it in. No problem. You know, you&#x27;re adding to your particular... I think this is shit legislation. As soon as you make it a you statement, right, you are a piece of shit. You are a fucking... You are a motherfucker. It&#x27;s only appropriate on this podcast. That&#x27;s where I</div>
-</div>
-<div class="turn" data-start="2142">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">35:42</span>
-  </div>
-  <div class="said">draw my line. Who was that dressed to? Corey. Okay, it was Corey. Yeah, that makes sense. He was a little harsh on you on the live show, I&#x27;d say. He was harsh. Yeah, he was harsh. Shannon, what&#x27;s your take here in terms of language, in terms of, I mean, you and your office, arguably historically sober, perhaps in many ways, have been on the receiving end of a lot of this. So I&#x27;m curious how you process this as a former elected official, but also as someone who understands the rage that the electorate may have against one&#x27;s government.</div>
-</div>
-<div class="turn" data-start="2171">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">36:11</span>
-  </div>
-  <div class="said">Yeah, I think Stephen put it very well. And, you know, this legislation is going to cost me money. And I think it&#x27;s a piece of shit is completely inbounds for me. And it would have been for my constituency office as well, where I draw the line is anything that sounds to me like it&#x27;s going to have occupational health and safety implications for my staff. staff that&#x27;s when i would get uh a little twitchy about it right if my staff had any reason uh to think that that person was really you know like going to come down to the office or otherwise find us in public uh because we would get messages like that like i am going to find you</div>
-</div>
-<div class="turn" data-start="2218">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">36:58</span>
-  </div>
-  <div class="said">going to find you i&#x27;m going to kick the shit out of you i&#x27;m going to kill you Yeah.</div>
-</div>
-<div class="turn" data-start="2226">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">37:06</span>
-  </div>
-  <div class="said">where I don&#x27;t like it now. And I don&#x27;t think and I also don&#x27;t think that, you know, I think you&#x27;re a stupid bitch for voting for this legislation. Is it at all appropriate? You know, like you can leave that aside and still tell your MLA that you&#x27;re fucking furious. Right. In those terms. platforms uh but i do think that we are at a point where we do need to think very carefully about how we talk to people in public life because people don&#x27;t want to do it anymore because of some of this you know rancor um but uh i also think that uh and i i&#x27;m gonna put the you know everybody in on this uh left right otherwise that we need to think about the the people who didn&#x27;t put their name on the lawn sign, and how the words are being received by them.</div>
-</div>
-<div class="turn" data-start="2277">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">37:57</span>
-  </div>
-  <div class="said">Carter, what does this do in terms of the political culture in your mind with the recalls coming up, the aggressive recalls that are going to be individualized to many MLAs? That&#x27;s how they work. They are trying to recall particular people in particular writings. Where do you think this goes in terms of ongoing rhetoric? and at some point not to be added too much of a strategic political hat but fuck it that&#x27;s the show at what point does the sympathy start growing and accumulating for ucp mlas that are getting sworn at and being barraged in this particular way because you can&#x27;t help but reading this article but feel kind of bad for tanya first someone who is in my case a political opponent so i&#x27;m curious I&#x27;m curious if there is something to be said here around the accumulation of sympathy that could occur while there is a strategic effort with recall and eventually an election in months or years&#x27; time.</div>
-</div>
-<div class="turn" data-start="2333">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">38:53</span>
-  </div>
-  <div class="said">Well, I would lump recall into this unfair attack on the elected person. I think that recall is—I mean, I think we have elections for a reason. The reason we do all 87 ridings at the same time is everybody faces the same situation. You know, everybody&#x27;s putting their job on the line. If you have to put your job on the line for recall, as well as at the election, you&#x27;re facing that much more negativity. I don&#x27;t think things got better for Jyoti Gondek when she faced her recall petition. People didn&#x27;t feel that much, you know, sorrow for her. They did not feel like she was in some fashion unfairly targeted. But I do think that she was unfairly targeted. I&#x27;m not a fan of recall. It is just another way of attacking the person.</div>
-</div>
-<div class="turn" data-start="2391">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">39:51</span>
-  </div>
-  <div class="said">I don&#x27;t know. I&#x27;m kind of coming around on recall because I&#x27;m seeing how excited people are about it. It&#x27;s the same thing that brought me around on the Forever Canadian petition</div>
-</div>
-<div class="turn" data-start="2399">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">39:59</span>
-  </div>
-  <div class="said">Shannon and I might be on the same boat again</div>
-</div>
-<div class="turn" data-start="2401">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">40:01</span>
-  </div>
-  <div class="said">They like Christians versus lions, too. I&#x27;m just saying, right? The people love the blood sport. They always have loved the blood sport.</div>
-</div>
-<div class="turn" data-start="2410">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">40:10</span>
-  </div>
-  <div class="said">There is one thing from our live show, and I don&#x27;t remember if it was in the beat part or here, but it&#x27;s coming up again, which is neither of you, to this point, believe that recall or Forever Canadian are a cumulative exercise towards an election, that you think they actually detract from organizing resources. And so to me, what I find interesting is recalls catching up in terms of enthusiasm, excitement, branding, people talking about it, excited about it. But Shannon, are you coming around because you feel like it&#x27;s what people need as like a release valve? Or are you coming around from like a strategic organizing accumulation that this could actually be helpful? No,</div>
-</div>
-<div class="turn" data-start="2448">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">40:48</span>
-  </div>
-  <div class="said">don&#x27;t think it&#x27;s helpful.</div>
-</div>
-<div class="turn" data-start="2450">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">40:50</span>
-  </div>
-  <div class="said">I still at the end of the day, I mean, I don&#x27;t think it&#x27;s overall helpful to replacing the government. I do think it&#x27;s helpful for citizens to feel like they&#x27;re doing something. And they have this, this, you know, this tool right now, at their disposal. And especially if Smith decides to wait till 27, which I&#x27;m still not convinced of. uh but uh if she does uh it will it gives people a feeling like they&#x27;re doing something and it really do not discount uh the upside of making ucp mlas feel skittish they might oh i don&#x27;t know think twice next time they use a fucking notwithstanding clause although that&#x27;s not going to happen uh because they just brought it in again um but or you know if they have to legislate some hs people back to work or that kind of thing they might think twice about it They might actually moderate their agenda. And and I think that it can only be a good thing.</div>
-</div>
-<div class="turn" data-start="2509">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">41:49</span>
-  </div>
-  <div class="said">Carter, are you and is any of the action right now that you find that you&#x27;re seeing motivating to you if you&#x27;re if you&#x27;re organizing against the UCP in an election? Even the fact that there&#x27;s phone calls or there&#x27;s an over there&#x27;s an overwhelmed MLA. And I don&#x27;t mean overwhelmed from the negativity of expletives being thrown at her. But with the volume of calls of people being like, stop fucking erasing people&#x27;s rights with the notwithstanding clause, to me, that is like a glimmer of like people are mobilized. That is a glimmer of people are doing something. You add on there the Lukaszek stuff, you add on top of that recall. like to me in some ways like i don&#x27;t want to lose the actual message here which is that people are getting like the ucpr are kind of facing some accountability at the very least from the electorate for their actions and i don&#x27;t want that shit to stop like i don&#x27;t think this conversation is trying to add a chilling effect to any of that but i&#x27;m curious if any of that is motivating to you carter as a strategist and as an organizer</div>
-</div>
-<div class="turn" data-start="2566">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">42:46</span>
-  </div>
-  <div class="said">well i&#x27;ll wait until i see the next poll i mean I mean, we&#x27;ve seen, you know, polarized groups attacking another polarized group does not an election make, right? You need to see people in the middle, people who are, you know, who can switch from the UCP to the NDP. They need to be upset. And that&#x27;s what I&#x27;ll be looking for in the next poll. Right now, what we are seeing, from my point of view, is a highly engaged subset of the population that is most likely NDP anyways, activating and mobilizing against a group of UCP MLAs. I&#x27;m not seeing what you&#x27;re seeing as a general population uprising.</div>
-</div>
-<div class="turn" data-start="2611">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">43:31</span>
-  </div>
-  <div class="said">I&#x27;ll finish it on this as a final question. And I&#x27;m assuming that this group, this hyper-engaged group that you&#x27;re referring to, Carter, that are making the calls, that are joining Forever Canadian petitions, that are going to be out on any sort of build-to action to support the teachers, that are assisting with recall. call is that carter in your mind if you were an organizer and a strategist for the ndp the ndp base and and what would you do in terms of bringing those folks in because it&#x27;s it&#x27;s it&#x27;s kind of unclear if they are in some ways you&#x27;d expect them to be but i&#x27;m not sure they see themselves as party people as much as issue-based movement people or pro-canada people so i&#x27;m curious like Like, if there&#x27;s a bridge to be built between these folks and squarely putting them in the NDP category, and how would you be doing that today if you were the New Democrats? And, Shannon, I&#x27;ll end with the episode on that same question for you.</div>
-</div>
-<div class="turn" data-start="2671">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">44:31</span>
-  </div>
-  <div class="said">I&#x27;m not sure I would do anything with it. I mean, initial thoughts are, you know, you do some coffee parties around it or whatever. But I think that this is one of those things where you let the anger grow. And if they are your people, then let your people organize. And if they&#x27;re not your people, then trust that they&#x27;ll be your people during the election. Um, but I, I just don&#x27;t know that, I don&#x27;t know that this organizer class, this particular organizer class or this caller class or this upset voter class, I&#x27;m not sure they&#x27;re necessarily the organizer class for the NDP. That, um, that will come, we will see that in, in time to come, but I think that organizers are organizers and callers are callers. You know what I mean? They&#x27;re different types of people.</div>
-</div>
-<div class="turn" data-start="2721">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">45:21</span>
-  </div>
-  <div class="said">I hear what you&#x27;re saying, but I would also argue that many of these people, should we assume that this group is a monolith that also includes the Forever Canadian, Shannon, are also out there organizing, doing real organizing work. And so the question to end this on is, as this sort of out civil society, as you called it before, movement grows, what are the actions that the NDP needs to make today in order to bring these folks into the tent? Are you with Carter, which is to don&#x27;t do anything, let that group grow and metastasize, even though that word has a connotation, I don&#x27;t mean it as such, and be their own thing. And then you don&#x27;t build that port just yet into your partisan activity or your partisan action as the NDP just yet. How do you process and think about this?</div>
-</div>
-<div class="turn" data-start="2766">
-  <div class="who">
-    <span class="speaker">SPEAKER_02</span>
-    <span class="ts">46:06</span>
-  </div>
-  <div class="said">I think that these are NDP voting base, not necessarily NDP activist base, these people that are out there doing this stuff. Some of them are the same people and some of them are not. Certainly I saw that in the Forever Canadian petition. So I think what you do is organizing is all about relationships. So I think if I&#x27;m the New Democrats, I&#x27;m thinking about how I can make relationships with these individual recall campaigns so that and you&#x27;ve got people who are historically kind of NDP volunteers, organizers, have them go in there, right? Right. Make sure that our people are kind of wandering around among them. And when election time comes, they&#x27;ll be there to help because they&#x27;ll know the people. Right. It is it is that simple. It is and make friends. It&#x27;s not some galaxy brain strategy. It&#x27;s just people should learn to know each other and make those connections like in olden times, like we used to remember back when we used to talk to each other.</div>
-</div>
-<div class="turn" data-start="2829">
-  <div class="who">
-    <span class="speaker">Carter</span>
-    <span class="ts">47:09</span>
-  </div>
-  <div class="said">don&#x27;t remember ridiculous never</div>
-</div>
-<div class="turn" data-start="2831">
-  <div class="who">
-    <span class="speaker">SPEAKER_00</span>
-    <span class="ts">47:11</span>
-  </div>
-  <div class="said">we&#x27;re gonna leave it there that&#x27;s a wrap on episode 1894 the strategist my name is zayton bilge with me as always stephen carter shannon phillips and we shall see you next time</div>
+  <div class="said">maybe focus the mind on new democrats or might focus the mind for elizabeth may or alternatively uh uh depending if they do you know little goodies in people&#x27;s writings or something it might help a conservative or two but</div>
 </div>
 
         </div>

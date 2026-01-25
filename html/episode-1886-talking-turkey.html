@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/141173377.mp3?sig=svE90Rrp6Rg-DhfHeB5kQ_qgKwWlw4d70c_B92IwupI%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/68edda13ead096a6107798b0"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -509,7 +575,7 @@
 </div>
 <div class="turn" data-start="57">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">0:57</span>
   </div>
   <div class="said">This is going to make it harder, though, for me to win the bet</div>
@@ -551,7 +617,7 @@
 </div>
 <div class="turn" data-start="105">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:45</span>
   </div>
   <div class="said">that he can do that right now</div>
@@ -589,7 +655,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">2:20</span>
   </div>
-  <div class="said">Okay, if you are not a patron, you have to subscribe for that. Exactly. If you&#x27;re one of the campaigns competing against Stephen Carter, put down your six bucks, get the answer, and then start thinking. Here&#x27;s what I want to do. I actually want to talk about the weekend that was. Stephen Carter, this is a very important weekend as ordained by Stephen Carter. By So I want to talk about Thanksgiving weekend. Okay. It&#x27;s importance in politics. Carter, you&#x27;ve got a theory about this. I want to revisit that theory. Shannon, if you have not heard of the Stephen Carter theory, it&#x27;s not very complicated, but he will talk to you about it. And then I want to talk about three movements in Alberta. Carter, we&#x27;ve got municipal elections. That might be the most obvious. Right. I&#x27;m</div>
+  <div class="said">Okay, if you are not a patron, you have to subscribe for that. Exactly. If you&#x27;re one of the campaigns competing against Stephen Carter, put down your six bucks, get the answer, and then start thinking. Here&#x27;s what I want to do. I actually want to talk about the weekend that was. Stephen Carter, this is a very important weekend as ordained by Stephen Carter. By</div>
+</div>
+<div class="turn" data-start="162">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:42</span>
+  </div>
+  <div class="said">So I want to talk about Thanksgiving weekend. Okay. It&#x27;s importance in politics. Carter, you&#x27;ve got a theory about this. I want to revisit that theory. Shannon, if you have not heard of the Stephen Carter theory, it&#x27;s not very complicated, but he will talk to you about it. And then I want to talk about three movements in Alberta. Carter, we&#x27;ve got municipal elections. That might be the most obvious. Right. I&#x27;m</div>
 </div>
 <div class="turn" data-start="182">
   <div class="who">
@@ -603,14 +676,35 @@
     <span class="speaker">Zain</span>
     <span class="ts">3:03</span>
   </div>
-  <div class="said">We&#x27;ve got the ATA and their strike, and we have got this forever Canadian referendum, which by the way, their signature collection deadline, correct me if I&#x27;m wrong, end of this month, I believe. I believe. Yeah. Yes, it is. I want to talk about this Thanksgiving weekend in terms of the conversations at the table. Did they happen about any of these three topics? What they needed to look like for any of these three topics in terms of the municipal? We can dive into in and out of these as we wish. But I really want to kind of do a bit of a retrospective. And I&#x27;ll start with you, Carter, which is very simple question. You have ordained the principle that Thanksgiving weekend in a fall election is the most critical weekend of the year. Do you believe that more, less, or the same, given our new political environment that you have been certainly welcome to over the course of the last year and a half? But I think we&#x27;ve all experienced in the last little bit. So give us, start us off there.</div>
+  <div class="said">We&#x27;ve got the ATA and their strike, and we have got this forever Canadian referendum, which by the way, their signature collection deadline, correct me if I&#x27;m wrong, end of this month, I believe. I believe. Yeah. Yes, it is. I want to talk about this Thanksgiving weekend in terms of the conversations at the table. Did they happen about any of these three topics? What they needed to look like for any of these three topics in terms of the municipal? We can dive into in and out of these as we wish. But I really want to kind of do a bit of a retrospective. And I&#x27;ll start with you, Carter, which is very simple question. You have ordained the principle that Thanksgiving weekend in a fall election is the most critical weekend of the year. Do you believe that more, less, or the same, given our new political environment that you have been certainly welcome to over the course of the last year and a half? But I think we&#x27;ve all experienced in the last little bit. So give us, start</div>
+</div>
+<div class="turn" data-start="234">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:54</span>
+  </div>
+  <div class="said">us off there.</div>
 </div>
 <div class="turn" data-start="236">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">3:56</span>
   </div>
-  <div class="said">I think it might be the most important, this might be the most important Thanksgiving weekend in history for our municipal politics. Okay. we&#x27;ve lost mainstream media. I&#x27;m not sure if you&#x27;re aware, Zane, but we used to have this thing called mainstream media. People would tune in. They&#x27;d read the newspaper and they&#x27;d talk about it. In 2007, when I was running the Al Noor Kassam campaign, the mainstream media put out a four-page expose on Al Noor Kassam. Killed us dead, as we deserve to be. But, you know, the mainstream media ended us, not Thanksgiving weekend. But now mainstream media is a shadow of itself, right? And then we had the Nenshi movement, right? Right. The Nenshi move was was in part orchestrated with social media. Well, I&#x27;m not sure if you two have been on social media lately, but there are no social media campaigns that are happening for the municipal campaigns right now. There&#x27;s some bought and paid for advertising, but there&#x27;s nothing that&#x27;s happening organically. So the there is no social media anymore either. So the only thing that we&#x27;re left with is friends and family getting together and discussing it amongst themselves. That is all we have left in terms of communication networks. Everything else is collapsing around us. And the Thanksgiving weekend is the opportunity for those groups to come together and to talk about the three things that you&#x27;re talking about, plus whether or not Stephen Carter eats too many mashed potatoes. And he does. He ate too many mashed potatoes.</div>
+  <div class="said">I think it might be the most important, this might be the most important Thanksgiving weekend in history for our municipal politics. Okay.</div>
+</div>
+<div class="turn" data-start="248">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">4:08</span>
+  </div>
+  <div class="said">we&#x27;ve lost mainstream media. I&#x27;m not sure if you&#x27;re aware, Zane, but we used to have this thing called mainstream media. People would tune in. They&#x27;d read the newspaper and they&#x27;d talk about it. In 2007, when I was running the Al Noor Kassam campaign, the mainstream media put out a four-page expose on Al Noor Kassam. Killed us dead, as we deserve to be. But, you know, the mainstream media ended us, not Thanksgiving weekend. But now mainstream media is a shadow of itself, right? And then we had the Nenshi movement, right? Right. The Nenshi move was was in part orchestrated with social media. Well, I&#x27;m not sure if you two have been on social media lately, but there are no social media campaigns that are happening for the municipal campaigns right now. There&#x27;s some bought and paid for advertising, but there&#x27;s nothing that&#x27;s happening organically. So the there is no social media anymore either. So the only thing that we&#x27;re left with is friends and family getting together and discussing it amongst themselves. That is all we have left in terms of communication networks. Everything else is collapsing around us. And the Thanksgiving weekend is the opportunity for those groups to come together and to talk about the three things that you&#x27;re talking about, plus whether or not Stephen Carter eats too many mashed potatoes.</div>
+</div>
+<div class="turn" data-start="324">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">5:24</span>
+  </div>
+  <div class="said">And he does. He ate too many mashed potatoes.</div>
 </div>
 <div class="turn" data-start="328">
   <div class="who">
@@ -628,7 +722,7 @@
 </div>
 <div class="turn" data-start="364">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">6:04</span>
   </div>
   <div class="said">Shannon. No, no, go ahead, Carter. I want to hear what you have to say. I want to pause</div>
@@ -652,18 +746,39 @@
     <span class="speaker">Carter</span>
     <span class="ts">6:15</span>
   </div>
-  <div class="said">a theory. Maybe it&#x27;s My theory is that men talk the way I&#x27;m talking right now. And men will say in the Thanksgiving dinner, I&#x27;m voting for Nahid Nenshi, I&#x27;m voting for Brian Thiessen, I&#x27;m voting for Corey Hogan. It&#x27;s lunatics. All the men, right, will just say exactly what&#x27;s going to happen. Whereas I think that women take a more delicate and more kind of seasoned approach where they kind of come in and they say, and the example I use is, have you heard of this Nenshi guy? Right. Have you heard of this Nenshi guy? I was has been my my ongoing thesis of how women transport move information from one to the other have you heard of him as such a non in your face kind of statement have you heard of what he you know have you heard of who he is and it&#x27;s an open it&#x27;s a door opening not a statement being made it&#x27;s a door open for everybody to join the same conversation and I think that around Thanksgiving dinners women will make sure that the doors open whereas men may make sure the doors get slammed am shut and so that is my that is my theory that i will offer up to shannon to jump in on and to tell me either how right or wrong i mean</div>
+  <div class="said">a theory. Maybe it&#x27;s</div>
+</div>
+<div class="turn" data-start="377">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">6:17</span>
+  </div>
+  <div class="said">My theory is that men talk the way I&#x27;m talking right now. And men will say in the Thanksgiving dinner, I&#x27;m voting for Nahid Nenshi, I&#x27;m voting for Brian Thiessen, I&#x27;m voting for Corey Hogan. It&#x27;s lunatics. All the men, right, will just say exactly what&#x27;s going to happen. Whereas I think that women take a more delicate and more kind of seasoned</div>
+</div>
+<div class="turn" data-start="401">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">6:41</span>
+  </div>
+  <div class="said">approach where they kind of come in and they say, and the example I use is, have you heard of this Nenshi guy? Right. Have you heard of this Nenshi guy? I was has been my my ongoing thesis of how women transport move information from one to the other have</div>
+</div>
+<div class="turn" data-start="417">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">6:57</span>
+  </div>
+  <div class="said">you heard of him as such a non in your face kind of statement have you heard of what he you know have you heard of who he is and it&#x27;s an open it&#x27;s a door opening not a statement being made it&#x27;s a door open for everybody to join the same conversation and I think that around Thanksgiving dinners women will make sure that the doors open whereas men may make sure the doors get slammed am shut and so that is my that is my theory that i will offer up to shannon to jump in on and to tell me either how right or wrong i mean</div>
 </div>
 <div class="turn" data-start="448">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">7:28</span>
   </div>
-  <div class="said">shannon we&#x27;ve given you three questions which means we&#x27;ve given you zero questions so you can have that in anything here carter</div>
+  <div class="said">shannon we&#x27;ve given you three questions which means we&#x27;ve given you zero questions so you can have that in anything here</div>
 </div>
 <div class="turn" data-start="452">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">7:32</span>
   </div>
   <div class="said">carter is right but he may have been writer in the old days than he is now because i think polarization has taken over everything women and men to the point where you&#x27;re not going to talk about it if you know i was just talking before with uh just break the fourth wall here with haxum uh who you know was just up in westlock i grew up uh outside of spruce grove and uh i you know if i was sitting around with relatives they don&#x27;t talk to me anymore because i&#x27;m a new democrat quite literally um like i don&#x27;t have extended family and i used to uh but is that</div>
@@ -677,7 +792,7 @@
 </div>
 <div class="turn" data-start="496">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:16</span>
   </div>
   <div class="said">i didn&#x27;t have power as soon as we did um yeah</div>
@@ -691,10 +806,24 @@
 </div>
 <div class="turn" data-start="502">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">8:22</span>
   </div>
-  <div class="said">it&#x27;s been a decade since i&#x27;ve seen these people i&#x27;d see them blow by on my mother&#x27;s facebook where they you know talk about uh lynching me if i go to the family reunion seriously yeah but uh so you know but if i was if they were like half normal well i i i would uh probably just not talk about Right. But and I think, you know, the men in my life and even my kids wouldn&#x27;t either. Right. And I think that that happens more if you&#x27;re in mixed company. Now, if you&#x27;re not and you&#x27;re just among a bunch of just sort of lumpen, sort of vaguely center right, some progressive, some kind of chamber of commerce, state conservative, you sort of poly political family. I think at that point, Carter is right that women are more likely to be less definitive, except for when things get quite spicy. And since COVID, things have gotten really where everybody knows where everyone stands. Right. And, you know, we are at another one of these moments. It&#x27;s not the municipal campaign that is making people feel polarized, but the teacher&#x27;s strike might. Right. so you&#x27;re going to get a little bit more tentativeness sometimes in mixed company. But I think overall, people are just not like in mixed company. They&#x27;re not talking about it. They&#x27;ll talk about anything else</div>
+  <div class="said">it&#x27;s been a decade since i&#x27;ve seen these people i&#x27;d see them blow by on my mother&#x27;s facebook where they you know talk about uh lynching me if i go to the family reunion seriously yeah but uh so you know but if i was if they were like half normal well i i i would uh probably just not talk about Right. But and I think, you know, the men in my life and even my kids wouldn&#x27;t either.</div>
+</div>
+<div class="turn" data-start="527">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">8:47</span>
+  </div>
+  <div class="said">Right. And I think that that happens more if you&#x27;re in mixed company. Now, if you&#x27;re not and you&#x27;re just among a bunch of just sort of lumpen, sort of vaguely center right, some progressive, some kind of chamber of commerce, state conservative, you sort of poly political family. I think at that point, Carter is right that women are more likely to be less definitive, except for when things get quite spicy. And since COVID, things have gotten really where everybody knows where everyone stands. Right. And, you know, we are at another one of these moments. It&#x27;s not the municipal campaign that is making people feel polarized, but the teacher&#x27;s strike might. Right.</div>
+</div>
+<div class="turn" data-start="571">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">9:31</span>
+  </div>
+  <div class="said">so you&#x27;re going to get a little bit more tentativeness sometimes in mixed company. But I think overall, people are just not like in mixed company. They&#x27;re not talking about it. They&#x27;ll talk about anything else</div>
 </div>
 <div class="turn" data-start="587">
   <div class="who">
@@ -705,7 +834,7 @@
 </div>
 <div class="turn" data-start="660">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">11:00</span>
   </div>
   <div class="said">there&#x27;s persuasion, Zwayne. I really do. Because there&#x27;s so much lack of knowledge to</div>
@@ -722,7 +851,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">11:40</span>
   </div>
-  <div class="said">Well, I don&#x27;t know. I mean, I think that, I still think that people gather to share experience together, right? Right. And and we&#x27;re we gather to share stories. I mean, we gathered with friends tonight and we shared stories and some of those stories were political stories and some of those stories weren&#x27;t political stories. Most of them were deeply personal stories. Right. Because ultimately, you know, some of the story, you know, how did everybody meet came up. Right. Like not personal in the sense of, you know, threatening. Right. I don&#x27;t want to be threatened by telling a story. I don&#x27;t want</div>
+  <div class="said">Well, I don&#x27;t know. I mean, I think that, I</div>
+</div>
+<div class="turn" data-start="703">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:43</span>
+  </div>
+  <div class="said">still think that people gather to share experience together, right? Right. And and we&#x27;re we gather to share stories. I mean, we gathered with friends tonight and we shared stories and some of those stories were political stories and some of those stories weren&#x27;t political stories. Most of them were deeply personal stories. Right. Because ultimately, you know, some of the story, you know, how did everybody meet came up. Right. Like not personal in the sense of, you know, threatening. Right. I don&#x27;t want to be threatened by telling a story. I don&#x27;t want</div>
 </div>
 <div class="turn" data-start="738">
   <div class="who">
@@ -736,7 +872,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">12:25</span>
   </div>
-  <div class="said">It was mostly friends. My daughter and her boyfriend were there. A little bit of fun, but mostly friends. Listeners of the podcast, let&#x27;s just say that. You can have Stephen Carter at your Thanksgiving dinner next year for the low, low price of $1,500 a month in our our, uh, super duper sponsorship. Uh, anyways, um, strategist listeners. And, uh, we had a, a lovely chat and, uh, talked about all kinds of things. Um, uh, but we also talked about politics and we did talk about the polarization, but because it was a gathering of friends and maybe because it was a gathering of friends, it was a gathering of all the same side of the same, of the spectrum oh</div>
+  <div class="said">It was mostly friends. My daughter and her boyfriend were there. A little bit of fun, but mostly friends. Listeners of the podcast, let&#x27;s just say</div>
+</div>
+<div class="turn" data-start="757">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">12:37</span>
+  </div>
+  <div class="said">that. You can have Stephen Carter at your Thanksgiving dinner next year for the low, low price of $1,500 a month in our our, uh, super duper sponsorship. Uh, anyways, um, strategist listeners. And, uh, we had a, a lovely chat and, uh, talked about all kinds of things. Um, uh, but we also talked about politics and we did talk about the polarization, but because it was a gathering of friends and maybe because it was a gathering of friends, it was a gathering of all the same side of the same, of the spectrum oh</div>
 </div>
 <div class="turn" data-start="790">
   <div class="who">
@@ -750,7 +893,21 @@
     <span class="speaker">Carter</span>
     <span class="ts">13:11</span>
   </div>
-  <div class="said">was no um there was no argumentation of oh you support this person and frankly with all of us being deeply half the people at the table are working on the campaigns right like this is not i wasn&#x27;t in in a i wasn&#x27;t in the comparable situation that most people would be in on their thanksgiving but i do think that we do We did still go through the exercise of sharing personal discussion points and what we&#x27;re going to do, why politics matters to us. Not everybody at the table had the same political experience. And they were interested in what we were doing and how it was happening. There was a lot of interest in things like signs being stolen and literature being pulled out of mailboxes and things like that. uh that was you know kind of the the stories from the trail that uh we were able to share that were different it&#x27;s kind of like talking about us kind of like a mini podcast rather than rather than a um a traditional family dinner but i still think that people want to share something that&#x27;s deeply personal and that they want to share what they&#x27;re going to do they want to be leaders within those groups yeah</div>
+  <div class="said">was no um there was no argumentation of oh you support this person and frankly with all of us being deeply half the people at the table are working on the campaigns right like this is not i wasn&#x27;t in in a i wasn&#x27;t in the comparable situation that most people would be in on their thanksgiving but i do think that we do We did still go through the exercise of sharing personal discussion points and what we&#x27;re going to do, why politics matters to us. Not everybody at the table had the same political experience.</div>
+</div>
+<div class="turn" data-start="827">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:47</span>
+  </div>
+  <div class="said">And they were interested in what we were doing and how it was happening. There was a lot of interest in things like signs being stolen and literature being pulled out of mailboxes and things like that. uh that was you know kind of the the stories from the trail that uh we were able to share that were different it&#x27;s kind of like talking about us kind of like a mini podcast rather than rather than a um a traditional family dinner but</div>
+</div>
+<div class="turn" data-start="855">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">14:15</span>
+  </div>
+  <div class="said">i still think that people want to share something that&#x27;s deeply personal and that they want to share what they&#x27;re going to do they want to be leaders within those groups yeah</div>
 </div>
 <div class="turn" data-start="864">
   <div class="who">
@@ -761,7 +918,7 @@
 </div>
 <div class="turn" data-start="883">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">14:43</span>
   </div>
   <div class="said">i think we&#x27;re filling in blanks for people right i mean and maybe i&#x27;m just importing my own experience because that&#x27;s the point yeah who is called upon to fill in the blanks for people even if it&#x27;s like a municipal municipal campaign right or school board or whatever you know at uh various gatherings um i&#x27;m people are like well what you know do you know this person have you worked with them that kind of stuff right sure but we are all doing a a version of that even if you know you haven&#x27;t been the mla for the region um you were all we&#x27;re all like those of us who are</div>
@@ -775,10 +932,17 @@
 </div>
 <div class="turn" data-start="920">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">15:20</span>
   </div>
-  <div class="said">and and that&#x27;s That&#x27;s where you can use Thanksgiving weekend and Easter to a certain extent as well, I think. And I think we saw this during COVID over Christmas and into New Year&#x27;s when, you know, Jason Kenney had to eat shit over those Hawaii vacations and everything. Remember all that? Right, right. I mean, that was also a time when we were talking to people a lot and we were filling in blanks for people, right? And I saw that the Democrats did a good one. And you see this often over Thanksgiving and Easter weekends. Like, here&#x27;s what to talk about over the dinner table, right? Right. Or here&#x27;s some facts for you. Right. Here&#x27;s guide. Yeah. Here&#x27;s your little guide to, you know, here&#x27;s the background. Here&#x27;s the FAQ on this particular topic. I think that&#x27;s how information is shared among and probably among people who are more likely to agree with each other or at least be in the same sort of timeline. timeline right in the reality-based community because but sometimes you can even reach people who are not in the reality-based community right with uh especially the more local the politics uh depending on how like terminally online they are uh you can usually kind you know break through and go okay but this person was a community leader at x or whatever and bring things down from you know what&#x27;s in the uh what&#x27;s what&#x27;s in the what&#x27;s in the air right uh and uh the the big wheels that maybe don&#x27;t matter to a school board election sure i still think that&#x27;s pretty rare because of uh uh just straight polarization carter</div>
+  <div class="said">and and that&#x27;s That&#x27;s where you can use Thanksgiving weekend and Easter to a certain extent as well, I think. And I think we saw this during COVID over Christmas and into New Year&#x27;s when, you know, Jason Kenney had to eat shit over those Hawaii vacations and everything. Remember all that? Right, right. I mean, that was also a time when we were talking to people a lot and we were filling in blanks for people, right? And I saw that the Democrats did a good one. And you see this often over Thanksgiving and Easter weekends. Like, here&#x27;s what to talk about over the dinner table, right? Right. Or here&#x27;s some facts for you. Right. Here&#x27;s guide. Yeah. Here&#x27;s your little guide to, you know, here&#x27;s the background. Here&#x27;s the FAQ on this particular topic. I think that&#x27;s how information is shared among and probably among people who are more likely to agree with each other or at least be in the same sort of timeline. timeline right in the reality-based community because</div>
+</div>
+<div class="turn" data-start="975">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">16:15</span>
+  </div>
+  <div class="said">but sometimes you can even reach people who are not in the reality-based community right with uh especially the more local the politics uh depending on how like terminally online they are uh you can usually kind you know break through and go okay but this person was a community leader at x or whatever and bring things down from you know what&#x27;s in the uh what&#x27;s what&#x27;s in the what&#x27;s in the air right uh and uh the the big wheels that maybe don&#x27;t matter to a school board election sure i still think that&#x27;s pretty rare because of uh uh just straight polarization carter</div>
 </div>
 <div class="turn" data-start="1011">
   <div class="who">
@@ -792,7 +956,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">17:39</span>
   </div>
-  <div class="said">well certainly we we wanted everybody in our orbits to be talking politics this thanksgiving weekend right um so our messaging was talk to your friends and family uh talk to them about politics talk to them about why this election matters in both calgary and in Edmonton, undecided is kicking everybody&#x27;s ass, especially in Edmonton. It&#x27;s like no one wants any of the candidates to win. So, you know, we wanted people who had made up their mind to support Tim Carmel or to support Brian Thiessen to be explaining to people why they had made up their minds. So that was our primary message. You know, this comes right hot on the heels of of six days of GOTV trying to get people to vote in the advance polls. So you&#x27;re trying to get everybody to lock their vote in and then explain to people why they voted the way that they did. So it&#x27;s kind of a one-two punch. And then we have this weird week where we sit on our high knees and wait to see if everybody actually talked about it over Thanksgiving</div>
+  <div class="said">well certainly we we wanted everybody in our orbits to be talking politics this thanksgiving weekend right um so our messaging was talk to your friends and family uh talk to them about politics talk to them about why this election matters in both calgary and in Edmonton, undecided is kicking everybody&#x27;s ass, especially in Edmonton. It&#x27;s like no one wants any of the candidates to win. So, you know, we wanted people who had made up their mind to support Tim Carmel or to support Brian Thiessen to be explaining to people why they had made up their minds. So that was our primary message. You know, this comes right hot on the heels of of six days of GOTV trying to get people to vote in the advance polls. So</div>
+</div>
+<div class="turn" data-start="1105">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">18:25</span>
+  </div>
+  <div class="said">you&#x27;re trying to get everybody to lock their vote in and then explain to people why they voted the way that they did. So it&#x27;s kind of a one-two punch. And then we have this weird week where we sit on our high knees and wait to see if everybody actually talked about it over Thanksgiving</div>
 </div>
 <div class="turn" data-start="1121">
   <div class="who">
@@ -813,7 +984,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">19:06</span>
   </div>
-  <div class="said">any of that i&#x27;m so interested in this can i dig i&#x27;m gonna keep digging and just to kind of find out and not to like fuck your campaign up by any stretch but just to get a sense of where are you I can do that by myself. Yeah, well, two of them have gone. We&#x27;ll see where this thing ends up next Monday. Yeah, exactly. Where are you going to these days for that trial balloon? Like, I&#x27;m trying to figure this out myself, right? Like, let&#x27;s talk about our experience here in Calgary. Trying to figure out viability, what the herd is doing, what people are feeling, how people are doing things. I&#x27;m seeing a lot of, I&#x27;m seeing a few boomer Facebook posts or a few comments on some friends&#x27; Facebook posts, but there&#x27;s no longer the drumbeat like chatter. There&#x27;s no longer the, this person, this person, this person. I keep hearing it. I keep seeing it. I keep seeing paid. I keep seeing it on my graph. Of course, we&#x27;re no longer in a graph social media environment. We talked about this last week, Shannon and I. We&#x27;re now in an algorithmic social media environment. So you could be on an entirely different plane than I. You could never hear about politics. So we&#x27;re no longer on the social graph. ref, what are you doing to, like, who cares about how you&#x27;re advertising? Like, that&#x27;s tomorrow, yesterday&#x27;s business, and one week that&#x27;s already locked in. What are you doing to even get a sense of if anything is resonating?</div>
+  <div class="said">any of that i&#x27;m so interested in this can i dig i&#x27;m gonna keep digging and just to kind of find out and not to like fuck your campaign up by any stretch but just to get a sense of where are you I can do that by myself. Yeah, well, two of them have gone. We&#x27;ll see where this thing ends up next Monday. Yeah, exactly. Where are you going to these days for that trial balloon? Like, I&#x27;m trying to figure this out myself, right? Like, let&#x27;s talk about our experience here in Calgary. Trying to figure out viability, what the herd is doing, what people are feeling, how people are doing things. I&#x27;m seeing a lot of, I&#x27;m seeing a few boomer Facebook posts or a few comments on some friends&#x27; Facebook posts, but there&#x27;s no longer the drumbeat</div>
+</div>
+<div class="turn" data-start="1189">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">19:49</span>
+  </div>
+  <div class="said">like chatter. There&#x27;s no longer the, this person, this person, this person. I keep hearing it. I keep seeing it. I keep seeing paid. I keep seeing it on my graph. Of course, we&#x27;re no longer in a graph social media environment. We talked about this last week, Shannon and I. We&#x27;re now in an algorithmic social media environment. So you could be on an entirely different plane than I. You could never hear about politics. So we&#x27;re no longer on the social graph. ref, what are you doing to, like, who cares about how you&#x27;re advertising? Like, that&#x27;s tomorrow, yesterday&#x27;s business, and one week that&#x27;s already locked in. What are you doing to even get a sense of if anything is resonating?</div>
 </div>
 <div class="turn" data-start="1218">
   <div class="who">
@@ -859,7 +1037,7 @@
 </div>
 <div class="turn" data-start="1260">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">21:00</span>
   </div>
   <div class="said">it&#x27;s almost like you need to go knock on some fucking doors we&#x27;re going with that too</div>
@@ -873,7 +1051,7 @@
 </div>
 <div class="turn" data-start="1265">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">21:05</span>
   </div>
   <div class="said">like and identify your supporters it&#x27;s almost like i i mean i don&#x27;t know like there&#x27;s only so many tools right and so i kind of go it</div>
@@ -887,7 +1065,7 @@
 </div>
 <div class="turn" data-start="1274">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">21:14</span>
   </div>
   <div class="said">but everybody just tells you if they&#x27;re undecided in a municipal yeah i mean</div>
@@ -897,7 +1075,21 @@
     <span class="speaker">Carter</span>
     <span class="ts">21:18</span>
   </div>
-  <div class="said">that&#x27;s where you need it matters i can tell you right now it took us three months to identify our first jody gondek voter last this election We&#x27;re going around, we&#x27;re, you know, we&#x27;re identifying votes for both the mayoralty race as well as for the council races, right? Yeah. It took us three months to identify our first Jyoti Gondek elector. And yet Jyoti Gondek in the polls is- Is second Completely unrelated to what we&#x27;re seeing at the doors. Like forget about our candidates, like our grassroots candidates. Yeah. Right? Our grassroots candidates, I know what their numbers are and I know exactly where they are. Right? But the mayoralty candidates, it&#x27;s more kind of anecdata, right? We&#x27;ve got some data, but it&#x27;s not enough. And then when the data comes in, the data doesn&#x27;t match. The data doesn&#x27;t match it at all. I can tell you our web stats are absolutely in line with what Jyoti Gondek&#x27;s web stats were in 2021</div>
+  <div class="said">that&#x27;s where you need it matters i can tell you right now it took us three months to identify our first jody gondek voter last this election We&#x27;re going around, we&#x27;re, you know, we&#x27;re identifying votes for both the mayoralty race as well as for the council races, right? Yeah.</div>
+</div>
+<div class="turn" data-start="1295">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:35</span>
+  </div>
+  <div class="said">It took us three months to identify our first Jyoti Gondek elector. And yet Jyoti Gondek in the polls is- Is second Completely unrelated to what we&#x27;re seeing at the doors. Like forget about our candidates, like our grassroots candidates. Yeah. Right? Our grassroots candidates, I know what their numbers are and I know exactly where they are. Right? But the mayoralty</div>
+</div>
+<div class="turn" data-start="1317">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:57</span>
+  </div>
+  <div class="said">candidates, it&#x27;s more kind of anecdata, right? We&#x27;ve got some data, but it&#x27;s not enough. And then when the data comes in, the data doesn&#x27;t match. The data doesn&#x27;t match it at all. I can tell you our web stats are absolutely in line with what Jyoti Gondek&#x27;s web stats were in 2021</div>
 </div>
 <div class="turn" data-start="1338">
   <div class="who">
@@ -922,10 +1114,24 @@
 </div>
 <div class="turn" data-start="1356">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">22:36</span>
   </div>
-  <div class="said">I think if I were to build a campaign now, like let&#x27;s say the election is in October of 2026, and my friend wanted to run for mayor, I might take a bit of a different tack at it, just knowing what we know about social media now. And knowing what we know about, I mean, even in the last two years, what has happened to the media environment. And I would definitely do what Carter did with Gondek and hitch it to some larger topics, larger political forces, and then just ride that at the door, right? Right. And you could you could pull it off for a mayoral campaign, I think, to get the name recognition to go into, you know, like the good spots for the New Democrats to start off with all the good neighborhoods. There&#x27;s plenty of them. The same places that were Corey tilled the soil as well. These are the same spots and there&#x27;s lots of voters up in there and they vote, too. That&#x27;s the other thing in your Kensington&#x27;s varsity village, all these kind of areas like folks will go go get their vote on as opposed to other places. And I might build it from there. Because I don&#x27;t see an alternative at this point. You&#x27;re not building it on social media anymore, not in the first instance, if you don&#x27;t have any pre-existing name recognition or whatever. What you&#x27;re</div>
+  <div class="said">I think if I were to build a campaign now, like let&#x27;s say the election is in October of 2026, and my friend wanted to run for mayor, I might take a bit of a different tack at it, just knowing what we know about social media now. And knowing what we know about, I mean, even in the last two years, what has happened to the media environment.</div>
+</div>
+<div class="turn" data-start="1378">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">22:58</span>
+  </div>
+  <div class="said">And I would definitely do what Carter did with Gondek and hitch it to some larger topics, larger political forces, and then just ride that at the door, right? Right. And you could you could pull it off for a mayoral campaign, I think, to get the name recognition to go into, you know, like the good spots for the New Democrats to start off with all the good neighborhoods. There&#x27;s plenty of them. The same places that were Corey tilled the soil as well. These are the same spots and there&#x27;s lots of voters up in there and they vote, too. That&#x27;s the other thing in your Kensington&#x27;s varsity village, all these kind of areas like folks will go go get their vote on as opposed to other places. And I might build it from there. Because I don&#x27;t see an alternative at this point. You&#x27;re not building it on social media anymore, not in the first instance, if</div>
+</div>
+<div class="turn" data-start="1432">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">23:52</span>
+  </div>
+  <div class="said">you don&#x27;t have any pre-existing name recognition or whatever. What you&#x27;re</div>
 </div>
 <div class="turn" data-start="1437">
   <div class="who">
@@ -936,7 +1142,7 @@
 </div>
 <div class="turn" data-start="1440">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">24:00</span>
   </div>
   <div class="said">uh i don&#x27;t know if i i like i&#x27;m not sure if that matters i i mean you can uh tell me if that matters i i think it&#x27;s it&#x27;s good for fundraising purposes and those are</div>
@@ -1006,7 +1212,7 @@
 </div>
 <div class="turn" data-start="1635">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">27:15</span>
   </div>
   <div class="said">change mine. The question of viability is for someone else. Good point. It&#x27;s for an influencer to talk about and, you know, be the guy at the board with the red string, putting it all together, all the stuff that Janet Brown posted and interpreting it for people so that and pushing it out into uh a progressive universe if they had like that tour troy pavlov guy or whatever he&#x27;s like what&#x27;s his last name in edmonton oh yeah they had one of those in calgary um that yeah that&#x27;s</div>
@@ -1020,7 +1226,7 @@
 </div>
 <div class="turn" data-start="1665">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">27:45</span>
   </div>
   <div class="said">definitely i mean maybe your candidate shouldn&#x27;t stay stupid shit well</div>
@@ -1076,7 +1282,7 @@
 </div>
 <div class="turn" data-start="1820">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">30:20</span>
   </div>
   <div class="said">Well, all I know is it&#x27;s a good weekend for canvassing, not the Sunday, Monday, but the Friday, Saturday, because people stay home. They&#x27;re more likely to stay home or be around than they, you know, obviously in the summertime people are gone. It&#x27;s a long weekend where they&#x27;re more likely to be around</div>
@@ -1100,11 +1306,18 @@
     <span class="speaker">Zain</span>
     <span class="ts">30:55</span>
   </div>
-  <div class="said">Crescendo anyways, but you made use of it on the ground as well. well um shannon can i lead you to on the uh to to start us with the uh teacher strike how likely the first question is how likely do you think this was a topic of political conversation at the thanksgiving dinner table uh in terms of like not all topics but in terms of political topics right with municipal this the referendum question trump like all these other things are all in the political orbit so how likely do you think this was a top tier question and what do do you think needed to happen from the teacher standpoint this weekend in terms of that that conversation what do you think that they needed out of this weekend in that regard well</div>
+  <div class="said">Crescendo anyways, but you made use of it on the ground as well. well</div>
+</div>
+<div class="turn" data-start="1859">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">30:59</span>
+  </div>
+  <div class="said">um shannon can i lead you to on the uh to to start us with the uh teacher strike how likely the first question is how likely do you think this was a topic of political conversation at the thanksgiving dinner table uh in terms of like not all topics but in terms of political topics right with municipal this the referendum question trump like all these other things are all in the political orbit so how likely do you think this was a top tier question and what do do you think needed to happen from the teacher standpoint this weekend in terms of that that conversation what do you think that they needed out of this weekend in that regard well</div>
 </div>
 <div class="turn" data-start="1894">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">31:34</span>
   </div>
   <div class="said">well i think yeah it was probably more likely to be talked about if there was a a child within a two mile radius of the thanksgiving dinner table i think that it was far more likely to be talked about even in the municipal</div>
@@ -1118,10 +1331,17 @@
 </div>
 <div class="turn" data-start="1910">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">31:50</span>
   </div>
-  <div class="said">everybody&#x27;s you know and tomorrow morning we have to all figure out what we&#x27;re doing again again uh and that&#x27;s irritating right uh and so uh for sure the topic of conversation is going to be what did you do last week what are you doing next week uh to make sure that these people are not burning down the house right uh and so for sure that is on parents minds um and i think teachers needed to make sure that people were armed with why they&#x27;re on strike because i&#x27;m seeing more of of that right well what why isn&#x27;t it good enough you know that kind of stuff so they needed to be able to ask answer those questions i think they&#x27;re starting to with the the kind of the comms advice that we gave them a couple of weeks ago i&#x27;ve seen a lot more uh at teacher voices paired voices on ata channels as well as you know at teachers pushing thing and like people teachers who are active in their locals and just kind of active in their communities uh pushing out content and And I&#x27;ve also seen the New Democrats doing it. So people are doing what they need to do. And I didn&#x27;t check the meta library. Maybe you guys did on the ad spend. But I&#x27;ve seen more show up organically in the old algo. So I&#x27;m going to assume that there&#x27;s some action happening there that&#x27;s good.</div>
+  <div class="said">everybody&#x27;s you know and tomorrow morning we have to all figure out what we&#x27;re doing again again uh and that&#x27;s irritating right uh and so uh for sure the topic of conversation is going to be what did you do last week what are you doing next week uh to make sure that these people are not burning down the house right uh and so for sure that is on parents minds um and i think teachers needed to make sure that people were armed with why they&#x27;re on strike because i&#x27;m seeing more of of that right well what why isn&#x27;t it good enough you know that kind of stuff so they needed to be able to ask answer those questions i think they&#x27;re starting to with the the kind of the comms advice that we gave them a couple of weeks ago i&#x27;ve seen a lot more uh at teacher voices paired voices on ata channels as well as you know at teachers pushing thing and like people teachers who are active in their locals and just kind of active in their communities uh pushing out content and And I&#x27;ve also seen the New Democrats doing it. So people are doing what they need to do. And I didn&#x27;t check the meta library. Maybe you guys did on</div>
+</div>
+<div class="turn" data-start="1977">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">32:57</span>
+  </div>
+  <div class="said">the ad spend. But I&#x27;ve seen more show up organically in the old algo. So I&#x27;m going to assume that there&#x27;s some action happening there that&#x27;s good.</div>
 </div>
 <div class="turn" data-start="1987">
   <div class="who">
@@ -1132,7 +1352,7 @@
 </div>
 <div class="turn" data-start="2024">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">33:44</span>
   </div>
   <div class="said">Netflix in a few weeks.</div>
@@ -1160,7 +1380,7 @@
 </div>
 <div class="turn" data-start="2110">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:10</span>
   </div>
   <div class="said">Well, we&#x27;ll kind of know a little bit more on Tuesday, Wednesday, what the government&#x27;s own polling is telling them. Right. You can always tell what the polling is saying by how people behave themselves and what they say publicly. And so far, Daniel Smith was out of the province last week. She left it to Horner and Nicolaides. They didn&#x27;t light up teachers the way I thought they might. I thought that they would turn it up to 11. And they didn&#x27;t. They were pretty quiet. And that tells me that the government polling is telling them that there is actually a public appetite to meet the teachers&#x27; demands. And so what the government&#x27;s going to want to do, at least that was probably what it was telling them last week, because they didn&#x27;t go, you know, like I had sort of said, well, you know, they&#x27;ll go</div>
@@ -1174,7 +1394,7 @@
 </div>
 <div class="turn" data-start="2157">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:57</span>
   </div>
   <div class="said">Yeah. And they didn&#x27;t. For them, they didn&#x27;t. And so that tells me that their polling is telling them that people are actually feeling the pinch and there is a certain amount of sympathy for public sector workers out there that is not really the Alberta that I am used to or that I know or that maybe any of us are used to and things have changed. I&#x27;ve seen some other polling that we can&#x27;t really talk about that tells me that maybe there&#x27;s a little bit more public sympathy out there than I would have given, than I would have guessed at had I not seen the polling. And so I think by tomorrow... Sorry, to</div>
@@ -1188,10 +1408,17 @@
 </div>
 <div class="turn" data-start="2201">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">36:41</span>
   </div>
-  <div class="said">public sector workers more broadly. Right? More than I would have guessed, more than I have ever seen in the past. And so that tells me that normal, ordinary, run-of-the-mill people working in the public or private sectors are feeling the pinch and they are feeling a sense of, yeah, everybody&#x27;s getting a raw deal out there, right? Because their housing and grocery costs have gone crazy. And so I think we will know what the government&#x27;s this weekend polling tells them, because that&#x27;s the other thing about a long weekend in a campaign, is you have a bit longer to go get a polling sample, and it&#x27;s a normal time to go out into the field. And I think we&#x27;ll see if the government changes their tone, because the formal bargaining starts again tomorrow, right? And so we&#x27;ll know a little bit more maybe by the end of tomorrow or Wednesday if the government&#x27;s going to change their position, if they&#x27;re going to go harder, if their pollings told them that Albertans are getting sick of this shit and they want the kids to go back to school, or we will see if the government actually softens and they&#x27;re actually losing it in public opinion. opinion i less dug in on my previous view that it was sort of a 50 50 i think maybe the teachers were starting it better than 50 50 carter&#x27;s kind of cute on this as well uh and i think you might be right about that uh because i think i was just sort of uh thinking about this in in ordinary run-of-the-mill albertan terms where you know uh uh things are just a little little bit more center right than in in most places i i don&#x27;t know if that&#x27;s the case so uh we might see we might see a change of attitude and an attitude adjustment from the from the government by tomorrow uh and then we will know whether they&#x27;re going to go back or if we&#x27;re all digging in carter</div>
+  <div class="said">public sector workers more broadly. Right? More than I would have guessed, more than I have ever seen in the past. And so that tells me that normal, ordinary, run-of-the-mill people working in the public or private sectors are feeling the pinch and they are feeling a sense of, yeah, everybody&#x27;s getting a raw deal out there, right? Because their housing and grocery costs have gone crazy. And so I think we will know what the government&#x27;s this weekend polling tells them, because that&#x27;s the other thing about a long weekend in a campaign, is you have a bit longer to go get a polling sample, and it&#x27;s a normal time to go out into the field. And I think we&#x27;ll see if the government changes their tone, because the formal bargaining starts again tomorrow, right? And so we&#x27;ll know a little bit more maybe by the end of tomorrow or Wednesday if the government&#x27;s going to change their position, if they&#x27;re going to go harder, if their pollings told them that Albertans are getting sick of this shit and they want the kids to go back to school, or we will see if the government actually softens and they&#x27;re actually losing it in public opinion. opinion i</div>
+</div>
+<div class="turn" data-start="2278">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">37:58</span>
+  </div>
+  <div class="said">less dug in on my previous view that it was sort of a 50 50 i think maybe the teachers were starting it better than 50 50 carter&#x27;s kind of cute on this as well uh and i think you might be right about that uh because i think i was just sort of uh thinking about this in in ordinary run-of-the-mill albertan terms where you know uh uh things are just a little little bit more center right than in in most places i i don&#x27;t know if that&#x27;s the case so uh we might see we might see a change of attitude and an attitude adjustment from the from the government by tomorrow uh and then we will know whether they&#x27;re going to go back or if we&#x27;re all digging in carter</div>
 </div>
 <div class="turn" data-start="2322">
   <div class="who">
@@ -1279,10 +1506,17 @@
 </div>
 <div class="turn" data-start="2513">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">41:53</span>
   </div>
-  <div class="said">well it&#x27;s not it&#x27;s not going to affect her leadership review at the end of november uh in any way shape or form and in fact if she is more hawkish on teachers all the better uh carter is right it&#x27;s not even her voting base it&#x27;s her activist base that she has to pay attention to. And obviously, that means the separatists and their various representative cranks and caucus. That&#x27;s what matters. And she is in a window of a leadership review as well. And so she knows that if she, that&#x27;s why maybe going, like waiting, going to war with teachers or legislating them back makes her look strong. And it&#x27;s a nice way to start the session.</div>
+  <div class="said">well it&#x27;s not it&#x27;s not going to affect her leadership review at the end of november uh in any way shape or form and in fact if she is more hawkish on teachers all the better uh carter is right it&#x27;s not even her voting base it&#x27;s her activist base that she has to pay attention to. And obviously, that</div>
+</div>
+<div class="turn" data-start="2534">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">42:14</span>
+  </div>
+  <div class="said">means the separatists and their various representative cranks and caucus. That&#x27;s what matters. And she is in a window of a leadership review as well. And so she knows that if she, that&#x27;s why maybe going, like waiting, going to war with teachers or legislating them back makes her look strong. And it&#x27;s a nice way to start the session.</div>
 </div>
 <div class="turn" data-start="2559">
   <div class="who">
@@ -1296,11 +1530,18 @@
     <span class="speaker">Carter</span>
     <span class="ts">43:13</span>
   </div>
-  <div class="said">Every MLA would have hosted a town hall on education, and they would have had talking points about how important education was to this particular government and how important parents are and how making sure that we get the best possible deal with teachers right now will ensure the longevity of this system moving forward. And if we gave them the wrong deal now, the whole system could fall apart. The system needs to be protected. And that&#x27;s why the city, the province of Alberta has decided to put draw a line in the sand, because if we let the union get everything that they want, this will in some fashion hurt our chances of having the system that we need.</div>
+  <div class="said">Every MLA would have hosted a town hall on education, and they would have had talking points about how important education was to this particular government and how important parents are and how making sure that we get the best possible deal with teachers right now will ensure the longevity of this system moving forward. And if we gave them the wrong deal now, the whole system could fall apart. The</div>
+</div>
+<div class="turn" data-start="2617">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">43:37</span>
+  </div>
+  <div class="said">system needs to be protected. And that&#x27;s why the city, the province of Alberta has decided to put draw a line in the sand, because if we let the union get everything that they want, this will in some fashion hurt our chances of having the system that we need.</div>
 </div>
 <div class="turn" data-start="2636">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">43:56</span>
   </div>
   <div class="said">and i mean they are up in the air on on on a paid spend um if they uh cared a little more they would humanize a bit of that advertising and they would put it into different spots uh and uh they would make sure that uh they advertise their asses off on the 30 bucks a day that people with kids under 12 are getting as well right we care uh about your kids we care care about how this is leaving you in a lurch. The union doesn&#x27;t care. So here&#x27;s your $30 a day. Here&#x27;s how you apply for it. Here&#x27;s how you get it. And really beat that</div>
@@ -1384,7 +1625,7 @@
 </div>
 <div class="turn" data-start="2770">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">46:10</span>
   </div>
   <div class="said">No, but also, before we started recording, I was needling Carter for being low-energy Jeb. Because he&#x27;d eaten too many mashed potatoes. I did eat too</div>
@@ -1405,7 +1646,7 @@
 </div>
 <div class="turn" data-start="2785">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">46:25</span>
   </div>
   <div class="said">reference tonight. Carter, why are you</div>
@@ -1489,7 +1730,7 @@
 </div>
 <div class="turn" data-start="2911">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">48:31</span>
   </div>
   <div class="said">Yeah, I mean, well, it was quite frankly, knee slappingly hilarious to hear Daniel Smith talking about how Thomas Lukasik is the problem with separation now.</div>
@@ -1503,7 +1744,7 @@
 </div>
 <div class="turn" data-start="2934">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">48:54</span>
   </div>
   <div class="said">was just gaslighting of the absolute finest uh highest order can you explain this to people</div>
@@ -1517,10 +1758,24 @@
 </div>
 <div class="turn" data-start="2942">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">49:02</span>
   </div>
-  <div class="said">so she i was she was some scrum i think i i i don&#x27;t know exactly uh what the context was but uh i think she was reacting to the news that they had uh 230 000 signatures and she essentially said well we&#x27;re talking we we have to talk about separation now because Thomas Lukasik is forcing us. so, it was just, it was one of those moments where, you know, you feel like the Will Ferrell character in Zoolander, like, am I taking crazy pills? So she&#x27;s going to do that. Okay. I think it&#x27;s fantastic that he&#x27;s met the 230,000. I think that Carter was right in his initial rants on this, that the last segment of signatures are going to be really, really hard to get. But there are a lot of people showing up at these teacher rallies, and I&#x27;ve seen people with their dutiful clipboards at these teacher rallies. And people are really digging in because they really want to get it done. And so I am seeing a level of seriousness that there is no way to be clear that the separatist yokels will be able to achieve. There&#x27;s just no way that they will be able to get those signatures in the proper form and then have them notarized properly in all the different steps. And they are significant to be able to get their stuff on the ballot. Now that I&#x27;ve seen what the actual process is, because my mother is one of these people, it&#x27;s a wild process. There&#x27;s actually a lot to it. and uh i i i don&#x27;t see uh the uh the david parkers of the world being able to pull that off uh at all or whoever the uh the latest social media grifters are that have taken this cause um so uh if anybody&#x27;s gonna do it it&#x27;s gonna be them oh boy they&#x27;ve got another 50 000 to go though right in like i don&#x27;t know 20 days or whatever</div>
+  <div class="said">so she i was she was some scrum i think i i i don&#x27;t know exactly uh what the context was but uh i think she was reacting to the news that they had uh 230 000 signatures and she essentially said well we&#x27;re talking we we have to talk about separation now because Thomas Lukasik is forcing us.</div>
+</div>
+<div class="turn" data-start="2962">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">49:22</span>
+  </div>
+  <div class="said">so, it was just, it was one of those moments where, you know, you feel like the Will Ferrell character in Zoolander, like, am I taking crazy pills? So she&#x27;s going to do that. Okay. I think it&#x27;s fantastic that he&#x27;s met the 230,000. I think that Carter was right in his initial rants on this, that the last segment of signatures are going to be really, really hard to get. But there are a lot of people showing up at these teacher rallies, and I&#x27;ve seen people with their dutiful clipboards at these teacher rallies. And people are really digging in because they really want to get it done. And so I am seeing a level of seriousness that there is no way to be clear that the separatist yokels will be able to achieve. There&#x27;s just no way that they will be able to get those signatures in the proper form and then have them notarized properly in all the different steps. And they are significant to be able to get their stuff on the ballot. Now that I&#x27;ve seen what the actual process is, because my mother is one of these people, it&#x27;s a wild process. There&#x27;s actually a lot to it.</div>
+</div>
+<div class="turn" data-start="3040">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">50:40</span>
+  </div>
+  <div class="said">and uh i i i don&#x27;t see uh the uh the david parkers of the world being able to pull that off uh at all or whoever the uh the latest social media grifters are that have taken this cause um so uh if anybody&#x27;s gonna do it it&#x27;s gonna be them oh boy they&#x27;ve got another 50 000 to go though right in like i don&#x27;t know 20 days or whatever</div>
 </div>
 <div class="turn" data-start="3065">
   <div class="who">
@@ -1587,10 +1842,17 @@
 </div>
 <div class="turn" data-start="3172">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">52:52</span>
   </div>
-  <div class="said">I think this topic pops up whenever the separatism pops up. But right now, Daniel Smith is playing nice with Mark Carney. on topics related to pipelines and other things, pathways, CCUS. And so as a result, this has come down. She wants to set these fake time markers, like the Grey Cup was one, and then of course when they&#x27;re going to apply to the regulatory process in May of 2026. But I suspect that she wants to set Grey Cup as a time marker so that she can go into her convention and yell about how we&#x27;re still getting a raw deal, yada, yada, yada. He hasn&#x27;t got the tanker ban, blah, blah, blah, blah, blah. And but she&#x27;s not doing that right now. And so therefore, the push to sign the petition and to seek it out and to be a good patriotic Canadian has kind of come down a little bit as the other steps come up.</div>
+  <div class="said">I think this topic pops up whenever the separatism pops up. But right now, Daniel Smith is playing nice with Mark Carney. on topics related to pipelines and other things, pathways, CCUS. And so as a result, this has come down. She wants to set these fake time markers, like the Grey Cup was one, and then of course when they&#x27;re going to apply to the regulatory process in May of 2026. But I suspect that she wants to set Grey Cup as a time marker so that she can go into her convention and yell about how we&#x27;re still getting a raw deal, yada, yada, yada. He hasn&#x27;t got the tanker ban, blah, blah, blah, blah, blah.</div>
+</div>
+<div class="turn" data-start="3215">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">53:35</span>
+  </div>
+  <div class="said">And but she&#x27;s not doing that right now. And so therefore, the push to sign the petition and to seek it out and to be a good patriotic Canadian has kind of come down a little bit as the other steps come up.</div>
 </div>
 <div class="turn" data-start="3230">
   <div class="who">
@@ -1685,10 +1947,24 @@
 </div>
 <div class="turn" data-start="3365">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">56:05</span>
   </div>
-  <div class="said">Well, they didn&#x27;t go down there with the expectation of getting anything, really. They essentially had to take his invitation because, you know, they&#x27;d sort of been sending texts back and forth, so it was time to meet IRL kind of thing. That was literally, I think, how it all went down. So, okay. And the good news is, is that Carney didn&#x27;t have to make any overt concessions while he was there. However, there is a bunch of rumbling about new heavy truck tariffs and a couple of other things in the auto industry that are still very live. The worst thing that came out of it was, of course, Lutnick&#x27;s Chatham House rules leaked comments that we&#x27;re not going to have an auto industry anymore. So that&#x27;s 106,000 direct jobs and another half a million indirect jobs that is going to kick us straight in the teeth. And so the loser for Carney was not the Oval Office visit. He did what he had to do, right? You</div>
+  <div class="said">Well, they didn&#x27;t go down there with the expectation of getting anything, really. They essentially had to take his invitation because, you know, they&#x27;d sort of been sending texts back and forth, so it was time to meet IRL kind of thing. That was literally, I think, how it all went down. So, okay.</div>
+</div>
+<div class="turn" data-start="3384">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">56:24</span>
+  </div>
+  <div class="said">And the good news is, is that Carney didn&#x27;t have to make any overt concessions while he was there. However, there is a bunch of rumbling about new heavy truck tariffs and a couple of other things in the auto industry that are still very live. The worst thing that came out of it was, of course, Lutnick&#x27;s Chatham House rules leaked</div>
+</div>
+<div class="turn" data-start="3408">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">56:48</span>
+  </div>
+  <div class="said">comments that we&#x27;re not going to have an auto industry anymore. So that&#x27;s 106,000 direct jobs and another half a million indirect jobs that is going to kick us straight in the teeth. And so the loser for Carney was not the Oval Office visit. He did what he had to do, right? You</div>
 </div>
 <div class="turn" data-start="3427">
   <div class="who">
@@ -1699,7 +1975,7 @@
 </div>
 <div class="turn" data-start="3428">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">57:08</span>
   </div>
   <div class="said">and, you know, like, just bite down on the whiskey rag And just get through an absolutely horrible, you know, amputation of your dignity when you go into that Oval Office. And that is what it is. And, you know, he makes out better than most and better than anyone else that was on offer at the end of April to Canadians.</div>
@@ -1713,7 +1989,7 @@
 </div>
 <div class="turn" data-start="3455">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">57:35</span>
   </div>
   <div class="said">so lightning. This is lightning round.</div>
@@ -1727,7 +2003,7 @@
 </div>
 <div class="turn" data-start="3460">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">57:40</span>
   </div>
   <div class="said">Sorry. Sorry, I got confused</div>
@@ -1741,7 +2017,7 @@
 </div>
 <div class="turn" data-start="3466">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">57:46</span>
   </div>
   <div class="said">But the rest of his week was, frankly, quite shitty. Doug Ford is getting restive, and domestically, he&#x27;s going to have to start to communicate a little bit better on what he&#x27;s doing to have people&#x27;s backs. But, I mean, the external stuff is great. The internal is going to start to wear.</div>
@@ -1783,7 +2059,7 @@
 </div>
 <div class="turn" data-start="3594">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">59:54</span>
   </div>
   <div class="said">don&#x27;t really get credit in politics you might get recognition you might get respect uh begrudging uh or you&#x27;ll get blamed but you don&#x27;t get credit uh it&#x27;s not a thing and you shouldn&#x27;t look for it um you might get recognition that uh you did something uh but it&#x27;s not necessarily yeah uh that you know in in a certain specific scenario like i&#x27;m thinking here is uh when rachel notley uh took us through the fort mcmurray fire right and she emerged uh from that that crisis with uh recognition uh and respect as a leader but not credit right and it wasn&#x27;t vote determining either uh at all no and so um what you need is recognition that here is is you know and respect and carney has that uh on on the international stage but politics isn&#x27;t about the international stage or</div>
@@ -1797,7 +2073,7 @@
 </div>
 <div class="turn" data-start="3649">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:00:49</span>
   </div>
   <div class="said">It&#x27;s about what&#x27;s happening with EI.</div>
@@ -1807,7 +2083,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">1:00:52</span>
   </div>
-  <div class="said">No, very, very insightful. There&#x27;s an Very insightful from both of you on that. Carter, Carney bringing up Keystone XL. Is this a silver bullet A++ grade that many are giving it? Or is this not that in your mind? And just to give people the political context, Smith wants a pipeline. Eby doesn&#x27;t want a pipeline going to the West. Carney brings up, as has been reported by the CBC, Keystone XL, maybe this solves an American problem, maybe this solves a domestic national projects problem, which is why many people have been calling it an A++ silver bullet style thing. Stephen Carter, what strategic grade are you giving it?</div>
+  <div class="said">No, very, very insightful. There&#x27;s an</div>
+</div>
+<div class="turn" data-start="3655">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:00:55</span>
+  </div>
+  <div class="said">Very insightful from both of you on that. Carter, Carney bringing up Keystone XL. Is this a silver bullet A++ grade that many are giving it? Or is this not that in your mind? And just to give people the political context, Smith wants a pipeline. Eby doesn&#x27;t want a pipeline going to the West. Carney brings up, as has been reported by the CBC, Keystone XL, maybe this solves an American problem, maybe this solves a domestic national projects problem, which is why many people have been calling it an A++ silver bullet style thing. Stephen Carter, what strategic grade are you giving it?</div>
 </div>
 <div class="turn" data-start="3691">
   <div class="who">
@@ -1832,7 +2115,7 @@
 </div>
 <div class="turn" data-start="3709">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:01:49</span>
   </div>
   <div class="said">Keystone&#x27;s not Quebec. It goes to the States, Carter. No, I&#x27;m</div>
@@ -1867,24 +2150,52 @@
 </div>
 <div class="turn" data-start="3749">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:02:29</span>
   </div>
-  <div class="said">Oh, I won&#x27;t go down the rabbit hole of pipeline economics, but Keystone XL doesn&#x27;t really help Alberta&#x27;s bottom line or the federal bottom line. There is less of a proponent probably than whatever&#x27;s happening with the West Coast one. Because TCE Energy divested all of its assets to a smaller company that isn&#x27;t a pipeline developer in the same way that TCE and Enbridge are. It may even make the low cost or the low price for bitumen for Western Canada Select lower and may create more economic problems for us now that we have TMX. And so that&#x27;s a problem. um and but uh it&#x27;s fantastic for making basically danielle smith quote and i i loved her response she kind of tried to pour cold water on it but she can&#x27;t pour cold water on any pipeline so she had to hum and haw and and do a little dance which i thought was awesome uh because it showed the extent to which pipeline politics is mostly kabuki theater there are no proponents no one is paying to do any of this and even if you do repeal the tanker ban to go to the west coast the fact is is that you still have section 35 of the constitution that&#x27;s still a thing that exists you can repeal every climate related regulation that you want and you still will have the indigenous nations along the route and at terminus who remain firmly opposed to the west coast option. So neither is a great option. The good news is we have TMX. It is not quite full. It could take more capacity. The BCNDP has said that they&#x27;re supportive of dredging Burrard inlet to get more boats in and out. You know, I would be shocked if they were not even neutral on expanding TMX again so that we could get more access to Asian markets. To my mind, And that&#x27;s the smart thing, but it&#x27;s not a bunch of fucking memes. And so, therefore, nobody&#x27;s interested. We&#x27;re just, you know, busy doing, to Carter&#x27;s point, magic tricks with this topic, rather than understanding what our transportation reality is in a carbon-constrained world, because it remained carbon-constrained. So there&#x27;s I would say it&#x27;s actually a pretty good one on Carney&#x27;s part, though. I gave him an A.</div>
+  <div class="said">Oh, I won&#x27;t go down the rabbit hole of pipeline economics, but Keystone XL doesn&#x27;t really help Alberta&#x27;s bottom line or the federal bottom line. There is less of a proponent probably than whatever&#x27;s happening with the West Coast one. Because TCE Energy divested all of its assets to a smaller company that isn&#x27;t a pipeline developer in the same way that TCE and Enbridge are. It may even make the low cost or the low price for bitumen for Western Canada Select lower and may create more economic problems for us now that we have TMX. And so that&#x27;s a problem. um and but uh it&#x27;s fantastic for making basically danielle smith quote and i i loved her response she kind of tried to pour cold water on it but she can&#x27;t pour cold water on any pipeline so she had to hum and haw and and do a little dance which i thought was awesome uh because it showed the extent to which pipeline politics is mostly kabuki theater there are no proponents no one is paying to do any of this and even if you do repeal the tanker ban to go to the west coast the fact is is that you still have section 35 of the constitution that&#x27;s still a thing that exists you can repeal every climate related regulation that you want and you still will have the indigenous nations along the route and at terminus who remain firmly opposed to the west coast option. So neither is a great option. The good news is we have TMX. It is not quite full. It could take more capacity. The BCNDP has said that they&#x27;re supportive of dredging Burrard inlet to get more boats in and out.</div>
+</div>
+<div class="turn" data-start="3858">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:04:18</span>
+  </div>
+  <div class="said">You know, I would be shocked if they were not even neutral on expanding TMX again so that we could get more access to Asian markets. To my mind, And that&#x27;s the smart thing, but it&#x27;s not a bunch of fucking memes. And so, therefore, nobody&#x27;s interested. We&#x27;re just, you know, busy doing, to Carter&#x27;s point, magic tricks with this topic, rather than understanding what our transportation reality is in a carbon-constrained world, because it remained carbon-constrained. So there&#x27;s I would say it&#x27;s actually a pretty good one on Carney&#x27;s part, though. I gave him an A.</div>
 </div>
 <div class="turn" data-start="3898">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">1:04:58</span>
   </div>
-  <div class="said">Look at that. Maybe she got there. She did get there. She got there. Wow. Do you want me to ask you a more complicated final question, or do you want to leave it there, Carter? No, no. Let&#x27;s do a more complicated final question. I&#x27;m going to start with you on this. We talked about Thanksgiving. We started with Thanksgiving. We spent most of the episode on Thanksgiving weekend. Let&#x27;s end it here, which is, I can&#x27;t help but notice one observation, which is not novel and not unique, but I think is interesting to maybe bring up to finish this off, which is that all three of the things we discussed could either compete with each other, I&#x27;m I&#x27;m talking about the municipal elections, I&#x27;m talking about the teacher strike, and I&#x27;m talking about the referendum petition process, could all compete with each other for attention, or they could all complement each other. And I&#x27;m curious just your general take on that as closing off, Carter, which is as they go forward in the next number of days, and in certain cases, number of weeks, depending on the process and the outcomes, do these movements like this, when they&#x27;re trying to capture limited attention across a media enterprise that is fractured or eroding, or has eroded? Do these movements that are similar and potentially touch the same people as an overlap compete or complement? And how are you as a practitioner or a follower of this stuff, thinking about these things today, drifting off one thing versus another, making it your own thing? Do you feel like you&#x27;re in competition? And Shannon, I&#x27;m going to ask that same very open-ended question to you in a second, but I&#x27;ll let Carter go first.</div>
+  <div class="said">Look at that. Maybe she got there. She did get there. She got there. Wow. Do you want me to ask you a more complicated final question, or do you want to leave it there, Carter? No, no. Let&#x27;s do a more complicated final question. I&#x27;m going to start with you on this. We talked about Thanksgiving. We started with Thanksgiving. We spent most of the episode on Thanksgiving weekend. Let&#x27;s end it here, which is, I can&#x27;t help but notice one observation, which is not novel and not unique, but I think is interesting to maybe bring up to finish this off, which is that all three of the things we discussed could either compete with each other, I&#x27;m I&#x27;m talking about the municipal elections, I&#x27;m talking about the teacher strike, and I&#x27;m talking about the referendum petition process, could all compete with each other for attention, or they could all complement each other.</div>
+</div>
+<div class="turn" data-start="3939">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:05:39</span>
+  </div>
+  <div class="said">And I&#x27;m curious just your general take on that as closing off, Carter, which is as they go forward in the next number of days, and in certain cases, number of weeks, depending on the process and the outcomes, do these movements like this, when they&#x27;re trying to capture limited attention across a media enterprise that is fractured or eroding, or has eroded? Do these movements that are similar and potentially touch the same people as an overlap compete or complement? And how are you as a practitioner or a follower of this stuff, thinking about these things today, drifting off one thing versus another, making it your own thing? Do you feel like you&#x27;re in competition? And Shannon, I&#x27;m going to ask that same very open-ended question to you in a second, but I&#x27;ll let Carter go first.</div>
 </div>
 <div class="turn" data-start="3980">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">1:06:20</span>
   </div>
-  <div class="said">Well, I don&#x27;t think there&#x27;s any secret that in Calgary we&#x27;re trying to connect with anti-Danielle sentiment. Um, that anti-Danielle sentiment comes from, uh, the petition and separatism. It comes from the teacher&#x27;s strike. It comes from a number of different areas. We are trying to tap into that, not doing it as much in Edmonton. Um, you know, will those, so you get kind of, uh, a natural experiment. Will, will they work? Uh, will they not work? I mean, both could fail. Both could be successful. We don&#x27;t know. But I do think that there is an opportunity to tie them together. And ultimately, you know, I think that with the teacher strike, I think that Thomas Thomas&#x27;s little train got a little bump. So, you know, we&#x27;ll see. I mean, it&#x27;ll be interesting to see how it all ends up. But I do think that working together would would would be in everybody&#x27;s, you know, in the progressive side&#x27;s best interest. What I think is of note is that we didn&#x27;t talk about the NDP once this week.</div>
+  <div class="said">Well, I don&#x27;t think there&#x27;s any secret that in Calgary we&#x27;re trying to connect with anti-Danielle sentiment. Um, that anti-Danielle sentiment comes from, uh, the petition and separatism. It comes from the teacher&#x27;s strike. It comes from a number of different areas. We are trying to tap into that, not doing it as much in Edmonton. Um,</div>
+</div>
+<div class="turn" data-start="4003">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:06:43</span>
+  </div>
+  <div class="said">you know, will those, so you get kind of, uh, a natural experiment. Will, will they work? Uh, will they not work? I mean, both could fail. Both could be successful. We don&#x27;t know. But I do think that there is an opportunity to tie them together. And ultimately, you know, I think that with the teacher strike, I think that Thomas Thomas&#x27;s little train got a little bump.</div>
+</div>
+<div class="turn" data-start="4024">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:07:04</span>
+  </div>
+  <div class="said">So, you know, we&#x27;ll see. I mean, it&#x27;ll be interesting to see how it all ends up. But I do think that working together would would would be in everybody&#x27;s, you know, in the progressive side&#x27;s best interest. What I think is of note is that we didn&#x27;t talk about the NDP once this week.</div>
 </div>
 <div class="turn" data-start="4041">
   <div class="who">
@@ -1902,7 +2213,7 @@
 </div>
 <div class="turn" data-start="4061">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:07:41</span>
   </div>
   <div class="said">We had a great time last week, so no</div>
@@ -1923,7 +2234,7 @@
 </div>
 <div class="turn" data-start="4104">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:08:24</span>
   </div>
   <div class="said">Well, I don&#x27;t think they&#x27;re competing at all in the progressive universe. And to our very first point, if you&#x27;re on that side of the ledger, they helped you kind of figure out, OK, who are my municipal candidates? Who&#x27;s my school board person? You know, are they the person who&#x27;s showing up in my algorithm saying we have to stand up to Daniel Smith and we need an effective advocate for public education? OK, now I understand. extent. I&#x27;d never heard of this person before, but now they&#x27;re telling me what I need to know to mark my X, right? And so it&#x27;s a portal. Any of these things are sort of, you know, they&#x27;re a gateway, and then they reinforce each other. And unfortunately, we reinforce it, and the algorithm reinforces it. But if you don&#x27;t play that way, and if you&#x27;re one of these municipal candidates who goes out there and saying, oh, I don&#x27;t want to, you know, take a stand on danielle or don&#x27;t you know i i want to be not not as a you know these kinds of people and i i saw them a couple of their campaigns crashed on the rocks in 2021 because they refused to do this um</div>
@@ -1937,7 +2248,7 @@
 </div>
 <div class="turn" data-start="4166">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:09:26</span>
   </div>
   <div class="said">win uh because they they didn&#x27;t tell the voters you know very basic things uh on what they uh what they could expect from right uh and it is a nice shorthand. And I imagine it will only continue.</div>

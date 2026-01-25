@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/143551820.mp3?sig=pdgLa1GzsjGz94coMyGzYwPj0ViFu0cA6IF7ft845RQ%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/6916c9621029ec1fedc9e1b6"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -439,7 +505,7 @@
 </div>
 <div class="turn" data-start="25">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">0:25</span>
   </div>
   <div class="said">Carter&#x27;s way over there.</div>
@@ -453,7 +519,7 @@
 </div>
 <div class="turn" data-start="28">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">0:28</span>
   </div>
   <div class="said">Some distance between us.</div>
@@ -481,7 +547,7 @@
 </div>
 <div class="turn" data-start="76">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:16</span>
   </div>
   <div class="said">not a sponsor</div>
@@ -509,7 +575,7 @@
 </div>
 <div class="turn" data-start="124">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:04</span>
   </div>
   <div class="said">it&#x27;s a United Church of</div>
@@ -554,7 +620,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">3:02</span>
   </div>
-  <div class="said">Stephen, this is your conscience speaking, Stephen. that&#x27;s right. Your conscience sounds exactly like much better than Zaram Mamdami Corey Hogan, MP for Calgary Confederation. your conscience, I don&#x27;t want you to lie to these people. I don&#x27;t want you to bury your feelings in this weird post-modern thing you&#x27;re doing tonight where lawn signs and stuff at a funeral. roll. I want you to tell the truth about the many, many nights you toiled away on this Rube Goldberg machine-like campaign in 34 different places, and how that may have perhaps contributed to some of the failure you&#x27;re basking in tonight, Stephen. over to you, Stephen. even forgive</div>
+  <div class="said">Stephen, this is your conscience speaking, Stephen. that&#x27;s right. Your conscience sounds exactly like much better than Zaram Mamdami Corey Hogan, MP for Calgary Confederation.</div>
+</div>
+<div class="turn" data-start="199">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">3:19</span>
+  </div>
+  <div class="said">your conscience, I don&#x27;t want you to lie to these people. I don&#x27;t want you to bury your feelings in this weird post-modern thing you&#x27;re doing tonight where lawn signs and stuff at a funeral. roll. I want you to tell the truth about the many, many nights you toiled away on this Rube Goldberg machine-like campaign in 34 different places, and how that may have perhaps contributed to some of the failure you&#x27;re basking in tonight, Stephen. over to you, Stephen. even forgive</div>
 </div>
 <div class="turn" data-start="239">
   <div class="who">
@@ -600,7 +673,7 @@
 </div>
 <div class="turn" data-start="332">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">5:32</span>
   </div>
   <div class="said">the women&#x27;s gender equality section and reach to us yes the</div>
@@ -712,7 +785,7 @@
 </div>
 <div class="turn" data-start="536">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">8:56</span>
   </div>
   <div class="said">analysis? Oh, I have follow-ups. Yes, you do. team in carter to cory&#x27;s point though the way you frame the question is like the mayoral race you weren&#x27;t just doing one race you were doing 15 14 14 in calgary uh another 15 in edmonton when did you start to know i guess walk back about like how hard it was to run that many races at the same time because it was a very different experience for you then last time and when When you started to know that it wasn&#x27;t just mayoral, it was also these other races</div>
@@ -722,7 +795,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">9:28</span>
   </div>
-  <div class="said">Well, I mean, the councillor races were really interesting because they were really prompting up the mayor&#x27;s race. We were able to do things that other campaigns couldn&#x27;t do because we had ground game in 13 of the 14 wards. So we had our brochure distribution, I think, was better. I think our door knocking was better. I think our ability to do a ground game was better. And it actually showed itself in the councillor races, not in the mayor&#x27;s race. Our councillors got about 25,000 more votes than the mayor&#x27;s race got. So I think that we were able to capture people in a different way with the councillor races. Now, we still were only successful with one. So ultimately, they weren&#x27;t as successful as we would have liked, but they provided a ground game that didn&#x27;t exist for any of the other mayoralty campaigns, in my opinion. Do you think you made the wrong bet on parties? Did I make the wrong bet on parties?</div>
+  <div class="said">Well, I mean, the councillor races were really interesting because they were really prompting up the mayor&#x27;s race. We were able to do things that other campaigns couldn&#x27;t do because we had ground game in 13 of the 14 wards. So we had our brochure distribution, I think, was better. I think our door knocking was better. I think our ability to do a ground game was better. And it actually showed itself in the councillor races, not in the mayor&#x27;s race. Our councillors got about 25,000 more votes than the mayor&#x27;s race got. So I think that we were able to capture people in a different way with the councillor races. Now, we still were only successful with one.</div>
+</div>
+<div class="turn" data-start="608">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">10:08</span>
+  </div>
+  <div class="said">So ultimately, they weren&#x27;t as successful as we would have liked, but they provided a ground game that didn&#x27;t exist for any of the other mayoralty campaigns, in my opinion. Do you think you made the wrong bet on parties? Did I make the wrong bet on parties?</div>
 </div>
 <div class="turn" data-start="628">
   <div class="who">
@@ -757,11 +837,25 @@
     <span class="speaker">Carter</span>
     <span class="ts">11:14</span>
   </div>
-  <div class="said">Well, I mean, I wanted a party that was centre-left, not a party that was centre-right. In hindsight, I think that if we&#x27;d run a center-right party, we could have done better, but I don&#x27;t think that that would have been as—we wouldn&#x27;t have captured the same type of attention. But I still think—I know that evidence to the contrary, because we did get a lot of negative feedback at the doors, and people did poll about 50-50 on parties, but we really ran into a lot of headwind in the inner city and a lot less headwind in the suburbs. There was a lot more openness to the party ideas in, for example, Ward 1 where Joey Nowak was within a few hundred votes of winning. We did Ward 12 where Sarah Ferguson was within 100 votes of winning. Yes, Sarah Ferguson. We had – but then in the inner city, the inner city wards, we did much, much worse because of the party. The places where the quote-unquote progressives separated from us and had their own candidates, we did much worse. But it was mostly because those candidates were really rabble-rousing against the parties. Those three candidates in 7, 8, and 9 especially</div>
+  <div class="said">Well, I mean, I wanted a party that was centre-left, not a party that was centre-right. In hindsight, I think that if we&#x27;d run a center-right party, we could have done better, but I don&#x27;t think that that would have been as—we wouldn&#x27;t have captured the same type of attention. But I still think—I</div>
+</div>
+<div class="turn" data-start="694">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">11:34</span>
+  </div>
+  <div class="said">know that evidence to the contrary, because we did get a lot of negative feedback at the doors, and people did poll about 50-50 on parties, but we really ran into a lot of headwind in the inner city and a lot less headwind in the suburbs. There was a lot more openness to the party ideas in, for example, Ward 1 where Joey Nowak was within a few hundred votes of winning. We did Ward 12 where Sarah Ferguson was within 100 votes of winning. Yes, Sarah Ferguson.</div>
+</div>
+<div class="turn" data-start="729">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">12:09</span>
+  </div>
+  <div class="said">We had – but then in the inner city, the inner city wards, we did much, much worse because of the party. The places where the quote-unquote progressives separated from us and had their own candidates, we did much worse. But it was mostly because those candidates were really rabble-rousing against the parties. Those three candidates in 7, 8, and 9 especially</div>
 </div>
 <div class="turn" data-start="755">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">12:35</span>
   </div>
   <div class="said">So if you were to do it again, you would still go all in on a party</div>
@@ -789,7 +883,7 @@
 </div>
 <div class="turn" data-start="790">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">13:10</span>
   </div>
   <div class="said">How did you get one seat if you had all of that?</div>
@@ -824,7 +918,7 @@
 </div>
 <div class="turn" data-start="851">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">14:11</span>
   </div>
   <div class="said">Thumbs up. From the current mayor.</div>
@@ -845,7 +939,7 @@
 </div>
 <div class="turn" data-start="880">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">14:40</span>
   </div>
   <div class="said">let&#x27;s talk about the name and then I have a follow-up. on this assertion that a center-right party would have done better.</div>
@@ -855,7 +949,21 @@
     <span class="speaker">Corey</span>
     <span class="ts">14:46</span>
   </div>
-  <div class="said">Yeah, I actually totally disagree, and so maybe it&#x27;s a lead-in, too. Like, the this is such a low-information landscape in a municipal election, right? You&#x27;re trying to figure out who somebody is. I remember, I&#x27;ve told this story before, I&#x27;ll tell it again. I remember one election, it was the one that Nahed won, so, like, 2010? I went to my parents&#x27; house that night, and I said, well, who&#x27;d you vote for? And they said they were voted for Nahed, and then I said, well, who&#x27;d you vote for? for councillors, like, I don&#x27;t know, one of them had stickers that the firefighters supported them on, and I voted for that one, right? And so when I think about that, I what does the Calgary Party communicate to people?</div>
+  <div class="said">Yeah, I actually totally disagree, and so maybe it&#x27;s a lead-in, too. Like, the</div>
+</div>
+<div class="turn" data-start="891">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">14:51</span>
+  </div>
+  <div class="said">this is such a low-information landscape in a municipal election, right? You&#x27;re trying to figure out who somebody is. I remember, I&#x27;ve told this story before, I&#x27;ll tell it again. I remember one election, it was the one that Nahed won, so, like, 2010? I went to my parents&#x27; house that night, and I said, well, who&#x27;d you vote for? And they said they were voted for Nahed, and then I said, well, who&#x27;d you vote for? for councillors, like, I don&#x27;t know, one of them had stickers that the firefighters supported them on, and I voted for that one, right? And so when I think about that, I</div>
+</div>
+<div class="turn" data-start="923">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">15:23</span>
+  </div>
+  <div class="said">what does the Calgary Party communicate to people?</div>
 </div>
 <div class="turn" data-start="926">
   <div class="who">
@@ -897,7 +1005,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">15:48</span>
   </div>
-  <div class="said">that&#x27;s an excellent question, and I think the answer is we wanted to have our cake and eat it, too, right? We wanted to be in a position where we could appeal, you know, be centre-left but pick up voters. Municipal elections are weird. People vote, you know, all over their place on the ideological frame. So we didn&#x27;t want to say, we&#x27;re the progressive party because, you know, for a progressive of Calgary first of all I think that there were we did run into some problems with the word progressive there was just some legal issues but what never run into a legal issue yourselves I guess no but there was some challenges with some of the names and we wound up choosing the most watered-down version because we were right off the bat right off the bat we tried to assemble the largest possible team to make decisions collectively as much as possible that That was a massive mistake. Why did you do that, though? Because we&#x27;re trying to get buy-in, especially from the fucking progressives. know, when you&#x27;re trying to win over a group of voters, you can&#x27;t have them split, right? And so this group was splitting almost from, like, it was a group that is bound to fracture structure because progressives all like to test each other&#x27;s blood and make sure they know whether or</div>
+  <div class="said">that&#x27;s an excellent question, and I think the answer is we wanted to have our cake and eat it, too, right? We wanted to be in a position where we could appeal, you know, be centre-left but pick up voters. Municipal elections are weird. People vote, you know, all over their place on the ideological frame. So we didn&#x27;t want to say, we&#x27;re the progressive party because, you know, for a progressive of Calgary first of all I think that there were we did run into some problems with the word progressive there was just some legal issues but what never run into a legal issue yourselves I guess no but there was some challenges with some of the names and we wound up choosing the most watered-down version because we were right off the bat right off the bat we tried to assemble the largest possible team to make decisions collectively as much as possible that That was a massive mistake. Why did you do that, though? Because we&#x27;re trying to get buy-in, especially from the fucking progressives.</div>
+</div>
+<div class="turn" data-start="1014">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">16:54</span>
+  </div>
+  <div class="said">know, when you&#x27;re trying to win over a group of voters, you can&#x27;t have them split, right? And so this group was splitting almost from, like, it was a group that is bound to fracture structure because progressives all like to test each other&#x27;s blood and make sure they know whether or</div>
 </div>
 <div class="turn" data-start="1029">
   <div class="who">
@@ -915,10 +1030,24 @@
 </div>
 <div class="turn" data-start="1067">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">17:47</span>
   </div>
-  <div class="said">perhaps you&#x27;re familiar. Shannon, get it, get it. Welcome to the NDP. It&#x27;s a mistake to invite too many new Democrats. One of the first jobs I ever had, my friend Marilyn Hooper, who went on to work in City Hall in Edmonton, used to say, you know, you can please some of the people all the time, all the people some of the time, but you can never please a new Democrat. So that is true. That is an iron law of politics. But it doesn&#x27;t... It&#x27;s also true of the cranks in the other parties. It&#x27;s true of politics. ticks so what i don&#x27;t get is there was a clear lane here uh a center left lane because jeremy just pretend you&#x27;re not here um you had a very crowded uh right flank davidson sharp nobody knows what he is um we&#x27;ll get to that and you had an incumbent who had essentially disqualified herself from reelection so you had a clear center left lane so i i i have a question about how it is that um like you what you said once on the podcast that as soon as you&#x27;re talking about viability that uh that&#x27;s all you&#x27;re talking about but it would seem to me that the first question to take on was viability in the center her left lane</div>
+  <div class="said">perhaps you&#x27;re familiar. Shannon, get it, get it. Welcome to the NDP.</div>
+</div>
+<div class="turn" data-start="1078">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">17:58</span>
+  </div>
+  <div class="said">It&#x27;s a mistake to invite too many new Democrats. One of the first jobs I ever had, my friend Marilyn Hooper, who went on to work in City Hall in Edmonton, used to say, you know, you can please some of the people all the time, all the people some of the time, but you can never please a new Democrat. So that is true. That is an iron law of politics. But it doesn&#x27;t... It&#x27;s also true of the cranks in the other parties. It&#x27;s true of politics. ticks so what i don&#x27;t get is there was a clear lane here</div>
+</div>
+<div class="turn" data-start="1112">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">18:32</span>
+  </div>
+  <div class="said">uh a center left lane because jeremy just pretend you&#x27;re not here um you had a very crowded uh right flank davidson sharp nobody knows what he is um we&#x27;ll get to that and you had an incumbent who had essentially disqualified herself from reelection so you had a clear center left lane so i i i have a question about how it is that um like you what you said once on the podcast that as soon as you&#x27;re talking about viability that uh that&#x27;s all you&#x27;re talking about but it would seem to me that the first question to take on was viability in the center her left lane</div>
 </div>
 <div class="turn" data-start="1158">
   <div class="who">
@@ -999,7 +1128,7 @@
 </div>
 <div class="turn" data-start="1364">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">22:44</span>
   </div>
   <div class="said">the way how how would you have got like in a low information voting era we can talk about media we can talk about social media like how would you have gone all in on housing</div>
@@ -1009,7 +1138,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">22:56</span>
   </div>
-  <div class="said">well now you&#x27;re bringing up the impossible the the impossible challenge that we&#x27;re running into in politics right now so you&#x27;re right i don&#x27;t have the answer for the impossible challenge so the impossible challenge is there is no more traditional media social media is a best assessed pool but there is no communication structure around it anymore not the way we used to be like Like Jyoti, in her first run, we would put out four or five, you know, tweets in a tweet stream, right? And everybody would read them and think that she was taking on Jason Kenney. There was none of that. You couldn&#x27;t put things up on Twitter X now and have it seen by people. Everything had to be paid. Everything had to be produced. And it was just really, really hard to get anybody&#x27;s attention. attention. And so to that point, I think that that&#x27;s where housing would have actually worked. Because I think that housing was the one issue that everybody was talking about. And it would have done us just fine to have 900,000 people walking around the city of Calgary saying, I&#x27;m not voting for those pricks because they&#x27;re pro-housing. And the 100,000 people that are pro-housing go, oh, those are my people. That&#x27;s who I need to go to</div>
+  <div class="said">well now you&#x27;re bringing up the impossible the the impossible challenge that we&#x27;re running into in politics right now so you&#x27;re right i don&#x27;t have the answer for the impossible challenge so the impossible challenge is there is no more traditional media social media is a best assessed pool but there is no communication structure around it anymore not the way we used to be like Like Jyoti, in her first run, we would put out four or five, you know, tweets in a tweet stream, right? And everybody would read them and think that she was taking on Jason Kenney. There was none of that. You couldn&#x27;t put things up on Twitter X now and have it seen by people. Everything had to be paid. Everything had to be produced.</div>
+</div>
+<div class="turn" data-start="1420">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">23:40</span>
+  </div>
+  <div class="said">And it was just really, really hard to get anybody&#x27;s attention. attention. And so to that point, I think that that&#x27;s where housing would have actually worked. Because I think that housing was the one issue that everybody was talking about. And it would have done us just fine to have 900,000 people walking around the city of Calgary saying, I&#x27;m not voting for those pricks because they&#x27;re pro-housing. And the 100,000 people that are pro-housing go, oh, those are my people. That&#x27;s who I need to go to</div>
 </div>
 <div class="turn" data-start="1448">
   <div class="who">
@@ -1020,7 +1156,7 @@
 </div>
 <div class="turn" data-start="1450">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">24:10</span>
   </div>
   <div class="said">you had more money then, how would you have bought your way out of that to make housing the vote determining issue for the progressives? Because clearly we have to buy it in order to get the eyeballs, but there&#x27;s a problem of fundraising there. But if you had the money, what would you have bought to do it</div>
@@ -1079,7 +1215,21 @@
     <span class="speaker">Carter</span>
     <span class="ts">25:04</span>
   </div>
-  <div class="said">buying it? I would just buy housing ads. I mean, we bought ads on all kinds of different issues. didn&#x27;t resonate apparently no I mean we weren&#x27;t getting the only metrics we could get from our advertising is how many people we showed it to there was no other metrics that were really starting to come you know like there was no um organic views there was no organic sharing there was no organic comments all of that was gone it just didn&#x27;t exist and I don&#x27;t know if it existed it in other people&#x27;s pages. I mean, we would go and do spot checks on Jeremy&#x27;s page. We&#x27;d go and do spot checks on Jyoti. Jyoti&#x27;s page was quite an adventure to go do a spot check on. Don&#x27;t read that page. That was nasty. But, you know, we&#x27;d take a look at everybody&#x27;s stuff, and no one was getting organic stuff. No one was getting anything that had any real jump, because we were like, if someone&#x27;s got jump, we&#x27;ll copy what they&#x27;re doing. I wasn&#x27;t above it, you know. But no one no one was really getting the big jumps let</div>
+  <div class="said">buying it? I would just buy housing ads. I mean, we bought ads on all kinds of different issues. didn&#x27;t resonate apparently</div>
+</div>
+<div class="turn" data-start="1512">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">25:12</span>
+  </div>
+  <div class="said">no I mean we weren&#x27;t getting the only metrics we could get from our advertising is how many people we showed it to there was no other metrics that were really starting to come you know like there was no um organic views there was no organic sharing there was no organic comments all of that was gone it just didn&#x27;t exist and I don&#x27;t know if it existed it in other people&#x27;s pages. I mean, we would go and do spot checks on Jeremy&#x27;s page.</div>
+</div>
+<div class="turn" data-start="1541">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">25:41</span>
+  </div>
+  <div class="said">We&#x27;d go and do spot checks on Jyoti. Jyoti&#x27;s page was quite an adventure to go do a spot check on. Don&#x27;t read that page. That was nasty. But, you know, we&#x27;d take a look at everybody&#x27;s stuff, and no one was getting organic stuff. No one was getting anything that had any real jump, because we were like, if someone&#x27;s got jump, we&#x27;ll copy what they&#x27;re doing. I wasn&#x27;t above it, you know. But no one no one was really getting the big jumps let</div>
 </div>
 <div class="turn" data-start="1568">
   <div class="who">
@@ -1097,7 +1247,7 @@
 </div>
 <div class="turn" data-start="1614">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">26:54</span>
   </div>
   <div class="said">do you think it would do you think it was easier to recruit those candidates with a party? Oh</div>
@@ -1111,7 +1261,7 @@
 </div>
 <div class="turn" data-start="1655">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">27:35</span>
   </div>
   <div class="said">It&#x27;s pretty good. Funny. Who beat your candidate</div>
@@ -1121,7 +1271,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">27:39</span>
   </div>
-  <div class="said">The party enabled us to recruit visible minorities. The party enabled us to recruit women. The party enabled us to recruit people with different means. we were able to put people into competitive we weren&#x27;t able to win but we put them into competitive races because we had a party structure if you look around at the other people who were in those competitive races they didn&#x27;t have the party structure they there was a lot of people I mean obviously a lot of people fail when they run in these elections but the people who failed the hardest was anybody who&#x27;s kind of reached out of out of the generic white male stereotype what</div>
+  <div class="said">The party enabled us to recruit visible minorities. The party enabled us to recruit women. The party enabled us to recruit people with different means. we were able to put people into competitive</div>
+</div>
+<div class="turn" data-start="1674">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">27:54</span>
+  </div>
+  <div class="said">we weren&#x27;t able to win but we put them into competitive races because we had a party structure if you look around at the other people who were in those competitive races they didn&#x27;t have the party structure they there was a lot of people I mean obviously a lot of people fail when they run in these elections but the people who failed the hardest was anybody who&#x27;s kind of reached out of out of the generic white male stereotype what</div>
 </div>
 <div class="turn" data-start="1702">
   <div class="who">
@@ -1132,7 +1289,7 @@
 </div>
 <div class="turn" data-start="1730">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">28:50</span>
   </div>
   <div class="said">Can you talk about that momentum to Zane&#x27;s point? We talked in the summer on an episode, and you&#x27;re like, 10 seats? We&#x27;re going to do 10 seats. What am I going to say?</div>
@@ -1146,7 +1303,7 @@
 </div>
 <div class="turn" data-start="1745">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">29:05</span>
   </div>
   <div class="said">Did you really think, like, did you just not hit the momentum at the right time? Did you need three more months? We were</div>
@@ -1160,7 +1317,7 @@
 </div>
 <div class="turn" data-start="1766">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">29:26</span>
   </div>
   <div class="said">of Calgary was away</div>
@@ -1170,7 +1327,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">29:28</span>
   </div>
-  <div class="said">When most of Calgary was away, yes. Great, great time. Then we hit August, where it got even worse. No one was around in August. I would definitely change when we started to go after Danielle Smith. I think that if we&#x27;d gone after Danielle Smith, you know, starting just before Labor Day, we could have really established ourselves as the anti-Danielle Smith party. Even, in fact, we could have gone after Danielle Smith more in July. It was kind of the silver bullet that we were saving, and we saved it too long. We only did three weeks of really anti-Danielle Smith rhetoric, and I really wish that we&#x27;d done that much earlier, before the race had started to coalesce around, what did you characterize it as, the 2021</div>
+  <div class="said">When most of Calgary was away, yes. Great, great time. Then we hit August, where it got even worse. No one was around in August. I would definitely change when we started to go after Danielle Smith. I think that if we&#x27;d gone after Danielle Smith, you know, starting just before Labor Day, we could have really established ourselves as the anti-Danielle Smith party. Even, in fact, we could have gone after Danielle Smith more in July.</div>
+</div>
+<div class="turn" data-start="1796">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">29:56</span>
+  </div>
+  <div class="said">It was kind of the silver bullet that we were saving, and we saved it too long. We only did three weeks of really anti-Danielle Smith rhetoric, and I really wish that we&#x27;d done that much earlier, before the race had started to coalesce around, what did you characterize it as, the 2021</div>
 </div>
 <div class="turn" data-start="1817">
   <div class="who">
@@ -1188,7 +1352,7 @@
 </div>
 <div class="turn" data-start="1834">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">30:34</span>
   </div>
   <div class="said">what what about tying sharp to danielle smith and i think it&#x27;s what we haven&#x27;t really talked about that but sharp was 500 votes away from being mayor like 700</div>
@@ -1202,7 +1366,7 @@
 </div>
 <div class="turn" data-start="1847">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">30:47</span>
   </div>
   <div class="said">um But, um, yeah, I mean, Sharp. Like, Sharp was part of a party.</div>
@@ -1237,7 +1401,7 @@
 </div>
 <div class="turn" data-start="1899">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">31:39</span>
   </div>
   <div class="said">gotta go to</div>
@@ -1342,7 +1506,7 @@
 </div>
 <div class="turn" data-start="2064">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:24</span>
   </div>
   <div class="said">maybe. So, like the Alberta Party, standing for nothing, but also, I want to put a thesis to you, Carter, and that is this, that the waves that were missed, that you could have caught and would have been yours, I think. Yeah, you got it.</div>
@@ -1356,10 +1520,17 @@
 </div>
 <div class="turn" data-start="2089">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:49</span>
   </div>
-  <div class="said">That&#x27;s how budgets balance themselves. I&#x27;m reading a Murakami novel. Okay. But, okay, so in my view, this is my thesis. They were, and this is as a Calgary politics adjacent sort of normie. I don&#x27;t really care about Calgary politics. But you missed the villain and you missed the viability. That&#x27;s my thesis. That there was no villain, whether it&#x27;s that guy sitting right there or daniel smith or like there was a a defining who the opponent is who are we trying to beat and why but two we are the person to beat them uh because you had to establish that to get the incumbent out of the way that&#x27;s the thesis i</div>
+  <div class="said">That&#x27;s how budgets balance themselves. I&#x27;m reading a Murakami novel. Okay. But, okay, so in my view, this is my thesis. They were, and this is as a Calgary politics adjacent sort of normie. I don&#x27;t really care about Calgary politics. But you</div>
+</div>
+<div class="turn" data-start="2107">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">35:07</span>
+  </div>
+  <div class="said">missed the villain and you missed the viability. That&#x27;s my thesis. That there was no villain, whether it&#x27;s that guy sitting right there or daniel smith or like there was a a defining who the opponent is who are we trying to beat and why but two we are the person to beat them uh because you had to establish that to get the incumbent out of the way that&#x27;s the thesis i</div>
 </div>
 <div class="turn" data-start="2132">
   <div class="who">
@@ -1370,7 +1541,7 @@
 </div>
 <div class="turn" data-start="2149">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:49</span>
   </div>
   <div class="said">voters the voters remembered how to spell jeremy are you uh</div>
@@ -1401,7 +1572,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">36:11</span>
   </div>
-  <div class="said">no I think that if we if we viability was our problem from the very beginning and we struggled with viability and think that we did a pretty good job of viability right after again when everybody was on vacation as Annalise pointed after stampede and then we couldn&#x27;t we couldn&#x27;t get it back fast enough in in late August and early early September, and by the time we&#x27;d lurched to the attack Danielle phase, we&#x27;d missed the wave. The wave had passed us. I do think that there was a wave for us to catch. I do think that there was a mechanism by which we could have won. We just missed it. And that is foundationally different- I want to bring something up here. going. It&#x27;s foundationally different than just getting your ass handed to you. you remember the abc election in vancouver</div>
+  <div class="said">no I think that if we if we viability was our problem from the very beginning and we struggled with viability and think that we did a pretty good job of viability right after again when everybody was on vacation as Annalise pointed after stampede and then we couldn&#x27;t we couldn&#x27;t get it back fast enough in in late August and early early September, and by the time we&#x27;d lurched to the attack Danielle phase, we&#x27;d missed the wave. The wave had passed us. I do think that there was a wave for us to catch. I do think that there was a mechanism by which we could have won.</div>
+</div>
+<div class="turn" data-start="2214">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">36:54</span>
+  </div>
+  <div class="said">We just missed it. And that is foundationally different- I want to bring something up here. going. It&#x27;s foundationally different than just getting your ass handed to you. you remember the abc election in vancouver</div>
 </div>
 <div class="turn" data-start="2225">
   <div class="who">
@@ -1419,7 +1597,7 @@
 </div>
 <div class="turn" data-start="2262">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">37:42</span>
   </div>
   <div class="said">did you not get it</div>
@@ -1524,7 +1702,7 @@
 </div>
 <div class="turn" data-start="2438">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">40:38</span>
   </div>
   <div class="said">I would like to welcome a candidate who won, Erin Paquette, councillor for Wardini.</div>
@@ -1545,7 +1723,7 @@
 </div>
 <div class="turn" data-start="2457">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">40:57</span>
   </div>
   <div class="said">Another candidate who won.</div>
@@ -1555,7 +1733,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">41:03</span>
   </div>
-  <div class="said">by the way, for you guys, I was pretty casual with this. What we&#x27;re going to do is, at some point, we&#x27;ll break this part of the conversation, and then we&#x27;ll have a part B. We&#x27;ll do a quick 10-minute intermission. We&#x27;ll come back. There&#x27;ll be a Q&amp;A, a special guest. we&#x27;ll chat some more shit we&#x27;ll get you guys involved uh so we&#x27;ll put carter out of his misery at some point uh however to this point not this not right now i i want to understand from like you&#x27;ve got five political practitioners on the stage here many more interested in politics people elected to office people who are political practitioners themselves let&#x27;s talk about the state of play in a broader sense and get into the what the hell did you learn so if this was less accountability more forward-looking what the hell did you learn this time my man I learned that so social</div>
+  <div class="said">by the way, for you guys, I was pretty casual with this. What we&#x27;re going to do is, at some point, we&#x27;ll break this part of the conversation, and then we&#x27;ll have a part B. We&#x27;ll do a quick 10-minute intermission. We&#x27;ll come back. There&#x27;ll be a Q&amp;A, a special guest. we&#x27;ll chat some more shit we&#x27;ll get you guys involved uh so we&#x27;ll put carter out of his misery at some point uh however to this point not this</div>
+</div>
+<div class="turn" data-start="2483">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">41:23</span>
+  </div>
+  <div class="said">not right now i i want to understand from like you&#x27;ve got five political practitioners on the stage here many more interested in politics people elected to office people who are political practitioners themselves let&#x27;s talk about the state of play in a broader sense and get into the what the hell did you learn so if this was less accountability more forward-looking what the hell did you learn this time my man I learned that so social</div>
 </div>
 <div class="turn" data-start="2511">
   <div class="who">
@@ -1622,7 +1807,7 @@
 </div>
 <div class="turn" data-start="2666">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">44:26</span>
   </div>
   <div class="said">but Corey if that&#x27;s the the case then why did the right-wing uh people win but</div>
@@ -1646,7 +1831,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">45:25</span>
   </div>
-  <div class="said">thesis behind the party is is different i think than people want it to be the thesis behind the party is that people make such shallow choices when they&#x27;re making their vote you know um the the sticker the sticker from the firefighters on a sign we wanted to give them a political shorthand they knew that they were choosing the right candidate without having to do the work of choosing the right candidate. I still think that&#x27;s right. I still think that people make... Fuck off! You called it the Calgary Party. I&#x27;m telling you right now. The Liberal Party was going to be that much easier? I couldn&#x27;t even name it after the Liberal Party. Someone already</div>
+  <div class="said">thesis behind the party is is different i think than people want it to be the thesis behind the party is that people make such shallow choices when they&#x27;re making their vote you know um the the sticker the sticker from the firefighters on a sign we wanted to give them a political shorthand they knew that they were choosing the right candidate without having to do the work of choosing the right candidate.</div>
+</div>
+<div class="turn" data-start="2752">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">45:52</span>
+  </div>
+  <div class="said">I still think that&#x27;s right. I still think that people make... Fuck off! You called it the Calgary Party. I&#x27;m telling you right now. The Liberal Party was going to be that much easier? I couldn&#x27;t even name it after the Liberal Party. Someone already</div>
 </div>
 <div class="turn" data-start="2767">
   <div class="who">
@@ -1681,7 +1873,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">47:12</span>
   </div>
-  <div class="said">Social networks are the only thing that matter, and I wouldn&#x27;t spend nearly as much money on digital. We&#x27;d pull back way back on digital. Canada Post going on strike in the middle of a campaign is never good, especially when you lose about 100,000 brochures and you have to send a truck to go get the other 400. hundred like you can&#x27;t deliver 500,000 brochures without Canada Post so losing Canada Post well that was a huge chunk of our communication strategy that just went away when when we lost that we tried to replace it but man those brochures never got delivered so when you lose a half million brochures when you you know I would I would I still think that going direct home is the best way to to communicate through the mail you know we&#x27;re through the mail or door knocking I still don&#x27;t think that texting is working as well as we think it is and I don&#x27;t think they call the calling is working at all so you know if we&#x27;re going back the first calling wasn&#x27;t working at all</div>
+  <div class="said">Social networks are the only thing that matter, and I wouldn&#x27;t spend nearly as much money on digital. We&#x27;d pull back way back on digital. Canada Post going on strike in the middle of a campaign is never good, especially when you lose about 100,000 brochures and you have to send a truck to go get the other 400. hundred like you can&#x27;t deliver 500,000 brochures without Canada Post so losing Canada Post well that was a huge chunk of our communication strategy that just went away when when we lost that we tried to replace it but man</div>
+</div>
+<div class="turn" data-start="2868">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">47:48</span>
+  </div>
+  <div class="said">those brochures never got delivered so when you lose a half million brochures when you you know I would I would I still think that going direct home is the best way to to communicate through the mail you know we&#x27;re through the mail or door knocking I still don&#x27;t think that texting is working as well as we think it is and I don&#x27;t think they call the calling is working at all so you know if we&#x27;re going back the first calling wasn&#x27;t working at all</div>
 </div>
 <div class="turn" data-start="2896">
   <div class="who">
@@ -1702,7 +1901,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">48:55</span>
   </div>
-  <div class="said">But keep going. Two out of five, one out of three doors will open when you knock on them. Yes. You&#x27;re going to get a conversion rate that&#x27;s going to be one out of every four doors, one out of every six doors, something along those lines, where you&#x27;re converting a voter over to your numbers. On telephone calls, you can literally have the auto dialer and just turn it on, and the odds of getting someone who&#x27;s actually a voter are unbelievably slim. limb and what you are getting you&#x27;re getting a group of voters for they&#x27;re either angry and they want to talk about it or they&#x27;re lonely and they&#x27;d like to talk about it right or they&#x27;re stupid and you don&#x27;t want to talk about it right but don&#x27;t not your voters your voters were very respecting</div>
+  <div class="said">But keep going. Two out of five, one out of three doors will open when you knock on them. Yes. You&#x27;re going to get a conversion rate that&#x27;s going to be one out of every four doors, one out of every six doors, something along those lines, where you&#x27;re converting a voter over to your numbers. On telephone calls, you can literally have the auto dialer and just turn it on, and the odds of getting someone who&#x27;s actually a voter are unbelievably slim. limb and what you are getting you&#x27;re getting a group of voters for they&#x27;re either angry and they want to talk about it or</div>
+</div>
+<div class="turn" data-start="2967">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">49:27</span>
+  </div>
+  <div class="said">they&#x27;re lonely and they&#x27;d like to talk about it right or they&#x27;re stupid and you don&#x27;t want to talk about it right but don&#x27;t not your voters your voters were very respecting</div>
 </div>
 <div class="turn" data-start="2978">
   <div class="who">
@@ -1716,7 +1922,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">49:43</span>
   </div>
-  <div class="said">but there&#x27;s the truth of the matter is Because you&#x27;re not reaching a voter that is available to you on the telephones. And the texting is interesting because I know that in Edmonton we bought a lot of texting and texting we&#x27;re getting a lot of really positive feedback. I&#x27;m not sure that feedback&#x27;s real. I think that it&#x27;s kind of like digital. You put digital up, you get a lot of digital numbers, but the digital numbers aren&#x27;t necessarily real. What are we measuring? right like we&#x27;re putting real bodies into a theater or a church that&#x27;s don&#x27;t know that at any point during the campaign we could have put you know we put 400 people in a couple of times did you do we tried to do events not rallies okay rallies are super hard events we could do because we could like offer people something you know you give them like a crustless pickles that was really good</div>
+  <div class="said">but there&#x27;s the truth of the matter is Because you&#x27;re not reaching a voter that is available to you on the telephones. And the texting is interesting because I know that in Edmonton we bought a lot of texting and texting we&#x27;re getting a lot of really positive feedback. I&#x27;m not sure that feedback&#x27;s real. I think that it&#x27;s kind of like digital. You put digital up, you get a lot of digital numbers, but the digital numbers aren&#x27;t necessarily real. What are we measuring? right</div>
+</div>
+<div class="turn" data-start="3010">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">50:10</span>
+  </div>
+  <div class="said">like we&#x27;re putting real bodies into a theater or a church that&#x27;s don&#x27;t know that at any point during the campaign we could have put you know we put 400 people in a couple of times did you do we tried to do events not rallies okay rallies are super hard events we could do because we could like offer people something you know you give them like a crustless pickles that was really good</div>
 </div>
 <div class="turn" data-start="3039">
   <div class="who">
@@ -1741,7 +1954,7 @@
 </div>
 <div class="turn" data-start="3094">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">51:34</span>
   </div>
   <div class="said">thing you said that i</div>
@@ -1755,7 +1968,7 @@
 </div>
 <div class="turn" data-start="3096">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">51:36</span>
   </div>
   <div class="said">i think it only works when you have it on top of like in your case in my case on top of a page that is going through uh you know and you&#x27;re buying every inch of eyeball that you can uh with youtube with you know podcast ads with every available square inch yeah it works then uh otherwise it&#x27;s too diffused because it&#x27;s</div>
@@ -1769,7 +1982,7 @@
 </div>
 <div class="turn" data-start="3117">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">51:57</span>
   </div>
   <div class="said">if it would would work municipally is what i&#x27;m saying</div>
@@ -1779,7 +1992,7 @@
     <span class="speaker">Corey</span>
     <span class="ts">51:59</span>
   </div>
-  <div class="said">well that&#x27;s a great point because i think you need to have that message given by land sea and air many many times before people get that that&#x27;s the message here&#x27;s</div>
+  <div class="said">well that&#x27;s a great point because i think you need to have that message given by land sea and air many many times before people get that that&#x27;s the message</div>
 </div>
 <div class="turn" data-start="3127">
   <div class="who">
@@ -1804,7 +2017,7 @@
 </div>
 <div class="turn" data-start="3180">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">53:00</span>
   </div>
   <div class="said">And not only do you have a church full of people, you have people that paid $75, who don&#x27;t pay $6 a month, but they paid $75. I love you</div>
@@ -1821,7 +2034,21 @@
     <span class="speaker">Carter</span>
     <span class="ts">53:26</span>
   </div>
-  <div class="said">I think we tried to choose our friends a little bit too much. And we would have been way better off if we&#x27;d started with a smaller group of people that was a little bit more evangelical about it. Rather than saying, let&#x27;s go find some evangelists and get them to join our campaign. That was our big mistake early on. we shouldn&#x27;t have been quite so eager to find big names. The big name could have been, should have been Brian Thiessen, and that would have been just fine. But we went and tried to find a lot of people who would help us project our message out, and then they wound up going other places, and they projected messages against us that were incredibly damning. And frankly, they were very interested in winning a few seats, instead of winning the majority of seats. And now we&#x27;ve only got a few seats.</div>
+  <div class="said">I think we tried to choose our friends a little bit too much.</div>
+</div>
+<div class="turn" data-start="3210">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">53:30</span>
+  </div>
+  <div class="said">And we would have been way better off if we&#x27;d started with a smaller group of people that was a little bit more evangelical about it. Rather than saying, let&#x27;s go find some evangelists and get them to join our campaign. That was our big mistake early on. we shouldn&#x27;t have been quite so eager to find big names. The big name could have been, should have been Brian Thiessen, and that would have been just fine. But</div>
+</div>
+<div class="turn" data-start="3242">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">54:02</span>
+  </div>
+  <div class="said">we went and tried to find a lot of people who would help us project our message out, and then they wound up going other places, and they projected messages against us that were incredibly damning. And frankly, they were very interested in winning a few seats, instead of winning the majority of seats. And now we&#x27;ve only got a few seats.</div>
 </div>
 <div class="turn" data-start="3265">
   <div class="who">
@@ -1832,7 +2059,7 @@
 </div>
 <div class="turn" data-start="3290">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">54:50</span>
   </div>
   <div class="said">Were you spread too thin?</div>
@@ -1881,7 +2108,7 @@
 </div>
 <div class="turn" data-start="3386">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">56:26</span>
   </div>
   <div class="said">it&#x27;s a yes or no question it&#x27;s</div>
@@ -1895,7 +2122,7 @@
 </div>
 <div class="turn" data-start="3392">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">56:32</span>
   </div>
   <div class="said">in the fuck could you run a right wing campaign in Edmonton and a left wing campaign in Calgary</div>
@@ -1916,7 +2143,7 @@
 </div>
 <div class="turn" data-start="3418">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">56:58</span>
   </div>
   <div class="said">you meet tim cartmel did you talk to him ever</div>
@@ -1930,7 +2157,7 @@
 </div>
 <div class="turn" data-start="3448">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">57:28</span>
   </div>
   <div class="said">do you balance that is my question because they are fundamentally different approaches different electorates and and a different way of running a campaign. They have to be.</div>
@@ -1958,7 +2185,7 @@
 </div>
 <div class="turn" data-start="3504">
   <div class="who">
-    <span class="speaker">SPEAKER_03</span>
+    <span class="speaker">Annalise</span>
     <span class="ts">58:24</span>
   </div>
   <div class="said">But you had a lot more money in Edmonton</div>
@@ -1989,7 +2216,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">59:12</span>
   </div>
-  <div class="said">I think that the biggest lesson was you can&#x27;t make your own weather but you can make your no but that&#x27;s why we didn&#x27;t get the waves right like I couldn&#x27;t make my own weather, I couldn&#x27;t make my own waves, and I couldn&#x27;t solve, you know, everybody was saying, where&#x27;s the Carter trick? Where&#x27;s the Carter thing? There was no Carter trick. There was no Carter thing. The creation of the weather just didn&#x27;t happen in this campaign, and we, in the same way that it happened with Nenshi or Gondek or with Redford. So there&#x27;s – it was a good reminder that the weather happens to us, not necessarily because of us.</div>
+  <div class="said">I think that the biggest lesson was you can&#x27;t make your own weather but you can make your no but that&#x27;s why we didn&#x27;t get the waves right like I couldn&#x27;t make my own weather, I couldn&#x27;t make my own waves, and I couldn&#x27;t solve, you know, everybody was saying, where&#x27;s the Carter trick? Where&#x27;s the Carter thing? There was no Carter trick. There was no Carter thing. The creation of the weather just</div>
+</div>
+<div class="turn" data-start="3589">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">59:49</span>
+  </div>
+  <div class="said">didn&#x27;t happen in this campaign, and we, in the same way that it happened with Nenshi or Gondek or with Redford. So there&#x27;s – it was a good reminder that the weather happens to us, not necessarily because of us.</div>
 </div>
 <div class="turn" data-start="3607">
   <div class="who">

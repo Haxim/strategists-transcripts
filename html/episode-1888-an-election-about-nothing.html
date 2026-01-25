@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/141459437.mp3?sig=HFU86tOokgXlx9DgmQIA_ODm65TZZZyFgjyJieqmLVI%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/68f2929880f2667740121128"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -666,7 +732,14 @@
     <span class="speaker">Annalise</span>
     <span class="ts">5:03</span>
   </div>
-  <div class="said">start there okay i think this election like so people have been talking about how this election is boring what because i don&#x27;t know because this it relates people have been talking and jump in sam because you know calgary uh people have been talking about how this election is boring right they&#x27;re talking about like this is a seinfeld election it&#x27;s the election about nothing they&#x27;re talking yes someone has dubbed it um the election like meh election i do not like that term um people are talking about how it&#x27;s boring and i think it is boring like what&#x27;s the ballot box question we&#x27;re three days out what&#x27;s the ballot box question what&#x27;s the big idea what&#x27;s the talker and I think also what&#x27;s making it boring is like we know the players right one of them has been mayor two of them ran last time one of them has been a city councillor and then you insert Brian Thiessen into the mix um but he had it&#x27;s been like I would say the past couple weeks that people are maybe paying a little bit more attention to Brian Thiessen but there&#x27;s no like I don&#x27;t know where You tell me, like, what&#x27;s the ballot box question? We&#x27;re three days out. I was at the CBC debate yesterday with some people and it ended and I turned to everyone around me. I&#x27;m like, what&#x27;s the ballot box question? No one knows and everyone has a different idea. Someone&#x27;s like, it&#x27;s what Davison&#x27;s saying. It&#x27;s all about affordability. And someone else is like, no, it&#x27;s about safety. Like, there&#x27;s no, why, how are we getting people motivated and getting them out to vote?</div>
+  <div class="said">start there okay i think this election like so people have been talking about how this election is boring what because i don&#x27;t know because this it relates people have been talking and jump in sam because you know calgary uh people have been talking about how this election is boring right they&#x27;re talking about like this is a seinfeld election it&#x27;s the election about nothing they&#x27;re talking yes someone has dubbed it um the election like meh election i do not like that term um people are talking about how it&#x27;s boring and i think it is boring like what&#x27;s the ballot box question we&#x27;re three days out what&#x27;s the ballot box question what&#x27;s the big idea what&#x27;s the talker and I think also what&#x27;s making it boring is like we know the players right one of them has been mayor two of them ran last time one of them has been a city councillor and then you insert Brian Thiessen into the mix um but he had it&#x27;s been like I would say the past couple weeks that people are maybe paying a little bit more attention to Brian Thiessen but there&#x27;s no like I don&#x27;t know where You tell me, like, what&#x27;s the ballot box question? We&#x27;re three days out. I was at the CBC debate yesterday with some people and it ended and I turned to everyone around me. I&#x27;m like, what&#x27;s the ballot box question?</div>
+</div>
+<div class="turn" data-start="372">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">6:12</span>
+  </div>
+  <div class="said">No one knows and everyone has a different idea. Someone&#x27;s like, it&#x27;s what Davison&#x27;s saying. It&#x27;s all about affordability. And someone else is like, no, it&#x27;s about safety. Like, there&#x27;s no, why, how are we getting people motivated and getting them out to vote?</div>
 </div>
 <div class="turn" data-start="385">
   <div class="who">
@@ -694,7 +767,14 @@
     <span class="speaker">Annalise</span>
     <span class="ts">7:42</span>
   </div>
-  <div class="said">yeah no that&#x27;s a batch and davison independent but abc which is a party that hasn&#x27;t really made waves has endorsed him and i think it&#x27;s worth it&#x27;s worth noting too like in In terms of the Calgary history, Davis and Farkas and Gondek know each other extremely well. Like, not only did they run against each other four years ago, they all started on council at the same time. So, the 2017 election, which I know well, you know well, right? You were running Nenshi&#x27;s. I was covering City Hall at the time. Four new councillors at the 2017 election. So, that Nenshi won, beat Bill Smith. Four new councillors. Those councillors were George Chahal, Jody Gondek, Jeff Davison, and Jeremy Farkas, right? That&#x27;s true</div>
+  <div class="said">yeah no that&#x27;s a batch and davison independent but abc which is a party that hasn&#x27;t really made waves has endorsed him and i think it&#x27;s worth it&#x27;s worth noting too like in In terms of the Calgary history, Davis and Farkas and Gondek know each other extremely well. Like, not only did they run against each other four years ago, they all started on council at the same time. So, the 2017 election, which I know well, you know well, right? You were running Nenshi&#x27;s. I was covering City Hall at the time.</div>
+</div>
+<div class="turn" data-start="492">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">8:12</span>
+  </div>
+  <div class="said">Four new councillors at the 2017 election. So, that Nenshi won, beat Bill Smith. Four new councillors. Those councillors were George Chahal, Jody Gondek, Jeff Davison, and Jeremy Farkas, right? That&#x27;s true</div>
 </div>
 <div class="turn" data-start="503">
   <div class="who">
@@ -785,7 +865,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">13:32</span>
   </div>
-  <div class="said">Oh, man, I think you&#x27;ve put out so much wisdom on the table. Let me start with a couple of things and just react to a few of the things you&#x27;ve said. So So I find this concept of 2021 being a simpler time extremely wise because I think you&#x27;re right and you&#x27;ve hit on something, which is COVID was something that afflicted everyone. So the argument there is that it was a monoculture thing. We were living in a very strange time, no doubt, an extremely trying time, but there was almost a bit of a monoculture. Everyone was at home plugged into the same Internet box to receive the same amount of communications. we also had a very clear ballot box question that was framed by by gondek and by extension carter who was running gondek&#x27;s campaign at that time which was taking on jason kenny</div>
+  <div class="said">Oh, man, I think you&#x27;ve put out so much wisdom on the table. Let me start with a couple of things and just react to a few of the things you&#x27;ve said. So So</div>
+</div>
+<div class="turn" data-start="821">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">13:41</span>
+  </div>
+  <div class="said">I find this concept of 2021 being a simpler time extremely wise because I think you&#x27;re right and you&#x27;ve hit on something, which is COVID was something that afflicted everyone. So the argument there is that it was a monoculture thing. We were living in a very strange time, no doubt, an extremely trying time, but there was almost a bit of a monoculture. Everyone was at home plugged into the same Internet box to receive the same amount of communications. we also had a very clear ballot box question that was framed by by gondek and by extension carter who was running gondek&#x27;s campaign at that time which was taking on jason kenny</div>
 </div>
 <div class="turn" data-start="859">
   <div class="who">
@@ -799,7 +886,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">14:22</span>
   </div>
-  <div class="said">clear lane of farkas and and in credit to gondek at the time farkas is an extension of kenny i am going to fight kenny on everything that was happening in the monoculture of covid that was a simpler time because it was easy to digest it was easy to understand we were We&#x27;re all living the same truth, the same reality. You could even, you know, our memories are so short, but 2021 was just the start of vaccinations coming out, of vaccines being available. We hadn&#x27;t really hit the peak of the anti-vax movement. We hadn&#x27;t hit the convoy movement yet. We hadn&#x27;t hit all these fracturing things. I&#x27;m not saying there was like harmony in the air, but I do think you make a very good point that we were kind of, it was a simpler time. There was no Trump. It</div>
+  <div class="said">clear lane of farkas and and in credit to gondek at the time farkas is an extension of kenny i am going to fight kenny on everything that was happening in the monoculture of covid that was a simpler time because it was easy to digest it was easy to understand we were We&#x27;re all living the same truth, the same reality. You could even, you</div>
+</div>
+<div class="turn" data-start="882">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">14:42</span>
+  </div>
+  <div class="said">know, our memories are so short, but 2021 was just the start of vaccinations coming out, of vaccines being available. We hadn&#x27;t really hit the peak of the anti-vax movement. We hadn&#x27;t hit the convoy movement yet. We hadn&#x27;t hit all these fracturing things. I&#x27;m not saying there was like harmony in the air, but I do think you make a very good point that we were kind of, it was a simpler time. There was no Trump. It</div>
 </div>
 <div class="turn" data-start="907">
   <div class="who">
@@ -813,7 +907,28 @@
     <span class="speaker">Zain</span>
     <span class="ts">15:07</span>
   </div>
-  <div class="said">administration. There was no global worldly down south distraction. You know, 2021 in that same relative time horizon. Trudeau had just gotten reelected. The emergence of Pierre Polyev was not a thing as an alternative. So we were living in a very different, like, and we were also on the, what I&#x27;d say, at least in like the very narrow confines of history, was on the high point of the broader sort of equality, justice, equity, which I don&#x27;t think is the reason Gondek is in office, but I think it&#x27;s certainly kind of contributed to that more compassionate, look what we can do sort of spirit of culture. sure. I think we were just there. This is a very different time. Extremely fractured, extremely distracting, the down south element of it. And what&#x27;s fascinating to me is that I think more people today on raw numbers are engaged in politics as a cultural observational sport. Fewer people are engaged in politics as a raw, let me put my vote somewhere sport. And I think they&#x27;re engaged in culture because politics is culture based on what&#x27;s happening down south, what&#x27;s down south with us on a national level, with what Smith is doing on a daily basis. So I think there&#x27;s a lot of wisdom there on 2021 being a simpler time, even though this is a rerun of some of the same candidates with a few more characters this time around. The ballot box question here is fascinating to me because I think it&#x27;s starting to emerge this week or this weekend. What do</div>
+  <div class="said">administration. There was no global worldly down south distraction. You know, 2021 in that same relative time horizon. Trudeau had just gotten reelected. The emergence of Pierre Polyev was not a thing as an alternative. So we were living in a very different, like, and we were also on the, what</div>
+</div>
+<div class="turn" data-start="928">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:28</span>
+  </div>
+  <div class="said">I&#x27;d say, at least in like the very narrow confines of history, was on the high point of the broader sort of equality, justice, equity, which I don&#x27;t think is the reason Gondek is in office, but I think it&#x27;s certainly kind of contributed to that more compassionate, look what we can do sort of spirit of culture. sure. I think we were just there.</div>
+</div>
+<div class="turn" data-start="950">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:50</span>
+  </div>
+  <div class="said">This is a very different time. Extremely fractured, extremely distracting, the down south element of it. And what&#x27;s fascinating to me is that I think more people today on raw numbers are engaged in politics as a cultural observational sport. Fewer people are engaged in politics as a raw, let me put my vote somewhere sport. And I think they&#x27;re engaged in culture because politics is culture based on what&#x27;s happening down south, what&#x27;s down south with us on a national level, with what Smith is doing on a daily basis. So I think there&#x27;s a lot of wisdom there on 2021 being a simpler time, even though this is a rerun of some of the same candidates with a few more characters this time around.</div>
+</div>
+<div class="turn" data-start="986">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:26</span>
+  </div>
+  <div class="said">The ballot box question here is fascinating to me because I think it&#x27;s starting to emerge this week or this weekend. What do</div>
 </div>
 <div class="turn" data-start="992">
   <div class="who">
@@ -827,7 +942,21 @@
     <span class="speaker">Zain</span>
     <span class="ts">16:39</span>
   </div>
-  <div class="said">you think it is. This is not insightful. This is not insightful other than to say, it kind of goes to my first question, which is other than to say, okay, Sharp looks more viable than ever before. Who can stop bad things from happening? I don&#x27;t think the question is who is the best mayor. that were the question who can and whatever bad things are to you if it&#x27;s a gondek rerun by the way one of the questions available on the table which i&#x27;m surprised is not the question we&#x27;re fighting here is a referendum on jyoti gondek but here she is jyoti gondek who&#x27;s running as like oh yeah by the way i was mayor and i still continue to be mayor as almost a brand new thing and she&#x27;s first or second in the polls like if if jyoti gondek wins monday night people won&#x27;t celebrate that as a Jyoti Gondek win as much as they&#x27;ll be like yeah low voter turnout all those things but holy shit did she escape strategically or otherwise from a referendum the woman literally had a fucking recall against her and she could be mayor again which goes back to your other wise point around are people actually mad or are they disengaged and will the engaged people finally learn the lesson like the engaged people on the center right let&#x27;s just say the center all the way to the left kind of say maybe we got to coalesce around Gondek I&#x27;m not saying that&#x27;s what everyone&#x27;s doing I don&#x27;t want to count out these and I don&#x27;t count on anybody at this case because 50% undecided, you know, in that sense, the smart money is that most of those people stay home. But there could be some true undecideds in that mix, as you mentioned, with even the hyper engaged. But I think the question that is framing up is a negative partisan question, which is who can stop evil from happening or who could stop bad stuff from happening? Not evil might be too deep of a word or too charged of a word. Whatever that might mean for you. And for the left or for the center in the left, as sharp has become more viable, I think that question snaps into focus. And then for the right, as Gondek and a new progressive-like version of Farkas flirt with one and two in the polls, the coalescing around sharp might occur. So this is – I don&#x27;t think it&#x27;s a perfect question. I don&#x27;t think it&#x27;s a universal question. It&#x27;s not about infills. It&#x27;s not about housing. It&#x27;s not about safety. safety it&#x27;s about vibes and and and where you kind of stand in that sense now is that what the gen pop is thinking i don&#x27;t know you tell me</div>
+  <div class="said">you think it is. This is not insightful. This is not insightful other than to say, it kind of goes to my first question, which is other than to say, okay, Sharp looks more viable than ever before. Who can stop bad things from happening? I don&#x27;t think the question is who is the best mayor.</div>
+</div>
+<div class="turn" data-start="1015">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:55</span>
+  </div>
+  <div class="said">that were the question who can and whatever bad things are to you if it&#x27;s a gondek rerun by the way one of the questions available on the table which i&#x27;m surprised is not the question we&#x27;re fighting here is a referendum on jyoti gondek but here she is jyoti gondek who&#x27;s running as like oh yeah by the way i was mayor and i still continue to be mayor as almost a brand new thing and she&#x27;s first or second in the polls like if if jyoti gondek wins monday night people won&#x27;t celebrate that as a Jyoti Gondek win as much as they&#x27;ll be like yeah low voter turnout all those things but holy shit did she escape strategically or otherwise from a referendum the woman literally had a fucking recall against her and she could be mayor again which goes back to your other wise point around are people actually mad or are they disengaged and will the engaged people finally learn the lesson like the engaged people on the center right let&#x27;s just say the center all the way to the left kind of say maybe we got to coalesce around Gondek I&#x27;m not saying that&#x27;s what everyone&#x27;s doing I don&#x27;t want to count out these and I don&#x27;t count on anybody at this case because 50% undecided, you know, in that sense, the smart money is that most of those people stay home. But there could be some true undecideds in that mix, as you mentioned, with even the hyper engaged. But I think the question that is framing up is a negative partisan question, which is who can stop evil from happening or who could stop bad stuff from happening? Not evil might be too deep of a word or too charged of a word. Whatever that might mean for you. And for the left or for the center in the left, as sharp has become more viable, I think that question snaps into focus. And then for the right, as Gondek and a new progressive-like version of Farkas flirt with one and two in the polls, the coalescing around sharp might occur. So this is – I don&#x27;t think it&#x27;s a perfect question. I don&#x27;t think it&#x27;s a universal question. It&#x27;s not about infills. It&#x27;s not about housing. It&#x27;s not about safety. safety it&#x27;s about vibes and and and where you kind of stand in that sense now is that what the gen pop is thinking i</div>
+</div>
+<div class="turn" data-start="1129">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">18:49</span>
+  </div>
+  <div class="said">don&#x27;t know you tell me</div>
 </div>
 <div class="turn" data-start="1130">
   <div class="who">
@@ -876,7 +1005,21 @@
     <span class="speaker">Zain</span>
     <span class="ts">25:07</span>
   </div>
-  <div class="said">Yeah, I mean, from my perspective on that front end, let me respond to this and then kind of tell you where I want to go, because I want to talk about, and you mentioned three-horse race, and I want to pick up on that in a second shortly as we examine each of those three candidates and then talk about the scenarios we could see on Monday slash Tuesday. So let&#x27;s get to that in a second. But before that, let&#x27;s talk about process, because you&#x27;ve jumped into process, and I think it&#x27;s very important, because there&#x27;s been an absence of a few things this election. And I think the environment is certainly different. You can comment, but let me give you the top line sort of things that have changed. Media, different. Yeah, media. Yeah, media, different, eroding and fractured. Okay, we can discuss that. Organic is different because it&#x27;s no longer, as we&#x27;ve mentioned multiple times on this podcast, most platforms for modern social media are now algorithmic rather than graph-based. which means that you&#x27;re not just seeing what your friends are putting online. Anyone can go viral with anything all the time, but there&#x27;s no guarantee that your followers are even seeing what you&#x27;re putting out there. This is the extremely simplified up and down of organic. Paid, I&#x27;ve heard money is extremely hard to come by. I&#x27;ve heard money is extremely hard to come by and that it has been hard to get eyeballs on certain things for candidates, even if they&#x27;ve been putting stuff on meta and putting a decent ad spend behind it. um you know let alone like things like tv and if you remember bill smith or you know in 2017 when we were facing that election his paid included actual billboards i don&#x27;t</div>
+  <div class="said">Yeah, I mean, from my perspective on that front end, let me respond to this and then kind of tell you where I want to go, because I want to talk about, and you mentioned three-horse race, and I want to pick up on that in a second shortly as we examine each of those three candidates and then talk about the scenarios we could see on Monday slash Tuesday. So let&#x27;s get to that in a second. But before that, let&#x27;s talk about process, because you&#x27;ve jumped into process, and I think it&#x27;s very important, because there&#x27;s been an absence of a few things this election. And I think the environment is certainly different. You can comment, but let me give you the top line sort of things that have changed. Media, different. Yeah,</div>
+</div>
+<div class="turn" data-start="1544">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">25:44</span>
+  </div>
+  <div class="said">media. Yeah, media, different, eroding and fractured. Okay, we can discuss that. Organic is different because it&#x27;s no longer, as we&#x27;ve mentioned multiple times on this podcast, most platforms for modern social media are now algorithmic rather than graph-based. which means that you&#x27;re not just seeing what your friends are putting online. Anyone can go viral with anything all the time, but there&#x27;s no guarantee that your followers are even seeing what you&#x27;re putting out there. This is the extremely simplified up and down of organic. Paid, I&#x27;ve heard money is extremely hard to come by.</div>
+</div>
+<div class="turn" data-start="1574">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">26:14</span>
+  </div>
+  <div class="said">I&#x27;ve heard money is extremely hard to come by and that it has been hard to get eyeballs on certain things for candidates, even if they&#x27;ve been putting stuff on meta and putting a decent ad spend behind it. um you know let alone like things like tv and if you remember bill smith or you know in 2017 when we were facing that election his paid included actual billboards i don&#x27;t</div>
 </div>
 <div class="turn" data-start="1598">
   <div class="who">
@@ -918,7 +1061,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">27:24</span>
   </div>
-  <div class="said">haven&#x27;t i haven&#x27;t seen any like set pieces i haven&#x27;t seen any sort of like set piece ads in the sense of like here&#x27;s an ad about me as a candidate 30 15 skippable unskippable six second with like two i know i haven&#x27;t seen any of that i think that might be a direct result of money yeah um but i&#x27;ll put it this way you know i think on organic we&#x27;ve taken a step back to your point on rapid response i don&#x27;t know why maybe people don&#x27;t have the horsepower or they haven&#x27;t seen the performance you know one of the things with algorithmic social media that i have as a theory is that it actually could lead to decreased uh and it&#x27;s not like a novel theory it could lead to decreased um sort of desire to post when your stuff doesn&#x27;t reach when a reel doesn&#x27;t get the likes you need you you know you almost kind of think of it as like oh it&#x27;s not working it incentivizes you to not do it or not next time right yeah and i know the whole thing of the platform is that one out of every four things just goes crazy and bonkers so then you get excited that the next one will but it just might be like the team is just like this is not not important no one&#x27;s and it just might be this cloud like even us talking about organic social media it&#x27;s right but i think that contributes to it it contributes to people not engaging and not doing the stuff that we would consider uh conventional wisdom or like uh yeah but maybe maybe we&#x27;re gonna on the back end of this find out what the new baseline of conventional wisdom on social media and paid media looks like but let me let me give you the on organic i think we&#x27;ve taken a step back this election on paid i think we&#x27;ve taken a step back this election but i&#x27;ll They&#x27;ll excuse people that they don&#x27;t have the money to do it. But in terms of the art, the creativity, the placement, the timing, the virality, or even the try to punch through, the attack ads, the stunts, all that sort of stuff that comes with it, I think we&#x27;re taking a step back. Where I think we might have taken a step forward is if you were on the email list of these folks, on the owned side of things, the email list, I think campaigns are doing quite a good job talking to their supporters. Now, I have no sense. This is what Henderson yesterday said about the Edmonton campaign. I&#x27;ll say about the Calgary campaign. i have no sense how big these dashboards are i have no sense how big these email lists are i have no sense of how uh any of this information if you sign up to the calgary party is getting shared beyond it but i&#x27;ll tell you they&#x27;re doing sophisticated stuff i&#x27;d say and i&#x27;m on most of these lists across the board yeah i think owned is taking a step forward or it&#x27;s like you know on par with what you&#x27;d expect but i&#x27;d say on the organic and paid um it is not existing in that in that same way. The other thing I&#x27;m fascinated about is polling. We&#x27;ve had two landmark Janet Brown polls of two when I say two I mean one for Edmonton one for Calgary right so but two at the same time of the Calgary one kind of showing an extremely tight race up front. We&#x27;ve had some Leche stuff but we haven&#x27;t really seen any any other players in the mix and I&#x27;m surprised that even from a just a downright strategy perspective there&#x27;s no late breaking poll last night or this this morning</div>
+  <div class="said">haven&#x27;t i haven&#x27;t seen any like set pieces i haven&#x27;t seen any sort of like set piece ads in the sense of like here&#x27;s an ad about me as a candidate 30 15 skippable unskippable six second with like two i know i haven&#x27;t seen any of that i think that might be a direct result of money yeah um but i&#x27;ll put it this way you know i think on organic we&#x27;ve taken a step back to your point on rapid response i don&#x27;t know why maybe people don&#x27;t have the horsepower or they haven&#x27;t seen the performance you know one of the things with algorithmic social media that i have as a theory is that it actually could lead to decreased uh and it&#x27;s not like a novel theory it could lead to decreased um sort of desire to post when your stuff doesn&#x27;t reach when a reel doesn&#x27;t get the likes you need you you know you almost kind of think of it as like oh it&#x27;s not working it incentivizes you to not do it or not next time right yeah and i know the whole thing of the platform is that one out of every four things just goes crazy and bonkers so then you get excited that the next one will but it just might be like the team is just like this is not not important no one&#x27;s and it just might be this cloud like even us talking about organic social media it&#x27;s right but i think that contributes to it it contributes to people not engaging and not doing the stuff that we would consider uh conventional wisdom or like uh yeah but maybe maybe we&#x27;re gonna on the back end of this find out what the new baseline of conventional wisdom on social media and paid media looks like but let me let me give you the on organic i think we&#x27;ve taken a step back this election on paid i think we&#x27;ve taken a step back this election but i&#x27;ll They&#x27;ll excuse people that they don&#x27;t have the money to do it. But in terms of the art, the creativity, the placement, the timing, the virality, or even the try to punch through, the attack ads, the stunts, all that sort of stuff that comes with it, I think we&#x27;re taking a step back. Where I think we might have taken a step forward is if you were on the email list of these folks, on the owned side of things, the email list, I think campaigns are doing quite a good job talking to their supporters. Now, I have no sense. This is what Henderson yesterday said about the Edmonton campaign. I&#x27;ll say about the Calgary campaign. i have no sense how big these dashboards are i have no sense how big these email lists are i have no sense of how uh any of this information if you sign up to the calgary party is getting shared beyond it but i&#x27;ll tell you they&#x27;re doing sophisticated stuff i&#x27;d say and i&#x27;m on most of these lists across the board yeah i think owned is taking a step forward or it&#x27;s like you know on par with what you&#x27;d expect but i&#x27;d say on the organic and paid um it is not existing in that in that same way. The other thing I&#x27;m fascinated about is polling.</div>
+</div>
+<div class="turn" data-start="1787">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:47</span>
+  </div>
+  <div class="said">We&#x27;ve had two landmark Janet Brown polls of two when I say two I mean one for Edmonton one for Calgary right so but two at the same time of the Calgary one kind of showing an extremely tight race up front. We&#x27;ve had some Leche stuff but we haven&#x27;t really seen any any other players in the mix and I&#x27;m surprised that even from a just a downright strategy perspective there&#x27;s no late breaking poll last night or this this morning</div>
 </div>
 <div class="turn" data-start="1810">
   <div class="who">
@@ -988,7 +1138,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">32:22</span>
   </div>
-  <div class="said">run like a visible campaign. Her signs are everywhere. As you&#x27;ve said, money has not seemed to be a problem for her per se. okay um so she does look like a front-runner status i do want to revisit before i jump into this can i can i take us a step back to something you said and i don&#x27;t want to miss out this out on the conversation which is the big question if someone why do you think the big question was not framed whether that is the version of the two million city question or the next chapter question or someone trying to really like yes i&#x27;ve got policies on x y and z but i&#x27;m framing this as the election of big thing is that just a factor of someone not doing it is that a factor of someone trying to do it and not punching through and not being able to communicate it like and and what do you think was kind of missing in this race in that regard with that big thing that would make it i&#x27;m not saying that alone would make it less boring but it would make it a little bit more exciting and i want to make sure i capture your thoughts on this a noting the absence which i i agree with but b maybe give me a bit of why from your perspective around why do you think it was missing</div>
+  <div class="said">run like a visible campaign. Her signs are everywhere. As you&#x27;ve said, money has not seemed to be a problem for her per se. okay um so she does look like a front-runner status i do want to revisit before i jump into this can i can i take us a step back to something you said and i don&#x27;t want to miss out this out on the conversation which is the</div>
+</div>
+<div class="turn" data-start="1961">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">32:41</span>
+  </div>
+  <div class="said">big question if someone why do you think the big question was not framed whether that is the version of the two million city question or the next chapter question or someone trying to really like yes i&#x27;ve got policies on x y and z but i&#x27;m framing this as the election of big thing is that just a factor of someone not doing it is that a factor of someone trying to do it and not punching through and not being able to communicate it like and and what do you think was kind of missing in this race in that regard with that big thing that would make it i&#x27;m not saying that alone would make it less boring but it would make it a little bit more exciting and i want to make sure i capture your thoughts on this a noting the absence which i i agree with but b maybe give me a bit of why from your perspective around why do you think it was missing</div>
 </div>
 <div class="turn" data-start="2007">
   <div class="who">
@@ -1149,7 +1306,7 @@
     <span class="speaker">Annalise</span>
     <span class="ts">39:37</span>
   </div>
-  <div class="said">think if the if we had like two or three more weeks in the campaign i think it would be different for thesen but</div>
+  <div class="said">think if the if we had like two or three more weeks in the campaign i think it would be different for thesen</div>
 </div>
 <div class="turn" data-start="2384">
   <div class="who">
@@ -1177,7 +1334,14 @@
     <span class="speaker">Annalise</span>
     <span class="ts">40:12</span>
   </div>
-  <div class="said">many ways. I think that name recognition piece was a really, really, really big uphill battle. I do think people at the debates, but it&#x27;s insiders watching the debates. So usually the debates afterwards, I chat with a lot of people, hear what they&#x27;re thinking, what they&#x27;re saying. The chamber one, people were like, Thiessen won that 100%. He also, that was the first time he went really hot on tying Sharp to Smith. And again, the teacher strike timing. Last night, I feel like people felt like Davison, and Davison was entertaining, right? Like people thought that Davison, in terms of like a winner, I think he&#x27;s then, the conversations in my circles are like, we really like him. He would be great. But does he have a chance? Which gets back to ballot box question. if ballot box question is who is best suited to take on sonia sharp um i just i think he i think he needed a couple more maybe longer than that and i don&#x27;t i don&#x27;t want to count him out anything could happen it&#x27;s a three horse race undecideds are really really high um but i think if season can&#x27;t pull it off i think the timing the name recognition and also again there&#x27;s like there&#x27;s what&#x27;s what&#x27;s the talker like even maybe it&#x27;s like something that&#x27;s like not going to be popular but but could he have come out with something that just creates conversation, that draws attention? I think a big thing of where they got a bunch of traditional media and they got a lot of eyeballs was the sign stuff. And I remember grilling Carter on that in the summer because I was just entertained because I saw the first sign and knew that Carter was behind that. Carter</div>
+  <div class="said">many ways. I think that name recognition piece was a really, really, really big uphill battle. I do think people at the debates, but it&#x27;s insiders watching the debates. So usually the debates afterwards, I chat with a lot of people, hear what they&#x27;re thinking, what they&#x27;re saying. The chamber one, people were like, Thiessen won that 100%. He also, that was the first time he went really hot on tying Sharp to Smith. And again, the teacher strike timing. Last night, I feel like people felt like Davison, and Davison was entertaining, right? Like people thought that Davison, in terms of like a winner, I think he&#x27;s then, the conversations in my circles are like, we really like him. He would be great. But does he have a chance? Which gets back to ballot box question. if ballot box question is who is best suited to take on sonia sharp um</div>
+</div>
+<div class="turn" data-start="2466">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">41:06</span>
+  </div>
+  <div class="said">i just i think he i think he needed a couple more maybe longer than that and i don&#x27;t i don&#x27;t want to count him out anything could happen it&#x27;s a three horse race undecideds are really really high um but i think if season can&#x27;t pull it off i think the timing the name recognition and also again there&#x27;s like there&#x27;s what&#x27;s what&#x27;s the talker like even maybe it&#x27;s like something that&#x27;s like not going to be popular but but could he have come out with something that just creates conversation, that draws attention? I think a big thing of where they got a bunch of traditional media and they got a lot of eyeballs was the sign stuff. And I remember grilling Carter on that in the summer because I was just entertained because I saw the first sign and knew that Carter was behind that. Carter</div>
 </div>
 <div class="turn" data-start="2507">
   <div class="who">
@@ -1191,14 +1355,49 @@
     <span class="speaker">Annalise</span>
     <span class="ts">41:50</span>
   </div>
-  <div class="said">But yeah, I just don&#x27;t, I also wonder and I don&#x27;t want to get too much into the parties. I think we&#x27;ll obviously know more on Tuesday, day but like do calgarians like the parties and i think the thesis that thesen came out with at the beginning was like this is the system that daniel smith has put in place i&#x27;m a lawyer i follow rules thus i am following the rules and this is our party but i just don&#x27;t know if that like worked when you had farkas davison and gondek who are not part of parties and when you had a lot of ward level and ward is a whole nother thing a lot of ward level candidates who&#x27;s like their Their campaign lit and their big key message is independent, independent, independent, independent, right? And I think the initial polling showed Albertans didn&#x27;t want parties. I think it&#x27;s changed slightly. But then we&#x27;re also in a time frame where like with the teacher strike, Daniel Smith is not like doing super well in Calgary right now. And so if the tie is like parties equal Daniel Smith, how do you get away from that? It&#x27;s</div>
+  <div class="said">But yeah, I just don&#x27;t, I also wonder and I don&#x27;t want to get too much into the parties. I think we&#x27;ll obviously know more on Tuesday, day but like do calgarians like the parties and i think the thesis that thesen came out with at the beginning was like this is the system that daniel smith has put in place i&#x27;m a lawyer i follow rules thus i am following the rules and this is our party but</div>
+</div>
+<div class="turn" data-start="2533">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">42:13</span>
+  </div>
+  <div class="said">i just don&#x27;t know if that like worked when you had farkas davison and gondek who are not part of parties and when you had a lot of ward level and ward is a whole nother thing a lot of ward level candidates who&#x27;s like their Their campaign lit and their big key message is independent, independent, independent, independent, right? And I think the initial polling showed Albertans didn&#x27;t want parties. I think it&#x27;s changed slightly. But then we&#x27;re also in a time frame where like with the teacher strike, Daniel Smith is not like doing super well in Calgary right now. And so if the tie is like parties equal Daniel Smith, how do you get away from that? It&#x27;s</div>
 </div>
 <div class="turn" data-start="2569">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">42:49</span>
   </div>
-  <div class="said">a tough pretzel when you&#x27;re also the anti-Daniel Smith candidate or at least the one punching through on that. Yeah, being like, she said, I&#x27;m following her rules. It&#x27;s like, why aren&#x27;t you challenging her rules? Why aren&#x27;t you like, you know, are all these other people are doing so? You know, I think for for Thiessen, the fact is, I think the best mayor question would have been very helpful to them. But as soon as people turn into pundits, and what I mean by that is they turn into people like you and I who talk about things like viability. As soon as voters turn into pundits, that&#x27;s trouble when you&#x27;re not one of the people that&#x27;s showing viability through metrics like polling or momentum or other sort of congealed sort of metrics like that. And I think the other aspect of this election that I think may have influenced and may have impacted Thiessen the most, and I&#x27;m taking what you&#x27;re saying and just repackaging in a slightly different way, is that in any election, the hyper engaged or the insiders, whatever you want to call them, right, or a combination of the two. I think insiders have more of a touch and feel, even know some of these people like people like you and I would be classified in that in the broadest sense. But that plus the hyper engaged influence what the second or fourth tier of people. And I don&#x27;t mean that as it is a tier of like anything other than engagement of the election, what they do and how they do it. But if those two groups, the insiders and the hyper engaged, are still either mealy mouthed or confused or in their text groups being like, fuck, what are we doing, folks? Like, what are we doing? Then there is no broadcast signal for them. Not even I don&#x27;t even like putting up an endorsement today. I, as an insider, am voting for like, I don&#x27;t even mean that casually in conversation. How many times have you gotten asked around what you&#x27;re doing? And I don&#x27;t have a clear answer in the sense. I have a clear answer. I don&#x27;t have a confident answer that&#x27;ll lead to an outcome that is that that that answers the question that in the sense and if this Is and I use you and I as proxies because I don&#x27;t mean exactly you and I but people like you and I if we&#x27;re still Struggling to your earlier point then what hope does that have to send any formal informal network based signal? To to those around us around what to do how it&#x27;s shaping up what&#x27;s going on and I think one core ingredient missing in both cities in this election is that, and less so in Edmonton, because I think folks are starting to understand the task. It&#x27;s a two-horse race for the most part, and that we&#x27;ve got to stop Cartmel if you&#x27;re anywhere between, let&#x27;s just say on the left and some folks on the center. That task is less clear here. That path is less clear here. I think Farkas, to your earlier description of who he&#x27;s become and who he wants to be, makes that task a bit harder in terms of what folks are doing i think gondek with her history and and and perhaps a little bit of disappointment for some people makes that task harder and then thesen with all his promise right with all his promise and all his ability and maybe progressives not necessarily taking to the parties as much as they&#x27;d hoped and all those sort of things also makes that task harder but the fact is that that a lot of folks who should know what they&#x27;re doing don&#x27;t know what they&#x27;re doing and we&#x27;re on fucking friday well</div>
+  <div class="said">a tough pretzel when you&#x27;re also the anti-Daniel Smith candidate or at least the one punching through on that. Yeah, being like, she said, I&#x27;m following her rules. It&#x27;s like, why aren&#x27;t you challenging her rules? Why aren&#x27;t you like, you know, are all these other people are doing so? You know, I think for for Thiessen, the fact is, I think the best mayor question would have been very helpful to them. But as soon as people turn into pundits, and what I mean by that is they turn into people like you and I who talk about things like viability. As soon as voters turn into pundits, that&#x27;s trouble when you&#x27;re not one of the people that&#x27;s showing viability through metrics like polling or momentum or other sort of congealed sort of metrics like that. And</div>
+</div>
+<div class="turn" data-start="2606">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">43:26</span>
+  </div>
+  <div class="said">I think the other aspect of this election that I think may have influenced and may have impacted Thiessen the most, and I&#x27;m taking what you&#x27;re saying and just repackaging in a slightly different way, is that in any election, the hyper engaged or the insiders, whatever you want to call them, right, or a combination of the two. I think insiders have more of a touch and feel, even know some of these people like people like you and I would be classified in that in the broadest sense. But that plus the hyper engaged influence what the</div>
+</div>
+<div class="turn" data-start="2634">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">43:54</span>
+  </div>
+  <div class="said">second or fourth tier of people. And I don&#x27;t mean that as it is a tier of like anything other than engagement of the election, what they do and how they do it. But if those two groups, the insiders and the hyper engaged, are still either mealy mouthed or confused or in their text groups being like, fuck, what are we doing, folks? Like, what are we doing?</div>
+</div>
+<div class="turn" data-start="2655">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">44:15</span>
+  </div>
+  <div class="said">Then there is no broadcast signal for them. Not even I don&#x27;t even like putting up an endorsement today. I, as an insider, am voting for like, I don&#x27;t even mean that casually in conversation. How many times have you gotten asked around what you&#x27;re doing? And I don&#x27;t have a clear answer in the sense. I have a clear answer. I don&#x27;t have a confident answer that&#x27;ll lead to an outcome that is that that that answers the question that in the sense and if this Is and I use you and I as proxies because I don&#x27;t mean exactly you and I but people like you and I if we&#x27;re still Struggling to your earlier point then what hope does that have to send any formal informal network based signal? To to those around us around what to do how it&#x27;s shaping up what&#x27;s going on and I think one core ingredient missing in both cities in this election is that, and less so in Edmonton, because I think folks are starting to understand the task. It&#x27;s a two-horse race for the most part, and that we&#x27;ve got to stop Cartmel if you&#x27;re anywhere between, let&#x27;s just say on the left and some folks on the center. That task is less clear here. That path is less clear here. I think Farkas, to your earlier description of who he&#x27;s become and who he wants to be, makes that task a bit harder in terms of what folks are doing i think gondek with her history and and and perhaps a little bit of disappointment for some people makes that task harder and then thesen with all his promise right</div>
+</div>
+<div class="turn" data-start="2736">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">45:36</span>
+  </div>
+  <div class="said">with all his promise and all his ability and maybe progressives not necessarily taking to the parties as much as they&#x27;d hoped and all those sort of things also makes that task harder but the fact is that that a lot of folks who should know what they&#x27;re doing don&#x27;t know what they&#x27;re doing and we&#x27;re on fucking friday well</div>
 </div>
 <div class="turn" data-start="2752">
   <div class="who">
@@ -1254,7 +1453,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">47:04</span>
   </div>
-  <div class="said">it is interesting that&#x27;s a good point around the anonymity or like the perceived anonymity that reddit can can can instill well the most here&#x27;s my summary of reddit conversations because reddit probably leans a bit more progressive in that sense of bubbles that you and i are probably more actively part of Thiessen comes up more disproportionately than he does in the polling and if I&#x27;m the Calgary party folks and if I&#x27;m Carter and Brian I&#x27;m like but Thiessen comes up and then every couple of comments later and once again your point around anonymity really speaks here but I can&#x27;t support parties and that also right? and then it&#x27;s just kind of start back at zero and it&#x27;s like oh Gundak I guess and it&#x27;s like Thiessen I can&#x27;t support parties And so there is a there there around the baggage Thiessen might be carrying. And Carter, in our debrief, regardless of result, can parade around and tell us we were wrong or, frankly, will parade around and tell us we were right. He&#x27;ll parade around regardless. But there is – the Thiessen party thing is – and my perceived thing is it&#x27;s a bit of a weight he&#x27;s carrying right now. It might have been an asset. you carter may argue on the back end that it wouldn&#x27;t have gotten him anywhere near where even the eight ten twelve percent he ends up with if there wasn&#x27;t a party infrastructure he could make that argument i don&#x27;t know if i&#x27;d buy it but it seems like thesen and the party seem to be a bit of an anchor right now</div>
+  <div class="said">it is interesting that&#x27;s a good point around the anonymity or like the perceived anonymity that reddit can can can instill well the most here&#x27;s my summary of reddit conversations because reddit probably leans a bit more progressive in that sense of bubbles that you and i are probably more actively part of Thiessen comes up more disproportionately than he does in the polling and if I&#x27;m the Calgary party folks and if I&#x27;m Carter and Brian I&#x27;m like but Thiessen comes up and then every couple of comments later and once again your point around anonymity really speaks here but I can&#x27;t support parties and that also right? and then it&#x27;s just kind of start back at zero and it&#x27;s like oh Gundak I guess and it&#x27;s</div>
+</div>
+<div class="turn" data-start="2865">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">47:45</span>
+  </div>
+  <div class="said">like Thiessen I can&#x27;t support parties And so there is a there there around the baggage Thiessen might be carrying. And Carter, in our debrief, regardless of result, can parade around and tell us we were wrong or, frankly, will parade around and tell us we were right. He&#x27;ll parade around regardless. But there is – the Thiessen party thing is – and my perceived thing is it&#x27;s a bit of a weight he&#x27;s carrying right now. It might have been an asset. you carter may argue on the back end that it wouldn&#x27;t have gotten him anywhere near where even the eight ten twelve percent he ends up with if there wasn&#x27;t a party infrastructure he could make that argument i don&#x27;t know if i&#x27;d buy it but it seems like thesen and the party seem to be a bit of an anchor right now</div>
 </div>
 <div class="turn" data-start="2904">
   <div class="who">
@@ -1303,7 +1509,14 @@
     <span class="speaker">Annalise</span>
     <span class="ts">50:00</span>
   </div>
-  <div class="said">the recruitment aspect, like I, full disclosure, I think being a city councillor is not a great job. I think, like I did, I think it&#x27;s, I think it&#x27;s getting harder and harder to get people in that role. And so I think the recruitment and also having that kind of like campaign in a box. And I saw someone crunch, it must&#x27;ve been on Reddit someone sent me, but like crunch the numbers of how many female candidates. And the conclusion was basically like female candidates were more likely to run with a party because they were given the infrastructure. So I do think there&#x27;s things like that, that accountability episode we can like learn from. But yeah, I just, I just question. And here&#x27;s where you get into like, do the undecided show up and do people, what are people feeling about parties in three days?</div>
+  <div class="said">the recruitment aspect, like I, full disclosure, I think being a city councillor is not a great job. I think, like I did, I think it&#x27;s, I think it&#x27;s getting harder and harder to get people in that role. And so I think the recruitment and also having that kind of like campaign in a box. And I saw someone crunch, it must&#x27;ve been on Reddit someone sent me, but like crunch the numbers of how many female candidates. And the conclusion was basically like female candidates were more likely to run with a party because they were given the infrastructure. So I do think there&#x27;s things like that, that accountability episode we can like learn from. But yeah, I just, I just question. And here&#x27;s where you get into like, do the undecided show up and do people, what</div>
+</div>
+<div class="turn" data-start="3046">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">50:46</span>
+  </div>
+  <div class="said">are people feeling about parties in three days?</div>
 </div>
 <div class="turn" data-start="3050">
   <div class="who">
@@ -1436,7 +1649,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">57:18</span>
   </div>
-  <div class="said">it is interesting to me that like if farkas is now considered one of the left or can have elements of left to him in terms of his base, that Gundick and Farkas didn&#x27;t go after each other much earlier in order to like, totally make the case that, you know, this is your person to be the standard bearer, if it comes down to us versus a conservative. In this case, this is a scenario that in the simplest of terms, if you believe what Farkas stands for, it&#x27;s two left wing candidates versus a right one at the top. And the vote split goes the other way here. It doesn&#x27;t it doesn&#x27;t have this is not this classic Alberta to right wing candidates, although the second one exists in Davison, his viability seems less. This could be a very fascinating to center to left wing center left candidates. And we can talk about Gondek&#x27;s history. There&#x27;ll be many people who argue with us around neither of these candidates being progressive because of where Gondek came in years ago as a counselor, as a developer candidate and has maybe made a political sort of shift in her. OK, sure. I want to acknowledge it for this case. case i want to make it extremely simplistic that you could have two left or perceived left candidates going against a right-wing one and the right-wing one comes through the middle</div>
+  <div class="said">it is interesting to me that like if farkas is now considered one of the left or can have elements of left to him in terms of his base, that Gundick and Farkas didn&#x27;t go after each other much earlier in order to like, totally make the case that, you know, this is your person to be the standard bearer, if it comes down to us versus a conservative. In this case, this is a scenario that in the simplest of terms, if you believe what Farkas stands for, it&#x27;s two left wing candidates versus a right one at the top. And the vote split goes the other way here. It doesn&#x27;t it doesn&#x27;t have this is not this classic Alberta to right wing candidates, although the second one exists in Davison, his viability seems less. This could be a very fascinating to center to left wing center left candidates. And we can talk about Gondek&#x27;s history. There&#x27;ll be many people who argue with us around neither of these candidates being progressive because</div>
+</div>
+<div class="turn" data-start="3489">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">58:09</span>
+  </div>
+  <div class="said">of where Gondek came in years ago as a counselor, as a developer candidate and has maybe made a political sort of shift in her. OK, sure. I want to acknowledge it for this case. case i want to make it extremely simplistic that you could have two left or perceived left candidates going against a right-wing one and the right-wing one comes through the middle</div>
 </div>
 <div class="turn" data-start="3506">
   <div class="who">
@@ -1562,21 +1782,42 @@
     <span class="speaker">Zain</span>
     <span class="ts">1:03:24</span>
   </div>
-  <div class="said">this. Let&#x27;s close out here, which is I don&#x27;t want to go through every council race, but I replayed the story for Henderson the other day in 2017. I was so focused on the mayor&#x27;s race. And of course, this was like every other race. We hit all of council, whatever. And as I look up on the screen on that night in 2017, I&#x27;m like, oh, thank God. And then she won. We get to celebrate. Oh, what happened to any of the councils? Every single incumbent that ran won. on do you think do you think that story plays out here again in calgary uh just based on the simple sleepiness uh of this election or do you feel like any of the incumbents are at real threat um and what what are you kind of as you&#x27;ve also mentioned earlier in this episode this independence streak seems to be one of those driving questions or at least seems to be a not a deciding or driving question maybe that&#x27;s too much but seems to be a factor of some kind in some of these races so just your broader thoughts on council council incumbents and where we might land with a few of these things or any notable things you find fascinating on your end?</div>
+  <div class="said">this. Let&#x27;s close out here, which is I don&#x27;t want to go through every council race, but I replayed the story for Henderson the other day in 2017. I was so focused on the mayor&#x27;s race. And of course, this was like every other race. We hit all of council, whatever. And as I look up on the screen on that night in 2017, I&#x27;m like, oh, thank God. And then she won. We get to celebrate. Oh, what happened to any of the councils? Every single incumbent that ran won. on</div>
+</div>
+<div class="turn" data-start="3828">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:03:48</span>
+  </div>
+  <div class="said">do you think do you think that story plays out here again in calgary uh just based on the simple sleepiness uh of this election or do you feel like any of the incumbents are at real threat um and what what are you kind of as you&#x27;ve also mentioned earlier in this episode this independence streak seems to be one of those driving questions or at least seems to be a not a deciding or driving question maybe that&#x27;s too much but seems to be a factor of some kind in some of these races so just your broader thoughts on council council incumbents and where we might land with a few of these things or any notable things you find fascinating on your end?</div>
 </div>
 <div class="turn" data-start="3860">
   <div class="who">
     <span class="speaker">Annalise</span>
     <span class="ts">1:04:20</span>
   </div>
-  <div class="said">Yeah, I think in terms of incumbents, and I have them written down here, I think Chabot and McLean, the easy conservative wards where they always elect a conservative. Terry Wong in Seven is interesting. Maybe I&#x27;m biased here because I live in Seven and I&#x27;m in a Ward Seven bubble. But I do think he&#x27;s getting a run for his money and he kind of has an interesting strategy in platforming his seemingly main. opponent um but maybe i&#x27;m just wishful thinking it&#x27;s seven um raj and winus i don&#x27;t have a good read on those areas i think the incumbent advantage would likely help them penner and 11 announced really late right and i don&#x27;t again i don&#x27;t know 11 super well i&#x27;m kind of in like a inner city um bubble but she she announced that she was running again for recently like not not not that long ago, but, and I think, okay, let&#x27;s say five of the six incumbents or six of the six. I actually don&#x27;t think that matters that much because you have, you need to count to eight, right? Like you need, you need the eight. So, so where, where, who, who are the other, who are the new faces around the table? Right. Who are the new seven people and what are they like and, and what do they believe in and are they part of a party? Are they not part of a party?</div>
+  <div class="said">Yeah, I think in terms of incumbents, and I have them written down here, I think Chabot and McLean, the easy conservative wards where they always elect a conservative. Terry Wong in Seven is interesting. Maybe I&#x27;m biased here because I live in Seven and I&#x27;m in a Ward Seven bubble.</div>
+</div>
+<div class="turn" data-start="3875">
+  <div class="who">
+    <span class="speaker">Annalise</span>
+    <span class="ts">1:04:35</span>
+  </div>
+  <div class="said">But I do think he&#x27;s getting a run for his money and he kind of has an interesting strategy in platforming his seemingly main. opponent um but maybe i&#x27;m just wishful thinking it&#x27;s seven um raj and winus i don&#x27;t have a good read on those areas i think the incumbent advantage would likely help them penner and 11 announced really late right and i don&#x27;t again i don&#x27;t know 11 super well i&#x27;m kind of in like a inner city um bubble but she she announced that she was running again for recently like not not not that long ago, but, and I think, okay, let&#x27;s say five of the six incumbents or six of the six. I actually don&#x27;t think that matters that much because you have, you need to count to eight, right? Like you need, you need the eight. So, so where, where, who, who are the other, who are the new faces around the table? Right. Who are the new seven people and what are they like and, and what do they believe in and are they part of a party? Are they not part of a party?</div>
 </div>
 <div class="turn" data-start="3939">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">1:05:39</span>
   </div>
-  <div class="said">Yeah. It&#x27;s, it&#x27;s going to be fascinating to see. who has the best governance or easiest governance pathway, who has the worst governance pathway, what some of these new faces look like, what those previews of the future look like. Is there a case where the Calgary party produces one or two folks without a mayor&#x27;s chair? Is there any... I mean, here&#x27;s the thing. The future of the parties, I mean, we can spend hours discussing, but let&#x27;s be clear. They have to disband. And if they want to start up again, that&#x27;s going to be a new thing. But the question is, they may not even be part of the next election. So this could be like literally a one and done where that Calgary party name, brand, website, logo, the flag that they&#x27;ve wrapped themselves around is so temporary that it may never see the light of day again. And same for the Edmonton sort of version of these brands. And same for Communities First. This is not a thing that we&#x27;re going to associate. I mean, people are not associating candidates with brands as aggressively other than just to be like, you&#x27;re part of a party and I don&#x27;t like that. But they&#x27;re not associating themselves with these brands while voting for them. I think the likelihood of them doing so is significantly less even when those parties leave and be like, I remember that was our community&#x27;s first candidate that&#x27;s doing that. And that&#x27;s the reason why they&#x27;re doing X, Y, and Z. I want to wrap up here with any final thoughts you may have. We&#x27;ve talked almost exclusively about the mayor&#x27;s race. We talked a bit about council. We talked about the ballot box question, the polling, the process, some scenarios we might see on Monday night. I&#x27;m not going to ask you for a prediction because it does genuinely seem close. But if you want to give one, you can. But any final thoughts, Annalise, as we wrap up</div>
+  <div class="said">Yeah. It&#x27;s, it&#x27;s going to be fascinating to see. who has the best governance or easiest governance pathway, who has the worst governance pathway, what some of these new faces look like, what those previews of the future look like. Is there a case where the Calgary party produces one or two folks without a mayor&#x27;s chair? Is there any... I mean, here&#x27;s the thing. The future of the parties, I mean, we can spend hours discussing, but let&#x27;s be clear. They have to disband. And if they want to start up again, that&#x27;s going to be a new thing. But the question is, they may not even be part of the next election. So this could be like literally a one and done where that Calgary party name, brand, website, logo, the flag that they&#x27;ve wrapped themselves around is so temporary that it may never see the light of day again. And same for the Edmonton sort of version of these brands. And same for Communities First. This</div>
+</div>
+<div class="turn" data-start="3983">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:06:23</span>
+  </div>
+  <div class="said">is not a thing that we&#x27;re going to associate. I mean, people are not associating candidates with brands as aggressively other than just to be like, you&#x27;re part of a party and I don&#x27;t like that. But they&#x27;re not associating themselves with these brands while voting for them. I think the likelihood of them doing so is significantly less even when those parties leave and be like, I remember that was our community&#x27;s first candidate that&#x27;s doing that. And that&#x27;s the reason why they&#x27;re doing X, Y, and Z. I want to wrap up here with any final thoughts you may have. We&#x27;ve talked almost exclusively about the mayor&#x27;s race. We talked a bit about council. We talked about the ballot box question, the polling, the process, some scenarios we might see on Monday night. I&#x27;m not going to ask you for a prediction because it does genuinely seem close. But if you want to give one, you can. But any final thoughts, Annalise, as we wrap up</div>
 </div>
 <div class="turn" data-start="4026">
   <div class="who">

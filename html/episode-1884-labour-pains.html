@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/140052227.mp3?sig=Fl0LUE5VUhFkmGK39u-rbNij3-yoDU7Pr3gc3gWx-9s%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/68db1fd97be17a7f01b73244"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -495,7 +561,7 @@
 </div>
 <div class="turn" data-start="63">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:03</span>
   </div>
   <div class="said">Yeah, no. No, you&#x27;re not supposed to be doing that if you&#x27;re actually running. Now can&#x27;t.</div>
@@ -523,7 +589,7 @@
 </div>
 <div class="turn" data-start="83">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:23</span>
   </div>
   <div class="said">won three with my name on the sign, but I&#x27;ve been involved in a lot more.</div>
@@ -537,7 +603,7 @@
 </div>
 <div class="turn" data-start="94">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:34</span>
   </div>
   <div class="said">do want to mention... Just wondering if Stephen would win any with his name on the sign. Oh, yeah. Actually, my</div>
@@ -551,7 +617,7 @@
 </div>
 <div class="turn" data-start="105">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:45</span>
   </div>
   <div class="said">it&#x27;s a bit too high in this election. There&#x27;d be some negative partisanship that would rear up if Carter&#x27;s name was on the sign. Can you imagine</div>
@@ -572,7 +638,7 @@
 </div>
 <div class="turn" data-start="136">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">2:16</span>
   </div>
   <div class="said">shame people. I think we&#x27;re doing it to shame the schistless losers who are not subscribers on Patreon. Oh my gosh</div>
@@ -638,14 +704,28 @@
     <span class="speaker">Zain</span>
     <span class="ts">3:08</span>
   </div>
-  <div class="said">yeah i think you&#x27;re i think you&#x27;re in trouble for more than that reason uh carter thank you we&#x27;ll get we&#x27;ll get to the theory of the race municipally we&#x27;ll get to shannon uh and her thoughts on the federal ndp leadership race now that we officially have two two candidates, Anavi Lewis and Heather McPherson. But before we get into all of that, let&#x27;s move it on to our first segment. Our first segment, not all labor is created equal. Guys, I want to talk about two strikes. We talked at length about the CUPE strike with flight attendants, but we&#x27;ve got this potential strike with the Alberta Teachers Association here in Alberta. And then the postal workers, in their response to the government, have now gone on strike. And I want to start with a very top-line question. We can get into the details of both of these. For example, as we record today on Monday, teachers are voting right now. Shannon, correct me if I&#x27;m wrong. Carter, correct me if I&#x27;m wrong. I believe we should have a sense of that by today, tomorrow, in terms of what the results of the teachers&#x27; vote on their potential strike looks like, which is scheduled for later on, first week of October, i.e. next week. and we can talk about the details of the government and their plans on the COPW strike that is now active with postal workers. However, I want to start with a very top-line question. And let me start with you, Shannon. And it&#x27;s more of an observation than a question that I get you to respond on. For neither of these groups, the teachers in Alberta or the postal workers federally, this doesn&#x27;t feel like the same level of sympathy and energy that flight attendants had.</div>
+  <div class="said">yeah i think you&#x27;re i think you&#x27;re in trouble for more than that reason uh carter thank you we&#x27;ll get we&#x27;ll get to the theory of the race municipally we&#x27;ll get to shannon uh and her thoughts on the federal ndp leadership race now that we officially have two two candidates, Anavi Lewis and Heather McPherson. But before we get into all of that, let&#x27;s move it on to our first segment. Our first segment, not all labor is created equal. Guys, I want to talk about two strikes. We talked at length about the CUPE strike with flight attendants, but we&#x27;ve got this potential strike with the Alberta Teachers Association here in Alberta. And then the postal workers, in their response to the government, have now gone on strike. And I want to start with a very top-line question. We can get into the details of both of these. For example, as we record today on Monday, teachers are voting right now. Shannon, correct me if I&#x27;m wrong. Carter, correct me if I&#x27;m wrong. I believe we should have a sense of that by today, tomorrow, in terms of what the results of the teachers&#x27; vote on their potential strike looks like, which is scheduled for later on, first week of October, i.e. next week. and we can talk about the details of the government and their plans on the COPW strike that is now active with postal workers. However, I want to start with a very top-line question. And let me start with you, Shannon. And it&#x27;s more of an observation than a question that I get you to respond on.</div>
+</div>
+<div class="turn" data-start="267">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:27</span>
+  </div>
+  <div class="said">For neither of these groups, the teachers in Alberta or the postal workers federally, this doesn&#x27;t feel like the same level of sympathy and energy that flight attendants had.</div>
 </div>
 <div class="turn" data-start="277">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">4:37</span>
   </div>
-  <div class="said">Am I wrong? No, you&#x27;re not. It isn&#x27;t. Uh, and, uh, you know, flight attendants hit, uh, just a moment in time and a certain, uh, uh, issue set that, that, uh, allowed them tremendous public sympathy and that everybody understands the concept of sitting on the tarmac, twiddling your thumbs and the idea that the people sitting in the aircraft with you, uh, aren&#x27;t being paid for that time struck people, I think, uh, uh, as, uh, being a little off. and um and i think also people learning how little uh flight attendants actually make where they were like what because you know back in the day it used to be a fancy job uh and i think people were shocked to learn like they have learned with pilots as well that it&#x27;s not that fancy anymore and the wages are not that great um think with teachers you&#x27;re gonna see it start with about you You know, it&#x27;ll fall on partisan lines, let&#x27;s say 50-50, with public sympathy, and it&#x27;ll go down over time. Because that&#x27;s just what it is, right? I mean, the government will take a hit, too, for sure. employers always take a hit in terms of, like, brand reputation and all of that. But it will essentially probably bounce out on the lines of partisanship here in Alberta.</div>
+  <div class="said">Am I wrong? No, you&#x27;re not. It isn&#x27;t. Uh, and, uh, you know, flight attendants hit, uh, just a moment in time and a certain, uh, uh, issue set that, that, uh, allowed them tremendous public sympathy and that everybody understands the concept of sitting on the tarmac, twiddling your thumbs and the idea that the people sitting in the aircraft with you, uh, aren&#x27;t being paid for that time struck people, I think, uh, uh, as, uh, being a little off. and um and i think also people learning how little uh flight attendants actually make where they were like what because you know back in the day it used to be a fancy job uh and i think people were shocked to learn like they have learned with pilots as well that it&#x27;s not that fancy anymore and the wages are not that great um think with teachers you&#x27;re gonna see it start with about you You know, it&#x27;ll fall on partisan lines, let&#x27;s say 50-50, with public sympathy, and it&#x27;ll go down over time. Because that&#x27;s just what it is, right? I mean, the government will take a hit, too, for sure.</div>
+</div>
+<div class="turn" data-start="345">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">5:45</span>
+  </div>
+  <div class="said">employers always take a hit in terms of, like, brand reputation and all of that. But it will essentially probably bounce out on the lines of partisanship here in Alberta.</div>
 </div>
 <div class="turn" data-start="358">
   <div class="who">
@@ -670,7 +750,7 @@
 </div>
 <div class="turn" data-start="431">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">7:11</span>
   </div>
   <div class="said">think the reason why i&#x27;m a little less bullish than i might otherwise be is there&#x27;s been disturbance in the force internally with the ata right like the chair of the bargaining committee like you know i i quit in a fifth peak on Facebook you know like things are not well in that particular universe and it always gets dicey when you&#x27;re putting an agreement before the membership but you&#x27;re not recommending that agreement you know like there&#x27;s all this sort of storm and drang within the teachers association that is going to undermine their ability to push that message that Carter is talking about and he&#x27;s right I&#x27;m not sure if they&#x27;ve quite landed it yet with the coherence that it needs to be but also Also, like, stay on it and not allow those spots where the government can, like, come in, drive wedges between, you know, union and membership, all of these things that are just tried and true tactics at a straight time.</div>
@@ -680,7 +760,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">8:03</span>
   </div>
-  <div class="said">I want to break down both of these. And let&#x27;s start with the provincial one because we haven&#x27;t spent a lot of time on this pod recently talking about the province. So let&#x27;s dig in deeper into the teachers and their conditions because both of you mentioned this, which is the concept of bringing an agreement to membership and having not recommending it and having them turn that down. What is the public opinion sort of world there? But before we get there, let me just kind of lay out some of the facts, right? Right. So teachers voted over across the weekend. They&#x27;re voting as we speak right now. By the time we record, I don&#x27;t know when results will come out, but you should expect to hear them relatively soon. So they&#x27;re they&#x27;re voting right now. This is a vote on a 12 percent pay rise over four years. Three thousand additional teachers and coverage for the covid-19 vaccine. Those three things seem to be the headline, which you can get the whole back stuff in a moment in a different segment. If they just if they if they turn this deal down, Carter, their strike begins on the sixth. This affects 50,000 plus teachers, 51,000, oddly, nearly 750,000 students. And there is no, materially, I think this is important, they do not receive strike pay and time spent during the strike would affect pensionable income as well, which I think is just worthy of mentioning as factors. But I want to get to the core of this, which is as strategists, as folks who kind of run and understand the political situation. Stephen, let me start with you. Actually having an agreement that you turn down, does that change the PR game? Does that change the public opinion game versus trying to reach a deal and having a participant in government not not budging at all? In this case, you could argue government has budged, even though this deal is virtually identical to what was initially offered that they&#x27;ve turned down before. But the government&#x27;s playing ball, which is slightly different than at least from a public opinion perspective, in my mind. Am I right? Yeah,</div>
+  <div class="said">I want to break down both of these. And let&#x27;s start with the provincial one because we haven&#x27;t spent a lot of time on this pod recently talking about the province. So let&#x27;s dig in deeper into the teachers and their conditions because both of you mentioned this, which is the concept of bringing an agreement to membership and having not recommending it and having them turn that down. What is the public opinion sort of world there? But before we get there, let me just kind of lay out some of the facts, right? Right. So teachers voted over across the weekend. They&#x27;re voting as we speak right now. By the time we record, I don&#x27;t know when results will come out, but you should expect to hear them relatively soon. So they&#x27;re they&#x27;re voting right now. This is a vote on a 12 percent pay rise over four years. Three thousand additional teachers and coverage for the covid-19 vaccine. Those three things seem to be the headline, which you can get the whole back stuff in a moment in a different segment. If they just if they if they turn this deal down, Carter, their strike begins on the sixth. This affects 50,000 plus teachers, 51,000, oddly, nearly 750,000 students. And there is no, materially, I think this is important, they do not receive strike pay and time spent during the strike would affect pensionable income as well, which I think is just worthy of mentioning as factors. But I want to get to the core of this, which is as strategists, as folks who kind of run and understand the political situation. Stephen, let me start with you.</div>
+</div>
+<div class="turn" data-start="554">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">9:14</span>
+  </div>
+  <div class="said">Actually having an agreement that you turn down, does that change the PR game? Does that change the public opinion game versus trying to reach a deal and having a participant in government not not budging at all? In this case, you could argue government has budged, even though this deal is virtually identical to what was initially offered that they&#x27;ve turned down before. But the government&#x27;s playing ball, which is slightly different than at least from a public opinion perspective, in my mind. Am I right? Yeah,</div>
 </div>
 <div class="turn" data-start="577">
   <div class="who">
@@ -698,7 +785,7 @@
 </div>
 <div class="turn" data-start="644">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">10:44</span>
   </div>
   <div class="said">i think i mean really the argument on the part of the the government at the end of the day will be the same which is we offered you uh 12 and you&#x27;re not taking it because you&#x27;re a bunch of greedy teachers right that is going to be the government argument regardless it doesn&#x27;t matter how many steps they take to get get there or what kind of circuitous route they get to that they that is where they will end up greedy teachers uh who have a nice pension that you don&#x27;t have and uh they&#x27;re lazy public sector workers that are asking for something that you don&#x27;t have joe public uh and in the meantime there&#x27;s no place for your kids to go during the day that&#x27;s what they&#x27;re going to do they&#x27;ll put millions of dollars behind it this government that&#x27;s shown they&#x27;ve</div>
@@ -712,7 +799,7 @@
 </div>
 <div class="turn" data-start="681">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">11:21</span>
   </div>
   <div class="said">yep and so you know they&#x27;re just gonna push those messages and that&#x27;s where the ata needs like and i&#x27;ve said this before like some of their messages in the past have been pretty milquetoast, right? About like, send a message on classroom conditions. And it&#x27;s a little bit soft. And so they need to toughen up. And, you know, as I&#x27;ve said before, somebody in this country needs to get their elbows up. So maybe it can be their turn now.</div>
@@ -754,10 +841,17 @@
 </div>
 <div class="turn" data-start="876">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">14:36</span>
   </div>
-  <div class="said">Vertical video, TikTok of teachers straight to camera and parents straight to camera. Actually telling the story of what teachers are working with, but doing it in a way that that looks organic but isn&#x27;t, is pushed out much more thoughtfully than that. Plus, a big ad buy in all the traditional places and spaces where the government buys. In the display ads and banners when you&#x27;re trying to read a Calgary Herald or Globe and Mail story. In the YouTube ads, the whole gamut, right? It needs to be absolutely everywhere. Of course, the ATA can&#x27;t start advertising like the government has until they have the results of the vote, right? They&#x27;re hamstrung in that way. But I sure should hope that they have got their materials ready to go because they have so many different channels and different types of excellent communicators that the government doesn&#x27;t have. Because the government just has, you know, people like Nate Dorner or Daniel Smith who are at best 50-50 people to carry the message. Teachers have teachers and parents and validators and stories. And they&#x27;ve got enthusiasm and real life on their side. So I sure hope they&#x27;re using it. This</div>
+  <div class="said">Vertical video, TikTok of teachers straight to camera and parents straight to camera. Actually telling the story of what teachers are working with, but doing it in a way that that looks organic but isn&#x27;t, is pushed out much more thoughtfully than that. Plus, a big ad buy in all the traditional places and spaces where the government buys. In the display ads and banners when you&#x27;re trying to read a Calgary Herald or Globe and Mail story. In the YouTube ads, the whole gamut, right?</div>
+</div>
+<div class="turn" data-start="909">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">15:09</span>
+  </div>
+  <div class="said">It needs to be absolutely everywhere. Of course, the ATA can&#x27;t start advertising like the government has until they have the results of the vote, right? They&#x27;re hamstrung in that way. But I sure should hope that they have got their materials ready to go because they have so many different channels and different types of excellent communicators that the government doesn&#x27;t have. Because the government just has, you know, people like Nate Dorner or Daniel Smith who are at best 50-50 people to carry the message. Teachers have teachers and parents and validators and stories. And they&#x27;ve got enthusiasm and real life on their side. So I sure hope they&#x27;re using it. This</div>
 </div>
 <div class="turn" data-start="963">
   <div class="who">
@@ -775,7 +869,7 @@
 </div>
 <div class="turn" data-start="1006">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">16:46</span>
   </div>
   <div class="said">I mean, there&#x27;s no reason why you couldn&#x27;t have some that are 17, 18, or I&#x27;ve just graduated in June, and here&#x27;s what my grade 12s looked like. That&#x27;s an avenue that&#x27;s open to them. I got a kid who&#x27;s an actor, remember? Bring it in to you</div>
@@ -817,10 +911,17 @@
 </div>
 <div class="turn" data-start="1147">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">19:07</span>
   </div>
-  <div class="said">I don&#x27;t know. I think you&#x27;re kind of like, I think we&#x27;re maybe thinking about this too much in the television ad world and how people are consuming things now, which is that, you know, straight to camera kind of stuff. And when you see successful communications campaigns, is they&#x27;ve tried they try literally everything they throw everything at the wall and then you know something sticks right so uh that is the new communications normal it&#x27;s not one message and it&#x27;s not one platform and it&#x27;s not one messenger uh it&#x27;s a whole bunch of different kinds and i i hope that that&#x27;s what we see from the ata because uh the government has probably got i mean five $5 million to throw at this?</div>
+  <div class="said">I don&#x27;t know. I think you&#x27;re kind of like, I think we&#x27;re maybe thinking about this too much in the television ad world and how people are consuming things now, which is that, you know, straight to camera kind of stuff. And when you see successful communications campaigns, is they&#x27;ve tried they try</div>
+</div>
+<div class="turn" data-start="1162">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">19:22</span>
+  </div>
+  <div class="said">literally everything they throw everything at the wall and then you know something sticks right so uh that is the new communications normal it&#x27;s not one message and it&#x27;s not one platform and it&#x27;s not one messenger uh it&#x27;s a whole bunch of different kinds and i i hope that that&#x27;s what we see from the ata because uh the government has probably got i mean five $5 million to throw at this?</div>
 </div>
 <div class="turn" data-start="1189">
   <div class="who">
@@ -831,7 +932,7 @@
 </div>
 <div class="turn" data-start="1192">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">19:52</span>
   </div>
   <div class="said">like, comparatively, you know, on what they&#x27;ve spent on other campaigns, which is, you know, in the 8, 9, I mean, there&#x27;s absolutely no break on nobody cares anymore what governments spend on advertising. So that is a really big challenge and one that I hope the ETA takes seriously</div>
@@ -841,28 +942,56 @@
     <span class="speaker">Zain</span>
     <span class="ts">20:09</span>
   </div>
-  <div class="said">Yeah, Carter, Shannon makes a good point, right? Like, we may have been framing this as a TV ad, but the spend will go everywhere. way. It&#x27;ll go on social, it&#x27;ll go on radio, it&#x27;ll go on out of home. It may even go on, I was going to say postcards, probably won&#x27;t, because we&#x27;ll talk about that in a moment here. Maybe we can talk about your struggles with postcards and literature. But the government will use every paid media resource possible. They&#x27;ve got literally a division that does this sort of work on behalf of the government, right? Communications division that was once led by a good friend of the podcast, Hogan. So the government&#x27;s got this resource available. available, what is a risk that the ATA runs here then? Both in terms of either the spend, the message, the timing, the framework, like what&#x27;s the biggest risk that they end up, you know, in, let&#x27;s just say over the span of the next week?</div>
+  <div class="said">Yeah, Carter, Shannon makes a good point, right? Like, we may have been framing this as a TV ad, but the spend will go everywhere. way. It&#x27;ll go on social, it&#x27;ll go on radio, it&#x27;ll go on out of home. It may even go on, I was going to say postcards, probably won&#x27;t, because we&#x27;ll talk about that in a moment here. Maybe we can talk about your struggles with postcards and literature. But the government will use every paid media resource possible. They&#x27;ve got literally a division that does this sort of work on behalf of the government, right? Communications division that was once led by a good friend of the podcast, Hogan. So the government&#x27;s got this resource available. available, what</div>
+</div>
+<div class="turn" data-start="1240">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">20:40</span>
+  </div>
+  <div class="said">is a risk that the ATA runs here then? Both in terms of either the spend, the message, the timing, the framework, like what&#x27;s the biggest risk that they end up, you know, in, let&#x27;s just say over the span of the next week?</div>
 </div>
 <div class="turn" data-start="1254">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">20:54</span>
   </div>
-  <div class="said">Well, I think the biggest risk is that everybody, you know, is tired of strike actions, right? We&#x27;re tired, you know, we&#x27;re tired by the Canada post or Canada, Air Canada strike, strike. We&#x27;re tired by Canada Post. We&#x27;re tired by the teachers. Everybody&#x27;s going on strike, and what am I getting? Nothing. Nothing, right? Everybody wants more, but I&#x27;m not getting anything. So I think that there&#x27;s always a risk that when there&#x27;s significant labor movements that move together, not necessarily together in coordination, but together just in time, uh that there&#x27;s there can be some pushback and i think that the uh alberta is not noted for its uh you know support of organized labor i would argue erroneously but nonetheless it it it still could backfire very carefully like people could be very angry with the ata and that anger could uh manifest itself in some different ways in a way that i don&#x27;t think that they&#x27;re going to be angry with cup w right um which is interesting because i think that it has more to do with how much are you fucking my life over and there&#x27;s going to be what 50 of the population whose life is going to be impacted directly by this it&#x27;s going to be a significant uh challenge for well for you zane uh just for you not just for me</div>
+  <div class="said">Well, I think the biggest risk is that everybody, you know, is tired of strike actions, right? We&#x27;re tired, you know, we&#x27;re tired by the Canada post or Canada, Air Canada strike, strike. We&#x27;re tired by Canada Post. We&#x27;re tired by the teachers. Everybody&#x27;s going on strike, and what am I getting? Nothing. Nothing, right? Everybody wants more, but I&#x27;m not getting anything. So I think that there&#x27;s always a risk that when there&#x27;s significant labor movements that move together, not necessarily together in coordination, but together just in time, uh that there&#x27;s there can be some pushback and i think that the uh alberta is not noted for its uh you know support of organized labor i would argue erroneously but nonetheless it it it still could backfire very carefully like people could be very angry with the ata and that anger could uh manifest itself in some different ways in a way that i don&#x27;t think that they&#x27;re going to be angry with cup w right</div>
+</div>
+<div class="turn" data-start="1318">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">21:58</span>
+  </div>
+  <div class="said">um which is interesting because i think that it has more to do with how much are you fucking my life over and there&#x27;s going to be what 50 of the population whose life is going to be impacted directly by this it&#x27;s going to be a significant uh challenge for well for you zane uh just for you not just for me</div>
 </div>
 <div class="turn" data-start="1341">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">22:21</span>
   </div>
-  <div class="said">the voter that needs that needs important municipal election Yes, that&#x27;s right, Carter. Let&#x27;s talk about the cup double in a second. But Carter brings up an interesting point, Shannon, that I&#x27;d like you to opine on first, which is labor solidarity here, I think will be really interesting to watch, at least for me, which is, do you suspect that on the teacher&#x27;s front, we will see broader solidarity amongst other public sector unions? And what could that and should that look like? because there is a timing thing here, which is like if you go in and even though we&#x27;re different unions, if you go at it like this will affect us, like, you know, this push, we want to help you be successful so that eventually when we come to the strike, you know, position that we could be successful. How do you kind of see labor solidarity playing out here in the province with the teachers should and all of our conversation today is presuming that by five o&#x27;clock today, this teacher&#x27;s vote to go on strike, right? But like, how do you think labor solidarity plays out?</div>
+  <div class="said">the voter that needs that needs important municipal election Yes, that&#x27;s right, Carter. Let&#x27;s talk about the cup double in a second.</div>
+</div>
+<div class="turn" data-start="1349">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">22:29</span>
+  </div>
+  <div class="said">But Carter brings up an interesting point, Shannon, that I&#x27;d like you to opine on first, which is labor solidarity here, I think will be really interesting to watch, at least for me, which is, do you suspect that on the teacher&#x27;s front, we will see broader solidarity amongst other public sector unions? And what could that and should that look like? because there is a timing thing here, which is like if you go in and even though we&#x27;re different unions, if you go at it like this will affect us, like, you know, this push, we want to help you be successful so that eventually when we come to the strike, you know, position that we could be successful. How do you kind of see labor solidarity playing out here in the province with the teachers should and all of our conversation today is presuming that by five o&#x27;clock today, this teacher&#x27;s vote to go on strike, right? But like, how do you think labor solidarity plays out?</div>
 </div>
 <div class="turn" data-start="1397">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">23:17</span>
   </div>
-  <div class="said">i don&#x27;t know if it matters too much beyond what is the usual thing which is you know the other unions show up to the big rallies and they wave their flags and they are you know quote unquote in solidarity what does that mean well sometimes it can mean helping out shoring up strike funds or other legal defense funds this kind of stuff because sometimes things can get spicy either in the courtroom or on the picket line uh and you need lawyers and that&#x27;s what the house of labor is for and that&#x27;s what labor solidarity is for now eta are not uh formally affiliated to the federation of labor or to the zlc but i don&#x27;t think you&#x27;re going to see uh the broader host of labor absent themselves from the picket line i think they will be there uh in solidarity and uh similarly if a up had the government of alberta workers had rejected that deal that they In fact, you know, accepted the 51 percent. If they were on strike, you would have seen a similar thing coming from the ATA or the broader labor movement. What does it mean in practice? Not a whole hell of a lot unless things get really bad. And then you will see some of the financial pieces come together and or donations to strike fund, that kind of thing. Okay. Carter,</div>
+  <div class="said">i don&#x27;t know if it matters too much beyond what is the usual thing which is you know the other unions show up to the big rallies and they wave their flags and they are you know quote unquote in solidarity what does that mean well sometimes it can mean helping out shoring up strike funds or other legal defense funds this kind of stuff because sometimes things can get spicy either in the courtroom or on the picket line uh and you need lawyers and that&#x27;s what the house of labor is for and that&#x27;s what labor solidarity is for now eta are not uh formally affiliated to the federation of labor or to the zlc but i don&#x27;t think you&#x27;re going to see uh the broader host of labor absent themselves from the picket line i think they will be there uh in solidarity and uh similarly if a up had the government of alberta workers had rejected that deal that they In fact, you know, accepted the 51 percent.</div>
+</div>
+<div class="turn" data-start="1449">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">24:09</span>
+  </div>
+  <div class="said">If they were on strike, you would have seen a similar thing coming from the ATA or the broader labor movement. What does it mean in practice? Not a whole hell of a lot unless things get really bad. And then you will see some of the financial pieces come together and or donations to strike fund, that kind of thing. Okay. Carter,</div>
 </div>
 <div class="turn" data-start="1472">
   <div class="who">
@@ -901,7 +1030,7 @@
 </div>
 <div class="turn" data-start="1589">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">26:29</span>
   </div>
   <div class="said">Yes, I agree. And the reason for it is that the government already has parent spokespeople in the form of these people who have been super doing agita on the trans issues of, You know, people playing sports and the book bands and all this other, you know, they have these groups that are already activated and more activatable. Right. So you&#x27;re going to get a bunch of different sort of maybe not entirely above board actors that are going to all of a sudden be, you know, anti-union spokespeople. you also have school board election at</div>
@@ -915,7 +1044,7 @@
 </div>
 <div class="turn" data-start="1632">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">27:12</span>
   </div>
   <div class="said">depends i think it depends on the local politics frankly and whether you have a bunch of incumbents whether you actually do have some uh energy coming from that far right uh a anti-trans super uh uh you know amped up you know gender and sex ideology people who would come and scream at me in electoral forums in 2023 um it those people like in some areas are like storming the ballot box and are going to have a presence on uh school boards in other places they&#x27;re not a factor so but that whole issue of being in the the latter two weeks essentially of school board uh campaigns is also going to have an effect even though this is centralized less bargaining</div>
@@ -960,7 +1089,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">29:10</span>
   </div>
-  <div class="said">I think that it just confuses things too much with the fact that there&#x27;s a provincial election for school trustees, right? Like the school trustees are being elected at the same time that you&#x27;re being elected. Are you running for school trustee or are you running to be the mayor of Calgary or the mayor of Edmonton? And I would probably say that, you know, you can take a punch at Danielle Smith on this, but it&#x27;s going to look totally different than, you know, I&#x27;m for the teachers or I&#x27;m for the union. I would imagine it would be I&#x27;m for order, right? I&#x27;m for this being solved. Danielle Smith can&#x27;t solve problems. She&#x27;s a problem creator. you know, this is why we&#x27;re facing a strike situation. So it&#x27;s a very different, you know, you could do it that way, Zane, but you wouldn&#x27;t want to go in it as I&#x27;m for the teachers or I&#x27;m for the government.</div>
+  <div class="said">I think that it just confuses things too much with the fact that there&#x27;s a provincial election for school trustees, right? Like the school trustees are being elected at the same time that you&#x27;re being elected. Are you running for school trustee or are you running to be the mayor of Calgary or the mayor of Edmonton? And I would probably say that, you know, you can take a punch at Danielle Smith on this, but it&#x27;s going to look totally different than, you know, I&#x27;m for the teachers or I&#x27;m for the union. I would imagine it would be I&#x27;m for order, right? I&#x27;m for this being solved. Danielle Smith can&#x27;t solve problems. She&#x27;s a problem creator.</div>
+</div>
+<div class="turn" data-start="1789">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">29:49</span>
+  </div>
+  <div class="said">you know, this is why we&#x27;re facing a strike situation. So it&#x27;s a very different, you know, you could do it that way, Zane, but you wouldn&#x27;t want to go in it as I&#x27;m for the teachers or I&#x27;m for the government.</div>
 </div>
 <div class="turn" data-start="1800">
   <div class="who">
@@ -971,24 +1107,52 @@
 </div>
 <div class="turn" data-start="1818">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">30:18</span>
   </div>
-  <div class="said">I would say that given that there are school board trustees on the ballot across the province, and one of the main things that they talk about when they bring together an election platform is, sure, am I going to advocate for this area, this geographic space, this number of students, what have you, I would be putting it to them. And who votes in school board elections? Well, probably old people, generally speaking. Parents, to a certain extent, but not necessarily. And teachers and school staff, they vote for school board trustees. So I would be using this to talk to people via that and definitely make sure that you&#x27;ve got strong candidates, incumbents saying all the right things and making all the right noises on this</div>
+  <div class="said">I would say that given that there are school board trustees on the ballot across the province, and one of the main things that they talk about when they bring together an election platform is, sure, am I going to advocate for this area, this geographic space, this number of students, what have you, I would be putting it to them. And who votes in school board elections? Well, probably old people, generally speaking. Parents, to a certain extent, but not necessarily. And teachers and school staff, they vote for school board trustees. So I would be using this to talk to people via that and definitely</div>
+</div>
+<div class="turn" data-start="1861">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">31:01</span>
+  </div>
+  <div class="said">make sure that you&#x27;ve got strong candidates, incumbents saying all the right things and making all the right noises on this</div>
 </div>
 <div class="turn" data-start="1870">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">31:10</span>
   </div>
-  <div class="said">Carter, let&#x27;s move it on to the Federal Fight Cup. W. They went on strike four days ago following the government&#x27;s announcement of major reforms. So the government wants the end of home delivery, closure of rural mail outlets. They want to bring back the Harper era community mailboxes, which were paused. And then, you know, actively the liberal government actively campaigned on that will end the Harper era community mailboxes. Well, the Carney government is saying, bring that shit back to make these major reforms. You guys are effectively insolvent here. This is after two years of negotiations. The union has rejected the 13% wage increase, demanding 19% instead. So we find ourselves here. Carter, give me the top line. Advantage government, advantage Cup W. Who would you give it to</div>
+  <div class="said">Carter, let&#x27;s move it on to the Federal Fight Cup. W. They went on strike four days ago following the government&#x27;s announcement of major reforms. So the government wants the end of home delivery, closure of rural mail outlets. They want to bring back the Harper era community mailboxes, which were paused. And then, you know, actively the liberal government actively campaigned on that will end the Harper era community mailboxes. Well, the Carney government is saying, bring that shit back to make these major reforms. You guys are effectively insolvent here. This is after two years of negotiations. The union has rejected the 13% wage increase, demanding 19% instead. So we find ourselves here. Carter, give me the top line. Advantage government, advantage Cup W.</div>
+</div>
+<div class="turn" data-start="1914">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">31:54</span>
+  </div>
+  <div class="said">Who would you give it to</div>
 </div>
 <div class="turn" data-start="1915">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">31:55</span>
   </div>
-  <div class="said">I think the advantage is government because I just don&#x27;t think that people check their mailboxes every day. I don&#x27;t think that people are thinking, oh, today&#x27;s the day I&#x27;m going to get my check. Um, you know, there was a time when, you know, I would run to the mailbox because I wanted to get a check from one of my clients. Now I just check, go online and I check and my bank account went up. Things are good. My bank account went down. Things are bad. That&#x27;s, it is, it&#x27;s all online. There&#x27;s no need to, um, to run to the mailbox to try and find a check in your mailbox anymore. Um, The only thing that comes in your mail is unaddressed ad mail, which are flyers and brochures and, you know, things that you don&#x27;t care about. Many of our listeners have probably put no flyers, please, on their mailbox, which actually reduces Canada Post&#x27;s ability to make a profit. You don&#x27;t need it. and on top of that so so canada post has redeveloped itself into a flyer delivery service and a parcel delivery service and the parcel delivery service can be extremely profitable take a look at i don&#x27;t know if you&#x27;re familiar zane there&#x27;s this company called amazon they deliver from a to z um it&#x27;s very very big in the u.s very big um and but there&#x27;s all kinds of other companies as well that are shipping their stuff directly to you you don&#x27;t have to go to them anymore and so if you have those things coming directly to you a community mailbox with actual parcel boxes so your your shit doesn&#x27;t get stolen off of your deck is a super important thing so i i&#x27;m i&#x27;m i think that most people are going to be on the side of um of uh canada of canada post and the government and i think that the fact that the government stepped in at this moment knowing it was going to cause a strike like there was no way on god&#x27;s oh yes yes they triggered it and they triggered it now instead of triggering it at christmas i think this is one of carney&#x27;s best plays and i think it was a do it now we&#x27;ll wait we&#x27;ll wear down the union and they&#x27;ll be back delivering mail by let&#x27;s say the beginning of november shannon</div>
+  <div class="said">I think the advantage is government because I just don&#x27;t think that people check their mailboxes every day. I don&#x27;t think that people are thinking, oh, today&#x27;s the day I&#x27;m going to get my check. Um, you know, there was a time when, you know, I would run to the mailbox because I wanted to get a check from one of my clients. Now I just check, go online and I check and my bank account went up.</div>
+</div>
+<div class="turn" data-start="1935">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">32:15</span>
+  </div>
+  <div class="said">Things are good. My bank account went down. Things are bad. That&#x27;s, it is, it&#x27;s all online. There&#x27;s no need to, um, to run to the mailbox to try and find a check in your mailbox anymore. Um, The only thing that comes in your mail is unaddressed ad mail, which are flyers and brochures and, you know, things that you don&#x27;t care about. Many of our listeners have probably put no flyers, please, on their mailbox, which actually reduces Canada Post&#x27;s ability to make a profit. You don&#x27;t need it. and on top of that so so canada post has redeveloped itself into a flyer delivery service and a parcel delivery service and the parcel delivery service can be extremely profitable take a look at i don&#x27;t know if you&#x27;re familiar zane there&#x27;s this company called amazon they deliver</div>
+</div>
+<div class="turn" data-start="1986">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">33:06</span>
+  </div>
+  <div class="said">from a to z um it&#x27;s very very big in the u.s very big um and but there&#x27;s all kinds of other companies as well that are shipping their stuff directly to you you don&#x27;t have to go to them anymore and so if you have those things coming directly to you a community mailbox with actual parcel boxes so your your shit doesn&#x27;t get stolen off of your deck is a super important thing so i i&#x27;m i&#x27;m i think that most people are going to be on the side of um of uh canada of canada post and the government and i think that the fact that the government stepped in at this moment knowing it was going to cause a strike like there was no way on god&#x27;s oh yes yes they triggered it and they triggered it now instead of triggering it at christmas i think this is one of carney&#x27;s best plays and i think it was a do it now we&#x27;ll wait we&#x27;ll wear down the union and they&#x27;ll be back delivering mail by let&#x27;s say the beginning of november shannon</div>
 </div>
 <div class="turn" data-start="2046">
   <div class="who">
@@ -999,7 +1163,7 @@
 </div>
 <div class="turn" data-start="2066">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:26</span>
   </div>
   <div class="said">I think it&#x27;s advantage government, so I&#x27;ll agree with him there. I&#x27;ll disagree on how he got there a little bit, but I&#x27;ll just add some context here in terms of small business business uh outside of major centers and what we actually use canada post for so um small businesses get really pissed off when canada post goes on strike because it is so much cheaper to send their shit uh than uh any of the other big uh</div>
@@ -1013,7 +1177,7 @@
 </div>
 <div class="turn" data-start="2092">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">34:52</span>
   </div>
   <div class="said">ups uh dhl what have you okay so that&#x27;s the first thing like it is so much cheaper i just had to send an envelope to to Saskatchewan today, and I took it into UPS because it needs to go. And I don&#x27;t know, it&#x27;s like people are going to yell at me for crossing picket lines. I don&#x27;t fucking care</div>
@@ -1027,38 +1191,80 @@
 </div>
 <div class="turn" data-start="2112">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">35:12</span>
   </div>
-  <div class="said">Instead, that was $2 because it was an envelope. I have to send another one. I have to send my kid&#x27;s firearms thing to New Brunswick. It&#x27;s going to cost me another $30, and it&#x27;s going to get there by mid-October, so I&#x27;m sending it. That is the difference, right? The delta is huge. So that&#x27;s the first thing. When you have to send things, And a lot of small businesses do. And a lot of small businesses use Canada Post for their shipping because then they can use free shipping. Otherwise, they don&#x27;t, right? Because it&#x27;s too expensive to send it with a private courier. The second thing is it&#x27;s not just the rural and remote. It&#x27;s also the smaller cities where you&#x27;re not going to get that last mile or like smaller towns. Right. So it&#x27;s like they are, you know, out there, but they&#x27;re there. It&#x27;s basically outside of the big cities. Oftentimes you need Canada Post for that last mile. And that&#x27;s to say nothing of the actual rural and remote, like up north, right, where they use Canada Post for all kinds of reasons and their community post office for all kinds of reasons. So that&#x27;s the second thing. And the whole thing is just fucking sad. Can we just admit that this whole story is just so sad? Because ultimately, we don&#x27;t have a government that gave the Crown a mandate to restructure itself for the current reality, where there&#x27;s all kinds of business cases for this particular publicly owned mail and delivery service. Having someone deliver the mail to my mailbox every day, I&#x27;m part of those 4 million Canadians who still has door-to-door mail service. Not particularly certain I need it, quite frankly. But there are ways to make sure that this crown service for a massive fucking country with a lot of rural and remote need and a lot of small business need actually has a service that, you know, is updated for the modern times. And on both sides, and I hate to both sides this, but I mean, come on. Right. It&#x27;s just been one thing after another. And frankly, I think the voters need to say to the government, like restructure this thing. Don&#x27;t walk away from it. And but keep this thing as as a crown and a public service. That is the ultimate outcome that that should happen. I don&#x27;t know so well.</div>
+  <div class="said">Instead, that was $2 because it was an envelope. I have to send another one. I have to send my kid&#x27;s firearms thing to New Brunswick. It&#x27;s going to cost me another $30, and it&#x27;s going to get there by mid-October, so I&#x27;m sending it. That is the difference, right? The delta is huge. So that&#x27;s the first thing. When you have to send things, And a lot of small businesses do. And a lot of small businesses use Canada Post for their shipping because then they can use free shipping. Otherwise, they don&#x27;t, right? Because it&#x27;s too expensive to send it with a private courier. The second thing is it&#x27;s not just the rural and remote. It&#x27;s also the smaller cities where you&#x27;re not going to get that last mile or like smaller towns. Right. So it&#x27;s like they are, you know, out there, but they&#x27;re there. It&#x27;s basically outside of the big cities. Oftentimes you need Canada Post for that last mile. And that&#x27;s to say nothing of the actual rural and remote, like up north, right, where they use Canada Post for all kinds of reasons and their community post office for all kinds of reasons. So that&#x27;s the second thing. And the whole thing is just fucking sad. Can we just admit that this whole story is just so sad? Because ultimately, we don&#x27;t have a government that gave the Crown a mandate to restructure itself for the current reality, where there&#x27;s all kinds of business cases for this</div>
+</div>
+<div class="turn" data-start="2191">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">36:31</span>
+  </div>
+  <div class="said">particular publicly owned mail and delivery service. Having someone deliver the mail to my mailbox every day, I&#x27;m part of those 4 million Canadians who still has door-to-door mail service. Not particularly certain I need it, quite frankly. But</div>
+</div>
+<div class="turn" data-start="2207">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">36:47</span>
+  </div>
+  <div class="said">there are ways to make sure that this crown service for a massive fucking country with a lot of rural and remote need and a lot of small business need actually has a service that, you know, is updated for the modern times. And on both sides, and I hate to both sides this, but I mean, come on. Right. It&#x27;s just been one thing after another. And frankly, I think the voters need to say to the government, like restructure this thing. Don&#x27;t walk away from it. And but keep this thing as as a crown and a public service. That is the ultimate outcome that that should happen. I don&#x27;t know so well.</div>
 </div>
 <div class="turn" data-start="2248">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">37:28</span>
   </div>
-  <div class="said">I want I want to pick up on that in a second. Carter, do you still get mail to your door? Still get mail to my door, yes. I think all three of us do, because you and I are very close to each other. And Shannon, you just mentioned you did. And I almost feel the same way as Shannon, which is like, what a luxury, right? Like in some ways, which is, it&#x27;s kind of crazy, especially when I go visit my mom and she has to, you know, go across the street every day and it&#x27;s just across the street. It&#x27;s fine, right, for the most part. But it is interesting in terms of this, like, snapping back to a new reality, which kind kind of brings me to this carter which is is there any way for the union to meet the moment from a messaging perspective because as as our friend cory hogan would say all problems manifest as communications problems ultimately but there are more structural problems certainly here right like like i&#x27;m you know understating it but is there any way for them to temporarily meet the moment so that they still survive because i don&#x27;t think people realize that canada post leaving and saying bye-bye is a potential like pathway there is that door that exists here which is canada post says goodbye uh in in some meaningful or fundamental terminus way carter so what can what can the union do here is a simpler way of me asking my question with the the background i&#x27;ve just kind of given</div>
+  <div class="said">I want I want to pick up on that in a second. Carter, do you still get mail to your door? Still get mail to my door, yes. I think all three of us do, because you and I are very close to each other. And Shannon, you just mentioned you did. And I almost feel the same way as Shannon, which is like, what a luxury, right? Like in some ways, which is, it&#x27;s kind of crazy, especially when I go visit my mom and she has to, you know, go across the street every day and it&#x27;s just across the street. It&#x27;s fine, right, for the most part. But it is interesting in terms of this, like, snapping back to a new reality, which kind kind of brings me to this carter which is is</div>
+</div>
+<div class="turn" data-start="2277">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">37:57</span>
+  </div>
+  <div class="said">there any way for the union to meet the moment from a messaging perspective because as as our friend cory hogan would say all problems manifest as communications problems ultimately but there are more structural problems certainly here right like like i&#x27;m you know understating it but is there any way for them to temporarily meet the moment so that they still survive because i don&#x27;t think people realize that canada post leaving and saying bye-bye is a potential like pathway there is that door that exists here which is canada post says goodbye uh in in some meaningful or fundamental terminus way carter so what can what can the union do here is a simpler way of me asking my question with the the background i&#x27;ve just kind of given</div>
 </div>
 <div class="turn" data-start="2324">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">38:44</span>
   </div>
-  <div class="said">i mean i think the the the way that the the union can make things work is to is to focus on one thing that they&#x27;re going to get uh if it&#x27;s going to be wages then they should focus on wages and try and push their wages if it&#x27;s going to be job security they should focus on job security they&#x27;re not going to get job security wages and the way things used to be they&#x27;re going to get a new reality so my view would be those people who are working in canada post um who have you know who are going to be working in canada post anyways uh the warehouse workers the the The people, you know, the front line mailbox delivery crew, the poor guy who goes to my door every day, he&#x27;s going to be delivering to postal boxes or community mailboxes three times a week, not five times a week. And this has changed before. I mean, it used to have six day a week delivery. Now it&#x27;s changed. You know, it&#x27;s gone to five. People survive. survive people will survive with three days a week they&#x27;ll survive frankly if it went to one day a week but they won&#x27;t survive without is parcel delivery and if i was canada post and cup w i&#x27;d be working really hard to make sure that um canada post doesn&#x27;t become pure later right or what is it pure later what&#x27;s the yeah that&#x27;s owned by canada post it&#x27;s so um you know that&#x27;s where canada post could be in in two years just pure later you You know, just outside of the normal experience, because, you if you have to mail a letter, maybe you will spend $15 to do it, right? If it has to be done, it has to be done. This subsidized $1 a letter thing isn&#x27;t something that necessarily is going to be sustained.</div>
+  <div class="said">i mean i think the the the way that the the union can make things work is to is to focus on one thing that they&#x27;re going to get uh if it&#x27;s going to be wages then they should focus on wages and try and push their wages if it&#x27;s going to be job security they should focus on job security they&#x27;re not going to get job security wages and the way things used to be they&#x27;re going to get a new reality so my view would be those people who are working in canada post um who have you know who are going to be working in canada post anyways uh the warehouse workers the the The people, you know, the front line mailbox delivery crew, the poor guy who goes to my door every day, he&#x27;s going to be delivering to postal boxes or community mailboxes three times a week, not five times a week. And this has changed before. I mean, it used to have six day a week delivery. Now it&#x27;s changed. You know, it&#x27;s gone to five. People survive. survive people will survive with three days a week they&#x27;ll survive frankly if it went to one day a week but</div>
+</div>
+<div class="turn" data-start="2392">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:52</span>
+  </div>
+  <div class="said">they won&#x27;t survive without is parcel delivery and if i was canada post and cup w i&#x27;d be working really hard to make sure that um canada post doesn&#x27;t become pure later right or what is it pure later what&#x27;s the yeah that&#x27;s owned by canada post it&#x27;s so um you know that&#x27;s where canada post could be in in two years just pure later you You know, just outside of the normal experience, because, you if you have to mail a letter, maybe you will spend $15 to do it, right? If it has to be done, it has to be done. This subsidized $1 a letter thing isn&#x27;t something that necessarily is going to be sustained.</div>
 </div>
 <div class="turn" data-start="2437">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">40:37</span>
   </div>
-  <div class="said">Shannon, is there a winning argument here for the union? Like, is there a winning argument beyond wages, I guess, is what I&#x27;m trying to say. And Carter, I appreciate your response here, right? Right. Like the focus on one thing. Yeah, I think that&#x27;s smart. I think it&#x27;s strategic. My mind maybe is too ambitious here and maybe it&#x27;s too late, but I&#x27;m going to float this with both of you. But is there a like pro Canada argument here? Is there an anti Amazon argument here? Is there any of the let&#x27;s not Americanize, let&#x27;s not privatize, let&#x27;s like the pride in this institution argument? I don&#x27;t know how much juice is in that orange to squeeze, but and if it&#x27;s too late. But I&#x27;d like you to just think about that, Shannon, and just give me your sense on that. and in terms of a strategic play here?</div>
+  <div class="said">Shannon, is there a winning argument here for the union? Like, is there a winning argument beyond wages, I guess, is what I&#x27;m trying to say. And Carter, I appreciate your response here, right? Right. Like the focus on one thing. Yeah, I think that&#x27;s smart. I think it&#x27;s strategic.</div>
+</div>
+<div class="turn" data-start="2449">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">40:49</span>
+  </div>
+  <div class="said">My mind maybe is too ambitious here and maybe it&#x27;s too late, but I&#x27;m going to float this with both of you. But is there a like pro Canada argument here? Is there an anti Amazon argument here? Is there any of the let&#x27;s not Americanize, let&#x27;s not privatize, let&#x27;s like the pride in this institution argument? I don&#x27;t know how much juice is in that orange to squeeze, but and if it&#x27;s too late. But I&#x27;d like you to just think about that, Shannon, and just give me your sense on that. and in terms of a strategic play here?</div>
 </div>
 <div class="turn" data-start="2475">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">41:15</span>
   </div>
-  <div class="said">think it&#x27;s a national security issue if you don&#x27;t have an ability to, you know, send things into the North in this country without using an American company to do it. I think it&#x27;s an economic development issue if you can&#x27;t run a business out of Iqaluit because you have no way to ship your stuff south or anywhere else. It would seem to me that there are plenty of arguments that the UN can make. essentially what they should be doing is saying look the steps that the government is taking mean that you are going to lose x y and z and usually that&#x27;s going to be some combination of any service whatsoever uh on the regular uh in rural and remote you are going to lose uh you know affordable uh uh you know ways to send christmas cards and and those kinds of things because i tell you what i&#x27;m not doing it if it costs 28 bucks a pop um and uh but But it shouldn&#x27;t be door-to-door mail delivery. I&#x27;ve seen, you know, people busting out with these arguments. Oh, promise to restore door-to-door in 2015. The Liberals did. They broke a promise. And it&#x27;s like, I don&#x27;t care, right? And I don&#x27;t think Canadians care that much. There are some Canadians who do, in which case they can sign up for home-based delivery. It would seem to me that your broader arguments are, are you actually going to put holding this country together in the hands of a bunch of American couriers? Two, are you going to charge me at 10 times what it costs right now with Canada Post? And three, are you going to cut off economic development, a vast loss of this country?</div>
+  <div class="said">think it&#x27;s a national security issue if you don&#x27;t have an ability to, you know, send things into the North in this country without using an American company to do it. I think it&#x27;s an economic development issue if you can&#x27;t run a business out of Iqaluit because you have no way to ship your stuff south or anywhere else. It would seem to me that there are plenty of arguments that the UN can make. essentially what they should be doing is saying look the steps that the government is taking mean that you are going to lose x y and z and usually that&#x27;s going to be some combination of any service whatsoever uh on the regular uh in rural and remote you are going to lose uh you know affordable uh uh you know ways to send christmas cards and and those kinds of things because i tell you what i&#x27;m not doing it if it costs 28 bucks a pop um and</div>
+</div>
+<div class="turn" data-start="2529">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">42:09</span>
+  </div>
+  <div class="said">uh but But it shouldn&#x27;t be door-to-door mail delivery. I&#x27;ve seen, you know, people busting out with these arguments. Oh, promise to restore door-to-door in 2015. The Liberals did. They broke a promise. And it&#x27;s like, I don&#x27;t care, right? And I don&#x27;t think Canadians care that much. There are some Canadians who do, in which case they can sign up for home-based delivery. It would seem to me that your broader arguments are, are you actually going to put holding this country together in the hands of a bunch of American couriers? Two, are you going to charge me at 10 times what it costs right now with Canada Post? And three, are you going to cut off economic development, a vast loss of this country?</div>
 </div>
 <div class="turn" data-start="2571">
   <div class="who">
@@ -1093,7 +1299,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">43:57</span>
   </div>
-  <div class="said">I&#x27;m taken by Shannon&#x27;s national security frame. I&#x27;m taken by her ECDA frame. These have not been adopted by the union. Union. These have not been kind of necessarily broadcast as the reason Canada Post should exist and potentially, to their sort of advantage, exist the way it is, which is partially what they&#x27;re trying to argue for in terms of how they want to get paid and what the future of the organization looks like. Carter, do you feel like it&#x27;s too late for some of these arguments? Do you feel like there&#x27;s room for some of these arguments here? Where do they fit in your mind? I&#x27;m taken by them, but I come with a very different politic than I suspect Joe Public in in in many ways well</div>
+  <div class="said">I&#x27;m taken by Shannon&#x27;s national security frame. I&#x27;m taken by her ECDA frame. These have not been adopted by the union. Union. These have not been kind of necessarily broadcast as the reason Canada Post should exist and potentially, to their sort of advantage, exist the way it is, which is partially what they&#x27;re trying to argue for in terms of how they want to get paid and what the future of the organization looks like. Carter, do you feel like it&#x27;s too late for some of these arguments? Do you feel like there&#x27;s room for some of these arguments here? Where do they fit in your mind? I&#x27;m taken by them, but</div>
+</div>
+<div class="turn" data-start="2668">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">44:28</span>
+  </div>
+  <div class="said">I come with a very different politic than I suspect Joe Public in in in many ways well</div>
 </div>
 <div class="turn" data-start="2673">
   <div class="who">
@@ -1114,7 +1327,7 @@
     <span class="speaker">Carter</span>
     <span class="ts">44:51</span>
   </div>
-  <div class="said">it was impacting uh my campaigns dramatically um that that happened 15 minutes ago and then all of a sudden boom in comes the carney government and they&#x27;re like oh and by the way all these things that we said we weren&#x27;t going to do in 2015 now we&#x27;re doing boom and the union said i mean the union had to go on strike i don&#x27;t think there was any choice but to go on strike when those when that package came down um but still it is a uh it&#x27;s going to be a a hard it&#x27;s going to be a hard messaging hole to get out of if you&#x27;re cup w because these don&#x27;t sound like unreasonable requests by the carny government shannon</div>
+  <div class="said">it was impacting uh my campaigns dramatically um that that happened 15 minutes ago and then all of a sudden boom in comes the carney government and they&#x27;re like oh and by the way all these things that we said we weren&#x27;t going to do in 2015 now we&#x27;re doing boom and the union said i mean the union had to go on strike i don&#x27;t think there was any choice but to go on strike when those when that package came down um but still it is a uh it&#x27;s going to be a a hard it&#x27;s going to be a hard messaging hole to get out of if you&#x27;re cup w because these don&#x27;t sound like unreasonable requests by the carny government</div>
 </div>
 <div class="turn" data-start="2731">
   <div class="who">
@@ -1125,7 +1338,7 @@
 </div>
 <div class="turn" data-start="2761">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">46:01</span>
   </div>
   <div class="said">I don&#x27;t think it matters. And that&#x27;s, again, to the point about the sad state of affairs. There&#x27;s actually a lot at stake here. This is a pretty serious public policy issue. It&#x27;s a pretty serious economic development issue. But he can get away with saying very little at all.</div>
@@ -1167,7 +1380,7 @@
 </div>
 <div class="turn" data-start="2808">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">46:48</span>
   </div>
   <div class="said">losers as I believe how we are going to</div>
@@ -1282,7 +1495,7 @@
     <span class="speaker">Carter</span>
     <span class="ts">54:58</span>
   </div>
-  <div class="said">we need that uh you know one percent to nine percent that that uh that move nenshi yeah</div>
+  <div class="said">we need that uh you know one percent to nine percent that that uh that move nenshi</div>
 </div>
 <div class="turn" data-start="3304">
   <div class="who">
@@ -1293,7 +1506,7 @@
 </div>
 <div class="turn" data-start="3311">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">55:11</span>
   </div>
   <div class="said">yeah my big question is because i see the difference between now and 2021 as uh partner you know talks about the federal election kind of ginned people into politics people were like Like, politics, that&#x27;s a thing that&#x27;s happening, right? But we were all kind of glued to our screens back then because we were not sure if we could go to a restaurant or not, right? We were still in COVID-y times</div>
@@ -1307,21 +1520,35 @@
 </div>
 <div class="turn" data-start="3335">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">55:35</span>
   </div>
-  <div class="said">right? And so we were sorting ourselves into our little polarized camps. But you&#x27;ll recall that that was also the time when everyone hates Jason Kenney, right? And in the fall of 2021 was the, like, everybody hates Jason season season I because it was right after uh the best summer ever when a thousand people died uh and so and I remember being on the doors then because around September October I was like well you know what I can I can go out and I can do some canvassing and I hadn&#x27;t been able to because of you know one off and are we allowed to are we not allowed to and so I went out during the municipal anyway just to kind of like you know knock on on like kick tires knock on doors kind kind of thing. And it was amazing to me how that was motivating to people. Their municipal vote was motivated by, and you guys have canvassed this well, on that provincial motivator. That&#x27;s forward to 25. People are not as motivated, like they&#x27;re certainly polarized on Smith, but they&#x27;re not as motivated by provincial issues, just all told. Except there is a group who is, which is the right. So my question for Carter is, are we seeing on the give a fuck factor, and an ability for parties to reach people that the progressives don&#x27;t have.</div>
+  <div class="said">right? And so we were sorting ourselves into our little polarized camps. But you&#x27;ll recall that that was also the time when everyone hates Jason Kenney, right? And in the fall of 2021 was the, like, everybody hates Jason season season I because it was right after uh the best summer ever when a thousand people died uh and so and I remember being on the doors then because around September October I was like well you know what I can I can go out and I can do some canvassing and I hadn&#x27;t been able to because of you know one off and are we allowed to are we not allowed to and so I went out during the municipal anyway just to kind of like you know knock on on like kick tires knock on doors kind kind of thing. And it was amazing to me how that was motivating to people. Their municipal vote was motivated by, and you guys have canvassed this well, on that provincial motivator.</div>
+</div>
+<div class="turn" data-start="3389">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">56:29</span>
+  </div>
+  <div class="said">That&#x27;s forward to 25. People are not as motivated, like they&#x27;re certainly polarized on Smith, but they&#x27;re not as motivated by provincial issues, just all told. Except there is a group who is, which is the right. So my question for Carter is, are we seeing on the give a fuck factor, and an ability for parties to reach people that the progressives don&#x27;t have.</div>
 </div>
 <div class="turn" data-start="3414">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">56:54</span>
   </div>
-  <div class="said">Yeah, I mean, I think that we are able to, in the case of Cartmel, we&#x27;re doing better with that party structure. Candidates less so, but the candidates are less bought into the party, which is an interesting dichotomy. me um i think that uh the candidates should be more bought in in edmonton and less bought in in calgary not vice versa uh but we&#x27;re 100 bought in in calgary and maybe 70 bought in edmonton so getting the candidates actually bought in and understanding the value of a party um the cross branding like the stuff that we are doing in calgary with the cross branding trending is super strong. When you&#x27;re driving through Calgary, you see, it doesn&#x27;t matter which ward you&#x27;re in, you&#x27;re seeing the same ad</div>
+  <div class="said">Yeah, I mean, I think that we are able to, in the case of Cartmel, we&#x27;re doing better with that party structure. Candidates less so, but the candidates are less bought into the party, which is an interesting dichotomy. me um i think that uh the candidates should be more bought in in edmonton and less bought in in calgary not vice versa uh but we&#x27;re 100 bought in in calgary and maybe 70 bought in edmonton so getting the candidates actually bought in and understanding the value of a party um the cross branding like the stuff that we are doing in calgary with the cross branding trending is super strong. When you&#x27;re</div>
+</div>
+<div class="turn" data-start="3459">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">57:39</span>
+  </div>
+  <div class="said">driving through Calgary, you see, it doesn&#x27;t matter which ward you&#x27;re in, you&#x27;re seeing the same ad</div>
 </div>
 <div class="turn" data-start="3465">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">57:45</span>
   </div>
   <div class="said">Brian and the other person.</div>
@@ -1331,11 +1558,18 @@
     <span class="speaker">Carter</span>
     <span class="ts">57:47</span>
   </div>
-  <div class="said">Yeah. And that same ad is everywhere. And it reinforces everyone. Because people don&#x27;t stick to their wards. We don&#x27;t have 15 minute cities in Calgary. So people drive all over Hell&#x27;s Half Acre and they&#x27;re seeing a lot of of different signs. Um, and I think that that&#x27;s good for us, uh, in a way that it&#x27;s not good for the, for the independence, but I&#x27;ll tell you, Shannon, it&#x27;s a open question about parties in the future. Uh, obviously Nenshi wants to, to take them out. I still think that given the, rule changes and the ability to fundraise through a party, you had to do a party, but uh we&#x27;ll we will see uh we will see how this all is</div>
+  <div class="said">Yeah. And that same ad is everywhere. And it reinforces everyone. Because people don&#x27;t stick to their wards. We don&#x27;t have 15 minute cities in Calgary. So people drive all over Hell&#x27;s Half Acre and they&#x27;re seeing a lot of of different signs. Um, and I think that that&#x27;s good for us, uh, in a way that it&#x27;s not good for the, for the independence, but I&#x27;ll tell you, Shannon, it&#x27;s a open question about parties in the future. Uh, obviously Nenshi wants to, to take them out. I still think that given the,</div>
+</div>
+<div class="turn" data-start="3501">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">58:21</span>
+  </div>
+  <div class="said">rule changes and the ability to fundraise through a party, you had to do a party, but uh we&#x27;ll we will see uh we will see how this all is</div>
 </div>
 <div class="turn" data-start="3511">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">58:31</span>
   </div>
   <div class="said">there&#x27;s something about the issue set that maybe advantages more the more right-wing uh parties or is that not like crime you know i don&#x27;t want uh anyone to have a duplex uh to the points of of issues i require six parking spots for every new uh home build uh whatever the case may be um it does that advantage the right-wing parties</div>
@@ -1384,7 +1618,7 @@
 </div>
 <div class="turn" data-start="3595">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">59:55</span>
   </div>
   <div class="said">doing them well into 2029</div>
@@ -1510,7 +1744,7 @@
 </div>
 <div class="turn" data-start="3904">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:05:04</span>
   </div>
   <div class="said">Well, it&#x27;s interesting, you know, it really looks like Heather has launched her campaign with a big event in Strascona at Cité Francophone, right in the middle of her riding, which is a pretty standard place for New Democrats to hold a rally. Rachel was there. The whole thing And, you know, it was very Edmonton Strathcona, right? Bog standard Edmonton Strathcona. That is not to run it down because here is a person who has a seat, who has held on to it, who knows how to win, who knows how to grow membership, who knows how to raise money like Stink, and who knows what the assignment is in terms of being a partisan. and um and so that is good and it&#x27;s pretty clear to me that she&#x27;s essentially chosen not to compete with avi on the the launch video right where he did a super slick kind of you know like mamdami uh mamdani adjacent kind of launch videos really good uh he is a filmmaker so i would expect it to be good uh and uh and it was uh and you know when you go and look at his actual media appearances as afterwards, way less good.</div>
@@ -1524,7 +1758,7 @@
 </div>
 <div class="turn" data-start="3973">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:06:13</span>
   </div>
   <div class="said">The CTV question period</div>
@@ -1538,7 +1772,7 @@
 </div>
 <div class="turn" data-start="3976">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:06:16</span>
   </div>
   <div class="said">in both of those, he was just peppering the camera, just machine gunning policy at the camera, right? And just like yammering the talking points from the video into camera, right? In a really kind of almost aggressive way. And he was chippy too, you know? I last saw him with Coffin in the CBC, but on CTV he was, and did some really weird stuff with, you know, like attacking Evan Solomon, who used to, you know, host the show. It&#x27;s just like, why? What are we doing? And so, undisciplined, in other words</div>
@@ -1552,10 +1786,17 @@
 </div>
 <div class="turn" data-start="4021">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:07:01</span>
   </div>
-  <div class="said">they both went to Upper Canada College together or something? We need to out the backstory on that. But it was just like a weird drive-by. It was like, what are you fucking talking about? He was like, oh, Evan Sullivan and his AI propaganda. Your former colleague. And the host is like, yeah, okay, great. We&#x27;re done here. But he&#x27;s undisciplined in that way. But his video was really good. I haven&#x27;t looked at the numbers on YouTube or elsewhere and how much it&#x27;s traveling. I imagine a fair bit within leftist circles, because when people put it, you know, sent it to me independently or in the various group chats, people were like, oh, this is good. And that is scary because, you know, they are what Avi would dismiss as as establishment New Democrats, meaning that we&#x27;ve held a party card for more than five minutes. and um you know and so he sees us as the enemy but we don&#x27;t really think of him as as uh you know being you know uh someone that&#x27;s been with us for more than five minutes time uh so that&#x27;s why you know the the broad view from my friends was this is a bit scary heather on the other hand has chosen not to put out you know flashy video and all about which i think is you know there&#x27;s time for that she could do some of those set pieces later you can see where she&#x27;s trying to go though right which is straight to the uh strong membership base in alberta in to a certain extent in manitoba and probably to a certain extent in british columbia and there&#x27;ll be you know some riding she&#x27;ll be able to split in uh in ontario and uh we&#x27;ll see what happens with nova scotia&#x27;s pretty small membership anyway but the big membership is in alberta and mr lewis has has serially gone to war with us here, so it&#x27;ll make for an interesting race.</div>
+  <div class="said">they both went to Upper Canada College together or something? We need to out the backstory on that. But it was just like a weird drive-by. It was like, what are you fucking talking about? He was like, oh, Evan Sullivan and his AI propaganda. Your former colleague. And the host is like, yeah, okay, great. We&#x27;re done here. But he&#x27;s undisciplined in that way. But his video was really good. I haven&#x27;t looked at the numbers on YouTube or elsewhere and how much it&#x27;s traveling. I imagine a fair bit within leftist circles, because when people put it, you know, sent it to me independently or in the various group chats, people were like, oh, this is good. And that is scary because, you know, they are what Avi would dismiss as as establishment New Democrats, meaning that we&#x27;ve held a party card for more than five minutes. and</div>
+</div>
+<div class="turn" data-start="4070">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:07:50</span>
+  </div>
+  <div class="said">um you know and so he sees us as the enemy but we don&#x27;t really think of him as as uh you know being you know uh someone that&#x27;s been with us for more than five minutes time uh so that&#x27;s why you know the the broad view from my friends was this is a bit scary heather on the other hand has chosen not to put out you know flashy video and all about which i think is you know there&#x27;s time for that she could do some of those set pieces later you can see where she&#x27;s trying to go though right which is straight to the uh strong membership base in alberta in to a certain extent in manitoba and probably to a certain extent in british columbia and there&#x27;ll be you know some riding she&#x27;ll be able to split in uh in ontario and uh we&#x27;ll see what happens with nova scotia&#x27;s pretty small membership anyway but the big membership is in alberta and mr lewis has has serially gone to war with us here, so it&#x27;ll make for an interesting race.</div>
 </div>
 <div class="turn" data-start="4131">
   <div class="who">
@@ -1566,10 +1807,17 @@
 </div>
 <div class="turn" data-start="4134">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:08:54</span>
   </div>
-  <div class="said">Yeah, so I&#x27;ve known him for a long time. I worked with him at the CBC back in the day. And we were friends up until, I think I even have photos of a broadband institute when I was in government, saying in the fall of 15. But by the spring of 16, when they did Leap Manifesto, I was kind of the person that was deputized to go in and punch back when they came. This is a decade old, so maybe some people won&#x27;t remember this, but there was a group within that were not really in the federal party, but were sort of adjacent to the federal party, who came to the 2016 Edmonton Convention within the first year of the Alberta NDP being in government with essentially a shutdown, the oil sands manifesto</div>
+  <div class="said">Yeah, so I&#x27;ve known him for a long time. I worked with him at the CBC back in the day. And we were friends up until, I think I even have photos of a broadband institute when I was in government, saying in the fall of 15. But by the spring of 16, when they did Leap Manifesto, I was kind of the person that was deputized to go in and punch back when they came. This is a decade old, so maybe some people won&#x27;t remember this, but there was a group within that were not</div>
+</div>
+<div class="turn" data-start="4167">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:09:27</span>
+  </div>
+  <div class="said">really in the federal party, but were sort of adjacent to the federal party, who came to the 2016 Edmonton Convention within the first year of the Alberta NDP being in government with essentially a shutdown, the oil sands manifesto</div>
 </div>
 <div class="turn" data-start="4183">
   <div class="who">
@@ -1580,21 +1828,35 @@
 </div>
 <div class="turn" data-start="4188">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:09:48</span>
   </div>
-  <div class="said">Yeah. I mean, it split the membership in all kinds of different ways. It split the caucus. It didn&#x27;t split the Alberta NDP caucus. We were fine. And it didn&#x27;t split our government, but it gave both opposition parties a nail bat to hit us with that they have not stopped hitting us with, being anti-development and anti-jobs. And this, of course, maps on to a time, you know, in that previous quarter where WTI had fallen to $28 a barrel and we had rapidly escalating unemployment. And the last thing that any Albertan needed to hear from their government was that they thought that they were elected to hand out pink slips. And so it made for conflict. And as a result, I was sort of, because I was environment minister, it was the nexus of the problem to keep Notley out of it, although she made one of the finest speeches. A New Democrat&#x27;s ever made on the floor of that convention and people should look it up and watch it. But I was kind of my role to go out and, you know, punch it up a little bit, which I did. And, you know, then he just like insulted me in public, you know, because that was his idea of fighting back. So I&#x27;m not the biggest fan. It&#x27;s what I&#x27;m trying to say.</div>
+  <div class="said">Yeah. I mean, it split the membership in all kinds of different ways. It split the caucus. It didn&#x27;t split the Alberta NDP caucus. We were fine. And it didn&#x27;t split our government, but it gave both opposition parties a nail bat to hit us with that they have not stopped hitting us with, being anti-development and anti-jobs. And this, of course, maps on to a time, you know, in that previous quarter where WTI had fallen to $28 a barrel and we had rapidly escalating unemployment. And the last thing that any Albertan needed to hear from their government was that they thought that they were elected to hand out pink slips. And so it made for conflict. And as a result, I was sort of, because I was environment minister, it was the nexus of the problem to keep Notley out of it, although she made one of the finest speeches. A New Democrat&#x27;s ever made on the floor of that convention and people should look it up and watch it.</div>
+</div>
+<div class="turn" data-start="4243">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:10:43</span>
+  </div>
+  <div class="said">But I was kind of my role to go out and, you know, punch it up a little bit, which I did. And, you know, then he just like insulted me in public, you know, because that was his idea of fighting back. So I&#x27;m not the biggest fan. It&#x27;s what I&#x27;m trying to say.</div>
 </div>
 <div class="turn" data-start="4263">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">1:11:03</span>
   </div>
-  <div class="said">I&#x27;ve got a follow-up for you, Shannon, and then Carter, I want to let you in on this conversation in terms of what you think this race will mean to the broader sort of situation we find ourselves federally. Do you think the Mamdani factor is real, though, Shannon, in the sense that the Social Democrat push, the relationship to that side of the party, the exciting sort of like fire-off policy proposal, propositional element? little bit. I don&#x27;t know Avi Lewis at all, but I can definitely see that he&#x27;s leaning into that sort of aesthetic. He&#x27;s leaning into that sort of mold. You could argue one came before the other. I don&#x27;t think it matters. There is an excitement factor in the US right now that certainly comes over on the other side. Do you think that factor will have a point? You could look up Avi Lewis and video number three is him in AOC having a debate on hope and those sort of things. So he&#x27;s got those connections. Do you think that will migrate some interest or potentially have an impact in this in this race i</div>
+  <div class="said">I&#x27;ve got a follow-up for you, Shannon, and then Carter, I want to let you in on this conversation in terms of what you think this race will mean to the broader sort of situation we find ourselves federally.</div>
+</div>
+<div class="turn" data-start="4273">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:11:13</span>
+  </div>
+  <div class="said">Do you think the Mamdani factor is real, though, Shannon, in the sense that the Social Democrat push, the relationship to that side of the party, the exciting sort of like fire-off policy proposal, propositional element? little bit. I don&#x27;t know Avi Lewis at all, but I can definitely see that he&#x27;s leaning into that sort of aesthetic. He&#x27;s leaning into that sort of mold. You could argue one came before the other. I don&#x27;t think it matters. There is an excitement factor in the US right now that certainly comes over on the other side. Do you think that factor will have a point? You could look up Avi Lewis and video number three is him in AOC having a debate on hope and those sort of things. So he&#x27;s got those connections. Do you think that will migrate some interest or potentially have an impact in this in this race i</div>
 </div>
 <div class="turn" data-start="4318">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:11:58</span>
   </div>
   <div class="said">don&#x27;t think migrate some interest but it&#x27;s not um getting memberships either sold or in the box and that&#x27;ll be the really interesting piece i mean that what mondani and aoc have in common is that they&#x27;re new york politicians in safe seats</div>
@@ -1608,7 +1870,7 @@
 </div>
 <div class="turn" data-start="4332">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:12:12</span>
   </div>
   <div class="said">uh mr lewis has never been elected to shit</div>
@@ -1622,10 +1884,17 @@
 </div>
 <div class="turn" data-start="4337">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:12:17</span>
   </div>
-  <div class="said">and he&#x27;s tried i mean and he compares himself to jack layton but i am sorry sir but but Jack Layton was actually elected to things before he became federal leader. And, you know, but like far be it for him to run for, I don&#x27;t know, parks board or a school board or any of these things. I guess that&#x27;s women&#x27;s work. He just wants the big job or nothing at all. The point here is that he&#x27;s got the vibes and the aesthetic and that can go a long way. He&#x27;s also got, you know, sort of moving past the policy, like specifics, that he has specific measurable things that you could hold in your hand. That he wants to do, which I think, you know, I don&#x27;t care if they&#x27;re not realistic and they aren&#x27;t, but that&#x27;s beside the point. They&#x27;re real. And so that&#x27;s really good, like points for that. And we&#x27;ll see if the vibes and the using playbook from elections that are not, you can&#x27;t map</div>
+  <div class="said">and he&#x27;s tried i mean and he compares himself to jack layton but i am sorry sir but but Jack Layton was actually elected to things before he became federal leader. And, you know, but like far be it for him to run for, I don&#x27;t know, parks board or a school board or any of these things. I guess that&#x27;s women&#x27;s work. He just wants the big job or nothing at all. The point here is that he&#x27;s got the vibes and the aesthetic and that can go a long way.</div>
+</div>
+<div class="turn" data-start="4361">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:12:41</span>
+  </div>
+  <div class="said">He&#x27;s also got, you know, sort of moving past the policy, like specifics, that he has specific measurable things that you could hold in your hand. That he wants to do, which I think, you know, I don&#x27;t care if they&#x27;re not realistic and they aren&#x27;t, but that&#x27;s beside the point. They&#x27;re real. And so that&#x27;s really good, like points for that. And we&#x27;ll see if the vibes and the using playbook from elections that are not, you can&#x27;t map</div>
 </div>
 <div class="turn" data-start="4393">
   <div class="who">
@@ -1692,10 +1961,17 @@
 </div>
 <div class="turn" data-start="4549">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:15:49</span>
   </div>
-  <div class="said">don&#x27;t think so, because, you know, Jeff Meets tried this, too. He tried it for, like, you know, a long time, like eight years, right, to talk about how we&#x27;re going to, you know, change how the price of groceries goes and stuff. And people were not picking it up, not at all. They were responding to affordability arguments that Pallieva was putting before them, which, I mean, he was overpromising on many of those things, but it was still identifiable things that could be done, like ending the carbon tax or GSTM loans or what have you. And so I think Canadians are much more pragmatic than that. The good news is for Heather is that it looks like Rob Ashton is going to enter into the race. He might not be a name that&#x27;s known to folks from the longshoremen. So that&#x27;ll help with some of the kind of, you know, more down-to-earth blue-collar arguments, pushing back against Debbie that she won&#x27;t have to do it. Potentially that somebody out of BC will be able to do it, to Carter&#x27;s point, that, you know, his strength will come out of the lower mainland and downtown Toronto, let&#x27;s put it.</div>
+  <div class="said">don&#x27;t think so, because, you know, Jeff Meets tried this, too. He tried it for, like, you know, a long time, like eight years, right, to talk about how we&#x27;re going to, you know, change how the price of groceries goes and stuff. And people were not picking it up, not at all. They were responding to affordability arguments that Pallieva was putting before them, which, I mean, he was overpromising on many of those things, but it was still identifiable things that could be done, like ending the carbon tax or GSTM loans or what have you. And so I think Canadians are much more pragmatic than that. The good news is for Heather is that it looks like Rob Ashton is going to enter into the race. He might not be a name that&#x27;s known to folks from the longshoremen. So that&#x27;ll help with some of the kind of, you know, more down-to-earth blue-collar arguments, pushing back against Debbie that she won&#x27;t have to do it.</div>
+</div>
+<div class="turn" data-start="4602">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:16:42</span>
+  </div>
+  <div class="said">Potentially that somebody out of BC will be able to do it, to Carter&#x27;s point, that, you know, his strength will come out of the lower mainland and downtown Toronto, let&#x27;s put it.</div>
 </div>
 <div class="turn" data-start="4612">
   <div class="who">
@@ -1706,17 +1982,38 @@
 </div>
 <div class="turn" data-start="4653">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:17:33</span>
   </div>
-  <div class="said">Well, in the next couple of months, you want to finish Q4 with a decent fundraising person. It&#x27;s hard to do during a leadership race, which is why this six month timeline is bananas. And, you know, know the kind of the far left got what they wanted out of the structure of it and it&#x27;s too bad because it will hamstring the party but you want to see some some energy and some excitement and some of these you know uh membership drives actually meaning a longer term financial health for the party uh just things are really not in good shape uh yeah i mean honestly if you&#x27;re the party you want people to be putting forward things that are relevant uh because the the enemy is not not each other. You know, Heather&#x27;s opponent is not Avi, and Avi&#x27;s opponent is not Feather. Both of their opponents is irrelevance. And so finding ways to, you know, use the House of Commons if you&#x27;re Heather, if you&#x27;re the party, broadly, to use these brinksmanship moments of budget votes and stuff to actually have the relevance would be good.</div>
+  <div class="said">Well, in the next couple of months, you want to finish Q4 with a decent fundraising person. It&#x27;s hard to do during a leadership race, which is why this six month timeline is bananas. And, you know, know the kind of the far left got what they wanted out of the structure of it and it&#x27;s too bad because it will hamstring the party but you want to see some some energy and some excitement and some of these you know uh membership</div>
+</div>
+<div class="turn" data-start="4676">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:17:56</span>
+  </div>
+  <div class="said">drives actually meaning a longer term financial health for the party uh just things are really not in good shape uh yeah i mean honestly if you&#x27;re the party you want people to be putting forward things that are relevant uh because the the enemy is not not each other. You know, Heather&#x27;s opponent is not Avi, and Avi&#x27;s opponent is not Feather. Both of their opponents is irrelevance. And so finding ways to, you know, use the House of Commons if you&#x27;re Heather, if you&#x27;re the party, broadly, to use these brinksmanship moments of budget votes and stuff to actually have the relevance would be good.</div>
 </div>
 <div class="turn" data-start="4716">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">1:18:36</span>
   </div>
-  <div class="said">We&#x27;re going to leave that segment there. Let&#x27;s move it on to our over, under, and our lightning round. Stephen Carter, Shannon Phillips, we have made it. This is my favorite part. This is not just an Alberta-specific Over, Under, and Lightning round. This is a Danielle Smith-specific Over, Under, and Lightning round. Here&#x27;s what I want to do. I&#x27;m going to give you four things our premier has done over the last two weeks or is going to do based on documents and sources. And I want you to talk about which one of these four is the silliest and which one of these four is the most strategic. strategic. These are all things that we will, between the three of us, will hate in the sense of what is going on. But I want to talk about the silliest and the most strategic. So, Carter, let me start with you first, okay? Danielle Smith won citizenship status on driver&#x27;s licenses, announcing that starting in late 2026, Alberta will require all new and renewed licenses and provincial ID cards to include a citizenship marker. She&#x27;s charging, this one is a little bit bit old, but it&#x27;s coming to light now. There is a 100 per dose fee on the COVID-19 vaccine, except for healthcare workers, some seniors and certain vulnerable groups. The premier has defended this move as a response to the federal government no longer covering the vaccine and as a way to prevent waste, nothing to do with some ideology related to it whatsoever. So you got thing number one, citizenship status. Thing number two, the vaccine admin fee. Thing number three, leaked memo suggests she&#x27;s going to use a preemptive use of the not with withstanding clause against the anti-trans legislation um that she has the suite the basket of legislation that she has on the anti-trans um a piece coming up in the next session and finally leaked documents that daniel smith is preparing legislation that would allow alberta to ignore or opt out of international agreements signed by ottawa if they&#x27;re deemed to intrude on provincial jurisdiction stephen carter do you have the four listed</div>
+  <div class="said">We&#x27;re going to leave that segment there. Let&#x27;s move it on to our over, under, and our lightning round. Stephen Carter, Shannon Phillips, we have made it. This is my favorite part. This is not just an Alberta-specific Over, Under, and Lightning round. This is a Danielle Smith-specific Over, Under, and Lightning round. Here&#x27;s what I want to do. I&#x27;m going to give you four things our premier has done over the last two weeks or is going to do based on documents and sources. And I want you to talk about which one of these four is the silliest and which one of these four is the most strategic. strategic. These are all things that we will, between the three of us, will hate in the sense of what is going on. But I want to talk about the silliest and the most strategic. So, Carter, let me start with you first, okay? Danielle Smith won citizenship status on driver&#x27;s licenses, announcing that starting in late 2026, Alberta will require all new and renewed licenses and provincial ID cards to include a citizenship marker.</div>
+</div>
+<div class="turn" data-start="4772">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:19:32</span>
+  </div>
+  <div class="said">She&#x27;s charging, this one is a little bit bit old, but it&#x27;s coming to light now. There is a 100 per dose fee on the COVID-19 vaccine, except for healthcare workers, some seniors and certain vulnerable groups. The premier has defended this move as a response to the federal government no longer covering the vaccine and as a way to prevent waste, nothing to do with some ideology related to it whatsoever. So you got thing number one, citizenship status. Thing number two, the vaccine admin fee.</div>
+</div>
+<div class="turn" data-start="4800">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:20:00</span>
+  </div>
+  <div class="said">Thing number three, leaked memo suggests she&#x27;s going to use a preemptive use of the not with withstanding clause against the anti-trans legislation um that she has the suite the basket of legislation that she has on the anti-trans um a piece coming up in the next session and finally leaked documents that daniel smith is preparing legislation that would allow alberta to ignore or opt out of international agreements signed by ottawa if they&#x27;re deemed to intrude on provincial jurisdiction stephen carter do you have the four listed</div>
 </div>
 <div class="turn" data-start="4831">
   <div class="who">
@@ -1762,10 +2059,17 @@
 </div>
 <div class="turn" data-start="4981">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:23:01</span>
   </div>
-  <div class="said">I think it&#x27;s probably the most strategic because it has the least outcome. There&#x27;s the least downside, the treaty thing. Klein tried to do this. I was just looking it up and I couldn&#x27;t find how Klein dealt with this when the federal government went in to ratify the Kyoto Protocol back in the early 90s. But there was a Supreme Court decision, I think before we were a country, I think it was the UK, out of the UK Supreme Court back in the 20s, that essentially said, yes, Canada can ratify treaties. It was an international labor organization treaty that are in, you some form of provincial jurisdiction. So this is well-trodden territory. There&#x27;s no real downside for</div>
+  <div class="said">I think it&#x27;s probably the most strategic because it has the least outcome. There&#x27;s the least downside, the treaty thing. Klein tried to do this. I was just looking it up and I couldn&#x27;t find how Klein dealt with this when the federal government went in to ratify the Kyoto Protocol back in the early 90s. But there was a Supreme Court decision, I think before we were a country, I think it was the UK, out of the UK Supreme Court back in the 20s, that essentially said, yes, Canada can ratify treaties.</div>
+</div>
+<div class="turn" data-start="5009">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:23:29</span>
+  </div>
+  <div class="said">It was an international labor organization treaty that are in, you some form of provincial jurisdiction. So this is well-trodden territory. There&#x27;s no real downside for</div>
 </div>
 <div class="turn" data-start="5021">
   <div class="who">
@@ -1776,10 +2080,17 @@
 </div>
 <div class="turn" data-start="5022">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:23:42</span>
   </div>
-  <div class="said">with this. It&#x27;s just another, you know, bullshit way to waste time. in the legislature this fall. So points for that, I guess. And she can get up and make a 45-minute speech about how she&#x27;s, you know, the queen of standing up to Ottawa and we need somebody to do that. And those are good talking points for her, so great for her. I think in the same vein, though I&#x27;d be strategically silly, as in strategically stupid, is the driver&#x27;s license thing. Because, first of all, I think it&#x27;s going to be a boondoggle with the privatized registries. I think I can hear the whining from here, from the registries on, you know, the cost, you know, how the implementation goes, all of that. You know, they are a bit of a whining sector anyway. So they will whine, absolutely. Number two, it&#x27;s not clear to me if you can opt out because sign me up, I&#x27;ll be opting out, right? If I need to prove my citizenship, I&#x27;ve got documents for that. Yeah. Um, and, uh, so I think it&#x27;ll just piss people off and, uh, uh, it will be one of those things that can&#x27;t, could be used as a very good wedge, uh, by the opposition and going into an area that&#x27;s not strategically smart. It&#x27;s not at all clear to me that, uh, you know, there&#x27;s been some, some, uh, uh, talk about how the, the consensus around immigration is unraveling. It&#x27;s not at all clear to me that that is in fact the case in public opinion. And in particular, a few press people, like you could say to people in any group, oh, have there been too many temporary forward workers or too many international students or even, you know, were our immigration levels too high for the last couple of years and probably get, you know, at least a 50-50 head nod on that wherever in the country. It&#x27;s not clear to me that that then goes to we should withhold services from certain kinds of people, depending on how long they&#x27;ve lived here. I don&#x27;t think the polling on that&#x27;s probably very good. So that is dumb. I think that notwithstanding stuff on the trans issues, I mean, she&#x27;s got a constituency for this. So as much as it pains me because it&#x27;s a horrible thing to have 14 different sets of human rights in this country. The fact is, is that she&#x27;s got a constituency for this and she has to keep them together through her own leadership exercise. And the COVID thing is just, I mean, those of us who want it will pay for it. uh unfortunately that will be too few uh people to arrest the spread of the of a new variant and so and uh you know people uh like me will continue to suffer if we get more covet out there</div>
+  <div class="said">with this. It&#x27;s just another, you know, bullshit way to waste time. in the legislature this fall. So points for that, I guess. And she can get up and make a 45-minute speech about how she&#x27;s, you know, the queen of standing up to Ottawa and we need somebody to do that. And those are good talking points for her, so great for her. I think in the same vein, though I&#x27;d be strategically silly, as in strategically stupid, is the driver&#x27;s license thing. Because, first of all, I think it&#x27;s going to be a boondoggle with the privatized registries. I think I can hear the whining from here, from the registries on, you know, the cost, you know, how the implementation goes, all of that. You know, they are a bit of a whining sector anyway. So they will whine, absolutely. Number two, it&#x27;s not clear to me if you can opt out because sign me up, I&#x27;ll be opting out, right? If I need to prove my citizenship, I&#x27;ve got documents for that. Yeah. Um, and, uh, so I think it&#x27;ll just piss people off and, uh, uh, it will be one of those things that can&#x27;t, could be used as a very good wedge, uh, by the opposition and going into an area that&#x27;s not strategically smart. It&#x27;s not at all clear to me that, uh, you know, there&#x27;s been some, some, uh, uh, talk about how the, the consensus around immigration is unraveling. It&#x27;s not at all clear to me that that is in fact the case in public opinion. And in particular, a few press people, like you could say to people in any group, oh, have there been too many temporary forward workers or too many international students or even, you know, were our immigration levels too high for the last couple of years and probably get, you know, at least a 50-50 head nod on that wherever in the country. It&#x27;s not clear to me that that then goes to we should withhold services from certain kinds of people, depending on how long they&#x27;ve lived here. I don&#x27;t think the polling on that&#x27;s probably very good. So that is dumb. I think that notwithstanding stuff on the trans issues, I mean, she&#x27;s got a constituency for this. So as much as it pains me because it&#x27;s a horrible</div>
+</div>
+<div class="turn" data-start="5151">
+  <div class="who">
+    <span class="speaker">Shannon</span>
+    <span class="ts">1:25:51</span>
+  </div>
+  <div class="said">thing to have 14 different sets of human rights in this country. The fact is, is that she&#x27;s got a constituency for this and she has to keep them together through her own leadership exercise. And the COVID thing is just, I mean, those of us who want it will pay for it. uh unfortunately that will be too few uh people to arrest the spread of the of a new variant and so and uh you know people uh like me will continue to suffer if we get more covet out there</div>
 </div>
 <div class="turn" data-start="5180">
   <div class="who">
@@ -1790,7 +2101,7 @@
 </div>
 <div class="turn" data-start="5206">
   <div class="who">
-    <span class="speaker">SPEAKER_02</span>
+    <span class="speaker">Shannon</span>
     <span class="ts">1:26:46</span>
   </div>
   <div class="said">Two of them are stupid and two of them are designed to shore up a base, so I would give it about a B.</div>

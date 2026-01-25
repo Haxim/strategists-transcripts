@@ -58,7 +58,7 @@
     },
     "associatedMedia": {
       "@type": "AudioObject",
-      "contentUrl": "https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/145964805.mp3?sig=np-SNxviiy3EyJ3tBhQKKVjMjG8U_wiSXy0dIDU_odA%3D",
+      "contentUrl": "",
       "encodingFormat": "audio/mpeg"
     }
   }
@@ -274,6 +274,63 @@
       box-shadow: none;
     }
 
+    /* ----------------------------------
+      Patreon locked player (Acast clone)
+      ---------------------------------- */
+
+    .patreon-lock{
+      padding: 0;
+    }
+
+    .patreon-inner{
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      min-height: 210px; /* matches iframe height */
+    }
+
+    @media (max-width: 640px){
+      .patreon-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .patreon-art{
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+    }
+
+    .patreon-copy{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .patreon-copy strong{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .patreon-copy p{
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    @media (max-width: 640px){
+      .patreon-copy p{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* Main layout */
     .main{ padding: 18px 0 40px; }
     .grid{
@@ -412,9 +469,18 @@
     <div class="wrap">
 
       <div id="player-wrapper">
-        <div class="player-card">
         
-        </div>
+          <div class="player-card">
+            
+              <iframe
+                id="acast-player"
+                src="https://embed.acast.com/624b672001207c001233d4a6/69410bfb58c537ceb65998c6"
+                title="Listen on Acast"
+                allow="autoplay"
+                loading="lazy"></iframe>
+            
+          </div>
+        
       </div>
       <div id="player-sentinel"></div>
     </div>
@@ -715,7 +781,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">4:22</span>
   </div>
-  <div class="said">about it. Distance third, Talib Nurmama, 3.1%. Oh, man. Hold on. How long has he been in the House of Commons? He&#x27;s been around. I&#x27;ve done the math, okay? Yeah. Corey, you&#x27;ve got more than two and a half times his vote, okay? And he&#x27;s been around six times longer than you. So, I feel like we need to give Talib Nurmama a trophy. Can you present it to him? if we create it will you if our listeners help fund it will you show up I will not I will not okay I don&#x27;t know this feels like a sore loser sore winner to me Carter feels like a real sore winner energy that Corey Hogan is giving to this show okay missed y&#x27;all I&#x27;m in missed y&#x27;all okay yeah know did you how long does it take for you to have regrets that you&#x27;re doing this show before we even hit record I think</div>
+  <div class="said">about it. Distance third, Talib Nurmama, 3.1%. Oh, man. Hold on. How long has he been in the House of Commons? He&#x27;s been around. I&#x27;ve done the math, okay? Yeah. Corey, you&#x27;ve got more than two and a half times his vote, okay? And he&#x27;s been around six times longer than you.</div>
+</div>
+<div class="turn" data-start="277">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:37</span>
+  </div>
+  <div class="said">So, I feel like we need to give Talib Nurmama a trophy. Can you present it to him? if we create it will you if our listeners help fund it will you show up I will not I will not okay I don&#x27;t know this feels like a sore loser sore winner to me Carter feels like a real sore winner energy that Corey Hogan is giving to this show okay missed y&#x27;all I&#x27;m in missed y&#x27;all okay yeah know did you how long does it take for you to have regrets that you&#x27;re doing this show before we even hit record I think</div>
 </div>
 <div class="turn" data-start="307">
   <div class="who">
@@ -743,7 +816,21 @@
     <span class="speaker">Corey</span>
     <span class="ts">5:26</span>
   </div>
-  <div class="said">You know, so it was a lot of it to do with the Memorandum of Understanding, right? Yes. Between Alberta and the Government of Canada. And there was an opposition motion. The Conservatives did this motion that was basically, basically you know my my version of it would be they just picked like parts of it and it was designed to kind of divide and distract the liberal caucus it wasn&#x27;t really designed to get a pipeline built actually that&#x27;s kind of my big frustration like there is no outcome of that motion that makes a pipeline more likely to be built but they did it because they thought it would divide the liberal caucus and and so yeah i mean i i think because of where i represent this became a this became a thing that people wanted to know my opinion about and there were all sorts sorts of questions about it but you know bottom line is this it felt fine because i i really didn&#x27;t feel like it was how can i put this you know there are things that you&#x27;re sometimes asked to do in a party and you&#x27;re like uh i don&#x27;t know if my heart&#x27;s in it even if you agree with it it&#x27;s not my thing or whatnot but i actually found it was pretty pretty easy to find that you know that fire and that interest in this particular one because hey it had game playing which you know I&#x27;m not always the most enthusiastic about. And it had Pierre Polyev acting like a bit of a jerk, which I&#x27;m not all that enthusiastic about. So I was more than happy to let people know my thoughts on that particular matter.</div>
+  <div class="said">You know, so it was a lot of it to do with the Memorandum of Understanding, right? Yes. Between Alberta and the Government of Canada. And there was an opposition motion. The Conservatives did this motion that</div>
+</div>
+<div class="turn" data-start="338">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">5:38</span>
+  </div>
+  <div class="said">was basically, basically you know my my version of it would be they just picked like parts of it and it was designed to kind of divide and distract the liberal caucus it wasn&#x27;t really designed to get a pipeline built actually that&#x27;s kind of my big frustration like there is no outcome of that motion that makes a pipeline more likely to be built but they did it because they thought it would divide the liberal caucus and and so yeah i mean i i think because of where i represent this became a this became a thing that people wanted to know my opinion about and there were all sorts sorts of questions about it but you know bottom line is this it felt fine because i i really didn&#x27;t feel like it was how can i put this you know there are things that you&#x27;re sometimes asked to do in a party and you&#x27;re like uh i don&#x27;t know if my heart&#x27;s in it even if you agree with it it&#x27;s not my thing or whatnot but i actually found it was pretty pretty easy to find that you know that fire and that interest in this particular one because hey it had game playing which you know I&#x27;m not always the most enthusiastic about. And it had Pierre</div>
+</div>
+<div class="turn" data-start="402">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">6:42</span>
+  </div>
+  <div class="said">Polyev acting like a bit of a jerk, which I&#x27;m not all that enthusiastic about. So I was more than happy to let people know my thoughts on that particular matter.</div>
 </div>
 <div class="turn" data-start="410">
   <div class="who">
@@ -757,7 +844,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">7:29</span>
   </div>
-  <div class="said">saying that? No, you know what? You&#x27;re not just right. I gave a speech in the House of Commons, and I basically said, like hey i used to do strategic analysis i i even mentioned the strategist podcast and i said let me let me unpack it a little bit because there are times where i believe and i&#x27;ve said this on the show in the past right one of the benefits of the show is it exposes to people the marionette strings right like you see how politicians are trying to manipulate you you see the games they&#x27;re trying to play and by exposing those things and exposing that thought thought process. The idea is it actually makes it easier to defend yourself against those kinds of things. So I&#x27;ve always believed that was one of the real benefits of the strategists. I think that was a pretty sensible benefit that we provided. But I also think that we were pretty good at telling politicians when they were fooling themselves and, you know, when they were deluding themselves as to what they were doing was going to serve any purpose whatsoever. So look, I was pretty plain about this in the house. I said, I think let&#x27;s just explain to Canada what what you&#x27;re trying to do. But then let&#x27;s also explain why I think you&#x27;re, you&#x27;re kind of kidding yourselves, conservatives on this particular matter. And, you know, it&#x27;s funny, like I never try to make these ministry of podcast things like overly partisan or anything, but I&#x27;ll just say, like, I really do think the conservatives were fooling themselves on this particular matter. They sat there, they came up with something they thought was oh, so clever, you know, to, to point out divisions in the liberal caucus, try to get people on the record voting for a pipeline. Oh, can you imagine, can you imagine how awkward it would be, right to have people have to vote for a pipeline and uh in doing so they they seem to have like lost the forest for the trees right they they didn&#x27;t seem to consider that&#x27;s going to make it a lot less likely a pipeline gets built potentially like if you if you vote yes on this particular matter it looks like because the the motion was essentially i support a pipeline like that&#x27;s the short version they amended it down the road but let&#x27;s use the short version and the mou is big the mou with alberta has a lot of things it&#x27;s got environmental protections it&#x27;s got economic economic projects it&#x27;s it&#x27;s got lots of stuff but by doing the one they hope to make it awkward for the liberals but by doing the one you vote for it and you&#x27;re basically saying to bc you&#x27;re saying to first nations you&#x27;re saying to environmentalists that other stuff doesn&#x27;t matter to us this matters to us</div>
+  <div class="said">saying that? No, you know what? You&#x27;re not just right. I gave a speech in the House of Commons, and I basically said, like hey i used to do strategic analysis i i even mentioned the strategist podcast and i said let me let me unpack it a little bit because there are times where i believe and i&#x27;ve said this on the show in the past right one of the benefits of the show is it exposes to people the marionette strings right like you see how politicians are trying to manipulate you you see the games they&#x27;re trying to play and by exposing those things and exposing that thought thought process. The idea is it actually makes it easier to defend yourself against those kinds of things. So I&#x27;ve always believed that was one of the real benefits of the strategists. I think that was a pretty sensible benefit that we provided. But I also think that we were pretty good at telling politicians when they were fooling themselves and, you know, when they were deluding themselves as to what they were doing was going to serve any purpose whatsoever. So look, I was pretty plain about this in the house. I said, I think let&#x27;s just explain to Canada what what you&#x27;re trying to do. But then let&#x27;s also explain why I think you&#x27;re, you&#x27;re kind of kidding yourselves, conservatives on this particular matter. And, you know, it&#x27;s funny, like I never try to make these ministry of podcast things like overly partisan or anything, but I&#x27;ll just say, like, I really do think the conservatives were fooling themselves on this particular matter. They sat there, they came up with something they thought was oh, so clever, you know, to, to point out divisions in the liberal caucus, try to get people on the record voting for a pipeline. Oh, can you imagine, can you imagine how awkward it would be, right to have people have to vote for a pipeline and uh in doing so they they seem to have like lost the forest for the trees right they they didn&#x27;t seem to consider that&#x27;s</div>
+</div>
+<div class="turn" data-start="546">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">9:06</span>
+  </div>
+  <div class="said">going to make it a lot less likely a pipeline gets built potentially like if you if you vote yes on this particular matter it looks like because the the motion was essentially i support a pipeline like that&#x27;s the short version they amended it down the road but let&#x27;s use the short version and the mou is big the mou with alberta has a lot of things it&#x27;s got environmental protections it&#x27;s got economic economic projects it&#x27;s it&#x27;s got lots of stuff but by doing the one they hope to make it awkward for the liberals but by doing the one you vote for it and you&#x27;re basically saying to bc you&#x27;re saying to first nations you&#x27;re saying to environmentalists that other stuff doesn&#x27;t matter to us this matters to us</div>
 </div>
 <div class="turn" data-start="581">
   <div class="who">
@@ -771,7 +865,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">9:45</span>
   </div>
-  <div class="said">mou in a motion but they got a little clever by half as we say so that&#x27;s the yes side you know and if you vote no it looks like potentially you&#x27;re not serious about a pipeline so you talked about me and pundit mode but one of the things that i think i was really trying to do last week is a like hey if we&#x27;re gonna vote no we need you to understand why this is just a shitty trap right like almost to have as i put it the meta conversation about the motion like we needed to actually talk about what they were trying to do so that people could understand why we were doing what we felt we had to do because we didn&#x27;t want to jeopardize the pipeline project by antagonizing you know And we had First Nations in Ottawa at the time. And we didn&#x27;t want to antagonize the pipeline project.</div>
+  <div class="said">mou in a motion but they got a little clever by half as we say so that&#x27;s the yes side you know and if you vote no it looks like potentially you&#x27;re not serious about a pipeline so you talked about me and pundit mode but one of the things that i think i was really trying to do last week is a like hey if we&#x27;re gonna vote no we need you to understand why this is just a shitty trap right like almost to have as i put it the meta conversation about the motion like we needed to actually talk about what they were trying to do so that people could understand why we were doing what we felt we had to do because we didn&#x27;t want to jeopardize the pipeline project by antagonizing you know And we had First Nations in Ottawa at the time.</div>
+</div>
+<div class="turn" data-start="624">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">10:24</span>
+  </div>
+  <div class="said">And we didn&#x27;t want to antagonize the pipeline project.</div>
 </div>
 <div class="turn" data-start="627">
   <div class="who">
@@ -855,7 +956,28 @@
     <span class="speaker">Corey</span>
     <span class="ts">12:46</span>
   </div>
-  <div class="said">Yeah, so look, when this motion started being thrown out there the week before, on the Friday before we were all going, I started texting most everybody I knew in these various power centers saying, at least my two cents was, this, we&#x27;ve got to vote against this. This is ridiculous. You know, this is going to make a pipeline less likely. We just need to vote against this. We can&#x27;t be playing these games with them. And look, I mean, the prime minister called the shot. I have no idea how much of my analysis, if any, made it up to the prime minister. That&#x27;s just a simple reality of when you&#x27;re dealing with office. It doesn&#x27;t really matter. I think he called the right shot there. there but it was um it it wasn&#x27;t something where i asked a lot of people&#x27;s permission i guess is what i would say zane like so you know i was i was saying to these people hey i think we need to talk to them about what pierre poliev&#x27;s trying to do i think we need to discuss with them uh exactly why that would be dangerous to the creation of a pipeline project the so-called objective of pierre poliev like this is what i think i need to do and i got back like yeah okay well that&#x27;s that&#x27;s interesting and you know maybe even like that&#x27;s okay and and it was clear that That, you know, there was not enthusiasm for just supporting part of the MOU. We wanted to support the whole MOU. That was clear. But the thing about Ottawa and the thing about the House of Commons, the thing about West Block is you got reporters everywhere, right? when you&#x27;ve got something like this going on, someone is going to throw a microphone in front of your face. So on the Monday before the Tuesday motion, somebody threw a microphone in front of my face and I thought, well, why not? Why don&#x27;t I just say the thing, right? Right. So I said the thing I said exactly what I just told you all in different words and all of that. And and then on the cable shows that afternoon, Andrew Scheer and others were kind of it was thrown at them. It was like, well, you basically, Corey Hogan says this is game playing, says this is not a serious, you know, Pierre Polyev is not acting like a serious leader. These are serious times. And how do you respond to that? and the conservatives kind of well actually maybe i&#x27;ll say this so i did that i walked upstairs and i went to the house of commons it was qp and as i&#x27;m sitting in qp question period i think to myself you know they&#x27;re gonna maybe clip part of that and i might want to get my entire thought process on the record so i went and i recorded just a quick like tiktok style video minute hey this is my view it&#x27;s still up there if somebody wanted to find it right And I got to tell you, it kind of landed with a thud. Like there wasn&#x27;t very much engagement. It was kind of not perceived as very good content, at least by me.</div>
+  <div class="said">Yeah, so look, when this motion started being thrown out there the week before, on the Friday before we were all going, I started texting most everybody I knew in these various power centers saying, at least my two cents was, this, we&#x27;ve got to vote against this. This is ridiculous. You know, this is going to make a pipeline less likely. We just need to vote against this. We can&#x27;t be playing these games with them. And look, I mean, the prime minister called the shot. I have no idea how much of my analysis, if any, made it up to the prime minister. That&#x27;s just a simple reality of when you&#x27;re dealing with office. It doesn&#x27;t really matter. I think he called the right shot there. there but it was um it it wasn&#x27;t something where i asked a lot of people&#x27;s permission i guess is what i would say zane like so you know i was i was saying to these people hey i think we need to talk to them about what pierre poliev&#x27;s trying to do i think we need to discuss with them uh exactly why that would be dangerous to the creation of a pipeline project the so-called objective of pierre poliev like this is what i think i need to do and i got back like yeah okay well that&#x27;s that&#x27;s interesting and you know maybe even like that&#x27;s okay and and it was clear that That, you know, there was not enthusiasm for just supporting part of the MOU. We wanted to support the whole MOU. That was clear. But the thing about Ottawa and the thing about the House of Commons, the thing about West Block is you got reporters everywhere, right? when you&#x27;ve got something like this going on, someone is going to throw a microphone in front of your face. So on the Monday before the Tuesday motion, somebody threw a microphone in front of my face and I thought, well, why not? Why don&#x27;t I just say the thing, right? Right. So I said the thing I said exactly what I just told you all in different words and all of that. And and then on the cable shows that afternoon, Andrew Scheer and others were kind of it was thrown at them. It was like, well, you</div>
+</div>
+<div class="turn" data-start="880">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">14:40</span>
+  </div>
+  <div class="said">basically, Corey Hogan says this is game playing, says this is not a serious, you know, Pierre Polyev is not acting like a serious leader. These are serious times. And how do you respond to that? and the</div>
+</div>
+<div class="turn" data-start="888">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">14:48</span>
+  </div>
+  <div class="said">conservatives kind of well actually maybe i&#x27;ll say this so i did that i walked upstairs and i went to the house of commons it was qp and as i&#x27;m sitting in qp question period i think to myself you know they&#x27;re gonna maybe clip part of that and i might want to get my entire thought process on the record so i went and i recorded just a quick like tiktok style video minute hey this is my view it&#x27;s still up there if somebody wanted to find it right And I got to tell you, it kind of landed with a thud. Like there wasn&#x27;t very much engagement. It was kind of not perceived</div>
+</div>
+<div class="turn" data-start="921">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">15:21</span>
+  </div>
+  <div class="said">as very good content, at least by me.</div>
 </div>
 <div class="turn" data-start="924">
   <div class="who">
@@ -869,21 +991,42 @@
     <span class="speaker">Corey</span>
     <span class="ts">15:25</span>
   </div>
-  <div class="said">Well, I think the content quality was fine, but it was just not – No, no, it wasn&#x27;t. great. No, Well, look, I&#x27;m not saying it was Shakespeare, but it was – I thought it would do better and it wasn&#x27;t really doing better. But then after the cable show appearances, the conservatives kind of freaked out and turned the whole eye of Soron on me, and you had Pierre Polyev, you had Andrew Scheer, you had everybody. You had an ad, Kemp. You had like an ad. Well, we&#x27;ll get to the ad. Get to the ad. Get to the ad. Sorry, you tell me the timeline. We had all of them that are active on Twitter posting about me, Michelle Rample, all of them, all saying like, oh, can you believe this Calgary liberal who&#x27;s going to vote against – And by the way, at this point, I didn&#x27;t even say I was voting against</div>
+  <div class="said">Well, I think the content quality was fine, but it was just not – No, no, it wasn&#x27;t. great. No,</div>
+</div>
+<div class="turn" data-start="933">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">15:33</span>
+  </div>
+  <div class="said">Well, look, I&#x27;m not saying it was Shakespeare, but it was – I thought it would do better and it wasn&#x27;t really doing better. But then after the cable show appearances, the conservatives kind of freaked out and turned the whole eye of Soron on me, and you had Pierre Polyev, you had Andrew Scheer, you had everybody. You had an ad, Kemp. You had like an ad. Well, we&#x27;ll get to the ad. Get to the ad. Get to the ad. Sorry, you tell me the timeline. We had all of them that are active on Twitter posting about me, Michelle Rample, all of them, all saying like, oh, can you believe this Calgary liberal who&#x27;s going to vote against – And by the way, at this point, I didn&#x27;t even say I was voting against</div>
 </div>
 <div class="turn" data-start="969">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">16:09</span>
   </div>
-  <div class="said">it. Can I ask you a question here? At this moment, when not the entirety of the conservative operation is kind of focused, but you become the issue of the moment. I don&#x27;t even say the day. Do you gaslight yourself even for half a second being like, did I make the right call here? Or were you like so strong in your conviction that you knew this was the play for me? I&#x27;m kind of curious, like even with someone of, I hate to say this, like of your brain power that carter and i know but like were you at first second me like huh did i think of all angles here did i cover it off or was it like no i&#x27;m good with this</div>
+  <div class="said">it. Can I ask you a question here? At this moment, when</div>
+</div>
+<div class="turn" data-start="974">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">16:14</span>
+  </div>
+  <div class="said">not the entirety of the conservative operation is kind of focused, but you become the issue of the moment. I don&#x27;t even say the day. Do you gaslight yourself even for half a second being like, did I make the right call here? Or were you like so strong in your conviction that you knew this was the play for me? I&#x27;m kind of curious, like even with someone of, I hate to say this, like of your brain power that carter and i know but like were you at first second me like huh did i think of all angles here did i cover it off or was it like no i&#x27;m good with this</div>
 </div>
 <div class="turn" data-start="1000">
   <div class="who">
     <span class="speaker">Corey</span>
     <span class="ts">16:40</span>
   </div>
-  <div class="said">well okay so i think it&#x27;s a healthy thing to say hey did i do this right and i probably thought that maybe a little bit but there&#x27;s two things that made me think no i&#x27;m i&#x27;m actually okay here and one of them is how they stated my position was absurd like it was it wasn&#x27;t even in the same they had to twist as As my actual position. Exactly. Right. And closely related to that, none of them were like quote tweeting the content they were referring to. They&#x27;re all referring to this. I mean, Michelle Rumpel literally took a screenshot of a video on Twitter rather than quote tweeting, you know, the thing. Like she went out of her way. The video. Yeah. To to avoid it. And so I thought, no, no, no. They&#x27;re like they they don&#x27;t want anyone to see the content. They know that they&#x27;re on a weak foot. And I will say this is a pretty classic technique of the conservatives, you know, and I&#x27;m not even saying I hate the game. I understand why they do it. But when they feel like they&#x27;re on a bit of a weak footing, that&#x27;s when they&#x27;re the loudest. That&#x27;s when they&#x27;re the most aggressive, right? They often compensate for a weak argument with volume. And look, again, I try not to be like ultra-partisan on these Ministry of Podcast ones, right? But this is something that I&#x27;ve perceived them do. And so I thought they doth protest too much. But what was funny is this video that was kind of a flop, they salvaged. All of a sudden, it&#x27;s going everywhere. It&#x27;s getting thousands of views across platforms, tens of thousands of views, hundreds of thousands of views. And they made it into the argument in a funny way. I actually believe if they had had the discipline not to swing at that, they would have been in better shape on Tuesday</div>
+  <div class="said">well okay so i think it&#x27;s a healthy thing to say hey did i do this right and i probably thought that maybe a little bit but there&#x27;s two things that made me think no i&#x27;m i&#x27;m actually okay here and one of them is how they stated my position was absurd like it was it wasn&#x27;t even in the same they had to twist as As my actual position. Exactly. Right. And closely related to that, none of them were like quote tweeting the content they were referring to. They&#x27;re all referring to this. I mean, Michelle Rumpel literally took a screenshot of a video on Twitter rather than quote tweeting, you know, the thing. Like she went out of her way. The video. Yeah. To to avoid it. And so I thought, no, no, no. They&#x27;re like they they don&#x27;t want anyone to see the content. They know that they&#x27;re on a weak foot. And I will say this is a pretty classic technique of the conservatives, you know, and I&#x27;m not even saying I hate the game. I understand why they do it. But when they feel like they&#x27;re on a bit of a weak footing, that&#x27;s when they&#x27;re the loudest. That&#x27;s when they&#x27;re the most aggressive, right? They often compensate for a weak argument with volume. And look, again, I try not to be like ultra-partisan on these Ministry of Podcast ones, right? But this is something that I&#x27;ve perceived them do. And so I thought they doth protest too much. But what was funny is this video that was kind of a flop, they salvaged. All of a sudden, it&#x27;s going everywhere. It&#x27;s getting thousands of views across platforms, tens of thousands of views, hundreds of thousands of views. And they made it into the argument in a funny way. I actually believe if they had had the discipline not to swing at that,</div>
+</div>
+<div class="turn" data-start="1088">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">18:08</span>
+  </div>
+  <div class="said">they would have been in better shape on Tuesday</div>
 </div>
 <div class="turn" data-start="1090">
   <div class="who">
@@ -897,14 +1040,35 @@
     <span class="speaker">Corey</span>
     <span class="ts">18:31</span>
   </div>
-  <div class="said">Yeah, I didn&#x27;t get any direct feedback from powers that be about it, I will say. I will say one of the nice things about being in a caucus is you&#x27;ve got 170 friends. And so a lot of them are reaching out and being like, hey, man, how are you? They&#x27;re like throwing everything in the kitchen sink at you. And I mean, you both know me. It didn&#x27;t bother me very much. I kind of got pumped up by it, like fueled, like, okay, let&#x27;s go. But it was something that they were worried about me about, right? And that&#x27;s really nice. And so most of the conversation back was like, hey, concern, you&#x27;re doing the right thing or whatnot, or I&#x27;m glad you&#x27;re taking this stand or what have you. But there wasn&#x27;t like deep strategic conversations. And I guess this is one of the things that maybe I would have even interpreted different from the outside. I would have assumed this was all much more coordinated, maybe even from being in seats that you&#x27;re both in. It wasn&#x27;t. It wouldn&#x27;t be fair to say I was, you know, quote unquote freelancing, like I was involved in the conversations. I was part of the press release where we said we were going to vote no. You know, I took kind of the cleanup where I made my comments at the end. But it&#x27;s not like this crazy command and control environment. It&#x27;s more like, I think you should be there. Your judgment seems pretty good on this. We sort of trust you to get this a little bit. it and it&#x27;s not a blank check but it&#x27;s it&#x27;s like okay we all know we&#x27;ve all had conversations about this be adults about it be smart about this would be more of the vibe i suppose more than it&#x27;s a direction that&#x27;s</div>
+  <div class="said">Yeah, I didn&#x27;t get any direct feedback from powers that be about it, I will say. I will say one of the nice things about being in a caucus is you&#x27;ve got 170 friends. And so a lot of them are reaching out and being like, hey, man, how are you? They&#x27;re like throwing everything in the kitchen sink at you. And I mean, you both know me. It didn&#x27;t bother me very much. I kind of got pumped up by it, like fueled, like, okay, let&#x27;s go. But it was something that they were worried about me about, right? And that&#x27;s really nice. And so most of the conversation back was like, hey, concern, you&#x27;re doing the right thing or whatnot, or I&#x27;m glad you&#x27;re taking this stand or what have you. But there wasn&#x27;t like deep strategic conversations. And I guess this is one of the things that maybe I would have even interpreted different from the outside. I would have assumed this was all much more coordinated, maybe even from being in seats that you&#x27;re both in.</div>
+</div>
+<div class="turn" data-start="1163">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">19:23</span>
+  </div>
+  <div class="said">It wasn&#x27;t. It wouldn&#x27;t be fair to say I was, you</div>
+</div>
+<div class="turn" data-start="1166">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">19:26</span>
+  </div>
+  <div class="said">know, quote unquote freelancing, like I was involved in the conversations. I was part of the press release where we said we were going to vote no. You know, I took kind of the cleanup where I made my comments at the end. But it&#x27;s not like this crazy command and control environment. It&#x27;s more like, I think you should be there. Your judgment seems pretty good on this. We sort of trust you to get this a little bit. it and it&#x27;s not a blank check but it&#x27;s it&#x27;s like okay we all know we&#x27;ve all had conversations about this be adults about it be smart about this would be more of the vibe i suppose more than it&#x27;s a direction that&#x27;s</div>
 </div>
 <div class="turn" data-start="1201">
   <div class="who">
     <span class="speaker">Carter</span>
     <span class="ts">20:01</span>
   </div>
-  <div class="said">that&#x27;s interesting because you know it is we were talking about it and it felt like it was one of those things it wasn&#x27;t going to have much of a lifespan anyways right and ultimately it did get kind of shut down then was it the next day or the day after by the floor crossing by Michael Baum. Yeah, two days. Right. So, you know, most of our listeners will remember Michael Baum or the floor crossing more than they&#x27;re going to remember that particular motion. But for you, I mean, it must have been kind of an ideal opportunity to gain more national exposure. I mean, you won the Hill Times up and coming work period of the year. That&#x27;s 7.8%. Yeah, 7.8%. Two</div>
+  <div class="said">that&#x27;s interesting because you know it is we were talking about it and it felt like it was one of those things it wasn&#x27;t going to have much of a lifespan anyways right and ultimately it did get kind of shut down then was it the next day or the day after by the floor crossing by Michael Baum. Yeah, two days. Right. So, you know, most of our listeners will remember Michael Baum or the floor crossing more than they&#x27;re going to remember that particular motion. But for you, I mean, it must have been kind of</div>
+</div>
+<div class="turn" data-start="1231">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">20:31</span>
+  </div>
+  <div class="said">an ideal opportunity to gain more national exposure. I mean, you won the Hill Times up and coming work period of the year. That&#x27;s 7.8%. Yeah, 7.8%. Two</div>
 </div>
 <div class="turn" data-start="1241">
   <div class="who">
@@ -981,7 +1145,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">21:12</span>
   </div>
-  <div class="said">okay so after the vote on tuesday the conservatives put out a tweet saying i think it was tuesday night hey here&#x27;s some audio this is a radio ad that we&#x27;re gonna run in calgary attacking cory hogan for voting against a pipeline again i mean i couldn&#x27;t have been more explicit in the house in my commentary you know all of it that i support the pipeline if you&#x27;re gonna move oil it&#x27;s the most environmentally responsible way to do it It&#x27;s the cheapest way to do it. It&#x27;s the safest way to do it. And by the way, we have an interest in not being so beholden to the U.S. market. So look, I mean, I think even in scenarios where oil use declines globally, you can easily see the benefit of having a piece of infrastructure like that. So let me</div>
+  <div class="said">okay so after the vote on tuesday the conservatives put out a tweet saying i think it was tuesday night hey here&#x27;s some audio this is a radio ad that we&#x27;re gonna run in calgary attacking cory hogan for voting against a pipeline again i mean i couldn&#x27;t have been more explicit in the house in my commentary you know all of it that i support the pipeline if you&#x27;re gonna move oil it&#x27;s the most environmentally responsible way to do it It&#x27;s the cheapest way to do it. It&#x27;s the safest way to do it. And by the way, we</div>
+</div>
+<div class="turn" data-start="1305">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">21:45</span>
+  </div>
+  <div class="said">have an interest in not being so beholden to the U.S. market. So look, I mean, I think even in scenarios where oil use declines globally, you can easily see the benefit of having a piece of infrastructure like that. So let me</div>
 </div>
 <div class="turn" data-start="1317">
   <div class="who">
@@ -995,7 +1166,21 @@
     <span class="speaker">Corey</span>
     <span class="ts">21:59</span>
   </div>
-  <div class="said">And I&#x27;ve said this in a lot of media. They know it is not me opposing the pipeline, but they decided to run this ad about it. now you can never tell when somebody says oh we&#x27;re going to run this ad on calgary radio donate money to get this ad on there like you&#x27;re running it once you&#x27;re spending two hundred dollars right you spend five thousand you&#x27;re spending ten thousand but i strongly suspect it was more of a fundraising tool than an advertising tool i guess time will tell but yeah they decide that this is going to be like a point of advertising about this but i ultimately don&#x27;t think they&#x27;re They&#x27;re going to use it a lot for a couple of reasons, one I went through. The other is I just don&#x27;t think they decided it was a winner for them at the end of the day. And the way you can kind of tell is the next day in question period, I mean, we all know question period doesn&#x27;t really affect the real world, but it can reflect the internal thinking of political parties. And they asked across the 40 questions or whatever they get, they asked one question about this. They asked one question. And that was the one where I spiked the ball back in Pierre Polyev&#x27;s face that Andrew Scheer threw, right?</div>
+  <div class="said">And I&#x27;ve said this in a lot of media. They know it is not me opposing the pipeline, but they decided to run this ad about it. now you can never tell when somebody says oh we&#x27;re going to run this ad on calgary radio donate money to get this ad on there like you&#x27;re</div>
+</div>
+<div class="turn" data-start="1333">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">22:13</span>
+  </div>
+  <div class="said">running it once you&#x27;re spending two hundred dollars right you spend five thousand you&#x27;re spending ten thousand but i strongly suspect it was more of a fundraising tool than an advertising tool i guess time will tell but yeah they decide that this is going to be like a point of advertising about this but i ultimately don&#x27;t think they&#x27;re They&#x27;re going to use it a lot for a couple of reasons, one I went through. The other is I</div>
+</div>
+<div class="turn" data-start="1357">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">22:37</span>
+  </div>
+  <div class="said">just don&#x27;t think they decided it was a winner for them at the end of the day. And the way you can kind of tell is the next day in question period, I mean, we all know question period doesn&#x27;t really affect the real world, but it can reflect the internal thinking of political parties. And they asked across the 40 questions or whatever they get, they asked one question about this. They asked one question. And that was the one where I spiked the ball back in Pierre Polyev&#x27;s face that Andrew Scheer threw, right?</div>
 </div>
 <div class="turn" data-start="1386">
   <div class="who">
@@ -1009,21 +1194,42 @@
     <span class="speaker">Corey</span>
     <span class="ts">23:21</span>
   </div>
-  <div class="said">Well, Mr. Speaker, we support a pipeline. We support the whole MOU, which is a careful balancing of the economy, the environment, and it gets us away from the United States as a primary trading partner, and that&#x27;s great news. It also is an MOU that balances the interests of Indigenous peoples and other jurisdictions. We do not support, and we are happy to vote against, games played by the opposition that make a pipeline less likely. That the leader of the opposition would do this is ridiculous. It lets Alberta down, but I shouldn&#x27;t be surprised. Being elected in Battle River does not an Albertan make. and that&#x27;s it and they were they moved on like they moved on the day after it happened and they don&#x27;t do that if they think they&#x27;ve got a winner yeah</div>
+  <div class="said">Well, Mr. Speaker, we support a pipeline. We support the whole MOU, which is a careful balancing of the economy, the environment, and it gets us away from the United States as a primary trading partner, and that&#x27;s great news. It also is an MOU that balances the interests of Indigenous peoples and other jurisdictions. We do not support, and we are happy to vote against, games played by the opposition that make a pipeline less likely. That the leader of the opposition would do this is ridiculous. It lets Alberta down, but I shouldn&#x27;t be surprised. Being elected in Battle River does not an Albertan make.</div>
+</div>
+<div class="turn" data-start="1437">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">23:57</span>
+  </div>
+  <div class="said">and that&#x27;s it and they were they moved on like they moved on the day after it happened and they don&#x27;t do that if they think they&#x27;ve got a winner yeah</div>
 </div>
 <div class="turn" data-start="1447">
   <div class="who">
     <span class="speaker">Zain</span>
     <span class="ts">24:07</span>
   </div>
-  <div class="said">can i can i can i ask you about when you initially said you know you kind of ported your thinking up to the to the mothership it was like you know we got to vote no on this and and subsequently there and then you probably knew knew their play, which was, and it&#x27;s very clear, the ad, I think, is one reflection of it, but they now have this half-truth, which is Corey Hogan voted against a pipeline. Does that bother you in some way? And we know, and to your point, Carter, we always concluded that this was going to be about fundraising. This was about their end of year, as much as was anything. This was about base motivation. But they&#x27;ve got that half-truth that they can float out. How much does that bother you, both for your MP brain, but also your strategist brain, which I guess are one and the same, and this is a good example of it, right?</div>
+  <div class="said">can i can i can i ask you about when you initially said you know you kind of ported your thinking up to the to the mothership it was like you know we got to vote no on this and and subsequently there and then you probably knew knew their play, which was, and it&#x27;s very clear, the ad, I think, is one reflection of it, but they now have this half-truth, which is Corey Hogan voted against a pipeline.</div>
+</div>
+<div class="turn" data-start="1474">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">24:34</span>
+  </div>
+  <div class="said">Does that bother you in some way? And we know, and to your point, Carter, we always concluded that this was going to be about fundraising. This was about their end of year, as much as was anything. This was about base motivation. But they&#x27;ve got that half-truth that they can float out. How much does that bother you, both for your MP brain, but also your strategist brain, which I guess are one and the same, and this is a good example of it, right?</div>
 </div>
 <div class="turn" data-start="1497">
   <div class="who">
     <span class="speaker">Corey</span>
     <span class="ts">24:57</span>
   </div>
-  <div class="said">Well, it bothers me they lie, obviously, especially when you&#x27;re sort of the victim of the lie. And I don&#x27;t think this is one of those things where it&#x27;s reasonable people can disagree. They clearly, clearly lied, which I can say because I&#x27;m not in the House of Commons. Isn&#x27;t that nice? But, I mean, ultimately, I represent Calgary Confederation. There&#x27;s a diversity of viewpoints. It&#x27;s a super educated writing. I really think Pierre Polyev does an absolute disservice to himself and the constituents of both my writing and more broadly in Alberta with such nonsense himself because this is like it takes three seconds to scratch at this and realize that he&#x27;s lying. And then he&#x27;s just undermined his own credibility, right? He&#x27;s just deeply eroded his own credibility. And also, I&#x27;ll say, Zane, I am kind of staking, and I have since day one, kind of my whole political career on a ridiculous theory that people are sick of being spun and lied to and all of the bullshit that&#x27;s going on. So let&#x27;s just try something a little bit different. Let&#x27;s just try to be a little more candid, try to be a little more honest and try to be a little bit longer form, I suppose, about why we&#x27;re taking the stance as we are and not feel like we need to win every exchange. change so i don&#x27;t know it bothers me they lied i&#x27;m not actually even sure that it cuts against me uh i&#x27;m not sure how many votes i would lose and i would observe well it&#x27;s an open question how many votes i or a liberal candidate would lose as a result of this he&#x27;s two and a half mps because of his heel ways you know it&#x27;s not as though there&#x27;s not a counterfactual here which is these games you&#x27;re playing, Pierre, this unserious approach you&#x27;re taking to it, this idea that you&#x27;ve got to win every exchange, you don&#x27;t care how badly you have to torque it, you don&#x27;t care whether the country suffers or not, it is having a serious effect on his own political fortunes. This kind of attitude is exactly what got Chris D&#x27;Entremont to leave the Conservative Party. This kind of attitude is exactly, I&#x27;m not saying this event, but this kind of attitude is exactly what got Michael Ma to leave the Conservative Party. and listen matt jenneru is is in kind of mp protection program right now it sort of feels like but no kidding he also clearly was not enthused with things i mean i get it there&#x27;s a lot of spin out there but honestly it&#x27;s pretty clear like there hasn&#x27;t been a lot of votes from it</div>
+  <div class="said">Well, it bothers me they lie, obviously, especially when you&#x27;re sort of the victim of the lie. And I don&#x27;t think this is one of those things where it&#x27;s reasonable people can disagree. They clearly, clearly lied, which I can say because I&#x27;m not in the House of Commons. Isn&#x27;t that nice? But, I mean, ultimately, I represent Calgary Confederation. There&#x27;s a diversity of viewpoints. It&#x27;s a super educated writing. I really think Pierre Polyev does an absolute disservice to himself and the constituents of both my writing and more broadly in Alberta with such nonsense himself because this is like it takes three seconds to scratch at this and realize that he&#x27;s lying. And then he&#x27;s just undermined his own credibility, right? He&#x27;s just deeply eroded his own credibility. And also, I&#x27;ll say, Zane, I am kind of staking, and I have since day one, kind of my whole political career on a ridiculous theory that people are sick of being spun and lied to and all of the bullshit that&#x27;s going on. So let&#x27;s just try something a little bit different. Let&#x27;s just try to be a little more candid, try to be a little more honest and try to be a little bit longer form, I suppose, about why we&#x27;re taking the stance as we are and not feel like we need to win every exchange. change so i don&#x27;t know it bothers me they lied i&#x27;m not actually even sure that it cuts against me uh i&#x27;m not sure how many votes i would lose and i would observe well it&#x27;s an open question how many votes i or a liberal candidate would lose as a result of this he&#x27;s two and a half mps because of his heel ways you know it&#x27;s not as though there&#x27;s not a counterfactual here which is these games you&#x27;re playing, Pierre, this unserious approach you&#x27;re taking to it, this idea that you&#x27;ve got to win every exchange, you don&#x27;t care how badly you have to torque it, you don&#x27;t care whether the country suffers or not, it is having a serious effect on his own political fortunes. This kind of attitude is exactly what got Chris D&#x27;Entremont to leave the Conservative Party. This kind of attitude is exactly, I&#x27;m not saying this event, but this kind of attitude is exactly what got Michael Ma to leave the Conservative Party. and</div>
+</div>
+<div class="turn" data-start="1623">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">27:03</span>
+  </div>
+  <div class="said">listen matt jenneru is is in kind of mp protection program right now it sort of feels like but no kidding he also clearly was not enthused with things i mean i get it there&#x27;s a lot of spin out there but honestly it&#x27;s pretty clear like there hasn&#x27;t been a lot of votes from it</div>
 </div>
 <div class="turn" data-start="1642">
   <div class="who">
@@ -1065,7 +1271,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">28:20</span>
   </div>
-  <div class="said">well you know i i say a lot because people are always asking me like how How do you like it? I say I love the work and I hate the job is the answer that I&#x27;ve settled on after being here for eight months. Any given moment, I&#x27;m really enjoying myself. I like basically everything that being an MP entails. I like talking to constituents. I like being in the House of Commons. I like making speeches. I like making announcements. I like talking to the media. I like these things. Inherently, I guess, when I&#x27;m saying that, I find them kind of fun. The job kind of sucks. long long hours you&#x27;re away from your family i miss my wife and kids but i like the job i do think the job is fun that doesn&#x27;t mean i don&#x27;t take the job seriously what</div>
+  <div class="said">well you know i i say a lot because people are always asking me like how How do you like it? I say I love the work and I hate the job is the answer that I&#x27;ve settled on after being here for eight months. Any given moment, I&#x27;m really enjoying myself. I like basically everything that being an MP entails. I like talking to constituents. I like being in the House of Commons. I like making speeches. I like making announcements. I like talking to the media. I like these things. Inherently, I guess, when I&#x27;m saying that, I find them kind of fun.</div>
+</div>
+<div class="turn" data-start="1729">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">28:49</span>
+  </div>
+  <div class="said">The job kind of sucks. long long hours you&#x27;re away from your family i miss my wife and kids but i like the job i do think the job is fun that doesn&#x27;t mean i don&#x27;t take the job seriously what</div>
 </div>
 <div class="turn" data-start="1741">
   <div class="who">
@@ -1100,7 +1313,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">29:18</span>
   </div>
-  <div class="said">I mean, nobody gets elected without just wanting to change things and do things, right? So what I want to do more of is more of the policy work, working more with NRCan, the department, trying to get some good strategies going, working on how we can resolve some big, difficult problems like how we support the forestry sector. Those are big, difficult problems. I want to do more of that. And maybe paradoxically, I also want to do a little bit more of the communications. But I think in particular as it comes to the West, and I&#x27;m doing that classic Alberta thing of when I say the West, I don&#x27;t mean BC. You know, I mean, Alberta. No one does. That kind of means</div>
+  <div class="said">I mean, nobody gets elected without just wanting to change things and do things, right? So what I want to do more of is more of the policy work, working more with NRCan, the department, trying to get some good strategies going, working on how we can resolve some big, difficult problems like how we support the forestry sector.</div>
+</div>
+<div class="turn" data-start="1778">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">29:38</span>
+  </div>
+  <div class="said">Those are big, difficult problems. I want to do more of that. And maybe paradoxically, I also want to do a little bit more of the communications. But I think in particular as it comes to the West, and I&#x27;m doing that classic Alberta thing of when I say the West, I don&#x27;t mean BC. You know, I mean, Alberta. No one does. That kind of means</div>
 </div>
 <div class="turn" data-start="1796">
   <div class="who">
@@ -1128,7 +1348,14 @@
     <span class="speaker">Carter</span>
     <span class="ts">30:23</span>
   </div>
-  <div class="said">Well, I&#x27;m intrigued with how you deal with rumor mills and how do you differentiate, you know, the rumors of more floor crossers coming, the rumors of Cabinet, the rumors of, you know, Pierre Polyev and what&#x27;s going to happen in his leadership review. you and how do you deal with the rumors versus the reality of the everyday how do you not get caught up or do you get caught up in the rumor mill and kind of the the punditry and the press speculation about what&#x27;s going to happen in your future because this is for us it&#x27;s kind of it&#x27;s kind of a game and when the rumors happen you know we talk about the rumors we talk about what&#x27;s going on we talk about what&#x27;s not going on we give ourselves probabilities we we make predictions it&#x27;s all kind of fun he&#x27;s been</div>
+  <div class="said">Well, I&#x27;m intrigued with how you deal with rumor mills and how do you differentiate, you know, the rumors of more floor crossers coming, the rumors of Cabinet, the rumors of, you know, Pierre Polyev and what&#x27;s going to happen in his leadership review. you and how do you deal with the rumors versus the</div>
+</div>
+<div class="turn" data-start="1840">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">30:40</span>
+  </div>
+  <div class="said">reality of the everyday how do you not get caught up or do you get caught up in the rumor mill and kind of the the punditry and the press speculation about what&#x27;s going to happen in your future because this is for us it&#x27;s kind of it&#x27;s kind of a game and when the rumors happen you know we talk about the rumors we talk about what&#x27;s going on we talk about what&#x27;s not going on we give ourselves probabilities we we make predictions it&#x27;s all kind of fun he&#x27;s been</div>
 </div>
 <div class="turn" data-start="1868">
   <div class="who">
@@ -1177,7 +1404,21 @@
     <span class="speaker">Corey</span>
     <span class="ts">31:45</span>
   </div>
-  <div class="said">uh well that&#x27;s that&#x27;s very meta i like that that&#x27;s profound how you end that the rumor is the reality here&#x27;s the thing we&#x27;ve been around a long time all of us right this is not this is my first time being an electorate federal mp but but I&#x27;ve worked in federal politics before. I&#x27;ve been a senior official in the Alberta government. I&#x27;ve seen lots of legislatures. And I guess what I would say is it&#x27;s always a little bit like this. Like the rumors far eclipse reality. You hear way more than actually happens. And so you get pretty used to knowing that not everything you hear is true. And I guess I would describe it like this to somebody who&#x27;s not worked in one of those environments. A wish becomes a rumor so quickly in Ottawa, right? yeah and you can see how it happens it&#x27;s oh when wouldn&#x27;t it be cool if x crossed to um to the liberal well you know i&#x27;ll just use an example of an mp who i don&#x27;t think is gonna michelle rample is gonna wouldn&#x27;t it be cool if michelle rample crossed to the liberals right and then the next person is yeah we were just talking about it would be cool if michelle rample crossed to liberals and then it becomes yeah did you hear that people are talking about michelle rample crossing to the liberals and it becomes hey i just heard a rumor michelle rample&#x27;s crossing into the liberals and that happens so fast in this town in this town being ottawa i&#x27;m actually back home in calgary but you know</div>
+  <div class="said">uh well that&#x27;s that&#x27;s very meta i like that that&#x27;s profound how you end that the rumor is the reality here&#x27;s the thing we&#x27;ve been around a long time all of us right this is not this is my first time being an electorate federal mp but but I&#x27;ve worked in federal politics before. I&#x27;ve been a senior official in the Alberta government. I&#x27;ve seen lots of legislatures. And I guess what I would say is it&#x27;s</div>
+</div>
+<div class="turn" data-start="1929">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">32:09</span>
+  </div>
+  <div class="said">always a little bit like this. Like the rumors far eclipse reality. You hear way more than actually happens. And so you get pretty used to knowing that not everything you hear is true. And I guess I would describe it like this to somebody who&#x27;s not worked in one of those environments. A wish becomes a rumor so quickly in Ottawa, right? yeah and you can see how it happens it&#x27;s oh when wouldn&#x27;t it be cool if x</div>
+</div>
+<div class="turn" data-start="1955">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">32:35</span>
+  </div>
+  <div class="said">crossed to um to the liberal well you know i&#x27;ll just use an example of an mp who i don&#x27;t think is gonna michelle rample is gonna wouldn&#x27;t it be cool if michelle rample crossed to the liberals right and then the next person is yeah we were just talking about it would be cool if michelle rample crossed to liberals and then it becomes yeah did you hear that people are talking about michelle rample crossing to the liberals and it becomes hey i just heard a rumor michelle rample&#x27;s crossing into the liberals and that happens so fast in this town in this town being ottawa i&#x27;m actually back home in calgary but you know</div>
 </div>
 <div class="turn" data-start="1984">
   <div class="who">
@@ -1205,7 +1446,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">34:05</span>
   </div>
-  <div class="said">What is it? I&#x27;ll tell you the one. So I will say that there is, at the staff level, whole ecosystem of conversations occurring that the electeds don&#x27;t always get to play in. And so this particular one came to me through Jacob, who works, he&#x27;s my head of parliamentary affairs. He says, hey, I heard a rumor. And he tells me this rumor. And it&#x27;s like 100% source, very, very solid. Of course, it&#x27;s going to happen, right? By 3pm, it was no, 0% chance that was mistaken. That know no it turns out the prime minister just invited cabinet to a christmas party or something to that effect right so yeah it happens like that you you have to discount heavily any rumors you hear in ottawa but carter your point at the end about how the rumors become part of the story is true like you then start living in a world where you talk to people about rumors even if you don&#x27;t believe they&#x27;re true just because you know those rumors might be affecting them right and it&#x27;s like hey i saw those rumors too whatever man you know yeah it&#x27;s very very interesting uh</div>
+  <div class="said">What is it? I&#x27;ll tell you the one. So I will say that there is, at the staff level, whole ecosystem of conversations occurring that the electeds don&#x27;t always get to play in. And so this particular one came to me through Jacob, who works, he&#x27;s my head of parliamentary affairs. He says, hey, I heard a rumor. And he tells me this rumor. And it&#x27;s like 100% source, very, very solid. Of course, it&#x27;s going to happen, right? By 3pm, it was no, 0% chance that was mistaken. That</div>
+</div>
+<div class="turn" data-start="2074">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">34:34</span>
+  </div>
+  <div class="said">know no it turns out the prime minister just invited cabinet to a christmas party or something to that effect right so yeah it happens like that you you have to discount heavily any rumors you hear in ottawa but carter your point at the end about how the rumors become part of the story is true like you then start living in a world where you talk to people about rumors even if you don&#x27;t believe they&#x27;re true just because you know those rumors might be affecting them right and it&#x27;s like hey i saw those rumors too whatever man you know yeah it&#x27;s very very interesting uh</div>
 </div>
 <div class="turn" data-start="2107">
   <div class="who">
@@ -1240,7 +1488,28 @@
     <span class="speaker">Zain</span>
     <span class="ts">35:44</span>
   </div>
-  <div class="said">that... Congratulations to Talib Nurmahmet for maybe one day becoming a minister. Have I jinxed it for Talib? Have I jinxed it for Talib? I probably have. Why would you do that to me? You know what I think would make it better, Corey? An award presented by you. Just... God. uh okay talk to me about this i am intrigued maybe i shouldn&#x27;t be but i think you i shouldn&#x27;t say you novelly hit on something but this strategy slash pundit mode thing is is interesting to me do you feel like more mps are going to play this role of unpacking analyzing explaining you you saw of course your version of it in this particular instance which was on the floor in front of the cameras you see another version of it which is nate erskine smith kind of doing a John Oliver style daily show, like News Explainer, being like, let me give you the analysis of what to think about the situation. Not the same, slightly different, but in the same vein. And you talked about Michelle Rempel, you know, in your hypothetical example. I remember back on the podcast, we were talking about Michelle Rempel starting a sub stack and how novel that was at the time and how she was going to try to analyze what the Trudeau government, why the Trudeau government can&#x27;t make a move here because and she was kind of walking us through or walking her readers through this. is that is that drumbeat getting louder do you feel like that&#x27;s like it is now just part of the job do you feel like it&#x27;s a different angle of the job we&#x27;ve talked about this before but i think this week really kind of crystallized for me um at least you know a version of it through through what you&#x27;ve been doing i&#x27;m just curious to get your thoughts on this</div>
+  <div class="said">that... Congratulations to Talib Nurmahmet for maybe one day becoming a minister. Have I jinxed it for Talib? Have I jinxed it for Talib? I probably have. Why would you do that to me? You know what I think would make it better, Corey? An award presented by you. Just... God.</div>
+</div>
+<div class="turn" data-start="2158">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">35:58</span>
+  </div>
+  <div class="said">uh okay talk to me about this i am intrigued maybe i shouldn&#x27;t be but i think you i shouldn&#x27;t say you novelly hit on something but this strategy slash pundit mode thing is is interesting to me do you feel like more mps are going to play this role of unpacking analyzing explaining you you saw of course your version of it in this particular instance which was on the floor in front of the cameras you see another version of it which is nate erskine smith kind of doing a John Oliver style daily show, like News Explainer, being like, let me give you the analysis of what to think about the situation. Not</div>
+</div>
+<div class="turn" data-start="2190">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">36:30</span>
+  </div>
+  <div class="said">the same, slightly different, but in the same vein. And you talked about Michelle Rempel, you know, in your hypothetical example. I remember back on the podcast, we were talking about Michelle Rempel starting a sub stack and how novel that was at the time and how she was going to try to analyze what the Trudeau government, why the Trudeau government can&#x27;t make a move here because and she was kind of walking us through or walking her readers through this.</div>
+</div>
+<div class="turn" data-start="2212">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">36:52</span>
+  </div>
+  <div class="said">is that is that drumbeat getting louder do you feel like that&#x27;s like it is now just part of the job do you feel like it&#x27;s a different angle of the job we&#x27;ve talked about this before but i think this week really kind of crystallized for me um at least you know a version of it through through what you&#x27;ve been doing i&#x27;m just curious to get your thoughts on this</div>
 </div>
 <div class="turn" data-start="2228">
   <div class="who">
@@ -1261,7 +1530,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">39:24</span>
   </div>
-  <div class="said">Well, I was talking about this last time we did like this, not at the live show where we did that quasi one. It&#x27;s been really interesting to see all of us as new MPs find our thing. And I think I mentioned there are some that are really good in the House. They&#x27;re like on the House stream. Like they are good at talking about issues in the House. They like to talk about issues in the House. There are some that are really good at stakeholder management. And there are some that find a community that they can really champion and be like the liberal representative of community X, you know, whatever it is, the Sri Lankan community or whatever, right? I think about the caucus chair, Jamie Maloney, who wears many hats. I&#x27;m not trying to simplify him. But he is known for his commitment to Canada-Ireland relations, right? And you see people pick these things and then really run with them and go with them. And I&#x27;ll say, it wouldn&#x27;t work if we didn&#x27;t have a bit of a spread there. It&#x27;s really important. But self</div>
+  <div class="said">Well, I was talking about this last time we did like this, not at the live show where we did that quasi one. It&#x27;s been really interesting to see all of us as new MPs find our thing. And I think I mentioned there are some that are really good in the House. They&#x27;re like on the House stream. Like they are good at talking about issues in the House. They like to talk about issues in the House. There are some that are really good at stakeholder management. And there are some that find a community that they can really champion and be like the liberal representative of community X, you know, whatever it is, the Sri Lankan community or whatever, right? I think about the caucus chair, Jamie Maloney, who wears many hats. I&#x27;m not trying to simplify him. But he is known for his commitment to Canada-Ireland relations, right? And you see people pick these things and then really run with them and go with them.</div>
+</div>
+<div class="turn" data-start="2410">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">40:10</span>
+  </div>
+  <div class="said">And I&#x27;ll say, it wouldn&#x27;t work if we didn&#x27;t have a bit of a spread there. It&#x27;s really important. But self</div>
 </div>
 <div class="turn" data-start="2416">
   <div class="who">
@@ -1303,7 +1579,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">40:36</span>
   </div>
-  <div class="said">of dominates it. Exactly, right? And the person who&#x27;s got the best kind of pull to it, or maybe there&#x27;s two or three, or maybe it&#x27;s broken by region. But this happens all the time. And I can only speak to how it works in the Liberal Party. For all I know, the Conservatives are very descriptive about this and say, you will do X, you will do Y. I don&#x27;t think they are. I don&#x27;t get that read. But yeah, really what it is, is you get there as an MP. it&#x27;s this unlimited smorgasbord of activities you can make the job anything you want absolutely anything like the only thing that is constitutionally required of you is to show up right and even that is like you don&#x27;t need to show up all the time and um and from there you make the job what you want it to be maybe you are the person who goes to every community event maybe you&#x27;re the person who handles all of the difficult casework in an area and like you you manage for Or say the liberals, like you&#x27;re dealing with all of the immigration files or whatnot. People find their place, though. And we all, well, I think so far, we all kind of have naturally gravitated to those things</div>
+  <div class="said">of dominates it. Exactly, right? And the person who&#x27;s got the best kind of pull to it, or maybe there&#x27;s two or three, or maybe it&#x27;s broken by region. But this happens all the time. And I can only speak to how it works in the Liberal Party. For all I know, the Conservatives are very descriptive about this and say, you will do X, you will do Y. I don&#x27;t think they are. I don&#x27;t get that read. But yeah, really what it is, is you get there as an MP. it&#x27;s this unlimited smorgasbord of activities you can make the job anything you want absolutely anything like the only thing that is constitutionally required of you is to show up right and even that is like you don&#x27;t need to show up all the time and um and from there you make the job what you want it to be maybe you are the person who goes to every community event maybe you&#x27;re the person who handles all of the difficult casework in an area and like you you manage for Or say the liberals, like you&#x27;re dealing with all of the immigration files or whatnot.</div>
+</div>
+<div class="turn" data-start="2489">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">41:29</span>
+  </div>
+  <div class="said">People find their place, though. And we all, well, I think so far, we all kind of have naturally gravitated to those things</div>
 </div>
 <div class="turn" data-start="2496">
   <div class="who">
@@ -1345,7 +1628,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">42:57</span>
   </div>
-  <div class="said">And I may even just add to Carter&#x27;s question, which is a term you mentioned earlier, Corey, which is cleanup, right? Like, and not to say, that was just where you were in batting order. But I could also see Corey Hogan being like the person that you put in at the end, maybe not to lead announcement where there&#x27;s no questions, but like clean up the mess, massage the corner, see the spots that were not necessarily uh you know talked about in the way that we needed to and then you know do the cleanup or i mean the responsive like you could almost be like that&#x27;s that&#x27;s his specific role like that&#x27;s an amazing sort of capacity to be so</div>
+  <div class="said">And I may even just add to Carter&#x27;s question, which is a term you mentioned earlier, Corey, which is cleanup, right?</div>
+</div>
+<div class="turn" data-start="2583">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">43:03</span>
+  </div>
+  <div class="said">Like, and not to say, that was just where you were in batting order. But I could also see Corey Hogan being like the person that you put in at the end, maybe not to lead announcement where there&#x27;s no questions, but like clean up the mess, massage the corner, see the spots that were not necessarily uh you know talked about in the way that we needed to and then you know do the cleanup or i mean the responsive like you could almost be like that&#x27;s that&#x27;s his specific role like that&#x27;s an amazing sort of capacity to be so</div>
 </div>
 <div class="turn" data-start="2607">
   <div class="who">
@@ -1408,14 +1698,28 @@
     <span class="speaker">Zain</span>
     <span class="ts">44:25</span>
   </div>
-  <div class="said">Well, I will add that, and this is a drumbeat in the corporate world as well, but it&#x27;s often the folks who do comms that are, like, stuck in the comms category so they&#x27;re so good at it. But what they want to do is one sort of iteration or like standard deviation away, which is kind of comms, but kind of nots, which is strategy. Right. Like, right. Funny. Yeah. Yeah. exactly. But to be clear, like, strategy on the pecking order seems to have a higher spot than comms in some way. But people were like, well, if you&#x27;re good at comms, we&#x27;re going to keep you there, right? You know, harken back to our corporate experience where we&#x27;ve seen that play out, right? Harken that to how org structures where we collectively or end individually have seen that play out. So how do you kind of ensure that it&#x27;s not just comms, but you add the strategic in front of comms, and then you maybe drop the comms and add strategy as its whole thing? Or is that just work and roles reserved primarily for folks that are on staff, I should say</div>
+  <div class="said">Well, I will add that, and this is a drumbeat in the corporate world as well, but it&#x27;s often the folks who do comms that are, like, stuck in the comms category so they&#x27;re so good at it. But what they want to do is one sort of iteration or like standard deviation away, which is kind of comms, but kind of nots, which is strategy. Right. Like, right. Funny. Yeah. Yeah.</div>
+</div>
+<div class="turn" data-start="2689">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">44:49</span>
+  </div>
+  <div class="said">exactly. But to be clear, like, strategy on the pecking order seems to have a higher spot than comms in some way. But people were like, well, if you&#x27;re good at comms, we&#x27;re going to keep you there, right? You know, harken back to our corporate experience where we&#x27;ve seen that play out, right? Harken that to how org structures where we collectively or end individually have seen that play out. So how do you kind of ensure that it&#x27;s not just comms, but you add the strategic in front of comms, and then you maybe drop the comms and add strategy as its whole thing? Or is that just work and roles reserved primarily for folks that are on staff, I should say</div>
 </div>
 <div class="turn" data-start="2726">
   <div class="who">
     <span class="speaker">Corey</span>
     <span class="ts">45:26</span>
   </div>
-  <div class="said">Well, look, first I&#x27;ll say, what the F do I know? Because I&#x27;m right in the middle of it right now, so I have no sense of that. But I do believe you&#x27;re better to be known for one thing than zero things, and it is a very big caucus. And I don&#x27;t believe it&#x27;s a bad thing that I am known for at least one thing, right? I think that&#x27;s okay. Okay, we&#x27;ll see if I feel the same way in a year, in two years, in 10 years after my third re-election or something to that effect, right? But right now, I think it would almost be kind of greedy to be like, well, I want to be known to be great at everything or whatnot. You find a place, you add value, you hope that exposes you to other opportunities. That&#x27;s life. That&#x27;s not even politics. That&#x27;s just life.</div>
+  <div class="said">Well, look, first I&#x27;ll say, what the F do I know? Because I&#x27;m right in the middle of it right now, so I have no sense of that. But I do believe you&#x27;re better to be known for one thing than zero things, and it is a very big caucus. And I don&#x27;t believe it&#x27;s a bad thing that I am known for at least one thing, right? I think that&#x27;s okay. Okay, we&#x27;ll see if I feel the same way in a year, in two years, in 10 years after my third re-election or something to that effect, right? But</div>
+</div>
+<div class="turn" data-start="2756">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">45:56</span>
+  </div>
+  <div class="said">right now, I think it would almost be kind of greedy to be like, well, I want to be known to be great at everything or whatnot. You find a place, you add value, you hope that exposes you to other opportunities. That&#x27;s life. That&#x27;s not even politics. That&#x27;s just life.</div>
 </div>
 <div class="turn" data-start="2772">
   <div class="who">
@@ -1443,7 +1747,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">47:37</span>
   </div>
-  <div class="said">Well, I don&#x27;t know. I mean, again, I&#x27;m still living it. I think in politics, communications is rewarded more. But I think in a lot of corporate jobs I&#x27;ve had, I feel almost like the comms thing is almost like the junior version of it. You might be a vice president, but you&#x27;re the vice president of comms. And I&#x27;m not actually talking about my last job. I had a lot of responsibilities there. But you see this in a lot of organizations. Like, oh, that&#x27;s the vice president of marketing. serious job. Oh, that&#x27;s the vice president of operations. Yeah, serious job. That&#x27;s the vice president of comms. Okay, well,</div>
+  <div class="said">Well, I don&#x27;t know. I mean, again, I&#x27;m still living it. I think in politics, communications is rewarded more. But I think in a lot of corporate jobs I&#x27;ve had, I feel almost like the comms thing is almost like the junior version of it. You might be a vice president, but you&#x27;re the vice president of comms. And I&#x27;m not actually talking about my last job. I had a lot of responsibilities there. But you see this in a lot of organizations. Like, oh, that&#x27;s the vice president of marketing.</div>
+</div>
+<div class="turn" data-start="2882">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">48:02</span>
+  </div>
+  <div class="said">serious job. Oh, that&#x27;s the vice president of operations. Yeah, serious job. That&#x27;s the vice president of comms. Okay, well,</div>
 </div>
 <div class="turn" data-start="2887">
   <div class="who">
@@ -1492,7 +1803,21 @@
     <span class="speaker">Corey</span>
     <span class="ts">50:19</span>
   </div>
-  <div class="said">well can i say one of the things that has been a long-standing belief of mine is one of the challenges any communicator has is you you work with a lot of non-communicator well two things one is everybody thinks they understand communications because everybody talks everybody has a sense of aesthetics right it like there is there is nobody lacks an opinion on communications But I think one of the things that is maybe a caution to people outside of communications but also inside of communications is it is really easy in communications to conflate a fluency with communications tactics with good communicator. And they are very different. It is a tactic to be entertaining. It is a tactic to be noteworthy. It is a tactic to be able to manage the media. But if you&#x27;re not doing those in service of embedding a message, which is the purpose of communications, I would argue you&#x27;re not actually a good communicator. but stepping back you can be a good communicator and be deficient in some of those tactics you just know that the your goal at the end of the day is to put a message in somebody&#x27;s brain because that is the essence of professional communications and and it gets really muddled around very quickly and it gets observed by people in very interesting ways because you can walk into a room be like oh my god that&#x27;s the most charming person in the world that&#x27;s the funniest person in the world but if their job was to get a point into your brain and they failed at it well the world&#x27;s full of entertainers but it doesn&#x27;t mean they&#x27;re a great communicator</div>
+  <div class="said">well can i say one of the things that has been a long-standing belief of mine is one of the challenges any communicator has is you you work with a lot of non-communicator well two things one is everybody thinks they understand communications because everybody talks everybody has a sense of aesthetics right it like there is there is nobody lacks an opinion on communications But I think one of the things that is maybe a caution to people outside of communications but also inside of communications is it is really easy in communications to conflate a fluency with communications tactics with good communicator. And they are very different. It is a tactic to be entertaining. It is a tactic to be noteworthy. It is a tactic to be able to manage the media.</div>
+</div>
+<div class="turn" data-start="3067">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">51:07</span>
+  </div>
+  <div class="said">But if you&#x27;re not doing those in service of embedding a message, which is the purpose of communications, I would argue you&#x27;re not actually a good communicator. but stepping back you can be a good communicator and be deficient in some of those tactics you just know that the your goal at the end of the day is to put a message in somebody&#x27;s brain because that is the essence of professional communications and and it gets really muddled around very quickly and it gets observed by people in very interesting ways because you can walk into a room be like oh my god that&#x27;s the most charming person in the world that&#x27;s the funniest person in the world but</div>
+</div>
+<div class="turn" data-start="3097">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">51:37</span>
+  </div>
+  <div class="said">if their job was to get a point into your brain and they failed at it well the world&#x27;s full of entertainers but it doesn&#x27;t mean they&#x27;re a great communicator</div>
 </div>
 <div class="turn" data-start="3105">
   <div class="who">
@@ -1562,7 +1887,14 @@
     <span class="speaker">Zain</span>
     <span class="ts">53:08</span>
   </div>
-  <div class="said">question so far. Are you worried about that reputation in some way that that in the sense that you might not just say you&#x27;d be too bright of a star, but like, you know what I&#x27;m trying to get at, which is that it could be a little bit of a Corey show, which in a workplace, it kind of was at certain points where it&#x27;s like, just give it to Corey. like he&#x27;s just he can manage it he can write it he can do whatever he&#x27;ll probably be the best to present it oh you need it coded cory will do that oh you need a design for fucking cory can do that oh you need a script for it like i&#x27;m not fucking joking carter like that was our workplace at the end where i had to sell it right i mean there was i mean it was increasingly variable proficiency yes when i say variable i mean decreasing uh that&#x27;s are you actually worried about that because that is a reputation that you the i&#x27;m not saying you have that reputation and i&#x27;m not saying that but yeah there is something about that in the sense that like it could it could take up a lot of oxygen yeah if it increases in that way</div>
+  <div class="said">question so far. Are you worried about that reputation in some way that that in the sense that you might not just say you&#x27;d be too bright of a star, but like, you know what I&#x27;m trying to get at, which is that it could be a little bit of a Corey show, which in a workplace, it kind of was at certain points where it&#x27;s like, just give it to Corey. like he&#x27;s just he can manage it he can write it he can do whatever he&#x27;ll probably be the best to present it oh you need it coded cory will do that oh you need a design for fucking cory can do that oh you need a script for it like i&#x27;m not fucking joking carter like that was our workplace at the end where i had to sell it</div>
+</div>
+<div class="turn" data-start="3225">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">53:45</span>
+  </div>
+  <div class="said">right i mean there was i mean it was increasingly variable proficiency yes when i say variable i mean decreasing uh that&#x27;s are you actually worried about that because that is a reputation that you the i&#x27;m not saying you have that reputation and i&#x27;m not saying that but yeah there is something about that in the sense that like it could it could take up a lot of oxygen yeah if it increases in that way</div>
 </div>
 <div class="turn" data-start="3254">
   <div class="who">
@@ -1583,7 +1915,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">54:24</span>
   </div>
-  <div class="said">it. Well, and I was a big micromanager. But I&#x27;ll tell you something. When I got to the government of Alberta, for sure, there was a – okay, it was a really interesting time. So I was made a senior official in, I think, October of 2016. And January comes around of 2017. And I was – somebody had told me, like, January would be quiet. It was not quiet, right? It was just a different kind of busy. but i was still trying to run my life basically as i&#x27;ll just do it all and i ran a department well at that point we weren&#x27;t an integrated department but i had a big big team you know and the communications apparatus of the government was 300 plus people right and i was still trying to do it as though i was a single performer who could just do it all</div>
+  <div class="said">it. Well, and I was a big micromanager. But I&#x27;ll tell you something. When I got to the government of Alberta, for sure, there was a – okay, it was a really interesting time. So I was made a senior official in, I think, October of 2016.</div>
+</div>
+<div class="turn" data-start="3283">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">54:43</span>
+  </div>
+  <div class="said">And January comes around of 2017. And I was – somebody had told me, like, January would be quiet. It was not quiet, right? It was just a different kind of busy. but i was still trying to run my life basically as i&#x27;ll just do it all and i ran a department well at that point we weren&#x27;t an integrated department but i had a big big team you know and the communications apparatus of the government was 300 plus people right and i was still trying to do it as though i was a single performer who could just do it all</div>
 </div>
 <div class="turn" data-start="3311">
   <div class="who">
@@ -1597,7 +1936,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">55:14</span>
   </div>
-  <div class="said">am good at a lot of things uh and i&#x27;m better than a lot of the people who worked It worked for me doing those things in many things. That&#x27;s why I ended up getting to be the boss, right? But the most important lesson I learned was in that January of 2017, when I basically almost broke, because you cannot run a 300 person communications apparatus by trying to do it all yourself. And you have to learn that you can&#x27;t do it all. You can&#x27;t try to do it all. You can&#x27;t be the bottleneck where all of the work goes to and not responding to emails. And you&#x27;ve got to get your teams to do it. And I think that, you know, we have not had the opportunity, the three of us, to work together since Hill and Knowlton. You know, we&#x27;ve worked on projects together. But actually, Carter, I&#x27;ll bet you you could attest on the campaign. There were things that I hyper fixated on, for sure. Really? I was not a micromanager. Except for one</div>
+  <div class="said">am good at a lot of things uh and i&#x27;m better than a lot of the people who worked It worked for me doing those things in many things. That&#x27;s why I ended up getting to be the boss, right? But the most important lesson I learned was in that January of 2017, when I basically almost broke, because you cannot run a 300 person communications apparatus by trying to do it all yourself. And you have to learn that you can&#x27;t do it all. You can&#x27;t try to do it all. You can&#x27;t be the bottleneck where all of the work goes to and not responding to emails. And you&#x27;ve got to get your teams to do it. And I think that, you know, we have not had the opportunity, the three of us, to work together since Hill and Knowlton. You know, we&#x27;ve worked on projects together. But actually, Carter, I&#x27;ll bet you you could attest on the campaign.</div>
+</div>
+<div class="turn" data-start="3356">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">55:56</span>
+  </div>
+  <div class="said">There were things that I hyper fixated on, for sure. Really? I was not a micromanager. Except for one</div>
 </div>
 <div class="turn" data-start="3362">
   <div class="who">
@@ -1709,7 +2055,14 @@
     <span class="speaker">Corey</span>
     <span class="ts">57:51</span>
   </div>
-  <div class="said">Look, it is a funny job. And it is really easy to get wrapped into. And in fact, we talked a lot, like almost exclusively about Ottawa, right? And the drama in Ottawa and what does it mean? And how do you become known for something amongst leaders in Ottawa? And you know, this weird caste system that we all have. And, you know, I guess I just want to kind of ground this all by saying, it&#x27;s not remotely about Ottawa at the end of the day. And so one of the things that we all need to do as MPs, but something I try to remind myself, is that Ottawa the cherry on top, right? You&#x27;ve got to take care of your constituency at home. And when you&#x27;re talking about things like communication, that&#x27;s actually where you&#x27;ve got to put a lot of effort if you&#x27;re an MP. And I am glad the session is over so I can spend six weeks in Calgary because, objectively, Calgary is better than Ottawa. but also because if we were just all Ottawa all the time this place would be even more ridiculous than it sometimes feels</div>
+  <div class="said">Look, it is a funny job. And it is really easy to get wrapped into. And in fact, we talked a lot, like almost exclusively about Ottawa, right? And the drama in Ottawa and what does it mean? And how do you become known for something amongst leaders in Ottawa? And you know, this weird caste system that we all have. And, you know, I guess I just want to kind of ground this all by saying, it&#x27;s not remotely about Ottawa at the end of the day. And so one of the things that we all need to do as MPs, but something I try to remind myself, is that Ottawa</div>
+</div>
+<div class="turn" data-start="3503">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">58:23</span>
+  </div>
+  <div class="said">the cherry on top, right? You&#x27;ve got to take care of your constituency at home. And when you&#x27;re talking about things like communication, that&#x27;s actually where you&#x27;ve got to put a lot of effort if you&#x27;re an MP. And I am glad the session is over so I can spend six weeks in Calgary because, objectively, Calgary is better than Ottawa. but also because if we were just all Ottawa all the time this place would be even more ridiculous than it sometimes feels</div>
 </div>
 <div class="turn" data-start="3530">
   <div class="who">
