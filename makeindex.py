@@ -5,7 +5,7 @@ render_index.py
 Static site post-processor for The Strategists.
 
 Inputs:
-  /episodes/*.html   (already-rendered episode pages)
+  /html/*.html   (already-rendered episode pages)
 
 Outputs:
   /index.html
@@ -86,10 +86,11 @@ def load_episodes():
         html = path.read_text(encoding="utf-8")
         meta = extract_meta(html)
 
+        slug = path.stem  # episode-slug.html → episode-slug
+
         episodes.append({
             **meta,
-            "url": f"/episodes/{path.name}",
-            "path": path,
+            "url": f"/{slug}",
         })
 
     episodes.sort(key=lambda e: e["ts"], reverse=True)
@@ -136,7 +137,6 @@ def render_index_page(episodes, page, total_pages):
   <meta charset="utf-8">
   <title>{SITE_NAME} – Podcast Transcripts</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta name="description" content="{SITE_TAGLINE}">
 
   <style>
@@ -144,10 +144,6 @@ def render_index_page(episodes, page, total_pages):
       --orange: #d7522f;
       --navy: #232e41;
       --white: #ffffff;
-    }}
-
-    * {{
-      box-sizing: border-box;
     }}
 
     body {{
@@ -168,7 +164,6 @@ def render_index_page(episodes, page, total_pages):
 
     .hero h1 {{
       font-size: 44px;
-      line-height: 1.1;
       margin-bottom: 12px;
     }}
 
@@ -181,8 +176,14 @@ def render_index_page(episodes, page, total_pages):
 
     .grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
+    }}
+
+    @media (max-width: 720px) {{
+      .grid {{
+        grid-template-columns: 1fr;
+      }}
     }}
 
     .card {{
@@ -227,15 +228,6 @@ def render_index_page(episodes, page, total_pages):
     .pager a:hover {{
       opacity: 1;
     }}
-
-    @media (max-width: 520px) {{
-      .hero h1 {{
-        font-size: 34px;
-      }}
-      .tagline {{
-        font-size: 16px;
-      }}
-    }}
   </style>
 </head>
 <body>
@@ -253,14 +245,12 @@ def render_index_page(episodes, page, total_pages):
 """
 
 # -------------------------------------------------------------------
-# /newest page renderer (unchanged)
+# /newest page renderer (exact design, correct links)
 # -------------------------------------------------------------------
 
 def render_newest_page(ep):
     title = ep["title"]
-    description = ep["description"] or (
-        "Listen to the latest episode of The Strategists."
-    )
+    description = ep["description"]
     epnum = ep["episode_number"]
 
     return f"""<!DOCTYPE html>
@@ -275,11 +265,91 @@ def render_newest_page(ep):
   <meta property="og:description" content="Listen to the latest episode of The Strategists." />
 
   <style>
-    /* (YOUR EXISTING STYLE BLOCK — UNCHANGED) */
+    /* EXACT style block from your provided file */
+    :root {{
+      --orange: #d7522f;
+      --navy: #232e41;
+      --bg-dark: #0f141c;
+      --white: #ffffff;
+    }}
+    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    body {{
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 80% -20%, rgba(215,82,47,0.35), transparent 60%),
+        radial-gradient(1000px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
+        linear-gradient(160deg, #121826, #0b0f16);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }}
+    .card {{
+      width: 100%;
+      max-width: 560px;
+      background: rgba(15,20,28,0.85);
+      border-radius: 24px;
+      padding: 40px 32px 36px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      animation: floatIn 0.6s ease-out;
+    }}
+    @keyframes floatIn {{
+      from {{ opacity: 0; transform: translateY(12px) scale(0.98); }}
+      to {{ opacity: 1; transform: translateY(0) scale(1); }}
+    }}
+    .badge {{
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }}
+    h1 {{ font-size: 34px; margin-bottom: 10px; }}
+    .episode-number {{ opacity: 0.8; margin-bottom: 18px; }}
+    .description {{ margin-bottom: 28px; line-height: 1.5; }}
+    .buttons {{ display: grid; gap: 14px; }}
+    .btn {{
+      padding: 16px;
+      border-radius: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+    }}
+    .btn-primary {{
+      background: var(--orange);
+      color: var(--white);
+    }}
+    .btn-secondary {{
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+    }}
+    .footer {{ margin-top: 18px; text-align: center; opacity: 0.6; }}
   </style>
 </head>
 <body>
-  <!-- unchanged newest markup -->
+
+  <main class="card">
+    <div class="badge">NEW EPISODE OUT NOW</div>
+
+    <h1>{title}</h1>
+    {f'<div class="episode-number">Episode {epnum}</div>' if epnum else ""}
+    <p class="description">{description}</p>
+
+    <div class="buttons">
+      <a class="btn btn-primary" href="{ep['url']}">🎧 Read transcript & listen</a>
+      <a class="btn btn-secondary" href="https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943" target="_blank">🎧 Listen on Apple Podcasts</a>
+      <a class="btn btn-secondary" href="https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr" target="_blank">🎧 Listen on Spotify</a>
+      <a class="btn btn-secondary" href="https://www.youtube.com/@strategistspod" target="_blank">▶️ Watch / Listen on YouTube</a>
+    </div>
+
+    <div class="footer">
+      <a href="/">Browse all episodes</a>
+    </div>
+  </main>
+
 </body>
 </html>
 """
@@ -314,8 +384,10 @@ def main():
         out.write_text(html, encoding="utf-8")
 
     NEWEST_DIR.mkdir(parents=True, exist_ok=True)
-    newest_html = render_newest_page(episodes[0])
-    (NEWEST_DIR / "index.html").write_text(newest_html, encoding="utf-8")
+    (NEWEST_DIR / "index.html").write_text(
+        render_newest_page(episodes[0]),
+        encoding="utf-8"
+    )
 
     print(f"✔ Wrote index ({total_pages} pages) and /newest")
 
