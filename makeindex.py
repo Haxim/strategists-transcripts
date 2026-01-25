@@ -112,15 +112,18 @@ def render_index_page(episodes, page, total_pages):
         </header>
         """
 
-    cards = "\n".join(
-        f"""
-        <a class="card" href="{ep['url']}">
-          <div class="title">{ep['title']}</div>
-          {f"<div class='meta'>{ep['published'][:10]}</div>" if ep['published'] else ""}
-        </a>
-        """.strip()
-        for ep in episodes
-    )
+cards = "\n".join(
+    f"""
+    <a class="card" href="{ep['url']}">
+      <div class="title">{ep['title']}</div>
+
+      {f"<div class='meta'>{ep['published'][:10]}</div>" if ep['published'] else ""}
+
+      {f"<div class='desc'>{ep['description']}</div>" if ep['description'] else ""}
+    </a>
+    """.strip()
+    for ep in episodes
+)
 
     nav = ""
     if total_pages > 1:
