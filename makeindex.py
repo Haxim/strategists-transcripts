@@ -112,18 +112,18 @@ def render_index_page(episodes, page, total_pages):
         </header>
         """
 
-cards = "\n".join(
-    f"""
-    <a class="card" href="{ep['url']}">
-      <div class="title">{ep['title']}</div>
+    cards = "\n".join(
+        f"""
+        <a class="card" href="{ep['url']}">
+          <div class="title">{ep['title']}</div>
 
-      {f"<div class='meta'>{ep['published'][:10]}</div>" if ep['published'] else ""}
+          {f"<div class='meta'>{ep['published'][:10]}</div>" if ep['published'] else ""}
 
-      {f"<div class='desc'>{ep['description']}</div>" if ep['description'] else ""}
-    </a>
-    """.strip()
-    for ep in episodes
-)
+          {f"<div class='desc'>{ep['description']}</div>" if ep['description'] else ""}
+        </a>
+        """.strip()
+        for ep in episodes
+    )
 
     nav = ""
     if total_pages > 1:
@@ -215,6 +215,18 @@ cards = "\n".join(
       margin-top: 6px;
     }}
 
+    .desc {{
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.45;
+      opacity: 0.75;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }}
+
     .pager {{
       display: flex;
       justify-content: space-between;
@@ -248,7 +260,7 @@ cards = "\n".join(
 """
 
 # -------------------------------------------------------------------
-# /newest page renderer (exact design, correct links)
+# /newest page renderer
 # -------------------------------------------------------------------
 
 def render_newest_page(ep):
@@ -268,14 +280,15 @@ def render_newest_page(ep):
   <meta property="og:description" content="Listen to the latest episode of The Strategists." />
 
   <style>
-    /* EXACT style block from your provided file */
     :root {{
       --orange: #d7522f;
       --navy: #232e41;
       --bg-dark: #0f141c;
       --white: #ffffff;
     }}
+
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+
     body {{
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background:
@@ -289,6 +302,7 @@ def render_newest_page(ep):
       justify-content: center;
       padding: 24px;
     }}
+
     .card {{
       width: 100%;
       max-width: 560px;
@@ -297,12 +311,8 @@ def render_newest_page(ep):
       padding: 40px 32px 36px;
       box-shadow: 0 30px 80px rgba(0,0,0,0.45);
       backdrop-filter: blur(8px);
-      animation: floatIn 0.6s ease-out;
     }}
-    @keyframes floatIn {{
-      from {{ opacity: 0; transform: translateY(12px) scale(0.98); }}
-      to {{ opacity: 1; transform: translateY(0) scale(1); }}
-    }}
+
     .badge {{
       font-size: 13px;
       letter-spacing: 0.08em;
@@ -310,10 +320,15 @@ def render_newest_page(ep):
       color: var(--orange);
       margin-bottom: 14px;
     }}
+
     h1 {{ font-size: 34px; margin-bottom: 10px; }}
+
     .episode-number {{ opacity: 0.8; margin-bottom: 18px; }}
+
     .description {{ margin-bottom: 28px; line-height: 1.5; }}
+
     .buttons {{ display: grid; gap: 14px; }}
+
     .btn {{
       padding: 16px;
       border-radius: 14px;
@@ -321,15 +336,22 @@ def render_newest_page(ep):
       text-decoration: none;
       text-align: center;
     }}
+
     .btn-primary {{
       background: var(--orange);
       color: var(--white);
     }}
+
     .btn-secondary {{
       background: rgba(255,255,255,0.08);
       color: var(--white);
     }}
-    .footer {{ margin-top: 18px; text-align: center; opacity: 0.6; }}
+
+    .footer {{
+      margin-top: 18px;
+      text-align: center;
+      opacity: 0.6;
+    }}
   </style>
 </head>
 <body>
