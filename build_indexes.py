@@ -407,7 +407,6 @@ body {{
 .footer-credit {{
   margin-top: 24px;
 }}
-
 </style>
 </head>
 <body>
@@ -530,4 +529,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
