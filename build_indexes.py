@@ -207,7 +207,11 @@ def render_index_page(episodes, page, total_pages):
       --navy: #232e41;
       --white: #ffffff;
     }}
-
+  
+    * {{
+      box-sizing: border-box;
+    }}
+  
     body {{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
@@ -218,55 +222,71 @@ def render_index_page(episodes, page, total_pages):
         radial-gradient(900px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
         linear-gradient(160deg, #121826, #0b0f16);
     }}
-
+  
+    /* ---------------- Hero ---------------- */
+  
     .hero {{
       max-width: 900px;
       margin-bottom: 48px;
     }}
-
+  
     .hero h1 {{
       font-size: 44px;
       margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }}
-
+  
     .tagline {{
       font-size: 18px;
       line-height: 1.5;
       opacity: 0.85;
       max-width: 720px;
     }}
-
+  
+    /* ---------------- Grid ---------------- */
+  
     .grid {{
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }}
-
+  
     @media (max-width: 720px) {{
-      .grid {{ grid-template-columns: 1fr; }}
+      .grid {{
+        grid-template-columns: 1fr;
+      }}
     }}
-
+  
+    /* ---------------- Cards ---------------- */
+  
     .card {{
       display: flex;
       gap: 14px;
+      align-items: flex-start;
       background: rgba(255,255,255,0.06);
       border-radius: 18px;
       padding: 18px;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.15s ease, background 0.15s ease;
+      transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
     }}
-
+  
     .card:hover {{
       background: rgba(255,255,255,0.1);
       transform: translateY(-2px);
     }}
-
+  
     .card.patreon {{
-      box-shadow: 0 0 0 1px rgba(215,82,47,0.35),
-                  0 0 18px rgba(215,82,47,0.15);
+      box-shadow:
+        0 0 0 1px rgba(215,82,47,0.35),
+        0 0 18px rgba(215,82,47,0.15);
     }}
-
+  
+    /* ---------------- Thumbnail ---------------- */
+  
     .thumb {{
       width: 64px;
       height: 64px;
@@ -274,36 +294,44 @@ def render_index_page(episodes, page, total_pages):
       flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
+      background: rgba(255,255,255,0.08);
     }}
-
+  
     .thumb img {{
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }}
-
+  
+    /* ---------------- Card Text ---------------- */
+  
     .title {{
       font-weight: 700;
       font-size: 17px;
+      line-height: 1.3;
     }}
-
+  
     .meta {{
       opacity: 0.6;
       font-size: 14px;
       margin-top: 6px;
     }}
-
+  
     .desc {{
       margin-top: 10px;
       font-size: 14px;
       line-height: 1.45;
       opacity: 0.75;
+  
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }}
-
+  
+    /* ---------------- Pager ---------------- */
+  
     .pager {{
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -311,29 +339,56 @@ def render_index_page(episodes, page, total_pages):
       margin: 48px 0;
       font-size: 15px;
     }}
-
+  
     .pager a {{
       color: var(--white);
       text-decoration: none;
       opacity: 0.75;
     }}
-
-    .pager a:hover {{ opacity: 1; }}
-
-    .pager .older {{ text-align: right; }}
-    .pager .page-num {{ opacity: 0.6; }}
-
+  
+    .pager a:hover {{
+      opacity: 1;
+    }}
+  
+    .pager .older {{
+      text-align: right;
+    }}
+  
+    .pager .page-num {{
+      opacity: 0.6;
+      white-space: nowrap;
+    }}
+  
+    /* ---------------- Footer (episode-style) ---------------- */
+  
+    .wrap {{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 26px);
+    }}
+  
     .site-footer {{
+      padding: 28px 0 40px;
       margin-top: 64px;
       text-align: center;
-      font-size: 14px;
-      opacity: 0.65;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
     }}
-
+  
     .site-footer a {{
       color: var(--orange);
       font-weight: 600;
       text-decoration: none;
+    }}
+  
+    .site-footer a:hover {{
+      text-decoration: underline;
+    }}
+  
+    @media (prefers-color-scheme: light) {{
+      .site-footer {{
+        color: rgba(0,0,0,0.52);
+      }}
     }}
   </style>
 </head>
@@ -350,7 +405,9 @@ def render_index_page(episodes, page, total_pages):
   {nav}
 
   <footer class="site-footer">
-    Built with <a href="https://postmic.co">postmic</a> for fast reading, sharing, and search.
+    <div class="wrap">
+      Built with <a href="https://postmic.co">postmic</a> for fast reading, sharing, and search.
+    </div>
   </footer>
 
 </body>
@@ -420,4 +477,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
