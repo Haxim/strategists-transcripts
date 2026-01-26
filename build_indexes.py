@@ -243,8 +243,9 @@ def render_index_page(episodes, page, total_pages):
     /* ---------------- Hero ---------------- */
   
     .hero {{
-      max-width: 900px;
-      margin-bottom: 48px;
+      max-width: 1100px;
+      margin: 0 auto 48px;
+      padding: 0 clamp(16px, 3vw, 26px);
     }}
   
     .hero h1 {{
@@ -262,16 +263,14 @@ def render_index_page(episodes, page, total_pages):
   
     .hero-split {{
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 48px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
       align-items: center;
     }}
 
     .listen-center {{
-      text-align: center;
-      min-width: 260px;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: left;
+      justify-self: start;
     }}
 
     .listen-label {{
