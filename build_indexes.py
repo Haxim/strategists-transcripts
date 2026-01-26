@@ -403,6 +403,11 @@ body {{
 .footer-links a {{
   margin: 0 8px;
 }}
+
+.footer-credit {{
+  margin-top: 24px;
+}}
+
 </style>
 </head>
 <body>
@@ -525,3 +530,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
