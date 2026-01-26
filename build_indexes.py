@@ -270,6 +270,8 @@ def render_index_page(episodes, page, total_pages):
     .listen-center {{
       text-align: center;
       min-width: 260px;
+      margin-left: auto;
+      margin-right: auto;
     }}
 
     .listen-label {{
