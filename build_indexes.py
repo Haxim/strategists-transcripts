@@ -186,7 +186,7 @@ def render_newest_page(latest):
     apple = "https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943"
     spotify = "https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr"
     youtube = "https://www.youtube.com/@strategistspod"
-    web = f"https://shows.acast.com/strategistspod/episodes/{latest['url'].lstrip('/')}"
+    web = latest["url"]
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -376,6 +376,7 @@ def main():
 if __name__ == "__main__":
     main()
     # Build /newest/index.html
+
 
 
 
