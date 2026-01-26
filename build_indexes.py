@@ -24,7 +24,7 @@ PER_PAGE = 24
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.I | re.S)
 DATE_RE = re.compile(r'"datePublished"\s*:\s*"([^"]+)"', re.I)
 DESC_RE = re.compile(r'<meta name="description" content="([^"]+)"', re.I)
-PATREON_RE = re.compile(r"/assets/patreon\.png", re.I)
+PATREON_RE = re.compile(r'class="[^"]*\bpatreon-lock\b', re.I)
 
 def extract_meta(html: str):
     title_m = TITLE_RE.search(html)
@@ -170,4 +170,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
