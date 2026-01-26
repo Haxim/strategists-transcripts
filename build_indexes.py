@@ -137,9 +137,27 @@ def render_index_page(episodes, page, total_pages):
     hero = ""
     if is_home:
         hero = f"""
-        <header class="hero">
-          <h1>{SITE_NAME}</h1>
-          <p class="tagline">{SITE_TAGLINE}</p>
+        <header class="hero hero-split">
+          <div class="hero-text">
+            <h1>{SITE_NAME}</h1>
+            <p class="tagline">{SITE_TAGLINE}</p>
+          </div>
+
+          <aside class="listen-on">
+            <div class="listen-label">Listen on</div>
+
+            <a href="https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943" target="_blank" rel="noopener">
+               Apple Podcasts
+            </a>
+
+            <a href="https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr" target="_blank" rel="noopener">
+              Spotify
+            </a>
+
+            <a href="https://www.youtube.com/@strategistspod" target="_blank" rel="noopener">
+              YouTube
+            </a>
+          </aside>
         </header>
         """
 
@@ -243,6 +261,56 @@ def render_index_page(episodes, page, total_pages):
       max-width: 720px;
     }}
   
+    .hero-split {{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+    }}
+
+    .hero-text {{
+      max-width: 720px;
+    }}
+
+    .listen-on {{
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 16px 18px;
+      min-width: 220px;
+    }}
+
+    .listen-label {{
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+      margin-bottom: 10px;
+    }}
+
+    .listen-on a {{
+      display: block;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--white);
+      opacity: 0.85;
+      padding: 6px 0;
+    }}
+
+    .listen-on a:hover {{
+      opacity: 1;
+      text-decoration: underline;
+    }}
+
+    @media (max-width: 860px) {{
+      .hero-split {{
+        grid-template-columns: 1fr;
+      }}
+
+      .listen-on {{
+        margin-top: 20px;
+      }}
+    }}
+
     /* ---------------- Grid ---------------- */
   
     .grid {{
@@ -384,7 +452,23 @@ def render_index_page(episodes, page, total_pages):
     .site-footer a:hover {{
       text-decoration: underline;
     }}
-  
+
+    .footer-credit {{
+      margin-top: 24px;
+      font-size: 12px;
+      opacity: 0.55;
+    }}
+
+    .footer-credit a {{
+      color: var(--orange);
+      font-weight: 600;
+      text-decoration: none;
+    }}
+
+    .footer-credit a:hover {{
+      text-decoration: underline;
+    }}
+    
     @media (prefers-color-scheme: light) {{
       .site-footer {{
         color: rgba(0,0,0,0.52);
@@ -405,8 +489,22 @@ def render_index_page(episodes, page, total_pages):
   {nav}
 
   <footer class="site-footer">
-    <div class="wrap">
-      Built with <a href="https://postmic.co">postmic</a> for fast reading, sharing, and search.
+    <div class="wrap footer-grid">
+
+      <nav class="footer-links">
+        <a href="https://www.patreon.com/strategistspod" target="_blank" rel="noopener">Patreon</a>
+        <a href="https://www.youtube.com/@strategistspod" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://bsky.app/profile/thestrategists.ca" target="_blank" rel="noopener">Bluesky</a>
+        <a href="https://www.instagram.com/strategistspod/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@strategistspod" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.linkedin.com/company/106712598/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://pinterest.com/strategistspod/" target="_blank" rel="noopener">Pinterest</a>
+      </nav>
+
+      <div class="footer-credit">
+        Built with <a href="https://postmic.co">postmic</a> for fast reading, sharing, and search.
+      </div>
+
     </div>
   </footer>
 
@@ -547,6 +645,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
