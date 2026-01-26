@@ -269,7 +269,7 @@ def render_index_page(episodes, page, total_pages):
     }}
 
     .listen-center {{
-      text-align: left;
+      text-align: center;
       justify-self: start;
     }}
 
@@ -646,5 +646,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
