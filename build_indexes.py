@@ -352,7 +352,8 @@ def render_newest_page(latest):
   </main>
 </body>
 </html>
-
+'''
+    
 def main():
     episodes = load_episodes()
     total_pages = math.ceil(len(episodes) / PER_PAGE)
@@ -366,13 +367,15 @@ def main():
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html, encoding="utf-8")
 
-if __name__ == "__main__":
-    main()
-    # Build /newest/index.html
     if episodes:
         newest_html = render_newest_page(episodes[0])
         newest_out = OUT_DIR / "newest/index.html"
         newest_out.parent.mkdir(parents=True, exist_ok=True)
         newest_out.write_text(newest_html, encoding="utf-8")
+
+if __name__ == "__main__":
+    main()
+    # Build /newest/index.html
+
 
 
