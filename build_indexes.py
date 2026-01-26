@@ -73,13 +73,13 @@ def extract_meta(html: str):
     except Exception:
         ts = 0
 
-    return {{
+    return {
         "title": title,
         "published": published,
         "ts": ts,
         "description": description,
         "episode_number": episode_number,
-    }}
+    }
 
 
 def load_episodes():
@@ -661,3 +661,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
