@@ -170,6 +170,189 @@ def render_index_page(episodes, page, total_pages):
 </html>
 """
 
+def render_newest_page(latest):
+    """
+    Build /newest/index.html for the most recent episode.
+    """
+
+    title = latest["title"]
+    description = latest["description"] or "Listen to the latest episode of The Strategists."
+    episode_number = ""
+    m = re.search(r"(Episode\s+\d+)", title, re.I)
+    if m:
+        episode_number = m.group(1)
+
+    # Best-effort links (safe fallbacks)
+    apple = "https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943"
+    spotify = "https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr"
+    youtube = "https://www.youtube.com/@strategistspod"
+    web = f"https://shows.acast.com/strategistspod/episodes/{latest['url'].lstrip('/')}"
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Episode Out Now – The Strategists</title>
+
+  <!-- Basic SEO / Social -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="New Episode Out Now – The Strategists" />
+  <meta property="og:description" content="Listen to the latest episode of The Strategists." />
+
+  <style>
+    :root {{
+      --orange: #d7522f;
+      --navy: #232e41;
+      --bg-dark: #0f141c;
+      --white: #ffffff;
+    }}
+
+    * {{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }}
+
+    body {{
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -20%, rgba(215,82,47,0.35), transparent 60%),
+                  radial-gradient(1000px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
+                  linear-gradient(160deg, #121826, #0b0f16);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }}
+
+    .card {{
+      width: 100%;
+      max-width: 560px;
+      background: rgba(15,20,28,0.85);
+      border-radius: 24px;
+      padding: 40px 32px 36px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      animation: floatIn 0.6s ease-out;
+    }}
+
+    @keyframes floatIn {{
+      from {{ opacity: 0; transform: translateY(12px) scale(0.98); }}
+      to {{ opacity: 1; transform: translateY(0) scale(1); }}
+    }}
+
+    .badge {{
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }}
+
+    h1 {{
+      font-size: 34px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }}
+
+    .episode-number {{
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }}
+
+    .description {{
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }}
+
+    .buttons {{
+      display: grid;
+      gap: 14px;
+      margin-bottom: 20px;
+    }}
+
+    .btn {{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }}
+
+    .btn-primary {{
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(215,82,47,0.35);
+    }}
+
+    .btn-primary:hover {{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(215,82,47,0.45);
+    }}
+
+    .btn-secondary {{
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+    }}
+
+    .btn-secondary:hover {{
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-1px);
+    }}
+
+    .footer {{
+      text-align: center;
+      font-size: 13px;
+      opacity: 0.6;
+      margin-top: 8px;
+    }}
+
+    .footer a {{
+      color: inherit;
+      text-decoration: underline;
+    }}
+
+    @media (max-width: 420px) {{
+      h1 {{ font-size: 28px; }}
+      .card {{ padding: 32px 24px; }}
+    }}
+  </style>
+</head>
+<body>
+
+  <main class="card">
+    <div class="badge">NEW EPISODE OUT NOW</div>
+
+    <h1>{title}</h1>
+    {f'<div class="episode-number">{episode_number}</div>' if episode_number else ''}
+
+    <p class="description">{description}</p>
+
+    <div class="buttons">
+      <a class="btn btn-primary" href="{web}" target="_blank">▶️ Listen & Read the Transcript</a>
+      <a class="btn btn-secondary" href="{apple}" target="_blank">🎧 Listen on Apple Podcasts</a>
+      <a class="btn btn-secondary" href="{spotify}" target="_blank">🎧 Listen on Spotify</a>
+      <a class="btn btn-secondary" href="{youtube}" target="_blank">▶️ Watch / Listen on YouTube</a>
+    </div>
+
+    <div class="footer">
+      <a href="/">Browse all episodes</a>
+    </div>
+  </main>
+</body>
+</html>
+
 def main():
     episodes = load_episodes()
     total_pages = math.ceil(len(episodes) / PER_PAGE)
@@ -185,5 +368,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Build /newest/index.html
+    if episodes:
+        newest_html = render_newest_page(episodes[0])
+        newest_out = OUT_DIR / "newest/index.html"
+        newest_out.parent.mkdir(parents=True, exist_ok=True)
+        newest_out.write_text(newest_html, encoding="utf-8")
 
 
