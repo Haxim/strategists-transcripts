@@ -33,7 +33,7 @@ body {
 
 .hero-text {
   justify-self: start;
-  padding-left: clamp(4px, 1vw, 28px);
+  padding-left: clamp(4px, 1vw, 48px);
 }
 
 .listen-on {
