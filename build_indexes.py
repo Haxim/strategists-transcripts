@@ -143,20 +143,19 @@ def render_index_page(episodes, page, total_pages):
             <p class="tagline">{SITE_TAGLINE}</p>
           </div>
 
-          <aside class="listen-on">
-            <div class="listen-label">Listen on</div>
+          <aside class="listen-on listen-center">
+            <div class="listen-label">Listen to the show</div>
 
-            <a href="https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943" target="_blank" rel="noopener">
-               Apple Podcasts
-            </a>
-
-            <a href="https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr" target="_blank" rel="noopener">
-              Spotify
-            </a>
-
-            <a href="https://www.youtube.com/@strategistspod" target="_blank" rel="noopener">
-              YouTube
-            </a>
+            <div class="listen-links">
+              <a href="https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943"
+                target="_blank" rel="noopener">Apple Podcasts</a>
+              <span>·</span>
+              <a href="https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr"
+                target="_blank" rel="noopener">Spotify</a>
+              <span>·</span>
+              <a href="https://www.youtube.com/@strategistspod"
+                target="_blank" rel="noopener">YouTube</a>
+            </div>
           </aside>
         </header>
         """
@@ -264,50 +263,51 @@ def render_index_page(episodes, page, total_pages):
     .hero-split {{
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 32px;
-      align-items: start;
+      gap: 48px;
+      align-items: center;
     }}
 
-    .hero-text {{
-      max-width: 720px;
-    }}
-
-    .listen-on {{
-      background: rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 16px 18px;
-      min-width: 220px;
+    .listen-center {{
+      text-align: center;
+      min-width: 260px;
     }}
 
     .listen-label {{
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      opacity: 0.6;
-      margin-bottom: 10px;
-    }}
-
-    .listen-on a {{
-      display: block;
-      text-decoration: none;
+      font-size: 15px;
       font-weight: 600;
-      color: var(--white);
-      opacity: 0.85;
-      padding: 6px 0;
+      margin-bottom: 10px;
+      opacity: 0.9;
     }}
 
-    .listen-on a:hover {{
-      opacity: 1;
+    .listen-links {{
+      font-size: 16px;
+      opacity: 0.8;
+    }}
+
+    .listen-links a {{
+      color: var(--orange);
+      font-weight: 600;
+      text-decoration: none;
+    }}
+
+    .listen-links a:hover {{
       text-decoration: underline;
+    }}
+
+    .listen-links span {{
+      margin: 0 8px;
+      opacity: 0.4;
     }}
 
     @media (max-width: 860px) {{
       .hero-split {{
         grid-template-columns: 1fr;
+        text-align: left;
       }}
 
-      .listen-on {{
-        margin-top: 20px;
+      .listen-center {{
+        margin-top: 24px;
+        text-align: left;
       }}
     }}
 
