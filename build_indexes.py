@@ -270,6 +270,8 @@ def render_index_page(episodes, page, total_pages):
     .thumb {{
       width: 64px;
       height: 64px;
+      min-width: 64px;
+      flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
     }}
@@ -418,3 +420,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
