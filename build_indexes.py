@@ -56,11 +56,7 @@ def extract_meta(html: str):
     desc_m = DESC_RE.search(html)
     epnum_m = EP_NUM_RE.search(html)
 
-    title = (
-        title_m.group(1).split("|")[0].strip()
-        if title_m else "Episode"
-    )
-
+    title = title_m.group(1).split("|")[0].strip() if title_m else "Episode"
     published = date_m.group(1) if date_m else ""
     description = desc_m.group(1).strip() if desc_m else ""
     episode_number = epnum_m.group(1) if epnum_m else ""
@@ -107,8 +103,6 @@ def load_episodes():
 def render_index_page(episodes, page, total_pages):
     is_home = page == 1
 
-    # ---------------- SEO ----------------
-
     page_title = (
         f"{SITE_NAME} – Podcast Transcripts"
         if is_home
@@ -132,47 +126,36 @@ def render_index_page(episodes, page, total_pages):
     if page < total_pages:
         next_link = f'<link rel="next" href="/page/{page+1}/">'
 
-    # ---------------- Hero ----------------
-
     hero = ""
     if is_home:
         hero = f"""
-        <header class="hero hero-split">
+        <header class="hero hero-split layout">
           <div class="hero-text">
             <h1>{SITE_NAME}</h1>
             <p class="tagline">{SITE_TAGLINE}</p>
           </div>
 
-          <aside class="listen-on listen-center">
+          <aside class="listen-center">
             <div class="listen-label">Listen to the show</div>
-
             <div class="listen-links">
-              <a href="https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943"
-                target="_blank" rel="noopener">Apple Podcasts</a>
+              <a href="https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943" target="_blank" rel="noopener">Apple Podcasts</a>
               <span>·</span>
-              <a href="https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr"
-                target="_blank" rel="noopener">Spotify</a>
+              <a href="https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr" target="_blank" rel="noopener">Spotify</a>
               <span>·</span>
-              <a href="https://www.youtube.com/@strategistspod"
-                target="_blank" rel="noopener">YouTube</a>
+              <a href="https://www.youtube.com/@strategistspod" target="_blank" rel="noopener">YouTube</a>
             </div>
           </aside>
         </header>
         """
 
-    # ---------------- Cards ----------------
-
     cards = "\n".join(
         f"""
         <a class="card {'patreon' if ep['access']=='patreon' else ''}" href="{ep['url']}">
           <div class="thumb">
-            <img
-              src="/assets/{'patreon' if ep['access']=='patreon' else 'public'}.png"
-              alt="{ep['access']} episode"
-              loading="lazy"
-            />
+            <img src="/assets/{'patreon' if ep['access']=='patreon' else 'public'}.png"
+                 alt="{ep['access']} episode"
+                 loading="lazy" />
           </div>
-
           <div class="card-body">
             <div class="title">{ep['title']}</div>
             {f"<div class='meta'>{ep['published'][:10]}</div>" if ep['published'] else ""}
@@ -182,8 +165,6 @@ def render_index_page(episodes, page, total_pages):
         """.strip()
         for ep in episodes
     )
-
-    # ---------------- Pager ----------------
 
     nav = ""
     if total_pages > 1:
@@ -197,317 +178,94 @@ def render_index_page(episodes, page, total_pages):
         )
 
         nav = f"""
-        <nav class="pager">
+        <nav class="pager layout">
           {newer}
           <div class="page-num">Page {page} of {total_pages}</div>
           {older}
         </nav>
         """
 
-    # ---------------- HTML ----------------
-
     return f"""<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>{page_title}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{page_desc}">
+<meta charset="utf-8">
+<title>{page_title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{page_desc}">
+<link rel="canonical" href="{canonical}">
+{prev_link}
+{next_link}
 
-  <link rel="canonical" href="{canonical}">
-  {prev_link}
-  {next_link}
+<style>
+:root {{
+  --orange: #d7522f;
+  --navy: #232e41;
+  --white: #ffffff;
+}}
 
-  <style>
-    :root {{
-      --orange: #d7522f;
-      --navy: #232e41;
-      --white: #ffffff;
-    }}
-  
-    * {{
-      box-sizing: border-box;
-    }}
-  
-    body {{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      margin: 0;
-      padding: 32px 24px 48px;
-      color: var(--white);
-      background:
-        radial-gradient(1200px 700px at 70% -20%, rgba(215,82,47,0.25), transparent 60%),
-        radial-gradient(900px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
-        linear-gradient(160deg, #121826, #0b0f16);
-    }}
-  
-    /* ---------------- Hero ---------------- */
-  
-    .hero {{
-      max-width: 1100px;
-      margin: 0 auto 48px;
-      padding: 0 clamp(16px, 3vw, 26px);
-    }}
-  
-    .hero h1 {{
-      font-size: 44px;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }}
-  
-    .tagline {{
-      font-size: 18px;
-      line-height: 1.5;
-      opacity: 0.85;
-      max-width: 720px;
-    }}
-  
-    .hero-split {{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      align-items: center;
-    }}
+body {{
+  font-family: Inter, system-ui, sans-serif;
+  margin: 0;
+  padding: 32px 0 48px;
+  color: var(--white);
+  background:
+    radial-gradient(1200px 700px at 70% -20%, rgba(215,82,47,0.25), transparent 60%),
+    radial-gradient(900px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
+    linear-gradient(160deg, #121826, #0b0f16);
+}}
 
-    .listen-center {{
-      text-align: center;
-      justify-self: start;
-    }}
+.layout {{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 26px);
+}}
 
-    .listen-label {{
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      opacity: 0.9;
-    }}
+.hero-split {{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 48px;
+}}
 
-    .listen-links {{
-      font-size: 16px;
-      opacity: 0.8;
-    }}
+.listen-center {{
+  justify-self: center;
+  text-align: center;
+}}
 
-    .listen-links a {{
-      color: var(--orange);
-      font-weight: 600;
-      text-decoration: none;
-    }}
+.grid {{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}}
 
-    .listen-links a:hover {{
-      text-decoration: underline;
-    }}
+@media (max-width: 860px) {{
+  .hero-split,
+  .grid {{
+    grid-template-columns: 1fr;
+  }}
 
-    .listen-links span {{
-      margin: 0 8px;
-      opacity: 0.4;
-    }}
-
-    @media (max-width: 860px) {{
-      .hero-split {{
-        grid-template-columns: 1fr;
-        text-align: left;
-      }}
-
-      .listen-center {{
-        margin-top: 24px;
-        text-align: left;
-      }}
-    }}
-
-    /* ---------------- Grid ---------------- */
-  
-    .grid {{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }}
-  
-    @media (max-width: 720px) {{
-      .grid {{
-        grid-template-columns: 1fr;
-      }}
-    }}
-  
-    /* ---------------- Cards ---------------- */
-  
-    .card {{
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      background: rgba(255,255,255,0.06);
-      border-radius: 18px;
-      padding: 18px;
-      text-decoration: none;
-      color: inherit;
-      transition:
-        transform 0.15s ease,
-        background 0.15s ease,
-        box-shadow 0.15s ease;
-    }}
-  
-    .card:hover {{
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-2px);
-    }}
-  
-    .card.patreon {{
-      box-shadow:
-        0 0 0 1px rgba(215,82,47,0.35),
-        0 0 18px rgba(215,82,47,0.15);
-    }}
-  
-    /* ---------------- Thumbnail ---------------- */
-  
-    .thumb {{
-      width: 64px;
-      height: 64px;
-      min-width: 64px;
-      flex-shrink: 0;
-      border-radius: 12px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.08);
-    }}
-  
-    .thumb img {{
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }}
-  
-    /* ---------------- Card Text ---------------- */
-  
-    .title {{
-      font-weight: 700;
-      font-size: 17px;
-      line-height: 1.3;
-    }}
-  
-    .meta {{
-      opacity: 0.6;
-      font-size: 14px;
-      margin-top: 6px;
-    }}
-  
-    .desc {{
-      margin-top: 10px;
-      font-size: 14px;
-      line-height: 1.45;
-      opacity: 0.75;
-  
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }}
-  
-    /* ---------------- Pager ---------------- */
-  
-    .pager {{
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      margin: 48px 0;
-      font-size: 15px;
-    }}
-  
-    .pager a {{
-      color: var(--white);
-      text-decoration: none;
-      opacity: 0.75;
-    }}
-  
-    .pager a:hover {{
-      opacity: 1;
-    }}
-  
-    .pager .older {{
-      text-align: right;
-    }}
-  
-    .pager .page-num {{
-      opacity: 0.6;
-      white-space: nowrap;
-    }}
-  
-    /* ---------------- Footer (episode-style) ---------------- */
-  
-    .wrap {{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 clamp(16px, 3vw, 26px);
-    }}
-  
-    .site-footer {{
-      padding: 28px 0 40px;
-      margin-top: 64px;
-      text-align: center;
-      font-size: 13px;
-      color: rgba(255,255,255,0.55);
-    }}
-  
-    .site-footer a {{
-      color: var(--orange);
-      font-weight: 600;
-      text-decoration: none;
-    }}
-  
-    .site-footer a:hover {{
-      text-decoration: underline;
-    }}
-
-    .footer-credit {{
-      margin-top: 24px;
-      font-size: 12px;
-      opacity: 0.55;
-    }}
-
-    .footer-credit a {{
-      color: var(--orange);
-      font-weight: 600;
-      text-decoration: none;
-    }}
-
-    .footer-credit a:hover {{
-      text-decoration: underline;
-    }}
-    
-    @media (prefers-color-scheme: light) {{
-      .site-footer {{
-        color: rgba(0,0,0,0.52);
-      }}
-    }}
-  </style>
+  .listen-center {{
+    justify-self: start;
+    text-align: left;
+    margin-top: 24px;
+  }}
+}}
+</style>
 </head>
 <body>
 
-  {hero}
+{hero}
 
-  {nav}
+{nav}
 
-  <main class="grid">
+<main class="layout">
+  <div class="grid">
     {cards}
-  </main>
+  </div>
+</main>
 
-  {nav}
-
-  <footer class="site-footer">
-    <div class="wrap footer-grid">
-
-      <nav class="footer-links">
-        <a href="https://www.patreon.com/strategistspod" target="_blank" rel="noopener">Patreon</a>
-        <a href="https://www.youtube.com/@strategistspod" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://bsky.app/profile/thestrategists.ca" target="_blank" rel="noopener">Bluesky</a>
-        <a href="https://www.instagram.com/strategistspod/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@strategistspod" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.linkedin.com/company/106712598/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://pinterest.com/strategistspod/" target="_blank" rel="noopener">Pinterest</a>
-      </nav>
-
-      <div class="footer-credit">
-        Built with <a href="https://postmic.co">postmic</a> for fast reading, sharing, and search.
-      </div>
-
-    </div>
-  </footer>
+{nav}
 
 </body>
 </html>
@@ -518,92 +276,20 @@ def render_index_page(episodes, page, total_pages):
 # -------------------------------------------------------------------
 
 def render_newest_page(ep):
-    return f"""<!DOCTYPE html>
+    return f"""<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>New Episode Out Now – The Strategists</title>
-  <meta name="robots" content="noindex, nofollow" />
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>New Episode Out Now – The Strategists</title>
 </head>
 <body>
-  <main>
-    <h1>{ep['title']}</h1>
-    <p>{ep['description']}</p>
-    <a href="{ep['url']}">Read transcript</a>
-  </main>
+<h1>{ep['title']}</h1>
+<p>{ep['description']}</p>
+<a href="{ep['url']}">Read transcript</a>
 </body>
 </html>
 """
-
-def write_sitemap(episodes, total_pages):
-    base = "https://episodes.thestrategists.ca"
-    urls = {}
-    
-    def add_url(loc, lastmod=None, priority=None, changefreq=None):
-        urls[loc] = {
-            "loc": loc,
-            "lastmod": lastmod,
-            "priority": priority,
-            "changefreq": changefreq,
-        }
-
-    # Homepage
-    homepage_lastmod = ""
-    if episodes and episodes[0].get("published"):
-        homepage_lastmod = episodes[0]["published"][:10]
-
-    add_url(
-        f"{base}/",
-        lastmod=homepage_lastmod,
-        priority="1.0",
-        changefreq="daily",
-    )
-
-    # Paginated index pages
-    for page in range(2, total_pages + 1):
-        add_url(
-            f"{base}/page/{page}/",
-            priority="0.6",
-            changefreq="weekly",
-        )
-
-    # Episode pages (most important)
-    for ep in episodes:
-        add_url(
-            f"{base}{ep['url']}",
-            lastmod=ep["published"][:10] if ep.get("published") else None,
-            priority="0.9",
-            changefreq="never",
-        )
-
-    # Newest redirect page
-    add_url(
-        f"{base}/newest/",
-        priority="0.4",
-        changefreq="daily",
-    )
-
-    xml = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ]
-
-    for u in urls.values():
-        xml.append("  <url>")
-        xml.append(f"    <loc>{u['loc']}</loc>")
-        if u.get("lastmod"):
-            xml.append(f"    <lastmod>{u['lastmod']}</lastmod>")
-        if u.get("changefreq"):
-            xml.append(f"    <changefreq>{u['changefreq']}</changefreq>")
-        if u.get("priority"):
-            xml.append(f"    <priority>{u['priority']}</priority>")
-        xml.append("  </url>")
-
-    xml.append("</urlset>")
-
-    out = OUT_DIR / "sitemap.xml"
-    out.write_text("\n".join(xml), encoding="utf-8")
 
 # -------------------------------------------------------------------
 # Main
@@ -611,20 +297,13 @@ def write_sitemap(episodes, total_pages):
 
 def main():
     episodes = load_episodes()
-    if not episodes:
-        raise SystemExit("No episodes found")
-
     total_pages = math.ceil(len(episodes) / PER_PAGE)
 
     for page in range(1, total_pages + 1):
         start = (page - 1) * PER_PAGE
         end = start + PER_PAGE
 
-        html = render_index_page(
-            episodes[start:end],
-            page,
-            total_pages,
-        )
+        html = render_index_page(episodes[start:end], page, total_pages)
 
         if page == 1:
             out = OUT_DIR / "index.html"
@@ -641,11 +320,6 @@ def main():
     )
 
     print(f"✔ Wrote index ({total_pages} pages) and /newest")
-    write_sitemap(episodes, total_pages)
-    print("✔ Wrote sitemap.xml")    
 
 if __name__ == "__main__":
     main()
-
-
-
