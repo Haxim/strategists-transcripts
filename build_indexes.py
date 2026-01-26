@@ -45,7 +45,6 @@ DESC_RE = re.compile(r'<meta property="og:description" content="([^"]+)"', re.I)
 EP_NUM_RE = re.compile(r'"episodeNumber"\s*:\s*(\d+)', re.I)
 
 PATREON_RE = re.compile(r"/assets/patreon\.jpg", re.I)
-ACAST_RE = re.compile(r"embed\.acast\.com", re.I)
 
 # -------------------------------------------------------------------
 # Helpers
@@ -89,8 +88,7 @@ def load_episodes():
         html = path.read_text(encoding="utf-8")
         meta = extract_meta(html)
 
-        slug = path.stem  # episode-slug.html → episode-slug
-
+        slug = path.stem
         is_patreon = bool(PATREON_RE.search(html))
 
         episodes.append({
@@ -109,6 +107,33 @@ def load_episodes():
 def render_index_page(episodes, page, total_pages):
     is_home = page == 1
 
+    # ---------------- SEO ----------------
+
+    page_title = (
+        f"{SITE_NAME} – Podcast Transcripts"
+        if is_home
+        else f"{SITE_NAME} – Page {page} of {total_pages}"
+    )
+
+    page_desc = (
+        SITE_TAGLINE
+        if is_home
+        else f"{SITE_NAME} podcast transcripts – page {page} of {total_pages}."
+    )
+
+    canonical = "/" if is_home else f"/page/{page}/"
+
+    prev_link = ""
+    if page > 1:
+        prev_url = "/" if page == 2 else f"/page/{page-1}/"
+        prev_link = f'<link rel="prev" href="{prev_url}">'
+
+    next_link = ""
+    if page < total_pages:
+        next_link = f'<link rel="next" href="/page/{page+1}/">'
+
+    # ---------------- Hero ----------------
+
     hero = ""
     if is_home:
         hero = f"""
@@ -117,6 +142,8 @@ def render_index_page(episodes, page, total_pages):
           <p class="tagline">{SITE_TAGLINE}</p>
         </header>
         """
+
+    # ---------------- Cards ----------------
 
     cards = "\n".join(
         f"""
@@ -131,9 +158,7 @@ def render_index_page(episodes, page, total_pages):
 
           <div class="card-body">
             <div class="title">{ep['title']}</div>
-
             {f"<div class='meta'>{ep['published'][:10]}</div>" if ep['published'] else ""}
-
             {f"<div class='desc'>{ep['description']}</div>" if ep['description'] else ""}
           </div>
         </a>
@@ -141,22 +166,40 @@ def render_index_page(episodes, page, total_pages):
         for ep in episodes
     )
 
+    # ---------------- Pager ----------------
+
     nav = ""
     if total_pages > 1:
-        nav = '<nav class="pager">'
-        if page > 1:
-            nav += f'<a href="/page/{page-1}/">← Newer</a>'
-        if page < total_pages:
-            nav += f'<a href="/page/{page+1}/">Older →</a>'
-        nav += "</nav>"
+        newer = (
+            f'<a class="newer" href="{"/" if page == 2 else f"/page/{page-1}/"}">← Newer</a>'
+            if page > 1 else '<span></span>'
+        )
+        older = (
+            f'<a class="older" href="/page/{page+1}/">Older →</a>'
+            if page < total_pages else '<span></span>'
+        )
+
+        nav = f"""
+        <nav class="pager">
+          {newer}
+          <div class="page-num">Page {page} of {total_pages}</div>
+          {older}
+        </nav>
+        """
+
+    # ---------------- HTML ----------------
 
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{SITE_NAME} – Podcast Transcripts</title>
+  <title>{page_title}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{SITE_TAGLINE}">
+  <meta name="description" content="{page_desc}">
+
+  <link rel="canonical" href="{canonical}">
+  {prev_link}
+  {next_link}
 
   <style>
     :root {{
@@ -200,21 +243,18 @@ def render_index_page(episodes, page, total_pages):
     }}
 
     @media (max-width: 720px) {{
-      .grid {{
-        grid-template-columns: 1fr;
-      }}
+      .grid {{ grid-template-columns: 1fr; }}
     }}
 
     .card {{
       display: flex;
       gap: 14px;
-      align-items: flex-start;
       background: rgba(255,255,255,0.06);
       border-radius: 18px;
       padding: 18px;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease, background 0.15s ease;
     }}
 
     .card:hover {{
@@ -230,10 +270,8 @@ def render_index_page(episodes, page, total_pages):
     .thumb {{
       width: 64px;
       height: 64px;
-      flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
-      background: rgba(255,255,255,0.08);
     }}
 
     .thumb img {{
@@ -242,14 +280,9 @@ def render_index_page(episodes, page, total_pages):
       object-fit: cover;
     }}
 
-    .card-body {{
-      min-width: 0;
-    }}
-
     .title {{
       font-weight: 700;
       font-size: 17px;
-      line-height: 1.3;
     }}
 
     .meta {{
@@ -263,7 +296,6 @@ def render_index_page(episodes, page, total_pages):
       font-size: 14px;
       line-height: 1.45;
       opacity: 0.75;
-
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -271,20 +303,35 @@ def render_index_page(episodes, page, total_pages):
     }}
 
     .pager {{
-      display: flex;
-      justify-content: space-between;
-      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      margin: 48px 0;
       font-size: 15px;
     }}
 
     .pager a {{
       color: var(--white);
-      opacity: 0.75;
       text-decoration: none;
+      opacity: 0.75;
     }}
 
-    .pager a:hover {{
-      opacity: 1;
+    .pager a:hover {{ opacity: 1; }}
+
+    .pager .older {{ text-align: right; }}
+    .pager .page-num {{ opacity: 0.6; }}
+
+    .site-footer {{
+      margin-top: 64px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.65;
+    }}
+
+    .site-footer a {{
+      color: var(--orange);
+      font-weight: 600;
+      text-decoration: none;
     }}
   </style>
 </head>
@@ -292,11 +339,17 @@ def render_index_page(episodes, page, total_pages):
 
   {hero}
 
+  {nav}
+
   <main class="grid">
     {cards}
   </main>
 
   {nav}
+
+  <footer class="site-footer">
+    Built with <a href="https://postmic.co">postmic</a> for fast reading, sharing, and search.
+  </footer>
 
 </body>
 </html>
@@ -307,37 +360,19 @@ def render_index_page(episodes, page, total_pages):
 # -------------------------------------------------------------------
 
 def render_newest_page(ep):
-    title = ep["title"]
-    description = ep["description"]
-    epnum = ep["episode_number"]
-
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>New Episode Out Now – The Strategists</title>
-
   <meta name="robots" content="noindex, nofollow" />
-  <meta property="og:title" content="New Episode Out Now – The Strategists" />
-  <meta property="og:description" content="Listen to the latest episode of The Strategists." />
-
-  <style>
-    /* unchanged */
-  </style>
 </head>
 <body>
-  <main class="card">
-    <div class="badge">NEW EPISODE OUT NOW</div>
-    <h1>{title}</h1>
-    {f'<div class="episode-number">Episode {epnum}</div>' if epnum else ""}
-    <p class="description">{description}</p>
-    <div class="buttons">
-      <a class="btn btn-primary" href="{ep['url']}">🎧 Read transcript & listen</a>
-    </div>
-    <div class="footer">
-      <a href="/">Browse all episodes</a>
-    </div>
+  <main>
+    <h1>{ep['title']}</h1>
+    <p>{ep['description']}</p>
+    <a href="{ep['url']}">Read transcript</a>
   </main>
 </body>
 </html>
