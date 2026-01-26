@@ -110,19 +110,21 @@ def render_index_page(episodes, page, total_pages):
         if page > 2
         else '<span></span>'
     )
-    
+
     older = (
         f'<a class="older" href="/page/{page+1}/">Older →</a>'
         if page < total_pages
         else '<span></span>'
     )
-    
+
     pager = f"""
-    <nav class="pager">
-      {newer}
-      <div class="page-num">Page {page} of {total_pages}</div>
-      {older}
-    </nav>
+<nav class="pager">
+  {newer}
+  <div class="page-num">Page {page} of {total_pages}</div>
+  {older}
+</nav>
+"""
+
 
     return f"""<!doctype html>
 <html lang="en">
@@ -183,6 +185,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
