@@ -223,6 +223,8 @@ body {{
     linear-gradient(160deg, #121826, #0b0f16);
 }}
 
+/* ---------------- Hero ---------------- */
+
 .hero {{ margin-bottom: 48px; }}
 
 .hero-grid {{
@@ -281,6 +283,8 @@ body {{
 
 .listen-links a:hover {{ text-decoration: underline; }}
 
+/* ---------------- Grid ---------------- */
+
 .grid {{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -291,14 +295,21 @@ body {{
   .grid {{ grid-template-columns: 1fr; }}
 }}
 
+/* ---------------- Cards ---------------- */
+
 .card {{
   display: flex;
   gap: 14px;
+  align-items: flex-start;
   background: rgba(255,255,255,0.06);
   border-radius: 18px;
   padding: 18px;
-  color: inherit;
   text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
 }}
 
 .card:hover {{
@@ -307,15 +318,18 @@ body {{
 }}
 
 .card.patreon {{
-  box-shadow: 0 0 0 1px rgba(215,82,47,0.35),
-              0 0 18px rgba(215,82,47,0.15);
+  box-shadow:
+    0 0 0 1px rgba(215,82,47,0.35),
+    0 0 18px rgba(215,82,47,0.15);
 }}
 
 .thumb {{
   width: 64px;
   height: 64px;
+  min-width: 64px;
   border-radius: 12px;
   overflow: hidden;
+  background: rgba(255,255,255,0.08);
 }}
 
 .thumb img {{
@@ -324,8 +338,18 @@ body {{
   object-fit: cover;
 }}
 
-.title {{ font-weight: 700; font-size: 17px; }}
-.meta {{ opacity: 0.6; font-size: 14px; margin-top: 6px; }}
+.title {{
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.3;
+}}
+
+.meta {{
+  opacity: 0.6;
+  font-size: 14px;
+  margin-top: 6px;
+}}
+
 .desc {{
   margin-top: 10px;
   font-size: 14px;
@@ -337,19 +361,47 @@ body {{
   overflow: hidden;
 }}
 
+/* ---------------- Pager ---------------- */
+
 .pager {{
   display: grid;
   grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   margin: 48px 0;
+  font-size: 15px;
 }}
 
+.pager a {{
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.75;
+}}
+
+.pager a:hover {{ opacity: 1; }}
+
+.pager .older {{ text-align: right; }}
+
 .page-num {{ opacity: 0.6; text-align: center; }}
+
+/* ---------------- Footer ---------------- */
 
 .site-footer {{
   margin-top: 64px;
   text-align: center;
   font-size: 13px;
-  opacity: 0.55;
+  color: rgba(255,255,255,0.55);
+}}
+
+.site-footer a {{
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: none;
+}}
+
+.site-footer a:hover {{ text-decoration: underline; }}
+
+.footer-links a {{
+  margin: 0 8px;
 }}
 </style>
 </head>
@@ -366,7 +418,18 @@ body {{
 {nav}
 
 <footer class="site-footer">
-  Built with <a href="https://postmic.co">postmic</a> for fast reading, sharing, and search.
+  <nav class="footer-links">
+    <a href="https://www.patreon.com/strategistspod" target="_blank" rel="noopener">Patreon</a>
+    <a href="https://www.youtube.com/@strategistspod" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://bsky.app/profile/thestrategists.ca" target="_blank" rel="noopener">Bluesky</a>
+    <a href="https://www.instagram.com/strategistspod/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@strategistspod" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.linkedin.com/company/106712598/" target="_blank" rel="noopener">LinkedIn</a>
+  </nav>
+
+  <div class="footer-credit">
+    Built with <a href="https://postmic.co">postmic</a> for fast reading, sharing, and search.
+  </div>
 </footer>
 
 </body>
@@ -428,6 +491,9 @@ def write_sitemap(episodes, total_pages):
 
 def main():
     episodes = load_episodes()
+    if not episodes:
+        raise SystemExit("No episodes found")
+
     total_pages = math.ceil(len(episodes) / PER_PAGE)
 
     for page in range(1, total_pages + 1):
@@ -440,8 +506,12 @@ def main():
             total_pages,
         )
 
-        out = OUT_DIR / ("index.html" if page == 1 else f"page/{page}/index.html")
-        out.parent.mkdir(parents=True, exist_ok=True)
+        if page == 1:
+            out = OUT_DIR / "index.html"
+        else:
+            out = OUT_DIR / "page" / str(page) / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+
         out.write_text(html, encoding="utf-8")
 
     NEWEST_DIR.mkdir(parents=True, exist_ok=True)
