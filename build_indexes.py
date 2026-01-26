@@ -103,13 +103,26 @@ def render_index_page(episodes, page, total_pages):
         for ep in episodes
     )
 
+    newer = (
+        '<a class="newer" href="/">← Newer</a>'
+        if page == 2
+        else f'<a class="newer" href="/page/{page-1}/">← Newer</a>'
+        if page > 2
+        else '<span></span>'
+    )
+    
+    older = (
+        f'<a class="older" href="/page/{page+1}/">Older →</a>'
+        if page < total_pages
+        else '<span></span>'
+    )
+    
     pager = f"""
-<nav class="pager">
-  <span></span>
-  <div class="page-num">Page {page} of {total_pages}</div>
-  {f'<a class="older" href="/page/{page+1}/">Older →</a>' if page < total_pages else '<span></span>'}
-</nav>
-"""
+    <nav class="pager">
+      {newer}
+      <div class="page-num">Page {page} of {total_pages}</div>
+      {older}
+    </nav>
 
     return f"""<!doctype html>
 <html lang="en">
@@ -170,5 +183,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
