@@ -437,6 +437,75 @@ def render_newest_page(ep):
 </html>
 """
 
+def write_sitemap(episodes, total_pages):
+    base = "https://episodes.thestrategists.ca"
+    urls = {}
+    
+    def add_url(loc, lastmod=None, priority=None, changefreq=None):
+        urls[loc] = {
+            "loc": loc,
+            "lastmod": lastmod,
+            "priority": priority,
+            "changefreq": changefreq,
+        }
+
+    # Homepage
+    homepage_lastmod = ""
+    if episodes and episodes[0].get("published"):
+        homepage_lastmod = episodes[0]["published"][:10]
+
+    add_url(
+        f"{base}/",
+        lastmod=homepage_lastmod,
+        priority="1.0",
+        changefreq="daily",
+    )
+
+    # Paginated index pages
+    for page in range(2, total_pages + 1):
+        add_url(
+            f"{base}/page/{page}/",
+            priority="0.6",
+            changefreq="weekly",
+        )
+
+    # Episode pages (most important)
+    for ep in episodes:
+        add_url(
+            f"{base}{ep['url']}",
+            lastmod=ep["published"][:10] if ep.get("published") else None,
+            priority="0.9",
+            changefreq="never",
+        )
+
+    # Newest redirect page
+    add_url(
+        f"{base}/newest/",
+        priority="0.4",
+        changefreq="daily",
+    )
+
+    xml = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+
+    for u in urls.values():
+        xml.append("  <url>")
+        xml.append(f"    <loc>{u['loc']}</loc>")
+        if u.get("lastmod"):
+            xml.append(f"    <lastmod>{u['lastmod']}</lastmod>")
+        if u.get("changefreq"):
+            xml.append(f"    <changefreq>{u['changefreq']}</changefreq>")
+        if u.get("priority"):
+            xml.append(f"    <priority>{u['priority']}</priority>")
+        xml.append("  </url>")
+
+    xml.append("</urlset>")
+
+    out = OUT_DIR / "sitemap.xml"
+    out.write_text("\n".join(xml), encoding="utf-8")
+
 # -------------------------------------------------------------------
 # Main
 # -------------------------------------------------------------------
@@ -473,9 +542,11 @@ def main():
     )
 
     print(f"✔ Wrote index ({total_pages} pages) and /newest")
-
+    write_sitemap(episodes, total_pages)
+    print("✔ Wrote sitemap.xml")    
 
 if __name__ == "__main__":
     main()
+
 
 
