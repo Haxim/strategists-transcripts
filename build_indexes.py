@@ -120,6 +120,7 @@ def render_index_page(episodes, page, total_pages):
   <meta name="description" content="{SITE_TAGLINE}">
   <link rel="canonical" href="/" />
   {f'<link rel="next" href="/page/{page+1}/">' if page < total_pages else ""}
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 
@@ -169,3 +170,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
