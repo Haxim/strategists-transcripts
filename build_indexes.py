@@ -137,7 +137,7 @@ def render_index_page(episodes, page, total_pages):
     hero = ""
     if is_home:
         hero = f"""
-        <header class="hero hero-split">
+        <header class="hero hero-split layout">
           <div class="hero-text">
             <h1>{SITE_NAME}</h1>
             <p class="tagline">{SITE_TAGLINE}</p>
@@ -248,7 +248,21 @@ def render_index_page(episodes, page, total_pages):
       padding: 0 clamp(16px, 3vw, 26px);
     }}
   
-    .hero h1 {{
+    
+.hero-text {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: left;
+}
+
+.listen-center {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  text-align: center;
+}
+
+.hero h1 {{
       font-size: 44px;
       margin-bottom: 12px;
       letter-spacing: -0.02em;
@@ -261,12 +275,13 @@ def render_index_page(episodes, page, total_pages):
       max-width: 720px;
     }}
   
-    .hero-split {{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      align-items: center;
-    }}
+    .hero-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  gap: 18px;
+  margin-bottom: 48px;
+}}
 
     .listen-center {{
       text-align: center;
@@ -301,10 +316,13 @@ def render_index_page(episodes, page, total_pages):
     }}
 
     @media (max-width: 860px) {{
-      .hero-split {{
-        grid-template-columns: 1fr;
-        text-align: left;
-      }}
+      .hero-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  gap: 18px;
+  margin-bottom: 48px;
+}}
 
       .listen-center {{
         margin-top: 24px;
