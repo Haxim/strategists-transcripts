@@ -155,6 +155,54 @@ def render_index_page(episodes, page, total_pages):
 </html>
 """
 
+BASE_URL = "https://episodes.thestrategists.ca"
+
+def write_sitemap(episodes, total_pages):
+    urls = []
+
+    # Home
+    urls.append({
+        "loc": f"{BASE_URL}/",
+        "lastmod": datetime.utcnow().date().isoformat(),
+        "priority": "1.0",
+    })
+
+    # Paginated index pages
+    for page in range(2, total_pages + 1):
+        urls.append({
+            "loc": f"{BASE_URL}/page/{page}/",
+            "priority": "0.6",
+        })
+
+    # Episode pages
+    for ep in episodes:
+        urls.append({
+            "loc": f"{BASE_URL}{ep['url']}",
+            "lastmod": ep["published"] or None,
+            "priority": "0.8",
+        })
+
+    xml = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    ]
+
+    for u in urls:
+        xml.append("  <url>")
+        xml.append(f"    <loc>{u['loc']}</loc>")
+        if u.get("lastmod"):
+            xml.append(f"    <lastmod>{u['lastmod']}</lastmod>")
+        if u.get("priority"):
+            xml.append(f"    <priority>{u['priority']}</priority>")
+        xml.append("  </url>")
+
+    xml.append("</urlset>")
+
+    (OUT_DIR / "sitemap.xml").write_text(
+        "\n".join(xml),
+        encoding="utf-8"
+    )
+
 def main():
     episodes = load_episodes()
     total_pages = math.ceil(len(episodes) / PER_PAGE)
@@ -168,6 +216,9 @@ def main():
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html, encoding="utf-8")
 
+    write_sitemap(episodes, total_pages)
+
 if __name__ == "__main__":
     main()
+
 
