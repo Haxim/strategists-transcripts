@@ -137,7 +137,7 @@ def render_index_page(episodes, page, total_pages):
     hero = ""
     if is_home:
         hero = f"""
-        <header class="hero hero-split layout">
+        <header class="hero hero-split">
           <div class="hero-text">
             <h1>{SITE_NAME}</h1>
             <p class="tagline">{SITE_TAGLINE}</p>
