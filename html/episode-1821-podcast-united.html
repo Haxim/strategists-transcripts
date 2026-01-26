@@ -1,0 +1,1832 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+
+  <title>Episode 1821: PODCAST United | The Strategists</title>
+
+  
+  
+
+  <meta name="description" content="The gang dive deep into Kevin Falcon suspending the BC United campaign and the fallout - for Falcon, for supporters of the now defunct BC United, for those who will wear this collapse, for the BC NDP and more.Corey Hogan and Stephen Carter discuss the end of the BC United/the-party-formerly-known-as-BC-Liberals, and how politicians and organizers can be expected to act when it all comes apart. Is the name change to blame? How will the BC NDP need to adjust their campaign? And now that the podcast wars are unilaterally settled, can we expect the gang to sweep the next award season? Zain Velji, as always, picks the questions and keeps everybody in line." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <style>
+    :root{
+      --brand:#d7522f;
+      --accent:#232e41;
+      --bg:#0b1020;
+      --panel:rgba(255,255,255,.06);
+      --panel-2:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.55);
+      --line:rgba(255,255,255,.12);
+      --shadow:0 16px 40px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius2:12px;
+      --maxw:1100px;
+      --pad:clamp(16px,3vw,26px);
+      --topbar-h:58px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto;
+      color:var(--text);
+      background:
+        /* ORANGE — same as /latest, slightly stronger */
+        radial-gradient(
+          1200px 700px at 80% 0%,
+          rgba(215,82,47,0.32),
+          transparent 60%
+        ),
+
+        /* NAVY — same counterweight */
+        radial-gradient(
+          900px 600px at -20% 120%,
+          rgba(35,46,65,0.6),
+          transparent 60%
+        ),
+
+        /* BASE — angled, not flat */
+        linear-gradient(
+          160deg,
+          #121826,
+          #0b0f16
+        );
+    }
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+
+    /* ---------------- Topbar ---------------- */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(10px);
+      background:rgba(10,15,30,.75);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0;
+    }
+
+    .navlinks{ display:flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .chip{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .chip strong{ color: var(--text); font-weight: 650; }
+    .chip:hover{ background: var(--panel-2); text-decoration:none; }
+
+    /* ---------------- Hero ---------------- */
+    .hero{padding:26px 0 12px}
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    /* ---------------- Player ---------------- */
+    #player-sentinel{height:1px}
+
+    #player-wrapper{margin-top:16px}
+
+    #player-wrapper .player-card{
+      overflow:hidden;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+    }
+
+    #player-wrapper iframe{
+      width:100%;
+      height:210px;
+      border:0;
+      display:block;
+    }
+
+    #player-wrapper.sticky{
+      position:fixed;
+      top:var(--topbar-h);
+      left:50%;
+      transform:translateX(-50%);
+      width:min(var(--maxw),calc(100vw - (2 * var(--pad))));
+      z-index:40;
+      margin-top: 0 !important;
+    }
+
+    /* -------- Mobile mini-player -------- */
+    @media (max-width:640px){
+      #player-wrapper.sticky iframe{
+        height:72px;
+      }
+
+      #player-wrapper.sticky .player-card{
+        border-radius:14px;
+      }
+
+      #player-wrapper.sticky.expanded iframe{
+        height:210px;
+      }
+    }
+
+    /* ---------------- Transcript ---------------- */
+    .main{padding:24px 0 48px}
+    .turn{
+      display:flex;
+      gap:12px;
+      padding:12px;
+      border-radius:14px;
+      cursor:pointer;
+    }
+    .turn:hover{background:var(--panel)}
+    .who{min-width:90px}
+    .who .ts{font-size:12px;color:var(--muted2)}
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="wrap inner">
+    <div class="brand">
+      <strong>The Strategists</strong>
+    </div>
+
+    <div class="navlinks">
+      <a class="chip" href="/">
+        ← <strong>All episodes</strong>
+      </a>
+    </div>
+  </div>
+</div>
+
+  <header class="hero">
+    <div class="wrap">
+      <section class="card" style="padding:20px">
+        <h1>Episode 1821: PODCAST United</h1>
+        <p>September 3, 2024</p>
+        
+          <div><p>The gang dive deep into Kevin Falcon suspending the BC United campaign and the fallout - for Falcon, for supporters of the now defunct BC United, for those who will wear this collapse, for the BC NDP and more.</p><blockquote><p><em>Corey Hogan and Stephen Carter discuss the end of the BC United/the-party-formerly-known-as-BC-Liberals, and how politicians and organizers can be expected to act when it all comes apart. Is the name change to blame? How will the BC NDP need to adjust their campaign? And now that the podcast wars are unilaterally settled, can we expect the gang to sweep the next award season? Zain Velji, as always, picks the questions and keeps everybody in line.</em></p></blockquote></div>
+        
+      </section>
+
+      <!-- 🔑 SENTINEL ABOVE PLAYER -->
+      <div id="player-sentinel"></div>
+
+      <div id="player-wrapper">
+        <div class="player-card">
+          
+          <iframe
+            id="acast-player"
+            src="https://embed.acast.com/624b672001207c001233d4a6/66d68d3191ae4d209b04c324"
+            title="Listen on Acast"
+            allow="autoplay"
+            loading="lazy"></iframe>
+          
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      <section class="card" style="padding:16px">
+        <h2 id="transcript">Transcript</h2>
+        <div class="turn" data-start="2">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:02</span>
+  </div>
+  <div class="said">This is a Strategist episode 1821. My name is Zain Velji. With me as always, Corey Hogan, Stephen Carter. Guys, we weren&#x27;t going to record. There&#x27;s something that&#x27;s happening that we have to talk about. I mean, we were going to record. We&#x27;re back to regular recording. No, we weren&#x27;t going to record. We&#x27;re definitely not going to record. But there&#x27;s something happening.</div>
+</div>
+<div class="turn" data-start="18">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:18</span>
+  </div>
+  <div class="said">It&#x27;s really just a question of whether we were recording with you or not. Let me tell you something. When you</div>
+</div>
+<div class="turn" data-start="23">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:23</span>
+  </div>
+  <div class="said">guys record without me, it doesn&#x27;t really work. I mean, not for you. You don&#x27;t get paid.</div>
+</div>
+<div class="turn" data-start="27">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">0:27</span>
+  </div>
+  <div class="said">Yeah, because you don&#x27;t get paid. No,</div>
+</div>
+<div class="turn" data-start="29">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">0:29</span>
+  </div>
+  <div class="said">paid i get paid no no it&#x27;s a unionized gig i get paid yeah definitely it&#x27;s a labor day by the way happy</div>
+</div>
+<div class="turn" data-start="36">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">0:36</span>
+  </div>
+  <div class="said">day hey by the way can we just say right off the top and maybe this happens every year and i just saw it this year the government of alberta&#x27;s happy labor day statement was pretty amazing in that it didn&#x27;t mention at any point labor you know didn&#x27;t mention unions didn&#x27;t mention labor just said good work for everybody who has a job in alberta effectively And we&#x27;d like people to have more jobs, and job creators should create more jobs. It&#x27;s very funny. Happy Work Day, workers.</div>
+</div>
+<div class="turn" data-start="65">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:05</span>
+  </div>
+  <div class="said">that was it. Yeah, pretty much. Okay, Carter, what&#x27;s more likely? The government of Alberta renames Labor Day to Worker Day, or the government of Alberta renames Labor Day and drops the U in labor?</div>
+</div>
+<div class="turn" data-start="80">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:20</span>
+  </div>
+  <div class="said">offer a third option, and that is that Alberta Day, which is on September 1st just takes over Labor Day. Is Alberta</div>
+</div>
+<div class="turn" data-start="87">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:27</span>
+  </div>
+  <div class="said">Day just a fuck you attempt to Labor Day? I feel like it is. I think so</div>
+</div>
+<div class="turn" data-start="91">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:31</span>
+  </div>
+  <div class="said">I think it&#x27;s a fuck you to Labor Day</div>
+</div>
+<div class="turn" data-start="92">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:32</span>
+  </div>
+  <div class="said">I think it&#x27;s just trying to tower over Labor Day with some sharp elbows and some government advertising and free events across both major cities. What do you think, one Corey Hogan?</div>
+</div>
+<div class="turn" data-start="104">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:44</span>
+  </div>
+  <div class="said">Well, I gotta tell you, for anybody listening not from Alberta or those of you who live in Alberta but forgot because your memories are small, we didn&#x27;t used to do Alberta Day. Like this was not a thing. Jason Kenney tried to make this a thing a couple of years ago because I think it&#x27;s because the fiscal year started on September 1st in 1905 when the province of Alberta was created. So that was technically the first day of the existence of Alberta. I think that might be the case, or it was July and it was like the second quarter. I don&#x27;t even remember, but I&#x27;ll tell you this. It wasn&#x27;t some great day where we stormed a Bastille or put put up a flag or signed any kind of declaration. No, it was a very administrative date. It was the beginning of a fiscal year. It&#x27;s</div>
+</div>
+<div class="turn" data-start="148">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">2:28</span>
+  </div>
+  <div class="said">And yeah, nobody in Alberta celebrated this in any way, shape or form. But the government, I mean, they&#x27;re trying. They&#x27;re trying to make it a thing. It is not a thing yet. They&#x27;re going to keep trying, though, so we&#x27;ll see where this goes. Carter, what did you do to celebrate your Alberta Day, by the way?</div>
+</div>
+<div class="turn" data-start="168">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">2:48</span>
+  </div>
+  <div class="said">Went for a bike ride. I had my family over. My daughter&#x27;s leaving to go to Europe tomorrow. You&#x27;re buying into exactly</div>
+</div>
+<div class="turn" data-start="176">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">2:56</span>
+  </div>
+  <div class="said">what they want you to do.</div>
+</div>
+<div class="turn" data-start="177">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">2:57</span>
+  </div>
+  <div class="said">This is what they want you to do. Spend time with your family. And we had food</div>
+</div>
+<div class="turn" data-start="182">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">3:02</span>
+  </div>
+  <div class="said">What&#x27;s your traditional Alberta Day dinner?</div>
+</div>
+<div class="turn" data-start="184">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">3:04</span>
+  </div>
+  <div class="said">Yeah, it was a traditional pork chops with peaches. No, that&#x27;s wrong. Done in a red sauce.</div>
+</div>
+<div class="turn" data-start="191">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:11</span>
+  </div>
+  <div class="said">He doesn&#x27;t even realize it, he&#x27;s just buying into their narrative. He is. I thought he was smarter than this. Me too</div>
+</div>
+<div class="turn" data-start="197">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">3:17</span>
+  </div>
+  <div class="said">No one has ever said that, that I&#x27;m smarter than this. I buy into everything.</div>
+</div>
+<div class="turn" data-start="202">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:22</span>
+  </div>
+  <div class="said">Corey, get out of your way what you did for Alberta today, and then I&#x27;ve got to talk about the reason that&#x27;s brought us here. I forgot it existed, so. Corey, okay, here&#x27;s the thing. Here&#x27;s the thing. Now, our sponsor reached out to us. They&#x27;ve back-channeled to me. Back</div>
+</div>
+<div class="turn" data-start="219">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">3:39</span>
+  </div>
+  <div class="said">Yeah, they have. You don&#x27;t really expect a sponsor to do that, but that&#x27;s. No</div>
+</div>
+<div class="turn" data-start="222">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">3:42</span>
+  </div>
+  <div class="said">well, this is no regular sponsor, okay? Okay. This is our presenting sponsor, okay? good. Yeah. Yeah, yeah, yeah, they don&#x27;t, they do like to do things differently. Corey, we have to talk about this. Flair Airlines, they&#x27;re offering flights for a dollar, okay? This is where it&#x27;s</div>
+</div>
+<div class="turn" data-start="241">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">4:01</span>
+  </div>
+  <div class="said">gotten to. Have you guys heard about this? They&#x27;re trying to undercut a Patreon membership available for six dollars. They are</div>
+</div>
+<div class="turn" data-start="245">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:05</span>
+  </div>
+  <div class="said">trying to undercut, so</div>
+</div>
+<div class="turn" data-start="246">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">4:06</span>
+  </div>
+  <div class="said">here&#x27;s what they&#x27;re doing. At strategistpatreon.com.</div>
+</div>
+<div class="turn" data-start="249">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:09</span>
+  </div>
+  <div class="said">Listen, let me tell you something. You could take six Flair Airlines flights, theoretically.</div>
+</div>
+<div class="turn" data-start="256">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:16</span>
+  </div>
+  <div class="said">can get on the plane six times.</div>
+</div>
+<div class="turn" data-start="259">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">4:19</span>
+  </div>
+  <div class="said">Once again, theoretically, if you—theoretically. Or you could buy a Patreon membership to our podcast, which we&#x27;ll only record around special occasions such as this. But there is an extensive back catalog back when we had more ambition. Yeah, this is true. We&#x27;ve all lost ambition and have gotten lazier but smarter. So it&#x27;s really a tradeoff for the listening crowd, Carter. Here&#x27;s what they&#x27;re doing. One, they&#x27;re offering a $1 base airfare for passengers flying to Canada from Sun Destination. So you already got to be in Jamaica, the Dominican Republic, or Mexico. And on your way back, Carter, you can fly theoretically for $1. Now, that&#x27;s just a base fare. Tell me, tell me this. The sponsor has back-channeled to me with two requests. Number one, mentioning this amazing promotion that everyone should try out, Corey, and everyone should take advantage of. Okay, they&#x27;ve wanted me to mention this. But they&#x27;ve also asked me if this is a fucking stupid idea as well. They&#x27;ve also asked me to comment on that. Now, this is why they back channel. This is why they&#x27;re not like any other sponsor. They want everyone to know about this. But they also want to know if this is fucking brain dead from a marketing perspective. So, Carter, have at it. How dare you? Is this gimmick by our presenting sponsor, Flair Airlines, a stupid deal?</div>
+</div>
+<div class="turn" data-start="340">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">5:40</span>
+  </div>
+  <div class="said">We&#x27;re heading into the winter season. season. And frankly, people have to pay me to come back. The good government of New Zealand is paying me to come back when I go to New Zealand later this year, because I would have stayed because it&#x27;s summertime down there. I can go bike riding any day. This is exactly what Flair Airlines should be doing. Flair Airlines. I mean, frankly, the fact that they&#x27;re not paying you to get onto one of their planes is a giant victory for Flair Airlines. So congratulations to Flair airlines on this spectacularly well thought through uh promotional opportunity uh coming back to canada only worth a buck okay</div>
+</div>
+<div class="turn" data-start="375">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">6:15</span>
+  </div>
+  <div class="said">so carter uh rather than taking a shit on our sponsor which they&#x27;ve asked us to do you now take a shit on the country uh which sounds like a conservative party of canada ad that you&#x27;re uh you&#x27;re you&#x27;re i mean why would i why can&#x27;t it is broken i don&#x27;t like it yeah oh my god carter come on you&#x27;re just you&#x27;re leading right into it cory um our sponsor has asked us for our feedback. Now, I don&#x27;t know if they&#x27;ve asked for us live on air in the first six minutes of a podcast, but that&#x27;s the only forum we have to give it to them. We actually really don&#x27;t have- Yeah</div>
+</div>
+<div class="turn" data-start="401">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">6:41</span>
+  </div>
+  <div class="said">it&#x27;s like a dead drop situation. They leave something in your mailbox and we put it on the podcast. Yeah.</div>
+</div>
+<div class="turn" data-start="405">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">6:45</span>
+  </div>
+  <div class="said">That&#x27;s exactly how it works. Yeah. Corey,</div>
+</div>
+<div class="turn" data-start="409">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">6:49</span>
+  </div>
+  <div class="said">your thoughts? All right. Well, first of all, you&#x27;ve said that they&#x27;re our sponsor enough times, I&#x27;m probably obliged to say they&#x27;re not our sponsor. But going beyond that, it&#x27;s not such a bad tactic. I mean, Obviously, they&#x27;re making all of their money on the flight there. We&#x27;re talking about it because they&#x27;re our sponsor. But besides that, I don&#x27;t know. I mean, Carter&#x27;s got the right of it, you know?</div>
+</div>
+<div class="turn" data-start="438">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">7:18</span>
+  </div>
+  <div class="said">hate saying that. You have nothing to say here? You have nothing to say with their... You don&#x27;t think this is a gimmick, Corey? Of course it&#x27;s a gimmick. It&#x27;s a marketing stunt. It&#x27;s a good one. It&#x27;s a good one.</div>
+</div>
+<div class="turn" data-start="451">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">7:31</span>
+  </div>
+  <div class="said">think it&#x27;s a good one</div>
+</div>
+<div class="turn" data-start="452">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">7:32</span>
+  </div>
+  <div class="said">i do because okay this is what i want to get into</div>
+</div>
+<div class="turn" data-start="455">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">7:35</span>
+  </div>
+  <div class="said">yeah i mean it&#x27;s really close to like hey yeah we&#x27;ve got zero cent chicken wings you can come and you can get as many chicken wings as you want now the styrofoam container that costs 22 right like you&#x27;re gonna have to buy the thing that costs money in order to get the thing that costs no money unless you&#x27;re planning to swim to jamaica i don&#x27;t recommend it uh that&#x27;s legal advice given to me i have to encourage people not to try to swim to jamaica because like otherwise how are you going to get there or are you flying a different airline there i&#x27;ll bet you you&#x27;re not even allowed to i&#x27;ll bet you it&#x27;s it&#x27;s some sort of bundle situation so but everybody gets to hear man did you hear how cheap their airfares are a dollar wow that&#x27;s crazy that&#x27;s so cool</div>
+</div>
+<div class="turn" data-start="493">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:13</span>
+  </div>
+  <div class="said">plus you&#x27;re totally minimizing the the probability that they&#x27;ll be able to take off in warmer weather right like these are the actual flights that we can expect to come back they have already gotten there these are the planes that have have gotten there and now all they have to do is get back this is a fantastic fucking deal are</div>
+</div>
+<div class="turn" data-start="510">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">8:30</span>
+  </div>
+  <div class="said">you giving our sponsor credit for a marketing campaign is that what i&#x27;m hearing from the two of you well</div>
+</div>
+<div class="turn" data-start="514">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:34</span>
+  </div>
+  <div class="said">they wanted us didn&#x27;t they i mean that&#x27;s that&#x27;s genius yeah okay fine genius there you</div>
+</div>
+<div class="turn" data-start="521">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">8:41</span>
+  </div>
+  <div class="said">that we don&#x27;t hate it</div>
+</div>
+<div class="turn" data-start="523">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">8:43</span>
+  </div>
+  <div class="said">well i know it&#x27;s not that</div>
+</div>
+<div class="turn" data-start="524">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">8:44</span>
+  </div>
+  <div class="said">i&#x27;m disappointed our sponsors after</div>
+</div>
+<div class="turn" data-start="526">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">8:46</span>
+  </div>
+  <div class="said">elevated how do you feel about the that&#x27;s podcast is about we&#x27;re going to move on uh this of course this segment was brought to us by our sponsor flare airlines Flair Airlines, where the fares are loony, but your mental health takes the flight. Okay, let&#x27;s move it on to our next segment. Our next segment, Stephen Carter, how to lose a base in 10 months. Oh, yeah. Can we talk about, can we talk about British Columbia?</div>
+</div>
+<div class="turn" data-start="549">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">9:09</span>
+  </div>
+  <div class="said">Okay, you know what? Let me tee it up in the simplest way. BC United, aka the BC Liberals, are no more. I mean, they are more, but that&#x27;s... Have at it. Have at it. I&#x27;m just, that&#x27;s all I&#x27;m going to start. Have at</div>
+</div>
+<div class="turn" data-start="562">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">9:22</span>
+  </div>
+  <div class="said">it, and we&#x27;ll go from there. All right. And obviously, the liberal brand has had challenges across Western Canada, for sure. And sort of one by one, Western provinces have either dropped or the voters have just absolutely moved on from their liberal parties. And BC was kind of this one exception. So the parties, none of them on the prairies except for Manitoba had any kind of official affiliation with the Federal Liberal Party. They all unaffiliated over the decades, right? right? And the BC liberals were, they were interesting, because in BC, politics tended to shift between, at least since the collapse of, you know, the Social Credit Party, you know, in the 80s, early 90s.</div>
+</div>
+<div class="turn" data-start="603">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">10:03</span>
+  </div>
+  <div class="said">It was the NDP, and it was the BC liberals, that was the left, and that was the right in British Columbia. And the BC liberals were a combination of people who are politically involved with the federal liberals and people involved with the federal conservatives. And it was this grand coalition of sorts, right, to try to stop the socialists every now and then, so to speak. And they were pretty successful. Like, they were in government fairly, fairly recently. But Kevin Falcon- And fairly often. Well, you know, again, like after the breaking of the social credit hegemony, like we act like that was forever, but it wasn&#x27;t, right? But they were, they certainly governed as often as they didn&#x27;t. And Kevin Falcon became leader. And certainly for a while, there was some conversation, maybe they should change their name. In part, because there were a lot of federal conservatives who didn&#x27;t love the liberal brand provincially, right? Right. And it was a kind of an ongoing conversation in the B.C. liberals. Falcon decided to actually call the question. The membership voted to change the name. They they picked B.C. United.</div>
+</div>
+<div class="turn" data-start="667">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">11:07</span>
+  </div>
+  <div class="said">And as you mentioned, it officially took effect last year, although the vote occurred in 2022. Right. And they&#x27;re fucking toast. Like, fast forward 10 months and they went from a party that was, you know, behind the NDP, but not not prohibitively. so closer to the bc ndp than the federal liberals are to the federal conservatives right now to</div>
+</div>
+<div class="turn" data-start="688">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">11:28</span>
+  </div>
+  <div class="said">single digits and packing it all up saying all right we uh i guess we&#x27;re going to suspend our campaign and support the bc conservatives and and it&#x27;s really amazing i mean i got a lot of threads that i&#x27;d like to open here but the way that name change i want to hear your guys opinions like was was it the reason for the collapse was it adjacent to the collapse but But the way that they moved from contender to graveyard in 10 months is crazy. It&#x27;s totally crazy. And I think that there&#x27;s a bunch of lessons and a bunch of cautionary tales within it for other political parties.</div>
+</div>
+<div class="turn" data-start="726">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:06</span>
+  </div>
+  <div class="said">Carter, for those that are uninitiated or have not necessarily paid attention, the long and the short of it is Kevin Faulcon comes out with the press conference to the surprise of his caucus, to the surprise of many of his ministers, saying, I&#x27;m not signing any of our nomination papers. I encourage everyone who is supporting this party, which has been dwindling, to Corey&#x27;s point, in the last number of months in terms of its public polling support. He formally said, fuck it, support the conservatives, support the guy I kicked out or that we kicked out as a party from the BC United slash BC Liberal Party, who now leads the conservatives. that&#x27;s where you should put your attention your time your money and perhaps maybe even some of our candidates will be some of their candidates he effectively strangleholded his strangle held his his party live at a press conference steven carter i&#x27;m giving the broad strokes</div>
+</div>
+<div class="turn" data-start="774">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">12:54</span>
+  </div>
+  <div class="said">your reaction when you saw that cory puts a good question on the table which i will want to explore as well which is is it the brand that killed the party or did the brand expose other things that that ultimately killed the party but your initial thoughts and then we&#x27;ll pick up on some of these these threads. And I&#x27;ve got a few strategists related questions that I&#x27;m really curious to get your guys&#x27; thoughts on</div>
+</div>
+<div class="turn" data-start="795">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:15</span>
+  </div>
+  <div class="said">Well, I mean, I worked in the leadership that Kevin Falcon won. And it was the, I worked for Val Litwin, who got crushed. But, you know, it was a leadership where Kevin Falcon was not the strongest candidate. He was the candidate that won. He was the candidate candidate who got all the attention and got all the votes, but he was an exceptionally weak candidate. And I&#x27;d have to say, this isn&#x27;t the fault of the name change. The name change was instigated by an incredibly weak leader who thought that the reason he was failing was because of a name instead of the reason that he&#x27;s failing is his leadership. So we</div>
+</div>
+<div class="turn" data-start="837">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">13:57</span>
+  </div>
+  <div class="said">knew the second that Kevin falcon was was uh elected in fact val litwin tweeted on on years ago when when if if kevin falcon&#x27;s elected leader of this party it will be the end of the bc liberal party because he&#x27;s just he was just that weak and this is a guy who lost to christy clark uh back when she won her her leadership um christy clark went on to govern uh for quite some time uh and it&#x27;s been a series of bad leaders i&#x27;m trying to remember the leader before and whose name is escaping me right now dr dr lawyer uh andrew wilkinson who had the personality of white paint that hasn&#x27;t yet been applied um but his his his he certainly started the downward spiral that kevin falcon leaned into and uh i i still think this is caused by exceptionally weak leadership and i&#x27;ll come back to, Zane, you&#x27;ll ask me more questions. I&#x27;ll come back to how he did it, because how</div>
+</div>
+<div class="turn" data-start="900">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">15:00</span>
+  </div>
+  <div class="said">he did it, I think, betrays his leadership style.</div>
+</div>
+<div class="turn" data-start="904">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">15:04</span>
+  </div>
+  <div class="said">Corey, let&#x27;s talk about that question at heart from your perspective, which you&#x27;ve introduced, which is the most fascinating to me. Did the name change kill this party? Or did the name change expose things within this party that ultimately killed Or spun off other elements that metastasized to kill this party, in</div>
+</div>
+<div class="turn" data-start="926">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">15:26</span>
+  </div>
+  <div class="said">So I&#x27;m of the opinion that a party that is one of the natural governing options can survive a bad leader, but it can&#x27;t survive a bad leader and the combination of a name change. And I&#x27;m not convinced it would have done particularly well with a great leader and a name change. You know, I&#x27;m going to throw what I&#x27;ve come to believe on the table here, and then I&#x27;ll go back to your question. But that is that name changes do not work. We have exactly one example of a name change that works in Canadian history. This is my argument. We can go back to that. You can say, what about X? What about Y? But it&#x27;s when the PC party changed their name to the Yukon party in the Yukon in 91. Hardly a massive shining example that everybody can follow. But I believe that is the only successful name change I can think of in Canadian political history. And one of the reasons why a name change doesn&#x27;t work, and one of the reasons why a name change is actually quite dangerous, as we&#x27;ve seen with BC United, is it demands a lot of the voters. senators like there&#x27;s a lot of polling that shows a huge chunks of bc didn&#x27;t even know the name change occurred even now you know after all of this advertising all of this money spent and so when they get asked on a poll hey who are you going to vote for and bc unite is an option even if it even if the pollsters done the charity of saying formerly bc liberals right they&#x27;re like what the fuck is that i don&#x27;t know what that is and uh and they move on with their lives and unfortunately um there is no such thing as a lifelong bc united voter you&#x27;ve actually given everybody an excuse to go drift off somewhere else right bc united as a name we have dissed on this pod a lot like going back to the start we said it was a fail not just because it sounds like a soccer team but because it was about their internal politics it was saying like we&#x27;re united which means absolutely fucking nothing to a voter like oh you&#x27;re a bunch of people who are not at each other&#x27;s throats guess you got my vote right that doesn&#x27;t mean anything right it wasn&#x27;t about the province it wasn&#x27;t about its philosophy for governing it was</div>
+</div>
+<div class="turn" data-start="1040">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">17:20</span>
+  </div>
+  <div class="said">gazing it was a navel gazing exercise right and and i think fundamentally they spent time on the packaging and not the product right if bc united didn&#x27;t exist would anybody bother to create it i think that the problem is the answer was no as soon as the bc conservatives were in the game and they never figured out their niche they kind of seesawed back and forth on some pretty significant issues issues still couldn&#x27;t tell you where they were i guess we&#x27;ll use past tense for it on things like climate on things like the economy and um and now they&#x27;re gone but uh a name even an unpopular name is an anchor in senses good and bad right you will only be as popular as the name ceiling will let it be but you&#x27;ll only be as unpopular as the name&#x27;s floor will let it be and i think the bc liberals forgot that second part and uh yeah and combined with some of the other stuff i&#x27;ve said that was fucking it like it&#x27;s it&#x27;s easy to collapse as a party when when you uh when you when you don&#x27;t have any of the components that you willingly gave away grand</div>
+</div>
+<div class="turn" data-start="1101">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">18:21</span>
+  </div>
+  <div class="said">loyalty i&#x27;m gonna come to i&#x27;m gonna come back to the canadian history thread of successful name changes or not and i think there&#x27;s contenders that one may want to put on the floor depending on the the the asterix you want to put beside them, or not. And some will say, I will fight</div>
+</div>
+<div class="turn" data-start="1118">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">18:38</span>
+  </div>
+  <div class="said">them all, one by</div>
+</div>
+<div class="turn" data-start="1119">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">18:39</span>
+  </div>
+  <div class="said">one. Saskatchewan party. I will fight them</div>
+</div>
+<div class="turn" data-start="1122">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">18:42</span>
+  </div>
+  <div class="said">Okay, you can fight them all. I&#x27;m not raising</div>
+</div>
+<div class="turn" data-start="1125">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">18:45</span>
+  </div>
+  <div class="said">Carter may raise a few if he&#x27;s got any thoughts. But let&#x27;s park that question for a second, Carter. You&#x27;ve been close to this party in some way. What happened here? Did the name change catalyze something, or did it crystallize something? Did the name change itself to say, yeah, this was the last straw that broke the back, or did it actually potentially spin other things into motion that led to the downfall here in your mind?</div>
+</div>
+<div class="turn" data-start="1147">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">19:07</span>
+  </div>
+  <div class="said">Well, if we were to be charitable, I think what we&#x27;d say is that the name change happened too late, right? That the people who were really upset about losing, you know, about having the liberal name had already left the party. They&#x27;d already moved to the conservatives because the conservatives were where they wanted to be. And so the name change happened too late. That&#x27;s my, I can, you know, unbelievably charitable read. And it makes me, you know, bile rose in my mouth as I said it. There is, Corey is correct. There is no Canadian precedent other than the Yukon party in the Yukon, which, let&#x27;s be honest, isn&#x27;t really a precedent when we really start talking about Canadian political parties. You know, it&#x27;s the size of a small city in Alberta or a small city in British Columbia. So, I mean, not physically, but you know what I mean, population-wise. The PCs, the Saskatchewan Party, the New Democratic Party, all of these were formed by mergers. All of these were formed by bringing together, even the United Conservative Party technically is a merger of the parties. And it&#x27;s hilarious to me that the good folks in British Columbia, the branding experts that embarked on this discussion, discussion looked at this and said, you know what? worked really well in Alberta. Let&#x27;s change our name to United because that&#x27;s worked so well in Alberta without even understanding how those two parties came together and</div>
+</div>
+<div class="turn" data-start="1237">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">20:37</span>
+  </div>
+  <div class="said">what the fallout has been. You know, the quote unquote United piece of it, the amount of media attention that it got, the amount of, you know, the timing timing with an election. Like it was just, it was a whole different scenario. And you can&#x27;t just simply say, well, it worked for Jason Kenney. Let&#x27;s call ourselves United. That&#x27;s not how you reflect the actual brand position that people want to have. People need a brand that they want. They don&#x27;t have a brand that you need. It has to reflect a brand that they want</div>
+</div>
+<div class="turn" data-start="1271">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">21:11</span>
+  </div>
+  <div class="said">Koi, talk about this. Carter&#x27;s put a few things on the table</div>
+</div>
+<div class="turn" data-start="1275">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">21:15</span>
+  </div>
+  <div class="said">Yeah, well, so he said, maybe it happened too late, I would argue, I agree. But I would say, or it happened too early, right? Like, maybe this is the thing you do literally day one of a new election campaign. So everyone&#x27;s tracking the ball understands your BC liberals right up to the last moment. And then when everyone&#x27;s keyed in, and paying attention, and it&#x27;s like, as of today, as of this election, we are not BC liberals, we are BC united, and we&#x27;re united to change this province for the better. And we invite everybody in British Columbia who is interested in changing this province for the better, who wants to bring free market values and a social compassion to government and common sense to come join us and unite with us in changing this government. I think that could have worked too, but I actually think they picked the worst fucking time to do it, which is after enough of the people who were quote-unquote conservatives drifted away, but before anybody else in the province was paying any attention to this. And I do think that the polling sort of backs that up. So I would just say the doldrums is not a time where you want to be doing something like this. And maybe that&#x27;s one of the learnings that&#x27;s there for everybody here. here he</div>
+</div>
+<div class="turn" data-start="1341">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">22:21</span>
+  </div>
+  <div class="said">you know stephen brings up a really interesting point like the equivalent in albert like i i wanted to i&#x27;m not gonna you mean the merger point yeah i&#x27;m not gonna successful yeah i&#x27;m not gonna call out the political scientist who was quoted in the newspaper but one of them said i&#x27;m surprised it didn&#x27;t work it worked in alberta and it worked in saskatchewan i wanted to throw my head through a wall when i saw that in part because i think that that&#x27;s probably what a lot of people in the bc liberals thought like hey this worked there hey this worked there</div>
+</div>
+<div class="turn" data-start="1372">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">22:52</span>
+  </div>
+  <div class="said">want to call him The Greater Victoria&#x27;s Royal Rhodes University. Okay. He&#x27;s the idiot who said that. Thank you, Stephen.</div>
+</div>
+<div class="turn" data-start="1380">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">23:00</span>
+  </div>
+  <div class="said">Royal Rhodes is like the Flair Airlines of universities. That&#x27;s what I&#x27;ve heard. That&#x27;s what I&#x27;ve heard according</div>
+</div>
+<div class="turn" data-start="1385">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">23:05</span>
+  </div>
+  <div class="said">to myself. That&#x27;s good. Here&#x27;s the thing I would say. The equivalent would not be United Conservative Party, which was a merger of the PCs and the Wild Rose. And that was, let&#x27;s not forget, the PCs were the third party at the time. The Wild Rose was the second party. It would be like if Jason Kenney took over the PCs and just renamed the PCs the United Conservative Party, and there was still a fucking Wild Rose. That would be the comp, right? Right? The Saskatchewan Party, everyone&#x27;s forgotten because of how it&#x27;s evolved, but the Saskatchewan Party was a merger of four liberals from the Liberal Caucus and four PCs from the PC Caucus into this eight-person caucus that was the Saskatchewan Party. The PC Party of Saskatchewan contested elections for the next, they limped along for years after that, you know, very ineffectually, but they still existed. The liberals still existed. It was not, to Stephen&#x27;s point, a name change. It was a new political entity, and it was arguably a merger of two political caucuses. So, like, the idea that you can just say, oh, all we need to do to merge the quote-unquote right in BC is just to say we&#x27;re the merged right and not do the work behind it? That&#x27;s why this thing fucking failed, right? You know, it was never about the name. The name was the last thing on the journey. The name was the thing that they had to decide at the end of the road, not at the start of the road. And it&#x27;s crazy to me that people look at these examples and say, yeah, perfect example of name change, because it wasn&#x27;t even a name change in either of those two quote unquote successful cases. places.</div>
+</div>
+<div class="turn" data-start="1473">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">24:33</span>
+  </div>
+  <div class="said">here&#x27;s where I want to go. I want to talk about something that&#x27;s a little bit,</div>
+</div>
+<div class="turn" data-start="1479">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">24:39</span>
+  </div>
+  <div class="said">there&#x27;s a slight deviation from where we&#x27;ve been, but it&#x27;s actually not. It&#x27;s a strategy question around how to be a consultant around this stuff, how to be a good consultant around this stuff. Now, that sounds extremely vague, but I&#x27;m going to give a quote from a Canadian press article, the same one you were alluding to where that university professor was named. And in this, You have a campaign strategist. You know, the three of us are often quoted in newspapers and radio, etc. This person worked on the rebrand, okay, for BC United through their firm, and then went on to pretty much take a shit on the leader, saying he didn&#x27;t listen. He had a committee of people responsible for the name change, didn&#x27;t listen to them. I&#x27;m sure that those staff and caucus people, we&#x27;ve seen more over the conservatives, move over to the conservatives that made the decision to the party. They weren&#x27;t listened to either. You could design a great logo. You could put out some ads, but it didn&#x27;t answer the problem which the party had, which is where do you stand on the political spectrum? What do you believe? I&#x27;m paraphrasing a bit at the end there. But that was a sentiment.</div>
+</div>
+<div class="turn" data-start="1548">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">25:48</span>
+  </div>
+  <div class="said">The strategy, Carter, here, and we could talk about this person&#x27;s comments. I think the three of us would largely agree with what they&#x27;re saying, especially that last part.</div>
+</div>
+<div class="turn" data-start="1557">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">25:57</span>
+  </div>
+  <div class="said">But the strategy of someone who worked on this going on the offensive against the leader, now the former leader, I think that&#x27;s really interesting to me. And has that ushered in like a new era of politics and decorum for those that kind of work on campaigns versus the leader, the power balances and dynamics? dynamics would you do something like this if you were kind of and i suspect this person is maybe being not blamed but you know it&#x27;s well known that they were probably part of it they&#x27;re probably trying to defend their reputation i find this to be really interesting and i don&#x27;t think this is going to be talked about on any other podcast except ours which is what are the rules and the strategic plays and how the decorum and like the unwritten rules of how to navigate something like this do you go out in fucking canadian press and go on the offensive against a leader who was was responsible for this name brand as much as you were potentially? Talk to me about this. Give me your thoughts on this. And Corey, I&#x27;ll come to you in a second.</div>
+</div>
+<div class="turn" data-start="1608">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">26:48</span>
+  </div>
+  <div class="said">Well, there&#x27;s, there&#x27;s degrees of consequences, right? So if you&#x27;re going to go out and go after a leader that you used to work for, and keep in mind, for example, I don&#x27;t talk about Jyoti Gondek all that much. I mean, her mayoralty has not done exactly what it was promised to do. But I don&#x27;t talk about her very much on the podcast or anything along those lines. We did certainly did talk about Alison Redford. You&#x27;ll recall Brad Wall threatened to have me fired at some point because I was apparently tweeting mean things about Alison Redford. Those were the days.</div>
+</div>
+<div class="turn" data-start="1640">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">27:20</span>
+  </div>
+  <div class="said">Those were the days. No, I got your</div>
+</div>
+<div class="turn" data-start="1641">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">27:21</span>
+  </div>
+  <div class="said">office after that, so.</div>
+</div>
+<div class="turn" data-start="1643">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">27:23</span>
+  </div>
+  <div class="said">Yeah, you got my office. It was a good day for you. Did you</div>
+</div>
+<div class="turn" data-start="1646">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:26</span>
+  </div>
+  <div class="said">get to take the photo home with you?</div>
+</div>
+<div class="turn" data-start="1649">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">27:29</span>
+  </div>
+  <div class="said">Yeah, it&#x27;s still here in</div>
+</div>
+<div class="turn" data-start="1651">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:31</span>
+  </div>
+  <div class="said">my house. No, you don&#x27;t have it. I have it. It&#x27;s right up here. You have it? I have it. I&#x27;m sorry. You don&#x27;t even... I&#x27;m sorry. The answer should have been no, because now you&#x27;re caught in a lie. why</div>
+</div>
+<div class="turn" data-start="1659">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">27:39</span>
+  </div>
+  <div class="said">we&#x27;re pretty sure i have something like that heather with you and uh the kids don&#x27;t i have one too</div>
+</div>
+<div class="turn" data-start="1666">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">27:46</span>
+  </div>
+  <div class="said">okay this is a lot of people i might have made two copies all i had to do is do we know what he&#x27;s explaining this story to people do we need to take a flare</div>
+</div>
+<div class="turn" data-start="1674">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">27:54</span>
+  </div>
+  <div class="said">uh no i you want to just leave this hanging maybe</div>
+</div>
+<div class="turn" data-start="1677">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">27:57</span>
+  </div>
+  <div class="said">it&#x27;s the light photo put it in the lightning round zane we&#x27;ll come back to that don&#x27;t tell me what to do i feel</div>
+</div>
+<div class="turn" data-start="1682">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">28:02</span>
+  </div>
+  <div class="said">like i want to i want to take a keep going carter</div>
+</div>
+<div class="turn" data-start="1685">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">28:05</span>
+  </div>
+  <div class="said">I&#x27;ve lost my train now. But yeah, I mean, you can shit on the leader that&#x27;s destroyed the party. If you&#x27;re going to shit on anyone, it&#x27;s that leader who&#x27;s destroyed the fucking party. So I have I have real issue with how Kevin Falcon did this. I mean, the idea that this party is never going to come back. It can&#x27;t come back with me as leader. It can&#x27;t come back with you as leader. It can&#x27;t come back with anyone as leader. And there&#x27;s the photograph. photograph i&#x27;m sure i have one of those okay yeah</div>
+</div>
+<div class="turn" data-start="1715">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">28:35</span>
+  </div>
+  <div class="said">yeah audio media photograph the people yeah yeah so it&#x27;s a picture of uh steven&#x27;s and his well steven&#x27;s family i should say um at a much younger age around i&#x27;d say what 2012 2013 when we all worked together in paris except um steven you&#x27;re not in the photo in the photo is a i mean it looks like zane velgey a little um A little fairer skinned than Zayn Velji, I think. Yeah, so this is a picture of white Zayn with Stephen&#x27;s family. Do we want to talk about why?</div>
+</div>
+<div class="turn" data-start="1749">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:09</span>
+  </div>
+  <div class="said">Okay, that&#x27;s fine. Yeah, I figured that&#x27;s correct answer. Let&#x27;s not talk</div>
+</div>
+<div class="turn" data-start="1752">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">29:12</span>
+  </div>
+  <div class="said">about why. No, no, no. No, Yeah, nope, nope, nope, nope. So, Cardi, it&#x27;s kosher to take a shit on the leader as a</div>
+</div>
+<div class="turn" data-start="1758">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:18</span>
+  </div>
+  <div class="said">consultant who worked on this? He&#x27;s not a leader anymore.</div>
+</div>
+<div class="turn" data-start="1762">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">29:22</span>
+  </div>
+  <div class="said">He&#x27;s not a leader anymore.</div>
+</div>
+<div class="turn" data-start="1764">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:24</span>
+  </div>
+  <div class="said">take on this</div>
+</div>
+<div class="turn" data-start="1765">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">29:25</span>
+  </div>
+  <div class="said">What&#x27;s your take on this? He wasn&#x27;t a leader. he wasn&#x27;t a leader when he got elected leader this is a guy who doesn&#x27;t deserve the title leader this is a guy who&#x27;s fucked over his party so dramatically that he can no longer be called a leader he is someone who said i can&#x27;t lead this shit show and no one else can lead this shit show either he&#x27;s not a leader he&#x27;s a fucking lunatic yeah</div>
+</div>
+<div class="turn" data-start="1786">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">29:46</span>
+  </div>
+  <div class="said">yeah your thoughts on this right like this might be a a question line to nowhere but i actually don&#x27;t think it is i think there&#x27;s something interesting to me about this, that someone can take the offensive like this. Your thoughts?</div>
+</div>
+<div class="turn" data-start="1797">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">29:57</span>
+  </div>
+  <div class="said">Yeah, I mean, just to finish off what Carter&#x27;s saying, he might be a community leader. You can make the case that he&#x27;s a leader in some sort of diplomat sense, right, in some sort of statesperson sense. I&#x27;d entertain it. I&#x27;m not sure I would agree. He&#x27;s not a party leader. You know, he no longer leads a party. He led a party into the ground. That party functionally does not exist anymore. And so I think that is going to be coloring the commentary coming from a lot of of people who have been very committed to this now you&#x27;ve you&#x27;ve both been involved in political parties i&#x27;ve been involved in political parties there are true believers there there are people who in life find religion and there are people in life who find politics and if you assault their political home you might as well be assaulting their identity entirely and this person destroyed it like he destroyed their political identity these people are having a crisis of faith that very few people can actually understand unless they&#x27;ve had you know been involved in some very very crazy or very unfortunate situations. And so you can expect a certain amount of lashing out like this. What I will also say more prosaically is that some people will hold their tongue to be a good soldier at moments like this, right? They&#x27;ll say, well, I don&#x27;t want to, I&#x27;m pissed off with what the leader did, but I want to have a future with this party. These people are my friends. I don&#x27;t want to antagonize anybody. But when there is no party to have a future with,</div>
+</div>
+<div class="turn" data-start="1874">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">31:14</span>
+  </div>
+  <div class="said">it&#x27;s all gonna come out right this is this is gonna be bets off i&#x27;m fucking mad i&#x27;m settling this thing i&#x27;m so pissed off at this guy and you&#x27;re gonna see this kind of anger and you&#x27;re gonna see this kind of wrestling over it and i mean we&#x27;re already seeing stories bleed out there&#x27;s been some hinting in in uh articles about maybe part of the reason this occurred at this moment was money i can certainly tell you i have heard that basically the entire war chest was spent both both at the provincial level, but also a lot of the constituency money to try to bolster the favorables for the party and the leader, both of which have plummeted since that campaign began. And much, much money was spent, hundreds of thousands, if not millions, and nothing moved. And at a certain point, you&#x27;ve got to look around and say, is money coming in? And where are we? And do we stand a chance in hell? And maybe there are also some tactical decisions that people are upset about that are coming into this as well.</div>
+</div>
+<div class="turn" data-start="1929">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">32:09</span>
+  </div>
+  <div class="said">Well, and that&#x27;s what caused the ultimate collapse of the Progressive Conservative Party federally. Ultimately, it was the lack of money that forced the decision that Peter McKay made, that and his lack of intestinal fortitude.</div>
+</div>
+<div class="turn" data-start="1940">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">32:20</span>
+  </div>
+  <div class="said">Talk to me about this. I&#x27;m not leaving this topic just yet. Corey, I&#x27;m going to go with you first on this, right? You&#x27;re working on a campaign, you were part of a rebrand, the party dies, or the party is killed by its own leader, right? right? As what has happened right here. Corey Hogan goes on the record to say this fucking leader doesn&#x27;t listen. You know, it&#x27;s his fault. Yeah, I worked on the rebrand. Yeah, we put up this logo. Yeah, whatever. But this person.</div>
+</div>
+<div class="turn" data-start="1965">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">32:45</span>
+  </div>
+  <div class="said">you think people would want to work with you in the future? I don&#x27;t like this is what I&#x27;m trying to get to in some ways, which is like, are you for the short term win as a practitioner for the defensive and maybe it was so bad that you needed to, that you needed to clear the air. But is there not longer standing repercussions being like, man, Corey&#x27;s the type of guy that might fuck me over one day in the Canadian press, or might, you know, say a comment or two that, you know, will pin it on me? That&#x27;s the practitioner question I&#x27;m really curious about</div>
+</div>
+<div class="turn" data-start="1996">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">33:16</span>
+  </div>
+  <div class="said">Yeah. And I think that often when you see commentary like this, that&#x27;s probably the end of them being a practitioner at a certain level, right? Because, well, certainly I&#x27;ll tell you, I&#x27;ve known people who&#x27;ve turned a blind eye to that. They almost always regret it right because once somebody has shown that they&#x27;ll be disloyal like that at one point they will be again in the future almost certainly and so you you try not to go out that way you don&#x27;t want to be the person who is sour grapes even when people are blaming the last guy if you&#x27;re the last guy you don&#x27;t want to stand up and defend yourself and say no fuck this person too it&#x27;s just it doesn&#x27;t necessarily serve you well if you want a future in politics But some of these people probably think there is no future in politics anymore, right? And maybe that is very short term thinking, because</div>
+</div>
+<div class="turn" data-start="2041">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">34:01</span>
+  </div>
+  <div class="said">nothing in life is as good or as bad as you think it might be. But that&#x27;s probably what they&#x27;re feeling right now. And so now they&#x27;re thinking, what can I salvage? I&#x27;m going to try to salvage my judgment. So people think that I have good judgment, knew this was coming. I want to salvage my professional competency. I tried to execute this better, and I just was unable to execute it. And yes, I&#x27;m not going to be able to salvage my sense that I&#x27;m a team player. But frankly, Zane, most jobs in the world, you don&#x27;t have to worry about your subordinates going to the Canadian press and saying bad things about you. The Canadian press isn&#x27;t fucking interested, right? It&#x27;s just not a story. So, you know, the requirement that somebody be able to be a team player on the macro scale and like that fear that somebody might come and bite you like in politics just doesn&#x27;t exist in a lot of other workplaces. So, well, nobody I think in any workplace wants somebody who is going to be considered disloyal. The calculation does fundamentally change depending on what you want your future to be.</div>
+</div>
+<div class="turn" data-start="2096">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">34:56</span>
+  </div>
+  <div class="said">And I&#x27;m not saying this is a good or bad strategic move. I just want to try to paint the most honest picture that I see from it and just ask you guys if you think it&#x27;s a good or bad strategic move on the part of this individual partner.</div>
+</div>
+<div class="turn" data-start="2106">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">35:06</span>
+  </div>
+  <div class="said">half the equation. Which Half the equation is that these people who worked with Falcon are going to be stained with working with him for the rest of their careers. So they&#x27;re trying to get it off. I&#x27;m stained with working with Alison Redford. I&#x27;m stained with working with Jyoti Gondek. I&#x27;m stained with working even with Nahed Denchi. Is that stain or is that what&#x27;s</div>
+</div>
+<div class="turn" data-start="2125">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">35:25</span>
+  </div>
+  <div class="said">in some way? I mean, Zane, this helps you orient. Think about how you&#x27;re stained with working with Stephen Carter. Does that kind of... It&#x27;s stain.</div>
+</div>
+<div class="turn" data-start="2133">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">35:33</span>
+  </div>
+  <div class="said">I can&#x27;t save this 15 Yeah. Keep going, Carter. may be onto something. The stain is something that sticks with you. And sometimes that stain is really good. Sometimes the people are like, oh, you&#x27;ve worked with Nye and Nenji? Oh, that must have been fantastic. You know, sometimes the stain is absolutely horrible. You were the one who got Alison Redford elected. You&#x27;re the one who decided to rebrand the party, the BC United Party. Are you a fucking idiot? Well, now it&#x27;s Kevin Falcon&#x27;s fault. It&#x27;s not my fault. It&#x27;s Kevin Falcon&#x27;s fault. I was executing</div>
+</div>
+<div class="turn" data-start="2169">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">36:09</span>
+  </div>
+  <div class="said">on a task as best as the</div>
+</div>
+<div class="turn" data-start="2170">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">36:10</span>
+  </div>
+  <div class="said">guardrails that we had. I did what I was asked to do, and I did it as best I could. And I was proud of the work that I did, damn it. So Carter, if the guns were after</div>
+</div>
+<div class="turn" data-start="2179">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">36:19</span>
+  </div>
+  <div class="said">you as a practitioner in a similar situation, would you have done something similar? Maybe not executed exactly here, but would you have kind of said, fuck it, I need to get out of this. This is a historical train wreck. I need to do something similar. Would your instincts have been similar to this person</div>
+</div>
+<div class="turn" data-start="2198">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">36:38</span>
+  </div>
+  <div class="said">I don&#x27;t recognize this person&#x27;s name. I don&#x27;t know who they are. I don&#x27;t think that they were so high on the pecking list that they were going to be contacted for sure. My view has always been fire away, right? Interesting. Say the truth. And if the truth is going to get you into trouble, well, c&#x27;est la vie. And I don&#x27;t know if you noticed. That doesn&#x27;t know. We started an actual fucking podcast with that whole idea around it, right? So saying the truth is what we do.</div>
+</div>
+<div class="turn" data-start="2229">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">37:09</span>
+  </div>
+  <div class="said">Fair enough. enough. Corey, your thoughts on this. We don&#x27;t do spin. Your thoughts on this. You&#x27;re back against the wall. Yeah. Framing it like Carter has, the stain sort of analogy. Yeah. Would you do</div>
+</div>
+<div class="turn" data-start="2240">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">37:20</span>
+  </div>
+  <div class="said">something similar? No, I wouldn&#x27;t. I mean, but Carter and I are very different in that case. Yes. And there&#x27;s a number of times where I&#x27;ve had a truth. There&#x27;s been things that I&#x27;ve strongly disagreed with, with political leaders I&#x27;ve worked with. And I don&#x27;t generally air that. And that you&#x27;ve had to wear equally. And I&#x27;ve had to wear. Absolutely, I&#x27;ve had to wear. And I just have to kind of do But I take a very different approach to political organizing. And maybe it&#x27;s an old fashioned approach. Maybe it&#x27;s not an appropriate approach in 2024, where everybody hangs their bare ass out on every fucking issue that there is. But I just wouldn&#x27;t, you know, you can always choose your volume on these matters. You always have the ability not to give the reporter comment, if the reporter calls. And that doesn&#x27;t mean you&#x27;re lying. It just means they&#x27;re not entitled to your opinion, right? Right. And your opinion and the discretion that comes with that is something that I that I that I personally, you know, that&#x27;s part of what I do in politics. Now, I&#x27;ve never, you know, been the media darling that Stephen Carter is when it comes to like winning those campaigns. You guys know half the bloody campaigns I&#x27;ve worked on have been very quiet and behind the scenes. Right. But losers. Yeah.</div>
+</div>
+<div class="turn" data-start="2305">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">38:25</span>
+  </div>
+  <div class="said">But that was that was a little that was a little harsh. You know, I mean, you&#x27;re just like the</div>
+</div>
+<div class="turn" data-start="2310">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">38:30</span>
+  </div>
+  <div class="said">media darling like Stephen Carter. well</div>
+</div>
+<div class="turn" data-start="2312">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">38:32</span>
+  </div>
+  <div class="said">no but there&#x27;s one some stuff so have i but not the same types of campaigns in the same sense so um yeah but like that&#x27;s that we&#x27;re just very different political organizers like that and um and you know at the end of the day falcon really wanted this and so it&#x27;s not that hard to hang it on them and i&#x27;m sure that bitterness rings through i found the coverage of the original november vote when they went with bc united and there&#x27;s a couple of the 80 sort of like yeah so</div>
+</div>
+<div class="turn" data-start="2342">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">39:02</span>
+  </div>
+  <div class="said">thing, which Falcon brings up and</div>
+</div>
+<div class="turn" data-start="2343">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">39:03</span>
+  </div>
+  <div class="said">has brought up. Okay, okay. Around 8,100 of the party&#x27;s 45,000 members voted, which Falcon called a success. That was 18% of the membership voted. That&#x27;s not much of a mandate for such a change. He goes on to say, we&#x27;ve gone through a really robust process here. I&#x27;m really very proud of it. It&#x27;s really very engaged the membership, but this is my favorite part with the benefit of hindsight. Sorry, and now you just to be clear, you&#x27;re reading an article- I&#x27;m reading an article- This past November. not from past like a year before okay</div>
+</div>
+<div class="turn" data-start="2372">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">39:32</span>
+  </div>
+  <div class="said">right falcon dismissed concerns a name change might be confusing it&#x27;s not like we&#x27;re coca-cola he said so there you go like people were at the time saying hey very prescient quote yeah and they&#x27;re they&#x27;re for sure not coca</div>
+</div>
+<div class="turn" data-start="2387">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">39:47</span>
+  </div>
+  <div class="said">-cola at all right yeah</div>
+</div>
+<div class="turn" data-start="2388">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">39:48</span>
+  </div>
+  <div class="said">but um people were at the time raising the concerns that turned out to be accurate so So it&#x27;s quite possible that some of these consultants, even at the time, were on the record, so to speak, about some of these things.</div>
+</div>
+<div class="turn" data-start="2401">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">40:01</span>
+  </div>
+  <div class="said">Carter, I&#x27;m not going to let this go just yet. Convince Corey to speak on the record if he&#x27;s being blamed for something politically and he wants a future in politics. Help him balance in a situation where it&#x27;s well known that he is responsible for a dumpster fire and he still wants a future in politics. How would you distance yourself from it while still maintaining a future for you? Give Corey some some Stephen Carter strategist help.</div>
+</div>
+<div class="turn" data-start="2429">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">40:29</span>
+  </div>
+  <div class="said">Well, I mean, the example that pops into mind was watching Alison Redford flame out. You</div>
+</div>
+<div class="turn" data-start="2436">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">40:36</span>
+  </div>
+  <div class="said">you getting blamed for that, even though you weren&#x27;t inside?</div>
+</div>
+<div class="turn" data-start="2439">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">40:39</span>
+  </div>
+  <div class="said">I am still blamed for Alison Redford. When I walk into a room, people are like, oh, that&#x27;s the guy who got Alison Redford elected. elected i&#x27;m still blamed</div>
+</div>
+<div class="turn" data-start="2448">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">40:48</span>
+  </div>
+  <div class="said">even you even though you were not in for that six eight i don&#x27;t remember it was a year six eight months whatever that was afterwards</div>
+</div>
+<div class="turn" data-start="2453">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">40:53</span>
+  </div>
+  <div class="said">yeah i was in for half a year and yeah but</div>
+</div>
+<div class="turn" data-start="2455">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">40:55</span>
+  </div>
+  <div class="said">but after she got elected and won the</div>
+</div>
+<div class="turn" data-start="2458">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">40:58</span>
+  </div>
+  <div class="said">general election very loyal to her i would suggest probably for the first three years after and then there there came a point when when her sins were so severe that it was nearly impossible to support her when she was taking the two planes planes uh two planes different places so wait do you do you kind of wish</div>
+</div>
+<div class="turn" data-start="2478">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">41:18</span>
+  </div>
+  <div class="said">do you kind of wish you spoke louder and said fuck you guys this is not me sooner like some version of that</div>
+</div>
+<div class="turn" data-start="2484">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">41:24</span>
+  </div>
+  <div class="said">i don&#x27;t think so i think that cory&#x27;s point about keeping you know of deciding when you&#x27;re going to uh loosen your tongue is pretty wise uh i i was really i think trying to just walk a higher road um during that period but there comes a time when you you just can&#x27;t stand by and watch as as someone commits you know well essentially fraud um and and just stand by and say well that&#x27;s okay with me uh and it was it was it was assumed that because i&#x27;d gotten her elected i was fine with certain things that were that i just very clearly wasn&#x27;t fine with so for me it was the line was when we really crossed into significant ethical issues. In this particular case, it&#x27;s different because it&#x27;s not crossing into significant ethical issues. It&#x27;s just more or less crossing into this person may be blamed for the decision-making that has happened at</div>
+</div>
+<div class="turn" data-start="2544">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">42:24</span>
+  </div>
+  <div class="said">this point. Let&#x27;s say Corey was part of this. He doesn&#x27;t want to go to the CP. He doesn&#x27;t want to talk to them directly. Give him a future in politics without having to wear this. What What strategist advice would you give someone like Corey? And there&#x27;s probably a bunch of people right now that are going to be stained with the longer-term Falcon-BC United demise. Even, frankly, I would argue, Carter, even if they were involved in the high-water mark of the BC liberals when they were in government, now that this enterprise. So what advice would you give to a Corey Hogan or a Corey Hogan equivalent who&#x27;s saying, Stephen, fuck me, man. man. Like BC, the conservatives aren&#x27;t going to touch me because I was really going ham for BC United. I don&#x27;t even know if I&#x27;ve got a future in this thing. It&#x27;s the only thing I&#x27;ve ever been good at. And I&#x27;m now associated with this dumpster fire directly or indirectly. Give me some distance and give me a future.</div>
+</div>
+<div class="turn" data-start="2593">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">43:13</span>
+  </div>
+  <div class="said">I&#x27;m thinking of Todd Stone, Michael Bernier. So, you know, Mike DeYoung, people who&#x27;ve been around the party forever. Even Val Litwin, people that, so I&#x27;m not going to give this advice to cory because uh cory doesn&#x27;t listen cory is cory cory&#x27;s the captain falcon of the podcast and uh</div>
+</div>
+<div class="turn" data-start="2612">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">43:32</span>
+  </div>
+  <div class="said">which would make which we&#x27;re renaming by the way yeah</div>
+</div>
+<div class="turn" data-start="2615">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">43:35</span>
+  </div>
+  <div class="said">we&#x27;re gonna yeah i think it&#x27;s going to be the discourse uh anyways united podcast united anyways this is a i think that i would be saying to them now is in fact the time to lash out uh And here&#x27;s why there is no because because Kevin took this action unilaterally, he had assumed that there is no option for Christy Clark to come back. There&#x27;s no option for Val Litwin to to rescue this from the ashes. This is going this is his decision unilaterally, and it is going to impact everybody who&#x27;s ever worked. I worked on two different campaigns for the B.C. Liberals. I spoke at the convention.</div>
+</div>
+<div class="turn" data-start="2662">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">44:22</span>
+  </div>
+  <div class="said">So I&#x27;m not super connected or engaged with them, but I was absolutely shocked when it was gone. And my initial reaction was, fuck you, Kevin Falcon. And I think that that has got to be Christy Clark&#x27;s reaction. That&#x27;s got to be Val Litwin&#x27;s reaction. So to be clear</div>
+</div>
+<div class="turn" data-start="2682">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">44:42</span>
+  </div>
+  <div class="said">just because he didn&#x27;t step aside, side, which is what Norm would be. He killed, he suffocated the party.</div>
+</div>
+<div class="turn" data-start="2690">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">44:50</span>
+  </div>
+  <div class="said">destroyed that which has been built by others</div>
+</div>
+<div class="turn" data-start="2693">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">44:53</span>
+  </div>
+  <div class="said">That you feel like is your excuse to go hard and loud and distance yourself while still having a future</div>
+</div>
+<div class="turn" data-start="2700">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">45:00</span>
+  </div>
+  <div class="said">Is that what I&#x27;m hearing, Carter? That&#x27;s what I would suggest. Yeah, can I</div>
+</div>
+<div class="turn" data-start="2702">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">45:02</span>
+  </div>
+  <div class="said">react to that, Corey? I mean, leaders, I think, forget more than non-leaders, but loyalty is a two-way street. And Stephen raised, I think, probably too important It&#x27;s an important point to have come up with the 45-minute mark, which is he did this on his own. He didn&#x27;t bring in his party. He didn&#x27;t bring in his organizers. He didn&#x27;t bring in anything except for what I imagine was a very small circle because it didn&#x27;t leak really ahead of time either before then. And so what do they owe the man who didn&#x27;t even get their opinions on this, right? This was a unilateral action by a leader taken, I&#x27;m sure, in a way that was very frustrating. And well, I suspect a couple of MLAs were maybe canvassed or maybe the ones closest to him. This can&#x27;t have been something that was broadly canvassed or else, well, we know it wasn&#x27;t. We know from all of the reporting it wasn&#x27;t. And so if somebody, again, let&#x27;s go back to that, you know, some people find religion, some people find politics thing. If somebody gives away your church without even talking to you, how much loyalty do you owe them at that point? Like the compact is, and</div>
+</div>
+<div class="turn" data-start="2766">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">46:06</span>
+  </div>
+  <div class="said">this goes to what Stephen said about he&#x27;s not a party leader anymore, which I 100% agree with. The compact is you are my party leader. I put my trust in you. I put my confidence in you. I put my work behind you. And in turn, you lead this party to good things. and yeah we can put it in all sorts of high-minded bullshit language this was for the good of bc or whatnot but that&#x27;s not how a lot of party organizers think and this person burned the party to the ground to the ground</div>
+</div>
+<div class="turn" data-start="2790">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">46:30</span>
+  </div>
+  <div class="said">and so rusted is going to become the next premier in british columbia john rusted i mean he&#x27;s going to become the next come on</div>
+</div>
+<div class="turn" data-start="2798">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">46:38</span>
+  </div>
+  <div class="said">right and and the the bc reaction is interesting to me too but the yes the are going to feel so burned and like no loyalty is owed at this particular moment because none was given to them you know the faith did not flow the other way let&#x27;s</div>
+</div>
+<div class="turn" data-start="2816">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">46:56</span>
+  </div>
+  <div class="said">about that zane i&#x27;m just going to jump in because i think that loyalty has to be discussed as a two-way street this is where i have found myself with both jyoti gandak and with allison redford there is no loyalty beyond the moment towards those who brought them there and i&#x27;m not just talking about me you know the way you treat me is fine, but you can&#x27;t treat those around you in such a fashion that doesn&#x27;t show a loyalty and then expect a loyalty in return. And that&#x27;s what Kevin Falcon has done. Kevin Falcon has acted in a way that is unilateral. I mean, I know friends of mine who were candidates for him that are no longer candidates whose future is in the air. Current MLAs whose economic future, gone. gone whose ability to to say with any degree of confidence that they&#x27;re going to be an mla ever again gone already todd stone and shirley bond have retired as a result of this these are two excellent former cabinet ministers this is this is insane to me that one man can unilaterally do this and then expect any loyalty from anyone that would stop them from speaking their mind about this decision</div>
+</div>
+<div class="turn" data-start="2884">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">48:04</span>
+  </div>
+  <div class="said">so this is good you&#x27;re going where i want to go cory what do you think his goal was was it to like like i this is still unclear to me right like so we the reporting is is coming out slowly and it seems to be very rock solid that caucus was given a very short window of notice within minutes not not hours or days this did not leak as a result of that although global news had it and there was a particular reporter at global and i forget his his name at the moment who was starting to break the news uh to certain folks um that that this is you know, what was happening within their own party, that their party within minutes was going to be, frankly, evaporated.</div>
+</div>
+<div class="turn" data-start="2923">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">48:43</span>
+  </div>
+  <div class="said">What was his goal, Corey? Like, from what you see thus far, his comments at that presser, his lack of just stepping away and letting someone else fill the shoes, what do you think his goal was?</div>
+</div>
+<div class="turn" data-start="2938">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">48:58</span>
+  </div>
+  <div class="said">Yeah, I think there&#x27;s a good frame in the movie Dave, right, right? Where he says, every man has three hearts, right? One mouth for the world to know. That&#x27;s his argument that, you know, it&#x27;s for BC. One in his chest, just for his friends. That&#x27;s probably, I didn&#x27;t want to lose. And then his secret heart hidden away from the world, right? And I think in his secret heart, he really didn&#x27;t want to fucking lose. Like he was mortified that not only would he lose, but he would go into the election with no ability to run the campaign pain whatsoever and so i&#x27;m sure that you know the party lines so to speak you know his line i guess more accurately is it&#x27;s for the good of bc we gotta stop new democrats uh you know we agree with them 75 of the time them being the bc conservatives we&#x27;ve just gotta suck it up on the other 25 to stop the socialists who are flooding our streets with drugs and who don&#x27;t understand business and are watching the slow decline of the bc economy and uh you know that the social disorder that has taken hold as a result of the British Columbia New Democratic Party. And so that&#x27;s, of course, going to be the party line. I&#x27;m sure people within the party are well aware that they were not positioned to do anything better than hold on to a couple of seats in a near wipeout, at least where the polls were currently.</div>
+</div>
+<div class="turn" data-start="3015">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">50:15</span>
+  </div>
+  <div class="said">But I think beyond that, I think they had serious resource problems, serious resource problems. And he knew there was no real way to run a campaign that had any kind of credibility going into this. And he needed to take an off ramp that he could wrap in a noble story.</div>
+</div>
+<div class="turn" data-start="3031">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">50:31</span>
+  </div>
+  <div class="said">Carter, as much as we&#x27;ve talked loyalty, as much as we&#x27;ve talked about resources and reality, me ask that same question in a slightly different way. Did Kevin Falcon, for all his faults, make the right strategic call?</div>
+</div>
+<div class="turn" data-start="3048">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">50:48</span>
+  </div>
+  <div class="said">it&#x27;s not his call to make you know he&#x27;s a tragic victim of the idea of vote splitting to be honest because here&#x27;s a guy who said that&#x27;s right</div>
+</div>
+<div class="turn" data-start="3058">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">50:58</span>
+  </div>
+  <div class="said">you&#x27;re saying the idea of which okay okay academically proven yeah and yeah go ahead please yeah sorry i don&#x27;t interrupt you again</div>
+</div>
+<div class="turn" data-start="3069">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">51:09</span>
+  </div>
+  <div class="said">no this is an excellent opportunity to prove how just how it doesn&#x27;t impact because i&#x27;m not sure that the ndp or the the bc conservatives are just going to pick up five points because they were handed the uh the uh bc united there were people who were choosing to vote for bc united even though they didn&#x27;t have a chance in hell and they weren&#x27;t voting more of them because they knew them as the bc liberals they were voting for them because bc united had staked out some position in their hearts this is this is a a a great example to put my position to the test that vote split isn&#x27;t real and vote split is about earning votes you know people need to earn the votes and they&#x27;re not going to be given kevin falcon&#x27;s fucking votes just because he was a weak leader who decided that they uh uh couldn&#x27;t continue</div>
+</div>
+<div class="turn" data-start="3117">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">51:57</span>
+  </div>
+  <div class="said">so with that math then cory i&#x27;ll get to you in a second with that math then just let me preview another question if you&#x27;re the bc ndp carter you&#x27;re not you&#x27;re nothing literally nothing Nothing has changed for you, because vote splitting isn&#x27;t real. Okay, so this</div>
+</div>
+<div class="turn" data-start="3130">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">52:10</span>
+  </div>
+  <div class="said">was actually just a... They were in a battle before, they&#x27;re in a battle now.</div>
+</div>
+<div class="turn" data-start="3133">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">52:13</span>
+  </div>
+  <div class="said">And not even that, to be clear. They&#x27;re in the exact same battle.</div>
+</div>
+<div class="turn" data-start="3139">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">52:19</span>
+  </div>
+  <div class="said">The exact... Because they were only fighting... They were only fighting the conservatives. They would acknowledge the same. Not all they were fighting. They would acknowledge the same. Same battle.</div>
+</div>
+<div class="turn" data-start="3148">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">52:28</span>
+  </div>
+  <div class="said">Okay, Corey, we&#x27;ve got the vote splitting conversation rearing its head every three months. We&#x27;ve also got Stephen Carter on the broader sort of strategic question. Did Falcon, despite all his faults, make the right strategic call? I want your thoughts on the latter first. Did he make the right strategic call?</div>
+</div>
+<div class="turn" data-start="3166">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">52:46</span>
+  </div>
+  <div class="said">Well, it depends on what he is looking for in terms of an outcome. And it depends on what happens still. So if the BC Conservatives win, I&#x27;m sure he can find himself to be a statesman and be considered a statesman going forward where people will say, well, good for him. He put the province ahead and, you know, the BC Conservatives will probably be very nice to him going forward. Although I got to say, it was pretty funny to see their social media saying like Kevin Falcon made the right choice in this instance or something like this. Like they couldn&#x27;t even be gracious to him as he was wrapping up his fucking party. Pretty, pretty amazing. It tells you a lot about the BC Conservatives. But, you</div>
+</div>
+<div class="turn" data-start="3201">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">53:21</span>
+  </div>
+  <div class="said">know, it&#x27;s also possible that this all blows up in his face and he looks like the biggest dumbass in the world. It&#x27;s possible the comp is not Alberta in 2019 with the United Conservative Party, but the comp is 2015 in Alberta, where half the Wild Rose crossed to the PCs, leaving the Wild Rose theoretically for dead. And then the Wild Rose came ahead of the PCs in that election, right? Right. It&#x27;s very hard to negotiate away a movement. And we have talked about the fact that the B.C. liberals have existed for some time and that there are people who think of themselves as B.C. liberals, B.C. United now. And there might be folks who just try to put the band back together in some way, shape or form and continue fighting this forward. And if that happens, and I&#x27;m not even saying they need to win government or anything like that, but if they survive after being left for dead, well, then it&#x27;s an entirely different story about Kevin Falcon. So it remains to be seen, like a lot has to break his way still for people not to say, what a asshole, right? Because you can easily imagine the NDP winning and BC United slash BC Liberals finding their feet again at the next review, because he just suspended the campaign, right? There will be leadership reviews. He will be ousted. Somebody will try to salvage this thing in that scenario. That&#x27;s possible. It&#x27;s</div>
+</div>
+<div class="turn" data-start="3280">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">54:40</span>
+  </div>
+  <div class="said">also possible that it occurs in a more rapid fashion and puts him in a lot of trouble. So we just don&#x27;t know yet. Talk to me about this, Carter.</div>
+</div>
+<div class="turn" data-start="3291">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">54:51</span>
+  </div>
+  <div class="said">Corey brings up an interesting point. Are you bullish on the rapid rebuild of BC United?</div>
+</div>
+<div class="turn" data-start="3300">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">55:00</span>
+  </div>
+  <div class="said">I&#x27;m not bullish on it. And it feels to me like, you know, those those folks who tried to keep the PC party alive or the people who tried to, you know, stop the merger between the UC or between the Wild Rose and the PCs in Alberta. It has an air of desperation to it. I&#x27;m not 100 percent convinced that it doesn&#x27;t come back in, you know, two years in some form, especially. But</div>
+</div>
+<div class="turn" data-start="3325">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">55:25</span>
+  </div>
+  <div class="said">days. But not not 60 days is what I&#x27;m hearing you say</div>
+</div>
+<div class="turn" data-start="3328">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">55:28</span>
+  </div>
+  <div class="said">Well, I&#x27;ll tell you something. If I was a candidate that just lost their ability to have a seat, I might be taking, you know, I might be trying to get a leadership review and have a member called special meeting in the next 60 days. That&#x27;d</div>
+</div>
+<div class="turn" data-start="3345">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">55:45</span>
+  </div>
+  <div class="said">Yeah. You know what? By the way, if we&#x27;re going to continue the comp. Do it. It means that Falcon will be premier of British Columbia in a few years because it was Danielle Smith who crossed with the Wildrose MLAs to. I see his</div>
+</div>
+<div class="turn" data-start="3358">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">55:58</span>
+  </div>
+  <div class="said">strategy the whole way through. I love it. I like every single part of it. This guy&#x27;s probably a fucking genius. Kind of like our sponsor, Flair Airlines, with their new campaign, according to the two of you. Okay, talk to me about this, Carter. Do the conservatives actually like this? Like, if you were a conservative strategist, building your own momentum, hunting out your own lane. And Corey, I&#x27;m not going to get you in on Carter&#x27;s vote split thing. I purposely ignored it because I know your thoughts on it. And you can listen back to just go back anytime, three months in order. People can find your comments on it. So I&#x27;m going to Carter on this.</div>
+</div>
+<div class="turn" data-start="3391">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">56:31</span>
+  </div>
+  <div class="said">You&#x27;re a conservative strategist. Falcon does this to you. Is it a gift?</div>
+</div>
+<div class="turn" data-start="3400">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">56:40</span>
+  </div>
+  <div class="said">Yeah, I mean, on one level, it&#x27;s got to be a gift. On the other hand, I remember when Craig Chandler endorsed Jim Prentice at the 2004 Progressive Conservative Leadership bid, he had zero delegates and he still endorsed us. And I&#x27;ll tell you that that was not a good day. There was no happiness in the valley when Craig Chandler endorsed Jim. So maybe there&#x27;s I mean, given the response from the, you know, the B.C. conservatives, it didn&#x27;t feel to me like they were feeling the love, a complete capitulation. And they still, you</div>
+</div>
+<div class="turn" data-start="3439">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">57:19</span>
+  </div>
+  <div class="said">know, kind of shat on the guy when when they were given the opportunity.</div>
+</div>
+<div class="turn" data-start="3444">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">57:24</span>
+  </div>
+  <div class="said">Corey, would you receive this as a gift, as a headache, now that you have to find room for these other candidates, though your slate is almost full, like you&#x27;ve been building your own thing? Yes, partially as a reaction to these guys, you&#x27;ve then kind of been using them as a bit of a punching bag and kind of getting your own voice and name out there. How would you as a strategist be receiving this announcement?</div>
+</div>
+<div class="turn" data-start="3471">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">57:51</span>
+  </div>
+  <div class="said">the only way to receive this is as a gift one of the things that was you know we didn&#x27;t necessarily think was possible you can run i think it was our last public episode we were talking about this but in 2013 for a while the bc conservatives were pulling ahead of the bc liberals there too but there were some fundamentals at play there was money there was infrastructure there was the legacy of competent candidates that came to oh and the fact they were government government lest i forget right yeah that helped pull them back into the race in a big way and then ultimately in 2013 you know christy clark beat dicks which was not expected to happen but it for sure happened and so i&#x27;m sure if you&#x27;re the bc conservatives there was some anxiety gnawing at you that this was all phony this was mirage and when people started paying attention they&#x27;d be like oh yeah i didn&#x27;t know what bc united was but i do now it&#x27;s the bc liberals those are the people i normally vote for you know rest that&#x27;s crazy this is what i&#x27;m going to do that risk is gone like there are two choices in british columbia i mean three if you want to say the greens but really if you&#x27;re of a center center right voter like that&#x27;s that&#x27;s it that&#x27;s all you got and and that locks in something really significant for the bc conservatives and it&#x27;s worth the chaos frankly because you can spin that chaos in a hundred different ways as growth as strength as opportunity and um i don&#x27;t know i mean like there&#x27;s no version of me that thinks if they had a time machine, they&#x27;d go back and not take this. This is great for the BC conservatives. There&#x27;s a real chance that this is just the new natural order in BC. There&#x27;s new Democrats and conservatives, and that&#x27;s that. I can&#x27;t imagine for the life of me why you would turn up or turn away that kind of win.</div>
+</div>
+<div class="turn" data-start="3571">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">59:31</span>
+  </div>
+  <div class="said">Carter, is there a potential here that this adds more risk to you as the BC conservatives, that this fucks with the vibes and the mojo and the momentum rather than aiding it? And if so, where? So even if you guys are both receiving this as potential gifts, you also have your spidey senses up. Your job is to avoid and steer away from risks. Where are risks here if you are the conservatives? And where do they come from? Talk to me about that.</div>
+</div>
+<div class="turn" data-start="3603">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:00:03</span>
+  </div>
+  <div class="said">Well, the risk is that they start doing the math incorrectly, right? They go, we&#x27;re very popular. We can get through all of this. We don&#x27;t have to adjust our policies to reflect the general population. We&#x27;ve got all the conservative votes. If you add these five points from the BC United or whatever the hell they&#x27;re called, we&#x27;re just storming a victory, right? We&#x27;re just on fire. And I just think that that&#x27;s incorrect. I think that they still need to win a lot of votes that they haven&#x27;t yet won.</div>
+</div>
+<div class="turn" data-start="3637">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:00:37</span>
+  </div>
+  <div class="said">we&#x27;ll see how that ultimately plays out. But I think the only threat for them is that they get overly confident and then they wind up sinking down because they&#x27;re not actually as popular as they think they are.</div>
+</div>
+<div class="turn" data-start="3652">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:00:52</span>
+  </div>
+  <div class="said">Corey, what risks would you look for? So only way to receive it as a gift, I get that. but could it be annoying candidates that come from the united side is it is it just a lack of gelling is it that they take you off course on message i&#x27;m just throwing some random examples that come to but but give me some thoughts around like from your cory hogan vantage point you&#x27;d say guys look out for this what would that be</div>
+</div>
+<div class="turn" data-start="3675">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:01:15</span>
+  </div>
+  <div class="said">yeah well i think that for me the most obvious is that it might not be an entirely comfortable marriage and you probably don&#x27;t want in the middle of the the campaign candidates quitting um so of course we expect the bc conservative candidate pool to have some people who go like way off message to the right but it&#x27;s pretty easy to imagine that maybe some of these converts who have come from bc united both the candidates and the campaign apparatus and organizers might part way through the campaign in reaction perhaps to one of those right-wing comments say is too this is too fucking nuts for me i was willing to give this a shot but but I am out. And you might have people from within their own tent saying, this tent is full of poisonous gas, and that&#x27;s</div>
+</div>
+<div class="turn" data-start="3715">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:01:55</span>
+  </div>
+  <div class="said">not a very</div>
+</div>
+<div class="turn" data-start="3715">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:01:55</span>
+  </div>
+  <div class="said">good look. And so I think that that&#x27;s something I&#x27;d be particularly mindful of. And I&#x27;d be very careful about who I was getting those nominations to and whether I could trust them in order to carry the flag forward. And certainly, when I think about the BC, and it&#x27;s basically done, like I wanted to get their slate done this weekend&#x27;s my understanding, but I would have, and so this is probably all moot at this point, but But I would have been thinking about it in terms of, well, don&#x27;t give anybody a seat where they might just be totally out of it to the NDP at some point. They think that they have to kind of attack their own party from the left of their party along the way. And I would be thinking about those dynamics as I went through. That&#x27;s number one on my list, for sure.</div>
+</div>
+<div class="turn" data-start="3754">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:02:34</span>
+  </div>
+  <div class="said">Carter, speaking of dynamics, you previewed this for me. Talk to me about the NDP. Don&#x27;t talk to me about the NDP from the hole that they&#x27;re in, or the overarching, like, oh, fuck, how did they get here? How do they not prevent this? Talk to me about from the NDP today onwards, right? Today onwards. Give me your strategist sort of broad strokes going forward. What&#x27;s changed? What should they consider? What should they do? Your thoughts there. And then, Corey, same for you in a moment. moment they&#x27;re</div>
+</div>
+<div class="turn" data-start="3785">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:03:05</span>
+  </div>
+  <div class="said">they&#x27;re up against the same whackadoodles that they were up against before i mean the bc conservatives have traditionally been amongst the most insane group of community of conservatives across the country that&#x27;s who they&#x27;re up against and that&#x27;s who they have to remember that they&#x27;re up against the the the addition of the bc united team as small as it will be will have virtually limited virtually no impact on the policies or the ideas that that party brings What we&#x27;re talking about here is a extreme conservative party that the BC NDP will be fighting against because their ideas are incorrect. And I actually do believe that. I think that the BC conservatives and John Rustad are, you know, one step away from the loony bin. in.</div>
+</div>
+<div class="turn" data-start="3838">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:03:58</span>
+  </div>
+  <div class="said">you know, that&#x27;s who you&#x27;re up against. And it didn&#x27;t change. It just didn&#x27;t fundamentally change from where you were two weeks ago.</div>
+</div>
+<div class="turn" data-start="3847">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:04:07</span>
+  </div>
+  <div class="said">Corey, what should, I guess a different way of asking that question is, if what should change, right? New Angus Reid Institute polling says it&#x27;s a dead heat. It&#x27;s been a dead heat a couple of times in recent polling, right? Because we&#x27;ve We&#x27;ve kind of had that reality with us throughout the summer, broadly speaking. Shouldn&#x27;t Well, it&#x27;s a fair</div>
+</div>
+<div class="turn" data-start="3870">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:04:30</span>
+  </div>
+  <div class="said">question. Just asking for a guy that&#x27;s talking about votes</div>
+</div>
+<div class="turn" data-start="3874">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:04:34</span>
+  </div>
+  <div class="said">It&#x27;s a fair question</div>
+</div>
+<div class="turn" data-start="3875">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:04:35</span>
+  </div>
+  <div class="said">Just asking. Just asking. I don&#x27;t mean to ask. Sorry, I interrupted. You guys continue.</div>
+</div>
+<div class="turn" data-start="3881">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:04:41</span>
+  </div>
+  <div class="said">What are your thoughts, Corey? What is for the BCNEP? And frankly, maybe the better way for me to ask the question is what has changed for them and what should change for them strategically.</div>
+</div>
+<div class="turn" data-start="3891">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:04:51</span>
+  </div>
+  <div class="said">Okay, well, I think that in a funny way, maybe an unsatisfactory way from your point of view, I would say, I actually don&#x27;t know anything&#x27;s changed. Let me talk this out a tiny bit. Yeah. Like, what do we assume their strategy was before? Well, I assume it was to go hard against the BC Conservatives to rattle off some of those voters to BC United to keep a nice vote split where you can just run up the middle and there you go, there&#x27;s the election, right?</div>
+</div>
+<div class="turn" data-start="3917">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:05:17</span>
+  </div>
+  <div class="said">Well, what do we think it should be now? Well, I assume it is scare the crap out of people about the extremes of the BC Conservatives to shake voters off on the left. But this time now you either want them to go stay home or go to the BC NDP. Like that is not fundamentally a different strategy, right? I don&#x27;t believe for a minute that the BC NDP strategy before was to take the fight to Kevin Falcon. That&#x27;s just, if it was, that&#x27;s crazy, right? That&#x27;s just not the fight. And it wasn&#x27;t. It</div>
+</div>
+<div class="turn" data-start="3940">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:05:40</span>
+  </div>
+  <div class="said">doesn&#x27;t seem like it publicly.</div>
+</div>
+<div class="turn" data-start="3943">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:05:43</span>
+  </div>
+  <div class="said">tactics different outcome but same tactics same strategy with with very little nuance i think in there so uh yeah you can have a bit of a skunk works where you&#x27;re trying to provoke some of the things that i cautioned the bc conservatives about you know those internal tensions and implosions uh which might help tell you that overall story but the overall story is the same these guys are nuts and so if you&#x27;re on the left of that coalition if you&#x27;re dipping your toes into that pool. We want you to yank your toes out and come running to us. And so I don&#x27;t know that it needs to change at all. That said, I&#x27;m sure when this happened, there was some butthole puckering, right? Like there was a lot of, holy fuck, this is not the election we thought we were going to have. And if all of this vote coalesces behind the PC conservatives, we might be screwed. And so I suspect that probably the best advice that the BC New Democrats need to hear is, and i don&#x27;t know if this this is what they&#x27;re organizing to tell them you got this nothing&#x27;s changed you&#x27;ve got to do the same things you needed to do the day before so execute on your plan do it well don&#x27;t lose your fucking head obviously look for opportunities as you move forward but this is great for you and the debate that is great for you you know you&#x27;ve got one less person beating up on the premier you&#x27;ve got an opportunity to really have it focused on on um You know, the NDP versus conservatives. And by the way, this also entertains, this creates a huge opportunity with getting the green voters to come scared running to you, right? So like, I don&#x27;t think this is all bad. And I think, by the way, Carter, part of why you&#x27;re not seeing the tightening that you&#x27;re talking about is there is a bit of a reshuffling on the left to don&#x27;t discount the effect that BC Greens can have on some of those, especially top line numbers.</div>
+</div>
+<div class="turn" data-start="4045">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:07:25</span>
+  </div>
+  <div class="said">Carter, I like how Corey&#x27;s done this as advice. It finishes off here with some advice for the NDP. What advice would you give them? I like Corey&#x27;s run. He got this. The dynamics haven&#x27;t changed. If you were to yes-hand a bit of that, what would you say?</div>
+</div>
+<div class="turn" data-start="4061">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:07:41</span>
+  </div>
+  <div class="said">I like what he was doing with the skunk works, putting in some, you know, getting someone to focus in or comment on some issue that is is you know really outside of the of the the election that someone&#x27;s bound to say something ridiculous um there are a lot of bc conservative candidates that will uh this will be the first time they&#x27;re tested under fire let&#x27;s put it that way and finding a way to uh they&#x27;re now the presumptive government i mean they were the presumptive government before But now they&#x27;re really the presumptive government. And</div>
+</div>
+<div class="turn" data-start="4101">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:08:21</span>
+  </div>
+  <div class="said">this gives you tremendous opportunity to really poke at them, get them to say something stupid. And if I was running their war room or running their campaign, that&#x27;s what I&#x27;d really be focused on is, how do we get someone to say something ridiculous? And with the group of candidates that they&#x27;ve got, just not sure that&#x27;s going to be difficult.</div>
+</div>
+<div class="turn" data-start="4122">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:08:42</span>
+  </div>
+  <div class="said">Koi, let&#x27;s move it on to our final segment, our over, under, and our lightning round. We do it for Stephen Carter, but sometimes when we need to, we start with you, Corey.</div>
+</div>
+<div class="turn" data-start="4129">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:08:49</span>
+  </div>
+  <div class="said">Overrated or underrated, Corey, on these two things, 7 out of 10 folks in BC, in the same Angus Institute, Angus Reid Institute polling I was referring to, are saying that the province is on the wrong track on the opioid crisis and making housing affordable for everyone. Knowing everything we&#x27;ve talked about, the dynamics that we&#x27;ve talked about, are those those two facts overrated or underrated heading into this election in british columbia</div>
+</div>
+<div class="turn" data-start="4160">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:09:20</span>
+  </div>
+  <div class="said">think underrated but not equally so certainly the the opioid crisis is it&#x27;s manifesting in a lot of ways that are increasingly visible to people that is going to cause trouble for any government in power we&#x27;re seeing in alberta as well as british columbia challenges with you know different approaches not as different as sometimes people pretend they are but different approaches, right? And different flavors of government. The affordable housing thing is a nightmare. I don&#x27;t think that that&#x27;s a shock to most Canadians, especially in British Columbia. It was bad before and it is horrific now. The idea of purchasing BC real estate is a pipe dream for all but the wealthiest or those who happen to have parents who can provide them the nest egg, probably built off of their own real estate portfolio that was assembled some time ago here. And that&#x27;s a real economic issue that will make people hold their nose on an awful lot of stuff where it&#x27;ll be like, yeah, he&#x27;s a lunatic. He doesn&#x27;t believe in climate change. Have you heard what he said about women and whatever it may be? But I don&#x27;t have a fucking house and I need somebody to figure out the economy here. we&#x27;ve said it before i will say it again it&#x27;s literally the base of maslow&#x27;s hierarchy of needs right it&#x27;s fucking shelter and people people want that before they want to consider some other things and the fact that the bc ndp have done the things that they&#x27;ve done and they&#x27;ve had a pretty aggressive affordable housing agenda right where they&#x27;ve really clamped down on foreign ownership they&#x27;ve really messed with zoning laws to allow for bigger zoning and i say messed but i don&#x27;t actually mean it in a bad sense i kind of like what they&#x27;ve done in a lot of cases there um Um, and, uh, and people are still saying seven out of 10, I don&#x27;t know what levers you got to pull at this point, right? That&#x27;s tough. So I think it&#x27;s underrated because that strategy I talked about, about going after them, seeming crazy. People might ignore that if they feel that their economic situation is just too despondent.</div>
+</div>
+<div class="turn" data-start="4276">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:11:16</span>
+  </div>
+  <div class="said">7 out of 10, roughly.</div>
+</div>
+<div class="turn" data-start="4280">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:11:20</span>
+  </div>
+  <div class="said">opioid epidemic, wrong track.</div>
+</div>
+<div class="turn" data-start="4285">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:11:25</span>
+  </div>
+  <div class="said">I think whenever you&#x27;ve got big issues like that that are wrong track, you start to lose the entire government in terms of their track. And I think that is the reason that the NDP aren&#x27;t absolutely mopping the floor with the BC Conservatives. So I would say that it&#x27;s underrated, because this shouldn&#x27;t be a race with someone like John Rustrad.</div>
+</div>
+<div class="turn" data-start="4313">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:11:53</span>
+  </div>
+  <div class="said">Carter, Corey said that there&#x27;s only one successful rebranding exercise in Canadian politics. Now, you agreed with him.</div>
+</div>
+<div class="turn" data-start="4320">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:12:00</span>
+  </div>
+  <div class="said">I did, yes</div>
+</div>
+<div class="turn" data-start="4321">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:12:01</span>
+  </div>
+  <div class="said">Now, because my mind has endless capacity, I&#x27;ve been doing some research while I have been producing and hosting the show. Is that impressive to you? That&#x27;s why my checks are three times as much. It actually explains a lot</div>
+</div>
+<div class="turn" data-start="4332">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:12:12</span>
+  </div>
+  <div class="said">if we&#x27;re going to be honest. It explains quite a bit of it. What do you mean?</div>
+</div>
+<div class="turn" data-start="4333">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:12:13</span>
+  </div>
+  <div class="said">What does that explain</div>
+</div>
+<div class="turn" data-start="4335">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:12:15</span>
+  </div>
+  <div class="said">Well, I mean, there were some issues tonight. I mean, we&#x27;re not talking about it. Yeah, it&#x27;s okay.</div>
+</div>
+<div class="turn" data-start="4340">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:12:20</span>
+  </div>
+  <div class="said">You know, just keep moving.</div>
+</div>
+<div class="turn" data-start="4342">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:12:22</span>
+  </div>
+  <div class="said">Okay, so you guys think that the 1942 renaming of the Progressive Party of Manitoba to the Progressive Conservative Party of Manitoba was a rebranding failure, Corey</div>
+</div>
+<div class="turn" data-start="4351">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:12:31</span>
+  </div>
+  <div class="said">Hey, can I take that on? Yeah, absolutely I do. So do you know the history of that? I&#x27;m guessing you just Googled it and the answer is no. But in 1942, there was a party called the Progressive Party in Manitoba. There was not really a progressive party federally. And I think Bracken was the fellow&#x27;s name, who was the premier. He was coaxed to become the leader of the Conservative Party federally, and he accepted on the condition that it become the Progressive Conservative Party. Are we going to call that a success? Because you just mentioned it was in 1942. When did the Conservatives next win government in Canada?</div>
+</div>
+<div class="turn" data-start="4385">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:13:05</span>
+  </div>
+  <div class="said">it oh 1957 and by the way they actually kind of they didn&#x27;t go up and vote the next election they stayed exactly where they were in terms of percent of popular vote they did get more seats but they didn&#x27;t really go up and there were some declines after that like it was not a success it</div>
+</div>
+<div class="turn" data-start="4401">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:13:21</span>
+  </div>
+  <div class="said">was not a success for them at all this is why i didn&#x27;t argue with them right there right there that&#x27;s why i didn&#x27;t argue with them i didn&#x27;t want to have the argument here&#x27;s one here&#x27;s another No lies detected,</div>
+</div>
+<div class="turn" data-start="4410">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:13:30</span>
+  </div>
+  <div class="said">though, right? No lies, Steven. No lies detected</div>
+</div>
+<div class="turn" data-start="4412">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:13:32</span>
+  </div>
+  <div class="said">No lies detected, but still a little bit of a know-it-all kind of feel to it. It does have a know-it-all. It does have a Kevin Falken know-it-all feel. Yeah, I&#x27;m the only one who</div>
+</div>
+<div class="turn" data-start="4422">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:13:42</span>
+  </div>
+  <div class="said">can save this kind of feel. Trust me, I&#x27;m going to be premier in 10 years. Just watch. Just watch. Hey, Carter, was the Wild Rose in Alberta here, was that a rebrand or a merger? This is a sincere, honest question to the two of you.</div>
+</div>
+<div class="turn" data-start="4436">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:13:56</span>
+  </div>
+  <div class="said">Which, when it was created? No, Wildrose became Wildrose. Because it used to be the</div>
+</div>
+<div class="turn" data-start="4439">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:13:59</span>
+  </div>
+  <div class="said">Alliance and the Wildrose Party. So there was a Wildrose Party. There was a Wildrose Party, but it wasn&#x27;t like a registered party with presence. So it was a merger. It was a merger of two organizations, but they just renamed the Alberta Alliance to create the party.</div>
+</div>
+<div class="turn" data-start="4455">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:14:15</span>
+  </div>
+  <div class="said">Why do you know all this?</div>
+</div>
+<div class="turn" data-start="4456">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:14:16</span>
+  </div>
+  <div class="said">Because I know everything, Zane. It is true. He does know a staggering amount of information. Corey,</div>
+</div>
+<div class="turn" data-start="4464">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:14:24</span>
+  </div>
+  <div class="said">a name changes at? So UConn, is there one that like is a 1A to you? Or no, there&#x27;s like no 1A?</div>
+</div>
+<div class="turn" data-start="4468">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:14:28</span>
+  </div>
+  <div class="said">So the Conservatives to Progressive Conservatives is probably the 1A. Like that&#x27;s probably the next best one. There&#x27;s not a lot of true name changes in Canadian politics. After that, you could make a case for the Canadian Alliance, like reform to Canadian Alliance. Sure. Because it was actually fewer than 15 years</div>
+</div>
+<div class="turn" data-start="4486">
+  <div class="who">
+    <span class="speaker">Zain</span>
+    <span class="ts">1:14:46</span>
+  </div>
+  <div class="said">like a smaller gap. Reform to Alliance and then Alliance and PCs became CPC. Is that right? I mean, you&#x27;re a little bit</div>
+</div>
+<div class="turn" data-start="4493">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:14:53</span>
+  </div>
+  <div class="said">but because it went from reform to alliance, Stockwell Day was the leader. You will recall that caucus blew up and it became the Canadian alliance like Rumpf plus the PCDRC, which was the Democratic Reform Caucus. And Harper had to stitch all of that together. But that name change was a step towards their ultimate goal of unification.</div>
+</div>
+<div class="turn" data-start="4512">
+  <div class="who">
+    <span class="speaker">Carter</span>
+    <span class="ts">1:15:12</span>
+  </div>
+  <div class="said">So I guess I would call that 1B, but really like the true success</div>
+</div>
+<div class="turn" data-start="4515">
+  <div class="who">
+    <span class="speaker">Corey</span>
+    <span class="ts">1:15:15</span>
+  </div>
+  <div class="said">didn&#x27;t happen until the merger.</div>
+</div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+  // ---------------- Sticky pickup ----------------
+  (function(){
+    const wrap = document.getElementById('player-wrapper');
+    const sentinel = document.getElementById('player-sentinel');
+    const topbar = document.querySelector('.topbar');
+    if (!wrap || !sentinel || !topbar || !('IntersectionObserver' in window)) return;
+
+    const topbarH = () => topbar.getBoundingClientRect().height;
+
+    const io = new IntersectionObserver(entries => {
+      const e = entries[0];
+      if (!e) return;
+
+      if (!e.isIntersecting){
+        wrap.classList.add('sticky');
+        wrap.dataset.mini = 'true';
+      } else {
+        wrap.classList.remove('sticky');
+        wrap.classList.remove('expanded');
+        delete wrap.dataset.mini;
+      }
+    }, {
+      rootMargin: `-${topbarH()}px 0px 0px 0px`,
+      threshold: 0
+    });
+
+    io.observe(sentinel);
+  })();
+
+  // ---------------- Tap to expand (mobile) ----------------
+  (function(){
+    const wrap = document.getElementById('player-wrapper');
+    if (!wrap) return;
+
+    wrap.addEventListener('click', () => {
+      if (
+        wrap.classList.contains('sticky') &&
+        window.innerWidth <= 640
+      ){
+        wrap.classList.toggle('expanded');
+      }
+    });
+  })();
+  </script>
+
+</body>
+</html>
