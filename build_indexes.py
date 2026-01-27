@@ -2,6 +2,7 @@
 """
 build_indexes_fixed.py
 
+
 Static index generator for The Strategists.
 Outputs index.html identical in structure to the real homepage.
 """
@@ -376,6 +377,7 @@ def main():
 if __name__ == "__main__":
     main()
     # Build /newest/index.html
+
 
 
 
