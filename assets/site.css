@@ -234,6 +234,50 @@ a:hover {
   white-space: nowrap;
 }
 
+.page-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.page-links strong {
+  font-weight: 700;
+  opacity: 1;
+}
+
+.page-links .gap {
+  opacity: 0.4;
+}
+
+/* --------------------------------------------------
+   Index nav (Speakers / Topics)
+-------------------------------------------------- */
+
+.index-nav {
+  margin: 18px 0 36px;
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+.index-nav a {
+  font-weight: 600;
+  color: var(--orange);
+}
+
+.index-nav a:hover {
+  text-decoration: underline;
+}
+
+.index-nav span {
+  margin: 0 10px;
+  opacity: 0.4;
+}
+
+.index-nav-compact {
+  margin-top: 0;
+}
+
 /* --------------------------------------------------
    Buttons (episode / newest)
 -------------------------------------------------- */
