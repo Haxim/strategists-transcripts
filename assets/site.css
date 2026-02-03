@@ -1,37 +1,70 @@
-:root {
-  --orange: #d7522f;
-  --navy: #232e41;
-  --white: #ffffff;
+/* ==================================================
+   Global Theme — Episode-first (Unified)
+   Font: Inter
+================================================== */
 
+@import url("https://rsms.me/inter/inter.css");
+
+:root {
+  /* Brand + palette (from episode HTML) */
+  --brand: #d7522f;
+  --accent: #232e41;
+
+  --bg: #0b1020;
   --panel: rgba(255,255,255,0.06);
   --panel-2: rgba(255,255,255,0.10);
+
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.72);
+  --muted2: rgba(255,255,255,0.55);
+
   --line: rgba(255,255,255,0.12);
 
-  --radius: 18px;
-  --radius-sm: 12px;
   --shadow: 0 16px 40px rgba(0,0,0,.35);
   --shadow-sm: 0 8px 22px rgba(0,0,0,.28);
 
+  --radius: 18px;
+  --radius-sm: 12px;
+
   --maxw: 1100px;
+  --pad: clamp(16px, 3vw, 26px);
 }
 
-/* --------------------------------------------------
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fbfbfd;
+    --panel: rgba(0,0,0,0.04);
+    --panel-2: rgba(0,0,0,0.06);
+    --text: rgba(0,0,0,0.92);
+    --muted: rgba(0,0,0,0.68);
+    --muted2: rgba(0,0,0,0.52);
+    --line: rgba(0,0,0,0.10);
+    --shadow: 0 16px 40px rgba(0,0,0,.12);
+    --shadow-sm: 0 8px 22px rgba(0,0,0,.10);
+  }
+}
+
+/* ==================================================
    Base
--------------------------------------------------- */
+================================================== */
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
 
 body {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   margin: 0;
-  padding: 32px 24px 48px;
-  color: var(--white);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.55;
+  color: var(--text);
+
   background:
-    radial-gradient(1200px 700px at 70% -20%, rgba(215,82,47,0.25), transparent 60%),
-    radial-gradient(900px 600px at -20% 120%, rgba(35,46,65,0.6), transparent 60%),
-    linear-gradient(160deg, #121826, #0b0f16);
+    radial-gradient(1000px 600px at 20% -10%, rgba(215,82,47,.32), transparent 60%),
+    radial-gradient(1000px 600px at 100% 0%, rgba(35,46,65,.50), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg));
+
+  background-attachment: fixed;
 }
 
 a {
@@ -43,255 +76,55 @@ a:hover {
   text-decoration: underline;
 }
 
-/* --------------------------------------------------
-   Layout helpers
--------------------------------------------------- */
+/* ==================================================
+   Layout
+================================================== */
 
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 clamp(16px, 3vw, 26px);
+  padding: 0 var(--pad);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-@media (max-width: 720px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media (min-width: 860px) {
+  .grid.two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* --------------------------------------------------
-   Hero (index + episode)
--------------------------------------------------- */
-
-.hero {
-  margin-bottom: 48px;
-}
-
-.hero-grid,
-.hero-split {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-@media (max-width: 860px) {
-  .hero-grid,
-  .hero-split {
-    grid-template-columns: 1fr;
-  }
-}
-
-.hero h1 {
-  font-size: 44px;
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
-}
-
-.hero-text {
-  justify-self: start;
-}
-
-.tagline {
-  font-size: 18px;
-  line-height: 1.5;
-  opacity: 0.85;
-  max-width: 720px;
-}
-
-/* --------------------------------------------------
-   Listen block (index)
--------------------------------------------------- */
-
-.listen-on {
-  justify-self: start;
-  text-align: center;
-  width: 100%;
-  align-self: center;
-}
-
-.listen-label {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  opacity: 0.9;
-}
-
-.listen-links {
-  font-size: 16px;
-  opacity: 0.8;
-}
-
-.listen-links a {
-  color: var(--orange);
-  font-weight: 600;
-}
-
-.listen-links span {
-  margin: 0 8px;
-  opacity: 0.4;
-}
-
-/* --------------------------------------------------
-   Cards (index)
--------------------------------------------------- */
+/* ==================================================
+   Cards (core primitive)
+================================================== */
 
 .card {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  background: var(--panel);
+  background: color-mix(in oklab, var(--panel) 90%, transparent);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 18px;
-  color: inherit;
-  transition:
-    transform 0.15s ease,
-    background 0.15s ease,
-    box-shadow 0.15s ease;
+  box-shadow: var(--shadow);
 }
 
-.card:hover {
-  background: var(--panel-2);
-  transform: translateY(-2px);
-}
-
-.card.patreon {
-  box-shadow:
-    0 0 0 1px rgba(215,82,47,0.35),
-    0 0 18px rgba(215,82,47,0.15);
-}
-
-.thumb {
-  width: 64px;
-  height: 64px;
-  min-width: 64px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  background: rgba(255,255,255,0.08);
-}
-
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-body .title {
-  font-weight: 700;
-  font-size: 17px;
-  line-height: 1.3;
-}
-
-.meta {
-  opacity: 0.6;
-  font-size: 14px;
-  margin-top: 6px;
-}
-
-.desc {
-  margin-top: 10px;
-  font-size: 14px;
-  line-height: 1.45;
-  opacity: 0.75;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* --------------------------------------------------
-   Pager (index)
--------------------------------------------------- */
-
-.pager {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  margin: 48px 0;
-  font-size: 15px;
-}
-
-.pager a {
-  opacity: 0.75;
-}
-
-.pager a:hover {
-  opacity: 1;
-}
-
-.pager .older {
-  text-align: right;
-}
-
-.pager .page-num {
-  opacity: 0.6;
-  white-space: nowrap;
-}
-
-.page-links {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  opacity: 0.8;
-}
-
-.page-links strong {
-  font-weight: 700;
-  opacity: 1;
-}
-
-.page-links .gap {
-  opacity: 0.4;
-}
-
-/* --------------------------------------------------
-   Index nav (Speakers / Topics)
--------------------------------------------------- */
-
-.index-nav {
-  margin: 18px 0 36px;
-  font-size: 15px;
-  opacity: 0.85;
-}
-
-.index-nav a {
-  font-weight: 600;
-  color: var(--orange);
-}
-
-.index-nav a:hover {
-  text-decoration: underline;
-}
-
-.index-nav span {
-  margin: 0 10px;
-  opacity: 0.4;
-}
-
-.index-nav-compact {
-  margin-top: 0;
-}
-
-/* --------------------------------------------------
-   Buttons (episode / newest)
--------------------------------------------------- */
+/* ==================================================
+   Buttons
+================================================== */
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: var(--panel);
-  font-weight: 600;
+  color: var(--text);
+  font-weight: 650;
   font-size: 14px;
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
 }
 
@@ -303,49 +136,51 @@ a:hover {
 .btn.primary {
   background: linear-gradient(
     90deg,
-    rgba(215,82,47,0.9),
-    rgba(35,46,65,0.9)
+    color-mix(in oklab, var(--brand) 75%, black),
+    color-mix(in oklab, var(--accent) 70%, black)
   );
-  border-color: rgba(215,82,47,0.4);
+  border-color: color-mix(in oklab, var(--brand) 40%, var(--line));
 }
 
-/* --------------------------------------------------
-   Episode page
--------------------------------------------------- */
+/* ==================================================
+   Hero / Headings
+================================================== */
 
-.episode-hero h1 {
+.hero {
+  padding: 26px 0 12px;
+}
+
+.hero h1,
+.episode-hero h1,
+.topic-hero h1,
+.speaker-meta h1 {
+  margin: 0 0 10px;
   font-size: clamp(26px, 3.2vw, 40px);
   line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
-.episode-meta {
+.meta {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
   font-size: 14px;
-  opacity: 0.75;
+  color: var(--muted);
 }
 
-.episode-meta .dot {
-  opacity: 0.5;
-}
-
-.episode-description {
+.desc {
   margin-top: 14px;
   font-size: 15px;
-  opacity: 0.85;
+  color: var(--muted);
 }
 
-.episode-actions {
-  margin-top: 18px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+.desc p {
+  margin: 0.6rem 0;
 }
 
-/* --------------------------------------------------
-   Episode player (Acast + Patreon)
--------------------------------------------------- */
+/* ==================================================
+   Episode Player (Acast + Patreon)
+================================================== */
 
 #player-wrapper {
   margin-top: 16px;
@@ -355,8 +190,8 @@ a:hover {
   overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background: var(--panel);
   box-shadow: var(--shadow);
+  background: color-mix(in oklab, var(--panel) 90%, transparent);
 }
 
 #player-wrapper iframe {
@@ -364,22 +199,6 @@ a:hover {
   height: 210px;
   border: 0;
   display: block;
-  background: transparent;
-}
-
-/* Sticky behavior */
-#player-wrapper.sticky {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(var(--maxw), calc(100vw - 48px));
-  z-index: 40;
-}
-
-/* Sentinel */
-#player-sentinel {
-  height: 1px;
 }
 
 /* Patreon lock */
@@ -406,37 +225,35 @@ a:hover {
 
 .patreon-art {
   width: 100%;
-  height: auto;
   border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
 }
 
 .patreon-copy strong {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 750;
 }
 
 .patreon-copy p {
   margin: 6px 0 10px;
   font-size: 14px;
-  opacity: 0.8;
+  color: var(--muted);
 }
 
-/* Transcript */
+/* ==================================================
+   Transcript
+================================================== */
 
 .episode-transcript {
   margin-top: 36px;
-}
-
-.episode-transcript h2 {
-  font-size: 20px;
-  margin-bottom: 14px;
 }
 
 .turn {
   display: flex;
   gap: 10px;
   padding: 10px 12px;
-  border-radius: 14px;
+  border-radius: 16px;
+  transition: background .12s ease, border-color .12s ease;
   cursor: pointer;
 }
 
@@ -445,8 +262,8 @@ a:hover {
 }
 
 .turn.active {
-  background: var(--panel-2);
-  box-shadow: inset 0 0 0 1px rgba(215,82,47,0.35);
+  background: color-mix(in oklab, var(--panel-2) 85%, transparent);
+  border: 1px solid color-mix(in oklab, var(--brand) 35%, var(--line));
 }
 
 .turn .who {
@@ -454,412 +271,55 @@ a:hover {
 }
 
 .turn .who .spk {
-  display: inline-block;
+  display: inline-flex;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(35,46,65,0.4);
+  background: color-mix(in oklab, var(--accent) 28%, transparent);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 750;
 }
 
 .turn .who .ts {
   display: block;
-  font-size: 12px;
-  opacity: 0.55;
   margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted2);
 }
 
 .turn .said {
   font-size: 15px;
-  line-height: 1.45;
 }
 
 /* ==================================================
-   Topics (bulk + detail)
+   Lists (Index / Topics / Speakers)
 ================================================== */
 
-/* ---- Topics landing ---- */
-
-.topics-hero {
-  margin-bottom: 36px;
-}
-
-.topics-intro {
-  max-width: 760px;
-  font-size: 17px;
-  line-height: 1.5;
-  opacity: 0.85;
-}
-
-.topics-grid {
+.list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-@media (max-width: 720px) {
-  .topics-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.topic-card {
-  background: var(--panel);
-  border-radius: var(--radius);
-  padding: 20px;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-
-.topic-card:hover {
-  background: var(--panel-2);
-  transform: translateY(-2px);
-}
-
-.topic-name {
-  font-size: 18px;
-  margin: 0 0 8px;
-  line-height: 1.25;
-}
-
-.topic-name a {
-  color: var(--white);
-}
-
-.topic-definition {
-  font-size: 15px;
-  line-height: 1.45;
-  opacity: 0.8;
-}
-
-.topic-meta {
-  margin-top: 12px;
-  font-size: 13px;
-  opacity: 0.6;
-}
-
-/* ---- Topic detail page ---- */
-
-.topic-hero h1 {
-  font-size: clamp(26px, 3.2vw, 40px);
-  line-height: 1.1;
-}
-
-.topic-definition {
-  max-width: 800px;
-}
-
-.topic-scope {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 24px;
-}
-
-@media (max-width: 720px) {
-  .topic-scope {
-    grid-template-columns: 1fr;
-  }
-}
-
-.topic-scope strong {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
-  opacity: 0.75;
-}
-
-.topic-scope ul {
-  margin: 0;
-  padding-left: 18px;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-.topic-year {
-  margin-top: 28px;
-}
-
-.topic-year h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.topic-episode-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.topic-episode {
-  padding: 10px 12px;
-  border-radius: 12px;
-  transition: background 0.15s ease;
-}
-
-.topic-episode:hover {
-  background: var(--panel);
-}
-
-.topic-episode a {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 12px;
-  align-items: baseline;
-}
-
-.topic-episode .episode-title {
-  font-size: 15px;
-  min-width: 0; /* IMPORTANT for grid wrapping */
-}
-
-.topic-episode .episode-date {
-  font-size: 13px;
-  opacity: 0.55;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-
-.topic-episode .episode-lock {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--orange);
-  white-space: nowrap;
-}
-
-.topic-empty {
-  font-size: 15px;
-  opacity: 0.7;
-}
-
-@media (max-width: 600px) {
-  .topic-episode a {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-}
-
-/* ==================================================
-   Speakers (bulk + detail)
-================================================== */
-
-/* ---- Speakers landing ---- */
-
-.speakers-hero {
-  margin-bottom: 36px;
-}
-
-.speakers-intro {
-  max-width: 760px;
-  font-size: 17px;
-  line-height: 1.5;
-  opacity: 0.85;
-}
-
-.speakers-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-@media (max-width: 960px) {
-  .speakers-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .speakers-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.speaker-card {
-  background: var(--panel);
-  border-radius: var(--radius);
-  padding: 18px;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-
-.speaker-card:hover {
-  background: var(--panel-2);
-  transform: translateY(-2px);
-}
-
-.speaker-card a {
-  display: flex;
   gap: 14px;
-  align-items: center;
 }
 
-.speaker-thumb {
-  width: 64px;
-  height: 64px;
-  min-width: 64px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: rgba(255,255,255,0.08);
+.list-item {
+  padding: 14px;
 }
 
-.speaker-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.speaker-name {
-  font-size: 17px;
-  margin: 0;
-}
-
-.speaker-role {
-  font-size: 13px;
-  opacity: 0.65;
-  margin-top: 2px;
-}
-
-.speaker-count {
-  font-size: 13px;
-  opacity: 0.6;
-  margin-top: 6px;
-}
-
-/* ---- Speaker detail page ---- */
-
-.speaker-header {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-@media (max-width: 640px) {
-  .speaker-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-.speaker-photo {
-  width: 120px;
-  height: 120px;
-  min-width: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: rgba(255,255,255,0.08);
-}
-
-.speaker-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.speaker-meta h1 {
-  margin-bottom: 4px;
-}
-
-.speaker-bio {
-  max-width: 760px;
-  font-size: 16px;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.speaker-episodes {
-  margin-top: 40px;
-}
-
-.speaker-year {
-  margin-top: 28px;
-}
-
-.speaker-year h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.speaker-episode-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.speaker-episode {
-  padding: 10px 12px;
-  border-radius: 12px;
-  transition: background 0.15s ease;
-}
-
-.speaker-episode:hover {
+.list-item:hover {
   background: var(--panel);
 }
 
-.speaker-episode a {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 12px;
-  align-items: baseline;
-}
-
-.speaker-episode .episode-title {
-  font-size: 15px;
-  min-width: 0; /* critical */
-}
-
-.speaker-episode .episode-date {
-  font-size: 13px;
-  opacity: 0.55;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-
-.speaker-episode .episode-lock {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--orange);
-  white-space: nowrap;
-}
-
-@media (max-width: 600px) {
-  .speaker-episode a {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-}
-
-/* --------------------------------------------------
+/* ==================================================
    Footer
--------------------------------------------------- */
+================================================== */
 
 .site-footer {
   padding: 28px 0 40px;
   margin-top: 64px;
   text-align: center;
   font-size: 13px;
-  color: rgba(255,255,255,0.55);
+  color: var(--muted2);
 }
 
 .site-footer a {
-  color: var(--orange);
+  color: var(--brand);
   font-weight: 600;
-}
-
-.footer-credit {
-  margin-top: 24px;
-  font-size: 12px;
-  opacity: 0.55;
-}
-
-/* --------------------------------------------------
-   Light mode
--------------------------------------------------- */
-
-@media (prefers-color-scheme: light) {
-  body {
-    color: #111;
-    background: #fbfbfd;
-  }
-
-  .site-footer {
-    color: rgba(0,0,0,0.52);
-  }
 }
