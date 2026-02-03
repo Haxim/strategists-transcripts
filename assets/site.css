@@ -534,25 +534,29 @@ a:hover {
 }
 
 .topic-episode a {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   gap: 12px;
   align-items: baseline;
-  justify-content: space-between;
 }
 
 .topic-episode .episode-title {
   font-size: 15px;
+  min-width: 0; /* IMPORTANT for grid wrapping */
 }
 
 .topic-episode .episode-date {
   font-size: 13px;
   opacity: 0.55;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 .topic-episode .episode-lock {
   font-size: 12px;
   font-weight: 600;
   color: var(--orange);
+  white-space: nowrap;
 }
 
 .topic-empty {
@@ -560,6 +564,12 @@ a:hover {
   opacity: 0.7;
 }
 
+@media (max-width: 600px) {
+  .topic-episode a {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
 
 /* ==================================================
    Speakers (bulk + detail)
@@ -717,25 +727,36 @@ a:hover {
 }
 
 .speaker-episode a {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   gap: 12px;
-  justify-content: space-between;
   align-items: baseline;
 }
 
 .speaker-episode .episode-title {
   font-size: 15px;
+  min-width: 0; /* critical */
 }
 
 .speaker-episode .episode-date {
   font-size: 13px;
   opacity: 0.55;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 .speaker-episode .episode-lock {
   font-size: 12px;
   font-weight: 600;
   color: var(--orange);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .speaker-episode a {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
 }
 
 /* --------------------------------------------------
