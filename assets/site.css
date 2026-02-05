@@ -1,92 +1,1019 @@
-/* === Legacy episode-first theme (FULL) === */
+/* ============================================================
+   POSTMIC CANONICAL SITE CSS
+   Episode-first theme extracted from oldepisode.txt
+   ============================================================ */
+
+/* ------------------------------
+   CSS Variables
+------------------------------ */
 
 :root{
-  --brand:#d7522f;
-  --accent:#232e41;
-  --bg:#0b1020;
-  --panel:rgba(255,255,255,0.06);
-  --panel-2:rgba(255,255,255,0.10);
-  --text:rgba(255,255,255,0.92);
-  --muted:rgba(255,255,255,0.72);
-  --muted2:rgba(255,255,255,0.55);
-  --line:rgba(255,255,255,0.12);
-  --shadow:0 16px 40px rgba(0,0,0,.35);
-  --radius:18px;
-  --maxw:1100px;
-  --pad:clamp(16px,3vw,26px);
+  --brand: #d7522f;
+  --accent: #232e41;
+  --bg: #0b1020;
+  --panel: rgba(255,255,255,0.06);
+  --panel-2: rgba(255,255,255,0.10);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.72);
+  --muted2: rgba(255,255,255,0.55);
+  --line: rgba(255,255,255,0.12);
+  --shadow: 0 16px 40px rgba(0,0,0,.35);
+  --shadow2: 0 8px 22px rgba(0,0,0,.28);
+  --radius: 18px;
+  --radius2: 12px;
+  --maxw: 1100px;
+  --pad: clamp(16px, 3vw, 26px);
+  --sticky-shadow: 0 10px 28px rgba(0,0,0,.35);
+  --topbar-h: 58px;
 }
 
-*{box-sizing:border-box}
+/* Light mode parity */
+@media (prefers-color-scheme: light){
+  :root{
+    --bg: #fbfbfd;
+    --panel: rgba(0,0,0,0.04);
+    --panel-2: rgba(0,0,0,0.06);
+    --text: rgba(0,0,0,0.92);
+    --muted: rgba(0,0,0,0.68);
+    --muted2: rgba(0,0,0,0.52);
+    --line: rgba(0,0,0,0.10);
+    --shadow: 0 16px 40px rgba(0,0,0,.12);
+    --shadow2: 0 8px 22px rgba(0,0,0,.10);
+    --sticky-shadow: 0 10px 28px rgba(0,0,0,.12);
+  }
+}
+
+/* ------------------------------
+   Global Reset
+------------------------------ */
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+
 body{
   margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+               "Apple Color Emoji","Segoe UI Emoji";
+  line-height: 1.55;
+  color: var(--text);
   background:
     radial-gradient(1000px 600px at 20% -10%, rgba(215,82,47,.32), transparent 60%),
     radial-gradient(1000px 600px at 100% 0%, rgba(35,46,65,.50), transparent 55%),
-    linear-gradient(180deg,var(--bg),var(--bg));
-  background-attachment:fixed;
+    linear-gradient(180deg, var(--bg), var(--bg));
+  background-attachment: fixed;
+  padding-top: var(--topbar-h);
 }
 
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-a{color:inherit;text-decoration:none}
-a:hover{text-decoration:underline}
+a{ color: inherit; text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+.wrap{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* ------------------------------
+   Font
+------------------------------ */
+
+@font-face{
+  font-family: 'Novecentosansnarrow-DemiBold';
+  src:
+    url('/assets/fonts/Novecentosansnarrow-DemiBold.woff2') format('woff2'),
+    url('/assets/fonts/Novecentosansnarrow-DemiBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------
+   Top Bar (from oldepisode)
+------------------------------ */
+
+.brand-logo{
+  height: 34px;          /* adjust to taste */
+  width: auto;
+  display: block;
+}
+
+/* Optional: slightly smaller on mobile */
+@media (max-width: 640px){
+  .brand-logo{
+    height: 28px;
+  }
+}
 
 .topbar{
-  position:sticky;top:0;z-index:50;
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
-}
-.topbar .inner{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:12px 0;
-}
-.brand .name{font-weight:800}
-.brand .tag{font-size:13px;color:var(--muted2)}
-.navlinks{display:flex;gap:10px}
-.chip{
-  padding:8px 12px;border-radius:999px;
-  background:var(--panel);border:1px solid var(--line);
-  font-size:13px;color:var(--muted);
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  border-bottom: 1px solid var(--line);
+
+
+  width: 100%;
+    /* this was visually missing */
+  background: color-mix(in oklab, var(--bg) 85%, transparent);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid var(--line);
 }
 
-.hero{padding:26px 0 12px}
-.hero-grid{display:grid;gap:18px}
-.card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
+.topbar .inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 10px;
 }
-.hero-main{padding:20px}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand .name{
+  font-family: 'Novecentosansnarrow-DemiBold', system-ui, sans-serif;
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.brand .tag{
+  font-size: 13px;
+  color: var(--muted2);
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+.navlinks{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.chip strong{
+  color: var(--text);
+  font-weight: 650;
+}
+
+.chip:hover{
+  background: var(--panel-2);
+  text-decoration:none;
+}
+
+/* ===============================
+   Navbar wordmark (Strategists)
+=============================== */
+
+.brand-wordmark{
+  font-size: 2em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* THE */
+.brand-wordmark .the{
+  display: block;
+  font-family: 'Novecentosansnarrow-DemiBold', system-ui, sans-serif;
+  font-size: 0.6em;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+
+  color: var(--bg);                 /* dark fill */
+  -webkit-text-stroke: 0.06em #fff; /* thinner than main */
+  paint-order: stroke fill;
+}
+
+.brand-wordmark{
+  white-space: normal;
+}
+
+.brand-wordmark .the,
+.brand-wordmark .main{
+  line-height: 1;
+}
+
+/* STRATEGISTS */
+.brand-wordmark .main{
+  display: block;
+  font-family: 'Novecentosansnarrow-DemiBold', system-ui, sans-serif;
+  font-size: 1em;              /* ← same size as before */
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--text);
+
+
+  /* fill */
+  color: var(--bg);
+
+  /* white outline (THIS is the demo look) */
+  -webkit-text-stroke: 0.09em #ffffff;
+  paint-order: stroke fill;
+}
+
+/* ISTS accent */
+.brand-wordmark .accent{
+  color: var(--brand);
+}
+
+
+/* ------------------------------
+   Hero / Episode Header
+------------------------------ */
+
+.hero{ padding: 26px 0 12px; }
+
+.hero-grid{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+
+@media (max-width: 760px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .listen-on{
+    justify-self: start;
+  }
+}
+
+.card{
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--panel) 90%, transparent);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.hero-main{ padding: 20px; }
 
 h1{
-  font-size:clamp(26px,3.2vw,40px);
-  letter-spacing:-0.03em;
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
-.meta{font-size:14px;color:var(--muted)}
-.desc{margin-top:14px;font-size:15px;color:var(--muted)}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  align-items:center;
+}
+
+.desc{
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.desc p{ margin: 0.6rem 0; }
+
+.desc a{
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--brand) 70%, transparent);
+}
+
+/* ------------------------------
+   Hero – Listen block
+------------------------------ */
+
+.listen-on{
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--panel) 85%, transparent);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow2);
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;      /* ← center everything */
+  gap: 10px;
+
+  white-space: nowrap;
+  text-align: center;       /* ← ensures label + links center */
+}
+
+.listen-label{
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  font-weight: 700;
+}
+
+/* Links row */
+
+.listen-links{
+  font-size: 14px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+/* Clickability signal */
+
+.listen-links a{
+  color: var(--brand);              /* ← Strategists orange */
+  text-decoration: none;
+}
+
+.listen-links a:hover{
+  text-decoration: underline;
+  text-decoration-color: color-mix(
+    in oklab,
+    var(--brand) 80%,
+    transparent
+  );
+}
+
+/* Separator dots */
+
+.listen-links span{
+  color: var(--muted2);
+  user-select: none;
+}
+
+/* ------------------------------
+   CTA Buttons
+------------------------------ */
+
+.cta{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
 
 .btn{
-  padding:10px 14px;border-radius:999px;
-  background:linear-gradient(90deg,var(--brand),var(--accent));
-  color:white;font-weight:650;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  font-weight: 650;
+  font-size: 14px;
+  box-shadow: var(--shadow2);
+  cursor: pointer;
+  user-select: none;
 }
 
-#player-wrapper{margin-top:14px}
-.player-card iframe{width:100%;height:210px;border:0}
+.btn:hover{
+  background: var(--panel-2);
+  text-decoration:none;
+}
 
-.transcript{padding:14px}
+.btn.primary{
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--brand) 75%, black),
+    color-mix(in oklab, var(--accent) 70%, black)
+  );
+  border-color: color-mix(in oklab, var(--brand) 40%, var(--line));
+}
+
+/* ------------------------------
+   Player
+------------------------------ */
+
+#player-sentinel{ height: 1px; }
+
+#player-wrapper{ margin: 12px 0 0; }
+
+#player-wrapper.sticky{
+  margin-top: 0;
+}
+
+#player-wrapper .player-card{
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  background: color-mix(in oklab, var(--panel) 90%, transparent);
+}
+
+#player-wrapper iframe{
+  width: 100%;
+  height: 210px;
+  border: 0;
+  display:block;
+  background: transparent;
+}
+
+/* Slim (detached) player */
+#player-wrapper.sticky iframe{
+  height: 80px;
+}
+
+#player-wrapper.sticky .player-card{
+  border-radius: 14px;
+  box-shadow: var(--sticky-shadow);
+}
+
+#player-wrapper.sticky{
+  position: fixed;
+  top: var(--topbar-h);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(var(--maxw), calc(100vw - (2 * var(--pad))));
+  z-index: 40;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ----------------------------------
+   Patreon locked player (Acast clone)
+---------------------------------- */
+
+.patreon-lock{
+  padding: 0;
+}
+
+.patreon-inner{
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  min-height: 210px; /* matches iframe height */
+}
+
+@media (max-width: 640px){
+  .patreon-inner{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.patreon-art{
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow2);
+}
+
+.patreon-copy{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.patreon-copy strong{
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.patreon-copy p{
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 44ch;
+}
+
+@media (max-width: 640px){
+  .patreon-copy p{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+#player-wrapper.sticky .patreon-inner{
+  min-height: 80px;
+  height: 80px;
+  padding: 8px 14px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+}
+
+#player-wrapper.sticky .player-card.patreon-lock{
+  display: flex;
+  align-items: center;
+  padding: 0;
+  height: 80px;
+  background: var(--bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: var(--sticky-shadow);
+  border-radius: 14px;
+}
+
+#player-wrapper.sticky .patreon-art{
+  display: none;
+}
+
+#player-wrapper.sticky .patreon-copy{
+  width: 100%;
+  padding: 0 16px;          /* horizontal only */
+  display: flex;
+  flex-direction: row;   /* ← THIS is the missing piece */
+  align-items: center;
+}
+
+#player-wrapper.sticky .patreon-copy p{
+  display: none;
+}
+
+#player-wrapper.sticky .patreon-copy .btn{
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  border-radius: 12px;
+}
+
+/* ------------------------------
+   Transcript
+------------------------------ */
+
+.main{ padding: 0 0 40px; }
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.transcript{ padding: 14px; }
+
 .turn{
-  display:flex;gap:10px;padding:10px 12px;border-radius:16px;
+  display:flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background .12s ease, border-color .12s ease;
 }
-.who{min-width:92px}
-.spk{
-  display:inline-flex;padding:6px 10px;border-radius:999px;
-  background:rgba(35,46,65,.28);font-size:12px;font-weight:750;
-}
-.ts{display:block;margin-top:6px;font-size:12px;color:var(--muted2)}
-.said{font-size:15px}
 
-footer{padding:28px 0 40px;color:var(--muted2);font-size:13px}
+.turn:hover{ background: var(--panel); }
+
+.turn.active{
+  background: color-mix(in oklab, var(--panel-2) 85%, transparent);
+  border-color: color-mix(in oklab, var(--brand) 35%, var(--line));
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--brand) 30%, transparent);
+}
+
+.who{ min-width: 92px; }
+
+.who .spk{
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.who .ts{
+  display:block;
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted2);
+  font-size: 12px;
+  user-select: none;
+}
+
+.said{
+  color: var(--text);
+  font-size: 15px;
+}
+
+.said mark{
+  background: color-mix(in oklab, var(--brand) 35%, transparent);
+  color: inherit;
+  padding: 0 .08em;
+  border-radius: .25em;
+}
+
+.tools{
+  padding: 28px;
+}
+
+/* ===============================
+   Speaker Pages
+=============================== */
+
+.speaker-hero h1{
+  margin-bottom: 8px;
+}
+
+.speaker-episodes{
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.episode-row{
+  display: block;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--panel) 85%, transparent);
+  transition: background .12s ease, transform .12s ease;
+}
+
+.episode-row:hover{
+  background: var(--panel-2);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.episode-row .ep-title{
+  font-weight: 650;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.episode-row .meta{
+  font-size: 13px;
+  color: var(--muted2);
+}
+
+/* ===============================
+   Speaker hero photo
+=============================== */
+
+.speaker-hero-grid{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (max-width: 640px){
+  .speaker-hero-grid{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.speaker-photo{
+  width: 132px;
+  aspect-ratio: 3 / 4;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow2);
+
+  flex-shrink: 0;
+}
+
+.speaker-hero-text h1{
+  margin-top: 0;
+}
+
+/* ===============================
+   Speaker cards (index pages)
+=============================== */
+
+.card.speaker{
+  display: flex;
+  gap: 16px;
+}
+
+.card.speaker .thumb{
+  width: 96px;
+  height: 128px;
+  flex-shrink: 0;
+}
+
+.card.speaker .thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+/* ===============================
+   Topic pages (speaker parity)
+=============================== */
+
+.topic-hero-text h1{
+  margin-bottom: 10px;
+}
+
+.topic-episodes{
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.topic-year-card .tools h2{
+  margin: 0;
+}
+
+/* ===============================
+   Topics index grid
+=============================== */
+
+.topics-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 640px){
+  .topics-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   Topic cards – upgrade
+=============================== */
+
+.card.topic{
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  transition:
+    background .12s ease,
+    border-color .12s ease,
+    transform .12s ease;
+}
+
+.card.topic:hover{
+  background: var(--panel-2);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.card.topic .title{
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.card.topic .meta{
+  font-size: 12.5px;
+  color: var(--muted2);
+}
+
+.card.topic .desc{
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* ------------------------------
+   Footer
+------------------------------ */
+
+footer{
+  padding: 28px 0 40px;
+  color: var(--muted2);
+  font-size: 13px;
+}
+
+.site-footer{
+  padding: 28px 0 40px;
+  color: var(--muted2);
+  font-size: 13px;
+}
+
+.footer-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+/* Social links */
+
+.footer-social{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.footer-social a{
+  color: var(--brand);
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-social a:hover{
+  color: var(--text);
+  text-decoration: underline;
+}
+
+/* Postmic block */
+
+.footer-postmic{
+  font-size: 13px;
+  color: var(--muted2);
+}
+
+/* Postmic orange link */
+
+.footer-postmic a{
+  color: var(--brand); /* Strategists orange */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-postmic a:hover{
+  text-decoration: underline;
+}
+
+/* ------------------------------
+   Reduced Motion
+------------------------------ */
+
+@media (prefers-reduced-motion: reduce){
+  *{
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+/* ===============================
+   Episode index (EXACT oldindex)
+=============================== */
+
+.episode-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 520px){
+  .episode-list{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Base card — flat, neutral */
+
+.episode-card{
+  display: grid;
+  grid-template-columns: 72px 1fr; /* large icon column */
+  gap: 14px;
+
+  padding: 12px 14px;
+  border-radius: 12px;
+
+  background: var(--panel);
+  border: 1px solid var(--line);
+
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+
+  text-decoration: none;
+}
+
+/* PUBLIC = no orange, ever */
+
+.episode-card.public{
+  border-color: var(--line);
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+}
+
+/* PATREON = constant orange glow */
+
+.episode-card.patreon{
+  border-color: color-mix(in oklab, var(--brand) 55%, var(--line));
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--brand) 45%, transparent),
+    0 0 22px color-mix(in oklab, var(--brand) 35%, transparent),
+    0 6px 18px rgba(0,0,0,.28);
+}
+
+/* Hover is subtle — oldindex barely moved */
+
+.episode-card:hover{
+  transform: none;
+  text-decoration: none;
+}
+
+/* Icon (large, square, same rounding) */
+
+.ep-icon{
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ep-icon img{
+  width: 72px;
+  height: 72px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+/* Text */
+
+.ep-body{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ep-title{
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.ep-meta{
+  font-size: 12.5px;
+  color: var(--muted2);
+}
+
+.ep-desc{
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ------------------------------
+   Pagination
+------------------------------ */
+
+.pager{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 40px;
+
+  margin: 6px 0 10px;
+}
+
+.pager-top{
+  margin-bottom: 14px;
+}
+
+.pager-bottom{
+  margin-top: 18px;
+}
+
+.pager-newer{
+  justify-self: start;   /* ← left */
+}
+
+.pager-older{
+  justify-self: end;     /* ← right */
+}
+
+.page-num{
+  font-size: 13px;
+  color: var(--muted2);
+  text-align: center;
+  align-self: center;
+  line-height: 1;
+}

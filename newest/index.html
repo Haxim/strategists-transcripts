@@ -1,68 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
+  <title>New Episode Out Now – </title>
 
-  <title>The Strategists</title>
-
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="robots" content="noindex, nofollow" />
 
   <link rel="stylesheet" href="/assets/site.css" />
-  <script src="/assets/site.js" defer></script>
 
-  
+  <style>
+    /* Page-scoped motion only (from newest-oldver) */
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .newest-wrap {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .newest-card {
+      max-width: 560px;
+      width: 100%;
+      padding: 40px 32px 36px;
+      animation: floatIn 0.6s ease-out;
+    }
+
+    .badge {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 14px;
+    }
+
+    .buttons {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .footer-link {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted2);
+    }
+  </style>
 </head>
+
 <body>
 
-  
-  <div class="topbar">
-    <div class="wrap inner">
-      <a class="brand" href="/">
-        <div class="name">The Strategists</div>
-        <div class="tag">Transcripts</div>
-      </a>
-      <div class="navlinks">
-        <a class="chip" href="/">← <strong>All episodes</strong></a>
-        
-          <a class="chip" href="https://www.patreon.com/strategistspod" target="_blank">Subscribe</a>
-        
+  <main class="newest-wrap">
+    <section class="card newest-card">
+
+      <div class="badge">NEW EPISODE OUT NOW</div>
+
+      <h1>Ministry of Podcasts: Episode 5</h1>
+
+      
+        <div class="meta">2026-02-04</div>
+      
+
+      
+        <div class="desc">
+          <p>Shannon Phillips and Stephen Carter discuss a Conservative movement that has decided it will not pivot, will not moderate, and absolutely does not care who hates it for that choice. What does it mean when a party re-ups the leader voters say they don't like, even after winning the argument on the issues? Is wrapping yourself in the flag a real political move or just vibes? And did Stephen Carter get something right even with his brain frozen? Stick around to the end to find out.</p><p>Zain Velji, as always, picks the questions and keeps everybody in line.</p>
+        </div>
+      
+
+      <div class="buttons">
+        <a class="btn primary" href="/ministry-of-podcasts-episode-5/">
+          ▶️ Listen &amp; Read the Transcript
+        </a>
+
+        <a class="btn" href="https://podcasts.apple.com/ca/podcast/the-strategists/id1514440943" target="_blank">
+          🎧 Listen on Apple Podcasts
+        </a>
+
+        <a class="btn" href="https://open.spotify.com/show/7gx7f75pZS38AHWNFj7WGr" target="_blank">
+          🎧 Listen on Spotify
+        </a>
+
+        <a class="btn" href="https://www.youtube.com/@strategistspod" target="_blank">
+          ▶️ Watch / Listen on YouTube
+        </a>
       </div>
-    </div>
-  </div>
-  
 
-  
-<main class="wrap">
-  <section class="card">
-    <h1>New Episode Out Now</h1>
-    <h2>Episode 1905: The Federal Stress Test</h2>
+      <div class="footer-link">
+        <a href="/">Browse all episodes</a>
+      </div>
 
-    
-      <div class="meta">2026-01-26</div>
-    
-
-    
-      <div class="desc"><p>Stephen Carter and Shannon Phillips discuss a federal stress test unfolding on two fronts: The killing of a Minneapolis man by federal immigration agents and open U.S. interference in Alberta's separatism debate. What happens when American political actors start shaping domestic politics? Why isn't there a more serious political pushback in the US after another fatal federal law enforcement shooting? And is anyone even pretending this is normal anymore?</p><p>Zain Velji, as always, picks the questions and keeps everybody in line.</p><p>Audio excerpt from "Unless You Are Free" by Ani DiFranco &amp; Utah Phillips (Fellow Workers, Righteous Babe Records)</p><p></p></div>
-    
-
-    <div class="cta">
-      <a class="btn primary" href="/episode-1905-the-federal-stress-test">Read transcript</a>
-      
-        <a class="btn" href="https://www.patreon.com/api/rss/u/lRnfcM5h30sr1B_QChBxjIb8bYhK8Lil/e/149197777.mp3?sig=SV2KL8d6QsCtbAHBkc9ASN4S_uR33SzDgNMIsxOAN0c%3D" target="_blank">Listen</a>
-      
-    </div>
-  </section>
-</main>
-
-
-  <footer>
-    <div class="wrap">
-      © 2026 The Strategists.
-      Built with <a href="https://postmic.co">postmic</a>.
-    </div>
-  </footer>
+    </section>
+  </main>
 
 </body>
 </html>
